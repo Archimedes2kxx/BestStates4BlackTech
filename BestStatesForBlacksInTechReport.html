@@ -79,12 +79,16 @@ img {
 <li><p>Second, the percentage of Blacks in the tech sector was always less than two thirds of the percentage of the state’s total population that was Black. For example, if the Black population of a state was 48 percent of the total population, the percentage of Blacks in tech was less than 32 percent of all techs; at the lower end if Blacks were only 6.5 percent of the state’s total population, then Blacks were less than 4 percent of all the techs in that state. In other words, Black participation in the tech sector was always substantially less than the percentage of Blacks in a state’s total population.</p></li>
 </ul>
 </div>
-<div id="b.-data-collection-and-cleaning" class="section level3">
-<h3>B. Data Collection and Cleaning</h3>
+<div id="b.-methods" class="section level3">
+<h3>B. Methods</h3>
+<p>I downloaded the most recent data from the American Community Survey from U.S. Census Bureau’s <b><a href="http://thedataweb.rm.census.gov/index.html">TheDataWeb</a></b> site. My step-by-step download procedure is described in <b><a href="https://github.com/Archimedes2kxx/BestStatesForBlackTech/blob/19bc4ca9628ce050805510ffa1dbf3fdd2103a68/Appendix-1.Rmd">Appendix #1</a></b> in the report’s repo on GitHub.</p>
+<p>To be specific, I used the Census Bureau’s <b><a href="http://dataferrett.census.gov/LaunchDFA.html">Data Ferret App</a></b> app to download sample data for 2014 for race and thirteen specified occupations for six states into a file called <b><a href="Race-CA-DC-GA-NC-NY-WA-Occupation-PUMA-2014.csv" class="uri">Race-CA-DC-GA-NC-NY-WA-Occupation-PUMA-2014.csv</a></b> in the report’s repo. The data for these categories was coded, so I downloaded the ACS codebook. A <b><a href="https://github.com/Archimedes2kxx/BestStatesForBlackTech/blob/ee64520f2e672b0919b4e6320154fdd1d43115f6/Race-CA-DC-GA-NC-NY-WA-Occupation-PUMA-2014-CodeBook.txt">copy of the codebook</a></b> will also be found in the repo.</p>
 <ul>
-<li>Identify the American Community Survey as the source of the sample data that is used to estimate the percentage of Black’s in the tech sectors of each state.</li>
-<li>Include the codes for occupations that define “tech” in this report … Table #1</li>
+<li>Race = Black, White, and Asian</li>
+<li>States = California, the District of Columbia (a “city state”), Georgia, North Carolina, New York, and Washington.</li>
+<li>Occupations (using “standard” category names) = COMPUTER PROGRAMMERS, CMM-SOFTWARE DEVELOPERS, APPLICATIONS AND SYSTEMS SOFTWARE, CMM-COMPUTER SYSTEMS ANALYSTS, ENG-ELECTRICAL AND ELECTRONICS ENGINEERS, CMM-COMPUTER SUPPORT SPECIALISTS, CMM-NETWORK AND COMPUTER SYSTEMS ADMINISTRATORS, CMM-COMPUTER OCCUPATIONS, ALL OTHER, CMM-COMPUTER NETWORK ARCHITECTS, CMM-DATABASE ADMINISTRATORS, CMM-WEB DEVELOPERS, ENG-COMPUTER HARDWARE ENGINEERS, CMM-INFORMATION SECURITY ANALYSTS, CMM-COMPUTER AND INFORMATION RESEARCH SCIENTISTS</li>
 </ul>
+<p>I wrote a few simple scripts and functions in R to download the data and derive the percentages and graphs that are displayed in the next section. The 19,000 observations in the DataFerret’s sample was large enough to assume that the percentages calculated for the sample for Blacks and other races in tech occupations in each state would be good estimates of the actual percentages of Blacks and other races in these occupations in the selected states. My R code for downloading the data, calculating the stats, and producing the graphs can be found in the GetData-1.R, Stats-2.R, and Graphs-3.R files in the <b><a href="https://github.com/Archimedes2kxx/BestStatesForBlackTech">repo</a></b>. The entire report was composed in R-Markdown using R-Studio, converted to HTML via knitr, then copied and pasted onto a blank page on this blog.</p>
 </div>
 <div id="c.-findings" class="section level3">
 <h3>C. Findings</h3>

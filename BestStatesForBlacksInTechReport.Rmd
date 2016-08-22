@@ -17,10 +17,16 @@ As the reader will see, my principal findings are straight-forward:
 
 * Second, the percentage of Blacks in the tech sector was always less than two thirds of the percentage of the state's total population that was Black. For example, if the Black population of a state was 48 percent of the total population, the percentage of Blacks in tech was less than 32 percent of all techs; at the lower end if Blacks were only 6.5 percent of the state's total population, then Blacks were less than 4 percent of all the techs in that state. In other words, Black participation in the tech sector was always substantially less than the percentage of Blacks in a state's total population.
 
-### B. Data Collection and Cleaning
+### B. Methods
+I downloaded the most recent data from the American Community Survey from U.S. Census Bureau's <b>[TheDataWeb](http://thedataweb.rm.census.gov/index.html)</b> site. My step-by-step download procedure is described in <b>[Appendix #1](https://github.com/Archimedes2kxx/BestStatesForBlackTech/blob/19bc4ca9628ce050805510ffa1dbf3fdd2103a68/Appendix-1.Rmd)</b> in the report's repo on GitHub. 
 
-* Identify the American Community Survey as the source of the sample data that is used to estimate the percentage of Black's in the tech sectors of each state.
-* Include the codes for occupations that define "tech" in this report ... Table #1
+To be specific, I used the Census Bureau's <b>[Data Ferret App](http://dataferrett.census.gov/LaunchDFA.html)</b> app to download sample data for 2014 for race and thirteen specified occupations for six states into a file called <b>[Race-CA-DC-GA-NC-NY-WA-Occupation-PUMA-2014.csv](Race-CA-DC-GA-NC-NY-WA-Occupation-PUMA-2014.csv)</b> in the report's repo. The data for these categories was coded, so I downloaded the ACS codebook. A <b>[copy of the codebook](https://github.com/Archimedes2kxx/BestStatesForBlackTech/blob/ee64520f2e672b0919b4e6320154fdd1d43115f6/Race-CA-DC-GA-NC-NY-WA-Occupation-PUMA-2014-CodeBook.txt)</b> will also be found in the repo.
+
+* Race = Black, White, and Asian
+* States = California, the District of Columbia (a "city state"), Georgia, North Carolina, New York, and Washington.
+* Occupations (using "standard" category names) = COMPUTER PROGRAMMERS, CMM-SOFTWARE DEVELOPERS, APPLICATIONS AND SYSTEMS SOFTWARE, CMM-COMPUTER SYSTEMS ANALYSTS, ENG-ELECTRICAL AND ELECTRONICS ENGINEERS, CMM-COMPUTER SUPPORT SPECIALISTS, CMM-NETWORK AND COMPUTER SYSTEMS ADMINISTRATORS, CMM-COMPUTER OCCUPATIONS, ALL OTHER, CMM-COMPUTER NETWORK ARCHITECTS, CMM-DATABASE ADMINISTRATORS, CMM-WEB DEVELOPERS, ENG-COMPUTER HARDWARE ENGINEERS, CMM-INFORMATION SECURITY ANALYSTS, CMM-COMPUTER AND INFORMATION RESEARCH SCIENTISTS
+
+I wrote a few simple scripts and functions in R to download the data and derive the percentages and graphs that are displayed in the next section. The 19,000 observations in the DataFerret's sample was large enough to assume that the percentages calculated for the sample for Blacks and other races in tech occupations in each state would be good estimates of the actual percentages of Blacks and other races in these occupations in the selected states. My R code for downloading the data, calculating the stats, and producing the graphs can be found in the GetData-1.R, Stats-2.R, and Graphs-3.R files in the <b>[repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b>. The entire report was composed in R-Markdown using R-Studio, converted to HTML via knitr, then copied and pasted onto a blank page on this blog.
 
 ### C. Findings
 
@@ -28,7 +34,7 @@ As the reader will see, my principal findings are straight-forward:
 * Include the statistic table for Blacks plus a ggplot of the blacks in tech vs blacks in total population ... Table #3 and Graph
 
 ### D. Conclusions
-My report's finding are mundane, but useful reminders of the futility of impatience. There is an understandable tendency for activists to demand that Blacks achieve parity with their population levels in all of the important sectors of our society RIGHT NOW!!! Unfortunately the evil legacy of centuries of slavery and decades of Jim Crow could not be wiped out in ten, twenty, forty, or even sixty years after the Supreme Court (1954) and Congress (1964,1964) made discrimination in education and the workplace illegal. Indeed, part of the evil legacy is the unwillingness of the larger society to move faster.
+My report's finding are mundane, but useful reminders of the futility of impatience. There is an understandable tendency for activists to demand that Blacks achieve parity with Black population levels in all of the important sectors of our society RIGHT NOW!!! Unfortunately the evil legacy of centuries of slavery and decades of Jim Crow could not be wiped out in ten, twenty, forty, or even sixty years after the Supreme Court (1954) and Congress (1964,1964) made discrimination in education and the workplace illegal. Indeed, the most incidious component of the evil legacy is the unwillingness of the larger society to move faster.
 
 Perhaps the biggest lesson of the last 60 years is that we can't do it all RIGHT NOW; so we have to focus. Some #DiversityInTech activists have focused on Web pages or social media because this is where tech is  now. I suggest that we apply Wayne Gretzky's wisdom He advised hockey players not to skate to the place where the puck was at now, but where it was about to be. In the case of tech, I suggest that we encourage Black young techs to acquire the skills that will enable them to compete in the places where tech is moving towards, specifically machine learning and related AI technologies. That's why we have to continue to keep pressure on Silicon Valley, California, and Waashington state
 
