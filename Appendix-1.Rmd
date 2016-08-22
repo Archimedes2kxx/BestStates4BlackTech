@@ -1,0 +1,45 @@
+---
+title: 'Appendix #1 — Procedures for Collecting Data from Censux ACS Survey'
+author: "Roy L Beasley"
+date: "August 22, 2016"
+output: html_document
+---
+### Appendix #1 -- Click-by-click Download Procedure
+
+American Community Service survey data for 2014 was obtained from the U.S. Census as follows:
+
+<b>A. Prepare your Mac or PC </b>    
+
+* Install recent version of Firefox or Microsoft's IE browser 
+
+* Install latest version of Java
+
+
+<b>B. Download data from ACS Website</b>
+
+1. Direct browser to "TheDataWeb" site at<b> [http://thedataweb.rm.census.gov/index.html](http://thedataweb.rm.census.gov/index.html)</b>
+2. Click "Launch the App" link on lower right side of screen to launch the DataFerret Java app
+3. When new window opens, enter your email address on the line provided (middle of page), then click "OK"
+4. When new window opens, click "Step 1" button (top left)
+    + Click "American Community Services" key (left side of page)
+    + When list drops down, click "Public Use Microdata Sample" key
+    + When list drops down, click "2014" ... then click "View Variables"
+    + Check "Population" (middle of page) ... then click "Search Variables" icon (bottom)
+5. When extensive list appears (middle of page), double-click "RAC1P" variable
+    + When pop-up window appears, check "Select ACS RAC1P Recoded ... etc ..."
+    + Click "Deselect all values" (right side)
+    + Check "White alone", "Black or African American alone," and "Asian alone"
+    + Click "OK" (top of window) ... then click "OK" again ... pop-up window will close
+6. Double-click "POWSP" variable (place of work):   
+    + When pop-up window appears check "Select ACS POWSP Place of work ... etc ..."
+    + Click "Deselect all values" (right side)
+    + Check California/CA, District of Columbia/DC, Georgia/GA, New York/NY, North Carolina/NC, and Washington/WA
+6. Double-click "SOCP" variable (occupation code):   
+    + When pop-up window appears check "Select ACS POWSP Place of work ... etc ..."
+    + Click "Deselect all values" (right side)
+    + Check CMM-COMPUTER PROGRAMMERS, CMM-SOFTWARE DEVELOPERS, APPLICATIONS AND SYSTEMS SOFTWARE, CMM-COMPUTER SYSTEMS ANALYSTS, ENG-ELECTRICAL AND ELECTRONICS ENGINEERS, CMM-COMPUTER SUPPORT SPECIALISTS, CMM-NETWORK AND COMPUTER SYSTEMS ADMINISTRATORS, CMM-COMPUTER OCCUPATIONS, ALL OTHER, CMM-COMPUTER NETWORK ARCHITECTS, CMM-DATABASE ADMINISTRATORS, CMM-WEB DEVELOPERS, ENG-COMPUTER HARDWARE ENGINEERS, CMM-INFORMATION SECURITY ANALYSTS, CMM-COMPUTER AND INFORMATION RESEARCH SCIENTISTS
+    + Click "OK" (top of window) ... then click "OK" again ... pop-up window will close
+8. Click "Step 2" button (top of page)
+    + Click "Save selected variables codebook" (right side of page) ... then enter required file and directory name in pop-up window to save the codebook text file ... then click "Save" 
+    + Click "Download" icon (top of page) ... then select "Comma Delimited" and other required info in pop-up window ... then click "Get Extract"
+    + To save the specifications for downloading this data faster next time click "File" (top left of window), then "Save As", then in the pop-up window provide a file name and directory in which to save the search script ... Next time click "File", then "Open" this script file and all of the data will be selected automatically ... :-)
