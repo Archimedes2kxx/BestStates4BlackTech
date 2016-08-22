@@ -1,4 +1,4 @@
-setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau")
+setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BlackStates4BlackTech")
 
 ### 1. Read in Codebook variables/labels 
 ###     All info in one column ... Code in first column, space, then text for label
