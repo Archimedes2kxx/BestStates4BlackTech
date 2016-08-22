@@ -76,8 +76,8 @@ census2$state = createFactorsWithLabels(census2$state, stateCodeBook)
 census2$occupation = createFactorsWithLabels(census2$occupation, occupationCodeBook)
 
 ### 5. Save census2 df into file 
-file="DF-2-Race-CA-DC-GA-NC-NY-WA-Occupation-PUMA-2014.csv"
-write.csv(census2, file)
+file="census2.csv"
+write.csv(census2, file) 
 
 ### Blacks in states
 getPercentages = function(perBlackPop, dfCensus, stateLabel, totalPop) {
