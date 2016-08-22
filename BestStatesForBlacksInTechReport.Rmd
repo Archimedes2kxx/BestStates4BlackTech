@@ -1,0 +1,35 @@
+---
+title: "Best States for Blacks in Tech"
+author: "Roy L Beasley, PhD -- DLL Editor"
+output: html_document
+---
+
+### A. Overview
+This note presents the results of my examination of Black employment in the tech sector in six states: California, the District of Columbia (a "city state"), Georgia, North Carolina, New York, and Washington.   
+
+* The Western states were selected because they are home to Google, Microsoft, Facebook, Amazon, and other corporate leaders in the commercialization of data intensive machine learning technologies and in the commercialization of the cloud-based computing technologies that make machine learning technologies affordable.      
+
+* The Southern and Eastern states were selected because substantial segments of their large Black populations have attended college or have children who are or will be attending college.
+
+As the reader will see, my principal findings are straight-forward:   
+
+* First, when the states were ordered by the percentage of Blacks in their total population, the states with the highest percentage of Blacks in their total population also had the highest percentage of Blacks in the state's tech sector; and the states with the lowest percentage of Blacks in their total population had the lowest percentage of Blacks in their tech sector.
+
+* Second, the percentage of Blacks in the tech sector was always less than two thirds of the percentage of the state's total population that was Black. For example, if the Black population of a state was 48 percent of the total population, the percentage of Blacks in tech was less than 32 percent of all techs; at the lower end if Blacks were only 6.5 percent of the state's total population, then Blacks were less than 4 percent of all the techs in that state. In other words, Black participation in the tech sector was always substantially less than the percentage of Blacks in a state's total population.
+
+### B. Data Collection and Cleaning
+
+* Identify the American Community Survey as the source of the sample data that is used to estimate the percentage of Black's in the tech sectors of each state.
+* Include the codes for occupations that define "tech" in this report ... Table #1
+
+### C. Findings
+
+* Create table of percentages of White vs. Asian vs. Blacks in each state ... Table #2
+* Include the statistic table for Blacks plus a ggplot of the blacks in tech vs blacks in total population ... Table #3 and Graph
+
+### D. Conclusions
+My report's finding are mundane, but useful reminders of the futility of impatience. There is an understandable tendency for activists to demand that Blacks achieve parity with their population levels in all of the important sectors of our society RIGHT NOW!!! Unfortunately the evil legacy of centuries of slavery and decades of Jim Crow could not be wiped out in ten, twenty, forty, or even sixty years after the Supreme Court (1954) and Congress (1964,1964) made discrimination in education and the workplace illegal. Indeed, part of the evil legacy is the unwillingness of the larger society to move faster.
+
+Perhaps the biggest lesson of the last 60 years is that we can't do it all RIGHT NOW; so we have to focus. Some #DiversityInTech activists have focused on Web pages or social media because this is where tech is  now. I suggest that we apply Wayne Gretzky's wisdom He advised hockey players not to skate to the place where the puck was at now, but where it was about to be. In the case of tech, I suggest that we encourage Black young techs to acquire the skills that will enable them to compete in the places where tech is moving towards, specifically machine learning and related AI technologies. That's why we have to continue to keep pressure on Silicon Valley, California, and Waashington state
+
+Finally, focusing on the gap between Blacks and Whites and/or Blacks and Asians says the glass is still half-empty. But this pessimistic perspective ignores the substantial numbers of Blacks who have achieved substantial careers in tech during the last 60 years. Seeing the glass as half-full also encourages young Black techs who are just starting their careers to identify the existing networs of Black techs who can become very useful mentors and references.
