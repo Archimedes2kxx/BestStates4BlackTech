@@ -92,7 +92,7 @@ blackPop = round(perBlackPop * totalPop, digits = 0)
 outVec = c(perBlack, perBlackPop, ratio, totalPop, blackPop)
 names(outVec) = c("BlackTechsPer", "BlackPopPer", "RatioToPop", "TotalPop", "BlackPop")
 return(outVec)
-### return all values that will appear in row in the report
+### return all values that will appear in the same row for each state in the report
 }
 
 perBlackPop = .483
