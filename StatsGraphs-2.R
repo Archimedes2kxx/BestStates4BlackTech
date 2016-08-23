@@ -24,6 +24,7 @@ State <- R6Class("State",
          ratioBlack = NULL, ratioWhite = NULL, ratioAsian = NULL, 
          df = NULL, ### read in the census data frame, in case I change its name
          
+         ### Read paramaters of the state and census data frame 
          initialize = function(name = NA, totPop = NA, stateLabel = NA,
                     blackPerTotPop = NA, whitePerTotPop = NA, asianPerTotPop = NA, df = NA) {
              options("scipen"=10) ## suppress scientific format
