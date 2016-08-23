@@ -9,6 +9,8 @@ setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackT
 
 ###install.packages("R6")
 library(R6)
+load("census2.RData")
+
 
 ### Define State class
 State <- R6Class("State",
@@ -47,7 +49,9 @@ State <- R6Class("State",
      )
 )
 
-### Create the six states
+### Create the six states ###############
+
+# CALIFORNIA ...
 ### Source = CENSUS link = http://www.census.gov/quickfacts/table/PST045215/06 
 caName = "California"; caLabel = " California/CA"
 caTotPop = 672228; blackPerTotPop = .065; whitePerTotPop = .38; asianPerTotPop = .15

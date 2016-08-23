@@ -3,7 +3,9 @@ title: "Best States for Blacks in Tech"
 author: "Roy L Beasley, PhD -- DLL Editor"
 output: html_document
 ---
-
+```{r, echo=FALSE, cache=TRUE}
+    load("census2.RData")
+```
 ### A. Overview 
 This note presents the results of my examination of Black employment in the tech sector in six states: California, the District of Columbia (a "city state"), Georgia, North Carolina, New York, and Washington.   
 
@@ -26,7 +28,7 @@ To be specific, I used the Census Bureau's <b>[Data Ferret App](http://dataferre
 * States = California, the District of Columbia (a "city state"), Georgia, North Carolina, New York, and Washington.
 * Occupations (using "standard" category names) = COMPUTER PROGRAMMERS, CMM-SOFTWARE DEVELOPERS, APPLICATIONS AND SYSTEMS SOFTWARE, CMM-COMPUTER SYSTEMS ANALYSTS, ENG-ELECTRICAL AND ELECTRONICS ENGINEERS, CMM-COMPUTER SUPPORT SPECIALISTS, CMM-NETWORK AND COMPUTER SYSTEMS ADMINISTRATORS, CMM-COMPUTER OCCUPATIONS, ALL OTHER, CMM-COMPUTER NETWORK ARCHITECTS, CMM-DATABASE ADMINISTRATORS, CMM-WEB DEVELOPERS, ENG-COMPUTER HARDWARE ENGINEERS, CMM-INFORMATION SECURITY ANALYSTS, CMM-COMPUTER AND INFORMATION RESEARCH SCIENTISTS  
 
-I wrote a few object-oriented scripts and functions in R to download the data and derive the percentages and graphs that are displayed in the next section. The DataFerret's sample (12,000 observations) was large enough to assume that the Black, White, and Asian percentages calculated for in the tech occupations for the sample would be good estimates of the actual percentages of Blacks, Whites, and Asians in tech occupations for the selected states. My R code for downloading the data, calculating the stats, and producing the graphs can be found in the Data-1.R, StatsGraphs-2.R, and Report-3.R files in the <b>[repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b>. The entire report was composed in R-Markdown using R-Studio, converted to HTML via knitr, then copied and pasted onto a blank page on the DLL's <b>[Tech-Levers](http://hbcu-levers.blogspot.com/p/draft-of-best-states-for-blacks-in-tech.html)</b> blog. 
+I wrote a few object-oriented scripts and functions in R to download the data and derive the percentages and graphs that are displayed in the next section. The DataFerret's sample (```r numSampleObservations``` observations) was large enough to assume that the Black, White, and Asian percentages calculated for tech occupations for the sample would be good estimates of the actual percentages of Blacks, Whites, and Asians in tech occupations for the selected states. My R code for downloading the data, calculating the stats, and producing the graphs can be found in the Data-1.R, StatsGraphs-2.R, and Report-3.R files in the <b>[repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b>. The entire report was composed in R-Markdown using R-Studio, converted to HTML via knitr, then copied and pasted onto a blank page on the DLL's <b>[Tech-Levers](http://hbcu-levers.blogspot.com/p/draft-of-best-states-for-blacks-in-tech.html)</b> blog. 
 
 The scripts and their embedded functions should be run in numerical order: Data-1 creates the dataframe required by StatsGraphs-2; and StatsGraphs-2 creates the statistics and graphics required by the Report-3 script.
 
