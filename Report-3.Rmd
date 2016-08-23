@@ -28,7 +28,7 @@ To be specific, I used the Census Bureau's <b>[Data Ferret App](http://dataferre
 
 I wrote a few simple scripts and functions in R to download the data and derive the percentages and graphs that are displayed in the next section. The DataFerret's sample (19,000 observations) was large enough to assume that the percentages calculated for the sample for Blacks and other races in the tech occupations in each state would be good estimates of the actual percentages of Blacks and other races in these occupations in the selected states. My R code for downloading the data, calculating the stats, and producing the graphs can be found in the Data-1.R, StatsGraphs-2.R, and Report-3.R files in the <b>[repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b>. The entire report was composed in R-Markdown using R-Studio, converted to HTML via knitr, then copied and pasted onto a blank page on the DLL's <b>[Tech-Levers](http://hbcu-levers.blogspot.com/p/draft-of-best-states-for-blacks-in-tech.html)</b> blog. 
 
-The scripts and their embedded functions should be run in numerical order: Data-1 creates the dataframe required by StatsGraphs-2; And StatsGraps-2 creates the statistics and graphics required by the Report-3 script.
+The scripts and their embedded functions should be run in numerical order: Data-1 creates the dataframe required by StatsGraphs-2; and StatsGraphs-2 creates the statistics and graphics required by the Report-3 script.
 
 ### C. Findings
 
