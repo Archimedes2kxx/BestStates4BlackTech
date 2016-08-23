@@ -1,5 +1,16 @@
 setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
 
+### LOGIC -- Define six state objects: CA, DC, GA, NC, NY, and WA
+### Each state object has the following properties: totalPop, techPop, 
+###     blackPercentOfTotal, blackTechPop, blackPercentOfTech, ratioBlack, 
+###     whitePercentOfTotal, whiteTechPop, whitePercentOfTech, ratioWhite, 
+###     asianPercentOfTotal, asianTechPop, asianPercentOfTech, ratioAsian. 
+### The values of these properties are assigned by the initialization function
+### The initialization function receives dfCensus2 and the following paramaters for each state as inputs
+###     totalPop, blackPercentOfTotal, whitePercentOfTotal, and asianPercentOfTotal
+### The initialization function calculates all of the other properters from these inputs
+### All of the other properties are statistics of the sample and are used to estimate the corresponding pop params
+
 ### Blacks in states
 getPercentages = function(perBlackPop, dfCensus, stateLabel, totalPop) {
     df = subset(dfCensus, dfCensus$state == stateLabel)

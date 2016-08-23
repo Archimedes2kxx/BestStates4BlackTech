@@ -4,7 +4,7 @@ author: "Roy L Beasley, PhD -- DLL Editor"
 output: html_document
 ---
 
-### A. Overview
+### A. Overview 
 This note presents the results of my examination of Black employment in the tech sector in six states: California, the District of Columbia (a "city state"), Georgia, North Carolina, New York, and Washington.   
 
 * The Western states were selected because they are home to Google, Microsoft, Facebook, Amazon, and other corporate leaders in the commercialization of data intensive machine learning technologies and in the commercialization of the cloud-based computing technologies that make machine learning technologies affordable.      
