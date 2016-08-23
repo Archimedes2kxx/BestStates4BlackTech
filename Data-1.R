@@ -17,7 +17,7 @@ makeCodeBook = function(labelsMatrix){
     R = nrow(labelsMatrix)
     mat = matrix(data=NA, nrow=R-1, ncol=2) 
     ### Initialize empty matrix, without header row
-    ###     That's why R-1, instead of R rows
+    ###     That's why R-1, instead of R rows 
     
     for (i in 2:R) {
         line = sub(" ", "$$$", labelsMatrix[i,])
