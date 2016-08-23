@@ -75,6 +75,8 @@ census2$state = sprintf("%03s", census2$state) ### states are 3-digit codes, som
 census2$state = createFactorsWithLabels(census2$state, stateCodeBook)
 census2$occupation = createFactorsWithLabels(census2$occupation, occupationCodeBook)
 
+numSampleObservations = dim(census2)[1]
+
 ### 5. Save census2 df into file 
 file="census2.csv"
 write.csv(census2, file) 
