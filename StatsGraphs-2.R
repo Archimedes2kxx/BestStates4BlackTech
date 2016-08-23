@@ -82,8 +82,8 @@ dfStats$TotalPop = as.integer((dfStats$TotalPop))
 dfStats$BlackPop = as.integer(dfStats$BlackPop)
 dfStats
 
-### Save df in descending order of percentage of Blacks in each state's tech sector
+### Reorder the df in descending order of percentage of Blacks in each state's tech sector
 dfStats = dfStats[order(-dfStats$BlackTechsPer),]
-file = "dfStats.csv"
-write.csv(dfStats, file)
+### file = "dfStats.csv"
+### write.csv(dfStats, file)
 
