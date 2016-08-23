@@ -1,10 +1,11 @@
 setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
 
-### LOGIC -- Define six state objects: CA, DC, GA, NC, NY, and WA
+### LOGIC -- Create six state objects: CA, DC, GA, NC, NY, and WA
 ### Each state object has the following properties: totalPop, techPop, 
-###     blackPercentOfTotal, blackTechPop, blackPercentOfTech, ratioBlack, 
-###     whitePercentOfTotal, whiteTechPop, whitePercentOfTech, ratioWhite, 
-###     asianPercentOfTotal, asianTechPop, asianPercentOfTech, ratioAsian. 
+###     blackPercentOfTotalPop, blackTechPop, blackPercentOfTech, ratioBlack, 
+###     whitePercentOfTotalPop, whiteTechPop, whitePercentOfTech, ratioWhite, 
+###     asianPercentOfTotalPop, asianTechPop, asianPercentOfTech, ratioAsian. 
+###     ratioBlack  defined as blackTechPop/blackPercentOfTotalPop; same for white and asian ratios
 ### The values of these properties are assigned by the initialization function
 ### The initialization function receives dfCensus2 and the following paramaters for each state as inputs
 ###     totalPop, blackPercentOfTotal, whitePercentOfTotal, and asianPercentOfTotal
