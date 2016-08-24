@@ -6,7 +6,7 @@ setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackT
 ### Statistics of the sample are calculated by the constructor based on parameters 
 ###     and sample data in the census2 data frame
 ### Calculated stats become estimates for the corresponding population parameters 
-
+ 
 ###install.packages("R6")
 library(R6) 
 
