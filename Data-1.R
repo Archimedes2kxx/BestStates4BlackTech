@@ -78,4 +78,4 @@ census2$occupation = createFactorsWithLabels(census2$occupation, occupationCodeB
 numSampleObservations = dim(census2)[1]
 
 ### 5. Save census2 df into file
-save(census2, numSampleObservations, file="census2.RData")
+save(census2, file="census2.RData")
