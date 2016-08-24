@@ -1,9 +1,9 @@
-setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
-
 ### 1. Read in Codebook variables/labels 
 ###     All info in one column ... Code in first column, space, then text for label
 ###     Files for each variable prepared by copying the part of the full codebook
 ###         into separate .txt files
+
+setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
 
 file = "Race-Short-Code.txt"
 raceCodeLabels = read.csv(file, header=FALSE, sep="\n", stringsAsFactors = FALSE)
