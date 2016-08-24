@@ -177,3 +177,4 @@ dfAsianStats = as.data.frame(matAsianStats)
 dfAsianStats = dfAsianStats[order(-dfAsianStats$asianPerTotPop),]
 dfAsianStats
 
+save(dfBlackStats, dfWhiteStats, dfAsianStats, file="stats.RData")
