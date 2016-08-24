@@ -113,6 +113,8 @@ waName = "Washington"; waLabel = " Washington/WA"
 waTotPop = 7170351; blackPerTotPop = .041; whitePerTotPop = .698; asianPerTotPop = .084
 WA <- State$new(waName, waTotPop, waLabel, blackPerTotPop, whitePerTotPop, asianPerTotPop, census2)
 
+save(CA, DC, GA, NY, NC, WA, file="R6Objects.RData")
+
 #############################
 #############################
 ### B. Assemble stats into matrices, then data frames
@@ -131,14 +133,47 @@ rownames(matBlackStats) = c("California", "District of Columbia",
 colnames(matBlackStats) = c("blackPerTech", "blackPerTotPop", "ratios", "totPop", "blackTotPop")
 
 dfBlackStats = as.data.frame(matBlackStats)
-dfBlackStats
 
 ### Reorder the df in descending order of percentage of Blacks in each state's total population 
 dfBlackStats = dfBlackStats[order(-dfBlackStats$blackPerTotPop),]
 dfBlackStats
 
-save(CA, DC, GA, NY, NC, WA, file="R6Objects.RData")
 
 ### B2. White data
+matWhiteStats = matrix(data=NA, nrow=6, ncol=5) 
+matWhiteStats[1,] = c(CA$whitePerTech, CA$whitePerTotPop, CA$whiteRatio, CA$totPop, CA$whiteTotPop)
+matWhiteStats[2,] = c(DC$whitePerTech, DC$whitePerTotPop, DC$whiteRatio, DC$totPop, DC$whiteTotPop)
+matWhiteStats[3,] = c(GA$whitePerTech, GA$whitePerTotPop, GA$whiteRatio, GA$totPop, GA$whiteTotPop)
+matWhiteStats[4,] = c(NY$whitePerTech, NY$whitePerTotPop, NY$whiteRatio, NY$totPop, NY$whiteTotPop)
+matWhiteStats[5,] = c(NC$whitePerTech, NC$whitePerTotPop, NC$whiteRatio, NC$totPop, NC$whiteTotPop)
+matWhiteStats[6,] = c(WA$whitePerTech, WA$whitePerTotPop, WA$whiteRatio, WA$totPop, WA$whiteTotPop)
+
+rownames(matWhiteStats) = c("California", "District of Columbia", 
+                            "Georgia", "New York", "North Carolina", "Washington")
+colnames(matWhiteStats) = c("whitePerTech", "whitePerTotPop", "ratios", "totPop", "whiteTotPop")
+
+dfWhiteStats = as.data.frame(matWhiteStats)
+
+### Reorder the df in descending order of percentage of Whites in each state's total population 
+dfWhiteStats = dfWhiteStats[order(-dfWhiteStats$whitePerTotPop),]
+dfWhiteStats
 
 ### B3. Asian data
+matAsianStats = matrix(data=NA, nrow=6, ncol=5) 
+matAsianStats[1,] = c(CA$asianPerTech, CA$asianPerTotPop, CA$asianRatio, CA$totPop, CA$asianTotPop)
+matAsianStats[2,] = c(DC$asianPerTech, DC$asianPerTotPop, DC$asianRatio, DC$totPop, DC$asianTotPop)
+matAsianStats[3,] = c(GA$asianPerTech, GA$asianPerTotPop, GA$asianRatio, GA$totPop, GA$asianTotPop)
+matAsianStats[4,] = c(NY$asianPerTech, NY$asianPerTotPop, NY$asianRatio, NY$totPop, NY$asianTotPop)
+matAsianStats[5,] = c(NC$asianPerTech, NC$asianPerTotPop, NC$asianRatio, NC$totPop, NC$asianTotPop)
+matAsianStats[6,] = c(WA$asianPerTech, WA$asianPerTotPop, WA$asianRatio, WA$totPop, WA$asianTotPop)
+
+rownames(matAsianStats) = c("California", "District of Columbia", 
+                            "Georgia", "New York", "North Carolina", "Washington")
+colnames(matAsianStats) = c("asianPerTech", "asianPerTotPop", "ratios", "totPop", "asianTotPop")
+
+dfAsianStats = as.data.frame(matAsianStats)
+
+### Reorder the df in descending order of percentage of Asians in each state's total population 
+dfAsianStats = dfAsianStats[order(-dfAsianStats$asianPerTotPop),]
+dfAsianStats
+
