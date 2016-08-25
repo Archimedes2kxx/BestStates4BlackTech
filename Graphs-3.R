@@ -5,9 +5,9 @@
 ### Load stats df and objects
 load(file="stats.RData")
 library(R6)
-load(file="R6Objects.RData")
 
 ### A. Calculate simple regressions of racial share of total population vs racial share of tech
+
 blackParityModel <- lm(blackPerTech ~ blackPerTotPop, dfBlackStats)
 whiteParityModel <- lm(whitePerTech ~ whitePerTotPop, dfWhiteStats)
 asianParityModel <- lm(asianPerTech ~ asianPerTotPop, dfAsianStats)

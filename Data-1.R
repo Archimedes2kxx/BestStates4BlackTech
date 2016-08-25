@@ -1,4 +1,7 @@
-### 1. Read in Codebook variables/labels 
+### Read census data from files downloaded from U.S. Census DataWeb site
+###  ... also manually input population parameters for each state from U.S. Census Quick Facts pages
+
+### 1. Read in Codebook variables/labels and input population parameters for each state
 ###     All info in one column ... Code in first column, space, then text for label
 ###     Files for each variable prepared by copying the part of the full codebook
 ###         into separate .txt files

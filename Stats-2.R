@@ -113,7 +113,7 @@ waName = "Washington"; waLabel = " Washington/WA"
 waTotPop = 7170351; blackPerTotPop = .041; whitePerTotPop = .698; asianPerTotPop = .084
 WA <- State$new(waName, waTotPop, waLabel, blackPerTotPop, whitePerTotPop, asianPerTotPop, census2)
 
-save(CA, DC, GA, NY, NC, WA, file="R6Objects.RData")
+### save(CA, DC, GA, NY, NC, WA, file="R6Objects.RData")
 
 #############################
 #############################
@@ -121,6 +121,7 @@ save(CA, DC, GA, NY, NC, WA, file="R6Objects.RData")
 ### B1. Black data
 
 matBlackStats = matrix(data=NA, nrow=6, ncol=5) 
+##### ##### revise to create vector for each state by a function, then loop through all states
 matBlackStats[1,] = c(CA$blackPerTech, CA$blackPerTotPop, CA$blackRatio, CA$totPop, CA$blackTotPop)
 matBlackStats[2,] = c(DC$blackPerTech, DC$blackPerTotPop, DC$blackRatio, DC$totPop, DC$blackTotPop)
 matBlackStats[3,] = c(GA$blackPerTech, GA$blackPerTotPop, GA$blackRatio, GA$totPop, GA$blackTotPop)
