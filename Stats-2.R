@@ -131,7 +131,6 @@ matBlackStats[6,] = c(WA$blackPerTech, WA$blackPerTotPop, WA$blackRatio, WA$totP
 rownames(matBlackStats) = c("California", "District of Columbia", 
                        "Georgia", "New York", "North Carolina", "Washington")
 colnames(matBlackStats) = c("blackPerTech", "blackPerTotPop", "ratios", "totPop", "blackTotPop")
-
 dfBlackStats = as.data.frame(matBlackStats)
 
 ### Reorder the df in descending order of percentage of Blacks in each state's total population 
@@ -151,7 +150,6 @@ matWhiteStats[6,] = c(WA$whitePerTech, WA$whitePerTotPop, WA$whiteRatio, WA$totP
 rownames(matWhiteStats) = c("California", "District of Columbia", 
                             "Georgia", "New York", "North Carolina", "Washington")
 colnames(matWhiteStats) = c("whitePerTech", "whitePerTotPop", "ratios", "totPop", "whiteTotPop")
-
 dfWhiteStats = as.data.frame(matWhiteStats)
 
 ### Reorder the df in descending order of percentage of Whites in each state's total population 
@@ -170,11 +168,11 @@ matAsianStats[6,] = c(WA$asianPerTech, WA$asianPerTotPop, WA$asianRatio, WA$totP
 rownames(matAsianStats) = c("California", "District of Columbia", 
                             "Georgia", "New York", "North Carolina", "Washington")
 colnames(matAsianStats) = c("asianPerTech", "asianPerTotPop", "ratios", "totPop", "asianTotPop")
-
 dfAsianStats = as.data.frame(matAsianStats)
 
 ### Reorder the df in descending order of percentage of Asians in each state's total population 
 dfAsianStats = dfAsianStats[order(-dfAsianStats$asianPerTotPop),]
 dfAsianStats
 
+### C. Save stats
 save(dfBlackStats, dfWhiteStats, dfAsianStats, file="stats.RData")
