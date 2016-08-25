@@ -113,7 +113,7 @@ waName = "Washington"; waLabel = " Washington/WA"
 waTotPop = 7170351; blackPerTotPop = .041; whitePerTotPop = .698; asianPerTotPop = .084
 WA <- State$new(waName, waTotPop, waLabel, blackPerTotPop, whitePerTotPop, asianPerTotPop, census2)
 
-### save(CA, DC, GA, NY, NC, WA, file="R6Objects.RData")
+save(CA, DC, GA, NY, NC, WA, file="R6Objects.RData")
 
 #############################
 #############################

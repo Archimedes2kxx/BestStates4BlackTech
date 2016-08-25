@@ -5,6 +5,7 @@
 ### Load stats df and objects
 load(file="stats.RData")
 library(R6)
+load(file="R6Objects.RData")
 
 ### A. Calculate simple regressions of racial share of total population vs racial share of tech
 
@@ -32,6 +33,7 @@ abline(whiteParityModel)
 plot(dfAsianStats$asianPerTotPop, dfAsianStats$asianPerTech)
 abline(asianParityModel)
 
+## C. Graphs via ggplot
 
 
 
