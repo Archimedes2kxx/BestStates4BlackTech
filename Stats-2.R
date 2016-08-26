@@ -43,13 +43,13 @@ State <- R6Class("State",
              self$asianPerTotPop <- asianPerTotPop
              self$df <- dfCensus
 
-             private$getSampleStats(self$df)
+             private$setSampleStats(self$df)
          }
     ), 
     
     ### Calculate sample stats via a private method
     private = list(
-         getSampleStats = function(df_p) {
+         setSampleStats = function(df_p) {
              df_p = subset(df_p, df_p$state == self$stateLabel)
              raceVec = df_p$race
              totalVec = table(raceVec)
