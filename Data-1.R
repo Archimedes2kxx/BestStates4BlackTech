@@ -1,17 +1,27 @@
-### Read census data from files downloaded from U.S. Census DataWeb site
-###  ... also manually input population parameters for each state from U.S. Census Quick Facts pages
+### Read census data from files downloaded from U.S. Census DataWeb site PUMA 2014
 
 ### 1. Read in Codebook variables/labels and input population parameters for each state
 ###     All info in one column ... Code in first column, space, then text for label
 ###     Files for each variable prepared by copying the part of the full codebook
 ###         into separate .txt files
 
+
+###################################
+###################################
+### Must add code to create "hispanic" race in census3
+### Then create "whiteNonHispanic)", "blackNonHispanic", and asianNonHispanic
+### Drop original "white", "black", and "asian"
+###################################
+###################################
+
 setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
 
 file = "Race-Short-Code.txt"
 raceCodeLabels = read.csv(file, header=FALSE, sep="\n", stringsAsFactors = FALSE)
+
 file = "State-Code.txt"
 stateCodeLabels = read.csv(file, header=FALSE, sep="\n", stringsAsFactors = FALSE)
+
 file = "SOCP-Code.txt"
 occupationCodeLabels = read.csv(file, header=FALSE, sep="\n", stringsAsFactors = FALSE)
 
@@ -23,8 +33,8 @@ makeCodeBook = function(labelsMatrix){
     ###     That's why R-1, instead of R rows 
     
     for (i in 2:R) {
-        line = sub(" ", "$$$", labelsMatrix[i,])
-        parts = strsplit(line, "$$$", fixed=TRUE)
+        line = sub(" ", "~", labelsMatrix[i,]) ### ~ not found in labels
+        parts = strsplit(line, "~", fixed=TRUE)
         mat[i-1,] = c(unlist(parts))
     }
     colnames(mat) = c("codes", "labels")
