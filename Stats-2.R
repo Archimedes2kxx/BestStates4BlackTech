@@ -10,13 +10,26 @@ setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackT
 ###install.packages("R6")
 library(R6) 
 
+### A. Read American Fact finder data for pop of states in 2014
+file = "Pop-All-States-PuertoRico-DC-American-Fact-Finder.csv"
+statesPop <- read.csv(file, header=TRUE, stringsAsFactors = FALSE)
+str(statesPop)
+
+### Delete extra census id columns
+statesPop$GEO.id <- NULL
+statesPop$GEO.id2 <- NULL
+
+colnames(statesPop) <- c("state", "statePop")
+### Delete extra census row
+statesPop <- statesPop[-1,]
+statesPop
+
 #################################
-#################################
-### A. Calculate the stats for the six states
+##### B. Calculate the stats for the states
 load("census2.RData")
 numSampleObservations = dim(census2)[1]
 
-### Define State as R6 class
+### Define State as R6 class object
 State <- R6Class("State",
      public=list(
          ### population parameters
@@ -75,7 +88,9 @@ State <- R6Class("State",
 )
 
 #####################################
-### Create the six states ###############
+### Create the states ###############
+
+###. 
 
 # CALIFORNIA ...
 ### Source = CENSUS link = http://www.census.gov/quickfacts/table/PST045215/06 
