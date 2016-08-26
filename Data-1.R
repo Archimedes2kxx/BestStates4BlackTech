@@ -39,9 +39,10 @@ stateCodeBook = makeCodeBook(stateCodeLabels)
 occupationCodeBook = makeCodeBook(occupationCodeLabels) 
 
 ### 2. Read data ... read all variables as strings 
+### file = "Sex-Race-Hisp-Occupation-State-PersonalWeight-PUMA-2014-Data.txt"
 file = "Race-CA-DC-GA-NC-NY-WA-Occupation-PUMA-2014.csv"
 census = read.csv(file, header=TRUE, sep=",", stringsAsFactors = FALSE, colClasses = "character")
-str(census)
+str(census) ### 45347 obs. of  6 variables for all states
 census2 = census
 
 ### 3. Use comfortable variable names
