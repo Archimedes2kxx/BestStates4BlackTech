@@ -6,22 +6,22 @@ setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackT
 ### Statistics of the sample are calculated by the constructor based on parameters 
 ###     and sample data in the census2 data frame
 ### Calculated stats become estimates for the corresponding population parameters 
- 
+   
 ###install.packages("R6")
 library(R6) 
 
-### A. Read American Fact finder data for pop of states in 2014
+### A. Read American Fact finder data for population of states in 2014
 file = "Pop-All-States-PuertoRico-DC-American-Fact-Finder.csv"
 statesPop <- read.csv(file, header=TRUE, stringsAsFactors = FALSE)
 str(statesPop)
 
 ### Delete extra census id columns
-statesPop$GEO.id <- NULL
+statesPop$GEO.id <- NULL   
 statesPop$GEO.id2 <- NULL
 
-colnames(statesPop) <- c("state", "statePop")
 ### Delete extra census row
 statesPop <- statesPop[-1,]
+colnames(statesPop) <- c("state", "statePop")
 statesPop
 
 #################################
@@ -94,37 +94,37 @@ State <- R6Class("State",
 
 # CALIFORNIA ...
 ### Source = CENSUS link = http://www.census.gov/quickfacts/table/PST045215/06 
-caName = "California"; caLabel = " California/CA"
+caName = "California"; caLabel = "California/CA"
 caTotPop = 39144818; blackPerTotPop = .065; whitePerTotPop = .38; asianPerTotPop = .147
 CA <- State$new(caName, caTotPop, caLabel, blackPerTotPop, whitePerTotPop, asianPerTotPop, census2)
 
 # District of Columbia ...
 ### CENSUS link = http://www.census.gov/quickfacts/table/PST045215/11
-dcName = "District of Columbia"; dcLabel = " District of Columbia/DC"
+dcName = "District of Columbia"; dcLabel = "District of Columbia/DC"
 dcTotPop = 672228; blackPerTotPop = .483; whitePerTotPop = .361; asianPerTotPop = .042
 DC <- State$new(dcName, dcTotPop, dcLabel, blackPerTotPop, whitePerTotPop, asianPerTotPop, census2)
 
 # Georgia ...
 ### CENSUS link = http://www.census.gov/quickfacts/table/PST045215/13
-gaName = "Georgia"; gaLabel = " Georgia/GA"
+gaName = "Georgia"; gaLabel = "Georgia/GA"
 gaTotPop = 10214860; blackPerTotPop = .317; whitePerTotPop = .539; asianPerTotPop = .04
 GA <- State$new(gaName, gaTotPop, gaLabel, blackPerTotPop, whitePerTotPop, asianPerTotPop, census2)
 
 # North Carolilna ...
 ### CENSUS link = http://www.census.gov/quickfacts/table/PST045215/37
-ncName = "North Carolina"; ncLabel = " North Carolina/NC"
+ncName = "North Carolina"; ncLabel = "North Carolina/NC"
 ncTotPop = 10042802; blackPerTotPop = .221; whitePerTotPop = .638; asianPerTotPop = .022
 NC <- State$new(ncName, ncTotPop, ncLabel, blackPerTotPop, whitePerTotPop, asianPerTotPop, census2)
 
 # New York ...
 ### CENSUS link = http://www.census.gov/quickfacts/table/PST045215/37
-nyName = "New York"; nyLabel = " New York/NY"
+nyName = "New York"; nyLabel = "New York/NY"
 nyTotPop = 19795791; blackPerTotPop = .176; whitePerTotPop = .560; asianPerTotPop = .088
 NY <- State$new(nyName, nyTotPop, nyLabel, blackPerTotPop, whitePerTotPop, asianPerTotPop, census2)
 
 # Washington ...
 ### CENSUS link = http://www.census.gov/quickfacts/table/PST045215/53 
-waName = "Washington"; waLabel = " Washington/WA"
+waName = "Washington"; waLabel = "Washington/WA"
 waTotPop = 7170351; blackPerTotPop = .041; whitePerTotPop = .698; asianPerTotPop = .084
 WA <- State$new(waName, waTotPop, waLabel, blackPerTotPop, whitePerTotPop, asianPerTotPop, census2)
 
