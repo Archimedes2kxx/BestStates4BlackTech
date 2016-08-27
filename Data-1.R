@@ -1,18 +1,12 @@
 ### Read census data from files downloaded from U.S. Census DataWeb site PUMA 2014
 
+############
+### A. Read original data ...
+############
 ### 1. Read in Codebook variables/labels and input population parameters for each state
 ###     All info in one column ... Code in first column, space, then text for label
 ###     Files for each variable prepared by copying the part of the full codebook
 ###         into separate .txt files
-
-
-###################################
-###################################
-### Must add code to create "hispanic" race in census3
-### Then create "whiteNonHispanic)", "blackNonHispanic", and asianNonHispanic
-### Drop original "white", "black", and "asian"
-###################################
-###################################
 
 setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
 
@@ -33,7 +27,7 @@ makeCodeBook = function(labelsMatrix){
     ###     That's why R-1, instead of R rows 
     
     for (i in 2:R) {
-        line = sub(" ", "~", labelsMatrix[i,]) ### ~ not found in labels
+        line = sub("  ", "~", labelsMatrix[i,]) ### ~ not used in labels
         parts = strsplit(line, "~", fixed=TRUE)
         mat[i-1,] = c(unlist(parts))
     }
@@ -48,6 +42,9 @@ raceCodeBook = makeCodeBook(raceCodeLabels)
 stateCodeBook = makeCodeBook(stateCodeLabels)
 occupationCodeBook = makeCodeBook(occupationCodeLabels) 
 
+### Drop the state initials, i.e., everything from "/" to end of line
+stateCodeBook$labels <-gsub("/.*","",stateCodeBook$labels)
+
 ### 2. Read data ... read all variables as strings 
 ### file = "Sex-Race-Hisp-AllOccupations-AllStates-PersonalWeight-PUMS-2014-Data.csv"
 ### file = "Sex-Race-Hisp-Occupation-State-PersonalWeight-PUMS-2014-Data.txt"
@@ -56,12 +53,14 @@ census = read.csv(file, header=TRUE, sep=",", stringsAsFactors = FALSE, colClass
 ### str(census) ### 45347 obs. of  6 variables for all states
 str(census) ### 3131680 obs. of  6 variables: for all states, all occupations, all races,
         ### all Hispanic subgroups, and sex
+
+write.csv(census, file="census.csv")
 census2 = census
 
-### 3. Use comfortable variable names
+### Use comfortable variable names
 colnames(census2) = c("race", "state", "occupation")
 
-### 4. Convert variables to factors with labels from codebook
+### 3. Convert variables to factors with labels from codebook
 ### In other words, convert data from integers to category names, e.g., black, California, etc
 ### xCodes are comprehensive dictionaries that contains all codes, not just the ones for this report
 ### Loop through values in each char variable, selecting matching label in xCodes
@@ -93,7 +92,19 @@ census2$state = sprintf("%03s", census2$state) ### states are 3-digit codes, som
 census2$state = createFactorsWithLabels(census2$state, stateCodeBook)
 census2$occupation = createFactorsWithLabels(census2$occupation, occupationCodeBook)
 head(census2)
-numSampleObservations = dim(census2)[1]
 
-### 5. Save census2 df into file
+### 4. Save census2 df into files
+write.csv(census2, file="census2.csv")
 save(census2, file="census2.RData")
+
+###################################
+###################################
+### B. Create new racial variables
+
+### Must add code to create "hispanic" race in census3
+### Then create "whiteNonHispanic)", "blackNonHispanic", and asianNonHispanic
+### Drop original "white", "black", and "asian"
+###################################
+###################################
+
+
