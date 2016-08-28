@@ -51,10 +51,3 @@ Code State
 055  Wisconsin/WI
 056  Wyoming/WY
 072  Puerto Rico
-166  Europe
-251  Eastern Asia
-254  Other Asia, Not Specified
-301  Canada
-303  Mexico
-399  Americas, not specified
-555  Other US Island Areas Not Specified, Africa, Oceania, at Sea, or Abroad, Not Specified
