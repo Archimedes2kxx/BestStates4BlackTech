@@ -11,6 +11,9 @@ setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackT
 library(R6) 
 
 ### A. Read American Fact finder data for population of states in 2014
+### American Fact finder URL
+### http://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=PEP_2015_PEPASR6H&prodType=table
+### http://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=PEP_2015_PEPASR6H&prodType=table
 file = "Pop-All-States-PuertoRico-DC-American-Fact-Finder.csv"
 statesPop <- read.csv(file, header=TRUE, stringsAsFactors = FALSE)
 str(statesPop)
