@@ -1,5 +1,14 @@
 setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
 
+####################
+####################
+
+### REVISE TO CREATE OBJECTS FOR ALL 50 STATES + PUERTO RICO AND DC
+### REVISE TO READ PARAMETERS FOR TOTAL POPULATION, %BLACK, %WHITE, %ASIAN, %HISPANIC FROM FILES
+
+####################
+####################
+#####
 ### LOGIC -- Create six state objects: CA, DC, GA, NC, NY, and WA using W. Chang's R6 class
 ### Real paramaters of states are provided to constructor ("initialize") function
 ### Data frame of sample observations also provided to constructor 
