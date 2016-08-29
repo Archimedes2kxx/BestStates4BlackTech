@@ -115,10 +115,8 @@ census2$state = createFactorsWithLabels(census2$state, stateCodeBook)
 census2$race = createFactorsWithLabels(census2$race, raceCodeBook)
 census2$tech = createFactorsWithLabels(census2$tech, techCodeBook)
 census2$sex = createFactorsWithLabels(census2$sex, sexCodeBook)
-str(census2)
+str(census2) ### 39692 obs. of  6 variables:
 head(census2)
-
-levels(census2$race)
 
 ### Save census2 into files
 write.csv(census2, file="census2.csv")
