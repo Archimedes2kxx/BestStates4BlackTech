@@ -4,21 +4,25 @@ setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackT
 
 ############
 ### A. Codebooks ...
-###  Read in raw code files 
-###     All info is in one column ... Code in first column, some spaces, then text for label
-###     Files for each variable prepared by copying the appropriate part of the full codebook
-###         into separate .txt files. Note that codes and labels are not separated by same
-###         number of blanks, so can't read in with simple read.csv(blah, blah, sep=" ", blah, blah)
+###  Read in raw code files. All info raw code files is in one column ... 
+###  Code in first column, some spaces, then text for label
+###  Raw code files for each variable were prepared by copying the appropriate 
+###    part of the full codebook into separate .txt files. 
+### 
 ###     Ignore temporary "code" "labels" headers in first row of each file
 
 ### Note: "Hispanic" was manually added to last row of census list of races in Race-Short-Names-Code.txt file
 ###         ... with code = 99
 
-file = "Race-Short-Names-Code.txt"
-raceRawCodes = read.csv(file, header=FALSE, sep="\n", stringsAsFactors = FALSE, colClasses = "character")
+### Note that codes and labels are separated by variable number of blanks, and labels for state, 
+###     race, and tech also contain blanks; so we can't read into two columns with simple 
+###     read.csv(blah, blah, sep=" ", blah, blah)
 
 file = "SEX-Code.txt"
-sexRawCodes = read.csv(file, header=FALSE, sep="\n", stringsAsFactors = FALSE, colClasses = "character")
+sexRawCodes = read.csv(file, header=FALSE, sep=" ", stringsAsFactors = FALSE, colClasses = "character")
+
+file = "Race-Short-Names-Code.txt"
+raceRawCodes = read.csv(file, header=FALSE, sep="\n", stringsAsFactors = FALSE, colClasses = "character")
 
 file = "State-Code.txt"
 stateRawCodes = read.csv(file, header=FALSE, sep="\n", stringsAsFactors = FALSE, colClasses = "character")
@@ -61,6 +65,10 @@ str(census1) ### 39692 for population weights, all states, tech occupations, all
 write.csv(census1, file="census1.csv")
 census2 = census1
 
+########################
+########################
+### C. Convert variables to factors with labels from codebooks
+
 ### Use comfortable variable names and convert weights to integers
 colnames(census2) = c("perWeight", "sex", "race", "state", "hisp", "tech")
 
@@ -74,9 +82,6 @@ census2$race[rows] <- "99"
 census2$perWeight <- as.integer(census2$perWeight)
 str(census2)
 
-########################
-########################
-### C. Convert variables to factors with labels from codebooks
 ### In other words, convert data from integers to category names, e.g., black, California, etc
 ### xCodes are comprehensive dictionaries that contains all codes, not just the ones for this report
 ### Loop through values in each char variable, selecting matching label in xCodes
@@ -104,10 +109,10 @@ createFactorsWithLabels = function(xVar, xCodes){
     return(facVar)
 }    
 
-census2$race = createFactorsWithLabels(census2$race, raceCodeBook)
 census2$state = sprintf("%03s", census2$state) ### states are 3-digit codes, some with leading zeros
-
 census2$state = createFactorsWithLabels(census2$state, stateCodeBook)
+
+census2$race = createFactorsWithLabels(census2$race, raceCodeBook)
 census2$tech = createFactorsWithLabels(census2$tech, techCodeBook)
 census2$sex = createFactorsWithLabels(census2$sex, sexCodeBook)
 str(census2)
