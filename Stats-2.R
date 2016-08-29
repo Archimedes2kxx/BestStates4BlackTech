@@ -1,40 +1,69 @@
 setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
 
-####################
-####################
-
-### REVISE TO CREATE OBJECTS FOR ALL 50 STATES + PUERTO RICO AND DC
-### REVISE TO READ PARAMETERS FOR TOTAL POPULATION, %BLACK, %WHITE, %ASIAN, %HISPANIC FROM FILES
-
-####################
-####################
 #####
-### LOGIC -- Create six state objects: CA, DC, GA, NC, NY, and WA using W. Chang's R6 class
-### Real paramaters of states are provided to constructor ("initialize") function
-### Data frame of sample observations also provided to constructor 
-### Statistics of the sample are calculated by the constructor based on parameters 
-###     and sample data in the census2 data frame
-### Calculated stats become estimates for the corresponding population parameters 
-   
+### LOGIC -- Create 51 state objects using W. Chang's R6 class
+###     Real paramaters of states are provided to constructor ("initialize") function
+###     Some statistics are calculated based on data frame of sample observations in census2 data frame 
+###     Other statistics are based on dat frame statistics and parameters
+###     Calculated stats become estimates for the corresponding population parameters 
+
+###     Parameters for first study = total population, Black, White, Asian, Hispanic, and "other"
+###     Gender will not be included in the first study
+
 ###install.packages("R6")
 library(R6) 
 
-### A. Read American Fact finder data for population of states in 2014
-### American Fact finder URL
-### http://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=PEP_2015_PEPASR6H&prodType=table
-### http://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=PEP_2015_PEPASR6H&prodType=table
-file = "Pop-All-States-PuertoRico-DC-American-Fact-Finder.csv"
-statesPop <- read.csv(file, header=TRUE, stringsAsFactors = FALSE)
+### A. Read American Fact Finder (AFF) racial parameters for population of states (and DC) in 2014
+### American Fact finder URL ... table PEPSR6H
+### http://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=PEP_2015_PEPSR6H&prodType=table
+file = "PEP_2014_PEPSR6H_with_ann.csv"
+statesPop <- read.csv(file, header=FALSE, stringsAsFactors = FALSE)
+str(statesPop)
+head(statesPop,5)
+
+### Get var names from second row
+varNames <- as.vector(unlist(statesPop[1,]))
+colnames(statesPop) <- varNames
 str(statesPop)
 
-### Delete extra census id columns
-statesPop$GEO.id <- NULL   
-statesPop$GEO.id2 <- NULL
+### Drop display labels and var names in 1st, 2nd rows
+statesPop <- statesPop[c(-1, -2),]
+str(statesPop)
+head(statesPop)
 
-### Delete extra census row
-statesPop <- statesPop[-1,]
-colnames(statesPop) <- c("state", "statePop")
-statesPop
+### 1. Get data for all non-hispanics
+dfNonHispanics <- subset(statesPop, Year.id=="est72014" & Sex.id =="totsex"& Hisp.id=="nhisp", 
+                    select=c(wa:tom))
+dfNonHispanics$totpop <- NULL
+
+### 2. Get data for hispanics
+dfHispanics <- subset(statesPop, Year.id=="est72014" & Sex.id =="totsex"& Hisp.id=="hisp", 
+                    select=c(totpop))
+dfHispanics$hisp <- dfHispanics$totpop
+dfHispanics$totpop <- NULL
+
+### 3. Get total pop of the state
+dfTotPop <- subset(statesPop, Year.id=="est72014" & Sex.id=="totsex" & Hisp.id=="tothisp", 
+                      select=c(`GEO.display-label`, totpop))
+
+### 4. cbind the columns
+dfStates <- cbind(dfTotPop, dfNonHispanics,dfHispanics)
+str(dfStates)
+
+### 5. Confer final names on all variables
+colnames(dfStates) <- c("state", "totpop", "white", "black", "amInAlNat", "asian", "pacific", "mixed" , "hisp")
+str(dfStates)
+
+### 6. Convert all numbers from strings to integrs
+
+
+vecStatesData <- as.integer(unlist(dfStates[,2:9]))
+matStatesData <- matrix(vecStatesData, nrow=51, ncol=8)
+head(matStatesData)
+
+### check data
+matSums <- sum(matStatesData[1,2:8])
+head(matSums)
 
 #################################
 ##### B. Calculate the stats for the states
