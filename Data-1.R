@@ -1,22 +1,19 @@
 ### Read census data from files downloaded from U.S. Census DataWeb site PUMA 2014
 
-############
-### A. Codebooks ...
-###  Read in Codebook variables/labels and input population parameters for each state
-###     All info in one column ... Code in first column, space, then text for label
-###     Files for each variable prepared by copying the appropriate part of the full codebook
-###         into separate .txt files
-
 setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
 
-### Ignore header rows in .txt files, i.e, first row contains "header" information, but ignore
-###   because columns for all label files are not separated by same number of blanks
+############
+### A. Codebooks ...
+###  Read in raw code files 
+###     All info is in one column ... Code in first column, some spaces, then text for label
+###     Files for each variable prepared by copying the appropriate part of the full codebook
+###         into separate .txt files. Note that codes and labels are not separated by same
+###         number of blanks, so can't read in with simple read.csv(blah, blah, sep=" ", blah, blah)
+###     Ignore temporary "code" "labels" headers in first row of each file
 
 ### Note: "Hispanic" was manually added to last row of census list of races in Race-Short-Names-Code.txt file
-###         with code = 99
-### Note: These codes and labels are in one column, where the values of the labels are right-justified,
-###         i.e., the distance between codes and labels varies, 
-###         so can't do a simple read.csv(blah, blah, sep=" ", blah, blah)
+###         ... with code = 99
+
 file = "Race-Short-Names-Code.txt"
 raceRawCodes = read.csv(file, header=FALSE, sep="\n", stringsAsFactors = FALSE, colClasses = "character")
 
