@@ -47,26 +47,64 @@ dfTotPop <- subset(statesPop, Year.id=="est72014" & Sex.id=="totsex" & Hisp.id==
                       select=c(`GEO.display-label`, totpop))
 
 ### 4. cbind the columns
-dfStates <- cbind(dfTotPop, dfNonHispanics,dfHispanics)
-str(dfStates)
+dfStates1 <- cbind(dfTotPop, dfNonHispanics,dfHispanics)
+str(dfStates1)
 
 ### 5. Confer final names on all variables
-colnames(dfStates) <- c("state", "totpop", "white", "black", "amInAlNat", "asian", "pacific", "mixed" , "hisp")
-str(dfStates)
+columnNames <- c("state", "totpop", "white", "black", "amInAlNat", "asian", "pacific", "mixed" , "hisp")
+colnames(dfStates1) <- columnNames
+str(dfStates1)
 
-### 6. Convert all numbers from strings to integrs
+### 6. Convert state to factor ... useful for tapply functions and other stuff
+dfStates2 <- dfStates1
+dfStates2$state <- as.factor(dfStates2$state)
+str(dfStates2[,1])
+
+### 7. Convert data columns to integers
+vec <- as.integer(unlist(dfStates2[,2:9]))
+mat <- matrix(vec, nrow=51, ncol=8)
+dfStates2 <- data.frame(dfStates2[,1], mat)
+colnames(dfStates2) <- columnNames ### ... yes, again
+str(dfStates2)
+head(dfStates2)
+
+### 8. Add row names = states .... convenient for subsetting with brackets
+rownames(dfStates2) <- dfStates2$state
+head(dfStates2)
+
+### 9 . Combine races that will not be analyzed, then delete their columns
+dfStates2$other <- dfStates2$amInAlNat + dfStates2$pacific + dfStates2$mixed
+dfStates2$amInAlNat <- NULL
+dfStates2$pacific <- NULL
+dfStates2$mixed <- NULL
+str(dfStates2)
+
+### 9. Calculate derived parameters ... percentage of each racial group in the total population
+dfStates3 <- dfStates2
+str(dfStates3)
+dfStates3$perWhite <- round(dfStates3$white / dfStates3$totpop, digits = 3)
+dfStates3$perBlack <- round(dfStates3$black / dfStates3$totpop, digits = 3)
+dfStates3$perAsian <- round(dfStates3$asian / dfStates3$totpop, digits = 3)
+dfStates3$perHisp <- round(dfStates3$hisp / dfStates3$totpop, digits = 3)
+dfStates3$perOther <- round(dfStates3$other / dfStates3$totpop, digits = 3)
+str(dfStates3)
+
+### 10. Examples of state parameters
+dfStates3["California",]
+dfStates3["New York",]
+dfStates3["Georgia",]
+dfStates3["District of Columbia",]
+dfStates3["Washington",]
+dfStates3["Hawaii",]
+dfStates3["Pennsylvania",]
+
+### 11. Consistency checks ... to sum of populations of groups add up to state total pop???
 
 
-vecStatesData <- as.integer(unlist(dfStates[,2:9]))
-matStatesData <- matrix(vecStatesData, nrow=51, ncol=8)
-head(matStatesData)
 
-### check data
-matSums <- sum(matStatesData[1,2:8])
-head(matSums)
 
 #################################
-##### B. Calculate the stats for the states
+##### B. Calculate stats from the sample  for the states
 load("census2.RData")
 numSampleObservations = dim(census2)[1]
 
