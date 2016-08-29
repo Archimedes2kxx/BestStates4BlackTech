@@ -13,91 +13,71 @@ setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackT
 ### Ignore header rows in .txt files, i.e, first row contains "header" information, but ignore
 ###   because columns for all label files are not separated by same number of blanks
 
-####################
-####################
-### Given that I'm now reading simple variables, all coded as integers with one or two spaces
-### between code and label, try again to just use sep = " " ... to get two columns
-### Results go directly into xxxCodeBook
-
-
-####################
-####################
-file = "Race-Short-Code.txt"
-raceRawCodes = read.csv(file, header=FALSE, sep="\n", stringsAsFactors = FALSE)
+### Note: "Hispanic" was manually added to last row of census list of races in Race-Short-Names-Code.txt file
+###         with code = 99
+### Note: These codes and labels are in one column, where the values of the labels are right-justified,
+###         i.e., the distance between codes and labels varies, 
+###         so can't do a simple read.csv(blah, blah, sep=" ", blah, blah)
+file = "Race-Short-Names-Code.txt"
+raceRawCodes = read.csv(file, header=FALSE, sep="\n", stringsAsFactors = FALSE, colClasses = "character")
 
 file = "SEX-Code.txt"
-sexRawCodes = read.csv(file, header=FALSE, sep="\n", stringsAsFactors = FALSE)
+sexRawCodes = read.csv(file, header=FALSE, sep="\n", stringsAsFactors = FALSE, colClasses = "character")
 
 file = "State-Code.txt"
-stateRawCodes = read.csv(file, header=FALSE, sep="\n", stringsAsFactors = FALSE)
+stateRawCodes = read.csv(file, header=FALSE, sep="\n", stringsAsFactors = FALSE, colClasses = "character")
 
-###file = "SOCP-Code.txt"
-### occupationRawCodes = read.csv(file, header=FALSE, sep="\n", stringsAsFactors = FALSE)
+file = "Tech-Code.txt"
+techRawCodes = read.csv(file, header=FALSE, sep="\n", stringsAsFactors = FALSE, colClasses = "character")
 
-makeCodeBook = function(labelsMatrix){
-    ### Split the single label column into two cols: code and  label
-    R = nrow(labelsMatrix)
+makeCodeBook = function(rawCodes){
+    ### Split the single raw code column into two cols: code and  label
+    R = nrow(rawCodes)
     mat = matrix(data=NA, nrow=R-1, ncol=2) 
-    ### Initialize empty matrix, omitting phony "header" in first row
+    ### Initialize empty matrix, omitting temporary "header" in first row
     ###     That's why R-1, instead of R rows 
     
     for (i in 2:R) {
-        line = sub("  ", "~", labelsMatrix[i,]) ### ~ not used in labels
+        line = sub("  ", "~", rawCodes[i,]) ### "~" not used in labels
         parts = strsplit(line, "~", fixed=TRUE)
         mat[i-1,] = c(unlist(parts))
     }
     colnames(mat) = c("codes", "labels")
-    df = as.data.frame(mat)  
-    df$codes = as.character(df$codes)
-    df$labels = as.character(df$labels)
+    df = as.data.frame(mat, stringsAsFactors=FALSE)  
+    ####df$codes = as.character(df$codes)
     return(df)
 }
 
 raceCodeBook = makeCodeBook(raceRawCodes)
 stateCodeBook = makeCodeBook(stateRawCodes)
-### occupationCodeBook = makeCodeBook(occupationRawCodes) 
+techCodeBook = makeCodeBook(techRawCodes) 
 sexCodeBook = makeCodeBook(sexRawCodes)
 
 ### Drop the state initials, i.e., everything from "/" to end of line
 stateCodeBook$labels <-gsub("/.*","",stateCodeBook$labels)
 
 ### 2. Read data ... read all variables as strings 
-file = "Sex-Race-Hisp-AllOccupations-AllStates-PersonalWeight-PUMS-2014-Data.csv"
-### file = "Sex-Race-Hisp-Occupation-State-PersonalWeight-PUMS-2014-Data.txt"
-### file = "Race-CA-DC-GA-NC-NY-WA-Occupation-PUMS-2014.csv"
+file = "Sex-Race-Hisp-InfoTechOccupations-AllStates-PersonalWeight-PUMS-2014-Data.csv"
 census1 = read.csv(file, header=TRUE, sep=",", stringsAsFactors = FALSE, colClasses = "character")
-### str(census) ### 45347 obs. of  6 variables for all states
-str(census1) ### 3131680 obs. of  6 variables: for all states, all occupations, all races,
+str(census1) ### 39692 for population weights, all states, tech occupations, all races,
         ### all Hispanic subgroups, and sex
-
-### Use comfortable variable names and convert weights to integers
-colnames(census1) = c("perWeight", "hisp", "race", "state", "sex", "occupation")
-
-### Convert personal weights to integers
-census2$perWeight <- as.integer(census2$perWeight)
 
 write.csv(census1, file="census1.csv")
 census2 = census1
 
-### IGNORE THIS CODE
-### ONLY DOWNLOAD DATA-FERRET OBSERVATIONSFOR 13 TECH CATEGORIES
-### Create data frame that contains the sum of all personal weights for each state
-### ... will be used in Stats-2 to estimate the actual number of blacks, asians, etc in tech in each state
-### dfStateTotPopPerWeights <- census2 %>%
-### group_by(state) %>%
-### summarise(statTotPersonWeights = sum(perWeight))
-### dfStateTotPopPerWeights
-### head(census2$perWeight)
-### str(dfStateTotPopPerWeights)
+### Use comfortable variable names and convert weights to integers
+colnames(census2) = c("perWeight", "sex", "race", "state", "hisp", "tech")
 
-### 3. Now delete all of the folk who are not in tech
-###     First get the tech codes ... mix of integers and letters, at least one "X"
-### file = "TECH-Code.txt"
-### techCodeLabels <- read.csv(file, header=FALSE, sep="\n", stringsAsFactors = FALSE)
-### str(techCodeLabels)
-### colnames(techCodeLabels) <- "techCodes"
-### techCodeLabels$techCodes
-### head(levels(census2$occupation))
+### Add new category to race = "HISP"
+### ... HISP = "1" for "not Hispanic"
+### ... so change race values to "hispanic" when hisp != 1
+rows <- census2$hisp != "1"
+census2$race[rows] <- "99"
+
+### Convert personal weights to integers
+census2$perWeight <- as.integer(census2$perWeight)
+str(census2)
+
 
 ### 3. Convert variables to factors with labels from codebook
 ### In other words, convert data from integers to category names, e.g., black, California, etc
@@ -118,6 +98,7 @@ createFactorsWithLabels = function(xVar, xCodes){
         if (k!= -1) {
             xLabels = c(xLabels, xCodes[k,2])
         } else {
+            print(paste("Label not found for i and value = ", i, " ", xValues[i]))
             xLabels = c(xLabels, paste("Label not found for i = ", i, " ", xValues[i]))
         }
         i = i + 1
@@ -128,28 +109,16 @@ createFactorsWithLabels = function(xVar, xCodes){
 
 census2$race = createFactorsWithLabels(census2$race, raceCodeBook)
 census2$state = sprintf("%03s", census2$state) ### states are 3-digit codes, some with leading zeros
+
 census2$state = createFactorsWithLabels(census2$state, stateCodeBook)
-### census2$occupation = createFactorsWithLabels(census2$occupation, occupationCodeBook)
+census2$tech = createFactorsWithLabels(census2$tech, techCodeBook)
 census2$sex = createFactorsWithLabels(census2$sex, sexCodeBook)
+str(census2)
+head(census2)
+
+levels(census2$race)
 
 ### 4. Save census2 df into files
 write.csv(census2, file="census2.csv")
 save(census2, file="census2.RData")
-
-#############
-###################################
-
-### B. In census3, add new category to race factor = "hispanic"
-### ... hispanic = "1" for "not Hispanic"
-### ... so change race values to "hispanic" when hisp != 1
-census3 <- census2
-rows <- census3$hisp != "1"
-census3$race[rows] <- "Hispanic"
-census3$race <- as.factor(census3$race)
-levels(census3$race)
-str(census3$race)
-
-### Save census3 df into files
-write.csv(census3, file="census3.csv")
-save(census3, file="census3.RData")
 
