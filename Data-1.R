@@ -1,11 +1,10 @@
 ### Read census data from files downloaded from U.S. Census DataWeb site PUMA 2014
 
 ############
-### A. Original data ...
-############
-### 1. Read in Codebook variables/labels and input population parameters for each state
+### A. Codebooks ...
+###  Read in Codebook variables/labels and input population parameters for each state
 ###     All info in one column ... Code in first column, space, then text for label
-###     Files for each variable prepared by copying the part of the full codebook
+###     Files for each variable prepared by copying the appropriate part of the full codebook
 ###         into separate .txt files
 
 setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
@@ -44,7 +43,6 @@ makeCodeBook = function(rawCodes){
     }
     colnames(mat) = c("codes", "labels")
     df = as.data.frame(mat, stringsAsFactors=FALSE)  
-    ####df$codes = as.character(df$codes)
     return(df)
 }
 
@@ -56,7 +54,8 @@ sexCodeBook = makeCodeBook(sexRawCodes)
 ### Drop the state initials, i.e., everything from "/" to end of line
 stateCodeBook$labels <-gsub("/.*","",stateCodeBook$labels)
 
-### 2. Read data ... read all variables as strings 
+#########################
+### B. Read original census data ... all variables read as character 
 file = "Sex-Race-Hisp-InfoTechOccupations-AllStates-PersonalWeight-PUMS-2014-Data.csv"
 census1 = read.csv(file, header=TRUE, sep=",", stringsAsFactors = FALSE, colClasses = "character")
 str(census1) ### 39692 for population weights, all states, tech occupations, all races,
@@ -70,7 +69,7 @@ colnames(census2) = c("perWeight", "sex", "race", "state", "hisp", "tech")
 
 ### Add new category to race = "HISP"
 ### ... HISP = "1" for "not Hispanic"
-### ... so change race values to "hispanic" when hisp != 1
+### ... so change race values to 99 ("hispanic") when hisp != 1
 rows <- census2$hisp != "1"
 census2$race[rows] <- "99"
 
@@ -78,8 +77,9 @@ census2$race[rows] <- "99"
 census2$perWeight <- as.integer(census2$perWeight)
 str(census2)
 
-
-### 3. Convert variables to factors with labels from codebook
+########################
+########################
+### C. Convert variables to factors with labels from codebooks
 ### In other words, convert data from integers to category names, e.g., black, California, etc
 ### xCodes are comprehensive dictionaries that contains all codes, not just the ones for this report
 ### Loop through values in each char variable, selecting matching label in xCodes
@@ -118,7 +118,7 @@ head(census2)
 
 levels(census2$race)
 
-### 4. Save census2 df into files
+### Save census2 into files
 write.csv(census2, file="census2.csv")
 save(census2, file="census2.RData")
 
