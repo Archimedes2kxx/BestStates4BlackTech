@@ -50,4 +50,3 @@ Code State
 054  West Virginia/WV
 055  Wisconsin/WI
 056  Wyoming/WY
-072  Puerto Rico
