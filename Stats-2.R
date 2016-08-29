@@ -89,6 +89,8 @@ dfStates3$perHisp <- round(dfStates3$hisp / dfStates3$totpop, digits = 3)
 dfStates3$perOther <- round(dfStates3$other / dfStates3$totpop, digits = 3)
 str(dfStates3)
 
+save(dfStates3, file = "dfStates3.RData")
+
 ### 10. Examples of state parameters
 dfStates3["California",]
 dfStates3["New York",]
