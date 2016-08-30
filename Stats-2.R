@@ -79,7 +79,7 @@ dfStates2$pacific <- NULL
 dfStates2$mixed <- NULL
 str(dfStates2)
 
-### 9. Calculate derived parameters ... percentage of each racial group in the total population
+### 10. Calculate derived parameters ... percentage of each racial group in the total population
 dfStates3 <- dfStates2
 str(dfStates3)
 dfStates3$perWhite <- round(dfStates3$white / dfStates3$totpop, digits = 3)
@@ -91,7 +91,7 @@ str(dfStates3)
 
 save(dfStates3, file = "dfStates3.RData")
 
-### 10. Examples of state parameters
+### 11. Examples of state parameters
 dfStates3["California",]
 dfStates3["New York",]
 dfStates3["Georgia",]
@@ -99,14 +99,15 @@ dfStates3["District of Columbia",]
 dfStates3["Washington",]
 dfStates3["Hawaii",]
 dfStates3["Pennsylvania",]
+dfStates3["Oregon",]
 
-### 11. Consistency checks ... to sum of populations of groups add up to state total pop???
+### 12. Consistency checks ... to sum of populations of groups add up to state total pop???
 
 
 
 
 #################################
-##### B. Calculate stats from the sample  for the states
+##### B. Create state objects and set sample stats, parameters, and hybrid stats
 load("census2.RData")
 numSampleObservations = dim(census2)[1]
 
@@ -114,30 +115,30 @@ numSampleObservations = dim(census2)[1]
 State <- R6Class("State",
      public=list(
          ### population parameters
-         name = NULL, totPop = NULL, stateLabel = NULL,
-         blackPerTotPop = NULL, whitePerTotPop = NULL, asianPerTotPop = NULL,
+         name = NULL, stateLabel = NULL,
+         totPop = NULL, whiteTotPop = NULL, blackTotPop = NULL, asianTotPop = Null, 
+             hispTotPop = NULL, otherTotPop = NULL,
+         blackPerTotPop = NULL, whitePerTotPop = NULL, asianPerTotPop = NULL, 
+            hispPerTotPop, otherPerTotPop = NULL, 
          
          ### statisics calculated from sample
-         blackTotPop = NULL, whiteTotPop = NULL, asianTotPop = NULL,
          totTechSamplePop = NULL, blackTechSamplePop = NULL, 
-         whiteTechSamplePop = NULL, asianTechSamplePop = NULL,
-         blackPerTech = NULL, whitePerTech = NULL, asianPerTech = NULL,
-         blackRatio = NULL, whiteRatio = NULL, asianRatio = NULL, 
-         df = NULL, ### read in the census data frame
+         whiteTechSamplePop = NULL, asianTechSamplePop = NULL, 
+            hispTechSamplePop, otherTechSamplePop,
+         blackPerTechSample = NULL, whitePerTechSample = NULL, asianPerTechSample = NULL, 
+             hispPerTechSample = NULL, otherPerTechSample = NULL,
          
-         ### Read paramaters of the state and read census data frame 
-         initialize = function(name = NA, totPop = NA, stateLabel = NA,
-                    blackPerTotPop = NA, whitePerTotPop = NA, asianPerTotPop = NA, dfCensus = NA) {
+         ### hybrid sample/parameter statistics
+         blackRatio = NULL, whiteRatio = NULL, asianRatio = NULL, 
+         hispRatio = NULL, otherRatio = NULL,
+         
+         ### Read paramaters of the state and read sample statistics 
+         initialize = function(name = NULL, dfStateParameters = NULL, dfStateSample = NULL) {
              options("scipen"=10) ## suppress scientific format
              self$name <- name
-             self$stateLabel <- stateLabel
-             self$totPop <- totPop
-             self$blackPerTotPop <- blackPerTotPop
-             self$whitePerTotPop <- whitePerTotPop
-             self$asianPerTotPop <- asianPerTotPop
-             self$df <- dfCensus
-
-             private$setSampleStats(self$df)
+             private$setSampleStats(self$dfStateSample)
+             private$setParamaters(self$dfStateParameters)
+             private$setHybridStats()
          }
     ), 
     
