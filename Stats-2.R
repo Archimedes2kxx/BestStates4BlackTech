@@ -1,9 +1,10 @@
 setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
+load("census2.RData")
+load("dfStates3.RData")
 
 ###install.packages("R6")
 library(R6) 
 
-load(file = "dfStates3.RData")
 
 #####
 ### LOGIC -- Create 51 state objects using W. Chang's R6 class
@@ -12,11 +13,13 @@ load(file = "dfStates3.RData")
 ###     Other statistics are based on dat frame statistics and parameters
 ###     Calculated stats become estimates for the corresponding population parameters 
 
+########################### Statistics
+### Must calculate ACS statistics using Personal Weights
 
 #################################
 ##### A. Create state objects and set sample stats, parameters, and hybrid stats
-load("census2.RData")
-numSampleObservations = dim(census2)[1]
+
+
 
 ### Define State as R6 class object
 State <- R6Class("State",
