@@ -121,6 +121,7 @@ getACS <- function(){
     
     str(census2) ### 39692 obs. of  6 variables:
     print(head(census2))
+    print(table(census2$race))
     
     ### Save census2 into files
     write.csv(census2, file="census2.csv")
@@ -212,8 +213,9 @@ getAFF <- function(){
     
     ### 11. Examples of state AFF parameters
     dfStates3["California",]
+    sum(dfStates3["California", 3:10])
     ### dfStates3["New York",]
-    ### dfStates3["Georgia",]    
+    ### dfStates3["Georgia",] 
 }
 
 ##########################
