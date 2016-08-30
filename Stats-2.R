@@ -8,16 +8,22 @@ library(R6)
 
 #####
 ### LOGIC -- Create 51 state objects using W. Chang's R6 class
-###     Real paramaters of states are provided to constructor ("initialize") function
-###     Some statistics are calculated based on data frame of sample observations in census2 data frame 
-###     Other statistics are based on dat frame statistics and parameters
-###     Calculated stats become estimates for the corresponding population parameters 
+###     uRL for R6 https://cran.r-project.org/web/packages/R6/vignettes/Introduction.html
+###     Real AFF paramaters of states are provided to constructor ("initialize") function
+###     Some statistics are calculated based on data frame of ACS sample in census2 data  
+###     Other hybrid stats are based on ACS and AFF data, e.g., parity ratios
+###     All stats become estimates for the corresponding population parameters 
 
-########################### Statistics
+########################### 
+### A. Calculate sample and hybrid statistics
 ### Must calculate ACS statistics using Personal Weights
 
+
+
+
 #################################
-##### A. Create state objects and set sample stats, parameters, and hybrid stats
+### Store all data in state objects
+##### B. Create state objects and initialize with sample stats, parameters, and hybrid stats
 
 
 
@@ -43,18 +49,21 @@ State <- R6Class("State",
          hispRatio = NULL, otherRatio = NULL,
          
          ### Read paramaters of the state and read sample statistics 
-         initialize = function(name = NULL, dfStateParameters = NULL, dfStateSample = NULL) {
+         initialize = function(name = NULL, dfParameters = NULL, dfSample = NULL) {
              options("scipen"=10) ## suppress scientific format
              self$name <- name
-             private$setSampleStats(self$dfStateSample)
-             private$setParamaters(self$dfStateParameters)
+             private$setSampleStats(self$dfSample)
+             private$setParamaters(self$dfParameters)
              private$setHybridStats()
          }
     ), 
     
     ### Calculate sample stats via a private method
     private = list(
-         setSampleStats = function(df_p) {
+        ##############################
+        ####### ALL WRONG ... must use personal weights for sample
+        ##############################
+         setSample = function(df_p) {
              df_p = subset(df_p, df_p$state == self$stateLabel)
              raceVec = df_p$race
              totalVec = table(raceVec)
@@ -67,14 +76,16 @@ State <- R6Class("State",
              self$blackPerTech = round(self$blackTechSamplePop/ self$totTechSamplePop, digits = 3)
              self$whitePerTech = round(self$whiteTechSamplePop/ self$totTechSamplePop, digits = 3)
              self$asianPerTech = round(self$asianTechSamplePop/ self$totTechSamplePop, digits = 3)
-             
-             self$blackRatio = round(self$blackPerTech / self$blackPerTotPop, digits = 2)
-             self$whiteRatio = round(self$whitePerTech / self$whitePerTotPop, digits = 2)
-             self$asianRatio = round(self$asianPerTech / self$asianPerTotPop, digits = 2)
-             
+
+             ### WRONG ... Parameter stats ... read from ACS data frame in different function           
              self$blackTotPop = round(self$totPop * self$blackPerTotPop, digits = 0)
              self$whiteTotPop = round(self$totPop * self$whitePerTotPop, digits = 0)
              self$asianTotPop = round(self$totPop * self$asianPerTotPop, digits = 0)
+             
+             ### WRONG ... Hybrid sample and parameter stats ... in diffeent function
+             self$blackRatio = round(self$blackPerTech / self$blackPerTotPop, digits = 2)
+             self$whiteRatio = round(self$whitePerTech / self$whitePerTotPop, digits = 2)
+             self$asianRatio = round(self$asianPerTech / self$asianPerTotPop, digits = 2)
          }
      )
 )
