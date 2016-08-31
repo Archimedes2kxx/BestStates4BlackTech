@@ -1,24 +1,25 @@
-### Read PUMA sample data from files downloaded from U.S. Census DataWeb site PUMA 2014
-### Read Amdrican Fact Finder (AFF) parameters about states from AFF pages for 2014
+### A. Read PUMA sample data from files downloaded from U.S. Census DataWeb site PUMA 2014
+###    and calculate each racial group's share of the sample for each state
+### B. Read Amdrican Fact Finder (AFF) parameters about states from AFF pages for 2014
+
+setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
+library(dplyr)
 
 ############
-### A.PUMA sample data ...
+### A. PUMA sample data ...
 
-getACS <- function(){
     #########################
     ### 1. Read codebooks
-    ###  Read in raw code files. All info raw code files is in one column ... 
-    ###  Code in first column, some spaces, then text for label
-    ###  Raw code files for each variable were prepared by copying the appropriate 
-    ###    part of the full codebook into separate .txt files. 
-    ### 
-    ###     Ignore temporary "code" "labels" headers in first row of each file
+    ###  All info is in one column ... Code in first column, some spaces, then text for label
+    ###  Raw code files were prepared by copying the appropriate 
+    ###    part of the full codebook into separate .txt files for each variable
+    ### Ignore temporary "code" "labels" headers in first row of each file
     
-    ### Note: "Hispanic" was manually added to last row of census list of races in Race-Short-Names-Code.txt file
+    ### Note: "Hispanic" was manually added to last row of races in Race-Short-Names-Code.txt file
     ###         ... with code = 99
     
-    ### Note that codes and labels are separated by variable number of blanks, and labels for state, 
-    ###     race, and tech also contain blanks; so we can't read into two columns with simple 
+    ### Codes and labels are separated by variable number of blanks for state and race
+    ###     Tech also contain blanks in the labels; so we can't read into two columns with simple 
     ###     read.csv(blah, blah, sep=" ", blah, blah)
     
     file = "SEX-Code.txt"
@@ -41,7 +42,7 @@ getACS <- function(){
         ###     That's why R-1, instead of R rows 
         
         for (i in 2:R) {
-            line = sub("  ", "~", rawCodes[i,]) ### "~" not used in labels
+            line = sub("  ", "~", rawCodes[i,]) ### "~" not used in labels, two blanks
             parts = strsplit(line, "~", fixed=TRUE)
             mat[i-1,] = c(unlist(parts))
         }
@@ -67,14 +68,10 @@ getACS <- function(){
     write.csv(census1, file="census1.csv")
     census2 = census1
     
-    ########################
-    ########################
-    ### 3. Convert variables to factors with labels from codebooks
-    
-    ### Use comfortable variable names and convert weights to integers
+    ### 3.    Use comfortable variable names and convert weights to integers
     colnames(census2) = c("personalWeight", "sex", "race", "state", "hisp", "tech")
     
-    ### 4. Add new category to race = "HISP"
+    ### 4. Add new category to race = "hisp"
     ### ... HISP = "1" for "not Hispanic"
     ### ... so change race values to 99 ("hispanic") when hisp != 1
     rows <- census2$hisp != "1"
@@ -84,8 +81,7 @@ getACS <- function(){
     census2$personalWeight <- as.integer(census2$personalWeight)
     ### str(census2)
     
-    ### 6. Convert category data from character to factors
-    ###  e.g., black, California, etc
+    ### . Convert category data from character to factors, e.g., black, California, etc
     ### xCodes are comprehensive dictionaries that contains all codes, not just the ones for this report
     ### Loop through values in each char variable, selecting matching label in xCodes
     ###     Returns factor version with labels on values
@@ -123,11 +119,30 @@ getACS <- function(){
     print(head(census2))
     print(table(census2$race))
     
+    str(census2)
     ### Save census2 into files
     write.csv(census2, file="census2.csv")
     save(census2, file="census2.RData")
-}
 
+
+### 8. Calculate each racial group's share of the sample for each state
+    getSampleShares <- function() {
+        
+        ### Want to perform same calculations on each row ... so us an apply function ... short & sweet
+        
+        censusGroups <- group_by(census2, state, race)
+        ptsPerRace <- summarise(censusGroups, ptsPerRace = sum(personalWeight))
+        head(ptsPerRace, 12)  
+        
+        censusStates <- group_by(census2, state)
+        ptsPerState <- summarise(censusStates, ptsPerState = sum(personalWeight))
+        head(ptsPerState)
+  
+    }
+
+###########################
+###########################
+### B. AFF paramaters for each state
 getAFF <- function(){
     ###     Parameters for first study = total population, Black, White, Asian, Hispanic, and "other"
     ###     Gender will not be included in the first study
@@ -166,7 +181,7 @@ getAFF <- function(){
                        select=c(`GEO.display-label`, totpop))
     
     ### 4. cbind the columns
-    dfStates1 <- cbind(dfTotPop, dfNonHispanics,dfHispanics)
+    dfStates1 <- cbind(dfTotPop, dfNonHispanics, dfHispanics)
     ### str(dfStates1)
     
     ### 5. Confer final names on all variables
@@ -191,7 +206,7 @@ getAFF <- function(){
     rownames(dfStates2) <- dfStates2$state
     ### head(dfStates2)
     
-    ### 9 . Combine races that will not be analyzed, then delete their columns
+    ### 9. Combine races that will not be analyzed, then delete their columns
     dfStates2$other <- dfStates2$amInAlNat + dfStates2$pacific + dfStates2$mixed
     dfStates2$amInAlNat <- NULL
     dfStates2$pacific <- NULL
@@ -218,11 +233,5 @@ getAFF <- function(){
     ### dfStates3["Georgia",] 
 }
 
-##########################
-######### Functions
-
-setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
-getACS()
-getAFF()
 
 
