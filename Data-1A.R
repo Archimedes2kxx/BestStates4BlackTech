@@ -3,6 +3,7 @@
 
 setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
 library(dplyr)
+library(tidyr)
 
 ### 1. Read codebooks
 ###  Raw code files were prepared by copying the appropriate 
@@ -103,15 +104,40 @@ dfCensus2$race = createFactorsWithLabels(dfCensus2$race, raceCodeBook)
 str(dfCensus2) ### 39692 obs. of  4 variables:
 head(dfCensus2)
 save(dfCensus2, file="dfCensus2.RData")
+dfCensus3 <- dfCensus2
 
-### 4. Calculate each racial group's share of the sample for each state ... INCOMPLETE
-censusGroups <- group_by(dfCensus2, state, race)
-ptsPerRace <- summarise(censusGroups, ptsPerRace = sum(personalWeight))
-head(ptsPerRace, 12)  
+### 4. Calculate each racial group's personal points and total points in each state 
+censusGroups <- group_by(dfCensus3, state, race) # ... Thank you, Hadley!!! ... :-)
+dfPtsPerRace <- summarise(censusGroups, ptsPerRace = sum(personalWeight)) # ... Thank you, Hadley!!! ... :-)
+head(dfPtsPerRace, 20)  
 
-censusStates <- group_by(dfCensus2, state)
-ptsPerState <- summarise(censusStates, ptsPerState = sum(personalWeight))
-head(ptsPerState)
+censusStates <- group_by(dfCensus3, state)
+dfPtsPerState <- summarise(censusStates, ptsPerState = sum(personalWeight)) # ... Thank you, Hadley!!! ... :-)
+head(dfPtsPerState, 20)
+
+dfRacePointsPerState <- spread(dfPtsPerRace, key=race, value=ptsPerRace) # ... Thank you, Hadley!!! ... :-)
+head(dfRacePointsPerState)
+
+columnNames <- c("state", "white", "black", "amInAlNat", "alNat", "otherNat", "asian", "pacific", "other", "mixed" , "hisp")
+colnames(dfRacePointsPerState) <- columnNames
+str(dfRacePointsPerState)
+head(dfRacePointsPerState)
+
+dfCensus3 <- dfRacePointsPerState
+with(dfRacePointsPerState, other <- amInAlNat + alNat + otherNat + pacific + other + mixed)
+head(dfRacePointsPerState)
+
+dfRacePointsPerState$amInAlNat <- NULL
+dfRacePointsPerState$alNat <- NULL
+dfRacePointsPerState$otherNat <- NULL
+dfRacePointsPerState$pacific <- NULL
+dfRacePointsPerState$other <- NULL
+dfRacePointsPerState$mixed <- NULL
+
+### 5. Racial shares
+vecPtsPerState <- c(unlist((dfPtsPerState[,2])))
+dfRaceShares <- dfRacePointsPerState[,2:5] / dfPtsPerState[,2]
+
 
 str(dfCensus3) ### 39692 obs. of  4 variables:
 head(dfCensus3)
