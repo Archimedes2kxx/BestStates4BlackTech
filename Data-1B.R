@@ -84,8 +84,12 @@ save(dfStatesPop3, file = "dfStatesPop3.RData")
 ### 11. Examples of state AFF parameters
 dfStatesPop3["California",]
 sum(dfStatesPop3["California", 3:10])
-### dfStdfStatesPop3ates3["New York",]
-### dfStdfStatesPop3ates3["Georgia",] 
+
+dfStatesPop3["New York",]
+sum(dfStatesPop3["New York", 3:10])
+
+dfStatesPop3["Georgia",] 
+sum(dfStatesPop3["Georgia", 3:10])
 
 
 
