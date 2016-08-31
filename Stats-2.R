@@ -24,7 +24,7 @@ library(R6)
 #################################
 ### Store all data in state objects
 ##### B. Create state objects and initialize with sample stats, parameters, and hybrid stats
-
+  
 
 
 ### Define State as R6 class object
