@@ -2,7 +2,9 @@
 ###    and calculate each racial group's share of the sample for each state
 
 setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
+###install.packages("dplyr")
 library(dplyr)
+###install.packages("tidyr")
 library(tidyr)
 
 ### 1. Read codebooks
@@ -136,9 +138,24 @@ dfRaceEmploymentPerState$mixed <- NULL
 head(dfRaceEmploymentPerState)
 str(dfRaceEmploymentPerState)
 
-vecPtsPerState <- c(unlist((dfPtsPerState[,2])))
-dfRaceShares <- round((dfRaceEmploymentPerState[,2:6] / vecPtsPerState), digits = 3)
-dfRaceSharesPerState <- dfRaceEmploymentPerState ### Dummy copy just to get the right dimensions & labels
+#################
+#################
+
+### MUST add "totals" column after "state" ... 
+dfRaceEmploymentPerState$totals <- rowSums(dfRaceEmploymentPerState[,2:6])
+head(dfRaceEmploymentPerState)
+dfRaceEmploymentPerState <- dfRaceEmploymentPerState[,c(1,7, 2:6)]
+#################
+#################
+
+###vecPtsPerState <- c(unlist((dfPtsPerState[,2])))
+vecTotalEmploymentPerState <- c(unlist(dfRaceEmploymentPerState[,2]))
+head(vecTotalEmploymentPerState)
+dfRaceShares <- round((dfRaceEmploymentPerState[,3:7] / vecTotalEmploymentPerState), digits = 3)
+head(dfRaceShares)
+
+dfRaceSharesPerState <- dfRaceEmploymentPerState[,c(1, 3:7)] ### Dummy copy just to get the right dimensions & labels
+
 dfRaceSharesPerState[, 2:6] <- dfRaceShares
 colnames(dfRaceSharesPerState) <- c("state", "perWhite", "perBlack", "perAsian", "perHisp", "perOTHERS")
 head(dfRaceSharesPerState)
@@ -149,15 +166,16 @@ dfEmploymentAndShares <- merge(dfRaceEmploymentPerState, dfRaceSharesPerState)
 head(dfEmploymentAndShares) 
 
 ### 6. Add a totals row 
-(allRacesInTech <- colSums(dfEmploymentAndShares[,2:6]))
+(allRacesInTech <- colSums(dfEmploymentAndShares[,3:7]))
 (allTech <- sum(allRacesInTech)) ### 4125164
 (raceSharesInTech <- round((allRacesInTech/allTech), digits=3))
 
 dfTotalsRow <- dfEmploymentAndShares[1,] ### dummy to get columns and types
-dfTotalsRow$state <- "TOTALS"
-dfTotalsRow[2:6] <- allRacesInTech
-dfTotalsRow[7:11] <- raceSharesInTech
+dfTotalsRow$state <- "ALL STATES"
 dfTotalsRow
+dfTotalsRow[1,3:7] <- allRacesInTech
+dfTotalsRow[1,8:12] <- raceSharesInTech
+dfTotalsRow[1,2] <- allTech
 dfEmploymentAndShares <- rbind(dfEmploymentAndShares, dfTotalsRow)
 head(dfEmploymentAndShares)
 
