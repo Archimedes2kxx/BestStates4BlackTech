@@ -126,6 +126,7 @@ head(dfRaceEmploymentPerState)
 dfRaceEmploymentPerState$OTHERS <- dfRaceEmploymentPerState$amInAlNat + dfRaceEmploymentPerState$alNat + dfRaceEmploymentPerState$otherNat + dfRaceEmploymentPerState$pacific + dfRaceEmploymentPerState$other + dfRaceEmploymentPerState$mixed
 head(dfRaceEmploymentPerState$OTHERS)
 
+### Delete the component columns of other
 dfRaceEmploymentPerState$amInAlNat <- NULL
 dfRaceEmploymentPerState$alNat <- NULL
 dfRaceEmploymentPerState$otherNat <- NULL
@@ -133,28 +134,36 @@ dfRaceEmploymentPerState$pacific <- NULL
 dfRaceEmploymentPerState$other <- NULL
 dfRaceEmploymentPerState$mixed <- NULL
 head(dfRaceEmploymentPerState)
+str(dfRaceEmploymentPerState)
 
 vecPtsPerState <- c(unlist((dfPtsPerState[,2])))
-dfRaceShares <- round(dfRaceEmploymentPerState[,2:5] / vecPtsPerState, digits = 3)
+dfRaceShares <- round(dfRaceEmploymentPerState[,2:6] / vecPtsPerState, digits = 3)
 dfRaceSharesPerState <- dfRaceEmploymentPerState ### Dummy copy just to get the right dimensions & labels
-dfRaceSharesPerState[, 2:5] <- dfRaceShares
-
-### 5. Save employment and shares data fames
-head(dfRaceEmploymentPerState)
-save(dfRaceEmploymentPerState, file="dfRaceEmploymentPerState.RData")
-
+dfRaceSharesPerState[, 2:6] <- dfRaceShares
+colnames(dfRaceSharesPerState) <- c("state", "perWhite", "perBlack", "perAsian", "perHisp", "perOTHERS")
 head(dfRaceSharesPerState)
-save(dfRaceSharesPerState, file="dfRaceSharesPerState.RData")
 
-(allRacesInTech <- colSums(dfRaceEmploymentPerState[,2:6]))
+### 5. Combine the two data frames
+dfEmploymentAndShares <- cbind(dfRaceEmploymentPerState, dfRaceSharesPerState[, 2:6])
+head(dfEmploymentAndShares) 
+
+### 6. Add a totals row 
+(allRacesInTech <- colSums(dfEmploymentAndShares[,2:6]))
 (allTech <- sum(allRacesInTech)) ### 4125164
 (raceSharesInTech <- round((allRacesInTech/allTech), digits=3))
 
-dfTechShares <- data.frame(allRacesInTech, allTech, raceSharesInTech)
-save(dfTechShares, file="dfTechShares.RData")
-  
-dfTechShares <- data_frame(allRacesInTech, allTech, racialSharesInTech)
-save(dfTechShares, file="dfTechShares.RData")
+dfTotalsRow <- dfEmploymentAndShares[1,] ### dummy to get columns and types
+dfTotalsRow$state <- "TOTALS"
+dfTotalsRow[2:6] <- allRacesInTech
+dfTotalsRow[7:11] <- raceSharesInTech
+dfEmploymentAndShares <- rbind(dfEmploymentAndShares, dfTotalsRow)
+    
+### 5. Save employment and shares data fames
+head(dfEmploymentAndShares)
+tail(dfEmploymentAndShares)
+save(dfEmploymentAndShares, file="dfEmploymentAndShares.RData")
 
-### Note the URL for Census states about racial shares of total U.S. pop
+### Note the URL for Census data about racial shares of total U.S. pop
 ### https://www.census.gov/quickfacts/table/PST045215/00
+
+
