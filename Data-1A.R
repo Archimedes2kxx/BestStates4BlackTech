@@ -3,7 +3,7 @@
 
 setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
 library(dplyr)
-library(tidyr)
+library(reshape)
 
 ### 1. Read codebooks
 ###  Raw code files were prepared by copying the appropriate 
@@ -106,39 +106,21 @@ head(dfCensus2)
 save(dfCensus2, file="dfCensus2.RData")
 dfCensus3 <- dfCensus2
 
-### 4. Calculate each racial group's personal points and total points in each state 
-censusGroups <- group_by(dfCensus3, state, race) # ... Thank you, Hadley!!! ... :-)
-dfPtsPerRace <- summarise(censusGroups, ptsPerRace = sum(personalWeight)) # ... Thank you, Hadley!!! ... :-)
-head(dfPtsPerRace, 20)  
+### 4. Calculate each racial group's share of the sample for each state ... INCOMPLETE
+censusGroups <- group_by(dfCensus3, state, race)
+censusGroups
+ptsPerRace <- summarise(censusGroups, ptsPerRace = sum(personalWeight))
+head(ptsPerRace, 12)  
+class(ptsPerRace)
 
 censusStates <- group_by(dfCensus3, state)
-dfPtsPerState <- summarise(censusStates, ptsPerState = sum(personalWeight)) # ... Thank you, Hadley!!! ... :-)
-head(dfPtsPerState, 20)
-
-dfRacePointsPerState <- spread(dfPtsPerRace, key=race, value=ptsPerRace) # ... Thank you, Hadley!!! ... :-)
-head(dfRacePointsPerState)
-
-columnNames <- c("state", "white", "black", "amInAlNat", "alNat", "otherNat", "asian", "pacific", "other", "mixed" , "hisp")
-colnames(dfRacePointsPerState) <- columnNames
-str(dfRacePointsPerState)
-head(dfRacePointsPerState)
-
-dfCensus3 <- dfRacePointsPerState
-with(dfRacePointsPerState, other <- amInAlNat + alNat + otherNat + pacific + other + mixed)
-head(dfRacePointsPerState)
-
-dfRacePointsPerState$amInAlNat <- NULL
-dfRacePointsPerState$alNat <- NULL
-dfRacePointsPerState$otherNat <- NULL
-dfRacePointsPerState$pacific <- NULL
-dfRacePointsPerState$other <- NULL
-dfRacePointsPerState$mixed <- NULL
-
-### 5. Racial shares
-vecPtsPerState <- c(unlist((dfPtsPerState[,2])))
-dfRaceShares <- dfRacePointsPerState[,2:5] / dfPtsPerState[,2]
-
+ptsPerState <- summarise(censusStates, ptsPerState = sum(personalWeight))
+head(ptsPerState)
+tail(ptsPerState)
 
 str(dfCensus3) ### 39692 obs. of  4 variables:
 head(dfCensus3)
 save(dfCensus3, file="dfCensus3.RData")
+
+racePointsPerState <- melt(ptsPerRace, id.vars = c("state"))
+head(racePointsPerState)
