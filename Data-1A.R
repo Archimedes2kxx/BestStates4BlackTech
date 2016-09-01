@@ -149,7 +149,7 @@ save(dfRaceSharesPerState, file="dfRaceSharesPerState.RData")
 (allRacesInTech <- colSums(dfRaceEmploymentPerState[,2:6]))
 (allTech <- sum(allRacesInTech)) ### 4125164
 (raceSharesInTech <- round((allRacesInTech/allTech), digits=3))
-dfTechShares <- data_frame(allRacesInTech, allTech, racialSharesInTech)
+dfTechShares <- data.frame(allRacesInTech, allTech, raceSharesInTech)
 save(dfTechShares, file="dfTechShares.RData")
-
+  
 
