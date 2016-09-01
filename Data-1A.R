@@ -155,3 +155,6 @@ save(dfTechShares, file="dfTechShares.RData")
   
 dfTechShares <- data_frame(allRacesInTech, allTech, racialSharesInTech)
 save(dfTechShares, file="dfTechShares.RData")
+
+### Note the URL for Census states about racial shares of total U.S. pop
+### https://www.census.gov/quickfacts/table/PST045215/00
