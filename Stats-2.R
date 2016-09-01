@@ -1,20 +1,24 @@
+### LOGIC -- Create 51 state objects using W. Chang's R6 class
+###     URL for R6 https://cran.r-project.org/web/packages/R6/vignettes/Introduction.html
+##      Each state object will be initialized with all the data that is required to conduct
+###     the analysis in the next part of this report. After initialzation, the objects will 
+###     be "read only"
+########################### 
+
+### A. Load all libraries and required data
 setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
-load("census2.RData")
-load("dfStates3.RData")
+save(dfRaceEmploymentPerState, file="dfRaceEmploymentPerState.RData")
+
+head(dfRaceSharesPerState)
+save(dfRaceSharesPerState, file="dfRaceSharesPerState.RData")
+
+save(dfStatesPop3, file = "dfStatesPop3.RData")
 
 ###install.packages("R6")
 library(R6) 
 
 
-#####
-### LOGIC -- Create 51 state objects using W. Chang's R6 class
-###     uRL for R6 https://cran.r-project.org/web/packages/R6/vignettes/Introduction.html
-###     Real AFF paramaters of states are provided to constructor ("initialize") function
-###     Some statistics are calculated based on data frame of ACS sample in census2 data  
-###     Other hybrid stats are based on ACS and AFF data, e.g., parity ratios
-###     All stats become estimates for the corresponding population parameters 
 
-########################### 
 ### A. Calculate sample and hybrid statistics
 ### Must calculate ACS statistics using Personal Weights
 
