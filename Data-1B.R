@@ -48,7 +48,7 @@ colnames(dfStatesPop2) <- columnNames ### ... yes, again
 rownames(dfStatesPop2) <- dfStatesPop2$state
 
 ### 10. Combine races that will not be analyzed, then delete their columns
-dfStatesPop2$other <- dfStatesPop2$amInAlNat + dfStatesPop2$pacific + dfStatesPop2$mixed
+dfStatesPop2$OTHERS <- dfStatesPop2$amInAlNat + dfStatesPop2$pacific + dfStatesPop2$mixed
 dfStatesPop2$amInAlNat <- NULL
 dfStatesPop2$pacific <- NULL
 dfStatesPop2$mixed <- NULL
@@ -60,7 +60,7 @@ dfStatesPop3$perWhite <- round(dfStatesPop3$white / dfStatesPop3$totpop, digits 
 dfStatesPop3$perBlack <- round(dfStatesPop3$black / dfStatesPop3$totpop, digits = 3)
 dfStatesPop3$perAsian <- round(dfStatesPop3$asian / dfStatesPop3$totpop, digits = 3)
 dfStatesPop3$perHisp <- round(dfStatesPop3$hisp / dfStatesPop3$totpop, digits = 3)
-dfStatesPop3$perOther <- round(dfStatesPop3$other / dfStatesPop3$totpop, digits = 3)
+dfStatesPop3$perOTHERS <- round(dfStatesPop3$OTHERS / dfStatesPop3$totpop, digits = 3)
 str(dfStatesPop3)
 head(dfStatesPop3)
 
