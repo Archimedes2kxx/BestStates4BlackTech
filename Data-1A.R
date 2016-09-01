@@ -137,14 +137,15 @@ head(dfRaceEmploymentPerState)
 str(dfRaceEmploymentPerState)
 
 vecPtsPerState <- c(unlist((dfPtsPerState[,2])))
-dfRaceShares <- round(dfRaceEmploymentPerState[,2:6] / vecPtsPerState, digits = 3)
+dfRaceShares <- round((dfRaceEmploymentPerState[,2:6] / vecPtsPerState), digits = 3)
 dfRaceSharesPerState <- dfRaceEmploymentPerState ### Dummy copy just to get the right dimensions & labels
 dfRaceSharesPerState[, 2:6] <- dfRaceShares
 colnames(dfRaceSharesPerState) <- c("state", "perWhite", "perBlack", "perAsian", "perHisp", "perOTHERS")
 head(dfRaceSharesPerState)
+str(dfRaceSharesPerState)
 
 ### 5. Combine the two data frames
-dfEmploymentAndShares <- cbind(dfRaceEmploymentPerState, dfRaceSharesPerState[, 2:6])
+dfEmploymentAndShares <- merge(dfRaceEmploymentPerState, dfRaceSharesPerState)
 head(dfEmploymentAndShares) 
 
 ### 6. Add a totals row 
@@ -156,8 +157,10 @@ dfTotalsRow <- dfEmploymentAndShares[1,] ### dummy to get columns and types
 dfTotalsRow$state <- "TOTALS"
 dfTotalsRow[2:6] <- allRacesInTech
 dfTotalsRow[7:11] <- raceSharesInTech
+dfTotalsRow
 dfEmploymentAndShares <- rbind(dfEmploymentAndShares, dfTotalsRow)
-    
+head(dfEmploymentAndShares)
+
 ### 5. Save employment and shares data fames
 head(dfEmploymentAndShares)
 tail(dfEmploymentAndShares)
