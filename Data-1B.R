@@ -30,7 +30,7 @@ dfTotPop <- subset(dfStatesPop1, Year.id=="est72014" & Sex.id=="totsex" & Hisp.i
 ### 5. cbind the columns
 dfStatesPop2 <- cbind(dfTotPop, dfNonHispanics, dfHispanics)
 
-### 6. Confer final names on all variables
+### 6. Confer short names on all variables
 columnNames <- c("state", "totpop", "white", "black", "amInAlNat", "asian", "pacific", "mixed" , "hisp")
 colnames(dfStatesPop2) <- columnNames
 
@@ -54,7 +54,7 @@ dfStatesPop2$pacific <- NULL
 dfStatesPop2$mixed <- NULL
 str(dfStatesPop2)
 
-### 11. Calculate derived parameters ... percentage of each racial group in the total population
+### 11. Calculate derived parameters ... percentage of each racial group in the total population ... add to data frame
 dfStatesPop3 <- dfStatesPop2
 dfStatesPop3$perWhite <- round(dfStatesPop3$white / dfStatesPop3$totpop, digits = 3)
 dfStatesPop3$perBlack <- round(dfStatesPop3$black / dfStatesPop3$totpop, digits = 3)
