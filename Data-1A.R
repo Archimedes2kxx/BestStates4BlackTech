@@ -3,7 +3,7 @@
 
 setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
 library(dplyr)
-library(reshape)
+library(tidyr)
 
 ### 1. Read codebooks
 ###  Raw code files were prepared by copying the appropriate 
@@ -52,7 +52,7 @@ file = "Race-Hisp-InfoTechOccupations-AllStates-PersonalWeight-PUMS-2014-Data.cs
 dfCensus1 = read.csv(file, header=TRUE, sep=",", stringsAsFactors = FALSE, colClasses = "character")
 str(dfCensus1) ### 39692 for population weights, all states, all races, all Hispanic subgroups
 
-save(dfCensus1, file="dfCensus1")
+save(dfCensus1, file="dfCensus1.RData")
 dfCensus2 = dfCensus1
 
 ### Delete tech variable ... SOCP
@@ -104,23 +104,52 @@ dfCensus2$race = createFactorsWithLabels(dfCensus2$race, raceCodeBook)
 str(dfCensus2) ### 39692 obs. of  4 variables:
 head(dfCensus2)
 save(dfCensus2, file="dfCensus2.RData")
-dfCensus3 <- dfCensus2
 
-### 4. Calculate each racial group's share of the sample for each state ... INCOMPLETE
-censusGroups <- group_by(dfCensus3, state, race)
-censusGroups
-ptsPerRace <- summarise(censusGroups, ptsPerRace = sum(personalWeight))
-head(ptsPerRace, 12)  
-class(ptsPerRace)
+### 4. Calculate each racial group's share of the sample for each state 
+dfCensus3 <- dfCensus2
+censusGroups <- group_by(dfCensus3, state, race) # ... Thank you, Hadley!!! ... :-)
+dfPtsPerRace <- summarise(censusGroups, ptsPerRace = sum(personalWeight)) # ... Thank you, Hadley!!! ... :-)
+head(dfPtsPerRace, 20)
 
 censusStates <- group_by(dfCensus3, state)
-ptsPerState <- summarise(censusStates, ptsPerState = sum(personalWeight))
-head(ptsPerState)
-tail(ptsPerState)
+dfPtsPerState <- summarise(censusStates, ptsPerState = sum(personalWeight)) # ... Thank you, Hadley!!! ... :-)
+head(dfPtsPerState, 20)
 
-str(dfCensus3) ### 39692 obs. of  4 variables:
-head(dfCensus3)
-save(dfCensus3, file="dfCensus3.RData")
+dfRaceEmploymentPerState <- spread(dfPtsPerRace, key=race, value=ptsPerRace) # ... Thank you, Hadley!!! ... :-)
+head(dfRaceEmploymentPerState)
+dfRaceEmploymentPerState[is.na(dfRaceEmploymentPerState)] <- 0 ### Replace NAs with zeros
 
-racePointsPerState <- melt(ptsPerRace, id.vars = c("state"))
-head(racePointsPerState)
+columnNames <- c("state", "white", "black", "amInAlNat", "alNat", "otherNat", "asian", "pacific", "other", "mixed" , "hisp")
+colnames(dfRaceEmploymentPerState) <- columnNames
+head(dfRaceEmploymentPerState)
+
+dfRaceEmploymentPerState$OTHERS <- dfRaceEmploymentPerState$amInAlNat + dfRaceEmploymentPerState$alNat + dfRaceEmploymentPerState$otherNat + dfRaceEmploymentPerState$pacific + dfRaceEmploymentPerState$other + dfRaceEmploymentPerState$mixed
+head(dfRaceEmploymentPerState$OTHERS)
+
+dfRaceEmploymentPerState$amInAlNat <- NULL
+dfRaceEmploymentPerState$alNat <- NULL
+dfRaceEmploymentPerState$otherNat <- NULL
+dfRaceEmploymentPerState$pacific <- NULL
+dfRaceEmploymentPerState$other <- NULL
+dfRaceEmploymentPerState$mixed <- NULL
+head(dfRaceEmploymentPerState)
+
+vecPtsPerState <- c(unlist((dfPtsPerState[,2])))
+dfRaceShares <- round(dfRaceEmploymentPerState[,2:5] / vecPtsPerState, digits = 3)
+dfRaceSharesPerState <- dfRaceEmploymentPerState ### Dummy copy just to get the right dimensions & labels
+dfRaceSharesPerState[, 2:5] <- dfRaceShares
+
+### 5. Save employment and shares data fames
+head(dfRaceEmploymentPerState)
+save(dfRaceEmploymentPerState, file="dfRaceEmploymentPerState.RData")
+
+head(dfRaceSharesPerState)
+save(dfRaceSharesPerState, file="dfRaceSharesPerState.RData")
+
+(allRacesInTech <- colSums(dfRaceEmploymentPerState[,2:6]))
+(allTech <- sum(allRacesInTech)) ### 4125164
+(raceSharesInTech <- round((allRacesInTech/allTech), digits=3))
+dfTechShares <- data_frame(allRacesInTech, allTech, racialSharesInTech)
+save(dfTechShares, file="dfTechShares.RData")
+
+
