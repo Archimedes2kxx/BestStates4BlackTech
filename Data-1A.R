@@ -51,7 +51,6 @@ file = "Race-Hisp-InfoTechOccupations-AllStates-PersonalWeight-PUMS-2014-Data.cs
 dfCensus1 = read.csv(file, header=TRUE, sep=",", stringsAsFactors = FALSE, colClasses = "character")
 ### str(dfCensus1) ### 39692 for population weights, all states, all races, all Hispanic subgroups
 
-save(dfCensus1, file="dfCensus1.RData")
 dfCensus2 = dfCensus1
 dfCensus2$SOCP <- NULL ### Delete tech variable ... SOCP
 colnames(dfCensus2) = c("personalWeight", "race", "state", "hisp") ### short names
@@ -96,7 +95,6 @@ dfCensus2$race = createFactorsWithLabels(dfCensus2$race, raceCodeBook)
 
 str(dfCensus2) ### 39692 obs. of  4 variables:
 head(dfCensus2)
-save(dfCensus2, file="dfCensus2.RData")
 
 ### 4. Calculate each racial group's employment for each state ... Thank you, Hadley ... :-)
 dfCensus3 <- dfCensus2
