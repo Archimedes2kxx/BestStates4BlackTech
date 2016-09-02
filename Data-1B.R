@@ -1,4 +1,5 @@
-### B. Read Amdrican Fact Finder (AFF) parameters about states from AFF pages for 2014 ... then compute percent white, black, asian, hispanic, and other
+### B. Read Amdrican Fact Finder (AFF) parameters about racial population of states from AFF pages for 2014 
+###    Compute percent white, black, asian, hispanic, and OTHERS
 
 setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
 
@@ -52,7 +53,7 @@ dfStatesPop2$OTHERS <- dfStatesPop2$amInAlNat + dfStatesPop2$pacific + dfStatesP
 dfStatesPop2$amInAlNat <- NULL
 dfStatesPop2$pacific <- NULL
 dfStatesPop2$mixed <- NULL
-str(dfStatesPop2)
+head(dfStatesPop2)
 
 ### 11. Calculate derived parameters ... percentage of each racial group in the total population ... add to data frame
 dfStatesPop3 <- dfStatesPop2
@@ -63,7 +64,6 @@ dfStatesPop3$perHisp <- round(dfStatesPop3$hisp / dfStatesPop3$totpop, digits = 
 dfStatesPop3$perOTHERS <- round(dfStatesPop3$OTHERS / dfStatesPop3$totpop, digits = 3)
 str(dfStatesPop3)
 head(dfStatesPop3)
-
 save(dfStatesPop3, file = "dfStatesPop3.RData")
 
 ### 11. Examples of state AFF parameters
@@ -76,6 +76,8 @@ sum(dfStatesPop3["New York", 3:10])
 dfStatesPop3["Georgia",] 
 sum(dfStatesPop3["Georgia", 3:10])
 
+### Note the URL for Census data about racial shares of total U.S. pop
+### https://www.census.gov/quickfacts/table/PST045215/00
 
 
 
