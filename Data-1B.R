@@ -64,9 +64,24 @@ dfStatesPop3$perHisp <- round(dfStatesPop3$hisp / dfStatesPop3$totpop, digits = 
 dfStatesPop3$perOTHERS <- round(dfStatesPop3$OTHERS / dfStatesPop3$totpop, digits = 3)
 str(dfStatesPop3)
 head(dfStatesPop3)
+
+### 12. Add a totals row and save
+(allRacesInUS <- colSums(dfStatesPop3[,3:7]))
+(allRaces <- sum(allRacesInUS)) ### 4125164
+(raceSharesInUS <- round((allRacesInUS/allRaces), digits=3))
+
+dfTotalsRow <- dfStatesPop3[1,] ### dummy to get columns and types
+dfTotalsRow$state <- "ALL STATES"
+dfTotalsRow[1,3:7] <- allRacesInUS
+dfTotalsRow[1,8:12] <- raceSharesInUS
+dfTotalsRow[1,2] <- allRaces
+dfStatesPop3 <- rbind(dfStatesPop3, dfTotalsRow)
+
+head(dfStatesPop3)
+tail(dfStatesPop3)
 save(dfStatesPop3, file = "dfStatesPop3.RData")
 
-### 11. Examples of state AFF parameters
+### 13. Examples of state AFF parameters
 dfStatesPop3["California",]
 sum(dfStatesPop3["California", 3:10])
 
