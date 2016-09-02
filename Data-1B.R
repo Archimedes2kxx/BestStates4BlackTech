@@ -77,6 +77,7 @@ dfTotalsRow[1,8:12] <- raceSharesInUS
 dfTotalsRow[1,2] <- allRaces
 dfStatesPop3 <- rbind(dfStatesPop3, dfTotalsRow)
 
+rownames(dfStatesPop3) <- c() ### Remove row names
 head(dfStatesPop3)
 tail(dfStatesPop3)
 save(dfStatesPop3, file = "dfStatesPop3.RData")
