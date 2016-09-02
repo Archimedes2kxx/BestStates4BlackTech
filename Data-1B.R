@@ -14,7 +14,6 @@ colnames(dfStatesPop1) <- varNames
 
 ### Drop display labels and var names in 1st, 2nd rows
 dfStatesPop1 <- dfStatesPop1[c(-1, -2),]
-save(dfStatesPop1, file="dfStatesPop1")
 
 ### 2. Get data for all non-hispanics
 dfNonHispanics <- subset(dfStatesPop1, Year.id=="est72014" & Sex.id =="totsex"& Hisp.id=="nhisp", select=c(wa:tom))
