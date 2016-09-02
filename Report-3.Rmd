@@ -1,25 +1,19 @@
 ---
-title: "Best States for Blacks in Tech"
+title: "Best States for Blacks, Hispanics, Asians, and Whites in Tech"
 author: "Roy L Beasley, PhD -- DLL Editor"
 output: html_document
 ---
 ```{r, echo=FALSE, cache=TRUE}
-    load("census2.RData")
+    load("dfEmploymentAndShares.RData")
 ```
 ## Revise to reflect expansion to 50 states plus DC ... and the changes in findings from this expansin 
 
 ### A. Overview 
-This note presents the results of my examination of Black employment in the tech sector in six states: California, the District of Columbia (a "city state"), Georgia, North Carolina, New York, and Washington.   
+This note presents the results of my examination of the employment of Blacks, Hispanics, Asians, and Whites in the tech sector in all 50 states plus the District of Columbia. As the reader will see, my principal findings are straight-forward:   
 
-* The Western states were selected because they are home to Google, Microsoft, Facebook, Amazon, and other corporate leaders in the commercialization of data intensive machine learning technologies and in the commercialization of the cloud-based computing technologies that make machine learning technologies affordable.      
+* First, the percentage of tech employees who are Black is higher in states that have larger Black populations and smaller in states that have smaller Black populations. The same relationship between population size and percentage of tech employment also holds true for Hispanics, Asians, and Whites 
 
-* The Southern and Eastern states were selected because substantial segments of their large Black populations have attended college or have children who are or will be attending college.
-
-As the reader will see, my principal findings are straight-forward:   
-
-* First, when the states were ordered by the percentage of Blacks in their total population, the states with the highest percentage of Blacks in their total population also had the highest percentage of Blacks in the state's information technology sector; and the states with the lowest percentage of Blacks in their total population had the lowest percentage of Blacks in their info tech sector.
-
-* Second, the percentage of Blacks in the tech sector was always less than two thirds of the percentage of the state's total population that was Black. For example, if the Black population of a state was 48 percent of the total population, the percentage of Blacks in tech was less than 32 percent of all techs; at the lower end if Blacks were only 6.5 percent of the state's total population, then Blacks were less than 4 percent of all the techs in that state. In other words, Black participation in the tech sector was always substantially less than the percentage of Blacks in a state's total population.
+* Second, if all other things were equal, as economists like to say, one would expect that the percentage of employment in a state's tech sector that was Black would be the same as the percentage of the total population in the state that was Black. One would would have similar expectations for the percentage of Hispanic, Asian, and White employment in a state's tech sector. Unfortunately, all of things not being equal, I found that the percentage of every state's tech sector that was Black, Hispanic, or White was always less than the percentage of the state's total population that was Black, Hispanic, or White. By contrast I found that the percentage of every state's tech sector that was Asian was two to five times the size of the percentage of the state's total population that was Asian.
 
 ### B. Methods
 I downloaded the most recent data from the American Community Survey from U.S. Census Bureau's <b>[TheDataWeb](http://thedataweb.rm.census.gov/index.html)</b> site. My step-by-step download procedure is described in <b>[Appendix #1](https://github.com/Archimedes2kxx/BestStatesForBlackTech/blob/19bc4ca9628ce050805510ffa1dbf3fdd2103a68/Appendix-1.Rmd)</b> in the report's repo on GitHub. 
