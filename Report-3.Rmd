@@ -6,6 +6,8 @@ output: html_document
 ```{r, echo=FALSE, cache=TRUE}
     load("census2.RData")
 ```
+## Revise to reflect expansion to 50 states plus DC ... and the changes in findings from this expansin 
+
 ### A. Overview 
 This note presents the results of my examination of Black employment in the tech sector in six states: California, the District of Columbia (a "city state"), Georgia, North Carolina, New York, and Washington.   
 
@@ -25,10 +27,10 @@ I downloaded the most recent data from the American Community Survey from U.S. C
 To be specific, I used the Census Bureau's <b>[Data Ferret App](http://dataferrett.census.gov/LaunchDFA.html)</b> app to download sample data for 2014 for race and thirteen specified occupations for six states into a file called <b>[Race-CA-DC-GA-NC-NY-WA-Occupation-PUMS-2014.csv](Race-CA-DC-GA-NC-NY-WA-Occupation-PUMS-2014.csv)</b> in the report's repo. The data for these categories was coded, so I downloaded the ACS codebook. A <b>[copy of the codebook](https://github.com/Archimedes2kxx/BestStatesForBlackTech/blob/ee64520f2e672b0919b4e6320154fdd1d43115f6/Race-CA-DC-GA-NC-NY-WA-Occupation-PUMS-2014-CodeBook.txt)</b> will also be found in the repo.
 
 * Race = Black, White, and Asian 
-* States = California, the District of Columbia (a "city state"), Georgia, North Carolina, New York, and Washington.
+* States = All 50 states plus the District of Columbia (a "city state"), 
 * Occupations (using "standard" category names) = COMPUTER PROGRAMMERS, CMM-SOFTWARE DEVELOPERS, APPLICATIONS AND SYSTEMS SOFTWARE, CMM-COMPUTER SYSTEMS ANALYSTS, ENG-ELECTRICAL AND ELECTRONICS ENGINEERS, CMM-COMPUTER SUPPORT SPECIALISTS, CMM-NETWORK AND COMPUTER SYSTEMS ADMINISTRATORS, CMM-COMPUTER OCCUPATIONS, ALL OTHER, CMM-COMPUTER NETWORK ARCHITECTS, CMM-DATABASE ADMINISTRATORS, CMM-WEB DEVELOPERS, ENG-COMPUTER HARDWARE ENGINEERS, CMM-INFORMATION SECURITY ANALYSTS, CMM-COMPUTER AND INFORMATION RESEARCH SCIENTISTS  
 
-I wrote a few object-oriented scripts and functions in R to download the data and derive the percentages and graphs that are displayed in the next section. The DataFerret's sample (```r numSampleObservations``` observations) was large enough to assume that the Black, White, and Asian percentages calculated for tech occupations for the sample would be good estimates of the actual percentages of Blacks, Whites, and Asians in tech occupations for the selected states. My R code for downloading the data, calculating the stats, and producing the graphs can be found in the Data-1.R, StatsGraphs-2.R, and Report-3.R files in the <b>[repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b>. The entire report was composed in R-Markdown using R-Studio, converted to HTML via knitr, then copied and pasted onto a blank page on the DLL's <b>[Tech-Levers](http://hbcu-levers.blogspot.com/p/draft-of-best-states-for-blacks-in-tech.html)</b> blog. 
+I wrote a few object-oriented scripts and functions in R to download the data and derive the percentages and graphs that are displayed in the next section. The DataFerret's sample (r numSampleObservations observations) was large enough to assume that the Black, White, and Asian percentages calculated for tech occupations for the sample would be good estimates of the actual percentages of Blacks, Whites, and Asians in tech occupations for the selected states. My R code for downloading the data, calculating the stats, and producing the graphs can be found in the Data-1.R, StatsGraphs-2.R, and Report-3.R files in the <b>[repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b>. The entire report was composed in R-Markdown using R-Studio, converted to HTML via knitr, then copied and pasted onto a blank page on the DLL's <b>[Tech-Levers](http://hbcu-levers.blogspot.com/p/draft-of-best-states-for-blacks-in-tech.html)</b> blog. 
 
 The scripts and their embedded functions should be run in numerical order: Data-1 creates the dataframe required by Stats-2; Stats-2 creates the objects and stats required for Graphs-3; and the Report-4 script needs the output of all of the above.
   
