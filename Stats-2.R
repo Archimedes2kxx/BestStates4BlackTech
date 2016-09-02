@@ -23,12 +23,12 @@ tail(dfEmploymentAndShares, 1) ### ... second two rows of Table 1
 dfStatesPop3
 
 ### Maps 2W, 2B, 2A, 2H ... maps of white, black, asian, hispanics in states.
-### Maps 2.1W, 2.1B, 2.1A, 2.1H ... maps of % white, black, asian,  hispanics  in states.
+### Maps 2.1W, 2.1B, 2.1A, 2.1H ... maps of % white, black, asian, hispanics in states.
 
 ### Tables 3W, 3B, 3A, 3H ... How many techs in each state and shares (%) of tech employmnet 
 ### for white, black, asian, and hispanic techs sorted in order of decreasing tech employment for 
 ### each total pop in the state .... allow identification of "top 10" in terms of most number of 
-### minority employees .. only show top 10; show full tables 3WW, 3BB, 3AA, 3HH on GitHub
+### minority employees .. only show top 10; full tables 3WW, 3BB, 3AA, 3HH in appendices on GitHub
 dfEmploymentAndShares
 
 ### Maps 3W, 3B, 3A, 3H ... maps of white, black, asian, hispanic techs in each state
@@ -37,7 +37,7 @@ dfEmploymentAndShares
 
 ### Tables 4W, 4B, 4A, 4H ... parity ratios, i.e., tech share/populaton shares for white, black, 
 ### asian, and hispanic ratios sortin states in decreasing order for each groups... only show
-### top ten ... show full 4WW, 4BB, 4AA, 4HH in appendices on GitHub
+### top ten ...  full 4WW, 4BB, 4AA, 4HH in appendices on GitHub
 
 ### Maps 4W, 4B, 4A, 4H ... maps of parity ratios for each racial group
 
@@ -46,7 +46,7 @@ dfEmploymentAndShares
 ### blacks, asians, and hispanic population in each state ... show that a 1 percent increase in 
 ### share of pop yields an X percent increase in share of tech employment ... sorted in order of 
 ###decreasing size of ratios ... enable picking the 10 fairest states 
-### ... only show top 10; show full 5WW, 5BB, 5AA, 5HH in appendices on GitHub
+### ... only show top 10;  full 5WW, 5BB, 5AA, 5HH in appendices on GitHub
 
 ### Plots 5W, 5B, 5A, 5H ... regression lines for racial shares of tech vs. racial shares of population whose slopes are the Betas in Tables 5A, 5B, 5C, 5D ... ALL ONE THE SAME PLOT FRAME so user can see that asian is much steeper than white, black, and hispanic
 
