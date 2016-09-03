@@ -12,13 +12,16 @@ This note presents the results of my examination of the employment of Blacks and
 
 * First, the percentage of tech employees who were Black was higher in states that had larger Black populations and smaller in states that had smaller Black populations. The same relationship between population size and percentage of tech employment held true for Hispanics. 
 
-* Second, if all other things were equal, as economists like to say, one would expect that the percentage of employment in a state's tech sector that was Black would be about the same as the percentage of the state's total population that was Black. One would would expect similar parity for the percentages of Hispanics. Unfortunately, all of things were not equal, so I found that the percentage of every state's tech sector that was Black or Hispanic was substantially smaller than the percentage of the state's total population that was Black or Hispanic. By contrast I found that the percentage of every state's tech sector that was Asian was two to five times greater than the percentage of the state's total population that was Asian.
+* Second, if all other things were equal, as economists like to say, one would expect that the percentage of employment in a state's tech sector that was Black would be about the same as the percentage of the state's total population that was Black. One would would expect similar parity for the percentages of Hispanics. Unfortunately, all of things were not equal, so I found that the percentage of every state's tech sector that was Black or Hispanic was substantially smaller than the percentage of the state's total population that was Black or Hispanic. By contrast I found that the percentage of every state's tech sector that was Asian was two to five times as large as the percentage of the state's total population that was Asian.
 
 * Third, the strengths of these relationships varied widely: some states offered substantially larger employment opportunities for Blacks and Hispanics in their information technology sectors than others.
 
-## Revise the rest to reflect expansion to 50 states plus DC ... and the changes in findings from this expansin 
+* Fourth, in 2014 there were approximately ```r prettyNum(dfEmploymentAndShares[52,2], big.mark=",", scientific=FALSE)``` employees in the entire U.S. information technology sector of whom ```r prettyNum(dfEmploymentAndShares[52,4], big.mark=",", scientific=FALSE)``` were Black, and 
+```r prettyNum(dfEmploymentAndShares[52,6], big.mark=",", scientific=FALSE)``` were Hispanic. There were only ```r prettyNum(dfEmploymentAndShares[5,2], big.mark=",", scientific=FALSE)``` tech employees in California (including Silicon Valley).
 
-### B. Methods
+## Revise the rest to reflect expansion to 50 states plus DC ... and the changes in findings from this expansion 
+
+### B. Motivation and Methods
 I downloaded the most recent data from the American Community Survey from U.S. Census Bureau's <b>[TheDataWeb](http://thedataweb.rm.census.gov/index.html)</b> site. My step-by-step download procedure is described in <b>[Appendix #1](https://github.com/Archimedes2kxx/BestStatesForBlackTech/blob/19bc4ca9628ce050805510ffa1dbf3fdd2103a68/Appendix-1.Rmd)</b> in the report's repo on GitHub. 
 
 To be specific, I used the Census Bureau's <b>[Data Ferret App](http://dataferrett.census.gov/LaunchDFA.html)</b> app to download sample data for 2014 for race and thirteen specified occupations for six states into a file called <b>[Race-CA-DC-GA-NC-NY-WA-Occupation-PUMS-2014.csv](Race-CA-DC-GA-NC-NY-WA-Occupation-PUMS-2014.csv)</b> in the report's repo. The data for these categories was coded, so I downloaded the ACS codebook. A <b>[copy of the codebook](https://github.com/Archimedes2kxx/BestStatesForBlackTech/blob/ee64520f2e672b0919b4e6320154fdd1d43115f6/Race-CA-DC-GA-NC-NY-WA-Occupation-PUMS-2014-CodeBook.txt)</b> will also be found in the repo.
