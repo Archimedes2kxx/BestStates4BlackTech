@@ -50,6 +50,7 @@ stateCodeBook$labels <-gsub("/.*","",stateCodeBook$labels)
 file = "Race-Hisp-InfoTechOccupations-AllStates-PersonalWeight-PUMS-2014-Data.csv"
 dfCensus1 = read.csv(file, header=TRUE, sep=",", stringsAsFactors = FALSE, colClasses = "character")
 ### str(dfCensus1) ### 39692 for population weights, all states, all races, all Hispanic subgroups
+save(dfCensus1, file="dfCensus1.RData")
 
 dfCensus2 = dfCensus1
 dfCensus2$SOCP <- NULL ### Delete tech variable ... SOCP
