@@ -48,6 +48,9 @@ dfEmploymentAndShares
 ###decreasing size of ratios ... enable picking the 10 fairest states 
 ### ... only show top 10;  full 5WW, 5BB, 5AA, 5HH in appendices on GitHub
 
-### Plots 5W, 5B, 5A, 5H ... regression lines for racial shares of tech vs. racial shares of population whose slopes are the Betas in Tables 5A, 5B, 5C, 5D ... ALL ONE THE SAME PLOT FRAME so user can see that asian is much steeper than white, black, and hispanic
+### Plots 5W, 5B, 5A, 5H ... regression lines for racial component ot each state's tech sector vs. ### the racial component of each state's population. The Beta slopes are in Tables 5A, 5B, 5C, 5D 
+### ... ALL ON THE SAME PLOT FRAME so user can see that asian slope is much steeper than white, 
+### black, and hispanic ... Betas show that a 1 percent increase in a group's population yields a 
+### Beta percent increase in the size of the group's tech employment
 
 
