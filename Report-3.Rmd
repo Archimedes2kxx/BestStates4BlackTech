@@ -6,14 +6,17 @@ output: html_document
 ```{r, echo=FALSE, cache=TRUE}
     load("dfEmploymentAndShares.RData")
 ```
-## Revise to reflect expansion to 50 states plus DC ... and the changes in findings from this expansin 
 
 ### A. Overview 
-This note presents the results of my examination of the employment of Blacks and Hispanics in the tech sector in all 50 states plus the District of Columbia. As the reader will see, my principal findings are straight-forward:   
+This note presents the results of my examination of the employment of Blacks and Hispanics in the information technology sectors of all 50 states plus the District of Columbia in 2014. My principal findings are straight-forward:   
 
-* First, the percentage of tech employees who are Black is higher in states that have larger Black populations and smaller in states that have smaller Black populations. The same relationship between population size and percentage of tech employment also holds true for Hispanics. 
+* First, the percentage of tech employees who were Black was higher in states that had larger Black populations and smaller in states that had smaller Black populations. The same relationship between population size and percentage of tech employment held true for Hispanics. 
 
-* Second, if all other things were equal, as economists like to say, one would expect that the percentage of employment in a state's tech sector that was Black would be the same as the percentage of the total population in the state that was Black. One would would have similar expectations for the percentage of Hispanics. Unfortunately, all of things are not equal, so I found that the percentage of every state's tech sector that was Black or Hispanic was always substantially less than the percentage of the state's total population that was Black or Hispanic. By contrast I found that the percentage of every state's tech sector that was Asian was two to five times the size of the percentage of the state's total population that was Asian.
+* Second, if all other things were equal, as economists like to say, one would expect that the percentage of employment in a state's tech sector that was Black would be about the same as the percentage of the state's total population that was Black. One would would expect similar parity for the percentages of Hispanics. Unfortunately, all of things were not equal, so I found that the percentage of every state's tech sector that was Black or Hispanic was substantially smaller than the percentage of the state's total population that was Black or Hispanic. By contrast I found that the percentage of every state's tech sector that was Asian was two to five times greater than the percentage of the state's total population that was Asian.
+
+* Third, the strengths of these relationships varied widely: some states offered substantially larger employment opportunities for Blacks and Hispanics in their information technology sectors than others.
+
+## Revise the rest to reflect expansion to 50 states plus DC ... and the changes in findings from this expansin 
 
 ### B. Methods
 I downloaded the most recent data from the American Community Survey from U.S. Census Bureau's <b>[TheDataWeb](http://thedataweb.rm.census.gov/index.html)</b> site. My step-by-step download procedure is described in <b>[Appendix #1](https://github.com/Archimedes2kxx/BestStatesForBlackTech/blob/19bc4ca9628ce050805510ffa1dbf3fdd2103a68/Appendix-1.Rmd)</b> in the report's repo on GitHub. 
