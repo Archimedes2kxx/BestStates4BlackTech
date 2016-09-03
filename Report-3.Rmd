@@ -1,5 +1,5 @@
 ---
-title: "Best States for Blacks, Hispanics, Asians, and Whites in Tech"
+title: "Best States for Blacks and Hispanics in Tech"
 author: "Roy L Beasley, PhD -- DLL Editor"
 output: html_document
 ---
@@ -9,24 +9,24 @@ output: html_document
 ## Revise to reflect expansion to 50 states plus DC ... and the changes in findings from this expansin 
 
 ### A. Overview 
-This note presents the results of my examination of the employment of Blacks, Hispanics, Asians, and Whites in the tech sector in all 50 states plus the District of Columbia. As the reader will see, my principal findings are straight-forward:   
+This note presents the results of my examination of the employment of Blacks and Hispanics in the tech sector in all 50 states plus the District of Columbia. As the reader will see, my principal findings are straight-forward:   
 
-* First, the percentage of tech employees who are Black is higher in states that have larger Black populations and smaller in states that have smaller Black populations. The same relationship between population size and percentage of tech employment also holds true for Hispanics, Asians, and Whites 
+* First, the percentage of tech employees who are Black is higher in states that have larger Black populations and smaller in states that have smaller Black populations. The same relationship between population size and percentage of tech employment also holds true for Hispanics. 
 
-* Second, if all other things were equal, as economists like to say, one would expect that the percentage of employment in a state's tech sector that was Black would be the same as the percentage of the total population in the state that was Black. One would would have similar expectations for the percentage of Hispanic, Asian, and White employment in a state's tech sector. Unfortunately, all of things not being equal, I found that the percentage of every state's tech sector that was Black, Hispanic, or White was always less than the percentage of the state's total population that was Black, Hispanic, or White. By contrast I found that the percentage of every state's tech sector that was Asian was two to five times the size of the percentage of the state's total population that was Asian.
+* Second, if all other things were equal, as economists like to say, one would expect that the percentage of employment in a state's tech sector that was Black would be the same as the percentage of the total population in the state that was Black. One would would have similar expectations for the percentage of Hispanics. Unfortunately, all of things are not equal, so I found that the percentage of every state's tech sector that was Black or Hispanic was always substantially less than the percentage of the state's total population that was Black or Hispanic. By contrast I found that the percentage of every state's tech sector that was Asian was two to five times the size of the percentage of the state's total population that was Asian.
 
 ### B. Methods
 I downloaded the most recent data from the American Community Survey from U.S. Census Bureau's <b>[TheDataWeb](http://thedataweb.rm.census.gov/index.html)</b> site. My step-by-step download procedure is described in <b>[Appendix #1](https://github.com/Archimedes2kxx/BestStatesForBlackTech/blob/19bc4ca9628ce050805510ffa1dbf3fdd2103a68/Appendix-1.Rmd)</b> in the report's repo on GitHub. 
 
 To be specific, I used the Census Bureau's <b>[Data Ferret App](http://dataferrett.census.gov/LaunchDFA.html)</b> app to download sample data for 2014 for race and thirteen specified occupations for six states into a file called <b>[Race-CA-DC-GA-NC-NY-WA-Occupation-PUMS-2014.csv](Race-CA-DC-GA-NC-NY-WA-Occupation-PUMS-2014.csv)</b> in the report's repo. The data for these categories was coded, so I downloaded the ACS codebook. A <b>[copy of the codebook](https://github.com/Archimedes2kxx/BestStatesForBlackTech/blob/ee64520f2e672b0919b4e6320154fdd1d43115f6/Race-CA-DC-GA-NC-NY-WA-Occupation-PUMS-2014-CodeBook.txt)</b> will also be found in the repo.
 
-* Race = Black, White, and Asian 
+* Race/ethnic groups = Black, White, Asian, and Hispanic 
 * States = All 50 states plus the District of Columbia (a "city state"), 
-* Occupations (using "standard" category names) = COMPUTER PROGRAMMERS, CMM-SOFTWARE DEVELOPERS, APPLICATIONS AND SYSTEMS SOFTWARE, CMM-COMPUTER SYSTEMS ANALYSTS, ENG-ELECTRICAL AND ELECTRONICS ENGINEERS, CMM-COMPUTER SUPPORT SPECIALISTS, CMM-NETWORK AND COMPUTER SYSTEMS ADMINISTRATORS, CMM-COMPUTER OCCUPATIONS, ALL OTHER, CMM-COMPUTER NETWORK ARCHITECTS, CMM-DATABASE ADMINISTRATORS, CMM-WEB DEVELOPERS, ENG-COMPUTER HARDWARE ENGINEERS, CMM-INFORMATION SECURITY ANALYSTS, CMM-COMPUTER AND INFORMATION RESEARCH SCIENTISTS  
+* Selected occupations (using "standard" category names) = 13 categories, specifically: COMPUTER PROGRAMMERS, CMM-SOFTWARE DEVELOPERS, APPLICATIONS AND SYSTEMS SOFTWARE, CMM-COMPUTER SYSTEMS ANALYSTS, ENG-ELECTRICAL AND ELECTRONICS ENGINEERS, CMM-COMPUTER SUPPORT SPECIALISTS, CMM-NETWORK AND COMPUTER SYSTEMS ADMINISTRATORS, CMM-COMPUTER OCCUPATIONS, ALL OTHER, CMM-COMPUTER NETWORK ARCHITECTS, CMM-DATABASE ADMINISTRATORS, CMM-WEB DEVELOPERS, ENG-COMPUTER HARDWARE ENGINEERS, CMM-INFORMATION SECURITY ANALYSTS, CMM-COMPUTER AND INFORMATION RESEARCH SCIENTISTS  
 
-I wrote a few object-oriented scripts and functions in R to download the data and derive the percentages and graphs that are displayed in the next section. The DataFerret's sample (r numSampleObservations observations) was large enough to assume that the Black, White, and Asian percentages calculated for tech occupations for the sample would be good estimates of the actual percentages of Blacks, Whites, and Asians in tech occupations for the selected states. My R code for downloading the data, calculating the stats, and producing the graphs can be found in the Data-1.R, StatsGraphs-2.R, and Report-3.R files in the <b>[repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b>. The entire report was composed in R-Markdown using R-Studio, converted to HTML via knitr, then copied and pasted onto a blank page on the DLL's <b>[Tech-Levers](http://hbcu-levers.blogspot.com/p/draft-of-best-states-for-blacks-in-tech.html)</b> blog. 
+I wrote a few scripts and functions in R to download the data and produce the tables, maps, and graphs that are displayed in the next section. The DataFerret's sample (r numSampleObservations observations) was large enough to assume that the Black, White, and Asian percentages calculated for tech occupations for the sample would be good estimates of the actual percentages of Blacks, Whites, and Asians in tech occupations for the selected states. My R code for downloading the data, calculating the stats, and producing the graphs can be found in the Data-1.R, StatsGraphs-2.R, and Report-3.R files in the <b>[repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b>. The entire report was composed in R-Markdown using R-Studio, converted to HTML via knitr, then copied and pasted onto a blank page on the DLL's <b>[Tech-Levers](http://hbcu-levers.blogspot.com/p/draft-of-best-states-for-blacks-in-tech.html)</b> blog. 
 
-The scripts and their embedded functions should be run in numerical order: Data-1 creates the dataframe required by Stats-2; Stats-2 creates the objects and stats required for Graphs-3; and the Report-4 script needs the output of all of the above.
+The scripts and their embedded functions should be run in numerical order: Data-1 and Data-2 create the data frame required by Stats-2; Stats-2 creates the tables, maps, and graphs required for the Report-4 script that produces the report.
   
 ### C. Findings
 
