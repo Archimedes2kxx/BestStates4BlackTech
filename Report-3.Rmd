@@ -3,8 +3,9 @@ title: "Best States for Blacks and Hispanics in Tech"
 author: "Roy L Beasley, PhD -- DLL Editor"
 output: html_document
 ---
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE}
     load("dfEmploymentAndShares.RData")
+    load("dfCensus1.RData")
 ```
 
 ### A. Overview 
@@ -20,39 +21,35 @@ This note presents the results of my examination of the employment of Blacks and
 * Fourth, in 2014 there were approximately ```r prettyNum(dfEmploymentAndShares[52,2], big.mark=",", scientific=FALSE)``` employees in the entire U.S. information technology sector of whom ```r prettyNum(dfEmploymentAndShares[52,4], big.mark=",", scientific=FALSE)``` were Black, and 
 ```r prettyNum(dfEmploymentAndShares[52,6], big.mark=",", scientific=FALSE)``` were Hispanic. There were only ```r prettyNum(dfEmploymentAndShares[5,2], big.mark=",", scientific=FALSE)``` tech employees in California (including Silicon Valley).
 
-
-### B. Motivation and Methods
-
-<b>Motivation</b>   
-Before describing my methods, I will say a few words about why I wrote this report and how my motivation influenced my methods. A recent barrage of annual reports from some of the nation's leading information technology companies in Silicon Valley would have readers believe that the primary reason why these companies employ so few Black and Hispanic professionals is because there are so few Black and Hispanic students in the nation's academic pipelines. When reading their reports I found myself shaking my head time and again while wondering, "What numbers do they have to back up these notions? And where did they get them from?" Whereas I would have said that the pipelines were half-full, these reports implied that the pipelines were perilously close to being empty. 
-
-One of the most important take-aways that I derived from successfully completing the Johns Hopkins online "Data Science" certificate program a few months ago was the notion that reports should be "reproducible". Authors should not only describe their methods for collecting and analyzing data; they should provide detailed step-by-step descriptions of their methods in a manner that would enable interested readers to readily reproduce the results on their own computers. Of course, the best researchers have always tried to achieve this objective and have often succeeded. 
-
-What was new for me was the specific tools that the statisticians who taught the Hopkins courses recommended: the R language and GitHub. Data should be downloaded from original sources using scripts and functions written in R; then analyzed, tabulated, mapped, and graphed with other scripts and functions writen in R, and summarized in text laid out in R-Markdown that an R application converts to HTML pages suitable for publication on Websites. Published reports should be as concise as traditional reports, but the writer's extensive collection of programs, analytical strategies, data coding guides, data files, tables, maps, graphs, etc, etc, etc should be shared with the world via GitHub repositories. Of course Python, MatLab, and other comparable languages could be used insted of R. But this is my first attept to write a reproducible report, so it's written in R and all of my supporting files are posted on a GitHub repo. If readers disagree with my numbers, they won't have to wonder how I got them ... :-)
-
-## Revise the rest to reflect expansion to 50 states plus DC ... and the changes in findings from this expansion 
-
-<b>Methods</b>   
-I downloaded the most recent data (2014) about employment in information technology from the American Community Survey from U.S. Census Bureau's <b>[TheDataWeb](http://thedataweb.rm.census.gov/index.html)</b> site. My step-by-step download procedure is described in <b>[Appendix #1](https://github.com/Archimedes2kxx/BestStatesForBlackTech/blob/19bc4ca9628ce050805510ffa1dbf3fdd2103a68/Appendix-1.Rmd)</b> in the report's repo on GitHub. 
-
-To be specific, I used the Census Bureau's <b>[Data Ferret App](http://dataferrett.census.gov/LaunchDFA.html)</b> app to download sample data for 2014 for race and thirteen specified occupations for six states into a file called <b>[Race-CA-DC-GA-NC-NY-WA-Occupation-PUMS-2014.csv](Race-CA-DC-GA-NC-NY-WA-Occupation-PUMS-2014.csv)</b> in the report's repo. The data for these categories was coded, so I downloaded the ACS codebook. A <b>[copy of the codebook](https://github.com/Archimedes2kxx/BestStatesForBlackTech/blob/ee64520f2e672b0919b4e6320154fdd1d43115f6/Race-CA-DC-GA-NC-NY-WA-Occupation-PUMS-2014-CodeBook.txt)</b> will also be found in the repo.
-
-* Race/ethnic groups = Black, White, Asian, and Hispanic 
-* States = All 50 states plus the District of Columbia (a "city state"), 
-* Selected occupations (using "standard" category names) = 13 categories, specifically: COMPUTER PROGRAMMERS, CMM-SOFTWARE DEVELOPERS, APPLICATIONS AND SYSTEMS SOFTWARE, CMM-COMPUTER SYSTEMS ANALYSTS, ENG-ELECTRICAL AND ELECTRONICS ENGINEERS, CMM-COMPUTER SUPPORT SPECIALISTS, CMM-NETWORK AND COMPUTER SYSTEMS ADMINISTRATORS, CMM-COMPUTER OCCUPATIONS, ALL OTHER, CMM-COMPUTER NETWORK ARCHITECTS, CMM-DATABASE ADMINISTRATORS, CMM-WEB DEVELOPERS, ENG-COMPUTER HARDWARE ENGINEERS, CMM-INFORMATION SECURITY ANALYSTS, CMM-COMPUTER AND INFORMATION RESEARCH SCIENTISTS  
-
-I wrote a few scripts and functions in R to download the data and produce the tables, maps, and graphs that are displayed in the next section. The DataFerret's sample (r numSampleObservations observations) was large enough to assume that the Black, White, and Asian percentages calculated for tech occupations for the sample would be good estimates of the actual percentages of Blacks, Whites, and Asians in tech occupations for the selected states. My R code for downloading the data, calculating the stats, and producing the graphs can be found in the Data-1.R, StatsGraphs-2.R, and Report-3.R files in the <b>[repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b>. The entire report was composed in R-Markdown using R-Studio, converted to HTML via knitr, then copied and pasted onto a blank page on the DLL's <b>[Tech-Levers](http://hbcu-levers.blogspot.com/p/draft-of-best-states-for-blacks-in-tech.html)</b> blog. 
-
-The scripts and their embedded functions should be run in numerical order: Data-1 and Data-2 create the data frame required by Stats-2; Stats-2 creates the tables, maps, and graphs required for the Report-4 script that produces the report.
+## Revise to the actual findings ... the tables, maps, graphs, and regression stats ... :-)
   
-### C. Findings
+### B. Findings
 
 * Create table of percentages of White vs. Asian vs. Blacks in each state ... Table #2
 * Include the statistic table for Blacks plus a ggplot of the blacks in tech vs blacks in total population ... Table #3 and Graph
 
-### D. Conclusions 
-My report's finding are mundane, but useful reminders of the futility of impatience. There is an understandable tendency for activists to demand that Blacks achieve parity with Black population levels in all of the important sectors of our society RIGHT NOW!!! Unfortunately the evil legacy of centuries of slavery and decades of Jim Crow could not be wiped out in ten, twenty, forty, or even sixty years after the Supreme Court (1954) and Congress (1964,1964) made discrimination in education and the workplace illegal. Indeed, the most incidious component of the legacy is the unwillingness of the larger society to move faster.
 
-Perhaps the biggest lesson of the last 60 years is that we can't do it all RIGHT NOW; so we have to focus. Some #DiversityInTech activists have focused on Web pages or social media because this is where tech is  now. I suggest that we apply Wayne Gretzky's wisdom He advised hockey players not to skate to the place where the puck was at now, but where it was about to be. In the case of tech, I suggest that we encourage Black young techs to acquire the skills that will enable them to compete in the places where tech is moving towards, specifically machine learning and related AI technologies. That's why we have to continue to keep pressure on Silicon Valley, California, and Waashington state
 
-Finally, focusing on the gap between Blacks and Whites and/or Blacks and Asians says the glass is still half-empty. But this pessimistic perspective ignores the substantial numbers of Blacks who have achieved substantial careers in tech during the last 60 years. Seeing the glass as half-full also encourages young Black techs who are just starting their careers to identify the existing networs of Black techs who can become very useful mentors and references.
+### C. Motivation and Methods
+
+<b>Motivation</b>   
+Let me say a few words about why I wrote this report and how my motivation influenced my methods. A recent barrage of annual reports from some of the nation's leading information technology companies in Silicon Valley would have readers believe that the primary reason why these companies employ so few Black and Hispanic professionals is because there are so few Black and Hispanic students in the nation's academic pipelines. When reading their reports I found myself shaking my head time and again while wondering, "What numbers do they have to back up these notions? And where did they get them from?" Whereas I would have said that the pipelines were half-full, these reports implied that the pipelines were perilously close to being empty. 
+
+One of the most important take-aways that I derived from completing the Johns Hopkins online "Data Science" certificate program a few months ago was the notion that reports should be "reproducible". Authors should not only describe their methods for collecting and analyzing data; they should provide detailed step-by-step descriptions of their methods in a manner that would enable interested readers to readily reproduce the results on their own computers. Of course, the best researchers have always tried to achieve this objective and have often succeeded. 
+
+What was new for me was the specific tools that the statisticians who taught the Hopkins courses recommended: the R language and GitHub. Data should be downloaded from original sources using scripts and functions written in R; then analyzed, tabulated, mapped, and graphed with other scripts and functions writen in R, and summarized in text laid out in R-Markdown that an R application converts to HTML pages suitable for publication on Websites. Published reports should be as concise as traditional reports, but the writer's extensive collection of programs, analytical strategies, data coding guides, data files, tables, maps, graphs, etc, etc, etc should be shared with the world via GitHub repositories. Of course Python, MatLab, and other comparable languages could be used insted of R. But this is my first attept to write a reproducible report, so it's written in R and all of my supporting files are posted on a GitHub repo. If readers disagree with my numbers, they won't have to wonder how I got them ... :-)
+
+<b>Methods ... revise for correct details ... also include download of American Fact</b>   
+I downloaded the most recent American Community Survey estimates (2014) of employment in information technology from the from U.S. Census Bureau's <b>[TheDataWeb](http://thedataweb.rm.census.gov/index.html)</b> site. My step-by-step download procedure is described in <b>[Appendix #1](https://github.com/Archimedes2kxx/BestStatesForBlackTech/blob/19bc4ca9628ce050805510ffa1dbf3fdd2103a68/Appendix-1.Rmd)</b> in the report's repo on GitHub. 
+
+To be specific, I used the Census Bureau's <b>[Data Ferret App](http://dataferrett.census.gov/LaunchDFA.html)</b> app to download sample data for 2014 for race and thirteen specified occupations into a file called <b>[Race-CA-DC-GA-NC-NY-WA-Occupation-PUMS-2014.csv](Race-CA-DC-GA-NC-NY-WA-Occupation-PUMS-2014.csv)</b> in the report's repo. The data for these categories was coded, so I downloaded the ACS codebook. A <b>[copy of the codebook](https://github.com/Archimedes2kxx/BestStatesForBlackTech/blob/ee64520f2e672b0919b4e6320154fdd1d43115f6/Race-CA-DC-GA-NC-NY-WA-Occupation-PUMS-2014-CodeBook.txt)</b> will also be found in the repo.
+
+* Race/ethnic groups = Black, White, Asian, and Hispanic. 
+* States = All 50 states plus the District of Columbia (a "city state"), 
+* I defined information technology sector by the following 13 standard SOC categories: COMPUTER PROGRAMMERS, CMM-SOFTWARE DEVELOPERS, APPLICATIONS AND SYSTEMS SOFTWARE, CMM-COMPUTER SYSTEMS ANALYSTS, ENG-ELECTRICAL AND ELECTRONICS ENGINEERS, CMM-COMPUTER SUPPORT SPECIALISTS, CMM-NETWORK AND COMPUTER SYSTEMS ADMINISTRATORS, CMM-COMPUTER OCCUPATIONS, ALL OTHER, CMM-COMPUTER NETWORK ARCHITECTS, CMM-DATABASE ADMINISTRATORS, CMM-WEB DEVELOPERS, ENG-COMPUTER HARDWARE ENGINEERS, CMM-INFORMATION SECURITY ANALYSTS, CMM-COMPUTER AND INFORMATION RESEARCH SCIENTISTS  
+   
+I wrote a few scripts and functions in R to download the data and produce the tables, maps, and graphs that are displayed in the next section. The DataFerret's sample (```r prettyNum(dim(dfCensus1)[1], big.mark=",", scientific=FALSE)``` observations) was large enough to assume that the employee counts and percentages calculated s for the sample would provide good estimates of the actual counts and percentages of Blacks, Whites, Asians, and Hispanics in tech occupations in the 50 states and DC. My R code for downloading the data, calculating the stats, and producing the tables, maps, and graphs can be found in the Data-1A.R, Data-1B.R, Stats-2.R, and Report-3.Rmd files in the <b>[repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b>. I composed the entire report in R-Markdown using the R-Studio IDE, converted the R-markdown to HTML via knitr, then copied and pasted the HTML onto a blank page on the DLL's <b>[Tech-Levers](http://hbcu-levers.blogspot.com/p/draft-of-best-states-for-blacks-in-tech.html)</b> blog. 
+
+The scripts and their embedded functions should be run in numerical order: Data-1A.R and Data-1B.R create the data frames required by Stats-2.R; Stats-2.R creates the tables, maps, graphs, and regression stats required by the R-markdown script in the Report-4.Rmd file that generates the report.
+  
+
