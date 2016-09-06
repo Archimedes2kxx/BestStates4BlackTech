@@ -10,13 +10,44 @@ load(file="dfEmploymentAndShares.RData")
 load(file="dfStatesPop3.RData") 
 load("dfCensus2.RData")
 
+library(dplyr)
+##library(tidyr)
 
-### Table 1 (top 2 rows). Context -- How many people in the US in 2014 -- total, black, white, ### asian, hispanic, and OTHERS and percentages of total, white, black, asian, hispanic, 
-### and OTHERs in second row
-tail(dfStatesPop3,1) ### Full dfStatesPop3 in Appendix so readers can see racial shares of pop
+### Table 1.1 (top 2 rows). Context -- How many people in the US in 2014 -- total, black, white, ### asian, hispanic, and OTHERS and percentages of total, white, black, asian, hispanic, 
 
-### Table 1 (bottom 2 rows). How many Techs in the US? How many total, white, black, asian, ### and hispanic techs in U.S.
-tail(dfEmploymentAndShares, 1) ### ... second two rows of Table 1
+tableONEtop <- dfEmploymentAndShares[52,2:7]
+colNames <- c("ALL", "White", "Black", "Asian", "Hispanic", "OTHERS")
+colnames(tableONEtop) <- colNames
+rownames(tableONEtop) <- NULL
+dfTableONEtop <- data.frame(tableONEtop)
+rownames(dfTableONEtop) <- "Totals"
+dfTableONEtop
+
+tableONEbottom <- dfEmploymentAndShares[52,c(2,8:12)]
+rownames(tableONEbottom) <- NULL
+tableONEbottom <- as.vector(tableONEbottom)
+tableONEbottom[1,1] <- 1.0
+colnames(tableONEbottom) <- colNames
+dfTableONEbottom <- round(data.frame(tableONEbottom), digits=3) * 100
+rownames(dfTableONEbottom) <- "Percent"
+dfTableONEbottom
+
+### Table 1.2 Sex ... call Hadley to the rescue ... must sum up the person weights
+censusSex <- group_by(dfCensus2, sex)
+dfPtsPerSex <- summarise(censusSex, ptsPerSex = sum(personalWeight))
+colnames(dfPtsPerSex) <- c("Sex", "Employees")
+dfSex <- data.frame(dfPtsPerSex)
+### colnames(dfSex) <- NULL
+dfSex
+
+### Table 1.3 Occupations ... call Hadley to the rescue
+censusOccupation <- group_by(dfCensus2, occupation)
+dfPtsPerOccupation <- summarise(censusOccupation, ptsPerOccupation = sum(personalWeight))
+colnames(dfPtsPerOccupation) <- c("Occupation", "Employees")
+index <- order(dfPtsPerOccupation$`Tech Employees`, decreasing=TRUE)
+dfPtsPerOccupation[index,]
+dfOccupation <- data.frame(dfPtsPerOccupation)
+dfOccupation
 
 
 ### Tables 2A, 2B, 2C, 2D. How many members of racial groups  in each state ... totals, white, ### black, asian, hispanic and percents racial shares of total population in each state
