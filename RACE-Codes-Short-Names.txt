@@ -1,0 +1,11 @@
+Code, Race
+1,  White
+2,  Black
+3,  AmericanIndian
+4,  AlaskaNative
+5,  AmericanIndianAlaskaNative
+6,  Asian
+7,  Pacific
+8,  Other
+9,  Many
+99, Hispanic
