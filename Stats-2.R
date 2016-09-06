@@ -13,26 +13,39 @@ load("dfCensus2.RData")
 library(dplyr)
 ##library(tidyr)
 
-### Table 1.1 (top 2 rows). Context -- How many people in the US in 2014 -- total, black, white, ### asian, hispanic, and OTHERS and percentages of total, white, black, asian, hispanic, 
-
-tableONEtop <- dfEmploymentAndShares[52,2:7]
+### Table 1.1  Context -- How many people in the US in 2014 -- total, black, white, ### asian, hispanic, and OTHERS and percentages of total, white, black, asian, hispanic, and OTHERS
+table1p1top <- dfStatesPop3[52,2:7]
 colNames <- c("ALL", "White", "Black", "Asian", "Hispanic", "OTHERS")
-colnames(tableONEtop) <- colNames
-rownames(tableONEtop) <- NULL
-dfTableONEtop <- data.frame(tableONEtop)
-rownames(dfTableONEtop) <- "Totals"
-dfTableONEtop
+colnames(table1p1top) <- colNames
+dfTable1p1top <- data.frame(table1p1top)
+rownames(dfTable1p1top) <- "Totals"
+dfTable1p1top
 
-tableONEbottom <- dfEmploymentAndShares[52,c(2,8:12)]
-rownames(tableONEbottom) <- NULL
-tableONEbottom <- as.vector(tableONEbottom)
-tableONEbottom[1,1] <- 1.0
-colnames(tableONEbottom) <- colNames
-dfTableONEbottom <- round(data.frame(tableONEbottom), digits=3) * 100
-rownames(dfTableONEbottom) <- "Percent"
-dfTableONEbottom
+table1p1bottom <- dfStatesPop3[52,c(2,8:12)]
+table1p1bottom <- as.vector(table1p1bottom)
+table1p1bottom[1,1] <- 1.0 ### 1.0 = 100 percent for ALL
+colnames(table1p1bottom) <- colNames
+dfTable1p1bottom <- round(data.frame(table1p1bottom), digits=3) * 100
+rownames(dfTable1p1bottom) <- "Percent"
+dfTable1p1bottom
 
-### Table 1.2 Sex ... call Hadley to the rescue ... must sum up the person weights
+### Table 1.2 ... racial breakdown of tech employment
+table1p2top <- dfEmploymentAndShares[52,2:7]
+colNames <- c("ALL", "White", "Black", "Asian", "Hispanic", "OTHERS")
+colnames(table1p2top) <- colNames
+dfTable1p2top <- data.frame(table1p2top)
+rownames(dfTable1p2top) <- "Totals"
+dfTable1p2top
+
+table1p2bottom <- dfEmploymentAndShares[52,c(2,8:12)]
+table1p2bottom <- as.vector(table1p2bottom)
+table1p2bottom[1,1] <- 1.0 ### 1.0 = 100 percent for ALL
+colnames(table1p2bottom) <- colNames
+dfTable1p2bottom <- round(data.frame(table1p2bottom), digits=3) * 100
+rownames(dfTable1p2bottom) <- "Percent"
+dfTable1p2bottom
+
+### Table 1.3 Sex ... must sum up the person weights
 censusSex <- group_by(dfCensus2, sex)
 dfPtsPerSex <- summarise(censusSex, ptsPerSex = sum(personalWeight))
 colnames(dfPtsPerSex) <- c("Sex", "Employees")
@@ -40,7 +53,7 @@ dfSex <- data.frame(dfPtsPerSex)
 ### colnames(dfSex) <- NULL
 dfSex
 
-### Table 1.3 Occupations ... call Hadley to the rescue
+### Table 1.4 Occupations
 censusOccupation <- group_by(dfCensus2, occupation)
 dfPtsPerOccupation <- summarise(censusOccupation, ptsPerOccupation = sum(personalWeight))
 colnames(dfPtsPerOccupation) <- c("Occupation", "Employees")
