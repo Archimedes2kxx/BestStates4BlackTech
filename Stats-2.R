@@ -8,6 +8,8 @@
 setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
 load(file="dfEmploymentAndShares.RData")
 load(file="dfStatesPop3.RData") 
+load("dfCensus2.RData")
+
 
 ### Table 1 (top 2 rows). Context -- How many people in the US in 2014 -- total, black, white, ### asian, hispanic, and OTHERS and percentages of total, white, black, asian, hispanic, 
 ### and OTHERs in second row
