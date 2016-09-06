@@ -8,7 +8,7 @@ setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackT
 file = "PEP_2014_PEPSR6H_with_ann.csv"
 dfStatesPop1 <- read.csv(file, header=FALSE, stringsAsFactors = FALSE)
 
-### Get var names from second row
+### Get var names 
 varNames <- as.vector(unlist(dfStatesPop1[1,]))
 colnames(dfStatesPop1) <- varNames
 
@@ -34,9 +34,8 @@ dfStatesPop2 <- cbind(dfTotPop, dfNonHispanics, dfHispanics)
 columnNames <- c("state", "totpop", "white", "black", "amInAlNat", "asian", "pacific", "mixed" , "hisp")
 colnames(dfStatesPop2) <- columnNames
 
-### 7. Convert state to factor ... useful for tapply functions and other stuff
+### 7. Convert state to factor
 dfStatesPop2$state <- as.factor(dfStatesPop2$state)
-### str(dfStates2[,1])
 
 ### 8. Convert data columns to integers
 vec <- as.integer(unlist(dfStatesPop2[,2:9]))
@@ -52,7 +51,6 @@ dfStatesPop2$OTHERS <- dfStatesPop2$amInAlNat + dfStatesPop2$pacific + dfStatesP
 dfStatesPop2$amInAlNat <- NULL
 dfStatesPop2$pacific <- NULL
 dfStatesPop2$mixed <- NULL
-head(dfStatesPop2)
 
 ### 11. Calculate derived parameters ... percentage of each racial group in the total population ... add to data frame
 dfStatesPop3 <- dfStatesPop2
@@ -61,13 +59,11 @@ dfStatesPop3$perBlack <- round(dfStatesPop3$black / dfStatesPop3$totpop, digits 
 dfStatesPop3$perAsian <- round(dfStatesPop3$asian / dfStatesPop3$totpop, digits = 3)
 dfStatesPop3$perHisp <- round(dfStatesPop3$hisp / dfStatesPop3$totpop, digits = 3)
 dfStatesPop3$perOTHERS <- round(dfStatesPop3$OTHERS / dfStatesPop3$totpop, digits = 3)
-str(dfStatesPop3)
-head(dfStatesPop3)
 
 ### 12. Add a totals row and save
-(allRacesInUS <- colSums(dfStatesPop3[,3:7]))
-(allRaces <- sum(allRacesInUS)) ### 4125164
-(raceSharesInUS <- round((allRacesInUS/allRaces), digits=3))
+allRacesInUS <- colSums(dfStatesPop3[,3:7])
+allRaces <- sum(allRacesInUS) ### 4125164
+raceSharesInUS <- round((allRacesInUS/allRaces), digits=3)
 
 dfTotalsRow <- dfStatesPop3[1,] ### dummy to get columns and types
 dfTotalsRow$state <- "ALL STATES"
@@ -76,7 +72,6 @@ dfTotalsRow[1,8:12] <- raceSharesInUS
 dfTotalsRow[1,2] <- allRaces
 dfStatesPop3 <- rbind(dfStatesPop3, dfTotalsRow)
 
-rownames(dfStatesPop3) <- c() ### Remove row names
 head(dfStatesPop3)
 tail(dfStatesPop3)
 save(dfStatesPop3, file = "dfStatesPop3.RData")
