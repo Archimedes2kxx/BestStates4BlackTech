@@ -49,6 +49,7 @@ levels(dfCensus2$occupation) <- trimws(occupationCodes[,2])
  
 str(dfCensus2)
 save(dfCensus2, file="dfCensus2.RData")
+
 ### Stats-2 will calculate the first set of tables from dfCensus2 ... overall U.S. 
 ### ... Total U.S. techs, male/female breakdown, total for each type of tech, total techs in each state
 
@@ -61,6 +62,7 @@ dfPtsPerState <- summarise(censusStates, ptsPerState = sum(personalWeight))
 dfRaceEmploymentPerState <- spread(dfPtsPerRace, key=race, value=ptsPerRace) 
 dfRaceEmploymentPerState[is.na(dfRaceEmploymentPerState)] <- 0 ### Replace NAs with zeros
 
+### 6. Combine all groups other than black, white, asian, and hispanic into OTHERS
 columnNames <- c("state", "white", "black", "amInAlNat", "alNat", "otherNat", "asian", "pacific", "other", "mixed" , "hisp")
 colnames(dfRaceEmploymentPerState) <- columnNames
 dfRaceEmploymentPerState$OTHERS <- dfRaceEmploymentPerState$amInAlNat + dfRaceEmploymentPerState$alNat + dfRaceEmploymentPerState$otherNat + dfRaceEmploymentPerState$pacific + dfRaceEmploymentPerState$other + dfRaceEmploymentPerState$mixed
@@ -73,25 +75,22 @@ dfRaceEmploymentPerState$pacific <- NULL
 dfRaceEmploymentPerState$other <- NULL
 dfRaceEmploymentPerState$mixed <- NULL
 
-### 6. Add "totals" column after "state" ... 
+### 7. Add "totals" column after "state" ... 
 dfRaceEmploymentPerState$totals <- rowSums(dfRaceEmploymentPerState[,2:6])
 dfRaceEmploymentPerState <- dfRaceEmploymentPerState[,c(1,7, 2:6)] ### move totals into second column
 
-### 7. Calculate each racial groups share of total tech employment in each state
+### 8. Calculate each racial groups share of total tech employment in each state
 vecTotalEmploymentPerState <- c(unlist(dfRaceEmploymentPerState[,2]))
-head(vecTotalEmploymentPerState)
 dfRaceShares <- round((dfRaceEmploymentPerState[,3:7] / vecTotalEmploymentPerState), digits = 3)
-head(dfRaceShares)
 dfRaceSharesPerState <- dfRaceEmploymentPerState[,c(1, 3:7)] ### Dummy copy just to get the right dimensions & labels
 
 dfRaceSharesPerState[, 2:6] <- dfRaceShares
 colnames(dfRaceSharesPerState) <- c("state", "perWhite", "perBlack", "perAsian", "perHisp", "perOTHERS")
 
-### 8. Merge the two data frames
+### 9. Merge the two data frames
 dfEmploymentAndShares <- merge(dfRaceEmploymentPerState, dfRaceSharesPerState)
-head(dfEmploymentAndShares) 
 
-### 9. Add a totals row 
+### 10. Add a totals row 
 (allRacesInTech <- colSums(dfEmploymentAndShares[,3:7]))
 (allTech <- sum(allRacesInTech)) ### 4125164
 (raceSharesInTech <- round((allRacesInTech/allTech), digits=3))
@@ -104,7 +103,7 @@ dfTotalsRow[1,8:12] <- raceSharesInTech
 dfTotalsRow[1,2] <- allTech
 dfEmploymentAndShares <- rbind(dfEmploymentAndShares, dfTotalsRow)
 
-### 10. Save combined employment and shares data fames
+### 111. Save combined employment and shares data frame
 head(dfEmploymentAndShares)
 tail(dfEmploymentAndShares)
 save(dfEmploymentAndShares, file="dfEmploymentAndShares.RData")
