@@ -57,10 +57,10 @@ dfSex
 censusOccupation <- group_by(dfCensus2, occupation)
 dfPtsPerOccupation <- summarise(censusOccupation, ptsPerOccupation = sum(personalWeight))
 colnames(dfPtsPerOccupation) <- c("Occupation", "Employees")
-index <- order(dfPtsPerOccupation$`Tech Employees`, decreasing=TRUE)
-dfPtsPerOccupation[index,]
 dfOccupation <- data.frame(dfPtsPerOccupation)
-dfOccupation
+index <- order(dfOccupation$Employees, decreasing=TRUE)
+dfOccupation[index,]
+
 
 
 ### Tables 2A, 2B, 2C, 2D. How many members of racial groups  in each state ... totals, white, ### black, asian, hispanic and percents racial shares of total population in each state
