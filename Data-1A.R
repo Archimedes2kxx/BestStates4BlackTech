@@ -103,7 +103,7 @@ dfTotalsRow[1,8:12] <- raceSharesInTech
 dfTotalsRow[1,2] <- allTech
 dfEmploymentAndShares <- rbind(dfEmploymentAndShares, dfTotalsRow)
 
-### 111. Save combined employment and shares data frame
+### 11. Save combined employment and shares data frame
 head(dfEmploymentAndShares)
 tail(dfEmploymentAndShares)
 save(dfEmploymentAndShares, file="dfEmploymentAndShares.RData")
