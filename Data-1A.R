@@ -63,7 +63,7 @@ dfRaceEmploymentPerState <- spread(dfPtsPerRace, key=race, value=ptsPerRace)
 dfRaceEmploymentPerState[is.na(dfRaceEmploymentPerState)] <- 0 ### Replace NAs with zeros
 
 ### 6. Combine all groups other than black, white, asian, and hispanic into OTHERS
-columnNames <- c("state", "white", "black", "amInAlNat", "alNat", "otherNat", "asian", "pacific", "other", "mixed" , "hisp")
+columnNames <- c("state", "white", "black", "amInAlNat", "alNat", "otherNat", "asian", "pacific", "other", "mixed" , "hispanic")
 colnames(dfRaceEmploymentPerState) <- columnNames
 dfRaceEmploymentPerState$OTHERS <- dfRaceEmploymentPerState$amInAlNat + dfRaceEmploymentPerState$alNat + dfRaceEmploymentPerState$otherNat + dfRaceEmploymentPerState$pacific + dfRaceEmploymentPerState$other + dfRaceEmploymentPerState$mixed
 
@@ -85,7 +85,7 @@ dfRaceShares <- round((dfRaceEmploymentPerState[,3:7] / vecTotalEmploymentPerSta
 dfRaceSharesPerState <- dfRaceEmploymentPerState[,c(1, 3:7)] ### Dummy copy just to get the right dimensions & labels
 
 dfRaceSharesPerState[, 2:6] <- dfRaceShares
-colnames(dfRaceSharesPerState) <- c("state", "per_white", "per_black", "per_asian", "per_hisp", "per_OTHERS")
+colnames(dfRaceSharesPerState) <- c("state", "per_white", "per_black", "per_asian", "per_hispanic", "per_OTHERS")
 
 ### 9. Merge the two data frames
 dfEmploymentAndShares <- merge(dfRaceEmploymentPerState, dfRaceSharesPerState)
