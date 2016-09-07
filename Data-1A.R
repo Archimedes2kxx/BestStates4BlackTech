@@ -55,7 +55,7 @@ save(dfCensus2, file="dfCensus2.RData")
 
 ### 5. Calculate each racial group's employment for each state ... Thank you, Hadley ... :-)
 dfCensus3 <- dfCensus2 
-censusGroups <- group_by(dfCensus3, state, race) # 
+censusGroups <- group_by(dfCensus3, state, race) 
 dfPtsPerRace <- summarise(censusGroups, ptsPerRace = sum(personalWeight))
 censusStates <- group_by(dfCensus3, state)
 dfPtsPerState <- summarise(censusStates, ptsPerState = sum(personalWeight))
@@ -85,7 +85,7 @@ dfRaceShares <- round((dfRaceEmploymentPerState[,3:7] / vecTotalEmploymentPerSta
 dfRaceSharesPerState <- dfRaceEmploymentPerState[,c(1, 3:7)] ### Dummy copy just to get the right dimensions & labels
 
 dfRaceSharesPerState[, 2:6] <- dfRaceShares
-colnames(dfRaceSharesPerState) <- c("state", "perWhite", "perBlack", "perAsian", "perHisp", "perOTHERS")
+colnames(dfRaceSharesPerState) <- c("state", "per_white", "per_black", "per_asian", "per_hisp", "per_OTHERS")
 
 ### 9. Merge the two data frames
 dfEmploymentAndShares <- merge(dfRaceEmploymentPerState, dfRaceSharesPerState)
