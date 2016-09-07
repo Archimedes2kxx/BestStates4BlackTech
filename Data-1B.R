@@ -31,7 +31,7 @@ dfTotPop <- subset(dfStatesPop1, Year.id=="est72014" & Sex.id=="totsex" & Hisp.i
 dfStatesPop2 <- cbind(dfTotPop, dfNonHispanics, dfHispanics)
 
 ### 6. Confer short names on all variables
-columnNames <- c("state", "totpop", "white", "black", "amInAlNat", "asian", "pacific", "mixed" , "hisp")
+columnNames <- c("state", "totpop", "white", "black", "amInAlNat", "asian", "pacific", "mixed" , "hispanic")
 colnames(dfStatesPop2) <- columnNames
 
 ### 7. Convert state to factor
@@ -57,7 +57,7 @@ dfStatesPop3 <- dfStatesPop2
 dfStatesPop3$per_white <- round(dfStatesPop3$white / dfStatesPop3$totpop, digits = 3)
 dfStatesPop3$per_black <- round(dfStatesPop3$black / dfStatesPop3$totpop, digits = 3)
 dfStatesPop3$per_asian <- round(dfStatesPop3$asian / dfStatesPop3$totpop, digits = 3)
-dfStatesPop3$per_hisp <- round(dfStatesPop3$hisp / dfStatesPop3$totpop, digits = 3)
+dfStatesPop3$per_hispanic <- round(dfStatesPop3$hisp / dfStatesPop3$totpop, digits = 3)
 dfStatesPop3$per_OTHERS <- round(dfStatesPop3$OTHERS / dfStatesPop3$totpop, digits = 3)
 
 ### 12. Add a totals row and save
