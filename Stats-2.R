@@ -10,7 +10,6 @@ load(file="dfEmploymentAndShares.RData")
 load(file="dfStatesPop3.RData") 
 load("dfCensus2.RData")
 
-### library(dplyr)
 library(tidyr)
 
 ### Table 1.1  Context -- How many people in the US in 2014 -- total, black, white, ### asian, hispanic, and OTHERS and percentages of total, white, black, asian, hispanic, and OTHERS
@@ -45,14 +44,6 @@ dfTable1p2bottom <- round(data.frame(table1p2bottom), digits=3) * 100
 rownames(dfTable1p2bottom) <- "Percent"
 dfTable1p2bottom
 
-### Table 1.3 Sex ... must sum up the person weights
-censusSex <- group_by(dfCensus2, sex)
-dfPtsPerSex <- summarise(censusSex, ptsPerSex = sum(personalWeight))
-colnames(dfPtsPerSex) <- c("Sex", "Employees")
-dfSex <- data.frame(dfPtsPerSex)
-### colnames(dfSex) <- NULL
-dfSex
-
 ### Table 1.3 Sex by Occupations ... two rows
 censusGroups <- group_by(dfCensus3, occupation, sex)
 dfPtsPerSex <- summarise(censusGroups, ptsPerSex = sum(personalWeight))
@@ -80,24 +71,40 @@ rownames(dfOccupationPerSex) <- NULL
 colnames(dfOccupationPerSex) <- c("occupation", "Total", "Male", "%-Male")
 dfOccupationPerSex
 
-### Tables 2W, 2B, 2A, 2H. Racial groups in each state  
+### Tables 2A, 2B, 2C, 2D. Racial groups in each state  
 ### ... state, <racial>TechEmp, totalTechEmp, per<Racial>TechEmp, totPop, <racialPop>, 
 ###        per<Racial>Pop, <racial>Parity ... 
 ### ... sorted by decreasing racialTechEmp so users can see "Top 10"
 ### ... Only show top 10 in report, show full tables 2WW, 2BB, 2AA, 2HH in appendices on GitHub
 
+### Table 2A Black tech employment vs Black population count
+dfEmploymentAndShares_black <- subset(dfEmploymentAndShares, select=c(state, black, perBlack))
+head(dfEmploymentAndShares_black)
+dfStatePop3_black <- subset(dfStatesPop3, select=c(state, black, perBlack))
+head(dfStatePop3_black)
 ### Use subset( ..., select ) ... or maybe use dplyr and calculate parity within the table generation
+dfStateParity_black <- merge(dfEmploymentAndShares_black, dfStatePop3_black, by = "state")
+head(dfEmploymentAndShares)
+head(dfStatesPop3)
+head(dfStateParity_black)
+dfStateParity_black$parity <- round(dfStateParity_black$perBlack.x/dfStateParity_black$perBlack.y, digits=3)
+head(dfStateParity_black)
+columnNames <- c("state", "blackTech", "perBlackTech", "blackPop", "perBlackPop", "blackParity")
+colnames(dfStateParity_black) <- columnNames
+head(dfStateParity_black)
+index <- order(dfStateParity_black$blackTech, decreasing=TRUE)
+dfStateParity_black <- dfStateParity_black[index,]
+head(dfStateParity_black, 11)
+tail(dfStateParity_black,20)
 
-dfEmploymentAndShares
-dfStatesPop3
+### Maps 2A, 2B, 2C, 2D ... maps of white, black, asian, hispanics in state tech sectors
+### Maps 2.1A, 2.1B, 2.1C, 2.1D ... maps of % white, black, asian, hispanics in states.
 
-### Maps 2W, 2B, 2A, 2H ... maps of white, black, asian, hispanics in state tech sectors
-### Maps 2.1W, 2.1B, 2.1A, 2.1H ... maps of % white, black, asian, hispanics in states.
-
-### Plots 2W, 2B, 2A, 2H ... regression lines for racial component ot each state's tech 
-### sectors vs. the racial component of each state's population. 
+### Plots 2A, 2B, 2C, 2D ... regression lines for racial tech employment vsl 
+### racial population in each state. 
 ### The Beta slopes are printed on the graphs
 ### ... ALL ON THE SAME PLOT FRAME so user can see that asian slope is much 
 ### steeper than white, black, and hispanic 
 
+### Plots 3A, etc ... regression racial pop vs. parity
 
