@@ -54,11 +54,11 @@ dfStatesPop2$mixed <- NULL
 
 ### 11. Calculate derived parameters ... percentage of each racial group in the total population ... add to data frame
 dfStatesPop3 <- dfStatesPop2
-dfStatesPop3$perWhite <- round(dfStatesPop3$white / dfStatesPop3$totpop, digits = 3)
-dfStatesPop3$perBlack <- round(dfStatesPop3$black / dfStatesPop3$totpop, digits = 3)
-dfStatesPop3$perAsian <- round(dfStatesPop3$asian / dfStatesPop3$totpop, digits = 3)
-dfStatesPop3$perHisp <- round(dfStatesPop3$hisp / dfStatesPop3$totpop, digits = 3)
-dfStatesPop3$perOTHERS <- round(dfStatesPop3$OTHERS / dfStatesPop3$totpop, digits = 3)
+dfStatesPop3$per_white <- round(dfStatesPop3$white / dfStatesPop3$totpop, digits = 3)
+dfStatesPop3$per_black <- round(dfStatesPop3$black / dfStatesPop3$totpop, digits = 3)
+dfStatesPop3$per_asian <- round(dfStatesPop3$asian / dfStatesPop3$totpop, digits = 3)
+dfStatesPop3$per_hisp <- round(dfStatesPop3$hisp / dfStatesPop3$totpop, digits = 3)
+dfStatesPop3$per_OTHERS <- round(dfStatesPop3$OTHERS / dfStatesPop3$totpop, digits = 3)
 
 ### 12. Add a totals row and save
 allRacesInUS <- colSums(dfStatesPop3[,3:7])
