@@ -77,7 +77,7 @@ dfOccupationPerSex
 ### ... sorted by decreasing racialTechEmp so users can see "Top 10"
 ### ... Only show top 10 in report, show full tables 2WW, 2BB, 2AA, 2HH in appendices on GitHub
 
-makeRaceTable2 <- function(race){
+makeParityTable2 <- function(race){
     per_race <- paste0("per_", race)
     pop_race <- paste0("pop_", race)
     
@@ -96,16 +96,16 @@ makeRaceTable2 <- function(race){
     dfParity <- dfParity[index,]
     return(dfParity)
 }
-dfParityBlack <- makeRaceTable2("black")
-dfParityWhite <- makeRaceTable2("white")
-dfParityHispanic <- makeRaceTable2("hispanic")
-dfParityAsian <- makeRaceTable2("asian")
+dfParityBlack <- makeParityTable2("black")
+dfParityWhite <- makeParityTable2("white")
+dfParityHispanic <- makeParityTable2("hispanic")
+dfParityAsian <- makeParityTable2("asian")
 
-head(dfParityBlack)
-head(dfParityWhite)
-head(dfParityHispanic)
-head(dfParityAsian)
-
+head(dfParityBlack,20)
+head(dfParityWhite,20)
+head(dfParityHispanic,20)
+head(dfParityAsian,20)
+tail(dfParityAsian,20)
 
 ### Maps 2A, 2B, 2C, 2D ... maps of white, black, asian, hispanics in state tech sectors
 ### Maps 2.1A, 2.1B, 2.1C, 2.1D ... maps of % white, black, asian, hispanics in states.
@@ -113,8 +113,6 @@ head(dfParityAsian)
 ### Plots 2A, 2B, 2C, 2D ... regression lines for racial tech employment vsl 
 ### racial population in each state. 
 ### The Beta slopes are printed on the graphs
-### ... ALL ON THE SAME PLOT FRAME so user can see that asian slope is much 
-### steeper than white, black, and hispanic 
 
 ### Plots 3A, etc ... regression racial pop vs. parity
 
