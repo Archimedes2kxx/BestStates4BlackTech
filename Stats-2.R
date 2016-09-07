@@ -10,8 +10,8 @@ load(file="dfEmploymentAndShares.RData")
 load(file="dfStatesPop3.RData") 
 load("dfCensus2.RData")
 
-library(dplyr)
-##library(tidyr)
+### library(dplyr)
+library(tidyr)
 
 ### Table 1.1  Context -- How many people in the US in 2014 -- total, black, white, ### asian, hispanic, and OTHERS and percentages of total, white, black, asian, hispanic, and OTHERS
 table1p1top <- dfStatesPop3[52,2:7]
@@ -53,27 +53,46 @@ dfSex <- data.frame(dfPtsPerSex)
 ### colnames(dfSex) <- NULL
 dfSex
 
-### Table 1.4 Occupations
-censusOccupation <- group_by(dfCensus2, occupation)
-dfPtsPerOccupation <- summarise(censusOccupation, ptsPerOccupation = sum(personalWeight))
-colnames(dfPtsPerOccupation) <- c("Occupation", "Employees")
-dfOccupation <- data.frame(dfPtsPerOccupation)
-index <- order(dfOccupation$Employees, decreasing=TRUE)
-dfOccupation[index,]
+### Table 1.3 Sex by Occupations ... two rows
+censusGroups <- group_by(dfCensus3, occupation, sex)
+dfPtsPerSex <- summarise(censusGroups, ptsPerSex = sum(personalWeight))
+dfOccupationPerSex <- spread(dfPtsPerSex, key=sex, value=ptsPerSex)
+dfOccupationPerSex <- data.frame(dfOccupationPerSex)
+dfOccupationPerSex$perMale <- round(dfOccupationPerSex$Male /(dfOccupationPerSex$Male + dfOccupationPerSex$Female), digits=3) * 100
 
+dfOccupationPerSex$Total <- dfOccupationPerSex$Male + dfOccupationPerSex$Female
+dfOccupationPerSex <- dfOccupationPerSex[, c(1,5,2:4)] ### Put total in second column
 
-### Tables 2A, 2B, 2C, 2D. Racial groups in each state  
-### ... state, <racial>TechEmp, totalTechEmp, per<Racial>TechEmp, totPop, <racialPop>, per<Racial>Pop, <racial>Parity ... bottom row shows racial betas described below
+### Add total row for ALL
+nRows <- dim(dfOccupationPerSex)[1]
+techSums <- as.vector(colSums(dfOccupationPerSex[2:4]))
+perMaleTechSums <- as.numeric(round((techSums[2]/techSums[1]), digits = 3) * 100)
+dfALL <- data.frame("ALL", t(techSums), perMaleTechSums)
+colnames(dfALL) <- c("occupation", "Total", "Male", "Female","perMale")
+dfOccupationPerSex <- rbind(dfOccupationPerSex, dfALL)
+index <- order(dfOccupationPerSex$Total, decreasing=TRUE)
+dfOccupationPerSex <- dfOccupationPerSex[index,] 
+dfOccupationPerSex <- dfOccupationPerSex[c(2:nRows,1),] ### ALL at the bottom
+colnames(dfOccupationPerSex) <- c("occupation", "Total", "Male", "Female","%-Male")
+dfOccupationPerSex
+
+### Tables 2W, 2B, 2A, 2H. Racial groups in each state  
+### ... state, <racial>TechEmp, totalTechEmp, per<Racial>TechEmp, totPop, <racialPop>, 
+###        per<Racial>Pop, <racial>Parity ... 
 ### ... sorted by decreasing racialTechEmp so users can see "Top 10"
-### ... Only show top 10 in report, show full tables 2AA, 2BB, 2CC, 2DD in appendices on GitHub
+### ... Only show top 10 in report, show full tables 2WW, 2BB, 2AA, 2HH in appendices on GitHub
+
+### Use subset( ..., select ) ... or maybe use dplyr and calculate parity within the table generation
 
 dfEmploymentAndShares
 dfStatesPop3
 
-### Maps 2W, 2B, 2A, 2H ... maps of white, black, asian, hispanics in tech employment states.
+### Maps 2W, 2B, 2A, 2H ... maps of white, black, asian, hispanics in state tech sectors
 ### Maps 2.1W, 2.1B, 2.1A, 2.1H ... maps of % white, black, asian, hispanics in states.
 
-### Plots 2W, 2B, 2A, 2H ... regression lines for racial component ot each state's tech sector vs. ### the racial component of each state's population. The Beta slopes are in Tables 2A, 2B, 2C, 2D 
+### Plots 2W, 2B, 2A, 2H ... regression lines for racial component ot each state's tech 
+### sectors vs. the racial component of each state's population. 
+### The Beta slopes are printed on the graphs
 ### ... ALL ON THE SAME PLOT FRAME so user can see that asian slope is much 
 ### steeper than white, black, and hispanic 
 
