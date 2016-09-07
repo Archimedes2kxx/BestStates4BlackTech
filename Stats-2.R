@@ -14,7 +14,7 @@ library(tidyr)
 
 ### Table 1.1  Context -- How many people in the US in 2014 -- total, black, white, ### asian, hispanic, and OTHERS and percentages of total, white, black, asian, hispanic, and OTHERS
 table1p1top <- dfStatesPop3[52,2:7]
-colNames <- c("ALL", "White", "Black", "Asian", "Hispanic", "OTHERS")
+colNames <- c("ALL", "white", "black", "asian", "hispanic", "OTHERS")
 colnames(table1p1top) <- colNames
 dfTable1p1top <- data.frame(table1p1top)
 rownames(dfTable1p1top) <- "Totals"
@@ -30,7 +30,7 @@ dfTable1p1bottom
 
 ### Table 1.2 ... racial breakdown of tech employment
 table1p2top <- dfEmploymentAndShares[52,2:7]
-colNames <- c("ALL", "White", "Black", "Asian", "Hispanic", "OTHERS")
+colNames <- c("ALL", "white", "black", "asian", "hispanic", "OTHERS")
 colnames(table1p2top) <- colNames
 dfTable1p2top <- data.frame(table1p2top)
 rownames(dfTable1p2top) <- "Totals"
@@ -77,25 +77,35 @@ dfOccupationPerSex
 ### ... sorted by decreasing racialTechEmp so users can see "Top 10"
 ### ... Only show top 10 in report, show full tables 2WW, 2BB, 2AA, 2HH in appendices on GitHub
 
-### Table 2A Black tech employment vs Black population count
-dfEmploymentAndShares_black <- subset(dfEmploymentAndShares, select=c(state, black, perBlack))
-head(dfEmploymentAndShares_black)
-dfStatePop3_black <- subset(dfStatesPop3, select=c(state, black, perBlack))
-head(dfStatePop3_black)
-### Use subset( ..., select ) ... or maybe use dplyr and calculate parity within the table generation
-dfStateParity_black <- merge(dfEmploymentAndShares_black, dfStatePop3_black, by = "state")
-head(dfEmploymentAndShares)
-head(dfStatesPop3)
-head(dfStateParity_black)
-dfStateParity_black$parity <- round(dfStateParity_black$perBlack.x/dfStateParity_black$perBlack.y, digits=3)
-head(dfStateParity_black)
-columnNames <- c("state", "blackTech", "perBlackTech", "blackPop", "perBlackPop", "blackParity")
-colnames(dfStateParity_black) <- columnNames
-head(dfStateParity_black)
-index <- order(dfStateParity_black$blackTech, decreasing=TRUE)
-dfStateParity_black <- dfStateParity_black[index,]
-head(dfStateParity_black, 11)
-tail(dfStateParity_black,20)
+makeRaceTable2 <- function(race){
+    per_race <- paste0("per_", race)
+    pop_race <- paste0("pop_", race)
+    
+    dfEmp <- dfEmploymentAndShares[, c("state", race, per_race)]
+    dfPop <- dfStatesPop3[, c("state", race, per_race)]
+    dfParity <- merge(dfEmp, dfPop, by="state")
+    
+    raceTech <- paste0(race, "Tech")
+    per_raceTech <- paste0("per_", raceTech)
+    racePop <- paste0(race, "Pop")
+    per_racePop <- paste0("per_", racePop)
+    colnames(dfParity) <- c("state", raceTech, per_raceTech, racePop, per_racePop)
+    dfParity$parity <- round((dfParity[,per_raceTech]/dfParity[,per_racePop]), digits=3)
+    
+    index <- order(dfParity[, raceTech], decreasing=TRUE)
+    dfParity <- dfParity[index,]
+    return(dfParity)
+}
+dfParityBlack <- makeRaceTable2("black")
+dfParityWhite <- makeRaceTable2("white")
+dfParityHispanic <- makeRaceTable2("hispanic")
+dfParityAsian <- makeRaceTable2("asian")
+
+head(dfParityBlack)
+head(dfParityWhite)
+head(dfParityHispanic)
+head(dfParityAsian)
+
 
 ### Maps 2A, 2B, 2C, 2D ... maps of white, black, asian, hispanics in state tech sectors
 ### Maps 2.1A, 2.1B, 2.1C, 2.1D ... maps of % white, black, asian, hispanics in states.
