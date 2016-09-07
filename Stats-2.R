@@ -68,12 +68,16 @@ nRows <- dim(dfOccupationPerSex)[1]
 techSums <- as.vector(colSums(dfOccupationPerSex[2:4]))
 perMaleTechSums <- as.numeric(round((techSums[2]/techSums[1]), digits = 3) * 100)
 dfALL <- data.frame("ALL", t(techSums), perMaleTechSums)
-colnames(dfALL) <- c("occupation", "Total", "Male", "Female","perMale")
+colnames(dfALL) <- c("occupation", "Total", "Male","Female", "perMale")
 dfOccupationPerSex <- rbind(dfOccupationPerSex, dfALL)
+
+### Finish making things "nice"
 index <- order(dfOccupationPerSex$Total, decreasing=TRUE)
 dfOccupationPerSex <- dfOccupationPerSex[index,] 
 dfOccupationPerSex <- dfOccupationPerSex[c(2:nRows,1),] ### ALL at the bottom
-colnames(dfOccupationPerSex) <- c("occupation", "Total", "Male", "Female","%-Male")
+dfOccupationPerSex$Female <- NULL
+rownames(dfOccupationPerSex) <- NULL
+colnames(dfOccupationPerSex) <- c("occupation", "Total", "Male", "%-Male")
 dfOccupationPerSex
 
 ### Tables 2W, 2B, 2A, 2H. Racial groups in each state  
