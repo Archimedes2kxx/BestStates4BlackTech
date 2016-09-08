@@ -71,6 +71,7 @@ rownames(dfOccupationPerSex) <- NULL
 colnames(dfOccupationPerSex) <- c("occupation", "Total", "Male", "%-Male")
 dfOccupationPerSex
 
+
 ### Tables 2A, 2B, 2C, 2D. Racial groups in each state  
 ### ... state, <racial>TechEmp, totalTechEmp, per<Racial>TechEmp, totPop, <racialPop>, 
 ###        per<Racial>Pop, <racial>Parity ... 
@@ -107,24 +108,28 @@ head(dfParityHispanic,20)
 head(dfParityAsian,20)
 tail(dfParityAsian,20)
 
+
+### Tables 2.1A, 2.1B, 2.1C, 2.1D. summary stats for racial groups in each state  
+summary(dfParityAsian$parity) 
+summary(dfParityWhite$parity)
+summary(dfParityBlack$parity)
+summary(dfParityHispanic$parity)
+
+
+### Plots of parity ratios
+brPts <- seq(0,10, by=0.20)
+hist(dfParityBlack$parity, breaks=brPts, xlim=c(0,9), ylim=c(0,30))
+hist(dfParityWhite$parity, breaks=brPts, xlim=c(0,9), ylim=c(0,30))
+hist(dfParityHispanic$parity, breaks=brPts, xlim=c(0,9), ylim=c(0,30))
+hist(dfParityAsian$parity, breaks=brPts, xlim=c(0,9), ylim=c(0,30))
+
 ### Maps 2A, 2B, 2C, 2D ... maps of white, black, asian, hispanics in state tech sectors
-### Maps 2.1A, 2.1B, 2.1C, 2.1D ... maps of % white, black, asian, hispanics in states.
 
-### Plots 2A, 2B, 2C, 2D ... regression lines for racial tech employment vsl 
-### racial population in each state. 
-### The Beta slopes are printed on the graphs
 
-### Plots 3A, etc ... regression racial pop vs. parity
-head(dfParityBlack,10)
-### dfBlack <- dfParityBlack[c(-1, -(22:52)),]
-dfBlack <- subset(dfParityBlack, state != "District of Columbia")
-dfBlack <- dfBlack[c(-1, -c(12:52)),]
-f <- I(parity * 100) ~ I(blackPop/100000)
-lm_black <- lm(f, data = dfBlack)
-plot(f, data=dfBlack)
-abline(lm_black)
-lm_black
 
+### Box plots of parity ratios * 100
+
+### Plots 2A, 2B, 2C, 2D ... regression racial population vs. racial Tech 
 makeLM <- function(df, race) {
     ###df <- subset(df, state != "District of Columbia") 
     df <- subset(df, state != "ALL STATES")
@@ -140,6 +145,10 @@ makeLM(dfParityBlack, "black")
 makeLM(dfParityWhite, "white")
 makeLM(dfParityHispanic, "hispanic")
 makeLM(dfParityAsian, "asian")
+
+
+
+
 
 ### Question: What are the best states for Asians in tech?
 ### Answer:   All of them ... :-)
