@@ -77,7 +77,7 @@ dfOccupationPerSex
 ### ... sorted by decreasing racialTechEmp so users can see "Top 10"
 ### ... Only show top 10 in report, show full tables 2WW, 2BB, 2AA, 2HH in appendices on GitHub
 
-makeParityTable2 <- function(race){
+makeParityTable <- function(race){
     per_race <- paste0("per_", race)
     pop_race <- paste0("pop_", race)
     
@@ -96,10 +96,10 @@ makeParityTable2 <- function(race){
     dfParity <- dfParity[index,]
     return(dfParity)
 }
-dfParityBlack <- makeParityTable2("black")
-dfParityWhite <- makeParityTable2("white")
-dfParityHispanic <- makeParityTable2("hispanic")
-dfParityAsian <- makeParityTable2("asian")
+dfParityBlack <- makeParityTable("black")
+dfParityWhite <- makeParityTable("white")
+dfParityHispanic <- makeParityTable("hispanic")
+dfParityAsian <- makeParityTable("asian")
 
 head(dfParityBlack,20)
 head(dfParityWhite,20)
@@ -115,4 +115,32 @@ tail(dfParityAsian,20)
 ### The Beta slopes are printed on the graphs
 
 ### Plots 3A, etc ... regression racial pop vs. parity
+head(dfParityBlack,10)
+### dfBlack <- dfParityBlack[c(-1, -(22:52)),]
+dfBlack <- subset(dfParityBlack, state != "District of Columbia")
+dfBlack <- dfBlack[c(-1, -c(12:52)),]
+f <- I(parity * 100) ~ I(blackPop/100000)
+lm_black <- lm(f, data = dfBlack)
+plot(f, data=dfBlack)
+abline(lm_black)
+lm_black
+
+makeLM <- function(df, race) {
+    ###df <- subset(df, state != "District of Columbia") 
+    df <- subset(df, state != "ALL STATES")
+    f <- paste0("I(", race, "Tech) ~ I(" , race, "Pop/1000)")
+    lm <- lm(f, data = df)
+    pred <- paste0(race, "Pop")
+    resp <- paste0(race, "Tech")
+    plot(df[,pred]/1000, df[,resp])
+    abline(lm)
+    lm
+}
+makeLM(dfParityBlack, "black")
+makeLM(dfParityWhite, "white")
+makeLM(dfParityHispanic, "hispanic")
+makeLM(dfParityAsian, "asian")
+
+### Question: What are the best states for Asians in tech?
+### Answer:   All of them ... :-)
 
