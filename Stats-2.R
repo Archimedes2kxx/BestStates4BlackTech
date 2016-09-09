@@ -11,14 +11,15 @@ load(file="dfStatesPop3.RData")
 load("dfCensus2.RData")
 
 library(tidyr)
-install.packages("maps")
-install.packages("ggplot2")
-install.packages("plyr") 
-install.packages("mapproj")
+### install.packages("maps")
+### install.packages("ggplot2")
+### install.packages("dplyr") 
+
+### install.packages("mapproj")
 library(mapproj) ### needed by ggplot2, but not install automaticallly
 library(maps)
 library(ggplot2)
-###library(dplyr)
+library(dplyr)
 ###library(plyr)
 
 ### Table 1.1  Context -- How many people in the US in 2014 -- total, black, white, ### asian, hispanic, and OTHERS and percentages of total, white, black, asian, hispanic, and OTHERS
