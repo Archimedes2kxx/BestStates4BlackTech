@@ -11,6 +11,15 @@ load(file="dfStatesPop3.RData")
 load("dfCensus2.RData")
 
 library(tidyr)
+install.packages("maps")
+install.packages("ggplot2")
+install.packages("plyr") 
+install.packages("mapproj")
+library(mapproj) ### needed by ggplot2, but not install automaticallly
+library(maps)
+library(ggplot2)
+###library(dplyr)
+###library(plyr)
 
 ### Table 1.1  Context -- How many people in the US in 2014 -- total, black, white, ### asian, hispanic, and OTHERS and percentages of total, white, black, asian, hispanic, and OTHERS
 table1p1top <- dfStatesPop3[52,2:7]
@@ -124,6 +133,25 @@ hist(dfParityHispanic$parity, breaks=brPts, xlim=c(0,9), ylim=c(0,30))
 hist(dfParityAsian$parity, breaks=brPts, xlim=c(0,9), ylim=c(0,30))
 
 ### Maps 2A, 2B, 2C, 2D ... maps of white, black, asian, hispanics in state tech sectors
+### Follow W. Chang's cookbook p 313 for U.S. with lower 48 states
+states_map <- map_data("state") ### from ggplot]
+str(states_map)
+dfMapBlack <- subset(dfParityBlack, select=c("state", "blackTech"), state!= c("ALL STATES"))
+str(dfMapBlack)
+dfMapBlack
+levels(dfMapBlack$state)
+dfMapBlack$state <- tolower(dfMapBlack$state)
+dfMapBlack <- merge(states_map, dfMapBlack, by.x="region", by.y= "state")
+dfMapBlack <- arrange(dfMapBlack, group, order)
+head(dfMapBlack)
+str(dfMapBlack)
+ggMapBlack <- ggplot(data=dfMapBlack, aes(x=long, y=lat, group=group, fill=blackTech))
+ggMapBlack <- ggMapBlack + geom_polygon(colour="black") + coord_map() ###("polyconic")
+ggMapBlack
+
+
+
+
 
 
 
