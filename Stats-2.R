@@ -63,19 +63,20 @@ dfOccupationPerSex$perMale <- round(dfOccupationPerSex$Male /(dfOccupationPerSex
 
 dfOccupationPerSex$Total <- dfOccupationPerSex$Male + dfOccupationPerSex$Female
 dfOccupationPerSex <- dfOccupationPerSex[, c(1,5,2:4)] ### Put total in second column
+dfOccupationPerSex
 
 ### Add total row for ALL
-nRows <- dim(dfOccupationPerSex)[1]
 techSums <- as.vector(colSums(dfOccupationPerSex[2:4]))
 perMaleTechSums <- as.numeric(round((techSums[2]/techSums[1]), digits = 3) * 100)
 dfALL <- data.frame("ALL", t(techSums), perMaleTechSums)
 colnames(dfALL) <- c("occupation", "Total", "Male","Female", "perMale")
 dfOccupationPerSex <- rbind(dfOccupationPerSex, dfALL)
+nRows <- dim(dfOccupationPerSex)[1]
+dfOccupationPerSex
 
 ### Finish making things "nice"
 index <- order(dfOccupationPerSex$Total, decreasing=TRUE)
 dfOccupationPerSex <- dfOccupationPerSex[index,] 
-dfOccupationPerSex <- dfOccupationPerSex[c(2:nRows,1),] ### ALL at the bottom
 dfOccupationPerSex$Female <- NULL
 rownames(dfOccupationPerSex) <- NULL
 colnames(dfOccupationPerSex) <- c("occupation", "Total", "Male", "%-Male")
