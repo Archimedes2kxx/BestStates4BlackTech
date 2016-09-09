@@ -10,17 +10,17 @@ load(file="dfEmploymentAndShares.RData")
 load(file="dfStatesPop3.RData") 
 load("dfCensus2.RData")
 
-library(tidyr)
+### install.packages("tidyr")
 ### install.packages("maps")
 ### install.packages("ggplot2")
 ### install.packages("dplyr") 
-
 ### install.packages("mapproj")
-library(mapproj) ### needed by ggplot2, but not install automaticallly
+
+library(tidyr)
 library(maps)
+library(mapproj) ### needed by ggplot2, but not install automaticallly
 library(ggplot2)
 library(dplyr)
-###library(plyr)
 
 ### Table 1.1  Context -- How many people in the US in 2014 -- total, black, white, ### asian, hispanic, and OTHERS and percentages of total, white, black, asian, hispanic, and OTHERS
 table1p1top <- dfStatesPop3[52,2:7]
@@ -136,23 +136,51 @@ hist(dfParityAsian$parity, breaks=brPts, xlim=c(0,9), ylim=c(0,30))
 
 ### Maps 2A, 2B, 2C, 2D ... maps of white, black, asian, hispanics in state tech sectors
 ### Follow W. Chang's cookbook p 313 for U.S. with lower 48 states
+
 states_map <- map_data("state") ### from ggplot]
-str(states_map)
-dfMapBlack <- subset(dfParityBlack, select=c("state", "blackTech"), state!= c("ALL STATES"))
-str(dfMapBlack)
-dfMapBlack
-levels(dfMapBlack$state)
-dfMapBlack$state <- tolower(dfMapBlack$state)
-dfMapBlack <- merge(states_map, dfMapBlack, by.x="region", by.y= "state")
-dfMapBlack <- arrange(dfMapBlack, group, order)
-head(dfMapBlack)
-str(dfMapBlack)
-ggMapBlack <- ggplot(data=dfMapBlack, aes(x=long, y=lat, group=group, fill=blackTech))
-ggMapBlack <- ggMapBlack + geom_polygon(colour="black") + coord_map() ###("polyconic")
-ggMapBlack
+theme_clean <- function(base_size = 12) {
+    require(grid) # Needed for unit() function
+    theme_grey(base_size) %+replace%
+    theme(
+        axis.title = element_blank(),
+        axis.text = element_blank(),
+        panel.background = element_blank(),
+        panel.grid = element_blank(),
+        ###axis.ticks.length = unit(0, "cm"),
+        ###axis.ticks.margin = unit(0, "cm"),
+        panel.margin = unit(0, "lines"),
+        plot.margin = unit(c(0, 0, 0, 0), "lines"),
+        complete = TRUE
+    )
+}
+    
+makeTechMap <- function(df, race) {
+    raceTech <- paste0(race,"Tech")
+    legend <- paste(toupper(substr(race, 1, 1)), substr(race, 2, nchar(race)), sep="") ### ugh!!! ... :-(
+    dfMap <- subset(df, select=c("state", raceTech), state!= c("ALL STATES"))  
+    dfMap$state <- tolower(dfMap$state)
+    dfMap <- merge(states_map, dfMap, by.x="region", by.y= "state")
+    dfMap <- arrange(dfMap, group, order) 
+    raceData <- dfMap[,raceTech]
 
+    ggMap <- ggplot(data=dfMap, aes(map_id=region, fill=raceData))
+    ggMap <- ggMap + geom_map(map=states_map, colour="black")
+    ggMap <- ggMap + scale_fill_gradient2(low="#559999", mid="grey90", high="#BB650B", midpoint= median(raceData))        ### (dfMap[,raceTech]))
+    ggMap <- ggMap + expand_limits(x=states_map$long, y=states_map$lat) 
+    ggMap <- ggMap + coord_map("polyconic") + labs(fill=legend)
+    theme_clean()
+    return(ggMap)
+}
 
+black_ggMap<-makeTechMap(dfParityBlack,"black")
+white_ggMap <-makeTechMap(dfParityWhite,"white")
+hispanic_ggMap <- makeTechMap(dfParityHispanic,"hispanic")
+asian_ggMap <- makeTechMap(dfParityAsian,"asian")
 
+black_ggMap
+white_ggMap
+hispanic_ggMap
+asian_ggMap
 
 
 
