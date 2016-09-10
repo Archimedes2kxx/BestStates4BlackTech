@@ -165,16 +165,6 @@ rank <- getEmploymentRank("black", "California")
 rank       
 
 
-str(dfParity_black)                
-class(dfParity_asian)               
-
-### Plots of parity ratios
-brPts <- seq(0,10, by=0.20)
-hist(dfParity_black$parity, breaks=brPts, xlim=c(0,9), ylim=c(0,30))
-hist(dfParity_white$parity, breaks=brPts, xlim=c(0,9), ylim=c(0,30))
-hist(dfParity_hispanic$parity, breaks=brPts, xlim=c(0,9), ylim=c(0,30))
-hist(dfParity_asian$parity, breaks=brPts, xlim=c(0,9), ylim=c(0,30))
-
 ### Maps 2A, 2B, 2C, 2D ... maps of white, black, asian, hispanics in state tech sectors
 ### Follow W. Chang's cookbook p 313 for U.S. with lower 48 states
 
@@ -226,9 +216,6 @@ black_ggMap
 white_ggMap
 hispanic_ggMap
 asian_ggMap
-
-
-### Box plots of parity ratios * 100
 
 ### Plots 2A, 2B, 2C, 2D ... regression racial population vs. racial Tech 
 makeLM <- function(df, race) {
