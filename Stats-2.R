@@ -63,7 +63,7 @@ dfOccupationPerSex$perMale <- round(dfOccupationPerSex$Male /(dfOccupationPerSex
 
 dfOccupationPerSex$Total <- dfOccupationPerSex$Male + dfOccupationPerSex$Female
 dfOccupationPerSex <- dfOccupationPerSex[, c(1,5,2:4)] ### Put total in second column
-dfOccupationPerSex
+### dfOccupationPerSex
 
 ### Add total row for ALL
 techSums <- as.vector(colSums(dfOccupationPerSex[2:4]))
@@ -142,8 +142,12 @@ theme_clean <- function(base_size = 12) {
     require(grid) # Needed for unit() function
     theme_grey(base_size) %+replace%
     theme(
-        axis.title = element_blank(),
-        axis.text = element_blank(),
+        axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
         panel.background = element_blank(),
         panel.grid = element_blank(),
         ###axis.ticks.length = unit(0, "cm"),
@@ -156,7 +160,7 @@ theme_clean <- function(base_size = 12) {
     
 makeTechMap <- function(df, race) {
     raceTech <- paste0(race,"Tech")
-    legend <- paste(toupper(substr(race, 1, 1)), substr(race, 2, nchar(race)), sep="") ### ugh!!! ... :-(
+    legend <- paste(toupper(substr(race, 1, 1)), substr(race, 2, nchar(race)), sep="") ### capitalize first letter ... aarrrrrrrrrrrggghhh!!!
     dfMap <- subset(df, select=c("state", raceTech), state!= c("ALL STATES"))  
     dfMap$state <- tolower(dfMap$state)
     dfMap <- merge(states_map, dfMap, by.x="region", by.y= "state")
@@ -167,8 +171,8 @@ makeTechMap <- function(df, race) {
     ggMap <- ggMap + geom_map(map=states_map, colour="black")
     ggMap <- ggMap + scale_fill_gradient2(low="#559999", mid="grey90", high="#BB650B", midpoint= median(raceData))        ### (dfMap[,raceTech]))
     ggMap <- ggMap + expand_limits(x=states_map$long, y=states_map$lat) 
-    ggMap <- ggMap + coord_map("polyconic") + labs(fill=legend)
-    theme_clean()
+    ggMap <- ggMap + coord_map("polyconic") + labs(fill=legend) + theme_clean()
+    
     return(ggMap)
 }
 
@@ -181,8 +185,6 @@ black_ggMap
 white_ggMap
 hispanic_ggMap
 asian_ggMap
-
-
 
 
 ### Box plots of parity ratios * 100
