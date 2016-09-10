@@ -108,31 +108,72 @@ makeParityTable <- function(race){
     dfParity <- dfParity[index,]
     return(dfParity)
 }
-dfParityBlack <- makeParityTable("black")
-dfParityWhite <- makeParityTable("white")
-dfParityHispanic <- makeParityTable("hispanic")
-dfParityAsian <- makeParityTable("asian")
+dfParity_black <- makeParityTable("black")
+dfParity_white <- makeParityTable("white")
+dfParity_hispanic <- makeParityTable("hispanic")
+dfParity_asian <- makeParityTable("asian")
 
-head(dfParityBlack,20)
-head(dfParityWhite,20)
-head(dfParityHispanic,20)
-head(dfParityAsian,20)
-tail(dfParityAsian,20)
+head(dfParity_black,20)
+head(dfParity_white,20)
+head(dfParity_hispanic,20)
+head(dfParity_asian,20)
+tail(dfParity_asian,20)
 
 
 ### Tables 2.1A, 2.1B, 2.1C, 2.1D. summary stats for racial groups in each state  
-summary(dfParityAsian$parity) 
-summary(dfParityWhite$parity)
-summary(dfParityBlack$parity)
-summary(dfParityHispanic$parity)
+summary(dfParity_asian$parity) 
+summary(dfParity_white$parity)
+summary(dfParity_black$parity)
+summary(dfParity_hispanic$parity)
 
+getParityDF <- function(race, state){
+   if (race == "black") {
+       return(dfParity_black)
+   } else {
+       if (race =="white") {
+           return(dfParity_white)
+       } else {
+           if (race =="hispanic") {
+               return(dfParity_hispanic)
+           } else {
+               if (race == "asian") {
+                    return(dfParity_asian)
+               } else {
+                   return (0)
+               }
+           }
+       }
+   }
+}
+
+getEmploymentRank <- function(race, state) {
+    df <- getParityDF(race, state)
+    if (is.null(dim(df))) { ####### NOT WORKING
+        print(paste("Bad race input ... "))
+        return(df)
+    }
+    df <- df[-1,] ### drop the top ALL row
+    rank <- which(df$state == state) 
+    if (length(rank) != 0) {
+        return(rank)
+    } else {
+        print(paste("Bad state input"))
+    }
+}
+
+rank <- getEmploymentRank("black", "California")
+rank       
+
+
+str(dfParity_black)                
+class(dfParity_asian)               
 
 ### Plots of parity ratios
 brPts <- seq(0,10, by=0.20)
-hist(dfParityBlack$parity, breaks=brPts, xlim=c(0,9), ylim=c(0,30))
-hist(dfParityWhite$parity, breaks=brPts, xlim=c(0,9), ylim=c(0,30))
-hist(dfParityHispanic$parity, breaks=brPts, xlim=c(0,9), ylim=c(0,30))
-hist(dfParityAsian$parity, breaks=brPts, xlim=c(0,9), ylim=c(0,30))
+hist(dfParity_black$parity, breaks=brPts, xlim=c(0,9), ylim=c(0,30))
+hist(dfParity_white$parity, breaks=brPts, xlim=c(0,9), ylim=c(0,30))
+hist(dfParity_hispanic$parity, breaks=brPts, xlim=c(0,9), ylim=c(0,30))
+hist(dfParity_asian$parity, breaks=brPts, xlim=c(0,9), ylim=c(0,30))
 
 ### Maps 2A, 2B, 2C, 2D ... maps of white, black, asian, hispanics in state tech sectors
 ### Follow W. Chang's cookbook p 313 for U.S. with lower 48 states
@@ -169,17 +210,17 @@ makeTechMap <- function(df, race) {
 
     ggMap <- ggplot(data=dfMap, aes(map_id=region, fill=raceData))
     ggMap <- ggMap + geom_map(map=states_map, colour="black")
-    ggMap <- ggMap + scale_fill_gradient2(low="#559999", mid="grey90", high="#BB650B", midpoint= median(raceData))        ### (dfMap[,raceTech]))
+    ggMap <- ggMap + scale_fill_gradient2(low="#559999", mid="grey90", high="#BB650B", midpoint= median(raceData))       
     ggMap <- ggMap + expand_limits(x=states_map$long, y=states_map$lat) 
     ggMap <- ggMap + coord_map("polyconic") + labs(fill=legend) + theme_clean()
     
     return(ggMap)
 }
 
-black_ggMap<-makeTechMap(dfParityBlack,"black")
-white_ggMap <-makeTechMap(dfParityWhite,"white")
-hispanic_ggMap <- makeTechMap(dfParityHispanic,"hispanic")
-asian_ggMap <- makeTechMap(dfParityAsian,"asian")
+black_ggMap<-makeTechMap(dfParity_black,"black")
+white_ggMap <-makeTechMap(dfParity_white,"white")
+hispanic_ggMap <- makeTechMap(dfParity_hispanic,"hispanic")
+asian_ggMap <- makeTechMap(dfParity_asian,"asian")
 
 black_ggMap
 white_ggMap
@@ -201,10 +242,10 @@ makeLM <- function(df, race) {
     abline(lm)
     lm
 }
-makeLM(dfParityBlack, "black")
-makeLM(dfParityWhite, "white")
-makeLM(dfParityHispanic, "hispanic")
-makeLM(dfParityAsian, "asian")
+makeLM(dfParity_black, "black")
+makeLM(dfParity_white, "white")
+makeLM(dfParity_hispanic, "hispanic")
+makeLM(dfParity_asian, "asian")
 
 
 
