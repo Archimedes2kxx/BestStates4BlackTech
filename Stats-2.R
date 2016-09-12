@@ -22,15 +22,15 @@ library(mapproj) ### needed by ggplot2, but not install automaticallly
 library(ggplot2)
 library(dplyr)
 
-### Table 1.1  Context -- How many people in the US in 2014 -- total, black, white, ### asian, hispanic, and OTHERS and percentages of total, white, black, asian, hispanic, and OTHERS
-table1p1top <- dfStatesPop3[52,2:7]
+### Table 1a   Context -- How many people in the US in 2014 -- total, black, white, ### asian, hispanic, and OTHERS and percentages of total, white, black, asian, hispanic, and OTHERS
+table1p1top <- dfStatesPop3[1,2:7]
 colNames <- c("ALL", "white", "black", "asian", "hispanic", "OTHERS")
 colnames(table1p1top) <- colNames
 dfTable1p1top <- data.frame(table1p1top)
 rownames(dfTable1p1top) <- "Totals"
 dfTable1p1top
 
-table1p1bottom <- dfStatesPop3[52,c(2,8:12)]
+table1p1bottom <- dfStatesPop3[1,c(2,8:12)]
 table1p1bottom <- as.vector(table1p1bottom)
 table1p1bottom[1,1] <- 1.0 ### 1.0 = 100 percent for ALL
 colnames(table1p1bottom) <- colNames
@@ -38,15 +38,15 @@ dfTable1p1bottom <- round(data.frame(table1p1bottom), digits=3) * 100
 rownames(dfTable1p1bottom) <- "Percent"
 dfTable1p1bottom
 
-### Table 1.2 ... racial breakdown of tech employment
-table1p2top <- dfEmploymentAndShares[52,2:7]
+### Table 1b ... racial breakdown of tech employment
+table1p2top <- dfEmploymentAndShares[1,2:7]
 colNames <- c("ALL", "white", "black", "asian", "hispanic", "OTHERS")
 colnames(table1p2top) <- colNames
 dfTable1p2top <- data.frame(table1p2top)
 rownames(dfTable1p2top) <- "Totals"
 dfTable1p2top
 
-table1p2bottom <- dfEmploymentAndShares[52,c(2,8:12)]
+table1p2bottom <- dfEmploymentAndShares[1,c(2,8:12)]
 table1p2bottom <- as.vector(table1p2bottom)
 table1p2bottom[1,1] <- 1.0 ### 1.0 = 100 percent for ALL
 colnames(table1p2bottom) <- colNames
@@ -54,7 +54,13 @@ dfTable1p2bottom <- round(data.frame(table1p2bottom), digits=3) * 100
 rownames(dfTable1p2bottom) <- "Percent"
 dfTable1p2bottom
 
-### Table 1.3 Sex by Occupations ... two rows
+dfTable1 <- rbind(dfTable1p1top, dfTable1p1bottom, dfTable1p2top, dfTable1p2bottom)
+rownames(dfTable1) <- c("U.S. Pop.", "% U.S. Pop", "U.S. Tech", "% U.S. Tech")
+round(dfTable1[1,], digits=0)
+round(dfTable1[3,], digits=0)
+dfTable1
+
+### Table 1.2 Sex by Occupations ... two rows
 censusGroups <- group_by(dfCensus2, occupation, sex)
 dfPtsPerSex <- summarise(censusGroups, ptsPerSex = sum(personalWeight))
 dfOccupationPerSex <- spread(dfPtsPerSex, key=sex, value=ptsPerSex)
@@ -120,6 +126,8 @@ head(dfParity_hispanic,20)
 head(dfParity_asian,20)
 tail(dfParity_asian,20)
 
+############
+### handy tool for spot checking data
 selectParityDF <- function(race, state){
    if (race == "black") {
        return(dfParity_black)
@@ -175,8 +183,6 @@ theme_clean <- function(base_size = 12) {
         axis.ticks.y=element_blank(),
         panel.background = element_blank(),
         panel.grid = element_blank(),
-        ###axis.ticks.length = unit(0, "cm"),
-        ###axis.ticks.margin = unit(0, "cm"),
         panel.margin = unit(0, "lines"),
         plot.margin = unit(c(0, 0, 0, 0), "lines"),
         complete = TRUE
@@ -201,17 +207,13 @@ makeTechMap <- function(df, race) {
     return(ggMap)
 }
 
-black_ggMap<-makeTechMap(dfParity_black,"black")
-white_ggMap <-makeTechMap(dfParity_white,"white")
-hispanic_ggMap <- makeTechMap(dfParity_hispanic,"hispanic")
-asian_ggMap <- makeTechMap(dfParity_asian,"asian")
+(black_ggMap<-makeTechMap(dfParity_black,"black"))
+(white_ggMap <-makeTechMap(dfParity_white,"white"))
+(hispanic_ggMap <- makeTechMap(dfParity_hispanic,"hispanic"))
+(asian_ggMap <- makeTechMap(dfParity_asian,"asian"))
 
-black_ggMap
-white_ggMap
-hispanic_ggMap
-asian_ggMap
-
-### Tables 2.1A, 2.1B, 2.1C, 2.1D. summary stats for racial groups in each state  
+##########################
+### Tables 2. summary stats for racial groups in each state  
 summary(dfParity_asian$parity) 
 summary(dfParity_white$parity)
 summary(dfParity_black$parity)
@@ -229,7 +231,7 @@ matParity
 dfParity <- as.data.frame(matParity)
 dfParity
 
-
+##########################
 ### Plots 2A, 2B, 2C, 2D ... regression racial population vs. racial Tech 
 makeLM <- function(df, race) {
     ###df <- subset(df, state != "District of Columbia") 
@@ -255,27 +257,33 @@ dfParity <- dfParity[c("hispanic", "black", "white", "asian"),]
 dfParity
 
 ### Prefer to scatterplot via ggplot  
-pred_black <- predict(lm_black)
-regLine_black <- data.frame(dfParity_black$blackPop[-1], pred_black)
-colnames(regLine_black) <- c("blackPop", "blackTech")
+plotEmpVsPop <- function(df, race){
+    racePop <- paste0(race, "Pop")
+    racePopLab <- paste0(racePop, "/1000")
+    raceTech <- paste0(race, "Tech")
+    anno <- paste0("Beta = ", dfParity[race, "beta1000"])
+    
+    ### Example: aes(df[-1,x=I(df[-1,"blackPop"]/1000), y = df[-1,"blackTech"]
+    ggScatter <- ggplot(df[-1,], aes(x=I(df[-1,racePop]/1000), y=df[-1,raceTech])) + geom_point(shape=1) 
+    ggScatLine <- ggScatter + stat_smooth(method=lm, se=FALSE)
+    
+    ### Example: xlab("blackPop/1000) + ylab("blackTech")
+    ggScatLine <- ggScatLine + xlab(racePopLab) + ylab(raceTech)
+    ggScatLine <- ggScatLine + ggtitle(paste0(raceTech, " vs ", racePopLab))
+    ggScatLine <- ggScatLine + annotate("text", label=anno, x=-Inf, y=Inf, hjust=-.2, vjust=2)
+        
+    return(ggScatLine)
+}
 
-ggScatter_black <- ggplot(dfParity_black[-1,], aes(x=I(blackPop/1000), y=I(blackTech), colour="black")) + geom_point(shape=1) + 
-    scale_colour_hue(l=50) # Use a slightly darker palette than normal
-ggLine_black <- ggScatter_black + geom_line(data=regLine_black, size=1)
-ggLine_black
+##### dev.off()
+(ggPlot_black <- plotEmpVsPop(dfParity_black, "black"))
+(ggPlot_white <- plotEmpVsPop(dfParity_white, "white"))
+(ggPlot_hispanic <- plotEmpVsPop(dfParity_hispanic, "hispanic"))
+(ggPlot_asian <- plotEmpVsPop(dfParity_asian, "asian"))
 
-pred_asian <- predict(lm_asian)
-regLine_asian <- data.frame(dfParity_asian$asianPop[-1], pred_asian)
-colnames(regLine_asian) <- c("asianPop", "asianTech")
-
-ggScatter_asian <- ggplot(dfParity_asian[-1,], aes(x=I(asianPop/1000), y=I(asianTech), colour="green")) + geom_point(shape=1) + 
-    scale_colour_hue(l=50) # Use a slightly darker palette than normal
-ggLine_asian <- ggScatter_asian + geom_line(data=regLine_asian, size=1)
-ggLine_asian
-
-
-head(regLine_black)
-head(dfParity_black$blackPop[-1])
+dim(dfParity_black[-1,])
+dim((dfParity_black[-1,"blackPop"])/1000)
+str(dfParity_black)
 
 
 ### Question: What are the best states for Asians in tech?
