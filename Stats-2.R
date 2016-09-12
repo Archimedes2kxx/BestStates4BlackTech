@@ -256,6 +256,27 @@ dfParity <- round(cbind(dfParity, beta1000), digits=2)
 dfParity <- dfParity[c("hispanic", "black", "white", "asian"),]
 dfParity
 
+### Calculate max values for plots (below)
+###############
+blackMax <- c(max(dfParity_black[-1,]$blackTech), max(dfParity_black[-1,]$blackPop))
+whiteMax <- c(max(dfParity_white[-1,]$whiteTech), max(dfParity_white[-1,]$whitePop))
+hispanicMax <- c(max(dfParity_hispanic[-1,]$hispanicTech), max(dfParity_hispanic[-1,]$hispanicPop))
+asianMax <- c(max(dfParity_asian[-1,]$asianTech), max(dfParity_asian[-1,]$asianPop))
+
+matMaxVals <- matrix(NA, nrow=4, ncol = 2)
+rownames(matMaxVals) <- c("black", "white", "hispanic", "asian")
+colnames(matMaxVals) <- c("Tech", "Pop")
+matMaxVals["black",] <- blackMax
+matMaxVals["white",] <- whiteMax
+matMaxVals["hispanic",] <- hispanicMax
+matMaxVals["asian",] <- asianMax
+
+### Max values overall are the max values for whites, of course, but the general code may 
+##  be useful at some later date
+(maxTech <- max(matMaxVals[,"Tech"]))
+(maxPop <- max(matMaxVals[,"Pop"])/1000)
+
+###################
 ### Prefer to scatterplot via ggplot  
 plotEmpVsPop <- function(df, race){
     racePop <- paste0(race, "Pop")
@@ -265,13 +286,12 @@ plotEmpVsPop <- function(df, race){
     
     ### Example: aes(df[-1,x=I(df[-1,"blackPop"]/1000), y = df[-1,"blackTech"]
     ggScatter <- ggplot(df[-1,], aes(x=I(df[-1,racePop]/1000), y=df[-1,raceTech])) + geom_point(shape=1) 
-    ggScatLine <- ggScatter + stat_smooth(method=lm, se=FALSE)
+    ggScatLine <- ggScatter + stat_smooth(method=lm, se=FALSE) + xlim(0, maxPop) + ylim(0, maxTech)
     
     ### Example: xlab("blackPop/1000) + ylab("blackTech")
     ggScatLine <- ggScatLine + xlab(racePopLab) + ylab(raceTech)
     ggScatLine <- ggScatLine + ggtitle(paste0(raceTech, " vs ", racePopLab))
     ggScatLine <- ggScatLine + annotate("text", label=anno, x=-Inf, y=Inf, hjust=-.2, vjust=2)
-        
     return(ggScatLine)
 }
 
@@ -281,11 +301,7 @@ plotEmpVsPop <- function(df, race){
 (ggPlot_hispanic <- plotEmpVsPop(dfParity_hispanic, "hispanic"))
 (ggPlot_asian <- plotEmpVsPop(dfParity_asian, "asian"))
 
-dim(dfParity_black[-1,])
-dim((dfParity_black[-1,"blackPop"])/1000)
-str(dfParity_black)
-
-
 ### Question: What are the best states for Asians in tech?
 ### Answer:   All of them ... :-)
+
 
