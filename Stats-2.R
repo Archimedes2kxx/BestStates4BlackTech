@@ -55,7 +55,7 @@ rownames(dfTable1p2bottom) <- "Percent"
 dfTable1p2bottom
 
 ### Table 1.3 Sex by Occupations ... two rows
-censusGroups <- group_by(dfCensus3, occupation, sex)
+censusGroups <- group_by(dfCensus2, occupation, sex)
 dfPtsPerSex <- summarise(censusGroups, ptsPerSex = sum(personalWeight))
 dfOccupationPerSex <- spread(dfPtsPerSex, key=sex, value=ptsPerSex)
 dfOccupationPerSex <- data.frame(dfOccupationPerSex)
@@ -93,7 +93,7 @@ makeParityTable <- function(race){
     per_race <- paste0("per_", race)
     pop_race <- paste0("pop_", race)
     
-    dfEmp <- dfEmploymentAndShares[, c("state", race, per_race)]
+    dfEmp <- dfEmploymentAndShares[, c("state", "totals", race, per_race)]
     dfPop <- dfStatesPop3[, c("state", race, per_race)]
     dfParity <- merge(dfEmp, dfPop, by="state")
     
@@ -101,13 +101,14 @@ makeParityTable <- function(race){
     per_raceTech <- paste0("per_", raceTech)
     racePop <- paste0(race, "Pop")
     per_racePop <- paste0("per_", racePop)
-    colnames(dfParity) <- c("state", raceTech, per_raceTech, racePop, per_racePop)
+    colnames(dfParity) <- c("state", "totalTech", raceTech, per_raceTech, racePop, per_racePop)
     dfParity$parity <- round((dfParity[,per_raceTech]/dfParity[,per_racePop]), digits=3)
     
     index <- order(dfParity[, raceTech], decreasing=TRUE)
     dfParity <- dfParity[index,]
     return(dfParity)
 }
+
 dfParity_black <- makeParityTable("black")
 dfParity_white <- makeParityTable("white")
 dfParity_hispanic <- makeParityTable("hispanic")
@@ -119,14 +120,7 @@ head(dfParity_hispanic,20)
 head(dfParity_asian,20)
 tail(dfParity_asian,20)
 
-
-### Tables 2.1A, 2.1B, 2.1C, 2.1D. summary stats for racial groups in each state  
-summary(dfParity_asian$parity) 
-summary(dfParity_white$parity)
-summary(dfParity_black$parity)
-summary(dfParity_hispanic$parity)
-
-getParityDF <- function(race, state){
+selectParityDF <- function(race, state){
    if (race == "black") {
        return(dfParity_black)
    } else {
@@ -147,22 +141,22 @@ getParityDF <- function(race, state){
 }
 
 getEmploymentRank <- function(race, state) {
-    df <- getParityDF(race, state)
+    df <- selectParityDF(race, state)
     if (is.null(dim(df))) { ####### NOT WORKING
         print(paste("Bad race input ... "))
         return(df)
     }
     df <- df[-1,] ### drop the top ALL row
-    rank <- which(df$state == state) 
+    R <- which(df$state == state) 
     if (length(rank) != 0) {
-        return(rank)
+        return(R)
     } else {
         print(paste("Bad state input"))
     }
 }
 
-rank <- getEmploymentRank("black", "California")
-rank       
+R <- getEmploymentRank("black", "California")
+R       
 
 
 ### Maps 2A, 2B, 2C, 2D ... maps of white, black, asian, hispanics in state tech sectors
@@ -217,25 +211,71 @@ white_ggMap
 hispanic_ggMap
 asian_ggMap
 
+### Tables 2.1A, 2.1B, 2.1C, 2.1D. summary stats for racial groups in each state  
+summary(dfParity_asian$parity) 
+summary(dfParity_white$parity)
+summary(dfParity_black$parity)
+summary(dfParity_hispanic$parity)
+
+matParity <- matrix(NA, nrow=4, ncol = 6)
+rownames(matParity) <- c("black", "white", "hispanic", "asian")
+colnames(matParity) <- c("min", "Q1", "median", "mean", "Q3", "max")
+matParity["black",] <- summary(dfParity_black$parity)
+matParity["white",] <- summary(dfParity_white$parity)
+matParity["hispanic",] <- summary(dfParity_hispanic$parity)
+matParity["asian",] <- summary(dfParity_asian$parity)
+matParity
+
+dfParity <- as.data.frame(matParity)
+dfParity
+
+
 ### Plots 2A, 2B, 2C, 2D ... regression racial population vs. racial Tech 
 makeLM <- function(df, race) {
     ###df <- subset(df, state != "District of Columbia") 
     df <- subset(df, state != "ALL STATES")
     f <- paste0("I(", race, "Tech) ~ I(" , race, "Pop/1000)")
-    lm <- lm(f, data = df)
+    lm_race <- lm(f, data = df)
     pred <- paste0(race, "Pop")
     resp <- paste0(race, "Tech")
-    plot(df[,pred]/1000, df[,resp])
-    abline(lm)
-    lm
+    
+    f <- paste0("I(per_", race, "Pop) ~ I(per_", race, "Tech)")
+    lmModel <- lm(f, data = df)
+    return(lm_race)
 }
-makeLM(dfParity_black, "black")
-makeLM(dfParity_white, "white")
-makeLM(dfParity_hispanic, "hispanic")
-makeLM(dfParity_asian, "asian")
+
+lm_black <- makeLM(dfParity_black, "black")
+lm_white <- makeLM(dfParity_white, "white")
+lm_hispanic <-makeLM(dfParity_hispanic, "hispanic")
+lm_asian <- makeLM(dfParity_asian, "asian")
+
+beta1000 <- c(lm_black$coef[2], lm_white$coef[2], lm_hispanic$coef[2], lm_asian$coef[2])
+dfParity <- round(cbind(dfParity, beta1000), digits=2)
+dfParity <- dfParity[c("hispanic", "black", "white", "asian"),]
+dfParity
+
+### Prefer to scatterplot via ggplot  
+pred_black <- predict(lm_black)
+regLine_black <- data.frame(dfParity_black$blackPop[-1], pred_black)
+colnames(regLine_black) <- c("blackPop", "blackTech")
+
+ggScatter_black <- ggplot(dfParity_black[-1,], aes(x=I(blackPop/1000), y=I(blackTech), colour="black")) + geom_point(shape=1) + 
+    scale_colour_hue(l=50) # Use a slightly darker palette than normal
+ggLine_black <- ggScatter_black + geom_line(data=regLine_black, size=1)
+ggLine_black
+
+pred_asian <- predict(lm_asian)
+regLine_asian <- data.frame(dfParity_asian$asianPop[-1], pred_asian)
+colnames(regLine_asian) <- c("asianPop", "asianTech")
+
+ggScatter_asian <- ggplot(dfParity_asian[-1,], aes(x=I(asianPop/1000), y=I(asianTech), colour="green")) + geom_point(shape=1) + 
+    scale_colour_hue(l=50) # Use a slightly darker palette than normal
+ggLine_asian <- ggScatter_asian + geom_line(data=regLine_asian, size=1)
+ggLine_asian
 
 
-
+head(regLine_black)
+head(dfParity_black$blackPop[-1])
 
 
 ### Question: What are the best states for Asians in tech?
