@@ -33,6 +33,7 @@ sexCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "c
 
 file="Occupation-Codes.txt"
 occupationCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
+occupationCodes
 
 ### 4. Convert coded categorical variables to factors ... sex, race, state, occupation
 dfCensus2$race <- as.factor(dfCensus2$race)
@@ -97,11 +98,10 @@ dfEmploymentAndShares <- merge(dfRaceEmploymentPerState, dfRaceSharesPerState)
 
 dfTotalsRow <- dfEmploymentAndShares[1,] ### dummy to get columns and types
 dfTotalsRow$state <- "ALL STATES"
-dfTotalsRow
 dfTotalsRow[1,3:7] <- allRacesInTech
 dfTotalsRow[1,8:12] <- raceSharesInTech
 dfTotalsRow[1,2] <- allTech
-dfEmploymentAndShares <- rbind(dfEmploymentAndShares, dfTotalsRow)
+dfEmploymentAndShares <- rbind(dfTotalsRow, dfEmploymentAndShares)
 
 ### 11. Save combined employment and shares data frame
 head(dfEmploymentAndShares)
