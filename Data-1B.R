@@ -43,16 +43,13 @@ mat <- matrix(vec, nrow=51, ncol=8)
 dfStatesPop2 <- data.frame(dfStatesPop2[,1], mat)
 colnames(dfStatesPop2) <- columnNames ### ... yes, again
 
-### 9. Add row names = states .... convenient for subsetting with brackets
-rownames(dfStatesPop2) <- dfStatesPop2$state
-
-### 10. Combine races that will not be analyzed, then delete their columns
+### 9. Combine races that will not be analyzed, then delete their columns
 dfStatesPop2$OTHERS <- dfStatesPop2$amInAlNat + dfStatesPop2$pacific + dfStatesPop2$mixed
 dfStatesPop2$amInAlNat <- NULL
 dfStatesPop2$pacific <- NULL
 dfStatesPop2$mixed <- NULL
 
-### 11. Calculate derived parameters ... percentage of each racial group in the total population ... add to data frame
+### 10. Calculate derived parameters ... percentage of each racial group in the total population ... add to data frame
 dfStatesPop3 <- dfStatesPop2
 dfStatesPop3$per_white <- round(dfStatesPop3$white / dfStatesPop3$totpop, digits = 3)
 dfStatesPop3$per_black <- round(dfStatesPop3$black / dfStatesPop3$totpop, digits = 3)
@@ -60,7 +57,8 @@ dfStatesPop3$per_asian <- round(dfStatesPop3$asian / dfStatesPop3$totpop, digits
 dfStatesPop3$per_hispanic <- round(dfStatesPop3$hisp / dfStatesPop3$totpop, digits = 3)
 dfStatesPop3$per_OTHERS <- round(dfStatesPop3$OTHERS / dfStatesPop3$totpop, digits = 3)
 
-### 12. Add a totals row and save
+### 11. Add a totals row and save
+### WRONG ALL STATES TOTAL ROW ... AND PLACE TOTALS ROW AT TOP OF TABLE
 allRacesInUS <- colSums(dfStatesPop3[,3:7])
 allRaces <- sum(allRacesInUS) ### 4125164
 raceSharesInUS <- round((allRacesInUS/allRaces), digits=3)
@@ -70,13 +68,13 @@ dfTotalsRow$state <- "ALL STATES"
 dfTotalsRow[1,3:7] <- allRacesInUS
 dfTotalsRow[1,8:12] <- raceSharesInUS
 dfTotalsRow[1,2] <- allRaces
-dfStatesPop3 <- rbind(dfStatesPop3, dfTotalsRow)
+dfStatesPop3 <- rbind( dfTotalsRow, dfStatesPop3)
 
 head(dfStatesPop3)
 tail(dfStatesPop3)
 save(dfStatesPop3, file = "dfStatesPop3.RData")
 
-### 13. Examples of state AFF parameters
+### 12. Examples of state AFF parameters
 dfStatesPop3["California",]
 sum(dfStatesPop3["California", 3:10])
 
