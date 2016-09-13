@@ -20,7 +20,9 @@ library(tidyr)
 library(maps)
 library(mapproj) ### needed by ggplot2, but not installed automaticallly
 library(ggplot2)
+library(maps)
 library(dplyr)
+library(gridExtra)
 
 ### Table 1A   Context -- How many people were living in the US in 2014 -- total, black, white, ### asian, hispanic, and OTHERS and percentages of total, white, black, asian, hispanic, and OTHERS
 (dfTable1A <- dfStatesPop3[1,2:7])
@@ -269,7 +271,9 @@ lm_asian <- makeLM(dfParity_asian, "asian")
 beta1000 <- c(lm_black$coef[2], lm_white$coef[2], lm_hispanic$coef[2], lm_asian$coef[2])
 dfParity <- round(cbind(dfParity, beta1000), digits=2)
 dfParity <- dfParity[c("hispanic", "black", "white", "asian"),]
-dfParity
+(dfTable5 <- dfParity)
+
+save(dfTable5, file="dfTable5.RData")
 
 ### Calculate max values for plots (below)
 ###############
@@ -324,6 +328,20 @@ plotEmpVsPop <- function(df, race){
 (ggPlot_white <- plotEmpVsPop(dfParity_white, "white"))
 (ggPlot_black <- plotEmpVsPop(dfEx_black, "black"))
 (ggPlot_hispanic <- plotEmpVsPop(dfParity_hispanic, "hispanic"))
+
+save(ggPlot_asian, file="ggPlot_asian.RData")
+save(ggPlot_white, file="ggPlot_white.RData")
+save(ggPlot_black, file="ggPlot_black.RData")
+save(ggPlot_hispanic, file="ggPlot_hispanic.RData")
+
+
+
+
+pdf("MultiPlot6")
+
+grid.arrange(ggPlot_asian, ggPlot_white, ggPlot_black, ggPlot_hispanic, ncol=2)
+save(dfMultiPlot6, file="dfMultiplot6.pdf")
+dev.off()
 
 ### Question: What are the best states for Asians in tech?
 ### Answer:   All of them ... :-)
