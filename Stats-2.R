@@ -22,45 +22,38 @@ library(mapproj) ### needed by ggplot2, but not installed automaticallly
 library(ggplot2)
 library(dplyr)
 
-### Table 1a   Context -- How many people in the US in 2014 -- total, black, white, ### asian, hispanic, and OTHERS and percentages of total, white, black, asian, hispanic, and OTHERS
-table1p1top <- dfStatesPop3[1,2:7]
+### Table 1A   Context -- How many people were living in the US in 2014 -- total, black, white, ### asian, hispanic, and OTHERS and percentages of total, white, black, asian, hispanic, and OTHERS
+(dfTable1A <- dfStatesPop3[1,2:7])
 colNames <- c("ALL", "white", "black", "asian", "hispanic", "OTHERS")
-colnames(table1p1top) <- colNames
-dfTable1p1top <- data.frame(table1p1top)
-rownames(dfTable1p1top) <- "Totals"
-dfTable1p1top
+colnames(dfTable1A) <- colNames
+dfTable1A
+save(dfTable1A, file="dfTable1A.RData")
 
-table1p1bottom <- dfStatesPop3[1,c(2,8:12)]
-table1p1bottom <- as.vector(table1p1bottom)
-table1p1bottom[1,1] <- 1.0 ### 1.0 = 100 percent for ALL
-colnames(table1p1bottom) <- colNames
-dfTable1p1bottom <- round(data.frame(table1p1bottom), digits=3) * 100
-rownames(dfTable1p1bottom) <- "Percent"
-dfTable1p1bottom
+dfTable1B <- dfStatesPop3[1,c(2,8:12)]
+dfTable1B[1,1] <- 1.0 ### 1.0 = 100 percent for ALL
+colnames(dfTable1B) <- colNames
+dfTable1B <- round(dfTable1B, digits=3) * 100
+dfTable1B
+save(dfTable1B, file="dfTable1B.RData")
 
-### Table 1b ... racial breakdown of tech employment
-table1p2top <- dfEmploymentAndShares[1,2:7]
+
+### Table 2 ... racial breakdown of tech employment
+dfTable2A <- dfEmploymentAndShares[1,2:7]
 colNames <- c("ALL", "white", "black", "asian", "hispanic", "OTHERS")
-colnames(table1p2top) <- colNames
-dfTable1p2top <- data.frame(table1p2top)
-rownames(dfTable1p2top) <- "Totals"
-dfTable1p2top
+colnames(dfTable2A) <- colNames
+dfTable2A
+save(dfTable2A, file="dfTable2A.RData")
 
-table1p2bottom <- dfEmploymentAndShares[1,c(2,8:12)]
-table1p2bottom <- as.vector(table1p2bottom)
-table1p2bottom[1,1] <- 1.0 ### 1.0 = 100 percent for ALL
-colnames(table1p2bottom) <- colNames
-dfTable1p2bottom <- round(data.frame(table1p2bottom), digits=3) * 100
-rownames(dfTable1p2bottom) <- "Percent"
-dfTable1p2bottom
+dfTable2B <- dfEmploymentAndShares[1,c(2,8:12)]
+dfTable2B[1,1] <- 1.0 ### 1.0 = 100 percent for ALL
+colnames(dfTable2B) <- colNames
+rownames(dfTable2B) <- NULL
+dfTable2B <- round(data.frame(dfTable2B), digits=3) * 100
+dfTable2B
+save(dfTable2B, file="dfTable2B.RData")
 
-dfTable1 <- rbind(dfTable1p1top, dfTable1p1bottom, dfTable1p2top, dfTable1p2bottom)
-rownames(dfTable1) <- c("U.S. Pop.", "% U.S. Pop", "U.S. Tech", "% U.S. Tech")
-round(dfTable1[1,], digits=0)
-round(dfTable1[3,], digits=0)
-dfTable1
 
-### Table 1.2 Sex by Occupations ... two rows
+### Table 3 Sex by Occupations ... two rows
 censusGroups <- group_by(dfCensus2, occupation, sex)
 dfPtsPerSex <- summarise(censusGroups, ptsPerSex = sum(personalWeight))
 dfOccupationPerSex <- spread(dfPtsPerSex, key=sex, value=ptsPerSex)
