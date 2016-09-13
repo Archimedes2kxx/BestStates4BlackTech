@@ -18,7 +18,7 @@ load("dfCensus2.RData")
 
 library(tidyr)
 library(maps)
-library(mapproj) ### needed by ggplot2, but not install automaticallly
+library(mapproj) ### needed by ggplot2, but not installed automaticallly
 library(ggplot2)
 library(dplyr)
 
@@ -276,13 +276,22 @@ matMaxVals["asian",] <- asianMax
 (maxTech <- max(matMaxVals[,"Tech"]))
 (maxPop <- max(matMaxVals[,"Pop"])/1000)
 
+### Add a phony extra point to the black data frame to extrapolate the regression line to the end of
+### the plot frame ... otherwise it's too short and stubby to compare its slope to the other lines
+df_maxPop <- data.frame(maxPop * 1000)
+colnames(df_maxPop) <- "blackPop"
+y_black_ex <- predict(lm_black, df_maxPop)
+dfEx_black <- data.frame(dfParity_black[,"blackPop"], dfParity_black[,"blackTech"])
+colnames(dfEx_black) <- c("blackPop", "blackTech")
+dfEx_black <- rbind(dfEx_black, c(maxPop * 1000, y_black_ex))
+
 ###################
 ### Prefer to scatterplot via ggplot  
 plotEmpVsPop <- function(df, race){
     racePop <- paste0(race, "Pop")
     racePopLab <- paste0(racePop, "/1000")
     raceTech <- paste0(race, "Tech")
-    anno <- paste0("Beta = ", dfParity[race, "beta1000"])
+    annot <- paste0("Beta = ", dfParity[race, "beta1000"])
     
     ### Example: aes(df[-1,x=I(df[-1,"blackPop"]/1000), y = df[-1,"blackTech"]
     ggScatter <- ggplot(df[-1,], aes(x=I(df[-1,racePop]/1000), y=df[-1,raceTech])) + geom_point(shape=1) 
@@ -291,17 +300,15 @@ plotEmpVsPop <- function(df, race){
     ### Example: xlab("blackPop/1000) + ylab("blackTech")
     ggScatLine <- ggScatLine + xlab(racePopLab) + ylab(raceTech)
     ggScatLine <- ggScatLine + ggtitle(paste0(raceTech, " vs ", racePopLab))
-    ggScatLine <- ggScatLine + annotate("text", label=anno, x=-Inf, y=Inf, hjust=-.2, vjust=2)
+    ggScatLine <- ggScatLine + annotate("text", label=annot, x=-Inf, y=Inf, hjust=-.2, vjust=2)
     return(ggScatLine)
 }
 
 ##### dev.off()
-(ggPlot_black <- plotEmpVsPop(dfParity_black, "black"))
-(ggPlot_white <- plotEmpVsPop(dfParity_white, "white"))
-(ggPlot_hispanic <- plotEmpVsPop(dfParity_hispanic, "hispanic"))
 (ggPlot_asian <- plotEmpVsPop(dfParity_asian, "asian"))
+(ggPlot_white <- plotEmpVsPop(dfParity_white, "white"))
+(ggPlot_black <- plotEmpVsPop(dfEx_black, "black"))
+(ggPlot_hispanic <- plotEmpVsPop(dfParity_hispanic, "hispanic"))
 
 ### Question: What are the best states for Asians in tech?
 ### Answer:   All of them ... :-)
-
-
