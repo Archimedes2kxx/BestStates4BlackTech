@@ -123,7 +123,7 @@ $(document).ready(function () {
 
 <div id="a.-overview" class="section level3">
 <h3>A. Overview</h3>
-<p>This note presents the results of my examination of the employment of Blacks and Hispanics in the information technology sectors of all 50 states plus the District of Columbia in 2014. My principal findings are straight-forward:</p>
+<p>This note provides a convenient reference for some frequently asked questions about diversity in the U.S. information technology sector, i.e., “diversity in tech”. To be specific it presents the results of my examination of the employment of Blacks and Hispanics in the information technology sectors of all 50 states plus the District of Columbia in 2014. My principal findings are straight-forward:</p>
 <ul>
 <li><p>First, the percentage of tech employees who were Black was higher in states that had larger Black populations and smaller in states that had smaller Black populations. The same relationship between population size and percentage of tech employment held true for Hispanics.</p></li>
 <li><p>Second, if all other things were equal, one would expect that the percentage of employment in a state’s tech sector that was Black would be about the same as the percentage of the state’s total population that was Black. One would would expect similar parity for the percentages of Hispanics. Unfortunately, all of things were not equal, so I found that the percentage of every state’s tech sector that was Black or Hispanic was substantially smaller than the percentage of the state’s total population that was Black or Hispanic. By contrast I found that the percentage of every state’s tech sector that was Asian was two to five times as large as the percentage of the state’s total population that was Asian.</p></li>
@@ -131,10 +131,27 @@ $(document).ready(function () {
 <li><p>Fourth, in 2014 there were approximately <code>4,125,164</code> employees in the entire U.S. information technology sector – <code>300,431</code> were Black, and <code>277,280</code> were Hispanic. There were only <code>576,333</code> tech employees in California (including Silicon Valley).</p></li>
 </ul>
 </div>
-<div id="revise-to-the-actual-findings-the-tables-maps-graphs-and-regression-stats--" class="section level2">
-<h2>Revise to the actual findings … the tables, maps, graphs, and regression stats … :-)</h2>
 <div id="b.-findings" class="section level3">
 <h3>B. Findings</h3>
+<p>Question 1A – How many Whites, Blacks, Hispanics, Asians, and others were living in the U.S. in 2014?<br />
+Answer 1A – See Table 1A (below)</p>
+<pre><code>##        ALL     white    black    asian hispanic  OTHERS
+##  318857056 197870516 39528225 16786720 55387539 9284056</code></pre>
+<p><br></p>
+<p>Question 1B – What percentage of the U.S. population was White, Black, Hispanic, Asian, and others in 2014?<br />
+Answer 1B – See Table 1B (below)</p>
+<pre><code>##  ALL white black asian hispanic OTHERS
+##  100  62.1  12.4   5.3     17.4    2.9</code></pre>
+<p><br></p>
+<p>Question 2A – How many Whites, Blacks, Hispanics, Asians, and other were working int U.S. tech in 2014?<br />
+Answer 2A – See Table 2A (below)</p>
+<pre><code>##      ALL   white  black  asian hispanic OTHERS
+##  4125164 2659884 300431 786866   277280 100703</code></pre>
+<p><br></p>
+<p>Question 2B – What percentage of U.S. tech was White, Black, Hispanic, Asian, and others in 2014?<br />
+Answer 2B – See Table 2B (below)</p>
+<pre><code>##  ALL white black asian hispanic OTHERS
+##  100  64.5   7.3  19.1      6.7    2.4</code></pre>
 <ul>
 <li>Create table of percentages of White vs. Asian vs. Blacks in each state … Table #2</li>
 <li>Include the statistic table for Blacks plus a ggplot of the blacks in tech vs blacks in total population … Table #3 and Graph</li>
@@ -172,7 +189,6 @@ First, let me explain why I wrote this report and how my motivation influenced m
 172070 … ENG-ELECTRICAL AND ELECTRONICS ENGINEERS</p>
 <p>I wrote a few R programs that produced the report’s tables, maps, graphs, and stats. The DataFerret’s sample (<code>39,692</code> observations) was large enough to imply that the employee counts and percentages calculated from the sample provided good estimates of the actual counts and percentages of Blacks, Whites, Asians, and Hispanics in tech occupations in the 50 states and DC. My R code can be found in the Data-1A.R, Data-1B.R, Stats-2.R, and Report-3.Rmd files in the <b><a href="https://github.com/Archimedes2kxx/BestStatesForBlackTech">repo</a></b>, as well as copies of the codebooks and .csv files I downloaded from the Census. I composed the entire report in R-Markdown using the R-Studio IDE, converted the R-markdown to HTML via knitr, then copied and pasted the HTML onto a blank page on the DLL’s <b><a href="http://hbcu-levers.blogspot.com/p/draft-of-best-states-for-blacks-in-tech.html">Tech-Levers</a></b> blog.</p>
 <p>The scripts and embedded functions should be run in numerical order: Data-1A.R and Data-1B.R create the data frames required by Stats-2.R; Stats-2.R creates the tables, maps, graphs, and regression stats required by the R-markdown script in the Report-4.Rmd file that generates the report.</p>
-</div>
 </div>
 
 
