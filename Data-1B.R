@@ -87,5 +87,5 @@ sum(dfStatesPop3["Georgia", 3:10])
 ### Note the URL for Census data about racial shares of total U.S. pop
 ### https://www.census.gov/quickfacts/table/PST045215/00
 
-
-
+install.packages("knitr")
+library(knitr)
