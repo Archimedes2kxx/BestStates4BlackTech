@@ -60,7 +60,7 @@ Answer 2B -- See Table 2B (below)
 ```
 
 
-
+ 
 
 * Create table of percentages of White vs. Asian vs. Blacks in each state ... Table #2
 * Include the statistic table for Blacks plus a ggplot of the blacks in tech vs blacks in total population ... Table #3 and Graph
