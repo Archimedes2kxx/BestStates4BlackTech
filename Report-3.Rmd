@@ -3,14 +3,23 @@ title: "Best States for Blacks and Hispanics in Tech"
 author: "Roy L Beasley, PhD -- DLL Editor"
 output: html_document
 ---
+
 ```{r, echo=FALSE}
+    setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
     load("dfEmploymentAndShares.RData")
-    load("dfCensus1.RData")
+    load("dfCensus2.RData") 
+    load("dfTable1.RData")
+    load("dfTable1A.RData")
+    load("dfTable1B.RData") 
+    load("dfTable2A.RData")
+    load("dfTable2B.RData") 
+    ###load("dfCensus3.RData")
+    ###load("dfStatesPop3.RData")
 ```
 
 ### A. Overview 
 
-This note presents the results of my examination of the employment of Blacks and Hispanics in the information technology sectors of all 50 states plus the District of Columbia in 2014. My principal findings are straight-forward:   
+This note provides a convenient reference for some frequently asked questions about diversity in the U.S. information technology sector, i.e., "diversity in tech". To be specific it presents the results of my examination of the employment of Blacks and Hispanics in the information technology sectors of all 50 states plus the District of Columbia in 2014. My principal findings are straight-forward:   
 
 * First, the percentage of tech employees who were Black was higher in states that had larger Black populations and smaller in states that had smaller Black populations. The same relationship between population size and percentage of tech employment held true for Hispanics. 
 
@@ -18,12 +27,40 @@ This note presents the results of my examination of the employment of Blacks and
 
 * Third, the strengths of these relationships varied widely: some states offered substantially larger employment opportunities for Blacks and Hispanics in their information technology sectors than others.
 
-* Fourth, in 2014 there were approximately ```r prettyNum(dfEmploymentAndShares[52,2], big.mark=",", scientific=FALSE)``` employees in the entire U.S. information technology sector --  ```r prettyNum(dfEmploymentAndShares[52,4], big.mark=",", scientific=FALSE)``` were Black, and 
-```r prettyNum(dfEmploymentAndShares[52,6], big.mark=",", scientific=FALSE)``` were Hispanic. There were only ```r prettyNum(dfEmploymentAndShares[5,2], big.mark=",", scientific=FALSE)``` tech employees in California (including Silicon Valley).
+* Fourth, in 2014 there were approximately ```r prettyNum(dfEmploymentAndShares[1,2], big.mark=",", scientific=FALSE)``` employees in the entire U.S. information technology sector --  ```r prettyNum(dfEmploymentAndShares[1,4], big.mark=",", scientific=FALSE)``` were Black, and 
+```r prettyNum(dfEmploymentAndShares[1,6], big.mark=",", scientific=FALSE)``` were Hispanic. There were only ```r prettyNum(dfEmploymentAndShares[6,2], big.mark=",", scientific=FALSE)``` tech employees in California (including Silicon Valley).
 
-## Revise to the actual findings ... the tables, maps, graphs, and regression stats ... :-)
   
 ### B. Findings
+Question 1A -- How many Whites, Blacks, Hispanics, Asians, and others were living in the U.S. in 2014?   
+Answer 1A -- See Table 1A (below)
+```{r, echo=FALSE, cache=FALSE}
+    print(dfTable1A, row.names=FALSE)   
+```
+ <br>   
+
+Question 1B -- What percentage of the U.S. population was White, Black, Hispanic, Asian, and others in 2014?    
+Answer 1B -- See Table 1B (below)
+```{r, echo=FALSE}
+    print(dfTable1B, row.names=FALSE) 
+```
+<br>  
+
+Question 2A -- How many Whites, Blacks, Hispanics, Asians, and other were working int U.S. tech in 2014?   
+Answer 2A -- See Table 2A (below)
+```{r, echo=FALSE}
+    print(dfTable2A, row.names=FALSE)  
+```
+ <br>  
+
+Question 2B -- What percentage of U.S. tech was White, Black, Hispanic, Asian, and others in 2014?   
+Answer 2B -- See Table 2B (below)
+```{r, echo=FALSE}
+    print(dfTable2B, row.names=FALSE)  
+```
+
+
+
 
 * Create table of percentages of White vs. Asian vs. Blacks in each state ... Table #2
 * Include the statistic table for Blacks plus a ggplot of the blacks in tech vs blacks in total population ... Table #3 and Graph
@@ -68,7 +105,7 @@ When using the DataFerret app to select the occupational data, I defined the "in
 172061  ...  ENG-COMPUTER HARDWARE ENGINEERS   
 172070  ...  ENG-ELECTRICAL AND ELECTRONICS ENGINEERS
    
-I wrote a few R programs that produced the report's tables, maps, graphs, and stats. The DataFerret's sample (```r prettyNum(dim(dfCensus1)[1], big.mark=",", scientific=FALSE)``` observations) was large enough to imply that the employee counts and percentages calculated from the sample  provided good estimates of the actual counts and percentages of Blacks, Whites, Asians, and Hispanics in tech occupations in the 50 states and DC. My R code can be found in the Data-1A.R, Data-1B.R, Stats-2.R, and Report-3.Rmd files in the <b>[repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b>, as well as copies of the codebooks and .csv files I downloaded from the Census. I composed the entire report in R-Markdown using the R-Studio IDE, converted the R-markdown to HTML via knitr, then copied and pasted the HTML onto a blank page on the DLL's <b>[Tech-Levers](http://hbcu-levers.blogspot.com/p/draft-of-best-states-for-blacks-in-tech.html)</b> blog. 
+I wrote a few R programs that produced the report's tables, maps, graphs, and stats. The DataFerret's sample (```r prettyNum(dim(dfCensus2)[1], big.mark=",", scientific=FALSE)``` observations) was large enough to imply that the employee counts and percentages calculated from the sample  provided good estimates of the actual counts and percentages of Blacks, Whites, Asians, and Hispanics in tech occupations in the 50 states and DC. My R code can be found in the Data-1A.R, Data-1B.R, Stats-2.R, and Report-3.Rmd files in the <b>[repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b>, as well as copies of the codebooks and .csv files I downloaded from the Census. I composed the entire report in R-Markdown using the R-Studio IDE, converted the R-markdown to HTML via knitr, then copied and pasted the HTML onto a blank page on the DLL's <b>[Tech-Levers](http://hbcu-levers.blogspot.com/p/draft-of-best-states-for-blacks-in-tech.html)</b> blog. 
 
 The scripts and embedded functions should be run in numerical order: Data-1A.R and Data-1B.R create the data frames required by Stats-2.R; Stats-2.R creates the tables, maps, graphs, and regression stats required by the R-markdown script in the Report-4.Rmd file that generates the report.
   
