@@ -53,7 +53,7 @@ dfTable2B
 save(dfTable2B, file="dfTable2B.RData")
 
 
-### Table 3 Sex by Occupations ... two rows
+### Table 3 Sex by Occupations
 censusGroups <- group_by(dfCensus2, occupation, sex)
 dfPtsPerSex <- summarise(censusGroups, ptsPerSex = sum(personalWeight))
 dfOccupationPerSex <- spread(dfPtsPerSex, key=sex, value=ptsPerSex)
@@ -62,7 +62,6 @@ dfOccupationPerSex$perMale <- round(dfOccupationPerSex$Male /(dfOccupationPerSex
 
 dfOccupationPerSex$Total <- dfOccupationPerSex$Male + dfOccupationPerSex$Female
 dfOccupationPerSex <- dfOccupationPerSex[, c(1,5,2:4)] ### Put total in second column
-### dfOccupationPerSex
 
 ### Add total row for ALL
 techSums <- as.vector(colSums(dfOccupationPerSex[2:4]))
@@ -78,8 +77,9 @@ index <- order(dfOccupationPerSex$Total, decreasing=TRUE)
 dfOccupationPerSex <- dfOccupationPerSex[index,] 
 dfOccupationPerSex$Female <- NULL
 rownames(dfOccupationPerSex) <- NULL
-colnames(dfOccupationPerSex) <- c("occupation", "Total", "Male", "%-Male")
-dfOccupationPerSex
+colnames(dfOccupationPerSex) <- c("Occupation", "Total", "Male", "%-Male")
+(dfTable3 <- dfOccupationPerSex)
+save(dfTable3, file="dfTable3.RData")
 
 
 ### Tables 2A, 2B, 2C, 2D. Racial groups in each state  
@@ -108,8 +108,8 @@ makeParityTable <- function(race){
     return(dfParity)
 }
 
-dfParity_black <- makeParityTable("black")
 dfParity_white <- makeParityTable("white")
+dfParity_black <- makeParityTable("black")
 dfParity_hispanic <- makeParityTable("hispanic")
 dfParity_asian <- makeParityTable("asian")
 
@@ -118,6 +118,17 @@ head(dfParity_white,20)
 head(dfParity_hispanic,20)
 head(dfParity_asian,20)
 tail(dfParity_asian,20)
+
+dfTable4A <- dfParity_white 
+dfTable4B <- dfParity_black
+dfTable4C <- dfParity_hispanic
+dfTable4D <- dfParity_asian
+
+save(dfTable4A, file="dfTable4A.RData")
+save(dfTable4B, file="dfTable4B.RData")
+save(dfTable4C, file="dfTable4C.RData")
+save(dfTable4D, file="dfTable4D.RData")
+
 
 ############
 ### handy tool for spot checking data
@@ -204,6 +215,17 @@ makeTechMap <- function(df, race) {
 (white_ggMap <-makeTechMap(dfParity_white,"white"))
 (hispanic_ggMap <- makeTechMap(dfParity_hispanic,"hispanic"))
 (asian_ggMap <- makeTechMap(dfParity_asian,"asian"))
+
+dfMap4A <- white_ggMap
+dfMap4B <- black_ggMap
+dfMap4C <- hispanic_ggMap
+dfMap4D <- asian_ggMap
+
+save(dfMap4A, file="dfMap4A.RData")
+save(dfMap4B, file="dfMap4B.RData")
+save(dfMap4C, file="dfMap4C.RData")
+save(dfMap4D, file="dfMap4D.RData")
+
 
 ##########################
 ### Tables 2. summary stats for racial groups in each state  
