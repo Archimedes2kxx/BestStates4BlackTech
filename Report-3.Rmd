@@ -13,13 +13,23 @@ output: html_document
     load("dfTable1B.RData") 
     load("dfTable2A.RData")
     load("dfTable2B.RData") 
+    load("dfTable3.RData") 
+    load("dfTable4A.RData") 
+    load("dfTable4B.RData")  
+    load("dfTable4C.RData") 
+    load("dfTable4D.RData") 
+    load("dfMap4A.RData") 
+    load("dfMap4B.RData")  
+    load("dfMap4C.RData") 
+    load("dfMap4D.RData")     
+    
     ###load("dfCensus3.RData")
-    ###load("dfStatesPop3.RData")
+    ###load("dfStatesPop3.RData") 
 ```
 
 ### A. Overview 
 
-This note provides a convenient reference for some frequently asked questions about diversity in the U.S. information technology sector, i.e., "diversity in tech". To be specific it presents the results of my examination of the employment of Blacks and Hispanics in the information technology sectors of all 50 states plus the District of Columbia in 2014. My principal findings are straight-forward:   
+This note provides a convenient reference for answers to some frequently asked questions about diversity in the U.S. information technology sector, i.e., "diversity in tech". To be specific it presents the results of my examination of the employment of Blacks and Hispanics in the information technology sectors of all 50 states plus the District of Columbia in 2014. My principal findings are straight-forward:   
 
 * First, the percentage of tech employees who were Black was higher in states that had larger Black populations and smaller in states that had smaller Black populations. The same relationship between population size and percentage of tech employment held true for Hispanics. 
 
@@ -33,37 +43,98 @@ This note provides a convenient reference for some frequently asked questions ab
   
 ### B. Findings
 Question 1A -- How many Whites, Blacks, Hispanics, Asians, and others were living in the U.S. in 2014?   
-Answer 1A -- See Table 1A (below)
-```{r, echo=FALSE, cache=FALSE}
+Answer 1A -- See Table 1A (below)   
+
+<b>Table 1A -- U.S. Census Estimates of Whites, Blacks, Hispanics, and Asians in U.S. Info Tech in 2014</b>
+```{r, echo=FALSE, cache=TRUE}
     print(dfTable1A, row.names=FALSE)   
 ```
- <br>   
+ <br />   
 
 Question 1B -- What percentage of the U.S. population was White, Black, Hispanic, Asian, and others in 2014?    
 Answer 1B -- See Table 1B (below)
-```{r, echo=FALSE}
+```{r, echo=FALSE, cache=TRUE}
     print(dfTable1B, row.names=FALSE) 
 ```
-<br>  
+<br />  
 
 Question 2A -- How many Whites, Blacks, Hispanics, Asians, and other were working int U.S. tech in 2014?   
 Answer 2A -- See Table 2A (below)
-```{r, echo=FALSE}
+```{r, echo=FALSE, cache=TRUE}
     print(dfTable2A, row.names=FALSE)  
 ```
- <br>  
+ <br />  
 
 Question 2B -- What percentage of U.S. tech was White, Black, Hispanic, Asian, and others in 2014?   
 Answer 2B -- See Table 2B (below)
-```{r, echo=FALSE}
+```{r, echo=FALSE, cache=TRUE}
     print(dfTable2B, row.names=FALSE)  
 ```
+<br />
 
-
+ Question 3A -- Which standard occupational categories have been used to define the "information technology sector" for this report?  
+ * <i>Note: these categories only include professionals who are not managers</i>  
+ Question 3B -- How many techs are in each sector?   
+ Question 3C -- What is the male/female breakdown of employment within these categories
  
+ Answers 3A, 3B, 3C -- See Table 3 (below)     
+ 
+ <b>Table 3 -- Employment in Information Technology, Male, and Male Percentage</b>
+```{r, echo=FALSE, cache=TRUE}
+    print(dfTable3, row.names=FALSE)  
+```
+   
+<br />
 
-* Create table of percentages of White vs. Asian vs. Blacks in each state ... Table #2
-* Include the statistic table for Blacks plus a ggplot of the blacks in tech vs blacks in total population ... Table #3 and Graph
+Question 4B -- Where did White, Black, Hispanic, and Asian techs live, i.e., in which states in 2014?      
+
+Answer 4 -- See Table 4A (White), Table 4B, Table 4C, and Table 4D (below) ... and Map 4A (White), Map 4B (Black), Map 4C (Hispanic), and Map 4D (Asian) (subsequent)  
+<i>Note that only the ten top states for each group are displayed in these tables. The full tables are found in the Appendix files on GitHub</i>
+
+<b>Table 4A -- Whites in U.S. Information Technology -- Top 10 States</b>
+```{r, echo=FALSE, cache=TRUE}
+    print(dfTable4A[1:11,], row.names=FALSE)  
+```
+<br />
+<b>Table 4B -- Blacks in U.S. Information Technology -- Top 10 states</b>
+```{r, echo=FALSE, cache=TRUE}
+    print(dfTable4B[1:11,], row.names=FALSE)  
+```
+<br />
+<b>Table 4C -- Hispanics in U.S. Information Technology -- Top 10 states</b>
+```{r, echo=FALSE, cache=TRUE}
+    print(dfTable4C[1:11,], row.names=FALSE)  
+```
+<br />
+<b>Table 4D -- Asians in U.S. Information Technology -- Top 10 states</b>
+```{r, echo=FALSE, cache=TRUE}
+    print(dfTable4D[1:11,], row.names=FALSE)  
+```
+<br />
+<b>Map 4A -- Whites in U.S. Information Technology -- Lower 48 and DC</b>
+```{r, echo=FALSE, cache=TRUE}
+    print(dfMap4A)  
+```
+<br />
+<b>Map 4B -- Blacks in U.S. Information Technology -- Lower 48 and DC</b>
+```{r, echo=FALSE, cache=TRUE}
+    print(dfMap4B)  
+```
+<br />
+<b>Map 4C -- Hispanics in U.S. Information Technology -- Lower 48 and DC</b>
+```{r, echo=FALSE, cache=TRUE}
+    print(dfMap4C)  
+```
+<br />
+<b>Map 4D -- Asians in U.S. Information Technology -- Lower 48 and DC</b>
+```{r, echo=FALSE, cache=TRUE}
+    print(dfMap4D)  
+```
+<br />
+
+
+
+
 
 
 
