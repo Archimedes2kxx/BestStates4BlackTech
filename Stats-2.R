@@ -171,7 +171,7 @@ R <- getEmploymentRank("black", "California")
 R       
 
 
-### Maps 2A, 2B, 2C, 2D ... maps of white, black, asian, hispanics in state tech sectors
+### Maps 4A, B, C, D ... maps of white, black, asian, hispanics in state tech sectors
 ### Follow W. Chang's cookbook p 313 for U.S. with lower 48 states
 
 states_map <- map_data("state") ### from ggplot]
