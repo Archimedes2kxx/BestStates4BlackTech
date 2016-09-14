@@ -6,9 +6,9 @@
 ###################################################
 
 setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
-load(file="dfEmploymentAndShares.RData")
-load(file="dfStatesPop3.RData") 
-load("dfCensus2.RData")
+load(file="dfEmploymentAndShares.rda")
+load(file="dfStatesPop3.rda") 
+load("dfCensus2.rda")
 
 ### install.packages("tidyr")
 ### install.packages("maps")
@@ -29,14 +29,14 @@ library(gridExtra)
 colNames <- c("ALL", "white", "black", "asian", "hispanic", "OTHERS")
 colnames(dfTable1A) <- colNames
 dfTable1A
-save(dfTable1A, file="dfTable1A.RData")
+###save(dfTable1A, file="dfTable1A.RData")
 
 dfTable1B <- dfStatesPop3[1,c(2,8:12)]
 dfTable1B[1,1] <- 1.0 ### 1.0 = 100 percent for ALL
 colnames(dfTable1B) <- colNames
 dfTable1B <- round(dfTable1B, digits=3) * 100
 dfTable1B
-save(dfTable1B, file="dfTable1B.RData")
+###save(dfTable1B, file="dfTable1B.RData")
 
 
 ### Table 2 ... racial breakdown of tech employment
@@ -44,7 +44,7 @@ dfTable2A <- dfEmploymentAndShares[1,2:7]
 colNames <- c("ALL", "white", "black", "asian", "hispanic", "OTHERS")
 colnames(dfTable2A) <- colNames
 dfTable2A
-save(dfTable2A, file="dfTable2A.RData")
+###save(dfTable2A, file="dfTable2A.RData")
 
 dfTable2B <- dfEmploymentAndShares[1,c(2,8:12)]
 dfTable2B[1,1] <- 1.0 ### 1.0 = 100 percent for ALL
@@ -52,7 +52,7 @@ colnames(dfTable2B) <- colNames
 rownames(dfTable2B) <- NULL
 dfTable2B <- round(data.frame(dfTable2B), digits=3) * 100
 dfTable2B
-save(dfTable2B, file="dfTable2B.RData")
+###save(dfTable2B, file="dfTable2B.RData")
 
 
 ### Table 3 Sex by Occupations
@@ -81,8 +81,9 @@ dfOccupationPerSex$Female <- NULL
 rownames(dfOccupationPerSex) <- NULL
 colnames(dfOccupationPerSex) <- c("Occupation", "Total", "Male", "%-Male")
 (dfTable3 <- dfOccupationPerSex)
-save(dfTable3, file="dfTable3.RData")
+###save(dfTable3, file="dfTable3.RData")
 
+save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3, file="dfTab1A1B2A2B3.rda")
 
 ### Tables 2A, 2B, 2C, 2D. Racial groups in each state  
 ### ... state, <racial>TechEmp, totalTechEmp, per<Racial>TechEmp, totPop, <racialPop>, 
@@ -126,11 +127,12 @@ dfTable4B <- dfParity_black
 dfTable4C <- dfParity_hispanic
 dfTable4D <- dfParity_asian
 
-save(dfTable4A, file="dfTable4A.RData")
-save(dfTable4B, file="dfTable4B.RData")
-save(dfTable4C, file="dfTable4C.RData")
-save(dfTable4D, file="dfTable4D.RData")
+###save(dfTable4A, file="dfTable4A.RData")
+###save(dfTable4B, file="dfTable4B.RData")
+###save(dfTable4C, file="dfTable4C.RData")
+###save(dfTable4D, file="dfTable4D.RData")
 
+save(dfTable4A, dfTable4B, dfTable4C, dfTable4D, file="dfTab4ABCD.rda")
 
 ############
 ### handy tool for spot checking data
@@ -223,11 +225,12 @@ dfMap4B <- black_ggMap
 dfMap4C <- hispanic_ggMap
 dfMap4D <- asian_ggMap
 
-save(dfMap4A, file="dfMap4A.RData")
-save(dfMap4B, file="dfMap4B.RData")
-save(dfMap4C, file="dfMap4C.RData")
-save(dfMap4D, file="dfMap4D.RData")
+#save(dfMap4A, file="dfMap4A.RData")
+#save(dfMap4B, file="dfMap4B.RData")
+#save(dfMap4C, file="dfMap4C.RData")
+#save(dfMap4D, file="dfMap4D.RData")
 
+save(dfMap4A, dfMap4B, dfMap4C, dfMap4D, file="dfMap4ABCD.rda")
 
 ##########################
 ### Tables 2. summary stats for racial groups in each state  
@@ -273,7 +276,7 @@ dfParity <- round(cbind(dfParity, beta1000), digits=2)
 dfParity <- dfParity[c("hispanic", "black", "white", "asian"),]
 (dfTable5 <- dfParity)
 
-save(dfTable5, file="dfTable5.RData")
+save(dfTable5, file="dfTab5.rda")
 
 ### Calculate max values for plots (below)
 ###############
@@ -329,19 +332,17 @@ plotEmpVsPop <- function(df, race){
 (ggPlot_black <- plotEmpVsPop(dfEx_black, "black"))
 (ggPlot_hispanic <- plotEmpVsPop(dfParity_hispanic, "hispanic"))
 
-save(ggPlot_asian, file="ggPlot_asian.RData")
-save(ggPlot_white, file="ggPlot_white.RData")
-save(ggPlot_black, file="ggPlot_black.RData")
-save(ggPlot_hispanic, file="ggPlot_hispanic.RData")
+#save(ggPlot_asian, file="ggPlot_asian.RData")
+#save(ggPlot_white, file="ggPlot_white.RData")
+#save(ggPlot_black, file="ggPlot_black.RData")
+#save(ggPlot_hispanic, file="ggPlot_hispanic.RData")
+
+save(ggPlot_asian, ggPlot_white, ggPlot_black, ggPlot_hispanic, file="ggPlot6AWBH.rda")
 
 
-
-
-pdf("MultiPlot6")
-
-grid.arrange(ggPlot_asian, ggPlot_white, ggPlot_black, ggPlot_hispanic, ncol=2)
-save(dfMultiPlot6, file="dfMultiplot6.pdf")
-dev.off()
+##grid.arrange(ggPlot_asian, ggPlot_white, ggPlot_black, ggPlot_hispanic, ncol=2)
+##save(dfMultiPlot6, file="dfMultiplot6.pdf")
+##dev.off()
 
 ### Question: What are the best states for Asians in tech?
 ### Answer:   All of them ... :-)
