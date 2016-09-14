@@ -4,42 +4,17 @@ author: "Roy L Beasley, PhD -- DLL Editor"
 output: html_document
 ---
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, cache=FALSE}
     setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
-### Group the saves and loads of related objects ==> only three or four saves and loads
 
     load("dfEmploymentAndShares.rda")
     load("dfCensus2.rda") 
-    #load("dfTable1.RData")
-    #load("dfTable1A.RData")
-    #load("dfTable1B.RData") 
-    #load("dfTable2A.RData")
-    #load("dfTable2B.RData") 
-    #load("dfTable3.RData") 
-    #load("dfTable4A.RData") 
-    #load("dfTable4B.RData")  
-    #load("dfTable4C.RData") 
-    #load("dfTable4D.RData") 
-    
+     
     load("dfTab1A1B2A2B3.rda")
-    load("dfTab4ABCD.rda")    
+    load("dfTab4ABCD.rda")   
     load("dfMap4ABCD.rda")
     load("dfTab5.rda")
     load("ggPlot6AWBH.rda")
-    
-    #load("dfMap4A.RData") 
-    #load("dfMap4B.RData")  
-    #load("dfMap4C.RData") 
-    #load("dfMap4D.RData") 
-    #load("dfTable5.RData")
-
-    #load("ggplot_asian.RData")
-    #load("ggplot_white.RData")
-    #load("ggplot_black.RData")
-    #load("ggplot_hispanic.RData")
-
-    ###load("dfCensus3.RData")
-    ###load("dfStatesPop3.RData") 
     
     library(mapproj) ### needed by ggplot2, but not installed automaticallly
     library(ggplot2)
@@ -49,13 +24,13 @@ output: html_document
 
 ### I. Overview 
 
-This note provides a convenient reference for answers to some frequently asked questions about diversity in the U.S. information technology sector, i.e., "diversity in tech". To be specific, it presents the results of my examination of the employment of Blacks and Hispanics in the information technology sectors of all 50 states plus the District of Columbia in 2014. My principal findings are straight-forward:   
+This note provides a convenient reference for answers to some basic questions about diversity in the U.S. information technology sector, i.e., "diversity in tech". To be specific, it presents the results of my examination of some U.S. Census data about the employment of Blacks and Hispanics in the information technology sectors of all 50 states plus the District of Columbia in 2014. My principal findings are straight-forward:   
 
 * First, the percentage of tech employees who were Black was higher in states that had larger Black populations and smaller in states that had smaller Black populations. The same relationship between population size and percentage of tech employment held true for Hispanics. 
 
-* Second, if all other things were equal, one would expect that the percentage of employment in a state's tech sector that was Black would be about the same as the percentage of the state's total population that was Black. One would would expect similar parity for the percentages of Hispanics. Unfortunately, all of things were not equal, so I found that the percentage of every state's tech sector that was Black or Hispanic was substantially smaller than the percentage of the state's total population that was Black or Hispanic. By contrast I found that the percentage of every state's tech sector that was Asian was two to five times as large as the percentage of the state's total population that was Asian.
+* Second, if all other things were equal, one would expect that the percentage of employment in a state's tech sector that was Black would be about the same as the percentage of the state's total population that was Black. One would would expect similar parity for the percentages of Hispanics. Unfortunately, all of things were not equal, so I found that the percentage of the tech sector of most states that was Black or Hispanic was substantially smaller than the percentage of the state's total population that was Black or Hispanic. By contrast I found that the percentage of every state's tech sector that was Asian was two to eight times as large as the percentage of the state's total population that was Asian.
 
-* Third, the strengths of these relationships varied widely: some states offered substantially larger employment opportunities for Blacks and Hispanics in their information technology sectors than others.
+* Third, the strengths of these relationships varied widely: some states offered substantially larger employment opportunities for Blacks and Hispanics in their information technology sectors than others.   
 
 * Fourth, in 2014 there were approximately ```r prettyNum(dfEmploymentAndShares[1,2], big.mark=",", scientific=FALSE)``` employees in the entire U.S. information technology sector --  ```r prettyNum(dfEmploymentAndShares[1,4], big.mark=",", scientific=FALSE)``` were Black, and 
 ```r prettyNum(dfEmploymentAndShares[1,6], big.mark=",", scientific=FALSE)``` were Hispanic. There were only ```r prettyNum(dfEmploymentAndShares[6,2], big.mark=",", scientific=FALSE)``` tech employees in California (including Silicon Valley).
@@ -70,7 +45,7 @@ Answer 1A -- See Table 1A (below)
 ... Comments and reformatting of table
 
 <b>Table 1A -- U.S. Census Estimates of Whites, Blacks, Hispanics, and Asians in U.S.  in 2014</b>
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE, cache=FALSE}
     print(dfTable1A, row.names=FALSE)   
 ```
  <br />   
@@ -80,7 +55,7 @@ Answer 1B -- See Table 1B (below)
 ... Comments and reformatting of table
 
 <b>Table 1B -- White, Black, Hispanic, and Asian Percentate in U.S. Population in 2014</b>
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE, cache=FALSE}
     print(dfTable1B, row.names=FALSE) 
 ```
 <br />  
@@ -90,7 +65,7 @@ Answer 2A -- See Table 2A (below)
 ... Comments and reformatting of table
 
 <b>Table 2A -- U.S. Census Estimates of Whites, Blacks, Hispanics, and Asians in Information Technology  in 2014</b>
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE, cache=FALSE}
     print(dfTable2A, row.names=FALSE)  
 ```
  <br />  
@@ -99,7 +74,7 @@ Question 2B -- What percentage of U.S. tech was White, Black, Hispanic, Asian, a
 Answer 2B -- See Table 2B (below)   ... Comments and reformatting of table
 
 <b>Table 2B -- Percentage of Whites, Blacks, Hispanics, and Asians in Information Technology in 2014</b>
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE, cache=FALSE}
     print(dfTable2B, row.names=FALSE)  
 ```
 <br />
@@ -112,7 +87,7 @@ Answer 2B -- See Table 2B (below)   ... Comments and reformatting of table
  Answers 3A, 3B, 3C -- See Table 3 (below)     
  <br />... Comments and reformatting of table </br>
  <b>Table 3 -- Employment in Information Technology, Male, and Male Percentage</b>
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE, cache=FALSE}
     print(dfTable3, row.names=FALSE)  
 ```
    
@@ -125,50 +100,50 @@ Answer 4 -- See Table 4A (White), Table 4B, Table 4C, and Table 4D (below) ... a
 <br />... Comments and reformatting of table </br>
 <i>Note that only the ten top states for each group are displayed in these tables. The full tables are found in the Appendix files on GitHub</i>   
 <b>Table 4A -- Whites in U.S. Information Technology -- Top 5 States</b>
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE, cache=FALSE}
     print(dfTable4A[1:6,], row.names=FALSE)  
 ```
 <br />
 <br />... Comments and reformatting of table </br>
 <b>Table 4B -- Blacks in U.S. Information Technology -- Top 5 states</b>... Comments and reformatting of table
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE, cache=FALSE}
     print(dfTable4B[1:6,], row.names=FALSE)  
 ```
 <br />
 <br />... Comments and reformatting of table </br>
 <b>Table 4C -- Hispanics in U.S. Information Technology -- Top 5 states</b>
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE, cache=FALSE}
     print(dfTable4C[1:6,], row.names=FALSE)  
 ```
 <br />
 <br />... Comments and reformatting of table </br>
 <b>Table 4D -- Asians in U.S. Information Technology -- Top 5 states</b>
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE, cache=FALSE}
     print(dfTable4D[1:6,], row.names=FALSE)  
 ```
 <br />
 <br />... Comments 
 <b>Map 4A -- Whites in U.S. Information Technology -- Lower 48 and DC</b>
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE, cache=FALSE}
     print(dfMap4A)  
 ```
 <br />
 <br />... Comments
 <b>Map 4B -- Blacks in U.S. Information Technology -- Lower 48 and DC</b>
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE, cache=FALSE}
     print(dfMap4B)  
 ```
 <br />
 
 <br />... Comments
 <b>Map 4C -- Hispanics in U.S. Information Technology -- Lower 48 and DC</b>
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE, cache=FALSE}
     print(dfMap4C)  
 ```
 <br />
 <br />... Comments 
 <b>Map 4D -- Asians in U.S. Information Technology -- Lower 48 and DC</b>
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE, cache=FALSE}
     print(dfMap4D)  
 ```
 <br />
@@ -179,8 +154,8 @@ Question 5: Do the parity values noted in the last column of Tables 4A, 4B, 4C, 
 Answer 5: See Table 5 (below) ... Comment - Parity values are lowest for Hispanics, higher for Blacks, still higher for Whites, and highest for Asians. <br />   
 
 <b>Table 5 -- Table of Parity Values</b>
-```{r, echo=FALSE, cache=TRUE}
-    print(dfTable5, row.names=FALSE)  
+```{r, echo=FALSE, cache=FALSE}
+    print(dfTable5)  
 ```
 <br />
 
@@ -188,7 +163,7 @@ Question 6: Is there a positive relationship between the size of a race/ethnic g
 Answer 6: Comment ... Yes, there is a positive relationship, but the relationship is weakest for Hispanics, stronger for Blacks, still stronger for Whites, and strongest for Asians.  <br />
 
 <b>Plot 6 -- Plots of Tech Employment vs Race/Ethnic Group Population</b>
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE, cache=FALSE}
     grid.arrange(ggPlot_asian, ggPlot_white, ggPlot_black, ggPlot_hispanic, ncol=2)
 ```
 <br />
@@ -198,13 +173,13 @@ Answer 6: Comment ... Yes, there is a positive relationship, but the relationshi
 #### Part A. Motivation   
 First, let me explain why I wrote this report and how my motivation influenced my methods. A recent barrage of annual reports from some of the nation's leading information technology companies in Silicon Valley would have readers believe that the primary reason why those companies employed so few Black and Hispanic professionals was because there were so few Black and Hispanic students in the nation's academic pipelines. When reading their reports I found myself shaking my head time and again while wondering, "What numbers did they have to back up these notions? And where did they get them from?" Whereas I would have said that the pipelines were half-full, these reports implied that the pipelines were perilously close to being empty ... but if the pipelines were close to empty, there shouldn't be very many Black or Hispanic employees in the U.S. tech sector.
 
-One of my most important take-aways from completing the Johns Hopkins online "Data Science" certificate program a few months ago was the notion that reports should be "reproducible". Authors should not only describe their methods for collecting and analyzing data; they should provide detailed step-by-step descriptions of their methods (including copies of their code) so that interested readers could readily reproduce the results on their own computers. Of course, the best researchers have always tried to achieve this objective and have often succeeded. What was new for me was the specific tools that the statisticians who taught the Hopkins courses recommended ==> the <b>[R programming language](https://en.wikipedia.org/wiki/R_)</b> and <b>[GitHub](https://en.wikipedia.org/wiki/GitHub)</b>.   
+One of my most important take-aways from completing the <b>[Johns Hopkins "Data Science"](https://www.coursera.org/specializations/jhu-data-science)</b> online certificate program a few months ago was the notion that reports should be "reproducible". Authors should not only describe their methods for collecting and analyzing data; they should provide detailed step-by-step descriptions of their methods (including copies of their code) so that interested readers could readily reproduce the results on their own computers. Of course, the best researchers have always tried to achieve this objective and have often succeeded. What was new for me was the specific tools that the statisticians who taught the Hopkins courses recommended ==> the <b>[R programming language](https://en.wikipedia.org/wiki/R_)</b> and <b>[GitHub](https://en.wikipedia.org/wiki/GitHub)</b>.   
 
 * Data should be downloaded from original sources, then analyzed, tabulated, mapped, and graphed via programs writen in R. Findings should be summarized in text laid out in a subset of <b>[Markdown](https://en.wikipedia.org/wiki/Markdown)</b> that an R application called <b>["knitr"](http://kbroman.org/knitr_knutshell/pages/Rmarkdown.html)</b> would convert to HTML pages suitable for publication on Websites. 
 
 * Reproducible reports should be as concise as traditional reports, but the writer's extensive collection of programs, notes about analytical strategies, data coding guides, data files, tables, maps, graphs, etc, etc, etc should be shared with the world via GitHub repositories. Of course Python, MATLAB, and other comparable languages could be used insted of R, and the supplementary files could be stored on other public repositories comparable to GitHub.     
 
-This being my first attept to write a reproducible report, I wrote it in R and stored all of my supporting files in a GitHub repo. If readers disagree with my numbers, they won't have to wonder how I got them <i>... #OldDogStillLearningNewTricks ... :-)</i>
+This being my first attept to write a reproducible report, I wrote it in R and stored all of my supporting files in a <b>[GitHub repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b>. If readers disagree with my numbers, they won't have to wonder how I got them <i>... #OldDogStillLearningNewTricks ... :-)</i>
 <br /> <br />  
 
 #### Part B. Methods   
