@@ -26,25 +26,21 @@ library(gridExtra)
 
 ### Table 1A   Context -- How many people were living in the US in 2014 -- total, black, white, ### asian, hispanic, and OTHERS and percentages of total, white, black, asian, hispanic, and OTHERS
 (dfTable1A <- dfStatesPop3[1,2:7])
-colNames <- c("ALL", "white", "black", "asian", "hispanic", "OTHERS")
+colNames <- c("ALL", "White", "Black", "Asian", "Hispanic", "OTHERS")
 colnames(dfTable1A) <- colNames
 dfTable1A
-###save(dfTable1A, file="dfTable1A.RData")
 
 dfTable1B <- dfStatesPop3[1,c(2,8:12)]
 dfTable1B[1,1] <- 1.0 ### 1.0 = 100 percent for ALL
 colnames(dfTable1B) <- colNames
 dfTable1B <- round(dfTable1B, digits=3) * 100
 dfTable1B
-###save(dfTable1B, file="dfTable1B.RData")
 
 
 ### Table 2 ... racial breakdown of tech employment
 dfTable2A <- dfEmploymentAndShares[1,2:7]
-colNames <- c("ALL", "white", "black", "asian", "hispanic", "OTHERS")
 colnames(dfTable2A) <- colNames
 dfTable2A
-###save(dfTable2A, file="dfTable2A.RData")
 
 dfTable2B <- dfEmploymentAndShares[1,c(2,8:12)]
 dfTable2B[1,1] <- 1.0 ### 1.0 = 100 percent for ALL
@@ -52,7 +48,6 @@ colnames(dfTable2B) <- colNames
 rownames(dfTable2B) <- NULL
 dfTable2B <- round(data.frame(dfTable2B), digits=3) * 100
 dfTable2B
-###save(dfTable2B, file="dfTable2B.RData")
 
 
 ### Table 3 Sex by Occupations
@@ -126,11 +121,6 @@ dfTable4A <- dfParity_white
 dfTable4B <- dfParity_black
 dfTable4C <- dfParity_hispanic
 dfTable4D <- dfParity_asian
-
-###save(dfTable4A, file="dfTable4A.RData")
-###save(dfTable4B, file="dfTable4B.RData")
-###save(dfTable4C, file="dfTable4C.RData")
-###save(dfTable4D, file="dfTable4D.RData")
 
 save(dfTable4A, dfTable4B, dfTable4C, dfTable4D, file="dfTab4ABCD.rda")
 
@@ -273,10 +263,13 @@ lm_asian <- makeLM(dfParity_asian, "asian")
 
 beta1000 <- c(lm_black$coef[2], lm_white$coef[2], lm_hispanic$coef[2], lm_asian$coef[2])
 dfParity <- round(cbind(dfParity, beta1000), digits=2)
-dfParity <- dfParity[c("hispanic", "black", "white", "asian"),]
+dfParity <- dfParity[c("hispanic", "black", "white", "asian"),] ### reorder the rows
+rownames(dfParity) <- c("hispanic", "black", "white", "asian")
 (dfTable5 <- dfParity)
-
-save(dfTable5, file="dfTab5.rda")
+rownames(dfTable5) <- c("Hispanic", "Black", "White", "Asian")
+### Report-3.Rmd will display dfTable5 with row names capitalized, but need uncap
+### in this file to automatically form names of Betas for plots
+save(dfTable5, dfParity, file="dfTab5.rda")
 
 ### Calculate max values for plots (below)
 ###############
