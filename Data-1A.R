@@ -7,7 +7,7 @@ library(tidyr)
 ### 1. Read original PUMS sample data and save
 file = "Race-Sex-Hisp-InfoTechOccupations-AllStates-PersonalWeight-PUMS-2014-Data.csv"
 dfCensus1 = read.csv(file, header=TRUE, stringsAsFactors = FALSE)
-save(dfCensus1, file="dfCensus1.RData")
+save(dfCensus1, file="dfCensus1.rda")
 
 dfCensus2 = dfCensus1
 colnames(dfCensus2) = c("personalWeight", "race", "state", "hisp", "sex", "occupation") 
@@ -49,7 +49,7 @@ dfCensus2$occupation <- as.factor(dfCensus2$occupation)
 levels(dfCensus2$occupation) <- trimws(occupationCodes[,2])
  
 str(dfCensus2)
-save(dfCensus2, file="dfCensus2.RData")
+save(dfCensus2, file="dfCensus2.rda")
 
 ### Stats-2 will calculate the first set of tables from dfCensus2 ... overall U.S. 
 ### ... Total U.S. techs, male/female breakdown, total for each type of tech, total techs in each state
@@ -105,5 +105,4 @@ dfEmploymentAndShares <- rbind(dfTotalsRow, dfEmploymentAndShares)
 
 ### 11. Save combined employment and shares data frame
 head(dfEmploymentAndShares)
-tail(dfEmploymentAndShares)
-
+save(dfEmploymentAndShares, file="dfEmploymentAndShares.rda")
