@@ -72,7 +72,7 @@ dfStatesPop3 <- rbind( dfTotalsRow, dfStatesPop3)
 
 head(dfStatesPop3)
 tail(dfStatesPop3)
-save(dfStatesPop3, file = "dfStatesPop3.RData")
+save(dfStatesPop3, file = "dfStatesPop3.rda")
 
 ### 12. Examples of state AFF parameters
 dfStatesPop3["California",]
