@@ -8,32 +8,43 @@ output: html_document
     setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
 ### Group the saves and loads of related objects ==> only three or four saves and loads
 
-    load("dfEmploymentAndShares.RData")
-    load("dfCensus2.RData") 
-    load("dfTable1.RData")
-    load("dfTable1A.RData")
-    load("dfTable1B.RData") 
-    load("dfTable2A.RData")
-    load("dfTable2B.RData") 
-    load("dfTable3.RData") 
-    load("dfTable4A.RData") 
-    load("dfTable4B.RData")  
-    load("dfTable4C.RData") 
-    load("dfTable4D.RData") 
-    load("dfMap4A.RData") 
-    load("dfMap4B.RData")  
-    load("dfMap4C.RData") 
-    load("dfMap4D.RData") 
-    load("dfTable5.RData")
-    load("ggplot_asian.RData")
-    load("ggplot_white.RData")
-    load("ggplot_black.RData")
-    load("ggplot_hispanic.RData")
+    load("dfEmploymentAndShares.rda")
+    load("dfCensus2.rda") 
+    #load("dfTable1.RData")
+    #load("dfTable1A.RData")
+    #load("dfTable1B.RData") 
+    #load("dfTable2A.RData")
+    #load("dfTable2B.RData") 
+    #load("dfTable3.RData") 
+    #load("dfTable4A.RData") 
+    #load("dfTable4B.RData")  
+    #load("dfTable4C.RData") 
+    #load("dfTable4D.RData") 
     
+    load("dfTab1A1B2A2B3.rda")
+    load("dfTab4ABCD.rda")    
+    load("dfMap4ABCD.rda")
+    load("dfTab5.rda")
+    load("ggPlot6AWBH.rda")
+    
+    #load("dfMap4A.RData") 
+    #load("dfMap4B.RData")  
+    #load("dfMap4C.RData") 
+    #load("dfMap4D.RData") 
+    #load("dfTable5.RData")
+
+    #load("ggplot_asian.RData")
+    #load("ggplot_white.RData")
+    #load("ggplot_black.RData")
+    #load("ggplot_hispanic.RData")
+
     ###load("dfCensus3.RData")
     ###load("dfStatesPop3.RData") 
+    
+    library(mapproj) ### needed by ggplot2, but not installed automaticallly
     library(ggplot2)
     library(gridExtra)
+    library(maps)
 ```
 
 ### I. Overview 
@@ -176,7 +187,7 @@ Answer 5: See Table 5 (below) ... Comment - Parity values are lowest for Hispani
 Question 6: Is there a positive relationship between the size of a race/ethnic group's population in a state to the group's share of the tech jobs in that state?<br />
 Answer 6: Comment ... Yes, there is a positive relationship, but the relationship is weakest for Hispanics, stronger for Blacks, still stronger for Whites, and strongest for Asians.  <br />
 
-<b>Table 6 -- Plots of Tech Employment vs Race/Ethnic Group Population</b>
+<b>Plot 6 -- Plots of Tech Employment vs Race/Ethnic Group Population</b>
 ```{r, echo=FALSE, cache=TRUE}
     grid.arrange(ggPlot_asian, ggPlot_white, ggPlot_black, ggPlot_hispanic, ncol=2)
 ```
