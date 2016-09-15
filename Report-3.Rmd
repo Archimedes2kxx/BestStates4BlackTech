@@ -37,7 +37,7 @@ pre {
 
 ## I. Overview 
 
-This note provides a convenient reference for answers to some basic questions about diversity in the U.S. information technology sector, i.e., "diversity in tech". To be specific, it presents the results of my examination of some U.S. Census data about the employment of Blacks and Hispanics in the information technology sectors of all 50 states plus the District of Columbia in 2014. My principal findings are straight-forward:   
+This note provides a convenient reference for answers to some basic questions about diversity in the U.S. information technology sector, i.e., "diversity in tech". To be specific, it presents the results of my examination of U.S. Census data about the employment of Blacks and Hispanics in the information technology sectors of all 50 states plus the District of Columbia in 2014. My principal findings are straight-forward:   
 
 * First, the percentage of tech employees who were Black was higher in states that had larger Black populations and smaller in states that had smaller Black populations. The same relationship between population size and percentage of tech employment held true for Hispanics. 
 
@@ -117,37 +117,23 @@ Answer 4 -- See Table 4A (White), Table 4B, Table 4C, and Table 4D (below) ... a
 
 <br />... Comments and reformatting of table </br>
 <i>Note that only the ten top states for each group are displayed in these tables. The full tables are found in the Appendix files on GitHub</i>   
-<b>Table 4A -- Whites in U.S. Information Technology -- Top 5 States</b>
+<b>Table 4A -- Whites in U.S. Information Technology -- Top 10 States</b>
 ```{r, echo=FALSE, cache=TRUE}
     colnames(dfTable4A) <- c("State", "AllTech", "WhiTech", "%_WhiTech", "WhiPop", "%_WhiPop", "Parity")
-    print(dfTable4A[1:6,], row.names=FALSE)  
-```
-<br />
-<br />... Comments and reformatting of table </br>
-<b>Table 4B -- Blacks in U.S. Information Technology -- Top 5 states</b>... Comments and reformatting of table
-```{r, echo=FALSE, cache=TRUE}
-    colnames(dfTable4B) <- c("State", "AllTech", "BlkTech", "%_BlkTech", "BlkPop", "%_BlkPop", "Parity")
-    print(dfTable4B[1:6,], row.names=FALSE)  
-```
-<br />
-<br />... Comments and reformatting of table </br>
-<b>Table 4C -- Hispanics in U.S. Information Technology -- Top 5 states</b>
-```{r, echo=FALSE, cache=TRUE}
-    colnames(dfTable4C) <- c("State", "AllTech", "HspTech", "%_HspTech", "HspPop", "%_HspPop", "Parity")
-    print(dfTable4C[1:6,], row.names=FALSE)  
-```
-<br />
-<br />... Comments and reformatting of table </br>
-<b>Table 4D -- Asians in U.S. Information Technology -- Top 5 states</b>
-```{r, echo=FALSE, cache=TRUE}
-    colnames(dfTable4D) <- c("State", "AllTech", "AsnTech", "%_AsnTech", "AsnPop", "%_AsnPop", "Parity")
-    print(dfTable4D[1:6,], row.names=FALSE)  
+    print(dfTable4A[1:11,], row.names=FALSE)  
 ```
 <br />
 <br />... Comments    <br/>
 <b>Map 4A -- Whites in U.S. Information Technology -- Lower 48 and DC</b>
 ```{r, echo=FALSE, cache=TRUE}
     print(dfMap4A)  
+```
+<br />
+<br />... Comments and reformatting of table </br>
+<b>Table 4B -- Blacks in U.S. Information Technology -- Top 10 states</b>... Comments and reformatting of table
+```{r, echo=FALSE, cache=TRUE}
+    colnames(dfTable4B) <- c("State", "AllTech", "BlkTech", "%_BlkTech", "BlkPop", "%_BlkPop", "Parity")
+    print(dfTable4B[1:11,], row.names=FALSE)  
 ```
 <br />
 <br />... Comments     <br/>
@@ -157,12 +143,27 @@ Answer 4 -- See Table 4A (White), Table 4B, Table 4C, and Table 4D (below) ... a
 ```
 <br />
 
+<br />... Comments and reformatting of table </br>
+<b>Table 4C -- Hispanics in U.S. Information Technology -- Top 10 states</b>
+```{r, echo=FALSE, cache=TRUE}
+    colnames(dfTable4C) <- c("State", "AllTech", "HspTech", "%_HspTech", "HspPop", "%_HspPop", "Parity")
+    print(dfTable4C[1:11,], row.names=FALSE)  
+```
+<br />
 <br />... Comments     <br/>
 <b>Map 4C -- Hispanics in U.S. Information Technology -- Lower 48 and DC</b>
 ```{r, echo=FALSE, cache=TRUE}
     print(dfMap4C)  
 ```
 <br />
+<br />... Comments and reformatting of table </br>
+<b>Table 4D -- Asians in U.S. Information Technology -- Top 10 states</b>
+```{r, echo=FALSE, cache=TRUE}
+    colnames(dfTable4D) <- c("State", "AllTech", "AsnTech", "%_AsnTech", "AsnPop", "%_AsnPop", "Parity")
+    print(dfTable4D[1:11,], row.names=FALSE)  
+```
+<br />
+
 <br />... Comments      <br/>
 <b>Map 4D -- Asians in U.S. Information Technology -- Lower 48 and DC</b>
 ```{r, echo=FALSE, cache=TRUE}
