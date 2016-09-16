@@ -62,13 +62,13 @@ save(dfCensus2, file="dfCensus2.rda")
 ###       https://usa.ipums.org/usa/voliii/ACSsamp.shtml
 ### The description appears in the paragraph with the heading: Production of Estimates"
 
-### 5. Calculate each racial group's employment for each state ... Thank you, Hadley ... :-)
+### 5. Calculate racial group's employment per each state ... Thank you, Hadley ... :-)
 dfCensus3 <- dfCensus2 
 censusGroups <- group_by(dfCensus3, state, race) 
-dfPtsPerRace <- summarise(censusGroups, ptsPerRace = sum(personalWeight))
+dfPtsPwtRace <- summarise(censusGroups, ptsPwtRace = sum(personalWeight))
 censusStates <- group_by(dfCensus3, state)
-dfPtsPerState <- summarise(censusStates, ptsPerState = sum(personalWeight))
-dfRaceEmploymentPerState <- spread(dfPtsPerRace, key=race, value=ptsPerRace) 
+dfPtsPwtState <- summarise(censusStates, ptsPwtState = sum(personalWeight))
+dfRaceEmploymentPerState <- spread(dfPtsPwtRace, key=race, value=ptsPwtRace) 
 dfRaceEmploymentPerState[is.na(dfRaceEmploymentPerState)] <- 0 ### Replace NAs with zeros
 
 ### 6. Combine all groups other than black, white, asian, and hispanic into OTHERS

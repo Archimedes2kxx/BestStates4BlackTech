@@ -33,8 +33,9 @@ dfTable1A
 
 dfTable1B <- dfStatesPop3[1,c(2,8:12)]
 dfTable1B[1,1] <- 1.0 ### 1.0 = 100 percent for ALL
+colNames_per <- c("per_white", "per_black", "per_asian", "per_hispanic", "per_OTHERS")
 colnames(dfTable1B) <- colNames
-dfTable1B <- round(100 * dfTable1B, digits=0)
+dfTable1B <- round(dfTable1B, digits=0)
 dfTable1B
 
 
@@ -44,40 +45,40 @@ colnames(dfTable2A) <- colNames
 dfTable2A
 
 dfTable2B <- dfEmploymentAndShares[1,c(2,8:12)]
-dfTable2B[1,1] <- 1.0 ### 1.0 = 100 percent for ALL
-colnames(dfTable2B) <- colNames
+dfTable2B[1,1] <- 1 ### 1.0 = 100 percent for ALL
+colnames(dfTable2B) <- colNames_per
 rownames(dfTable2B) <- NULL
-dfTable2B <- round(100 * data.frame(dfTable2B), digits=0)
+dfTable2B <- round(data.frame(dfTable2B), digits=0)
 dfTable2B
 
 
 ### Table 3 Sex by Occupations
 censusGroups <- group_by(dfCensus2, occupation, sex)
-dfPtsPerSex <- summarise(censusGroups, ptsPerSex = sum(personalWeight))
-dfOccupationPerSex <- spread(dfPtsPerSex, key=sex, value=ptsPerSex)
-dfOccupationPerSex <- data.frame(dfOccupationPerSex)
-dfOccupationPerSex$perMale <- round(100 * dfOccupationPerSex$Male /(dfOccupationPerSex$Male + dfOccupationPerSex$Female), digits=0)
+dfPtsPwtSex <- summarise(censusGroups, ptsPwtSex = sum(personalWeight))
+dfOccupationPwtSex <- spread(dfPtsPwtSex, key=sex, value=ptsPwtSex)
+dfOccupationPwtSex <- data.frame(dfOccupationPwtSex)
+dfOccupationPwtSex$perMale <- round((100 * dfOccupationPwtSex$Male) /(dfOccupationPwtSex$Male + dfOccupationPwtSex$Female), digits=0)
 
-dfOccupationPerSex$Total <- dfOccupationPerSex$Male + dfOccupationPerSex$Female
-dfOccupationPerSex <- dfOccupationPerSex[, c(1,5,2:4)] ### Put total in second column
+dfOccupationPwtSex$Total <- dfOccupationPwtSex$Male + dfOccupationPwtSex$Female
+dfOccupationPwtSex <- dfOccupationPwtSex[, c(1,5,2:4)] ### Put total in second column
 
 ### Add total row for ALL
-techSums <- as.vector(colSums(dfOccupationPerSex[2:4]))
+techSums <- as.vector(colSums(dfOccupationPwtSex[2:4]))
 perMaleTechSums <- as.numeric(round(100 * (techSums[2]/techSums[1]), digits = 0))
-dfALL <- data.frame("ALL", t(techSums), perMaleTechSums)
+dfALL <- data.frame("ALL", t(techSums), perMaleTechSums) ### transpose
 colnames(dfALL) <- c("occupation", "Total", "Male","Female", "perMale")
-dfOccupationPerSex <- rbind(dfOccupationPerSex, dfALL)
-nRows <- dim(dfOccupationPerSex)[1]
-dfOccupationPerSex
+dfOccupationPwtSex <- rbind(dfOccupationPwtSex, dfALL)
+nRows <- dim(dfOccupationPwtSex)[1]
+dfOccupationPwtSex
 
 ### Finish making things "nice"
-index <- order(dfOccupationPerSex$Total, decreasing=TRUE)
-dfOccupationPerSex <- dfOccupationPerSex[index,] 
-dfOccupationPerSex$Female <- NULL
-rownames(dfOccupationPerSex) <- NULL
-colnames(dfOccupationPerSex) <- c("Occupation", "Total", "Male", "%-Male")
-(dfTable3 <- dfOccupationPerSex)
-###save(dfTable3, file="dfTable3.RData")
+index <- order(dfOccupationPwtSex$Total, decreasing=TRUE)
+dfOccupationPwtSex <- dfOccupationPwtSex[index,] 
+dfOccupationPwtSex$Female <- NULL
+rownames(dfOccupationPwtSex) <- NULL
+colnames(dfOccupationPwtSex) <- c("Occupation", "Total", "Male", "%-Male")
+(dfTable3 <- dfOccupationPwtSex)
+
 
 save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3, file="dfTab1A1B2A2B3.rda")
 
@@ -99,7 +100,7 @@ makeParityTable <- function(race){
     racePop <- paste0(race, "Pop")
     per_racePop <- paste0("per_", racePop)
     colnames(dfParity) <- c("state", "totalTech", raceTech, per_raceTech, racePop, per_racePop)
-    dfParity$parity <- round((dfParity[,per_raceTech]/dfParity[,per_racePop]), digits=2)
+    dfParity$parity <- round((dfParity[,per_raceTech]/dfParity[,per_racePop]), digits=1)
     index <- order(dfParity[, raceTech], decreasing=TRUE)
     dfParity <- dfParity[index,]
     
@@ -224,7 +225,7 @@ dfMap4D <- asian_ggMap
 save(dfMap4A, dfMap4B, dfMap4C, dfMap4D, file="dfMap4.rda")
 
 ##########################
-### Tables 2. summary stats for racial groups in each state  
+### Table 5. summary stats for racial groups in each state  
 summary(dfParity_asian$parity) 
 summary(dfParity_white$parity)
 summary(dfParity_black$parity)
@@ -243,7 +244,7 @@ dfParity <- as.data.frame(matParity)
 dfParity
 
 ##########################
-### Plots 2A, 2B, 2C, 2D ... regression racial population vs. racial Tech 
+### Regression racial population vs. racial Tech 
 makeLM <- function(df, race) {
     ###df <- subset(df, state != "District of Columbia") 
     df <- subset(df, state != "ALL STATES")
