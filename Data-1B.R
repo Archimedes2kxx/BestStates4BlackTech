@@ -51,17 +51,16 @@ dfStatesPop2$mixed <- NULL
 
 ### 10. Calculate derived parameters ... percentage of each racial group in the total population ... add to data frame
 dfStatesPop3 <- dfStatesPop2
-dfStatesPop3$per_white <- round(dfStatesPop3$white / dfStatesPop3$totpop, digits = 3)
-dfStatesPop3$per_black <- round(dfStatesPop3$black / dfStatesPop3$totpop, digits = 3)
-dfStatesPop3$per_asian <- round(dfStatesPop3$asian / dfStatesPop3$totpop, digits = 3)
-dfStatesPop3$per_hispanic <- round(dfStatesPop3$hisp / dfStatesPop3$totpop, digits = 3)
-dfStatesPop3$per_OTHERS <- round(dfStatesPop3$OTHERS / dfStatesPop3$totpop, digits = 3)
+dfStatesPop3$per_white <- round(100* dfStatesPop3$white / dfStatesPop3$totpop, digits = 0)
+dfStatesPop3$per_black <- round(100 * dfStatesPop3$black / dfStatesPop3$totpop, digits = 0)
+dfStatesPop3$per_asian <- round(100 * dfStatesPop3$asian / dfStatesPop3$totpop, digits = 0)
+dfStatesPop3$per_hispanic <- round(100 * dfStatesPop3$hisp / dfStatesPop3$totpop, digits = 0)
+dfStatesPop3$per_OTHERS <- round(100 * dfStatesPop3$OTHERS / dfStatesPop3$totpop, digits = 0)
 
 ### 11. Add a totals row and save
-### WRONG ALL STATES TOTAL ROW ... AND PLACE TOTALS ROW AT TOP OF TABLE
 allRacesInUS <- colSums(dfStatesPop3[,3:7])
 allRaces <- sum(allRacesInUS) ### 4125164
-raceSharesInUS <- round((allRacesInUS/allRaces), digits=3)
+raceSharesInUS <- round(100 * (allRacesInUS/allRaces), digits=0)
 
 dfTotalsRow <- dfStatesPop3[1,] ### dummy to get columns and types
 dfTotalsRow$state <- "ALL STATES"
@@ -74,18 +73,15 @@ head(dfStatesPop3)
 tail(dfStatesPop3)
 save(dfStatesPop3, file = "dfStatesPop3.rda")
 
-### 12. Examples of state AFF parameters
-dfStatesPop3["California",]
-sum(dfStatesPop3["California", 3:10])
+### 12. Examples of state AFF parameters ... must add rownames
+dfStatesPop4 <- dfStatesPop3
+rownames(dfStatesPop4) <- c(dfStatesPop4$state)
+dfStatesPop4["California",]
+sum(dfStatesPop4["California", 3:10])
 
-dfStatesPop3["New York",]
-sum(dfStatesPop3["New York", 3:10])
-
-dfStatesPop3["Georgia",] 
-sum(dfStatesPop3["Georgia", 3:10])
+dfStatesPop4["New York",]
+sum(dfStatesPop4["New York", 3:10])
 
 ### Note the URL for Census data about racial shares of total U.S. pop
 ### https://www.census.gov/quickfacts/table/PST045215/00
 
-install.packages("knitr")
-library(knitr)
