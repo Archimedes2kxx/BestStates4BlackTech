@@ -29,10 +29,10 @@ pre {
     load("dfTab5.rda")
     load("ggPlot6.rda")
     
+    library(maps)    
     library(mapproj) ### needed by ggplot2, but not installed automaticallly
     library(ggplot2)
     library(gridExtra)
-    library(maps)
     library(gridExtra)
 ```
 
@@ -69,7 +69,7 @@ Question 1B -- What percentage of the U.S. population that was White, Black, His
 Answer 1B -- See Table 1B (below)   
 ... Comments and reformatting of table
 
-<b>Table 1B -- White, Black, Hispanic, and Asian Percentage in U.S. Population in 2014</b>
+<b>Table 1B -- White, Black, Hispanic, and Asian Percentate in U.S. Population in 2014</b>
 ```{r, echo=FALSE, cache=FALSE}
     colnames(dfTable1B) <- c("ALL", "White", "Black", "Hispanic", "Asian", "Others")
     print(dfTable1B, row.names=FALSE) 
