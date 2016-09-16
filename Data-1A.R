@@ -51,8 +51,16 @@ levels(dfCensus2$occupation) <- trimws(occupationCodes[,2])
 str(dfCensus2)
 save(dfCensus2, file="dfCensus2.rda")
 
-### Stats-2 will calculate the first set of tables from dfCensus2 ... overall U.S. 
+### Stats-2 will calculate the first group of tables from dfCensus2 for the overall U.S. 
 ### ... Total U.S. techs, male/female breakdown, total for each type of tech, total techs in each state
+
+### Each row in the ACS Public Use Microdat Sample (PUMS) table that I downloaded contains the responses of one real tech employee, i.e., his/her sex, race/ethnicity, occupation, and state of residence. Each observation also conatins a number called "personal weight" which is the Census Bureau's estimate of how many people in the real population are like that one person in the sample. So to obtain an estimate of the total number of techs in the real population represented by the techs in the sample, one merely adds the personal weights of the techs in the sample. This applies to subgroups, e.g, male vs. female, residents of specific states, etc. 
+
+### Following this logic, to obtain the percentage share of a subgroup's employment, one merely divides the estimate employment in the subgroup by the estimate employment in the entire group, i.e., divide the sum of personal weights in a subgroup by the sum of personal weights in the larger group. 
+
+### Note: Here's the URL to the Census Bureau's description of this process 
+###       https://usa.ipums.org/usa/voliii/ACSsamp.shtml
+### The description appears in the paragraph with the heading: Production of Estimates"
 
 ### 5. Calculate each racial group's employment for each state ... Thank you, Hadley ... :-)
 dfCensus3 <- dfCensus2 
@@ -82,7 +90,7 @@ dfRaceEmploymentPerState <- dfRaceEmploymentPerState[,c(1,7, 2:6)] ### move tota
 
 ### 8. Calculate each racial groups share of total tech employment in each state
 vecTotalEmploymentPerState <- c(unlist(dfRaceEmploymentPerState[,2]))
-dfRaceShares <- round((dfRaceEmploymentPerState[,3:7] / vecTotalEmploymentPerState), digits = 3)
+dfRaceShares <- round((100 * dfRaceEmploymentPerState[,3:7] / vecTotalEmploymentPerState), digits = 0)
 dfRaceSharesPerState <- dfRaceEmploymentPerState[,c(1, 3:7)] ### Dummy copy just to get the right dimensions & labels
 
 dfRaceSharesPerState[, 2:6] <- dfRaceShares
@@ -94,7 +102,7 @@ dfEmploymentAndShares <- merge(dfRaceEmploymentPerState, dfRaceSharesPerState)
 ### 10. Add a totals row 
 (allRacesInTech <- colSums(dfEmploymentAndShares[,3:7]))
 (allTech <- sum(allRacesInTech)) ### 4125164
-(raceSharesInTech <- round((allRacesInTech/allTech), digits=3))
+(raceSharesInTech <- round((100 * allRacesInTech/allTech), digits=0))
 
 dfTotalsRow <- dfEmploymentAndShares[1,] ### dummy to get columns and types
 dfTotalsRow$state <- "ALL STATES"
@@ -102,6 +110,7 @@ dfTotalsRow[1,3:7] <- allRacesInTech
 dfTotalsRow[1,8:12] <- raceSharesInTech
 dfTotalsRow[1,2] <- allTech
 dfEmploymentAndShares <- rbind(dfTotalsRow, dfEmploymentAndShares)
+dfEmploymentAndShares
 
 ### 11. Save combined employment and shares data frame
 head(dfEmploymentAndShares)
