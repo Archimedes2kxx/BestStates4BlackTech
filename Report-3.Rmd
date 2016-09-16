@@ -17,22 +17,23 @@ pre {
 }
 </style>
 
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE, cache=FALSE}
     setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
 
     load("dfEmploymentAndShares.rda")
     load("dfCensus2.rda") 
      
     load("dfTab1A1B2A2B3.rda")
-    load("dfTab4ABCD.rda")   
-    load("dfMap4ABCD.rda")
+    load("dfTab4.rda")   
+    load("dfMap4.rda")
     load("dfTab5.rda")
-    load("ggPlot6AWBH.rda")
+    load("ggPlot6.rda")
     
     library(mapproj) ### needed by ggplot2, but not installed automaticallly
     library(ggplot2)
     library(gridExtra)
     library(maps)
+    library(gridExtra)
 ```
 
 ## I. Overview 
@@ -58,7 +59,7 @@ Answer 1A -- See Table 1A (below)
 ... Comments and reformatting of table
 
 <b>Table 1A -- U.S. Census Estimates of Whites, Blacks, Hispanics, and Asians in U.S.  in 2014</b>
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE, cache=FALSE}
     colnames(dfTable1A) <- c("ALL", "White", "Black", "Hispanic", "Asian", "Others")
     print(dfTable1A, row.names=FALSE)   
 ```
@@ -68,8 +69,8 @@ Question 1B -- What percentage of the U.S. population that was White, Black, His
 Answer 1B -- See Table 1B (below)   
 ... Comments and reformatting of table
 
-<b>Table 1B -- White, Black, Hispanic, and Asian Percentate in U.S. Population in 2014</b>
-```{r, echo=FALSE, cache=TRUE}
+<b>Table 1B -- White, Black, Hispanic, and Asian Percentage in U.S. Population in 2014</b>
+```{r, echo=FALSE, cache=FALSE}
     colnames(dfTable1B) <- c("ALL", "White", "Black", "Hispanic", "Asian", "Others")
     print(dfTable1B, row.names=FALSE) 
 ```
@@ -80,7 +81,7 @@ Answer 2A -- See Table 2A (below)
 ... Comments and reformatting of table
 
 <b>Table 2A -- U.S. Census Estimates of Whites, Blacks, Hispanics, and Asians in Information Technology  in 2014</b>
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE, cache=FALSE}
     colnames(dfTable2A) <- c("ALL", "White", "Black", "Hispanic", "Asian", "Others")
     print(dfTable2A, row.names=FALSE)  
 ```
@@ -90,7 +91,7 @@ Question 2B -- What percentage of U.S. tech was White, Black, Hispanic, Asian, a
 Answer 2B -- See Table 2B (below)   ... Comments and reformatting of table
 
 <b>Table 2B -- Percentage of Whites, Blacks, Hispanics, and Asians in Information Technology in 2014</b>
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE, cache=FALSE}
     colnames(dfTable2B) <- c("ALL", "White", "Black", "Hispanic", "Asian", "Others")
     print(dfTable2B, row.names=FALSE)  
 ```
@@ -104,7 +105,7 @@ Answer 2B -- See Table 2B (below)   ... Comments and reformatting of table
  Answers 3A, 3B, 3C -- See Table 3 (below)     
  <br />... Comments and reformatting of table </br>
  <b>Table 3 -- Employment in Information Technology and Male Percentage</b>
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE, cache=FALSE}
     colnames(dfTable3) <- c("Occupation", "AllTech", "Male", "%_Male")
     print(dfTable3[,c(1,2,4)], row.names=FALSE)  
 ```
@@ -113,63 +114,46 @@ Answer 2B -- See Table 2B (below)   ... Comments and reformatting of table
 
 Question 4B -- Where did White, Black, Hispanic, and Asian techs live, i.e., in which states in 2014?      
 
-Answer 4 -- See Table 4A (White), Table 4B, Table 4C, and Table 4D (below) ... and Map 4A (White), Map 4B (Black), Map 4C (Hispanic), and Map 4D (Asian) (subsequent)     
+Answer 4 -- See Map 4 (below) + Table 4A (White), Table 4B, Table 4C, and Table 4D (subbsequent)
 
-<br />... Comments and reformatting of table </br>
-<i>Note that only the ten top states for each group are displayed in these tables. The full tables are found in the Appendix files on GitHub</i>   
+<br />... Comments    <br/><br />
+<b>Map 4 -- Whites, Blacks, Hispanics, and Asians -- U.S. Information Technology -- Lower 48 and DC</b>
+```{r, echo=FALSE, cache=FALSE}
+    grid.arrange(dfMap4A, dfMap4B, dfMap4C, dfMap4D, ncol=2) ###, ggPlot_white, ncol=2) ###, ggPlot_black, ggPlot_hispanic, ncol=2)
+    ###print(dfMap4A)  
+
+```
+<br />
+<br />... Comments and reformatting of table </br><br />
+<i>Note that only the ten top states for each group are displayed in these tables. The full tables are found in the Appendix files on GitHub</i>   <br />
 <b>Table 4A -- Whites in U.S. Information Technology -- Top 10 States</b>
-```{r, echo=FALSE, cache=TRUE}
-    colnames(dfTable4A) <- c("State", "AllTech", "WhiTech", "%_WhiTech", "WhiPop", "%_WhiPop", "Parity")
+```{r, echo=FALSE, cache=FALSE}
+    colnames(dfTable4A) <- c("State", "AllTech", "State_%", "WhiTech", "%_WhiTech", "WhiPop", "%_WhiPop", "Parity")
     print(dfTable4A[1:11,], row.names=FALSE)  
 ```
 <br />
-<br />... Comments    <br/>
-<b>Map 4A -- Whites in U.S. Information Technology -- Lower 48 and DC</b>
-```{r, echo=FALSE, cache=TRUE}
-    print(dfMap4A)  
-```
-<br />
+
 <br />... Comments and reformatting of table </br>
 <b>Table 4B -- Blacks in U.S. Information Technology -- Top 10 states</b>... Comments and reformatting of table
-```{r, echo=FALSE, cache=TRUE}
-    colnames(dfTable4B) <- c("State", "AllTech", "BlkTech", "%_BlkTech", "BlkPop", "%_BlkPop", "Parity")
+```{r, echo=FALSE, cache=FALSE}
+    colnames(dfTable4B) <- c("State", "AllTech", "State_%", "BlkTech", "%_BlkTech", "BlkPop", "%_BlkPop", "Parity")
     print(dfTable4B[1:11,], row.names=FALSE)  
 ```
-<br />
-<br />... Comments     <br/>
-<b>Map 4B -- Blacks in U.S. Information Technology -- Lower 48 and DC</b>
-```{r, echo=FALSE, cache=TRUE}
-    print(dfMap4B)  
-```
-<br />
 
 <br />... Comments and reformatting of table </br>
 <b>Table 4C -- Hispanics in U.S. Information Technology -- Top 10 states</b>
-```{r, echo=FALSE, cache=TRUE}
-    colnames(dfTable4C) <- c("State", "AllTech", "HspTech", "%_HspTech", "HspPop", "%_HspPop", "Parity")
+```{r, echo=FALSE, cache=FALSE}
+    colnames(dfTable4C) <- c("State", "AllTech", "State_%",  "HspTech", "%_HspTech", "HspPop", "%_HspPop", "Parity")
     print(dfTable4C[1:11,], row.names=FALSE)  
-```
-<br />
-<br />... Comments     <br/>
-<b>Map 4C -- Hispanics in U.S. Information Technology -- Lower 48 and DC</b>
-```{r, echo=FALSE, cache=TRUE}
-    print(dfMap4C)  
 ```
 <br />
 <br />... Comments and reformatting of table </br>
 <b>Table 4D -- Asians in U.S. Information Technology -- Top 10 states</b>
-```{r, echo=FALSE, cache=TRUE}
-    colnames(dfTable4D) <- c("State", "AllTech", "AsnTech", "%_AsnTech", "AsnPop", "%_AsnPop", "Parity")
+```{r, echo=FALSE, cache=FALSE}
+    colnames(dfTable4D) <- c("State", "AllTech", "State_%", "AsnTech", "%_AsnTech", "AsnPop", "%_AsnPop", "Parity")
     print(dfTable4D[1:11,], row.names=FALSE)  
 ```
-<br />
-
-<br />... Comments      <br/>
-<b>Map 4D -- Asians in U.S. Information Technology -- Lower 48 and DC</b>
-```{r, echo=FALSE, cache=TRUE}
-    print(dfMap4D)  
-```
-<br />
+<br /><br />
 
 
 ### B. Parity in Tech   
@@ -177,7 +161,7 @@ Question 5: Do the parity values noted in the last column of Tables 4A, 4B, 4C, 
 Answer 5: See Table 5 (below) ... Comment - Parity values are lowest for Hispanics, higher for Blacks, still higher for Whites, and highest for Asians. <br />   
 
 <b>Table 5 -- Table of Parity Values</b>
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE, cache=FALSE}
     colnames(dfTable5) <- c("Min", "Q1", "Median", "Mean", "Q3", "Max", "Beta1000")
     print(dfTable5)  
 ```
@@ -187,7 +171,7 @@ Question 6: Is there a positive relationship between the size of a race/ethnic g
 Answer 6: Comment ... Yes, there is a positive relationship, but the relationship is weakest for Hispanics, stronger for Blacks, still stronger for Whites, and strongest for Asians.  <br />
 
 <b>Plot 6 -- Plots of Tech Employment vs Race/Ethnic Group Population</b>
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE, cache=FALSE}
     grid.arrange(ggPlot_asian, ggPlot_white, ggPlot_black, ggPlot_hispanic, ncol=2)
 ```
 <br />
