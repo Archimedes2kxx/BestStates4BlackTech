@@ -60,7 +60,7 @@ dfStatesPop3$per_OTHERS <- round(100 * dfStatesPop3$OTHERS / dfStatesPop3$totpop
 ### 11. Add a totals row and save
 allRacesInUS <- colSums(dfStatesPop3[,3:7])
 allRaces <- sum(allRacesInUS) ### 4125164
-raceSharesInUS <- round(100 * (allRacesInUS/allRaces), digits=0)
+raceSharesInUS <- round(100 * allRacesInUS/allRaces, digits=0)
 
 dfTotalsRow <- dfStatesPop3[1,] ### dummy to get columns and types
 dfTotalsRow$state <- "ALL STATES"
