@@ -22,6 +22,7 @@ library(mapproj) ### needed by ggplot2, but not installed automaticallly
 library(ggplot2)
 library(maps)
 library(dplyr)
+library(grid)
 library(gridExtra)
 
 ### Table 1A   Context -- How many people were living in the US in 2014 -- total, black, white, ### asian, hispanic, and OTHERS and percentages of total, white, black, asian, hispanic, and OTHERS
@@ -33,7 +34,7 @@ dfTable1A
 dfTable1B <- dfStatesPop3[1,c(2,8:12)]
 dfTable1B[1,1] <- 1.0 ### 1.0 = 100 percent for ALL
 colnames(dfTable1B) <- colNames
-dfTable1B <- round(dfTable1B, digits=3) * 100
+dfTable1B <- round(100 * dfTable1B, digits=0)
 dfTable1B
 
 
@@ -46,7 +47,7 @@ dfTable2B <- dfEmploymentAndShares[1,c(2,8:12)]
 dfTable2B[1,1] <- 1.0 ### 1.0 = 100 percent for ALL
 colnames(dfTable2B) <- colNames
 rownames(dfTable2B) <- NULL
-dfTable2B <- round(data.frame(dfTable2B), digits=3) * 100
+dfTable2B <- round(100 * data.frame(dfTable2B), digits=0)
 dfTable2B
 
 
@@ -55,14 +56,14 @@ censusGroups <- group_by(dfCensus2, occupation, sex)
 dfPtsPerSex <- summarise(censusGroups, ptsPerSex = sum(personalWeight))
 dfOccupationPerSex <- spread(dfPtsPerSex, key=sex, value=ptsPerSex)
 dfOccupationPerSex <- data.frame(dfOccupationPerSex)
-dfOccupationPerSex$perMale <- round(dfOccupationPerSex$Male /(dfOccupationPerSex$Male + dfOccupationPerSex$Female), digits=3) * 100
+dfOccupationPerSex$perMale <- round(100 * dfOccupationPerSex$Male /(dfOccupationPerSex$Male + dfOccupationPerSex$Female), digits=0)
 
 dfOccupationPerSex$Total <- dfOccupationPerSex$Male + dfOccupationPerSex$Female
 dfOccupationPerSex <- dfOccupationPerSex[, c(1,5,2:4)] ### Put total in second column
 
 ### Add total row for ALL
 techSums <- as.vector(colSums(dfOccupationPerSex[2:4]))
-perMaleTechSums <- as.numeric(round((techSums[2]/techSums[1]), digits = 3) * 100)
+perMaleTechSums <- as.numeric(round(100 * (techSums[2]/techSums[1]), digits = 0))
 dfALL <- data.frame("ALL", t(techSums), perMaleTechSums)
 colnames(dfALL) <- c("occupation", "Total", "Male","Female", "perMale")
 dfOccupationPerSex <- rbind(dfOccupationPerSex, dfALL)
@@ -89,7 +90,6 @@ save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3, file="dfTab1A1B2A2B3.
 makeParityTable <- function(race){
     per_race <- paste0("per_", race)
     pop_race <- paste0("pop_", race)
-    
     dfEmp <- dfEmploymentAndShares[, c("state", "totals", race, per_race)]
     dfPop <- dfStatesPop3[, c("state", race, per_race)]
     dfParity <- merge(dfEmp, dfPop, by="state")
@@ -99,10 +99,13 @@ makeParityTable <- function(race){
     racePop <- paste0(race, "Pop")
     per_racePop <- paste0("per_", racePop)
     colnames(dfParity) <- c("state", "totalTech", raceTech, per_raceTech, racePop, per_racePop)
-    dfParity$parity <- round((dfParity[,per_raceTech]/dfParity[,per_racePop]), digits=3)
-    
+    dfParity$parity <- round((dfParity[,per_raceTech]/dfParity[,per_racePop]), digits=2)
     index <- order(dfParity[, raceTech], decreasing=TRUE)
     dfParity <- dfParity[index,]
+    
+    ### Calculate the percentage of the total for each race is in each state
+    dfParity$per_state <- round(100 * dfParity[,raceTech]/dfParity[1,raceTech[1]], digits=0)
+    dfParity <- data.frame(dfParity[,c(1:2,8,3:7)]) ### move per_state to 3rd column
     return(dfParity)
 }
 
@@ -111,8 +114,8 @@ dfParity_black <- makeParityTable("black")
 dfParity_hispanic <- makeParityTable("hispanic")
 dfParity_asian <- makeParityTable("asian")
 
-head(dfParity_black,20)
-head(dfParity_white,20)
+head(dfParity_black,10)
+head(dfParity_white,10)
 head(dfParity_hispanic,20)
 head(dfParity_asian,20)
 tail(dfParity_asian,20)
@@ -122,7 +125,7 @@ dfTable4B <- dfParity_black
 dfTable4C <- dfParity_hispanic
 dfTable4D <- dfParity_asian
 
-save(dfTable4A, dfTable4B, dfTable4C, dfTable4D, file="dfTab4ABCD.rda")
+save(dfTable4A, dfTable4B, dfTable4C, dfTable4D, file="dfTab4.rda")
 
 ############
 ### handy tool for spot checking data
@@ -148,7 +151,7 @@ selectParityDF <- function(race, state){
 
 getEmploymentRank <- function(race, state) {
     df <- selectParityDF(race, state)
-    if (is.null(dim(df))) { ####### NOT WORKING
+    if (is.null(dim(df))) { 
         print(paste("Bad race input ... "))
         return(df)
     }
@@ -165,7 +168,7 @@ R <- getEmploymentRank("black", "California")
 R       
 
 
-### Maps 4A, B, C, D ... maps of white, black, asian, hispanics in state tech sectors
+### Maps 4A, B, C, D ... state maps of white, black, asian, hispanics in  tech 
 ### Follow W. Chang's cookbook p 313 for U.S. with lower 48 states
 
 states_map <- map_data("state") ### from ggplot]
@@ -188,13 +191,16 @@ theme_clean <- function(base_size = 12) {
 }
     
 makeTechMap <- function(df, race) {
-    raceTech <- paste0(race,"Tech")
+    ### raceTech <- paste0(race,"Tech")
     legend <- paste(toupper(substr(race, 1, 1)), substr(race, 2, nchar(race)), sep="") ### capitalize first letter ... aarrrrrrrrrrrggghhh!!!
-    dfMap <- subset(df, select=c("state", raceTech), state!= c("ALL STATES"))  
+    legend = paste0(legend, " %")
+    dfMap <- subset(df, select=c("state", "per_state"), state!= c("ALL STATES"))     
+    ### dfMap <- subset(df, select=c("state", raceTech), state!= c("ALL STATES"))  
     dfMap$state <- tolower(dfMap$state)
     dfMap <- merge(states_map, dfMap, by.x="region", by.y= "state")
     dfMap <- arrange(dfMap, group, order) 
-    raceData <- dfMap[,raceTech]
+    raceData <- dfMap[,"per_state"]
+    #### raceData <- dfMap[,raceTech]
 
     ggMap <- ggplot(data=dfMap, aes(map_id=region, fill=raceData))
     ggMap <- ggMap + geom_map(map=states_map, colour="black")
@@ -215,12 +221,7 @@ dfMap4B <- black_ggMap
 dfMap4C <- hispanic_ggMap
 dfMap4D <- asian_ggMap
 
-#save(dfMap4A, file="dfMap4A.RData")
-#save(dfMap4B, file="dfMap4B.RData")
-#save(dfMap4C, file="dfMap4C.RData")
-#save(dfMap4D, file="dfMap4D.RData")
-
-save(dfMap4A, dfMap4B, dfMap4C, dfMap4D, file="dfMap4ABCD.rda")
+save(dfMap4A, dfMap4B, dfMap4C, dfMap4D, file="dfMap4.rda")
 
 ##########################
 ### Tables 2. summary stats for racial groups in each state  
@@ -262,7 +263,7 @@ lm_hispanic <-makeLM(dfParity_hispanic, "hispanic")
 lm_asian <- makeLM(dfParity_asian, "asian")
 
 beta1000 <- c(lm_black$coef[2], lm_white$coef[2], lm_hispanic$coef[2], lm_asian$coef[2])
-dfParity <- round(cbind(dfParity, beta1000), digits=2)
+dfParity <- round(cbind(dfParity, beta1000), digits=1)
 dfParity <- dfParity[c("hispanic", "black", "white", "asian"),] ### reorder the rows
 rownames(dfParity) <- c("hispanic", "black", "white", "asian")
 (dfTable5 <- dfParity)
@@ -301,7 +302,6 @@ colnames(dfEx_black) <- c("blackPop", "blackTech")
 dfEx_black <- rbind(dfEx_black, c(maxPop * 1000, y_black_ex))
 
 ###################
-### Prefer to scatterplot via ggplot  
 plotEmpVsPop <- function(df, race){
     racePop <- paste0(race, "Pop")
     racePopLab <- paste0(racePop, "/1000")
@@ -319,23 +319,12 @@ plotEmpVsPop <- function(df, race){
     return(ggScatLine)
 }
 
-##### dev.off()
 (ggPlot_asian <- plotEmpVsPop(dfParity_asian, "asian"))
 (ggPlot_white <- plotEmpVsPop(dfParity_white, "white"))
 (ggPlot_black <- plotEmpVsPop(dfEx_black, "black"))
 (ggPlot_hispanic <- plotEmpVsPop(dfParity_hispanic, "hispanic"))
 
-#save(ggPlot_asian, file="ggPlot_asian.RData")
-#save(ggPlot_white, file="ggPlot_white.RData")
-#save(ggPlot_black, file="ggPlot_black.RData")
-#save(ggPlot_hispanic, file="ggPlot_hispanic.RData")
-
-save(ggPlot_asian, ggPlot_white, ggPlot_black, ggPlot_hispanic, file="ggPlot6AWBH.rda")
-
-
-##grid.arrange(ggPlot_asian, ggPlot_white, ggPlot_black, ggPlot_hispanic, ncol=2)
-##save(dfMultiPlot6, file="dfMultiplot6.pdf")
-##dev.off()
+save(ggPlot_asian, ggPlot_white, ggPlot_black, ggPlot_hispanic, file="ggPlot6.rda")
 
 ### Question: What are the best states for Asians in tech?
 ### Answer:   All of them ... :-)
