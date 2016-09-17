@@ -1,10 +1,10 @@
 ### Generate tables and graphics to be included in report based on the data from Data-1A and Data-2B
 
-###################################################
+################################################
 ### use map_dat() as described on this URL
 ### http://is-r.tumblr.com/post/37708137014/us-state-maps-using-mapdata
-###################################################
- 
+################################################
+  
 setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
 load(file="dfEmploymentAndShares.rda")
 load(file="dfStatesPop3.rda") 
