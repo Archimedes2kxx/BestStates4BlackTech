@@ -10,10 +10,10 @@ body, td {
    font-size: 14px;
 }
 code.r{
-  font-size: 14px;
+  font-size: 12px;
 }
 pre {
-  font-size: 14px
+  font-size: 13px
 }
 </style>
 
@@ -64,7 +64,7 @@ Answer 1A -- See Table 1A (below)
 
 <b>Table 1A -- U.S. Census Estimates of Whites, Blacks, Hispanics, and Asians in U.S.  in 2014</b>
 ```{r, echo=FALSE, cache=FALSE}
-    colnames(dfTable1A) <- c("ALL", "White", "Black", "Hispanic", "Asian", "Others")
+    colnames(dfTable1A) <- c("ALL", "White", "Black", "Asian", "Hispanic", "Others")
    print(format(dfTable1A, big.mark=","), row.names=FALSE)
    ###print(df, row.names=FALSE)
 ```
@@ -76,7 +76,7 @@ Answer 1B -- See Table 1B (below)
 
 <b>Table 1B -- White, Black, Hispanic, and Asian Percentage in U.S. Population in 2014</b>
 ```{r, echo=FALSE, cache=FALSE}
-    colnames(dfTable1B) <- c("ALL", "White", "Black", "Hispanic", "Asian", "Others")
+    colnames(dfTable1B) <- c("ALL", "White", "Black", "Asian", "Hispanic", "Others")
     print(dfTable1B, row.names=FALSE) 
 ```
 <br />  
@@ -87,7 +87,7 @@ Answer 2A -- See Table 2A (below)
 
 <b>Table 2A -- U.S. Census Estimates of Whites, Blacks, Hispanics, and Asians in Information Technology  in 2014</b>
 ```{r, echo=FALSE, cache=FALSE}
-    colnames(dfTable2A) <- c("ALL", "White", "Black", "Hispanic", "Asian", "Others")
+    colnames(dfTable2A) <- c("ALL", "White", "Black", "Asian", "Hispanic", "Others")
    print(format(dfTable2A, big.mark=","), row.names=FALSE)  
 ```
  <br />  
@@ -95,9 +95,9 @@ Answer 2A -- See Table 2A (below)
 Question 2B -- What percentage of U.S. tech was White, Black, Hispanic, Asian, and others in 2014?   
 Answer 2B -- See Table 2B (below)   ... Comments and reformatting of table
 
-<b>Table 2B -- Percentage of Whites, Blacks, Hispanics, and Asians in Information Technology in 2014</b>
+<b>Table 2B -- White, Black, Hispanic, and Asian Percentage of Information Technology in 2014</b>
 ```{r, echo=FALSE, cache=FALSE}
-    colnames(dfTable2B) <- c("ALL", "White", "Black", "Hispanic", "Asian", "Others")
+    colnames(dfTable2B) <- c("ALL", "White", "Black", "Asian", "Hispanic", "Others")
     print(dfTable2B, row.names=FALSE)  
 ```
 <br />
@@ -111,7 +111,7 @@ Answer 2B -- See Table 2B (below)   ... Comments and reformatting of table
  <br />... Comments and reformatting of table </br>
  <b>Table 3 -- Employment in Information Technology and Male Percentage</b>
 ```{r, echo=FALSE, cache=FALSE}
-    colnames(dfTable3) <- c("Occupation", "AllTech", "Male", "%_Male")
+    colnames(dfTable3) <- c("Occupation", "AllTech", "Male", "%_M")
     print(format(dfTable3[,c(1,2,4)], big.mark=","),row.names=FALSE)  
     
 ```
@@ -134,7 +134,7 @@ Answer 4 -- See Map 4 (below) + Table 4A (White), Table 4B, Table 4C, and Table 
 <i>Note that only the ten top states for each group are displayed in these tables. The full tables are found in the Appendix files on GitHub</i>   <br />
 <b>Table 4A -- Whites in U.S. Information Technology -- Top 10 States</b>
 ```{r, echo=FALSE, cache=FALSE}
-    colnames(dfTable4A) <- c("State", "AllTech", "State_%", "WhiTech", "%_WhiTech", "WhiPop", "%_WhiPop", "Parity")
+    colnames(dfTable4A) <- c("State", "AllTech", "S_%", "WhiTech", "T_%", "WhiPop", "P_%", "Parity")
     print(format(dfTable4A[1:11,], big.mark=","), row.names=FALSE) 
     
 ```
@@ -143,21 +143,21 @@ Answer 4 -- See Map 4 (below) + Table 4A (White), Table 4B, Table 4C, and Table 
 <br />... Comments and reformatting of table </br>
 <b>Table 4B -- Blacks in U.S. Information Technology -- Top 10 states</b>... Comments and reformatting of table
 ```{r, echo=FALSE, cache=FALSE}
-    colnames(dfTable4B) <- c("State", "AllTech", "State_%", "BlkTech", "%_BlkTech", "BlkPop", "%_BlkPop", "Parity")
+    colnames(dfTable4B) <- c("State", "AllTech", "S_%", "BlkTech", "T_%", "BlkPop", "P_%", "Parity")
     print(format(dfTable4B[1:11,], big.mark = ","), row.names=FALSE)  
 ```
 
 <br />... Comments and reformatting of table </br>
 <b>Table 4C -- Hispanics in U.S. Information Technology -- Top 10 states</b>
 ```{r, echo=FALSE, cache=FALSE}
-    colnames(dfTable4C) <- c("State", "AllTech", "State_%",  "HspTech", "%_HspTech", "HspPop", "%_HspPop", "Parity")
+    colnames(dfTable4C) <- c("State", "AllTech", "S_%",  "HspTech", "T_%", "HspPop", "P_%", "Parity")
     print(format(dfTable4C[1:11,], big.mark = ","), row.names=FALSE)  
 ```
 <br />
 <br />... Comments and reformatting of table </br>
 <b>Table 4D -- Asians in U.S. Information Technology -- Top 10 states</b>
 ```{r, echo=FALSE, cache=FALSE}
-    colnames(dfTable4D) <- c("State", "AllTech", "State_%", "AsnTech", "%_AsnTech", "AsnPop", "%_AsnPop", "Parity")
+    colnames(dfTable4D) <- c("State", "AllTech", "S_%", "AsnTech", "T_%", "AsnPop", "P_%", "Parity")
     print(format(dfTable4D[1:11,], big.mark=","), row.names=FALSE)  
 ```
 <br /><br />
@@ -192,7 +192,7 @@ One of my most important take-aways from completing the <b>[Johns Hopkins "Data 
 
 * Data should be downloaded from original sources, then analyzed, tabulated, mapped, and graphed via programs writen in R. Findings should be summarized in text laid out in a subset of <b>[Markdown](https://en.wikipedia.org/wiki/Markdown)</b> that an R application called <b>["knitr"](http://kbroman.org/knitr_knutshell/pages/Rmarkdown.html)</b> would convert to HTML pages suitable for publication on Websites. 
 
-* Reproducible reports should be as concise as traditional reports, but the writer's extensive collection of programs, notes about analytical strategies, data coding guides, data files, tables, maps, graphs, etc, etc, etc should be shared with the world via GitHub repositories. Of course Python, MATLAB, and other comparable languages could be used insted of R, and the supplementary files could be stored on other public repositories comparable to GitHub.     
+* Reproducible reports should be as concise as traditional reports, but the writer's notes, programs, analytical tools, coding guides, data files, tables, maps, graphs, etc, etc, etc should be shared with the world via GitHub repositories. Of course Python, MATLAB, and other comparable languages could be used insted of R, and the supplementary files could be stored on other public repositories comparable to GitHub.     
 
 This being my first attept to write a reproducible report, I wrote it in R and stored all of my supporting files in a <b>[GitHub repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b>. If readers disagree with my numbers, they won't have to wonder how I got them <i>... #OldDogStillLearningNewTricks ... :-)</i>
 <br /> <br />  
@@ -216,12 +216,13 @@ I configured the DataFerret to include all races in my sample. However, Hispanic
 Each row in the PUMS table that I downloaded contained the anonymized responses of a real tech employee in the ACS 2014 survey, i.e., his/her sex, race/ethnicity, occupation, and state of residence. Each observation also contained a number called "personal weight" which is the Census Bureau's estimate of how many people in the real population were like that one person in the sample. An estimate of the total number of techs in the real population represented by the techs in the sample was found by adding up the personal weights of the techs in the sample. This also applied to subgroups, e.g, male vs. female, residents of specific states, etc. By the same logic, the percentage share of a subgroup's employment was obtained by dividing the estimated employment in the subgroup by the estimated employment in the entire group, i.e., dividing the sum of personal weights in a subgroup by the sum of personal weights in the larger group. <br /><br />
 Here's the <b>[Census Bureau's description](https://usa.ipums.org/usa/voliii/ACSsamp.shtml)</b> of this process:<br /><i>"Production of Estimates"</i> -- The ACS PUMS sample is not self - weighted. To produce estimates or tabulations of characteristics from the ACS PUMS simply add the weights of all persons or housing units that possess the characteristic of interest. For instance, if the characteristic of interest is "total number of black teachers", simply determine the race and occupation of all persons and cumulate the weights of those who match the characteristics of interest. To get estimates of proportions simply divide the weighted estimate of persons or housing units with a given characteristic by the weighted estimate of the base. For example, the proportion of "black teachers" is obtained by dividing the weighted estimate of black teachers by the PUMS estimate of teachers."
    
-I wrote a few R scripts and functions that produced the report's tables, maps, graphs, and stats. The DataFerret's sample (`r prettyNum(dim(dfCensus2)[1], big.mark=",", scientific=FALSE)` observations) was large enough to imply that the employee counts and percentages calculated from the sample  provided good estimates of the actual counts and percentages of Blacks, Whites, Asians, and Hispanics in tech occupations in the 50 states and DC. (<i>Note: For a few low population states, the ACS data included some missing values which meant that the sample wasn't large to provide reliable estimates of the racial/ethnic breakdown of tech employment in those states</i>.)  
+I used the R Studio IDE to write the R scripts and functions that produced the report's tables, maps, graphs, and stats. The DataFerret's sample (`r prettyNum(dim(dfCensus2)[1], big.mark=",", scientific=FALSE)` observations) was large enough to imply that the employee counts and percentages calculated from the sample  provided good estimates of the actual counts and percentages of Blacks, Whites, Asians, and Hispanics in tech occupations in the 50 states and DC. (<i>Note: For a few low population states, the ACS data included some missing values which meant that the sample wasn't large to provide reliable estimates of the racial/ethnic/sex breakdown of tech employment in those states</i>.)  
 
 
-
-My R code can be found in the Data-1A.R, Data-1B.R, Stats-2.R, and Report-3.Rmd files in the <b>[repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b>, as well as copies of the codebooks and .csv files I downloaded from the Census. I composed the entire report in R-Markdown using the R-Studio IDE, converted the R-markdown to HTML via knitr, then copied and pasted the HTML onto a blank page on the DLL's <b>[Tech-Levers](http://hbcu-levers.blogspot.com/p/draft-of-best-states-for-blacks-in-tech.html)</b> blog. 
+My R code can be found in the Data-1A.R, Data-1B.R, Stats-2.R, and Report-3.Rmd files in the <b>[Best States ](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b> repo, as well as copies of the codebooks and .csv files I downloaded from the Census. I composed the text of the report in R-Markdown, embedded the data objects, converted the R-markdown to HTML via knitr, posted the report on <b>[RPub](rpubs.com)s</b>, then made it accessible to the DLL's <b>[Tech-Levers](http://hbcu-levers.blogspot.com/p/draft-of-best-states-for-blacks-in-tech.html)</b> blog via an iframe on an otherwise blank page. 
 
 The scripts and embedded functions should be run in numerical order ==> Data-1A.R and Data-1B.R create the data frames required by Stats-2.R; Stats-2.R creates the tables, maps, graphs, and regression stats required by the R-markdown script in the Report-4.Rmd file that generates the report.
-  
+<br /> 
+<br />
+<br />...
 
