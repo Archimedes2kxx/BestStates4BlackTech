@@ -45,8 +45,8 @@ pre {
     
 ```
 
-## Overview 
-
+## Overview   
+<br />
 This note provides a convenient reference for answers to some basic questions about the diversity of the U.S. information technology sector. To be specific, it presents the results of my examination of U.S. Census data about the employment of Blacks and Hispanics in the information technology sectors of all 50 states plus the District of Columbia in 2014. My principal findings were straight-forward:   
 
 * First, the percentage of tech employees who were Black was higher in states that had larger Black populations and smaller in states that had smaller Black populations. The same relationship between population size and the percentage of tech employment held true for Hispanics. 
@@ -63,8 +63,8 @@ This note provides a convenient reference for answers to some basic questions ab
 <br />  
 
 
-## Findings
-
+## Findings  
+<br />
 ### Demographics of Race, Sex, and Location   
 
 #### Question 1A -- How many Whites, Blacks, Hispanics, and Asians were living in the U.S. in 2014?   
