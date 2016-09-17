@@ -17,6 +17,8 @@ pre {
 }
 </style>
 
+
+
 ```{r, echo=FALSE, cache=FALSE}
     setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
 
@@ -34,6 +36,8 @@ pre {
     library(ggplot2)
     library(gridExtra)
     library(gridExtra)
+    
+    
 ```
 
 ## I. Overview 
@@ -61,7 +65,8 @@ Answer 1A -- See Table 1A (below)
 <b>Table 1A -- U.S. Census Estimates of Whites, Blacks, Hispanics, and Asians in U.S.  in 2014</b>
 ```{r, echo=FALSE, cache=FALSE}
     colnames(dfTable1A) <- c("ALL", "White", "Black", "Hispanic", "Asian", "Others")
-    print(dfTable1A, row.names=FALSE)   
+   print(format(dfTable1A, big.mark=","), row.names=FALSE)
+   ###print(df, row.names=FALSE)
 ```
  <br />   
 
@@ -69,7 +74,7 @@ Question 1B -- What percentage of the U.S. population that was White, Black, His
 Answer 1B -- See Table 1B (below)   
 ... Comments and reformatting of table
 
-<b>Table 1B -- White, Black, Hispanic, and Asian Percentate in U.S. Population in 2014</b>
+<b>Table 1B -- White, Black, Hispanic, and Asian Percentage in U.S. Population in 2014</b>
 ```{r, echo=FALSE, cache=FALSE}
     colnames(dfTable1B) <- c("ALL", "White", "Black", "Hispanic", "Asian", "Others")
     print(dfTable1B, row.names=FALSE) 
@@ -83,7 +88,7 @@ Answer 2A -- See Table 2A (below)
 <b>Table 2A -- U.S. Census Estimates of Whites, Blacks, Hispanics, and Asians in Information Technology  in 2014</b>
 ```{r, echo=FALSE, cache=FALSE}
     colnames(dfTable2A) <- c("ALL", "White", "Black", "Hispanic", "Asian", "Others")
-    print(dfTable2A, row.names=FALSE)  
+   print(format(dfTable2A, big.mark=","), row.names=FALSE)  
 ```
  <br />  
 
@@ -107,7 +112,8 @@ Answer 2B -- See Table 2B (below)   ... Comments and reformatting of table
  <b>Table 3 -- Employment in Information Technology and Male Percentage</b>
 ```{r, echo=FALSE, cache=FALSE}
     colnames(dfTable3) <- c("Occupation", "AllTech", "Male", "%_Male")
-    print(dfTable3[,c(1,2,4)], row.names=FALSE)  
+    print(format(dfTable3[,c(1,2,4)], big.mark=","),row.names=FALSE)  
+    
 ```
    
 <br />
@@ -129,7 +135,8 @@ Answer 4 -- See Map 4 (below) + Table 4A (White), Table 4B, Table 4C, and Table 
 <b>Table 4A -- Whites in U.S. Information Technology -- Top 10 States</b>
 ```{r, echo=FALSE, cache=FALSE}
     colnames(dfTable4A) <- c("State", "AllTech", "State_%", "WhiTech", "%_WhiTech", "WhiPop", "%_WhiPop", "Parity")
-    print(dfTable4A[1:11,], row.names=FALSE)  
+    print(format(dfTable4A[1:11,], big.mark=","), row.names=FALSE) 
+    
 ```
 <br />
 
@@ -137,21 +144,21 @@ Answer 4 -- See Map 4 (below) + Table 4A (White), Table 4B, Table 4C, and Table 
 <b>Table 4B -- Blacks in U.S. Information Technology -- Top 10 states</b>... Comments and reformatting of table
 ```{r, echo=FALSE, cache=FALSE}
     colnames(dfTable4B) <- c("State", "AllTech", "State_%", "BlkTech", "%_BlkTech", "BlkPop", "%_BlkPop", "Parity")
-    print(dfTable4B[1:11,], row.names=FALSE)  
+    print(format(dfTable4B[1:11,], big.mark = ","), row.names=FALSE)  
 ```
 
 <br />... Comments and reformatting of table </br>
 <b>Table 4C -- Hispanics in U.S. Information Technology -- Top 10 states</b>
 ```{r, echo=FALSE, cache=FALSE}
     colnames(dfTable4C) <- c("State", "AllTech", "State_%",  "HspTech", "%_HspTech", "HspPop", "%_HspPop", "Parity")
-    print(dfTable4C[1:11,], row.names=FALSE)  
+    print(format(dfTable4C[1:11,], big.mark = ","), row.names=FALSE)  
 ```
 <br />
 <br />... Comments and reformatting of table </br>
 <b>Table 4D -- Asians in U.S. Information Technology -- Top 10 states</b>
 ```{r, echo=FALSE, cache=FALSE}
     colnames(dfTable4D) <- c("State", "AllTech", "State_%", "AsnTech", "%_AsnTech", "AsnPop", "%_AsnPop", "Parity")
-    print(dfTable4D[1:11,], row.names=FALSE)  
+    print(format(dfTable4D[1:11,], big.mark=","), row.names=FALSE)  
 ```
 <br /><br />
 
