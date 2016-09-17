@@ -57,8 +57,12 @@ This note provides a convenient reference for answers to some basic questions ab
 
 * Fourth, in 2014 there were approximately `r prettyNum(dfEmploymentAndShares[1,2], big.mark=",", scientific=FALSE)` employees in the entire U.S. information technology sector ==>  `r prettyNum(dfEmploymentAndShares[1,4], big.mark=",", scientific=FALSE)` were Black, and 
 `r prettyNum(dfEmploymentAndShares[1,6], big.mark=",", scientific=FALSE)` were Hispanic. There were only `r prettyNum(dfEmploymentAndShares[6,2], big.mark=",", scientific=FALSE)` tech employees in California (including Silicon Valley).<br />
-<i><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_top">Back to top</a></i>
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
   
+
+<br />  
+
+
 ## Findings
 
 ### Demographics of Race, Sex, and Location   
@@ -74,8 +78,12 @@ Answer 1A -- See Table 1A (below)
    ###print(df, row.names=FALSE)
 ```
  <br />   
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 
-#### Question 1B -- What percent of the U.S. population was White, Black, Hispanic, and Asian in 2014?    
+#### Question 1B -- What percent of the U.S. population was White, Black, Hispanic, and Asian in 2014?     
+
+
+
 Answer 1B -- See Table 1B (below)   
 ... Comments and reformatting of table
 
@@ -85,19 +93,30 @@ Answer 1B -- See Table 1B (below)
     print(dfTable1B, row.names=FALSE) 
 ```
 <br />  
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 
-#### Question 2A -- How many Whites, Blacks, Hispanics, Asians worked in tech in 2014?   
+
+#### Question 2A -- How many Whites, Blacks, Hispanics, Asians worked in tech in 2014?      
+
+
+
 Answer 2A -- See Table 2A (below)   
 ... Comments and reformatting of table
 
-##### Table 2A -- U.S. Census Estimates of Whites, Blacks, Hispanics, and Asians in Information Technology  in 2014
+##### Table 2A -- U.S. Census Estimates of Whites, Blacks, Hispanics, and Asians in Information Technology  in 2014   
+
 ```{r, echo=FALSE, cache=FALSE}
     colnames(dfTable2A) <- c("ALL", "White", "Black", "Asian", "Hispanic", "Others")
    print(format(dfTable2A, big.mark=","), row.names=FALSE)  
 ```
  <br />  
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 
-#### Question 2B -- What percent of U.S. tech was White, Black, Hispanic, and Asian in 2014?   
+
+#### Question 2B -- What percent of U.S. tech was White, Black, Hispanic, and Asian in 2014?     
+
+
+
 Answer 2B -- See Table 2B (below)   ... Comments and reformatting of table
 
 ##### Table 2B -- White, Black, Hispanic, and Asian Percentage of Information Technology in 2014
@@ -106,10 +125,29 @@ Answer 2B -- See Table 2B (below)   ... Comments and reformatting of table
     print(dfTable2B, row.names=FALSE)  
 ```
 <br />
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
+<br />
 
-#### Question 3A -- Which standard occupational categories defined "information technology" for this report? 
-#### Question 3B -- How many techs were in each category? 
-#### Question 3C -- What was the male/female breakdown of employment within those categories?
+#### Question 3A -- Which standard occupational categories defined "information technology" for this report?    
+
+<br />
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
+<br />
+
+
+#### Question 3B -- How many techs were in each category?     
+
+<br />
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
+<br />
+
+
+#### Question 3C -- What was the male/female breakdown of employment within those categories?      
+
+<br />
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
+<br />
+
  * <i>Note: these categories only include professionals who are not managers</i>    
  
  Answers 3A, 3B, 3C -- See Table 3 (below)     
@@ -122,6 +160,8 @@ Answer 2B -- See Table 2B (below)   ... Comments and reformatting of table
 ```
    
 <br />
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
+
 
 #### Question 4 -- Where did White, Black, Hispanic, and Asian techs live in 2014?      
 
@@ -135,6 +175,7 @@ Answer 4 -- See Map 4 (below) + Table 4A (White), Table 4B, Table 4C, and Table 
 
 ```
 <br />
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 <br />... Comments and reformatting of table </br><br />
 <i>Note that only the ten top states for each group are displayed in these tables. The full tables are found in the Appendix files on GitHub</i>   <br />
 #### Table 4A -- Whites in U.S. Information Technology -- Top 10 States
@@ -144,7 +185,7 @@ Answer 4 -- See Map 4 (below) + Table 4A (White), Table 4B, Table 4C, and Table 
     
 ```
 <br />
-
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 <br />... Comments and reformatting of table </br>
 #### Table 4B -- Blacks in U.S. Information Technology -- Top 10 states <br />
 ... Comments and reformatting of table
@@ -152,7 +193,8 @@ Answer 4 -- See Map 4 (below) + Table 4A (White), Table 4B, Table 4C, and Table 
     colnames(dfTable4B) <- c("State", "AllTech", "S_%", "BlkTech", "T_%", "BlkPop", "P_%", "Parity")
     print(format(dfTable4B[1:11,], big.mark = ","), row.names=FALSE)  
 ```
-
+<br />
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 <br />... Comments and reformatting of table </br>
 ##### Table 4C -- Hispanics in U.S. Information Technology -- Top 10 states
 ```{r, echo=FALSE, cache=FALSE}
@@ -160,13 +202,16 @@ Answer 4 -- See Map 4 (below) + Table 4A (White), Table 4B, Table 4C, and Table 
     print(format(dfTable4C[1:11,], big.mark = ","), row.names=FALSE)  
 ```
 <br />
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 <br />... Comments and reformatting of table </br>
 #### Table 4D -- Asians in U.S. Information Technology -- Top 10 states
 ```{r, echo=FALSE, cache=FALSE}
     colnames(dfTable4D) <- c("State", "AllTech", "S_%", "AsnTech", "T_%", "AsnPop", "P_%", "Parity")
     print(format(dfTable4D[1:11,], big.mark=","), row.names=FALSE)  
 ```
-<br /><br />
+<br />
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
+<br />
 
 
 ### Parity in Tech 
@@ -184,6 +229,8 @@ Answer 6: See Table 4 (above) and Table 6 (below) <br />
     print(dfTable5)  
 ```
 <br />
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
+<br />
 
 #### Question 7 -- How did the size of a racial/ethnic group's population in a state relate to the group's share of the  state's tech jobs?<br />
 Answer 7: Comment ... There was a positive relationship, but the relationship was weakest for Hispanics, stronger for Blacks, still stronger for Whites, and strongest for Asians.  <br />
@@ -192,6 +239,8 @@ Answer 7: Comment ... There was a positive relationship, but the relationship wa
 ```{r, echo=FALSE, cache=TRUE}
     grid.arrange(ggPlot_asian, ggPlot_white, ggPlot_black, ggPlot_hispanic, ncol=2)
 ```
+<br />
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 <br />
 
 ## Why and How
@@ -206,7 +255,9 @@ One of my most important take-aways from completing the <b>[Johns Hopkins "Data 
 * Reproducible reports should be as concise as traditional reports, but the writer's notes, programs, analytical tools, coding guides, data files, tables, maps, graphs, etc, etc, etc should be shared with the world via GitHub repositories. Of course Python, MATLAB, and other comparable languages could be used insted of R, and the supplementary files could be stored on other public repositories comparable to GitHub.     
 
 This being my first attept to write a reproducible report, I wrote it in R and stored all of my supporting files in a public <b>[GitHub repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b>. If readers disagree with my numbers, they won't have to wonder how I got them <i>... #OldDogStillLearningNewTricks ... :-)</i>
-<br /> <br />  
+<br /> 
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
+<br />  
 
 ### Methods   
 
@@ -234,6 +285,12 @@ My R code can be found in the Data-1A.R, Data-1B.R, Stats-2.R, and Report-3.Rmd 
 
 The scripts and embedded functions should be run in numerical order ==> Data-1A.R and Data-1B.R create the data frames required by Stats-2.R; Stats-2.R creates the tables, maps, graphs, and regression stats required by the R-markdown script in the Report-4.Rmd file that generates the report.
 <br />
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 <br />...
 
-## Conclusions ... <i>(in process)</i>
+
+## Conclusions ... <i>(in process)</i>   
+
+<br />
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
+<br />
