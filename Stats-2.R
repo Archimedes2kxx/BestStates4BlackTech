@@ -9,7 +9,7 @@ setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackT
 load(file="dfEmploymentAndShares.rda")
 load(file="dfStatesPop3.rda") 
 load("dfCensus2.rda")
-
+ 
 ### install.packages("tidyr")
 ### install.packages("maps")
 ### install.packages("ggplot2")
