@@ -184,12 +184,12 @@ Answer 4 -- See Map 4 (below) + Table 4A (White), Table 4B, Table 4C, and Table 
     grid.arrange(dfMap4A, dfMap4B, dfMap4C, dfMap4D, ncol=2) 
 
 ```
-<br />
+<br />   
 <i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 <br />... Comments and reformatting of table </br><br />
 <i>Note that only the ten top states for each group are displayed in these tables. The full tables are found in the Appendix files on GitHub</i>   <br />
 
-##### Table 4A -- Whites in U.S. Information Technology -- Top 10 States  
+##### Table 4A -- Whites in U.S. Information Technology -- Top 10 States    
 ... [Click here for full version](Table-4A-Full-White-Employment.html)   
 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
