@@ -60,12 +60,6 @@ pre {
     
 ```
 
-
-```{r kable, results = 'asis'}
-data(mtcars)
-kable(head(mtcars), digits = 2, align = c(rep("l", 4), rep("c", 4), rep("r", 4)))
-```
-
 ## Overview   
 <br />
 This note provides a convenient reference for answers to some basic questions about the diversity of the U.S. information technology sector. To be specific, it presents the results of my examination of U.S. Census data about the employment of Blacks and Hispanics in the information technology sectors of all 50 states plus the District of Columbia in 2014. My principal findings were straight-forward:   
@@ -275,9 +269,8 @@ Answer 7: Comment ... There was a positive relationship, but the relationship wa
 <i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 <br />
 
-## Why and How
   
-### Motivation   
+## Motivation   
 First, let me explain why I wrote this report and how my motivation influenced my methods. The recent barrage of annual reports from some of the nation's leading information technology companies in Silicon Valley would have readers believe that the primary reason why those companies employed so few Black and Hispanic professionals was because there were so few Black and Hispanic students in the nation's academic pipelines. When reading their reports I found myself shaking my head time and again while wondering, "What numbers did they have to back up these notions? And where did they get them from?" Whereas I would have said that the pipelines were half-full, these reports implied that the pipelines were perilously close to being empty ... but if the pipelines were close to empty, there shouldn't be very many Black or Hispanic employees in the U.S. tech sector.
 
 One of my most important take-aways from completing the <b>[Johns Hopkins "Data Science"](https://www.coursera.org/specializations/jhu-data-science)</b> online certificate program a few months ago was the notion that reports should be "reproducible". Authors should not only describe their methods for collecting and analyzing data; they should provide detailed step-by-step descriptions of their methods (including copies of their code) so that interested readers could readily reproduce the results on their own computers. Of course, the best researchers have always tried to achieve this objective and have often succeeded. What was new for me was the specific tools that the statisticians who taught the Hopkins courses recommended ==> the <b>[R programming language](https://en.wikipedia.org/wiki/R_)</b> and <b>[GitHub](https://en.wikipedia.org/wiki/GitHub)</b>.   
@@ -291,7 +284,7 @@ This being my first attept to write a reproducible report, I wrote it in R and s
 <i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 <br />  
 
-### Methods   
+## Methods   
 
 I used the U.S. Census Bureau's <b>[DataFerret](http://thedataweb.rm.census.gov/index.html)</b> 
 application to download a subset of the Public Use Microdata Sample (PUMS) from the Bureau's American Community Survey for 2014. The sample was large enough to make reliable estimates of the the racial composition of the information technology sector in 50 states plus Washington, DC. My step-by-step procedure for selecting and downloading the ACS data and its codebook is described in <b>[Appendix #1 _ ACS Downloads](https://github.com/Archimedes2kxx/BestStatesForBlackTech/blob/19bc4ca9628ce050805510ffa1dbf3fdd2103a68/Appendix-1.Rmd)</b> in the GitHub repo.<br />
