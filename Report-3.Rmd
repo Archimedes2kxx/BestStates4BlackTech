@@ -71,15 +71,10 @@ My principal findings were straight-forward:
 
 * Fourth, the strengths of these relationships varied widely: some states offered substantially larger employment opportunities for Blacks and Hispanics in their information technology sectors than others.   
 
-<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
-  
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>   
 
-<br />  
+## Findings    
 
-
-## Findings  
-<br />
-  
 #### Question 1A -- How many Whites, Blacks, Hispanics, and Asians were living in the U.S. in 2014?   
 Answer 1A -- See Table 1A (below)     
 ... Comments and reformatting of table
@@ -183,7 +178,7 @@ Answer 4 -- See Map 4 (below) + Table 4A (White), Table 4B, Table 4C, and Table 
 
 <br />... Comments    <br/><br />
 
-##### Map 4 -- Whites, Blacks, Hispanics, and Asians -- U.S. Information Technology -- Lower 48 and DC
+##### Maps 4 -- Whites, Blacks, Hispanics, and Asians -- U.S. Information Technology -- Lower 48 and DC
 
 ```{r, echo=FALSE, cache=TRUE, comment=NA}
     grid.arrange(dfMap4A, dfMap4B, dfMap4C, dfMap4D, ncol=2) 
@@ -257,7 +252,7 @@ Answer 6: See able 6 (below) <br />
 <i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 <br />
 
-#### Question 7 -- How did the size of a racial/ethnic group relate to the group's share of a state's tech jobs?<br />
+#### Question 7 -- Was the size of a racial/ethnic group related to the group's share of a state's tech jobs?<br />
 Answer 7: Comment ... There was a positive relationship, but the relationship was weakest for Hispanics, stronger for Blacks, still stronger for Whites, and strongest for Asians.  <br />
 
 ##### Plot 7 -- Plots of Tech Employment vs Race/Ethnic Group Population
@@ -266,9 +261,7 @@ Answer 7: Comment ... There was a positive relationship, but the relationship wa
 ```
 <br />
 <i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
-<br />
 
-  
 ## Motivation   
 First, let me explain why I wrote this report and how my motivation influenced my methods. The recent barrage of annual reports from some of the nation's leading information technology companies in Silicon Valley would have readers believe that the primary reason why those companies employed so few Black and Hispanic professionals was because there were so few Black and Hispanic students in the nation's academic pipelines. When reading their reports I found myself shaking my head time and again while wondering, "What numbers did they have to back up these notions? And where did they get them from?" Whereas I would have said that the pipelines were half-full, these reports implied that the pipelines were perilously close to being empty ... but if the pipelines were close to empty, there shouldn't be very many Black or Hispanic employees in the U.S. tech sector.
 
@@ -281,7 +274,6 @@ One of my most important take-aways from completing the <b>[Johns Hopkins "Data 
 This being my first attept to write a reproducible report, I wrote it in R and stored all of my supporting files in a public <b>[GitHub repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b>. If readers disagree with my numbers, they won't have to wonder how I got them <i>... #OldDogStillLearningNewTricks ... :-)</i>
 <br /> 
 <i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
-<br />  
 
 ## Methods   
 
