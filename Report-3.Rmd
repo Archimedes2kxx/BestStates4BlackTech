@@ -8,6 +8,8 @@ output:
     hightlight: paper
     toc: true
     toc_depth: 4
+    fig_width: 7
+    fig_height: 5
  
 ---
 
@@ -21,6 +23,11 @@ code.r{
 }
 pre {
   font-size: 13px
+}
+
+.table {
+
+    width: 80%;
 }
 </style>
 
@@ -42,7 +49,21 @@ pre {
     library(gridExtra)
     library(gridExtra)
     
+    ### Intending to use Yihui Xie's printr package for better tables
+    library(knitr)
+    ### install.packages("devtools")
+    ### library(devtools)
+    ### install_github("yihui/printr")
+    ### library(printr)
+    ### detach('package:printr', unload = TRUE)
     
+    
+```
+
+
+```{r kable, results = 'asis'}
+data(mtcars)
+kable(head(mtcars), digits = 2, align = c(rep("l", 4), rep("c", 4), rep("r", 4)))
 ```
 
 ## Overview   
@@ -72,14 +93,13 @@ Answer 1A -- See Table 1A (below)
 ... Comments and reformatting of table
 
 ##### Table 1A -- U.S. Census Estimates of Whites, Blacks, Hispanics, and Asians in U.S.  in 2014
-```{r, echo=FALSE, cache=FALSE}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable1A) <- c("ALL", "White", "Black", "Asian", "Hispanic", "Others")
-   print(format(dfTable1A, big.mark=","), row.names=FALSE)
-   ###print(df, row.names=FALSE)
+  print(dfTable1A,  row.names=FALSE)
 ```
  <br />   
 <i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
-
+<br />
 #### Question 1B -- What percent of the U.S. population was White, Black, Hispanic, and Asian in 2014?     
 
 
@@ -88,9 +108,9 @@ Answer 1B -- See Table 1B (below)
 ... Comments and reformatting of table
 
 ##### Table 1B -- White, Black, Hispanic, and Asian Percentage in U.S. Population in 2014
-```{r, echo=FALSE, cache=FALSE}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable1B) <- c("ALL", "White", "Black", "Asian", "Hispanic", "Others")
-    print(dfTable1B, row.names=FALSE) 
+    print(format(dfTable1B, big.mark=","), row.names=FALSE) 
 ```
 <br />  
 <i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
@@ -105,7 +125,7 @@ Answer 2A -- See Table 2A (below)
 
 ##### Table 2A -- U.S. Census Estimates of Whites, Blacks, Hispanics, and Asians in Information Technology  in 2014   
 
-```{r, echo=FALSE, cache=FALSE}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable2A) <- c("ALL", "White", "Black", "Asian", "Hispanic", "Others")
    print(format(dfTable2A, big.mark=","), row.names=FALSE)  
 ```
@@ -120,7 +140,7 @@ Answer 2A -- See Table 2A (below)
 Answer 2B -- See Table 2B (below)   ... Comments and reformatting of table
 
 ##### Table 2B -- White, Black, Hispanic, and Asian Percentage of Information Technology in 2014
-```{r, echo=FALSE, cache=FALSE}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable2B) <- c("ALL", "White", "Black", "Asian", "Hispanic", "Others")
     print(dfTable2B, row.names=FALSE)  
 ```
@@ -152,10 +172,13 @@ Answer 2B -- See Table 2B (below)   ... Comments and reformatting of table
  
  Answers 3A, 3B, 3C -- See Table 3 (below)     
  <br />... Comments and reformatting of table </br>
- ##### Table 3 -- Employment in Information Technology and Male Percentage
-```{r, echo=FALSE, cache=FALSE}
-    colnames(dfTable3) <- c("Occupation", "AllTech", "Male", "%_M")
-    print(format(dfTable3[,c(1,2,4)], big.mark=","),row.names=FALSE)  
+ 
+##### Table 3 -- Employment in Information Technology and Male Percentage    
+
+```{r, echo=FALSE, cache=FALSE,  comment=NA}
+    colnames(dfTable3) <- c("Occupation", "AllTech", "Male", "M_%")
+   print(format(dfTable3[,c(1,2,4)], big.mark=","),row.names=FALSE) 
+    
     
 ```
    
@@ -168,44 +191,51 @@ Answer 2B -- See Table 2B (below)   ... Comments and reformatting of table
 Answer 4 -- See Map 4 (below) + Table 4A (White), Table 4B, Table 4C, and Table 4D (subbsequent)
 
 <br />... Comments    <br/><br />
+
 ##### Map 4 -- Whites, Blacks, Hispanics, and Asians -- U.S. Information Technology -- Lower 48 and DC
-```{r, echo=FALSE, cache=TRUE}
-    grid.arrange(dfMap4A, dfMap4B, dfMap4C, dfMap4D, ncol=2) ###, ggPlot_white, ncol=2) ###, ggPlot_black, ggPlot_hispanic, ncol=2)
-    ###print(dfMap4A)  
+
+```{r, echo=FALSE, cache=TRUE, comment=NA}
+    grid.arrange(dfMap4A, dfMap4B, dfMap4C, dfMap4D, ncol=2) 
 
 ```
 <br />
 <i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 <br />... Comments and reformatting of table </br><br />
 <i>Note that only the ten top states for each group are displayed in these tables. The full tables are found in the Appendix files on GitHub</i>   <br />
+
 #### Table 4A -- Whites in U.S. Information Technology -- Top 10 States
-```{r, echo=FALSE, cache=FALSE}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4A) <- c("State", "AllTech", "S_%", "WhiTech", "T_%", "WhiPop", "P_%", "Parity")
-    print(format(dfTable4A[1:11,], big.mark=","), row.names=FALSE) 
-    
+print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)  
+
 ```
 <br />
 <i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 <br />... Comments and reformatting of table </br>
+
 #### Table 4B -- Blacks in U.S. Information Technology -- Top 10 states <br />
 ... Comments and reformatting of table
-```{r, echo=FALSE, cache=FALSE}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4B) <- c("State", "AllTech", "S_%", "BlkTech", "T_%", "BlkPop", "P_%", "Parity")
     print(format(dfTable4B[1:11,], big.mark = ","), row.names=FALSE)  
 ```
 <br />
 <i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 <br />... Comments and reformatting of table </br>
+
 ##### Table 4C -- Hispanics in U.S. Information Technology -- Top 10 states
-```{r, echo=FALSE, cache=FALSE}
+
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4C) <- c("State", "AllTech", "S_%",  "HspTech", "T_%", "HspPop", "P_%", "Parity")
     print(format(dfTable4C[1:11,], big.mark = ","), row.names=FALSE)  
 ```
 <br />
 <i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 <br />... Comments and reformatting of table </br>
+
 #### Table 4D -- Asians in U.S. Information Technology -- Top 10 states
-```{r, echo=FALSE, cache=FALSE}
+
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4D) <- c("State", "AllTech", "S_%", "AsnTech", "T_%", "AsnPop", "P_%", "Parity")
     print(format(dfTable4D[1:11,], big.mark=","), row.names=FALSE)  
 ```
@@ -215,17 +245,20 @@ Answer 4 -- See Map 4 (below) + Table 4A (White), Table 4B, Table 4C, and Table 
 
 
 ### Parity in Tech 
-#### Question 5 -- Did the Black/Hispanic share of tech employment equal their share of a state's population? <br />
-Answer 5: -- 
+#### Question 5 -- Did the Black/Hispanic share of tech employment equal their share of a state's population? <br />  
 
+Answer 5: -- 
+ <br />   
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
+<br />
 
 #### Question 6 -- Did the parity values vary from one racial/ethic group to the next?   <br />
 Answer 6: See Table 4 (above) and Table 6 (below) <br />
 ... Comment - Parity values are lowest for Hispanics, higher for Blacks, still higher for Whites, and highest for Asians. <br />   
 
 ##### Table 6 -- Table of Parity Values
-```{r, echo=FALSE, cache=FALSE}
-    colnames(dfTable5) <- c("Min", "Q1", "Median", "Mean", "Q3", "Max", "Beta1000")
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+    colnames(dfTable5) <- c("Min", "Q1", "Median", "Mean", "Q3", "Max", "Beta")
     print(dfTable5)  
 ```
 <br />
