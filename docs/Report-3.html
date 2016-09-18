@@ -136,10 +136,8 @@ $(document).ready(function () {
 <li><a href="#question-6-did-the-parity-values-vary-from-one-racialethic-group-to-the-next">Question 6 – Did the parity values vary from one racial/ethic group to the next? <br /></a></li>
 <li><a href="#question-7-how-did-the-size-of-a-racialethnic-group-relate-to-the-groups-share-of-a-states-tech-jobs">Question 7 – How did the size of a racial/ethnic group relate to the group’s share of a state’s tech jobs?<br /></a></li>
 </ul></li>
-<li><a href="#why-and-how">Why and How</a><ul>
 <li><a href="#motivation">Motivation</a></li>
 <li><a href="#methods">Methods</a></li>
-</ul></li>
 <li><a href="#conclusions-in-process">Conclusions … <i>(in process)</i></a></li>
 </ul>
 </div>
@@ -161,112 +159,6 @@ pre {
     width: 80%;
 }
 </style>
-<pre class="r"><code>data(mtcars)
-kable(head(mtcars), digits = 2, align = c(rep(&quot;l&quot;, 4), rep(&quot;c&quot;, 4), rep(&quot;r&quot;, 4)))</code></pre>
-<table>
-<thead>
-<tr class="header">
-<th align="left"></th>
-<th align="left">mpg</th>
-<th align="left">cyl</th>
-<th align="left">disp</th>
-<th align="left">hp</th>
-<th align="center">drat</th>
-<th align="center">wt</th>
-<th align="center">qsec</th>
-<th align="center">vs</th>
-<th align="right">am</th>
-<th align="right">gear</th>
-<th align="right">carb</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Mazda RX4</td>
-<td align="left">21.0</td>
-<td align="left">6</td>
-<td align="left">160</td>
-<td align="left">110</td>
-<td align="center">3.90</td>
-<td align="center">2.62</td>
-<td align="center">16.46</td>
-<td align="center">0</td>
-<td align="right">1</td>
-<td align="right">4</td>
-<td align="right">4</td>
-</tr>
-<tr class="even">
-<td align="left">Mazda RX4 Wag</td>
-<td align="left">21.0</td>
-<td align="left">6</td>
-<td align="left">160</td>
-<td align="left">110</td>
-<td align="center">3.90</td>
-<td align="center">2.88</td>
-<td align="center">17.02</td>
-<td align="center">0</td>
-<td align="right">1</td>
-<td align="right">4</td>
-<td align="right">4</td>
-</tr>
-<tr class="odd">
-<td align="left">Datsun 710</td>
-<td align="left">22.8</td>
-<td align="left">4</td>
-<td align="left">108</td>
-<td align="left">93</td>
-<td align="center">3.85</td>
-<td align="center">2.32</td>
-<td align="center">18.61</td>
-<td align="center">1</td>
-<td align="right">1</td>
-<td align="right">4</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">Hornet 4 Drive</td>
-<td align="left">21.4</td>
-<td align="left">6</td>
-<td align="left">258</td>
-<td align="left">110</td>
-<td align="center">3.08</td>
-<td align="center">3.21</td>
-<td align="center">19.44</td>
-<td align="center">1</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">Hornet Sportabout</td>
-<td align="left">18.7</td>
-<td align="left">8</td>
-<td align="left">360</td>
-<td align="left">175</td>
-<td align="center">3.15</td>
-<td align="center">3.44</td>
-<td align="center">17.02</td>
-<td align="center">0</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">2</td>
-</tr>
-<tr class="even">
-<td align="left">Valiant</td>
-<td align="left">18.1</td>
-<td align="left">6</td>
-<td align="left">225</td>
-<td align="left">105</td>
-<td align="center">2.76</td>
-<td align="center">3.46</td>
-<td align="center">20.22</td>
-<td align="center">1</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">1</td>
-</tr>
-</tbody>
-</table>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
 <p><br /> This note provides a convenient reference for answers to some basic questions about the diversity of the U.S. information technology sector. To be specific, it presents the results of my examination of U.S. Census data about the employment of Blacks and Hispanics in the information technology sectors of all 50 states plus the District of Columbia in 2014. My principal findings were straight-forward:</p>
@@ -532,10 +424,8 @@ Asian    0.0 2.5    3.5  3.7 4.5 11.0 42.8</code></pre>
 </div>
 </div>
 </div>
-<div id="why-and-how" class="section level2">
-<h2>Why and How</h2>
-<div id="motivation" class="section level3">
-<h3>Motivation</h3>
+<div id="motivation" class="section level2">
+<h2>Motivation</h2>
 <p>First, let me explain why I wrote this report and how my motivation influenced my methods. The recent barrage of annual reports from some of the nation’s leading information technology companies in Silicon Valley would have readers believe that the primary reason why those companies employed so few Black and Hispanic professionals was because there were so few Black and Hispanic students in the nation’s academic pipelines. When reading their reports I found myself shaking my head time and again while wondering, “What numbers did they have to back up these notions? And where did they get them from?” Whereas I would have said that the pipelines were half-full, these reports implied that the pipelines were perilously close to being empty … but if the pipelines were close to empty, there shouldn’t be very many Black or Hispanic employees in the U.S. tech sector.</p>
 <p>One of my most important take-aways from completing the <b><a href="https://www.coursera.org/specializations/jhu-data-science">Johns Hopkins “Data Science”</a></b> online certificate program a few months ago was the notion that reports should be “reproducible”. Authors should not only describe their methods for collecting and analyzing data; they should provide detailed step-by-step descriptions of their methods (including copies of their code) so that interested readers could readily reproduce the results on their own computers. Of course, the best researchers have always tried to achieve this objective and have often succeeded. What was new for me was the specific tools that the statisticians who taught the Hopkins courses recommended ==&gt; the <b><a href="https://en.wikipedia.org/wiki/R_">R programming language</a></b> and <b><a href="https://en.wikipedia.org/wiki/GitHub">GitHub</a></b>.</p>
 <ul>
@@ -548,8 +438,8 @@ This being my first attept to write a reproducible report, I wrote it in R and s
 </center>
 <p></i> <br /></p>
 </div>
-<div id="methods" class="section level3">
-<h3>Methods</h3>
+<div id="methods" class="section level2">
+<h2>Methods</h2>
 <p>I used the U.S. Census Bureau’s <b><a href="http://thedataweb.rm.census.gov/index.html">DataFerret</a></b> application to download a subset of the Public Use Microdata Sample (PUMS) from the Bureau’s American Community Survey for 2014. The sample was large enough to make reliable estimates of the the racial composition of the information technology sector in 50 states plus Washington, DC. My step-by-step procedure for selecting and downloading the ACS data and its codebook is described in <b><a href="https://github.com/Archimedes2kxx/BestStatesForBlackTech/blob/19bc4ca9628ce050805510ffa1dbf3fdd2103a68/Appendix-1.Rmd">Appendix #1 _ ACS Downloads</a></b> in the GitHub repo.<br /></p>
 <p>I also downloaded data table <b><a href="http://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=PEP_2015_PEPSR6H&amp;prodType=table">#PEPSR6H</a></b> from the Bureau’s American Fact Finder Website. This table contains the Bureau’s estimates of the overall racial composition of the populations of the 50 states plus Washington DC in 2014. <b>Selected Data</b><br /> I used the DataFerret to download a subset of the PUMS 2014 sample about the sex, state of residence, race, and Hispanic status of employees in the tech sector in all 50 states plus the District of Columbia:<br /></p>
 <ul>
@@ -565,7 +455,6 @@ The scripts and embedded functions should be run in numerical order ==&gt; Data-
 <a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a>
 </center>
 <p></i> <br />…</p>
-</div>
 </div>
 <div id="conclusions-in-process" class="section level2">
 <h2>Conclusions … <i>(in process)</i></h2>
