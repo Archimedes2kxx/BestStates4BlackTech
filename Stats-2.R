@@ -5,10 +5,11 @@
 ### http://is-r.tumblr.com/post/37708137014/us-state-maps-using-mapdata
 ##############################################
   
+
 setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
 load(file="dfEmploymentAndShares.rda")
 load(file="dfStatesPop3.rda") 
-load("dfCensus2.rda")
+load("dfCensus2.rda")  
  
 ### install.packages("tidyr")
 ### install.packages("maps")
