@@ -100,9 +100,8 @@ Answer 1A -- See Table 1A (below)
  <br />   
 <i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 <br />
+
 #### Question 1B -- What percent of the U.S. population was White, Black, Hispanic, and Asian in 2014?     
-
-
 
 Answer 1B -- See Table 1B (below)   
 ... Comments and reformatting of table
@@ -203,7 +202,8 @@ Answer 4 -- See Map 4 (below) + Table 4A (White), Table 4B, Table 4C, and Table 
 <br />... Comments and reformatting of table </br><br />
 <i>Note that only the ten top states for each group are displayed in these tables. The full tables are found in the Appendix files on GitHub</i>   <br />
 
-#### Table 4A -- Whites in U.S. Information Technology -- Top 10 States
+##### Table 4A -- Whites in U.S. Information Technology -- Top 10 States  
+
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4A) <- c("State", "AllTech", "S_%", "WhiTech", "T_%", "WhiPop", "P_%", "Parity")
 print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)  
@@ -213,7 +213,8 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 <br />... Comments and reformatting of table </br>
 
-#### Table 4B -- Blacks in U.S. Information Technology -- Top 10 states <br />
+##### Table 4B -- Blacks in U.S. Information Technology -- Top 10 states 
+
 ... Comments and reformatting of table
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4B) <- c("State", "AllTech", "S_%", "BlkTech", "T_%", "BlkPop", "P_%", "Parity")
@@ -233,7 +234,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 <br />... Comments and reformatting of table </br>
 
-#### Table 4D -- Asians in U.S. Information Technology -- Top 10 states
+##### Table 4D -- Asians in U.S. Information Technology -- Top 10 states
 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4D) <- c("State", "AllTech", "S_%", "AsnTech", "T_%", "AsnPop", "P_%", "Parity")
@@ -243,8 +244,6 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 <br />
 
-
-### Parity in Tech 
 #### Question 5 -- Did the Black/Hispanic share of tech employment equal their share of a state's population? <br />  
 
 Answer 5: -- 
@@ -265,7 +264,7 @@ Answer 6: See Table 4 (above) and Table 6 (below) <br />
 <i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 <br />
 
-#### Question 7 -- How did the size of a racial/ethnic group's population in a state relate to the group's share of the  state's tech jobs?<br />
+#### Question 7 -- How did the size of a racial/ethnic group relate to the group's share of a state's tech jobs?<br />
 Answer 7: Comment ... There was a positive relationship, but the relationship was weakest for Hispanics, stronger for Blacks, still stronger for Whites, and strongest for Asians.  <br />
 
 ##### Plot 7 -- Plots of Tech Employment vs Race/Ethnic Group Population
