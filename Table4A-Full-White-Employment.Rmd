@@ -1,0 +1,44 @@
+---
+title: "Table 4A -- Full White Tech Employment"
+author: "Roy L Beasley, PhD -- DLL Editor"
+
+output: 
+  rmarkdown::html_document:
+    theme: readable
+    hightlight: textmate
+    toc: false
+    toc_depth: 4
+    fig_width: 7
+    fig_height: 5
+ 
+---
+
+<style type="text/css">
+
+body, td {
+   font-size: 14px;
+}
+code.r{
+  font-size: 12px;
+}
+pre {
+  font-size: 13px
+}
+
+.table {
+
+    width: 80%;
+}
+</style>
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">Return-to-Report</a></center></i>
+
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+    setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
+    load("dfTab4.rda")   
+
+    colnames(dfTable4A) <- c("State", "AllTech", "S_%", "WhiTech", "T_%", "WhiPop", "P_%", "Parity")
+print(format(dfTable4A, big.mark = ","), row.names=FALSE)  
+
+```
+
+<i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">Return-to-Report</a></center></i>
