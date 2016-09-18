@@ -190,7 +190,7 @@ Answer 4 -- See Map 4 (below) + Table 4A (White), Table 4B, Table 4C, and Table 
 <i>Note that only the ten top states for each group are displayed in these tables. The full tables are found in the Appendix files on GitHub</i>   <br />
 
 ##### Table 4A -- Whites in U.S. Information Technology -- Top 10 States    
-... [Click here for full version](Table-4A-Full-White-Employment.html)   
+... [Click here for full version](Table4A-Full-White-Employment.html)   
 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4A) <- c("State", "AllTech", "S_%", "WhiTech", "T_%", "WhiPop", "P_%", "Parity")
