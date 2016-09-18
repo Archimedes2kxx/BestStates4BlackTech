@@ -201,7 +201,8 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 <br />... Comments and reformatting of table </br>
 
-##### Table 4B -- Blacks in U.S. Information Technology -- Top 10 states  
+##### Table 4B -- Blacks in U.S. Information Technology -- Top 10 states     
+... [Click here for full version](Table4B-Full-Black-Employment.html) 
 
 ... Comments and reformatting of table
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -212,7 +213,8 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 <br />... Comments and reformatting of table </br>
 
-##### Table 4C -- Hispanics in U.S. Information Technology -- Top 10 states
+##### Table 4C -- Hispanics in U.S. Information Technology -- Top 10 states   
+... [Click here for full version](Table4C-Full-Hispanic-Employment.html) 
 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4C) <- c("State", "AllTech", "S_%",  "HspTech", "T_%", "HspPop", "P_%", "Parity")
@@ -222,7 +224,8 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i>
 <br />... Comments and reformatting of table </br>
 
-##### Table 4D -- Asians in U.S. Information Technology -- Top 10 states
+##### Table 4D -- Asians in U.S. Information Technology -- Top 10 states   
+... [Click here for full version](Table4D-Full-Asian-Employment.html) 
 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4D) <- c("State", "AllTech", "S_%", "AsnTech", "T_%", "AsnPop", "P_%", "Parity")
