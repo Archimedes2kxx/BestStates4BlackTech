@@ -33,7 +33,7 @@ colnames(dfTable1A) <- colNames
 dfTable1A
 
 dfTable1B <- dfStatesPop3[1,c(2,8:12)]
-dfTable1B[1,1] <- 1.0 ### 1.0 = 100 percent for ALL
+dfTable1B[1,1] <- 100 ### 100 percent for ALL
 colNames_per <- c("per_white", "per_black", "per_asian", "per_hispanic", "per_OTHERS")
 colnames(dfTable1B) <- colNames
 dfTable1B <- round(dfTable1B, digits=0)
@@ -46,7 +46,7 @@ colnames(dfTable2A) <- colNames
 dfTable2A
 
 dfTable2B <- dfEmploymentAndShares[1,c(2,8:12)]
-dfTable2B[1,1] <- 1 ### 1.0 = 100 percent for ALL
+dfTable2B[1,1] <- 100 ### 100 percent for ALL
 colnames(dfTable2B) <- colNames_per
 rownames(dfTable2B) <- NULL
 dfTable2B <- round(data.frame(dfTable2B), digits=0)
