@@ -37,7 +37,7 @@ dfTable1B <- dfStatesPop3[1,c(2,8:12)]
 dfTable1B[1,1] <- 100 ### 100 percent for ALL
 colNames_per <- c("per_white", "per_black", "per_asian", "per_hispanic", "per_OTHERS")
 colnames(dfTable1B) <- colNames
-dfTable1B <- round(dfTable1B, digits=0)
+dfTable1B <- round(dfTable1B, digits=1)
 dfTable1B
 
 ### Table 2 ... racial breakdown of tech employment
@@ -49,7 +49,7 @@ dfTable2B <- dfEmploymentAndShares[1,c(2,8:12)]
 dfTable2B[1,1] <- 100 ### 100 percent for ALL
 colnames(dfTable2B) <- colNames_per
 rownames(dfTable2B) <- NULL
-dfTable2B <- round(data.frame(dfTable2B), digits=0)
+dfTable2B <- round(data.frame(dfTable2B), digits=1)
 dfTable2B
 
 
@@ -60,7 +60,7 @@ dfPtsPwtOccSex <- summarise(census2OccSex, ptsPwtOccSex = sum(personalWeight))
 head(dfPtsPwtOccSex)
 dfOccupationSex <- spread(dfPtsPwtOccSex, key=sex, value=ptsPwtOccSex)
 head(dfOccupationSex)
-dfOccupationSex$perMale <- round((100 * dfOccupationSex$Male) /(dfOccupationSex$Male + dfOccupationSex$Female), digits=0)
+dfOccupationSex$perMale <- round((100 * dfOccupationSex$Male) /(dfOccupationSex$Male + dfOccupationSex$Female), digits=1)
 head(dfOccupationSex)
 
 dfOccupationSex$Total <- dfOccupationSex$Male + dfOccupationSex$Female
@@ -71,7 +71,7 @@ dfOccupationSex
 
 ### Add total row for ALL
 techSums <- as.vector(colSums(dfOccupationSex[2:4]))
-perMaleTechSums <- as.numeric(round((techSums[2]/techSums[1]), digits = 3) * 100)
+perMaleTechSums <- as.numeric(round((100 * techSums[2]/techSums[1]), digits = 1))
 dfALL <- data.frame("ALL", t(techSums), perMaleTechSums) ### note the transpose "t"
 colnames(dfALL) <- c("occupation", "Total", "Male","Female", "perMale")
 
@@ -114,7 +114,7 @@ makeParityTable <- function(race){
     dfParity <- dfParity[index,]
     
     ### Calculate the percentage of the total for each race is in each state
-    dfParity$per_state <- round(100 * dfParity[,raceTech]/dfParity[1,raceTech[1]], digits=0)
+    dfParity$per_state <- round(100 * dfParity[,raceTech]/dfParity[1,raceTech[1]], digits=1)
     dfParity <- data.frame(dfParity[,c(1:2,8,3:7)]) ### move per_state to 3rd column
     return(dfParity)
 }

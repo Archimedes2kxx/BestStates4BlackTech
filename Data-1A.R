@@ -101,7 +101,7 @@ head(dfRaceEmploymentPerState)
 ### 8. Calculate each racial group's share of total tech employment in each state
 vecTotalEmploymentPerState <- c(unlist(dfRaceEmploymentPerState[,2]))
 head(vecTotalEmploymentPerState)
-dfRaceShares <- round(100 * dfRaceEmploymentPerState[,3:7] / vecTotalEmploymentPerState, digits = 0) ### Need percents, so multiply by 100
+dfRaceShares <- round(100 * dfRaceEmploymentPerState[,3:7] / vecTotalEmploymentPerState, digits = 1) ### Need percents, so multiply by 100
 dfRaceSharesPerState <- dfRaceEmploymentPerState[,c(1, 3:7)] ### Dummy copy just to get the right dimensions 
 head(dfRaceShares)
 
@@ -114,7 +114,7 @@ dfEmploymentAndShares <- merge(dfRaceEmploymentPerState, dfRaceSharesPerState)
 ### 10. Add a totals row 
 (allRacesInTech <- colSums(dfEmploymentAndShares[,3:7]))
 (allTech <- sum(allRacesInTech)) ### 4125164
-(raceSharesInTech <- round(100 * allRacesInTech/allTech, digits=0))
+(raceSharesInTech <- round(100 * allRacesInTech/allTech, digits=1))
 
 dfTotalsRow <- dfEmploymentAndShares[1,] ### dummy to get columns and types
 dfTotalsRow$state <- "ALL STATES"

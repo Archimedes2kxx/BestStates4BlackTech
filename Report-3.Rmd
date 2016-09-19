@@ -47,54 +47,58 @@ My principal findings were straight-forward:
 
 * Second, the percentage of tech employees who were Black was higher in states that had larger Black populations and smaller in states that had smaller Black populations. The same relationship between population size and the percentage of tech employment held true for Hispanics. 
 
-* Third, if all other things were equal, one would expect that the percentage of employment in a state's tech sector that was Black would be about the same as the percentage of the state's total population that was Black. One would would expect similar parity for the percentages of Hispanics. Unfortunately, all of things were not equal, so I found that the percentage of the tech sector of most states that was Black or Hispanic was substantially smaller than the percentage of the state's total population that was Black or Hispanic. By contrast I found that the percentage of every state's tech sector that was Asian was two to eleven times as large as the percentage of the state's total population that was Asian.
+* Third, if all other things were equal, one would expect that the percentage of employment in a state's tech sector that was Black would be about the same as the percentage of the state's total population that was Black. One would would expect similar parity for the percentages of Hispanics. Unfortunately, all of things were not equal, so I found that the percentage of the tech sector of most states that was Black or Hispanic was substantially smaller than the percentage of the state's total population that was Black or Hispanic. By contrast, I found that the percentage of state tech sectors that were Asian ranged as high as `r round(max(dfTable4D[,"parity"]), digits=1)` times the percentage of the state's total population that was Asian.
 
 * Fourth, the strengths of these relationships varied widely: some states offered substantially larger employment opportunities for Blacks and Hispanics in their information technology sectors than others.   
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
 ## Findings ... <i><small>Answers to the following questions</small></i>   
-#### Question 1A -- How many Whites, Blacks, Hispanics, and Asians were living in the U.S. in 2014?   
-Answer 1A -- See Table 1A (below)  ... Comments and reformatting of table
+#### Question 1A -- How many Whites, Blacks, Asians, and Hispanics were living in the U.S. in 2014?    
+Answer 1A ... In 2014, as shown in Table 1A (below), the largest of the four racial/ethnic groups discussed in this report was White (`r prettyNum(dfTable1A[1,2], big.mark=",", scientific=FALSE)`); the smallest was Asian (`r prettyNum(dfTable1A[1,4], big.mark=",", scientific=FALSE)`). Hispanics, the largest minority (`r prettyNum(dfTable1A[1,5], big.mark=",", scientific=FALSE)`), had grown substantially larger than Blacks (`r prettyNum(dfTable1A[1,3], big.mark=",", scientific=FALSE)`).
 
-<b>Table 1A -- U.S. Census Estimates of Whites, Blacks, Hispanics, and Asians in U.S.  in 2014</b>
+<b>Table 1A -- U.S. Census Estimates of Whites, Blacks, Asians, and Hispanics in U.S. in 2014</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable1A) <- c("ALL", "White", "Black", "Asian", "Hispanic", "Others")
   print(format(dfTable1A, big.mark=","), row.names=FALSE)
 ```
-#### Question 1B -- What percent of the U.S. population was White, Black, Hispanic, and Asian in 2014?        
-Answer 1B -- See Table 1B (below)   ... Comments and reformatting of table    
+#### Question 1B -- What percent of the U.S. population was White, Black, Asian, and Hispanic in 2014?   
+Answer 1B ... As shown in Table 1B (below), in 2014 Whites were still a substantial majority (`r prettyNum(dfTable1B[1,2], big.mark=",", scientific=FALSE)`%) which was well over 50%; Hispanics placed second (`r prettyNum(dfTable1B[1,5], big.mark=",", scientific=FALSE)`%); Blacks showed third (`r prettyNum(dfTable1B[1,2], big.mark=",", scientific=FALSE)`%); and Asians came in fourth  (`r prettyNum(dfTable1B[1,4], big.mark=",", scientific=FALSE)`%)   
 
-<b>Table 1B -- White, Black, Hispanic, and Asian Percentage in U.S. Population in 2014</b>   
+<b>Table 1B -- White, Black, Asian, and Hispanic Population Percentages in 2014</b>   
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-    colnames(dfTable1B) <- c("ALL", "White", "Black", "Asian", "Hispanic", "Others")
-    print(format(dfTable1B, big.mark=","), row.names=FALSE) 
+    dfPer <- t(paste0(dfTable1B, "%")) ### note the t()
+    dfPer <- data.frame(dfPer) 
+    colnames(dfPer) <-  c("ALL", "White", "Black", "Asian", "Hispanic", "Others")
+    print(format(dfPer), row.names=FALSE) 
 ```
-#### Question 2A -- How many Whites, Blacks, Hispanics, and Asians worked in tech in 2014?         
-Answer 2A -- See Table 2A (below)   ... Comments and reformatting of table
+#### Question 2A -- How many Whites, Blacks, Asians, and Hispanics worked in tech in 2014?  
+Answer 2A -- As shown in Table 2A (below), in 2014, Whites held more jobs in tech (`r prettyNum(dfTable2A[1,2], big.mark=",", scientific=FALSE)`), than the combined total of the other three groups. Despite being the smallest of the non-White groups, Asians held more tech jobs (`r prettyNum(dfTable2A[1,4], big.mark=",", scientific=FALSE)`) than the combined total of Blacks (`r prettyNum(dfTable2A[1,3], big.mark=",", scientific=FALSE)`) and Hispanics (`r prettyNum(dfTable2A[1,5], big.mark=",", scientific=FALSE)`).   
 
-<b>Table 2A -- U.S. Census Estimates of Whites, Blacks, Hispanics, and Asians in Information Technology in 2014 </b>  
+<b>Table 2A -- U.S. Census Estimates of Whites, Blacks, Asians, and Hispanics in Information Technology in 2014 </b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable2A) <- c("ALL", "White", "Black", "Asian", "Hispanic", "Others")
    print(format(dfTable2A, big.mark=","), row.names=FALSE)  
 ```
-#### Question 2B -- What percent of U.S. tech was White, Black, Hispanic, and Asian in 2014?     
-Answer 2B -- See Table 2B (below)   ... Comments and reformatting of table
+#### Question 2B -- What percent of U.S. tech was White, Black, Asian, and Hispanic in 2014?   
+Answer 2B ... The relative sizes of the four groups noted in Answer 2A can be more readily perceived via the percentages shown in Table 2B (below). Whites held most of the tech jobs (`r prettyNum(dfTable2B[1,2], big.mark=",", scientific=FALSE)`%), while Asians held a larger share of the remaining jobs (`r prettyNum(dfTable2B[1,4], big.mark=",", scientific=FALSE)`%) than the combined shares of Blacks (`r prettyNum(dfTable2B[1,3], big.mark=",", scientific=FALSE)`%) and Hispanics (`r prettyNum(dfTable2B[1,5], big.mark=",", scientific=FALSE)`%).
 
-<b>Table 2B -- White, Black, Hispanic, and Asian Percentage of Information Technology in 2014 </b>
+<b>Table 2B -- White, Black, Asian, and Hispanic Percentage of Information Technology in 2014 </b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-    colnames(dfTable2B) <- c("ALL", "White", "Black", "Asian", "Hispanic", "Others")
-    print(dfTable2B, row.names=FALSE)  
+    dfPer <- t(paste0(dfTable2B, "%"))
+    dfPer <- data.frame(dfPer) 
+    colnames(dfPer) <-  c("ALL", "White", "Black", "Asian", "Hispanic", "Others")
+    print(format(dfPer), row.names=FALSE) 
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>       
 
 #### Question 3A -- Which standard occupational categories defined "information technology" for this report? 
-Answer 3A ... blah, blah, blah   Table 3 (below)   
+Answer 3A ... For the purposes of this report, "information technology" was defined as the thirteen standard occupation categories (SOC) that appear in the first column of Table 3 (below). Eleven of these categories relate to software, e.g., Software Developers, Computer Programmers, and Database Administrtors; only two relate to hardware, i.e., Electrical and Electronics Engineers and Computer Hardware Engineers.  
 
 #### Question 3B -- How many techs were in each category?        
-Answer 3B blah, blah,blah Table 3 (below)   
+Answer 3B ... The total number of techs in each category appear the second column of Table 3 (below). The top row shows that there were approximately `r prettyNum(dfTable3[1,2], big.mark=",", scientific=FALSE)` professionals in  all tech categories.
 
 #### Question 3C -- What was the male/female breakdown of employment within these categories?         
-Answer blah, blah   Table 3 (below) 
+Answer 3C ... The third column of Table 3 (below) shows the percentage of techs in the second column who were male. Males formed an overall majority of `r dfTable3[1,4] `% of all professionals in tech, and males were a majorityin every tech category, ranging from a low value of `r prettyNum(min(dfTable3[, 4]), scientific=FALSE)`% for to a high value of `r prettyNum(max(dfTable3[, 4]), scientific=FALSE)`%.
 
 <b>Table 3 -- Employment in Information Technology with Male Percentage</b>   
 ```{r, echo=FALSE, cache=FALSE,  comment=NA}
