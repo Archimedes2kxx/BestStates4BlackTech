@@ -26,19 +26,19 @@ library(dplyr)
 library(grid)
 library(gridExtra)
 
-### Table 1A   Context -- How many people were living in the US in 2014 -- total, black, white, ### asian, hispanic, and OTHERS and percentages of total, white, black, asian, hispanic, and OTHERS
+### Table 1A   Context -- How many people were living in the US in 2014 -- total, black, white, ### asian, hispanic, and OTHERS 
 (dfTable1A <- dfStatesPop3[1,2:7])
 colNames <- c("ALL", "White", "Black", "Asian", "Hispanic", "OTHERS")
 colnames(dfTable1A) <- colNames
 dfTable1A
 
+### Percentages of total, white, black, asian, hispanic, and OTHERS
 dfTable1B <- dfStatesPop3[1,c(2,8:12)]
 dfTable1B[1,1] <- 100 ### 100 percent for ALL
 colNames_per <- c("per_white", "per_black", "per_asian", "per_hispanic", "per_OTHERS")
 colnames(dfTable1B) <- colNames
 dfTable1B <- round(dfTable1B, digits=0)
 dfTable1B
-
 
 ### Table 2 ... racial breakdown of tech employment
 dfTable2A <- dfEmploymentAndShares[1,2:7]
@@ -53,33 +53,41 @@ dfTable2B <- round(data.frame(dfTable2B), digits=0)
 dfTable2B
 
 
-### Table 3 Sex by Occupations
-censusGroups <- group_by(dfCensus2, occupation, sex)
-dfPtsPwtSex <- summarise(censusGroups, ptsPwtSex = sum(personalWeight))
-dfOccupationPwtSex <- spread(dfPtsPwtSex, key=sex, value=ptsPwtSex)
-dfOccupationPwtSex <- data.frame(dfOccupationPwtSex)
-dfOccupationPwtSex$perMale <- round((100 * dfOccupationPwtSex$Male) /(dfOccupationPwtSex$Male + dfOccupationPwtSex$Female), digits=0)
+### Table 3 Occupations by Sex
+census2OccSex <- group_by(dfCensus2, occupation, sex)
+head(census2OccSex)
+dfPtsPwtOccSex <- summarise(census2OccSex, ptsPwtOccSex = sum(personalWeight))
+head(dfPtsPwtOccSex)
+dfOccupationSex <- spread(dfPtsPwtOccSex, key=sex, value=ptsPwtOccSex)
+head(dfOccupationSex)
+dfOccupationSex$perMale <- round((100 * dfOccupationSex$Male) /(dfOccupationSex$Male + dfOccupationSex$Female), digits=0)
+head(dfOccupationSex)
 
-dfOccupationPwtSex$Total <- dfOccupationPwtSex$Male + dfOccupationPwtSex$Female
-dfOccupationPwtSex <- dfOccupationPwtSex[, c(1,5,2:4)] ### Put total in second column
+dfOccupationSex$Total <- dfOccupationSex$Male + dfOccupationSex$Female
+dfOccupationSex <- dfOccupationSex[, c(1,5,2:4)] ### Put total in second column
+colnames(dfOccupationSex) <- c("occupation", "Total", "Male","Female", "perMale")
+dfOccupationSex <- as.data.frame(dfOccupationSex)
+dfOccupationSex
 
 ### Add total row for ALL
-techSums <- as.vector(colSums(dfOccupationPwtSex[2:4]))
-perMaleTechSums <- as.numeric(round(100 * (techSums[2]/techSums[1]), digits = 0))
-dfALL <- data.frame("ALL", t(techSums), perMaleTechSums) ### transpose
+techSums <- as.vector(colSums(dfOccupationSex[2:4]))
+perMaleTechSums <- as.numeric(round((techSums[2]/techSums[1]), digits = 3) * 100)
+dfALL <- data.frame("ALL", t(techSums), perMaleTechSums) ### note the transpose "t"
 colnames(dfALL) <- c("occupation", "Total", "Male","Female", "perMale")
-dfOccupationPwtSex <- rbind(dfOccupationPwtSex, dfALL)
-nRows <- dim(dfOccupationPwtSex)[1]
-dfOccupationPwtSex
 
-### Finish making things "nice"
-index <- order(dfOccupationPwtSex$Total, decreasing=TRUE)
-dfOccupationPwtSex <- dfOccupationPwtSex[index,] 
-dfOccupationPwtSex$Female <- NULL
-rownames(dfOccupationPwtSex) <- NULL
-colnames(dfOccupationPwtSex) <- c("Occupation", "Total", "Male", "%-Male")
-(dfTable3 <- dfOccupationPwtSex)
+dfOccupationSex$occupation <- as.character(dfOccupationSex$occupation)
+str(dfOccupationSex)
+dfOccupationSex <- rbind(dfOccupationSex, dfALL)
+dfOccupationSex
+str(dfOccupationSex)
 
+### Order by decreasing emploment, drop Female, no row names, etc
+index <- order(dfOccupationSex$Total, decreasing=TRUE)
+dfOccupationSex <- dfOccupationSex[index,] 
+dfOccupationSex$Female <- NULL
+rownames(dfOccupationSex) <- NULL
+colnames(dfOccupationSex) <- c("Occupation", "Total", "Male", "%-Male")
+(dfTable3 <- dfOccupationSex)
 
 save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3, file="dfTab1A1B2A2B3.rda")
 
@@ -101,7 +109,7 @@ makeParityTable <- function(race){
     racePop <- paste0(race, "Pop")
     per_racePop <- paste0("per_", racePop)
     colnames(dfParity) <- c("state", "totalTech", raceTech, per_raceTech, racePop, per_racePop)
-    dfParity$parity <- round((dfParity[,per_raceTech]/dfParity[,per_racePop]), digits=1)
+    dfParity$parity <- round((dfParity[,per_raceTech]/dfParity[,per_racePop]), digits=2)
     index <- order(dfParity[, raceTech], decreasing=TRUE)
     dfParity <- dfParity[index,]
     
@@ -270,8 +278,6 @@ dfParity <- dfParity[c("hispanic", "black", "white", "asian"),] ### reorder the 
 rownames(dfParity) <- c("hispanic", "black", "white", "asian")
 (dfTable5 <- dfParity)
 rownames(dfTable5) <- c("Hispanic", "Black", "White", "Asian")
-### Report-3.Rmd will display dfTable5 with row names capitalized, but need uncap
-### in this file to automatically form names of Betas for plots
 save(dfTable5, dfParity, file="dfTab5.rda")
 
 ### Calculate max values for plots (below)

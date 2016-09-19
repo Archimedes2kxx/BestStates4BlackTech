@@ -48,7 +48,7 @@ My principal findings were straight-forward:
 
 * Second, the percentage of tech employees who were Black was higher in states that had larger Black populations and smaller in states that had smaller Black populations. The same relationship between population size and the percentage of tech employment held true for Hispanics. 
 
-* Third, if all other things were equal, one would expect that the percentage of employment in a state's tech sector that was Black would be about the same as the percentage of the state's total population that was Black. One would would expect similar parity for the percentages of Hispanics. Unfortunately, all of things were not equal, so I found that the percentage of the tech sector of most states that was Black or Hispanic was substantially smaller than the percentage of the state's total population that was Black or Hispanic. By contrast I found that the percentage of every state's tech sector that was Asian was two to eight times as large as the percentage of the state's total population that was Asian.
+* Third, if all other things were equal, one would expect that the percentage of employment in a state's tech sector that was Black would be about the same as the percentage of the state's total population that was Black. One would would expect similar parity for the percentages of Hispanics. Unfortunately, all of things were not equal, so I found that the percentage of the tech sector of most states that was Black or Hispanic was substantially smaller than the percentage of the state's total population that was Black or Hispanic. By contrast I found that the percentage of every state's tech sector that was Asian was two to eleven times as large as the percentage of the state's total population that was Asian.
 
 * Fourth, the strengths of these relationships varied widely: some states offered substantially larger employment opportunities for Blacks and Hispanics in their information technology sectors than others.   
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
@@ -97,7 +97,7 @@ Answer 3B blah, blah,blah Table 3 (below)
 #### Question 3C -- What was the male/female breakdown of employment within these categories?         
 Answer blah, blah   Table 3 (below) 
 
-<b>Table 3 -- Employment in Information Technology and Male Percentage</b>   
+<b>Table 3 -- Employment in Information Technology with Male Percentage</b>   
 ```{r, echo=FALSE, cache=FALSE,  comment=NA}
     colnames(dfTable3) <- c("Occupation", "AllTech", "Male", "M_%")
    print(format(dfTable3[,c(1,2,4)], big.mark=","),row.names=FALSE) 

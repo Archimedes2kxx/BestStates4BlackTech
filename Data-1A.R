@@ -20,22 +20,25 @@ str(dfCensus2) ### 39692 observations ... for pop weights, state, race, sex, His
 head(dfCensus2)
 
 ### 3.. Read manually edited codebooks 
-###     ... commas added between codes and labels ... commas deleted within labels
+###     ... commas added between codes and labels ... commas deleted within labels ... and 99 Hispanic added manually
 file = "Race-Codes-Short-Names.txt"
 raceCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
+raceCodes
 
 file = "State-Codes.txt"
 stateCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
 stateCodes$State <-gsub("/.*","",stateCodes$State) ### Drop state initials, e.g., "New York/NY
+stateCodes
 
 file="Sex-Codes.txt"
 sexCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
+sexCodes
 
 file="Occupation-Codes.txt"
 occupationCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
 occupationCodes
 
-### 4. Convert coded categorical variables to factors ... sex, race, state, occupation
+### 4. Convert coded categorical variables to factors ... sex, race, state, occupation ... drop padding/blanks before/after each category
 dfCensus2$race <- as.factor(dfCensus2$race)
 levels(dfCensus2$race) <- trimws(raceCodes[,2])
 
@@ -56,7 +59,7 @@ save(dfCensus2, file="dfCensus2.rda")
 
 ### Each row in the ACS Public Use Microdat Sample (PUMS) table that I downloaded contains the responses of one real tech employee, i.e., his/her sex, race/ethnicity, occupation, and state of residence. Each observation also conatins a number called "personal weight" which is the Census Bureau's estimate of how many people in the real population are like that one person in the sample. So to obtain an estimate of the total number of techs in the real population represented by the techs in the sample, one merely adds the personal weights of the techs in the sample. This applies to subgroups, e.g, male vs. female, residents of specific states, etc. 
 
-### Following this logic, to obtain the percentage share of a subgroup's employment, one merely divides the estimate employment in the subgroup by the estimate employment in the entire group, i.e., divide the sum of personal weights in a subgroup by the sum of personal weights in the larger group. 
+### Following this logic, to obtain the percentage share of a subgroup's employment, one merely divides the estimated employment in the subgroup by the estimated employment in the entire group, i.e., divide the sum of personal weights in a subgroup by the sum of personal weights in the larger group. 
 
 ### Note: Here's the URL to the Census Bureau's description of this process 
 ###       https://usa.ipums.org/usa/voliii/ACSsamp.shtml
@@ -64,12 +67,17 @@ save(dfCensus2, file="dfCensus2.rda")
 
 ### 5. Calculate racial group's employment per each state ... Thank you, Hadley ... :-)
 dfCensus3 <- dfCensus2 
-censusGroups <- group_by(dfCensus3, state, race) 
-dfPtsPwtRace <- summarise(censusGroups, ptsPwtRace = sum(personalWeight))
-censusStates <- group_by(dfCensus3, state)
-dfPtsPwtState <- summarise(censusStates, ptsPwtState = sum(personalWeight))
-dfRaceEmploymentPerState <- spread(dfPtsPwtRace, key=race, value=ptsPwtRace) 
+census3StateRace <- group_by(dfCensus3, state, race) 
+head(census3StateRace)
+dfPtsPwtStateRace <- summarise(census3StateRace, ptsPwtStateRace = sum(personalWeight))
+head(dfPtsPwtStateRace, 10)
+### census3States <- group_by(dfCensus3, state)
+### dfPtsPwtState <- summarise(census3States, ptsPwtState = sum(personalWeight))
+### head(dfPtsPwtState)
+dfRaceEmploymentPerState <- spread(dfPtsPwtStateRace, key=race, value=ptsPwtStateRace)
+head(dfRaceEmploymentPerState)
 dfRaceEmploymentPerState[is.na(dfRaceEmploymentPerState)] <- 0 ### Replace NAs with zeros
+head(dfRaceEmploymentPerState)
 
 ### 6. Combine all groups other than black, white, asian, and hispanic into OTHERS
 columnNames <- c("state", "white", "black", "amInAlNat", "alNat", "otherNat", "asian", "pacific", "other", "mixed" , "hispanic")
@@ -83,20 +91,24 @@ dfRaceEmploymentPerState$otherNat <- NULL
 dfRaceEmploymentPerState$pacific <- NULL
 dfRaceEmploymentPerState$other <- NULL
 dfRaceEmploymentPerState$mixed <- NULL
+head(dfRaceEmploymentPerState)
 
 ### 7. Add "totals" column after "state" ... 
 dfRaceEmploymentPerState$totals <- rowSums(dfRaceEmploymentPerState[,2:6])
 dfRaceEmploymentPerState <- dfRaceEmploymentPerState[,c(1,7, 2:6)] ### move totals into second column
+head(dfRaceEmploymentPerState)
 
-### 8. Calculate each racial groups share of total tech employment in each state
+### 8. Calculate each racial group's share of total tech employment in each state
 vecTotalEmploymentPerState <- c(unlist(dfRaceEmploymentPerState[,2]))
-dfRaceShares <- round(100 * dfRaceEmploymentPerState[,3:7] / vecTotalEmploymentPerState, digits = 0)
-dfRaceSharesPerState <- dfRaceEmploymentPerState[,c(1, 3:7)] ### Dummy copy just to get the right dimensions & labels
+head(vecTotalEmploymentPerState)
+dfRaceShares <- round(100 * dfRaceEmploymentPerState[,3:7] / vecTotalEmploymentPerState, digits = 0) ### Need percents, so multiply by 100
+dfRaceSharesPerState <- dfRaceEmploymentPerState[,c(1, 3:7)] ### Dummy copy just to get the right dimensions 
+head(dfRaceShares)
 
 dfRaceSharesPerState[, 2:6] <- dfRaceShares
 colnames(dfRaceSharesPerState) <- c("state", "per_white", "per_black", "per_asian", "per_hispanic", "per_OTHERS")
 
-### 9. Merge the two data frames
+### 9. Merge the two data frames on state, only common
 dfEmploymentAndShares <- merge(dfRaceEmploymentPerState, dfRaceSharesPerState)
 
 ### 10. Add a totals row 
