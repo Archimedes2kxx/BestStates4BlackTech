@@ -9,7 +9,7 @@ output:
     toc: true
     toc_depth: 4
     fig_width: 7
-    fig_height: 5
+    fig_height: 6
          
 ---
 
@@ -19,7 +19,6 @@ output:
     
     load("dfEmploymentAndShares.rda")
     load("dfCensus2.rda") 
-     
     load("dfTab1A1B2A2B3.rda")
     load("dfTab4.rda")   
     load("dfMap4.rda")
@@ -44,7 +43,7 @@ output:
 My principal findings were straight-forward:   
 
 * First, in 2014 there were approximately `r prettyNum(dfEmploymentAndShares[1,2], big.mark=",", scientific=FALSE)` employees in the entire U.S. information technology sector ==>  `r prettyNum(dfEmploymentAndShares[1,4], big.mark=",", scientific=FALSE)` were Black, and 
-`r prettyNum(dfEmploymentAndShares[1,6], big.mark=",", scientific=FALSE)` were Hispanic.  
+`r prettyNum(dfEmploymentAndShares[1,6], big.mark=",", scientific=FALSE)` were Hispanic.    
 
 * Second, the percentage of tech employees who were Black was higher in states that had larger Black populations and smaller in states that had smaller Black populations. The same relationship between population size and the percentage of tech employment held true for Hispanics. 
 
@@ -126,7 +125,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <b>Table 4B -- Blacks in U.S. Information Technology -- Top 10 states</b>     
 [Click here for full version](Table4B-Full-Black-Employment.html) 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-    colnames(dfTable4B) <- c("State", "AllTech", "S_%", "BlkTech", "T_%", "BlkPop", "P_%", "Parity")
+    colnames(dfTable4B) <- c("State", "AllTech", "S_%", "BlkTech", "T_%", "BlkPop", "P_%", "Parity")  
     print(format(dfTable4B[1:11,], big.mark = ","), row.names=FALSE)  
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
