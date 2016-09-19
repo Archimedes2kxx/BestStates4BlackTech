@@ -60,7 +60,7 @@ Answer 1A -- See Table 1A (below)  ... Comments and reformatting of table
 <b>Table 1A -- U.S. Census Estimates of Whites, Blacks, Hispanics, and Asians in U.S.  in 2014</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable1A) <- c("ALL", "White", "Black", "Asian", "Hispanic", "Others")
-  print(dfTable1A, row.names=FALSE)
+  print(format(dfTable1A, big.mark=","), row.names=FALSE)
 ```
 #### Question 1B -- What percent of the U.S. population was White, Black, Hispanic, and Asian in 2014?        
 Answer 1B -- See Table 1B (below)   ... Comments and reformatting of table    
