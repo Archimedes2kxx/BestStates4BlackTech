@@ -107,14 +107,25 @@ Answer 3C ... The third column of Table 3 (below) shows the percentage of techs 
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
-#### Question 4 -- Where did White, Black, Hispanic, and Asian techs live in 2014?      
-Answer 4 -- See Map 4 (below) + Table 4A (White), Table 4B, Table 4C, and Table 4D (subbsequent)
+#### Question 4 -- Where did White, Black, Asian, and Hispanic techs live in 2014?      
+Answer 4 ... To be more specific, in which states did White, Black, Asian, and Hispanic techs reside in 2014? The underlying assumption that most people work in the same state in which they live. (<i>Readers should be aware of two notable exceptions: New York and Washington, DC wherein substantial numbers of out-of-state workers commute from nearby New Jersey and Connecticut, and from Maryand and Viginia respectively.</i>) 
 
-<b> Maps 4 -- Whites, Blacks, Hispanics, and Asians -- U.S. Information Technology -- Lower 48 and DC</b>
+I've presented the U.S. Census data that answers this question in two formats: as a set of choropleth maps and as a corresponding set of tables. I show the maps first because it's easier to see the similarities and differences between the residential patterns of the racial/ethnic groups by looking at multicolored maps than by scanning the columns of data in the tables. Indeed, a quick scan of the maps makes it easier to see the same patterns in the data tables.
+
+There are four maps (below), one for each racial/ethnic group. Map 4A shows the residential distribution of White techs; Map 4B shows the distribution of Black techs; Map 4C shows Asian techs; and Map 4D shows Hispanics. Each map colors the states with the highest number of tech residents in the darkest colors, and colors the states with the least tech residents in the lightest colors.
+
+<b> Maps 4A (Whites), 4B (Blacks), 4C (Asians) and 4D (Hispanics), --  -- Lower 48 and DC</b>
+
+* Map 4A shows that White techs are spread across a large number of states, with the highest number living in California, second highest  in Texas. 
+
+* Map 4B shows that Black techs are concentrated in the Eastern and Southern states, with the most living in Texas, second in Georgia, and third in Virginia
+
+* Map 4C shows that Asian techs are highly concentrated in California, with remainder spread out over states with much smaller Asian populations.
+
+* Map 4D shows that Hispanics are concentrated in California, Texas, and Florida  
 
 ```{r, echo=FALSE, cache=TRUE, comment=NA}
     grid.arrange(dfMap4A, dfMap4B, dfMap4C, dfMap4D, ncol=2) 
-
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 

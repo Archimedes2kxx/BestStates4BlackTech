@@ -91,11 +91,9 @@ colnames(dfOccupationSex) <- c("Occupation", "Total", "Male", "%-Male")
 
 save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3, file="dfTab1A1B2A2B3.rda")
 
-### Tables 2A, 2B, 2C, 2D. Racial groups in each state  
-### ... state, <racial>TechEmp, totalTechEmp, per<Racial>TechEmp, totPop, <racialPop>, 
-###        per<Racial>Pop, <racial>Parity ... 
+### Tables 4A, 4B, 4C, 4D. Racial groups in each state  
 ### ... sorted by decreasing racialTechEmp so users can see "Top 10"
-### ... Only show top 10 in report, show full tables 2WW, 2BB, 2AA, 2HH in appendices on GitHub
+### ... Only show top 10 in report, show full tables linked to report on git-io
 
 makeParityTable <- function(race){
     per_race <- paste0("per_", race)
@@ -180,7 +178,6 @@ R
 
 ### Maps 4A, B, C, D ... state maps of white, black, asian, hispanics in  tech 
 ### Follow W. Chang's cookbook p 313 for U.S. with lower 48 states
-
 states_map <- map_data("state") ### from ggplot]
 theme_clean <- function(base_size = 12) {
     require(grid) # Needed for unit() function
@@ -199,9 +196,25 @@ theme_clean <- function(base_size = 12) {
         complete = TRUE
     )
 }
+
+maxAsianPerState <- max(dfParity_asian[-1,"per_state"]) ### omit total row
+maxAsianPerState 
     
-makeTechMap <- function(df, race) {
+makeTechMap <- function(df, race, maxPer) {
     ### raceTech <- paste0(race,"Tech")
+    
+    ### These maps will only show the lower 48 and DC; they don't process values for Hawaii and Alska
+    ### DC is so small that its colors are invisible. We want all the colors 
+    ### on the maps to be comparable. So if we place the same max value into
+    ### DC, it won't be visible ... but all other states will be colored
+    ### against this maximum
+    ### Observation and calculation shows that the highest concentration value
+    ### for any group was the Asian 29.1 value for California
+    ###  ... so place this max into DC for all groups, including Asians
+    
+    ### Insert dummy max value into Hawaii
+    df[df$state=="District of Columbia", "per_state"] <- maxPer    
+    
     legend <- paste(toupper(substr(race, 1, 1)), substr(race, 2, nchar(race)), sep="") ### capitalize first letter ... aarrrrrrrrrrrggghhh!!!
     legend = paste0(legend, " %")
     dfMap <- subset(df, select=c("state", "per_state"), state!= c("ALL STATES"))     
@@ -210,8 +223,7 @@ makeTechMap <- function(df, race) {
     dfMap <- merge(states_map, dfMap, by.x="region", by.y= "state")
     dfMap <- arrange(dfMap, group, order) 
     raceData <- dfMap[,"per_state"]
-    #### raceData <- dfMap[,raceTech]
-
+    
     ggMap <- ggplot(data=dfMap, aes(map_id=region, fill=raceData))
     ggMap <- ggMap + geom_map(map=states_map, colour="black")
     ggMap <- ggMap + scale_fill_gradient2(low="#559999", mid="grey90", high="#BB650B", midpoint= median(raceData))       
@@ -221,10 +233,10 @@ makeTechMap <- function(df, race) {
     return(ggMap)
 }
 
-(black_ggMap<-makeTechMap(dfParity_black,"black"))
-(white_ggMap <-makeTechMap(dfParity_white,"white"))
-(hispanic_ggMap <- makeTechMap(dfParity_hispanic,"hispanic"))
-(asian_ggMap <- makeTechMap(dfParity_asian,"asian"))
+(black_ggMap<-makeTechMap(dfParity_black,"black", maxAsianPerState))
+(white_ggMap <-makeTechMap(dfParity_white,"white", maxAsianPerState))
+(hispanic_ggMap <- makeTechMap(dfParity_hispanic,"hispanic", maxAsianPerState))
+(asian_ggMap <- makeTechMap(dfParity_asian,"asian", maxAsianPerState))
 
 dfMap4A <- white_ggMap
 dfMap4B <- black_ggMap
@@ -295,8 +307,7 @@ matMaxVals["white",] <- whiteMax
 matMaxVals["hispanic",] <- hispanicMax
 matMaxVals["asian",] <- asianMax
 
-### Max values overall are the max values for whites, of course, but the general code may 
-##  be useful at some later date
+### Max values overall are the max values for whites, of course, but the general code may be useful at some later date ... :-()
 (maxTech <- max(matMaxVals[,"Tech"]))
 (maxPop <- max(matMaxVals[,"Pop"])/1000)
 
