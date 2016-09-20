@@ -18,7 +18,7 @@ output:
     library(prettydoc)
     load("dfTab4.rda")   
 
-    colnames(dfTable4D) <- c("State", "AllTech", "S_%", "AsnTech", "T_%", "AsnPop", "P_%", "Parity")
+    colnames(dfTable4D) <- c("State", "AllTech", "S_%", "AsnTech", "T_%", "AsnPop", "P_%", "Par")
 print(format(dfTable4D, big.mark = ","), row.names=FALSE)  
 
 ```

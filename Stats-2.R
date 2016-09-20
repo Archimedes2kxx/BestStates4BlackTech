@@ -213,7 +213,7 @@ makeTechMap <- function(df, race, maxPer) {
     ###  ... so place this max into DC for all groups, including Asians
     
     ### Insert dummy max value into Hawaii
-    df[df$state=="District of Columbia", "per_state"] <- maxPer    
+    df[df$state=="Dist of Col", "per_state"] <- maxPer    
     
     legend <- paste(toupper(substr(race, 1, 1)), substr(race, 2, nchar(race)), sep="") ### capitalize first letter ... aarrrrrrrrrrrggghhh!!!
     legend = paste0(legend, " %")

@@ -132,7 +132,7 @@ There are four maps (below), one for each racial/ethnic group. Map 4A shows the 
 <b>Table 4A -- Whites in U.S. Information Technology -- Top 10 States </b>   
 [Click here for full version](Table4A-Full-White-Employment.html)
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-    colnames(dfTable4A) <- c("State", "AllTech", "S_%", "WhiTech", "T_%", "WhiPop", "P_%", "Parity")
+    colnames(dfTable4A) <- c("State", "AllTech", "S_%", "WhiTech", "T_%", "WhiPop", "P_%", "Par")
 print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)  
 
 ```
@@ -140,7 +140,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <b>Table 4B -- Blacks in U.S. Information Technology -- Top 10 states</b>     
 [Click here for full version](Table4B-Full-Black-Employment.html) 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-    colnames(dfTable4B) <- c("State", "AllTech", "S_%", "BlkTech", "T_%", "BlkPop", "P_%", "Parity")  
+    colnames(dfTable4B) <- c("State", "AllTech", "S_%", "BlkTech", "T_%", "BlkPop", "P_%", "Par")  
     print(format(dfTable4B[1:11,], big.mark = ","), row.names=FALSE)  
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
@@ -149,7 +149,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 [Click here for full version](Table4C-Full-Hispanic-Employment.html) 
 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-    colnames(dfTable4C) <- c("State", "AllTech", "S_%",  "HspTech", "T_%", "HspPop", "P_%", "Parity")
+    colnames(dfTable4C) <- c("State", "AllTech", "S_%",  "HspTech", "T_%", "HspPop", "P_%", "Par")
     print(format(dfTable4C[1:11,], big.mark = ","), row.names=FALSE)  
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
@@ -158,7 +158,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
  [Click here for full version](Table4D-Full-Asian-Employment.html)
 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-    colnames(dfTable4D) <- c("State", "AllTech", "S_%", "AsnTech", "T_%", "AsnPop", "P_%", "Parity")
+    colnames(dfTable4D) <- c("State", "AllTech", "S_%", "AsnTech", "T_%", "AsnPop", "P_%", "Par")
     print(format(dfTable4D[1:11,], big.mark=","), row.names=FALSE)  
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
