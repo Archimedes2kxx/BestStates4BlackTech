@@ -108,7 +108,7 @@ Answer 3C ... The third column of Table 3 (below) shows the percentage of techs 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
 #### Question 4 -- Where did White, Black, Asian, and Hispanic techs live in 2014?      
-Answer 4 ... The following extensive answer responds to a more specific formulation of this question ==> In which states did White, Black, Asian, and Hispanic techs reside in 2014? My underlying assumption was that most people worked in the same state in which they lived. (<i>Readers are reminded of two notable exceptions: New York City and Washington, DC wherein substantial numbers of out-of-state workers commute from nearby New Jersey and Connecticut, and from Maryand and Viginia respectively.</i>) 
+Answer 4 ... The following paragraphs provide an extensive response to a more specific formulation of this question ==> In which states did White, Black, Asian, and Hispanic techs reside in 2014? My underlying assumption was that most people worked in the state in which they lived. (<i>Readers are reminded of two notable exceptions: New York City and Washington, DC wherein substantial numbers of out-of-state workers commute from nearby New Jersey and Connecticut, and from Maryand and Viginia respectively.</i>) 
 
 I've presented the U.S. Census data that answers this question in two formats: as a set of choropleth maps and as a corresponding set of tables. I show the maps first because it's easier to see the residential patterns of the racial/ethnic groups by looking at multicolored maps than by scanning columns of data in long tables. Indeed, a quick scan of the maps makes it easier to see the same patterns in the data tables.
 
@@ -129,7 +129,7 @@ There are four maps (below), one for each racial/ethnic group. Map 4A shows the 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small><br /><br />
 
 <b>Table 4A, Table 4B, Table 4C, and Table 4D</b> ... 50 states plus DC   
-Four corresponding data tables impose numeric precision on the qualitative insights provided by the maps. The short versions of each table only contain the top ten rows are displayed below. To view the full tables that contain data for all 50 states plus the District of Columbia, please click the link below the table name. Each table (full table and short version) has the following eight columns<br /><br />
+Four corresponding data tables impose numeric precision on the qualitative insights provided by the maps. The short versions of each table that only contain the top ten rows are displayed below. To view the full tables that contain data for all 50 states plus the District of Columbia, please click the link below the table name. Each table (full and short version) has the following eight columns<br /><br />
 1. <b>State</b> -- State of residence for the techs whose data is shown in the other columns of each row<br /> <br />
 2. <b>AllTech</b> -- Data for all of the techs in the U.S. The data in this column is repeated in each of the four tables, but the order of the rows differs from one table to the next. For example Table 4A shows that the total number of techs in California in 2014 was   `r prettyNum(dfTable4A[dfTable4A=="California", 2], big.mark=",", scientific=FALSE)`; the total number in Texas was   `r prettyNum(dfTable4A[dfTable4A=="Texas", 2], big.mark=",", scientific=FALSE)` <br /> <br />
 3. <b>S_%</b> -- Percent of all U.S. techs in this racial group who live in this state. For example, Table 4A shows that  `r dfTable4A[dfTable4A=="California", 3]` percent of all White techs lived in California in 2014; `r dfTable4A[dfTable4A=="Texas", 3]` percent lived in Texas.<br /> <br />
@@ -146,13 +146,26 @@ Four corresponding data tables impose numeric precision on the qualitative insig
 print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)  
 
 ```
+
+<b>Comments about Table 4A -- Whites in Tech</b>   
+
+* The numbers in the second and third columns of this table, i.e., state percentages and the estimated number of techs in each state are equivalent to the colors on Map 4A. Indeed the colors on this map are based on the numbers in these columns.   
+
+* To be specific, the second and third columns show that in 2014 the largest number of White techs lived in California; the next largest lived in Texas. White techs were found in every state after that in smaller and smaller numbers.   
+
+* This story is told more succinctly by the parity values in the last column of the Table 4A (and in its full version). White parity values are all close to 1.0, which means that the percentage of techs who were White in each state was more or less the same as the percentage of Whites in the state's total population. So California being the most populous state had the most White techs. In other words, if you walked into a tech office in any state in they USA, you would probably encounter the same percentage White techs as the percentage of White people you would encounter walking down the street -- with an important caveat. As per table 3 (above), if you randomly encountered 10 White people on a street, only five of them would be males; but random encounters with 10 White techs in an office would probably involve seven or eight males.
+
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
-<b>Table 4B -- Blacks in U.S. Information Technology -- Top 10 states</b>     
+<b>Table 4B -- Blacks in U.S. Information Technology -- Top 10 states</b>    
 [Click here for full version](Table4B-Full-Black-Employment.html) 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4B) <- c("State", "AllTech", "S_%", "BlkTech", "T_%", "BlkPop", "P_%", "Par")  
     print(format(dfTable4B[1:11,], big.mark = ","), row.names=FALSE)  
 ```
+<b>Comments about Table 4B -- Blacks in Tech</b>   
+
+* As per column 2 of Table 4B, in 2014 the largest number of Black techs lived in Texas, second largest in Georgia, third in Virginia, fourth in New York, fifth in Maryland, sixth in Florida, and finally, in seventh place came the Great State of California. Why? Because in 2014 the vast majority Black Americans still lived in these Eastern and Southern states, so that's where most Black techs are found. 
+
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
 <b>Table 4C -- Hispanics in U.S. Information Technology -- Top 10 states</b>    
@@ -196,7 +209,7 @@ Answer 7: Comment ... There was a positive relationship, but the relationship wa
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
 ## Motivation   
-First, let me explain why I conducted this study and how my motivation influenced my methods. The recent barrage of annual reports from some of the nation's leading information technology companies in Silicon Valley would have readers believe that the primary reason why those companies employed so few Black and Hispanic professionals was because there were so few Black and Hispanic tech professionals available because there were so few Black and Hispanic tech students in the nation's academic pipelines. When reading their reports I found myself shaking my head time and again while wondering, "What numbers did they have to back up these notions? And where did they get them from?" Whereas I would have said that the pipelines were half-full, these reports implied that the pipelines were perilously close to being empty. But if the pipelines were close to empty, there shouldn't be very many Black or Hispanic employees in the U.S. tech sector, right?
+Let me explain why I conducted this study and how my motivation influenced my methods. The recent barrage of annual reports from some of the nation's leading information technology companies in Silicon Valley would have readers believe that the primary reason why those companies employed so few Black and Hispanic professionals was because there were so few Black and Hispanic tech professionals available. And the reason they weren't available was because there were so few Black and Hispanic tech students in the nation's academic pipelines. When reading their reports I found myself shaking my head time and again while wondering, "What numbers did they have to back up these notions? And where did they get them from?" Whereas I would have said that the pipelines were half-full, these reports implied that the pipelines were perilously close to empty. But if the pipelines were close to empty, there shouldn't be very many Black or Hispanic employees in the U.S. tech sector, right? Which led me to wonder how many Black and Hispanic techs were out there and where were they located.
 
 One of my most important take-aways from completing the [<b>Johns Hopkins "Data Science"</b>](https://www.coursera.org/specializations/jhu-data-science) online certificate program a few months ago was the notion that reports should be "reproducible". Authors should not only describe their methods for collecting and analyzing data; they should provide detailed step-by-step descriptions of their methods (including copies of their code) so that interested readers could readily reproduce the results on their own computers. Of course, the best researchers have always tried to achieve this objective and have often succeeded. What was new for me was the specific tools that the statisticians who taught the Hopkins courses recommended ==> the [<b>R programming language</b>](https://en.wikipedia.org/wiki/R_) and [<b>GitHub</b>](https://en.wikipedia.org/wiki/GitHub).   
 
