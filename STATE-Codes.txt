@@ -7,7 +7,7 @@ Code, State
 008,  Colorado/CO
 009,  Connecticut/CT
 010,  Delaware/DE
-011,  District of Columbia/DC
+011,  Dist of Col/DC
 012,  Florida/FL
 013,  Georgia/GA
 015,  Hawaii/HI

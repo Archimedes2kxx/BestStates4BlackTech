@@ -100,6 +100,10 @@ makeParityTable <- function(race){
     pop_race <- paste0("pop_", race)
     dfEmp <- dfEmploymentAndShares[, c("state", "totals", race, per_race)]
     dfPop <- dfStatesPop3[, c("state", race, per_race)]
+    
+    ### Must change DC name to short form in dfPop before this merge
+    dfPop[dfPop$state=="District of Columbia", "state"] <- "Dist of Col"
+    
     dfParity <- merge(dfEmp, dfPop, by="state")
     
     raceTech <- paste0(race, "Tech")
@@ -212,13 +216,16 @@ makeTechMap <- function(df, race, maxPer) {
     ### for any group was the Asian 29.1 value for California
     ###  ... so place this max into DC for all groups, including Asians
     
-    ### Insert dummy max value into Hawaii
-    df[df$state=="Dist of Col", "per_state"] <- maxPer    
+    ### Insert dummy max value into District of Columbia
+    df[df$state=="Dist of Col", "per_state"] <- maxPer 
     
-    legend <- paste(toupper(substr(race, 1, 1)), substr(race, 2, nchar(race)), sep="") ### capitalize first letter ... aarrrrrrrrrrrggghhh!!!
+    ### and use full name of District, not short form used in these scripts
+    df[df$state=="Dist of Col", "state"] <- "District of Columbia"
+    
+    legend <- paste(toupper(substr(race, 1, 1)), substr(race, 2, nchar(race)), sep="") ### capitalize first letter of race ... aarrrrrrrrrrrggghhh!!!
     legend = paste0(legend, " %")
     dfMap <- subset(df, select=c("state", "per_state"), state!= c("ALL STATES"))     
-    ### dfMap <- subset(df, select=c("state", raceTech), state!= c("ALL STATES"))  
+    
     dfMap$state <- tolower(dfMap$state)
     dfMap <- merge(states_map, dfMap, by.x="region", by.y= "state")
     dfMap <- arrange(dfMap, group, order) 
