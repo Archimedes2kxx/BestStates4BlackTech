@@ -83,5 +83,5 @@ dfStatesPop4["New York",]
 sum(dfStatesPop4["New York", 3:10])
 
 ### Note the URL for Census data about racial shares of total U.S. pop
-### https://www.census.gov/quickfacts/table/PST045215/00
+### https://www.census.gov/quickfacts/table/PST045215/00  
 

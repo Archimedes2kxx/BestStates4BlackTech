@@ -120,9 +120,9 @@ There are four maps (below), one for each racial/ethnic group. Map 4A shows the 
 
 * Map 4B shows that Black techs are concentrated in the Eastern and Southern states, with the most living in Texas, second in Georgia, and third in Virginia
 
-* Map 4C shows that Asian techs are highly concentrated in California, with remainder spread out over states with much smaller Asian populations.
+* Map 4C shows that Hispanics are concentrated in California, Texas, and Florida  
 
-* Map 4D shows that Hispanics are concentrated in California, Texas, and Florida  
+* Map 4D shows that the Asian concentrqtion in California is much higher than the concentration of any other group in any state. Otherwise Asians are spread out over states with much smaller Asian populations.
 
 ```{r, echo=FALSE, cache=TRUE, comment=NA}
     grid.arrange(dfMap4A, dfMap4B, dfMap4C, dfMap4D, ncol=2) 
