@@ -108,26 +108,36 @@ Answer 3C ... The third column of Table 3 (below) shows the percentage of techs 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
 #### Question 4 -- Where did White, Black, Asian, and Hispanic techs live in 2014?      
-Answer 4 ... To be more specific, in which states did White, Black, Asian, and Hispanic techs reside in 2014? The underlying assumption that most people work in the same state in which they live. (<i>Readers should be aware of two notable exceptions: New York and Washington, DC wherein substantial numbers of out-of-state workers commute from nearby New Jersey and Connecticut, and from Maryand and Viginia respectively.</i>) 
+Answer 4 ... The following extensive answer responds to a more specific formulation of this question ==> In which states did White, Black, Asian, and Hispanic techs reside in 2014? My underlying assumption was that most people worked in the same state in which they lived. (<i>Readers are reminded of two notable exceptions: New York City and Washington, DC wherein substantial numbers of out-of-state workers commute from nearby New Jersey and Connecticut, and from Maryand and Viginia respectively.</i>) 
 
-I've presented the U.S. Census data that answers this question in two formats: as a set of choropleth maps and as a corresponding set of tables. I show the maps first because it's easier to see the similarities and differences between the residential patterns of the racial/ethnic groups by looking at multicolored maps than by scanning the columns of data in the tables. Indeed, a quick scan of the maps makes it easier to see the same patterns in the data tables.
+I've presented the U.S. Census data that answers this question in two formats: as a set of choropleth maps and as a corresponding set of tables. I show the maps first because it's easier to see the residential patterns of the racial/ethnic groups by looking at multicolored maps than by scanning columns of data in long tables. Indeed, a quick scan of the maps makes it easier to see the same patterns in the data tables.
 
 There are four maps (below), one for each racial/ethnic group. Map 4A shows the residential distribution of White techs; Map 4B shows the distribution of Black techs; Map 4C shows Asian techs; and Map 4D shows Hispanics. Each map colors the states with the highest number of tech residents in the darkest colors, and colors the states with the least tech residents in the lightest colors.
 
-<b> Maps 4A (Whites), 4B (Blacks), 4C (Asians) and 4D (Hispanics), --  -- Lower 48 and DC</b>
+<b> Maps 4A (Whites), 4B (Blacks), 4C (Asians) and 4D (Hispanics)</b> ... <em>Lower 48 and DC</em>
 
-* Map 4A shows that White techs are spread across a large number of states, with the highest number living in California, second highest  in Texas. 
+* Map 4A shows that White techs are spread across a large number of states, with the highest number living in California, second highest in Texas. 
 
-* Map 4B shows that Black techs are concentrated in the Eastern and Southern states, with the most living in Texas, second in Georgia, and third in Virginia
+* Map 4B shows that most Black techs are located in the Eastern and Southern states, with the largest number living in Texas, second in Georgia, and third in Virginia
 
 * Map 4C shows that Hispanics are concentrated in California, Texas, and Florida  
 
-* Map 4D shows that the Asian concentrqtion in California is much higher than the concentration of any other group in any state. Otherwise Asians are spread out over states with much smaller Asian populations.
-
+* Map 4D shows that Asian techs are highly concentrated in California where their concentration is higher any other group in any state. Otherwise Asians are spread out over other states with much smaller Asian residencies.
 ```{r, echo=FALSE, cache=TRUE, comment=NA}
     grid.arrange(dfMap4A, dfMap4B, dfMap4C, dfMap4D, ncol=2) 
 ```
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small><br /><br />
+
+<b>Table 4A, Table 4B, Table 4C, and Table 4D</b> ... 50 states plus DC   
+Four corresponding data tables impose numeric precision on the qualitative insights provided by the maps. The short versions of each table only contain the top ten rows are displayed below. To view the full tables that contain data for all 50 states plus the District of Columbia, please click the link below the table name. Each table (full table and short version) has the following eight columns<br /><br />
+1. <b>State</b> -- State of residence for the techs whose data is shown in the other columns of each row<br /> <br />
+2. <b>AllTech</b> -- Data for all of the techs in the U.S. The data in this column is repeated in each of the four tables, but the order of the rows differs from one table to the next. For example Table 4A shows that the total number of techs in California in 2014 was   `r prettyNum(dfTable4A[dfTable4A=="California", 2], big.mark=",", scientific=FALSE)`; the total number in Texas was   `r prettyNum(dfTable4A[dfTable4A=="Texas", 2], big.mark=",", scientific=FALSE)` <br /> <br />
+3. <b>S_%</b> -- Percent of all U.S. techs in this racial group who live in this state. For example, Table 4A shows that  `r dfTable4A[dfTable4A=="California", 3]` percent of all White techs lived in California in 2014; `r dfTable4A[dfTable4A=="Texas", 3]` percent lived in Texas.<br /> <br />
+4. <b>WhiTech, BlkTech, AsiTech, or HispTech</b> -- White techs, Black techs, Asian techs, or Hispanic techs in tables A, B, C, and D. The data in this column shows the number of techs from the table's racial/ethnic group that live in each state. For example, Table 4A shows that `r prettyNum(dfTable4A[dfTable4A=="California", 4], big.mark=",", scientific=FALSE)` White techs lived in California; `r prettyNum(dfTable4A[dfTable4A=="Texas", 4], big.mark=",", scientific=FALSE)`   White techs lived in Texas. <b>The rows of each table are ordered by data in this column, i.e., by the number of techs in each state; states with higher numbers at the top, lower numbers at the bottom.</b><br /> <br />
+5. <b>T_%</b> -- Percent of of the state's techs who are in the table's racial/ethnic group. For exampleTable 4A shows that `r dfTable4A[dfTable4A=="California", 5]` percent of the techs in California were White in 2014; `r dfTable4A[dfTable4A=="Texas", 5]` percent of the techs in Texas were White.<br /> <br />
+6. <b>WhiPop, BlkPop, AsiPop, or HspPop</b> -- White population, Black population, Asian population, or Hispanic population in the entire United States. For example Table 4A shows that the 2014 White (non-Hiispanic) population of California was `r prettyNum(dfTable4A[dfTable4A=="California", 6], big.mark=",", scientific=FALSE)`; and the White (non-Hispanic) population of Texas was `r prettyNum(dfTable4A[dfTable4A=="Texas", 6], big.mark=",", scientific=FALSE)`.<br /><br />
+7. <b>P_%</b> -- Percent of the state's total population that belonged to the table's racial/ethnic group. For example, Table 4A shows that in 2014,  `r dfTable4A[dfTable4A=="California", 7]` percent of the total population of California was White; `r dfTable4A[dfTable4A=="Texas", 7]` percent of the total population of Texas was white<br /><br />
+8. <b>Par</b> -- Parity ratio of the  percent of the state's tech population that belonged to the table's racial/ethnic group divided by the percent of the state's total population that belonged to that group, i.e., T_% / P_%. For example, Table 4A shows that the White parity ratio for California was  `r dfTable4A[dfTable4A=="California", "parity"]`, which is `r dfTable4A[dfTable4A=="California", "5"]` divided by `r dfTable4A[dfTable4A=="California", 7]`<br /><br />
 
 <b>Table 4A -- Whites in U.S. Information Technology -- Top 10 States </b>   
 [Click here for full version](Table4A-Full-White-Employment.html)
@@ -136,7 +146,7 @@ There are four maps (below), one for each racial/ethnic group. Map 4A shows the 
 print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)  
 
 ```
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 <b>Table 4B -- Blacks in U.S. Information Technology -- Top 10 states</b>     
 [Click here for full version](Table4B-Full-Black-Employment.html) 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -163,7 +173,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
-#### Question 5 -- Did the Black/Hispanic share of tech employment equal their share of a state's population?     
+#### Question 5 -- Did the Black/Hispanic shares of tech employment equal their shares of a state's population?     
 Answer 5: See last column of Tables 4A, 4B, 4C, and 4D (above) and Table 5/6 (below)   
 
 #### Question 6 -- Did parity values vary among racial/ethic groups?      
