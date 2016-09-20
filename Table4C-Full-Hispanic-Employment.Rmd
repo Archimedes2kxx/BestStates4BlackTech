@@ -1,6 +1,6 @@
 ---
 title: "Table 4C -- Full Hispanic Tech Employment"
-
+ 
 output: 
     prettydoc::html_pretty:
     theme: cayman
