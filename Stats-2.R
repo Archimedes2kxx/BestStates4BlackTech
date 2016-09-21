@@ -111,6 +111,8 @@ makeParityTable <- function(race){
     racePop <- paste0(race, "Pop")
     per_racePop <- paste0("per_", racePop)
     colnames(dfParity) <- c("state", "totalTech", raceTech, per_raceTech, racePop, per_racePop)
+    rownames(dfParity) <- c(dfParity[,"state"]) 
+    
     dfParity$parity <- round((dfParity[,per_raceTech]/dfParity[,per_racePop]), digits=2)
     index <- order(dfParity[, raceTech], decreasing=TRUE)
     dfParity <- dfParity[index,]
@@ -132,12 +134,9 @@ head(dfParity_hispanic,20)
 head(dfParity_asian,20)
 tail(dfParity_asian,20)
 
-dfTable4A <- dfParity_white 
-dfTable4B <- dfParity_black
-dfTable4C <- dfParity_hispanic
-dfTable4D <- dfParity_asian
+save(dfParity_white, dfParity_black, dfParity_asian, dfParity_hispanic, file="dfTab4.rda")
 
-save(dfTable4A, dfTable4B, dfTable4C, dfTable4D, file="dfTab4.rda")
+### save(dfTable4A, dfTable4B, dfTable4C, dfTable4D, dfParity_white, dfParity_black, dfParity_asian, dfParity_hispanic, file="dfTab4.rda")
 
 ############
 ### handy tool for spot checking data
@@ -204,7 +203,7 @@ theme_clean <- function(base_size = 12) {
 maxAsianPerState <- max(dfParity_asian[-1,"per_state"]) ### omit total row
 maxAsianPerState 
     
-makeTechMap <- function(df, race, maxPer) {
+makeTechMap <- function(df, race, maxPer, title) {
     ### raceTech <- paste0(race,"Tech")
     
     ### These maps will only show the lower 48 and DC; they don't process values for Hawaii and Alska
@@ -236,19 +235,20 @@ makeTechMap <- function(df, race, maxPer) {
     ggMap <- ggMap + scale_fill_gradient2(low="#559999", mid="grey90", high="#BB650B", midpoint= median(raceData))       
     ggMap <- ggMap + expand_limits(x=states_map$long, y=states_map$lat) 
     ggMap <- ggMap + coord_map("polyconic") + labs(fill=legend) + theme_clean()
-    
+    ggMap <- ggMap + ggtitle(title) 
+    ggmap <- ggMap + theme(legend.title=element_blank(), plot.margin=unit(c(1,1,1,1), "cm")) 
     return(ggMap)
 }
 
-(black_ggMap<-makeTechMap(dfParity_black,"black", maxAsianPerState))
-(white_ggMap <-makeTechMap(dfParity_white,"white", maxAsianPerState))
-(hispanic_ggMap <- makeTechMap(dfParity_hispanic,"hispanic", maxAsianPerState))
-(asian_ggMap <- makeTechMap(dfParity_asian,"asian", maxAsianPerState))
+(black_ggMap<-makeTechMap(dfParity_black,"black", maxAsianPerState, "Map B -- Black Techs"))
+(white_ggMap <-makeTechMap(dfParity_white,"white", maxAsianPerState, "Map A -- White Techs"))
+(hispanic_ggMap <- makeTechMap(dfParity_hispanic,"hispanic", maxAsianPerState, "Map D -- Hispanic Techs"))
+(asian_ggMap <- makeTechMap(dfParity_asian,"asian", maxAsianPerState, "Map C -- Asian Techs"))
 
 dfMap4A <- white_ggMap
 dfMap4B <- black_ggMap
-dfMap4C <- hispanic_ggMap
-dfMap4D <- asian_ggMap
+dfMap4C <- asian_ggMap
+dfMap4D <- hispanic_ggMap
 
 save(dfMap4A, dfMap4B, dfMap4C, dfMap4D, file="dfMap4.rda")
 
