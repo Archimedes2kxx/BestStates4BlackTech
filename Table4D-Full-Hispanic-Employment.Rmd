@@ -17,9 +17,10 @@ output:
     setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
     library(prettydoc)
     load("dfTab4.rda")   
-
-    colnames(dfTable4C) <- c("State", "AllTech", "S_%", "HspTech", "T_%", "HspPop", "P_%", "Par")
-print(format(dfTable4C, big.mark = ","), row.names=FALSE)  
+    dfTable4D <- dfParity_hispanic
+    rownames(dfTable4D) <- NULL
+    colnames(dfTable4D) <- c("State", "AllTech", "S_%", "HspTech", "T_%", "HspPop", "P_%", "Par")
+print(format(dfTable4D, big.mark = ","), row.names=FALSE)  
 
 ```
 

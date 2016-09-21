@@ -360,5 +360,3 @@ plotEmpVsPop <- function(df, race){
 
 save(ggPlot_asian, ggPlot_white, ggPlot_black, ggPlot_hispanic, file="ggPlot6.rda")
 
-### Question: What are the best states for Asians in tech?
-### Answer:   All of them ... :-)
