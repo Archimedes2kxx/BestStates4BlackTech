@@ -38,6 +38,17 @@ output:
     ### install_github("yihui/printr")
     ### library(printr)
     ### detach('package:printr', unload = TRUE)
+    
+    dfTable4A <- dfParity_white 
+    dfTable4B <- dfParity_black
+    dfTable4C <- dfParity_asian
+    dfTable4D <- dfParity_hispanic 
+    
+    rownames(dfTable4A) <- NULL
+    rownames(dfTable4B) <- NULL
+    rownames(dfTable4C) <- NULL
+    rownames(dfTable4D) <- NULL
+    
 ```
 ## Overview   
 My principal findings were straight-forward:   
@@ -114,19 +125,19 @@ I've presented the U.S. Census data that answers this question in two formats: a
 
 There are four maps (below), one for each racial/ethnic group. Map 4A shows the residential distribution of White techs; Map 4B shows the distribution of Black techs; Map 4C shows Asian techs; and Map 4D shows Hispanics. Each map colors the states with the highest number of tech residents in the darkest colors, and colors the states with the least tech residents in the lightest colors.
 
-<b> Maps 4A (Whites), 4B (Blacks), 4C (Asians) and 4D (Hispanics)</b> ... <em>Lower 48 and DC</em>
+<b> Maps 4A (Whites), 4B (Blacks), 4C (Asians), and 4D (Hispanics)</b> ... <em>Lower 48 and DC</em>
 
 * Map 4A shows that White techs are spread across a large number of states, with the highest number living in California, second highest in Texas. 
 
 * Map 4B shows that most Black techs are located in the Eastern and Southern states, with the largest number living in Texas, second in Georgia, and third in Virginia
 
-* Map 4C shows that Hispanics are concentrated in California, Texas, and Florida  
+* Map 4C shows that Asian techs are highly concentrated in California where their concentration is higher any other group in any state. Otherwise Asians are spread out over other states with much smaller Asian residencies.   
 
-* Map 4D shows that Asian techs are highly concentrated in California where their concentration is higher any other group in any state. Otherwise Asians are spread out over other states with much smaller Asian residencies.
+* Map 4D shows that Hispanics are concentrated in California, Texas, and Florida
 ```{r, echo=FALSE, cache=TRUE, comment=NA}
     grid.arrange(dfMap4A, dfMap4B, dfMap4C, dfMap4D, ncol=2) 
 ```
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small><br /><br />
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
 <b>Table 4A, Table 4B, Table 4C, and Table 4D</b> ... 50 states plus DC   
 Four corresponding data tables impose numeric precision on the qualitative insights provided by the maps. The short versions of each table that only contain the top ten rows are displayed below. To view the full tables that contain data for all 50 states plus the District of Columbia, please click the link below the table name. Each table (full and short version) has the following eight columns<br /><br />
@@ -164,24 +175,27 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 ```
 <b>Comments about Table 4B -- Blacks in Tech</b>   
 
-* As per column 2 of Table 4B, in 2014 the largest number of Black techs lived in Texas, second largest in Georgia, third in Virginia, fourth in New York, fifth in Maryland, sixth in Florida, and finally, in seventh place came the Great State of California. Why? Because in 2014 the vast majority Black Americans still lived in these Eastern and Southern states, so that's where most Black techs are found. 
+* As per column 2 of Table 4B, in 2014 the largest number of Black techs lived in Texas, second largest in Georgia, third in Virginia, fourth in New York, fifth in Maryland, sixth in Florida, and finally, in seventh place came the Great State of California. Why? Because in 2014 the vast majority Black Americans still lived in Eastern and Southern states; so that's where most of the Black techs were found. This placed Black techs at a considerable disadvantage with regards to learning about/being recruited for tech jobs in Silicon Valley.
 
+* As I noted earlier, Washington, DC had a large commuter population. More specifically, substantial numbers of Black professionals lived in its southern Maryland and Northern Virginia suburbs. Therefore the number of Black techs who worked in DC in 2014 may have been substantially larger than the number who lived there.   
+
+* I must also note my personal surprise that the largest number of Black techs lived in Texas. Indeed, I am embarrassed by my prior ignorance. Texas was not only home to the largest number of Black techs (`r prettyNum(dfParity_black["Texas", "blackTech"], big.mark=",", scientific=FALSE)`) in 2014, it was also distinguished by the highest parity rating (`r dfParity_black["Texas", "parity"]`) of the top ten states in Table 4B.
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
-<b>Table 4C -- Hispanics in U.S. Information Technology -- Top 10 states</b>    
-[Click here for full version](Table4C-Full-Hispanic-Employment.html) 
+<b>Table 4C -- Asians in U.S. Information Technology -- Top 10 states</b>    
+[Click here for full version](Table4C-Full-Asian-Employment.html)
 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-    colnames(dfTable4C) <- c("State", "AllTech", "S_%",  "HspTech", "T_%", "HspPop", "P_%", "Par")
+    colnames(dfTable4C) <- c("State", "AllTech", "S_%",  "AsnTech", "T_%", "AsnPop", "P_%", "Par")
     print(format(dfTable4C[1:11,], big.mark = ","), row.names=FALSE)  
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
-<b>Table 4D -- Asians in U.S. Information Technology -- Top 10 states</b>      
- [Click here for full version](Table4D-Full-Asian-Employment.html)
+<b>Table 4D -- Hispanics in U.S. Information Technology -- Top 10 states</b>      
+ [Click here for full version](Table4D-Full-Hispanic-Employment.html) 
 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-    colnames(dfTable4D) <- c("State", "AllTech", "S_%", "AsnTech", "T_%", "AsnPop", "P_%", "Par")
+    colnames(dfTable4D) <- c("State", "AllTech", "S_%", "HspTech", "T_%", "HspPop", "P_%", "Par")
     print(format(dfTable4D[1:11,], big.mark=","), row.names=FALSE)  
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 

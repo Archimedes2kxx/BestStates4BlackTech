@@ -1,5 +1,5 @@
 ---
-title: "Table 4C -- Full Hispanic Tech Employment"
+title: "Table 4D -- Full Hispanic Tech Employment"
  
 output: 
     prettydoc::html_pretty:
