@@ -268,6 +268,14 @@ matParity["hispanic",] <- summary(dfParity_hispanic$parity)
 matParity["asian",] <- summary(dfParity_asian$parity)
 matParity
 
+### Zeros in original ACS PLUMS data merely meant not enough cases in a sample
+### So zero minimums are not informative. Replace 0s with min values above 0
+matParity["black", "min"]<-head(min(dfParity_black[dfParity_black[,"parity"]>0,"parity"]))
+matParity["white", "min"]<-head(min(dfParity_white[dfParity_white[,"parity"]>0,"parity"]))
+matParity["hispanic", "min"]<-head(min(dfParity_hispanic[dfParity_hispanic[,"parity"]>0,"parity"]))
+matParity["asian", "min"]<-head(min(dfParity_asian[dfParity_asian[,"parity"]>0,"parity"]))aa
+matParity
+
 dfParity <- as.data.frame(matParity)
 dfParity
 
