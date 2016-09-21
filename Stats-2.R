@@ -272,8 +272,8 @@ matParity
 ### So zero minimums are not informative. Replace 0s with min values above 0
 matParity["black", "min"]<-head(min(dfParity_black[dfParity_black[,"parity"]>0,"parity"]))
 matParity["white", "min"]<-head(min(dfParity_white[dfParity_white[,"parity"]>0,"parity"]))
-matParity["hispanic", "min"]<-head(min(dfParity_hispanic[dfParity_hispanic[,"parity"]>0,"parity"]))
-matParity["asian", "min"]<-head(min(dfParity_asian[dfParity_asian[,"parity"]>0,"parity"]))aa
+matParity["hispanic","min"]<-head(min(dfParity_hispanic[dfParity_hispanic[,"parity"]>0,"parity"]))
+matParity["asian", "min"]<-head(min(dfParity_asian[dfParity_asian[,"parity"]>0,"parity"]))
 matParity
 
 dfParity <- as.data.frame(matParity)
@@ -300,7 +300,7 @@ lm_hispanic <-makeLM(dfParity_hispanic, "hispanic")
 lm_asian <- makeLM(dfParity_asian, "asian")
 
 beta1000 <- c(lm_black$coef[2], lm_white$coef[2], lm_hispanic$coef[2], lm_asian$coef[2])
-dfParity <- round(cbind(dfParity, beta1000), digits=1)
+dfParity <- round(cbind(dfParity, beta1000), digits=2)
 dfParity <- dfParity[c("hispanic", "black", "white", "asian"),] ### reorder the rows
 rownames(dfParity) <- c("hispanic", "black", "white", "asian")
 (dfTable5 <- dfParity)
