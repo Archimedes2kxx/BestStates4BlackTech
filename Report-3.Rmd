@@ -22,8 +22,8 @@ output:
     load("dfTab1A1B2A2B3.rda")
     load("dfTab4.rda")   
     load("dfMap4.rda")
-    load("dfTab5.rda")
-    load("ggPlot6.rda")
+    load("ggPlot5.rda")
+    load("dfTab6.rda")    
     
     library(prettydoc)
     library(maps)    
@@ -39,15 +39,6 @@ output:
     ### library(printr)
     ### detach('package:printr', unload = TRUE)
     
-    dfTable4A <- dfParity_white 
-    dfTable4B <- dfParity_black
-    dfTable4C <- dfParity_asian
-    dfTable4D <- dfParity_hispanic 
-    
-    rownames(dfTable4A) <- NULL
-    rownames(dfTable4B) <- NULL
-    rownames(dfTable4C) <- NULL
-    rownames(dfTable4D) <- NULL
     
 ```
 ## Overview   
@@ -176,7 +167,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 * As I noted earlier, Washington, DC had a large commuter population. More specifically, substantial numbers of Black professionals lived in its southern Maryland and Northern Virginia suburbs. Therefore the number of Black techs who worked in DC in 2014 may have been substantially larger than the number of Black Techs who lived there.   
 
-* I also note my surprise that the largest number of Black techs lived in Texas. Texas was not only home to the largest number of Black techs (`r prettyNum(dfParity_black["Texas", "blackTech"], big.mark=",", scientific=FALSE)`) in 2014, it was also distinguished by the highest parity rating (`r dfParity_black["Texas", "parity"]`) of the top ten states in Table 4B.
+* I was surprised to find that the largest number of Black techs lived in Texas. Texas was not only home to the largest number of Black techs (`r prettyNum(dfParity_black["Texas", "blackTech"], big.mark=",", scientific=FALSE)`) in 2014, it was also distinguished by the highest parity rating (`r dfParity_black["Texas", "parity"]`) of the top ten states in Table 4B.
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
 <b>Table 4C -- Asians in U.S. Information Technology -- Top 10 states</b>    
@@ -207,17 +198,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
-#### Question 5 -- How did White, Black, Asian, and Hispanic shares of tech employment compare to their shares of a state's population?     
-Answer - Parity values are lowest for Hispanics, higher for Blacks, still higher for Whites, and highest for Asians. 
-
-<b>Table 5 -- Table of Parity Values</b>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-    colnames(dfTable5) <- c("Min", "Q1", "Median", "Mean", "Q3", "Max", "Beta")
-    print(dfTable5)  
-```
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>
-
-#### Question 6 -- Was the size of a racial/ethnic group related to the group's share of a state's tech jobs?     
+#### Question 5 -- Was the size of a racial/ethnic group related to the group's share of a state's tech jobs?     
 Answer 6: There was a positive relationship, but the relationship was weakest for Hispanics, stronger for Blacks, still stronger for Whites, and strongest for Asians.  
 
 <b>Plots 6 -- Plots of Tech Employment vs Race/Ethnic Group Population</b>   
@@ -225,6 +206,23 @@ Answer 6: There was a positive relationship, but the relationship was weakest fo
     grid.arrange(ggPlot_asian, ggPlot_white, ggPlot_black, ggPlot_hispanic, ncol=2)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
+
+#### Question 6 -- How did White, Black, Asian, and Hispanic shares of tech employment compare to their shares of a state's population?     
+Answer - Parity values are lowest for Hispanics, higher for Blacks, still higher for Whites, and highest for Asians. 
+
+
+<b>Table 6A -- Summary of Nation-wide Values</b>
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+    print(format(dfTable6A, big.mark = ","), row.names=TRUE) 
+```
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>
+
+<b>Table 6B -- Summary of Parity Values</b>
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+    colnames(dfTable6B) <- c("Min", "Q1", "Median", "Mean", "Q3", "Max")
+    print(dfTable6B)  
+```
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>
 
 ## Motivation   
 Let me explain why I conducted this study and how my motivation influenced my methods. The recent barrage of annual reports from some of the nation's leading information technology companies in Silicon Valley would have readers believe that the primary reason why those companies employed so few Black and Hispanic professionals was because there were so few Black and Hispanic tech professionals available. And the reason they weren't available was because there were so few Black and Hispanic tech students in the nation's academic pipelines. When reading their reports I found myself shaking my head time and again while wondering, "What numbers did they have to back up these notions? And where did they get them from?" Whereas I would have said that the pipelines were half-full, these reports implied that the pipelines were perilously close to empty. But if the pipelines were close to empty, there shouldn't be very many Black or Hispanic employees in the U.S. tech sector, right? Which led me to wonder how many Black and Hispanic techs were out there and where were they located.

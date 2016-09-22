@@ -16,7 +16,8 @@ output:
 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
     setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
-    load("dfTab4.rda")   
+    load("dfTab4.rda") 
+    dfTable4A <- dfParity_white
     library(prettydoc)
     colnames(dfTable4A) <- c("State", "AllTech", "S_%", "WhiTech", "T_%", "WhiPop", "P_%", "Par")
 print(format(dfTable4A, big.mark = ","), row.names=FALSE)  

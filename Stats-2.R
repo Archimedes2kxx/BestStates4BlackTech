@@ -10,12 +10,6 @@ setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackT
 load(file="dfEmploymentAndShares.rda")
 load(file="dfStatesPop3.rda") 
 load("dfCensus2.rda")  
- 
-### install.packages("tidyr")
-### install.packages("maps")
-### install.packages("ggplot2")
-### install.packages("dplyr") 
-### install.packages("mapproj")
 
 library(tidyr)
 library(maps)
@@ -134,9 +128,17 @@ head(dfParity_hispanic,20)
 head(dfParity_asian,20)
 tail(dfParity_asian,20)
 
-save(dfParity_white, dfParity_black, dfParity_asian, dfParity_hispanic, file="dfTab4.rda")
+dfTable4A <- dfParity_white 
+dfTable4B <- dfParity_black
+dfTable4C <- dfParity_asian
+dfTable4D <- dfParity_hispanic 
 
-### save(dfTable4A, dfTable4B, dfTable4C, dfTable4D, dfParity_white, dfParity_black, dfParity_asian, dfParity_hispanic, file="dfTab4.rda")
+rownames(dfTable4A) <- NULL
+rownames(dfTable4B) <- NULL
+rownames(dfTable4C) <- NULL
+rownames(dfTable4D) <- NULL
+
+save(dfTable4A, dfTable4B, dfTable4C, dfTable4D, dfParity_white, dfParity_black, dfParity_asian, dfParity_hispanic, file="dfTab4.rda")
 
 ############
 ### handy tool for spot checking data
@@ -253,34 +255,10 @@ dfMap4D <- hispanic_ggMap
 save(dfMap4A, dfMap4B, dfMap4C, dfMap4D, file="dfMap4.rda")
 
 ##########################
-### Table 5. summary stats for racial groups in each state  
-summary(dfParity_asian$parity) 
-summary(dfParity_white$parity)
-summary(dfParity_black$parity)
-summary(dfParity_hispanic$parity)
-
-matParity <- matrix(NA, nrow=4, ncol = 6)
-rownames(matParity) <- c("black", "white", "hispanic", "asian")
-colnames(matParity) <- c("min", "Q1", "median", "mean", "Q3", "max")
-matParity["black",] <- summary(dfParity_black$parity)
-matParity["white",] <- summary(dfParity_white$parity)
-matParity["hispanic",] <- summary(dfParity_hispanic$parity)
-matParity["asian",] <- summary(dfParity_asian$parity)
-matParity
-
-### Zeros in original ACS PLUMS data merely meant not enough cases in a sample
-### So zero minimums are not informative. Replace 0s with min values above 0
-matParity["black", "min"]<-head(min(dfParity_black[dfParity_black[,"parity"]>0,"parity"]))
-matParity["white", "min"]<-head(min(dfParity_white[dfParity_white[,"parity"]>0,"parity"]))
-matParity["hispanic","min"]<-head(min(dfParity_hispanic[dfParity_hispanic[,"parity"]>0,"parity"]))
-matParity["asian", "min"]<-head(min(dfParity_asian[dfParity_asian[,"parity"]>0,"parity"]))
-matParity
-
-dfParity <- as.data.frame(matParity)
-dfParity
-
-##########################
+### Plots 5 ...
+### Run regressions before plots so can display beta values in upper left of each plot
 ### Regression racial population vs. racial Tech 
+
 makeLM <- function(df, race) {
     ###df <- subset(df, state != "District of Columbia") 
     df <- subset(df, state != "ALL STATES")
@@ -299,32 +277,19 @@ lm_white <- makeLM(dfParity_white, "white")
 lm_hispanic <-makeLM(dfParity_hispanic, "hispanic")
 lm_asian <- makeLM(dfParity_asian, "asian")
 
-beta1000 <- c(lm_black$coef[2], lm_white$coef[2], lm_hispanic$coef[2], lm_asian$coef[2])
-dfParity <- round(cbind(dfParity, beta1000), digits=2)
-dfParity <- dfParity[c("hispanic", "black", "white", "asian"),] ### reorder the rows
-rownames(dfParity) <- c("hispanic", "black", "white", "asian")
-(dfTable5 <- dfParity)
-rownames(dfTable5) <- c("Hispanic", "Black", "White", "Asian")
-save(dfTable5, dfParity, file="dfTab5.rda")
+beta1000 <- c(lm_white$coef[2], lm_black$coef[2], lm_asian$coef[2], lm_hispanic$coef[2])
+names(beta1000) <- c("white", "black", "asian", "hispanic")
+beta1000 <- round(beta1000, digits=2)
+beta1000["black"]
 
-### Calculate max values for plots (below)
-###############
-blackMax <- c(max(dfParity_black[-1,]$blackTech), max(dfParity_black[-1,]$blackPop))
-whiteMax <- c(max(dfParity_white[-1,]$whiteTech), max(dfParity_white[-1,]$whitePop))
-hispanicMax <- c(max(dfParity_hispanic[-1,]$hispanicTech), max(dfParity_hispanic[-1,]$hispanicPop))
-asianMax <- c(max(dfParity_asian[-1,]$asianTech), max(dfParity_asian[-1,]$asianPop))
+### Calculate max values for plots (below) ... ignore 1st row ... totals row
+dfParity_all_tech <- c(dfParity_black[-1,]$blackTech, dfParity_white[-1,]$whiteTech, dfParity_asian[-1,]$asianTech, dfParity_hispanic[-1,]$hispanicTech)
+maxTech <- max(dfParity_all_tech)
+maxTech
 
-matMaxVals <- matrix(NA, nrow=4, ncol = 2)
-rownames(matMaxVals) <- c("black", "white", "hispanic", "asian")
-colnames(matMaxVals) <- c("Tech", "Pop")
-matMaxVals["black",] <- blackMax
-matMaxVals["white",] <- whiteMax
-matMaxVals["hispanic",] <- hispanicMax
-matMaxVals["asian",] <- asianMax
-
-### Max values overall are the max values for whites, of course, but the general code may be useful at some later date ... :-()
-(maxTech <- max(matMaxVals[,"Tech"]))
-(maxPop <- max(matMaxVals[,"Pop"])/1000)
+dfParity_all_pop <- c(dfParity_black[-1,]$blackPop, dfParity_white[-1,]$whitePop, dfParity_asian[-1,]$asianPop, dfParity_hispanic[-1,]$hispanicPop)
+maxPop <- max(dfParity_all_pop)/1000
+maxPop
 
 ### Add a phony extra point to the black data frame to extrapolate the regression line to the end of
 ### the plot frame ... otherwise it's too short and stubby to compare its slope to the other lines
@@ -340,7 +305,7 @@ plotEmpVsPop <- function(df, race){
     racePop <- paste0(race, "Pop")
     racePopLab <- paste0(racePop, "/1000")
     raceTech <- paste0(race, "Tech")
-    annot <- paste0("Beta = ", dfParity[race, "beta1000"])
+    annot <- paste0("Beta = ", beta1000[race])
     
     ### Example: aes(df[-1,x=I(df[-1,"blackPop"]/1000), y = df[-1,"blackTech"]
     ggScatter <- ggplot(df[-1,], aes(x=I(df[-1,racePop]/1000), y=df[-1,raceTech])) + geom_point(shape=1) 
@@ -358,5 +323,51 @@ plotEmpVsPop <- function(df, race){
 (ggPlot_black <- plotEmpVsPop(dfEx_black, "black"))
 (ggPlot_hispanic <- plotEmpVsPop(dfParity_hispanic, "hispanic"))
 
-save(ggPlot_asian, ggPlot_white, ggPlot_black, ggPlot_hispanic, file="ggPlot6.rda")
+save(ggPlot_asian, ggPlot_white, ggPlot_black, ggPlot_hispanic, file="ggPlot5.rda")
 
+##########################
+### Table 6A top rows of Tables A, B, C, and D in one data frame
+matWhite <- as.matrix(dfTable4A[1,-c(1:3)])
+colnames(matWhite) <- NULL
+matBlack <- as.matrix(dfTable4B[1,-c(1:3)])
+colnames(matBlack) <- NULL
+matAsian <- as.matrix(dfTable4C[1,-c(1:3)])
+colnames(matAsian) <- NULL
+matHispanic <- as.matrix(dfTable4D[1,-c(1:3)])
+colnames(matHispanic) <- NULL
+
+matTable6A <- rbind(matAsian, matWhite, matBlack, matHispanic)
+matTable6A <- cbind(matTable6A, beta1000)
+matTable6A
+colnames(matTable6A) <- c("Tech", "T_%", "Population", "P_%", "Par", "beta1000")
+
+dfTable6A <- as.data.frame(matTable6A)
+rownames(dfTable6A) <- c("Asian", "White", "Black", "Hispanic")
+dfTable6A
+
+### Table 6B. Summary stats for racial groups in each state  
+matParity <- matrix(NA, nrow=4, ncol = 6)
+rownames(matParity) <- c("black", "white", "hispanic", "asian")
+colnames(matParity) <- c("min", "Q1", "median", "mean", "Q3", "max")
+matParity["black",] <- summary(dfParity_black$parity)
+matParity["white",] <- summary(dfParity_white$parity)
+matParity["hispanic",] <- summary(dfParity_hispanic$parity)
+matParity["asian",] <- summary(dfParity_asian$parity)
+matParity
+
+### Zeros in original ACS PLUMS data merely meant not enough cases in a sample
+### So zero minimums are not informative. Replace 0s with min values above 0
+matParity["black", "min"]<-min(dfParity_black[dfParity_black[,"parity"]>0,"parity"])
+matParity["white", "min"]<-min(dfParity_white[dfParity_white[,"parity"]>0,"parity"])
+matParity["hispanic","min"]<-min(dfParity_hispanic[dfParity_hispanic[,"parity"]>0,"parity"])
+matParity["asian", "min"]<-min(dfParity_asian[dfParity_asian[,"parity"]>0,"parity"])
+matParity
+
+dfParity <- as.data.frame(matParity)
+dfParity
+
+dfParity <- dfParity[c("asian", "white", "black", "hispanic"),] ### reorder the rows
+dfTable6B <- dfParity
+rownames(dfTable6B) <- c("Asian", "White", "Black", "Hispanic") ### Caps on 1st letters
+dfTable6B <- round(dfTable6B, digits=2)
+save(dfTable6A, dfTable6B, dfParity, file="dfTab6.rda")
