@@ -281,6 +281,7 @@ beta1000 <- c(lm_white$coef[2], lm_black$coef[2], lm_asian$coef[2], lm_hispanic$
 names(beta1000) <- c("white", "black", "asian", "hispanic")
 beta1000 <- round(beta1000, digits=2)
 beta1000["black"]
+beta1000["asian"]
 
 ### Calculate max values for plots (below) ... ignore 1st row ... totals row
 dfParity_all_tech <- c(dfParity_black[-1,]$blackTech, dfParity_white[-1,]$whiteTech, dfParity_asian[-1,]$asianTech, dfParity_hispanic[-1,]$hispanicTech)
@@ -337,6 +338,7 @@ matHispanic <- as.matrix(dfTable4D[1,-c(1:3)])
 colnames(matHispanic) <- NULL
 
 matTable6A <- rbind(matAsian, matWhite, matBlack, matHispanic)
+beta1000 <- beta1000[c("asian", "white", "black", "hispanic")]
 matTable6A <- cbind(matTable6A, beta1000)
 matTable6A
 colnames(matTable6A) <- c("Tech", "T_%", "Population", "P_%", "Par", "beta1000")
