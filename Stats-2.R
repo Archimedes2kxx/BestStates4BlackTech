@@ -20,6 +20,7 @@ library(dplyr)
 library(grid)
 library(gridExtra)
 
+######################
 ### Table 1A   Context -- How many people were living in the US in 2014 -- total, black, white, ### asian, hispanic, and OTHERS 
 (dfTable1A <- dfStatesPop3[1,2:7])
 colNames <- c("ALL", "White", "Black", "Asian", "Hispanic", "OTHERS")
@@ -34,6 +35,7 @@ colnames(dfTable1B) <- colNames
 dfTable1B <- round(dfTable1B, digits=1)
 dfTable1B
 
+######################
 ### Table 2 ... racial breakdown of tech employment
 dfTable2A <- dfEmploymentAndShares[1,2:7]
 colnames(dfTable2A) <- colNames
@@ -46,7 +48,7 @@ rownames(dfTable2B) <- NULL
 dfTable2B <- round(data.frame(dfTable2B), digits=1)
 dfTable2B
 
-
+######################
 ### Table 3 Occupations by Sex
 census2OccSex <- group_by(dfCensus2, occupation, sex)
 head(census2OccSex)
@@ -85,6 +87,7 @@ colnames(dfOccupationSex) <- c("Occupation", "Total", "Male", "%-Male")
 
 save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3, file="dfTab1A1B2A2B3.rda")
 
+######################
 ### Tables 4A, 4B, 4C, 4D. Racial groups in each state  
 ### ... sorted by decreasing racialTechEmp so users can see "Top 10"
 ### ... Only show top 10 in report, show full tables linked to report on git-io
@@ -181,7 +184,7 @@ getEmploymentRank <- function(race, state) {
 R <- getEmploymentRank("black", "California")
 R       
 
-
+######################
 ### Maps 4A, B, C, D ... state maps of white, black, asian, hispanics in  tech 
 ### Follow W. Chang's cookbook p 313 for U.S. with lower 48 states
 states_map <- map_data("state") ### from ggplot]
@@ -393,6 +396,8 @@ dfTable6 <- round(dfTable6, digits=2)
 ###(dfTable6 <- dfTable6[, -4]) ### mean in 4th column
 (dfTable6 <- subset(dfTable6, select=-c(mean)))
 
+######################
+### Tables 7A, B, 8A, B
 dfFinalists_black <- subset(dfParity_black[2:11,], parity>=dfParity["black","median"])
 dfFinalists_black <- subset(dfFinalists_black, select=c("state", "per_blackTech", "parity"))
 dfTable7A <- dfFinalists_black
