@@ -232,7 +232,7 @@ Answer 5: As shown in four plots that follow, there was a positive relationship,
 
 * The parity and beta1000 statistics shown in the table provide different ways to measure the same concept ==> The relative advantages that the nation as a whole provided to the four racial/ethnic groups in 2014. 
 
-* The parity ratios shown in the table are the simple ratios of each group's percentage share of the tech sector in the entire country to the group's percentage share of the total population in the entire country, i.e., column 2 (T_%) / column 4 (S_%). The more complex beta1000 statistics were the results of regressions that estimated a linear relationship between the size of a group's tech population (T_% in Tables A, B, C, and D) in every state to the group's total population in every state (S_% in Tables A, B, C, and D).    
+* The parity ratios shown in the table are the simple ratios of each group's percentage share of the tech sector in the entire country to the group's percentage share of the total population in the entire country, i.e., column 2 (T_%) / column 4 (S_%). The more complex beta1000 statistics were the results of regressions that estimated a linear relationship between the size of a group's tech population .    
 
 * As can be seen from the last two columns in the table, the two measures provided the same results: Asians were the most advantaged {parity = `r dfTable5["Asian", "Par"]`, beta1000 = `r dfTable5["Asian", "beta1000"]` }, Whites second {parity = `r dfTable5["White", "Par"]`, beta1000 = `r dfTable5["White", "beta1000"]`}, Blacks third {parity = `r dfTable5["Black", "Par"]`, beta100 = `r dfTable5["Black", "beta1000"]`}, and Hispanics were the least advantaged {parity = `r dfTable5["Hispanic", "Par"]`, beta100 = `r dfTable5["Hispanic", "beta1000"]`}.
 
@@ -322,3 +322,4 @@ I used R Studio's IDE to write the R scripts and functions that produced the rep
 The scripts and embedded functions should be run in numerical order ==> Data-1A.R and Data-1B.R create the data frames required by Stats-2.R; Stats-2.R creates the tables, maps, graphs, and regression stats required by the R-markdown script in the Report-4.Rmd file that generates the report.
 <br />
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
+
