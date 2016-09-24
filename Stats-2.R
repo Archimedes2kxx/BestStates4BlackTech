@@ -121,6 +121,7 @@ dfParity_white <- makeParityTable("white")
 dfParity_black <- makeParityTable("black")
 dfParity_hispanic <- makeParityTable("hispanic")
 dfParity_asian <- makeParityTable("asian")
+dfParity_OTHERS <-makeParityTable("OTHERS")
 
 head(dfParity_black,10)
 head(dfParity_white,10)
@@ -345,7 +346,16 @@ dfTable5 <- as.data.frame(matTable5)
 rownames(dfTable5) <- c("Asian", "White", "Black", "Hispanic")
 dfTable5
 
-save(ggPlot_asian, ggPlot_white, ggPlot_black, ggPlot_hispanic, beta1000, dfTable5, file="ggPlot5.rda")
+### Add "Others" to the summary
+### head(dfParity_OTHERS)
+(dfOthers <- as.data.frame(dfParity_OTHERS[1,c(4:8)]))
+rownames(dfOthers) <- "Others"
+dfOthers$beta1000 <- NA
+colnames(dfOthers) <- c("Tech", "T_%", "Population", "P_%", "Par", "beta1000")
+dfTable5 <- rbind(dfTable5, dfOthers)
+dfTable5
+
+save(ggPlot_asian, ggPlot_white, ggPlot_black, ggPlot_hispanic, beta1000, dfTable5, file="dfPlot5Tab5beta1000.rda")
 
 #######################################
 ######################

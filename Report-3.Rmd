@@ -22,7 +22,7 @@ output:
     load("dfTab1A1B2A2B3.rda")
     load("dfTab4.rda")   
     load("dfMap4.rda")
-    load("ggPlot5.rda")
+    load("dfPlot5Tab5beta1000.rda")
     load("dfTab67A7B8A8B.rda")
     
     library(prettydoc)
@@ -109,7 +109,7 @@ Answer 3C ... The third column of Table 3 (below) shows the percentage of techs 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
 #### Question 4 -- Where did White, Black, Asian, and Hispanic techs live in 2014?      
-Answer 4 ... The following paragraphs provide an extensive response to a more specific formulation of this question ==> In which states did White, Black, Asian, and Hispanic techs reside in 2014? My underlying assumption was that most people worked in the state in which they lived. (<i>Readers are reminded of two notable exceptions: New York City and Washington, DC wherein substantial numbers of out-of-state workers commute from nearby New Jersey and Connecticut, and from Maryand and Viginia, respectively.</i>) 
+Answer 4 ... The following paragraphs provide an extensive response to a more specific formulation of this question ==> In which states did White, Black, Asian, and Hispanic techs reside in 2014? <b>My underlying assumption was that most people worked in the state in which they lived. So the number of tech residents in a state should be about the same as the number of tech jobs in a state.</b> (<i>Readers are reminded of two notable exceptions: New York City and Washington, DC wherein substantial numbers of out-of-state workers commute from nearby New Jersey and Connecticut, and from Maryand and Viginia, respectively.</i>) 
 
 I've presented the U.S. Census data that answers this question in two formats: as a set of choropleth maps and as a corresponding set of tables. I show the maps first because it's easier to see the residential patterns of the racial/ethnic groups by looking at multicolored maps than by scanning columns of data in long tables. Indeed, a quick scan of the maps makes it easier to see the same patterns in the data tables.
 
@@ -223,14 +223,17 @@ Answer 5: As shown in four plots that follow, there was a positive relationship,
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
-<b>Table 5 -- Summary of Tables 4A, 4B, 4C, 4D, and Plots</b>
+<b>Table 5 -- Summary of Racial/Ethnic Group Advantages</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
     print(format(dfTable5, big.mark = ","), row.names=TRUE) 
 ```
 <b>Comments about Table 5</b>
 
-* blah blah blah
-* blah blah blah
+* The parity and beta1000 statistics shown in the table provide different ways to measure the same concept ==> The relative advantages that the nation as a whole provided to the four racial/ethnic groups in 2014. 
+
+* The parity ratios shown in the table are the simple ratios of each group's percentage share of the tech sector in the entire country to the group's percentage share of the total population in the entire country, i.e., column 2 (T_%) / column 4 (S_%). The more complex beta1000 statistics were the results of regressions that estimated a linear relationship between the size of a group's tech population (T_% in Tables A, B, C, and D) in every state to the group's total population in every state (S_% in Tables A, B, C, and D).    
+
+* As can be seen from the last two columns in the table, the two measures provided the same results: Asians were the most advantaged {parity = `r dfTable5["Asian", "Par"]`, beta1000 = `r dfTable5["Asian", "beta1000"]` }, Whites second {parity = `r dfTable5["White", "Par"]`, beta1000 = `r dfTable5["White", "beta1000"]`}, Blacks third {parity = `r dfTable5["Black", "Par"]`, beta100 = `r dfTable5["Black", "beta1000"]`}, and Hispanics were the least advantaged {parity = `r dfTable5["Hispanic", "Par"]`, beta100 = `r dfTable5["Hispanic", "beta1000"]`}.
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>
 
@@ -264,7 +267,7 @@ Table 7A lists the states whose Black parity values were greater than or equal t
 ```
 
 4. <b>Designate the Five Best States</b>    
-I chose the "Best States" by sorting the list of finalists in the decreasing order of the racial/ethnic group's percentage share (T_%) of the state's tech sector. I wanted to identify the states that enabled Blacks and Hispanics to get the largest slices of the state's information technology pies. My original intention was to select the top five finalists according to this ranking. However there being only five finalists, all five were selected. I regard the state at the top of each list as the best of the best, the state in the second row as the second best, and so on. Table 8A contains the "Best States" for Black techs; Table 8B contains the "Best States" for Hispanic tech.
+I chose the "Best States" by sorting the list of finalists in the decreasing order of the racial/ethnic group's percentage share (T_%) of the state's tech sector. I wanted to identify the states that enabled Blacks and Hispanics to get the largest slices of the state's information technology pies. My original intention was to select the top five finalists according to this ranking. However there being only five finalists, all five were selected. I regard the state at the top of each list as the best of the best, the state in the second row as the second best, and so on. Readers should, again, note that <b>my underlying assumption was that most people worked in the state in which they lived. So the number of tech residents in a state should be about the same as the number of tech jobs in a state.</b> Table 8A contains my "Best States" for Black techs; Table 8B contains my "Best States" for Hispanic tech. 
 
 <b>Table 8A -- Five Best States for Black Tech</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
