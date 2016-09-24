@@ -324,10 +324,8 @@ plotEmpVsPop <- function(df, race){
 (ggPlot_black <- plotEmpVsPop(dfEx_black, "black"))
 (ggPlot_hispanic <- plotEmpVsPop(dfParity_hispanic, "hispanic"))
 
-save(ggPlot_asian, ggPlot_white, ggPlot_black, ggPlot_hispanic, file="ggPlot5.rda")
-
 ##########################
-### Table 6A top rows of Tables A, B, C, and D in one data frame
+### Table 5 Summary tables top rows of Tables A, B, C, and D and beta1000
 matWhite <- as.matrix(dfTable4A[1,-c(1:3)])
 colnames(matWhite) <- NULL
 matBlack <- as.matrix(dfTable4B[1,-c(1:3)])
@@ -337,17 +335,23 @@ colnames(matAsian) <- NULL
 matHispanic <- as.matrix(dfTable4D[1,-c(1:3)])
 colnames(matHispanic) <- NULL
 
-matTable6A <- rbind(matAsian, matWhite, matBlack, matHispanic)
+matTable5 <- rbind(matAsian, matWhite, matBlack, matHispanic)
 beta1000 <- beta1000[c("asian", "white", "black", "hispanic")]
-matTable6A <- cbind(matTable6A, beta1000)
-matTable6A
-colnames(matTable6A) <- c("Tech", "T_%", "Population", "P_%", "Par", "beta1000")
+matTable5 <- cbind(matTable5, beta1000)
+matTable5
+colnames(matTable5) <- c("Tech", "T_%", "Population", "P_%", "Par", "beta1000")
 
-dfTable6A <- as.data.frame(matTable6A)
-rownames(dfTable6A) <- c("Asian", "White", "Black", "Hispanic")
-dfTable6A
+dfTable5 <- as.data.frame(matTable5)
+rownames(dfTable5) <- c("Asian", "White", "Black", "Hispanic")
+dfTable5
 
-### Table 6B. Summary stats for racial groups in each state  
+save(ggPlot_asian, ggPlot_white, ggPlot_black, ggPlot_hispanic, beta1000, dfTable5, file="ggPlot5.rda")
+
+#######################################
+######################
+#### Conclusions
+
+### Table 6. Parity stats for racial groups in each state  
 matParity <- matrix(NA, nrow=4, ncol = 6)
 rownames(matParity) <- c("black", "white", "hispanic", "asian")
 colnames(matParity) <- c("min", "Q1", "median", "mean", "Q3", "max")
@@ -369,7 +373,36 @@ dfParity <- as.data.frame(matParity)
 dfParity
 
 dfParity <- dfParity[c("asian", "white", "black", "hispanic"),] ### reorder the rows
-dfTable6B <- dfParity
-rownames(dfTable6B) <- c("Asian", "White", "Black", "Hispanic") ### Caps on 1st letters
-dfTable6B <- round(dfTable6B, digits=2)
-save(dfTable6A, dfTable6B, dfParity, file="dfTab6.rda")
+dfTable6 <- dfParity
+rownames(dfTable6) <- c("Asian", "White", "Black", "Hispanic") ### Caps on 1st letters
+dfTable6 <- round(dfTable6, digits=2)
+
+### Delete the mean value, not informative and might confuse readers because
+###  the parity value shown in Table 6 is merely the tech share / population share
+### This value differs from the mean of all of the parity values for all states
+###(dfTable6 <- dfTable6[, -4]) ### mean in 4th column
+(dfTable6 <- subset(dfTable6, select=-c(mean)))
+
+dfFinalists_black <- subset(dfParity_black[2:11,], parity>=dfParity["black","median"])
+dfFinalists_black <- subset(dfFinalists_black, select=c("state", "per_blackTech", "parity"))
+dfTable7A <- dfFinalists_black
+dfTable7A <- dfTable7A[order(-dfTable7A$parity),]
+rownames(dfTable7A) <- c("1", "2", "3", "4", "5")
+dfTable7A
+dfTable8A <- dfTable7A[order(-dfTable7A$per_blackTech),]
+dfTable8A <- dfTable8A[1:5,] ### Top 5
+rownames(dfTable8A) <- c("1", "2", "3", "4", "5")
+dfTable8A
+
+dfFinalists_hispanic <- subset(dfParity_hispanic[2:11,], parity>=dfParity["hispanic","median"])
+dfFinalists_hispanic <- subset(dfFinalists_hispanic, select=c("state", "per_hispanicTech", "parity"))
+dfTable7B <- dfFinalists_hispanic
+dfTable7B <- dfTable7B[order(-dfTable7B$parity),]
+rownames(dfTable7B) <- c("1", "2", "3", "4", "5")
+dfTable7B
+dfTable8B <- dfTable7B[order(-dfTable7B$per_hispanicTech),]
+dfTable8B <- dfTable8B[1:5,] ### Top 5
+rownames(dfTable8B) <- c("1", "2", "3", "4", "5")
+dfTable8B
+
+save(dfTable6, dfTable7A, dfTable7B, dfTable8A, dfTable8B, file="dfTab67A7B8A8B.rda")

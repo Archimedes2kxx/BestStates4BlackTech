@@ -23,7 +23,7 @@ output:
     load("dfTab4.rda")   
     load("dfMap4.rda")
     load("ggPlot5.rda")
-    load("dfTab6.rda")    
+    load("dfTab67A7B8A8B.rda")
     
     library(prettydoc)
     library(maps)    
@@ -109,7 +109,7 @@ Answer 3C ... The third column of Table 3 (below) shows the percentage of techs 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
 #### Question 4 -- Where did White, Black, Asian, and Hispanic techs live in 2014?      
-Answer 4 ... The following paragraphs provide an extensive response to a more specific formulation of this question ==> In which states did White, Black, Asian, and Hispanic techs reside in 2014? My underlying assumption was that most people worked in the state in which they lived. (<i>Readers are reminded of two notable exceptions: New York City and Washington, DC wherein substantial numbers of out-of-state workers commute from nearby New Jersey and Connecticut, and from Maryand and Viginia respectively.</i>) 
+Answer 4 ... The following paragraphs provide an extensive response to a more specific formulation of this question ==> In which states did White, Black, Asian, and Hispanic techs reside in 2014? My underlying assumption was that most people worked in the state in which they lived. (<i>Readers are reminded of two notable exceptions: New York City and Washington, DC wherein substantial numbers of out-of-state workers commute from nearby New Jersey and Connecticut, and from Maryand and Viginia, respectively.</i>) 
 
 I've presented the U.S. Census data that answers this question in two formats: as a set of choropleth maps and as a corresponding set of tables. I show the maps first because it's easier to see the residential patterns of the racial/ethnic groups by looking at multicolored maps than by scanning columns of data in long tables. Indeed, a quick scan of the maps makes it easier to see the same patterns in the data tables.
 
@@ -183,8 +183,6 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 * Although the intensity of Asian invovement in the tech sector of California was impressive, Asian participation in the tech sector of every other state was also remarkable. The parity values in the last column of the table provide concise summaries. The <i>[full version](Table4C-Full-Asian-Employment.html)</i> of Table 4C shows that Asian parity values  ranged from 2.6 to 8.4. In other words, the Asian share of the tech sectors in the 50 states plus DC ranged from 2.6 times their share of the state's total population to 8.6 times their share of the state's total population.   
 
-* Question:&nbsp;&nbsp;What were the best states for Asians in tech?
-<br />Answer:&nbsp;&nbsp;All of them ... :-)
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
 <b>Table 4D -- Hispanics in U.S. Information Technology -- Top 10 states</b>      
@@ -215,36 +213,73 @@ Answer 5: As shown in four plots that follow, there was a positive relationship,
 
 <b>Comments about Plots 5A, 5B, 5C, and 5D</b> 
 
-* Given that the total population of each state was at least 1,000 times the population of the techs in any racial/ethnic group, I ran simple regressions of techs in a group against the total population of that group divided by 1000 in all 50 states plus Washington, DC. So the slopes of the regression lines provide estimates of the number of additional techs that would be found in a state if the size of the group increased by 1000. Assuming that the vast majority of techs worked in the same states in which they lived, the slopes provide estimates of the number of additional tech jobs the group would acquire if its population increased by 1,000.
+* Given that the total population of each state was at least 1,000 times the population of the techs in any racial/ethnic group, I ran simple regressions of techs in a group against the total population of that group divided by 1000 in all 50 states plus Washington, DC. The slopes of the regression lines provide estimates of the number of additional techs that would be found in a state if the size of the group increased by 1000. Assuming that the vast majority of techs worked in the same states in which they lived, the slopes provide estimates of the number of additional tech residents the group would include if its population increased by 1,000.
 
-* The regression lines and scatterplots of the (tech, population) data points appear in the four panels. The values of the slopes, called "beta1000", are displayed in the upper left corner of each plot. 
+* The regression lines and scatterplots of the <tech, population> data points appear in the four panels. The values of the slopes, called "beta1000", are displayed in the upper left corner of each plot. 
 
-* As per the values of the beta1000 slopes, If each ethnic/racial group's population increased by 1,000, Asians would acquire xxx additional tech jobs, Whites would acquire xxx additional tech jobs, Blacks would acquire  xx, and Hispanics would acquire by xxx. Visually, the Asian line has the steepest slope; the Hispanic line has the flattest slope.
+* As per the values of the beta1000 slopes, If each ethnic/racial group's population increased by 1,000, Asian techs would increase by `r beta1000["asian"]`; Whites would increase by `r beta1000["white"]`, Blacks would increase by `r beta1000["black"]`; and Hispanics would increase by `r beta1000["hispanic"]`. The Asian line has the steepest slope; the Hispanic line has the flattest slope.
 
-* It should be noted that this kind of simple regression implicitly assumes that the 50 states and DC are all more or less equally receptive or resistant to hiring techs from the same groups. This may indeed be true for most states. However the fact that the Black parity value for Texas = xxx, whereas the Black parity for California = xxx suggests that Texas is more receptive to Black techs than California. And the fact that the Hispanic parity value for Florida = xxx, while the Hispanic parity value for California = xxx, suggests that Florida is more receptive to Hispanics than California.
+* It should be noted that this kind of simple regression implicitly assumes that the 50 states and DC are all more or less equally receptive or resistant to including more techs from the same groups. This may indeed be true for most states. However, Table 4B shows that the Black parity for Texas = `r dfParity_black["Texas", "parity"]`, whereas the Black parity for California = `r dfParity_black["California", "parity"]`. This suggests that Texas is more receptive to Black techs than California. And Table 4D shows that the Hispanic parity for Florida = `r dfParity_hispanic["Florida", "parity"]`, while the Hispanic parity  for California = `r dfParity_hispanic["California", "parity"]`. This suggests that Florida is more receptive to Hispanic techs than California.
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
+<b>Table 5 -- Summary of Tables 4A, 4B, 4C, 4D, and Plots</b>
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+    print(format(dfTable5, big.mark = ","), row.names=TRUE) 
+```
+<b>Comments about Table 5</b>
+
+* blah blah blah
+* blah blah blah
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>
 
 ## Conclusions    
+Which states were the best states for Black and Hispanic tech? Given the limited scope of the data that I examined in this study, my selection criteria were rudimentary; so my conclusions should be regarded as tentative first approximations.   
 
-<b>Table 6A -- Summary of Tables 4A, 4B, 4C, and 4D</b>
+1. <b>Select states that had the largest number of Black/Hispanic tech</b>   
+I implemented this criterion by selecting the states with the ten highest numbers of techs in each group. This meant that I began with the states that appeared in Table 4B (Black) and Table 4D (Hispanic).
+
+2. <b>Select states that had the high Black/Hispanic parity values</b>   
+I implemented this criterion by identifying the states in Tables 4B and 4D that had parity values in the top 50%  of all 50 states plus DC. Table 6 (below) summarizes the quartile breakdowns of the parity values for each racial/ethnic group. As per Table 6, the median Black parity value was  `r dfTable6["Black", "median"]`;  the median Hispanic parity value was `r dfTable6["Hispanic", "median"]`.   
+
+<b>Table 6 -- Summary of Parity Values</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-    print(format(dfTable6A, big.mark = ","), row.names=TRUE) 
+    colnames(dfTable6) <- c("Min", "Q1", "Median", "Q3", "Max")
+    print(dfTable6)  
 ```
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>
+3. <b>Identify the finalists</b>   
+Table 7A lists the states whose Black parity values were greater than or equal to the median Black parity value. Table 7B lists the states whose Hispanic parity values were greater than or equal to the median Hispanic parity value for all states.   
 
-<b>Table 6B -- Summary of Parity Values</b>
+<b>Table 7A -- Black Finalists</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-    colnames(dfTable6B) <- c("Min", "Q1", "Median", "Mean", "Q3", "Max")
-    print(dfTable6B)  
+    colnames(dfTable7A) <- c("State", "T_%", "Par")
+    print(dfTable7A)  
 ```
 
+<b>Table 7B -- Hispanic Finalists</b>   
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+    colnames(dfTable7B) <- c("State", "T_%", "Par")
+    print(dfTable7B)  
+```
 
-   
-  
-I conclude by noting that California is definitely not a "best" state for Blacks in tech, and far less so for Hispanics for the reasons I discussed in my comments about Tables 4B and 4D.   
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>
+4. <b>Designate the Five Best States</b>    
+I chose the "Best States" by sorting the list of finalists in the decreasing order of the racial/ethnic group's percentage share (T_%) of the state's tech sector. I wanted to identify the states that enabled Blacks and Hispanics to get the largest slices of the state's information technology pies. My original intention was to select the top five finalists according to this ranking. However there being only five finalists, all five were selected. I regard the state at the top of each list as the best of the best, the state in the second row as the second best, and so on. Table 8A contains the "Best States" for Black techs; Table 8B contains the "Best States" for Hispanic tech.
+
+<b>Table 8A -- Five Best States for Black Tech</b>
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+    colnames(dfTable8A) <- c("State", "T_%", "Par")
+    print(dfTable8A)  
+```
+
+<b>Table 8B -- Five Best States for Hispanic Tech</b>
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+    colnames(dfTable8B) <- c("State", "T_%", "Par")
+    print(dfTable8B)  
+```
+<i>Question:&nbsp;&nbsp;What were the best states for Asian tech?
+<br />Answer:&nbsp;&nbsp;All of them ... :-)</i>
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
 ## Motivation   
 Let me explain why I conducted this study and how my motivation influenced my methods. The recent barrage of annual reports from some of the nation's leading information technology companies in Silicon Valley would have readers believe that the primary reason why those companies employed so few Black and Hispanic information technology professionals was because there were so few available. And the reason they weren't available was because there were so few Black and Hispanic tech students in the nation's academic pipelines. When reading their reports I found myself shaking my head time and again while wondering, "What numbers did they have to back up these notions? And where did they get them from?" Whereas I would have said that the pipelines were half-full, these reports implied that the pipelines were perilously close to empty. But if the pipelines were close to empty, there shouldn't be very many Black or Hispanic employees in the U.S. tech sector, right? Which led me to wonder how many Black and Hispanic techs were out there and where were they located.
@@ -255,8 +290,8 @@ One of my most important take-aways from completing the [Johns Hopkins "Data Sci
 
 * Reproducible reports should be as concise as traditional reports, but the writer's notes, programs, analytical tools, coding guides, data files, tables, maps, graphs, etc, etc, etc should be shared with the world via GitHub repositories. Of course Python, MATLAB, and other comparable languages could be used insted of R, and the supplementary files could be stored on other public repositories comparable to GitHub.     
 
-This being my first attept to write a reproducible report, I wrote it in R and stored all of my supporting files in a public [GitHub repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech). If readers disagree with my numbers, they won't have to wonder how I got them <i>... #OldDogStillLearningNewTricks ... :-)</i>
-<br /> 
+This being my first attept to write a reproducible report, I wrote it in R and stored all of my supporting files in a public [GitHub repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech). If readers disagree with my numbers, they won't have to wonder how I got them <i>... #OldDogStillLearningNewTricks ... :-)</i>   
+
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
 ## Methods   
