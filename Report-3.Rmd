@@ -57,6 +57,7 @@ My principal findings were straight-forward:
 ## Findings ... <i><small>Answers to the following questions</small></i>   
 #### Question 1A -- How many Whites, Blacks, Asians, and Hispanics were living in the U.S. in 2014?    
 Answer 1A ... In 2014, as shown in Table 1A (below), the largest of the four racial/ethnic groups discussed in this report was White (`r prettyNum(dfTable1A[1,2], big.mark=",", scientific=FALSE)`); the smallest was Asian (`r prettyNum(dfTable1A[1,4], big.mark=",", scientific=FALSE)`). Hispanics, the largest minority (`r prettyNum(dfTable1A[1,5], big.mark=",", scientific=FALSE)`), had grown substantially larger than Blacks (`r prettyNum(dfTable1A[1,3], big.mark=",", scientific=FALSE)`).
+
 <b>Table 1A -- U.S. Census Estimates of Whites, Blacks, Asians, and Hispanics in U.S. in 2014</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable1A) <- c("ALL", "White", "Black", "Asian", "Hispanic", "Others")
