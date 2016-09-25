@@ -8,8 +8,13 @@ This file contains notes that document problems encountered with the data, stati
 
 ### A. Codebook files
 
-* 
+* Codes-Occupation.txt -- I manually shortened the stanfard occupation labels by deleting the prefixes CMM and ENG. I  manually added commas to sepatate the code column from the labels and I removed commas witthin labels ... all to make it easy to read the file using read.csv
 
+* Codes-States.txt -- I shortened the name of District of Columbia to Dtstrict of Col to fit on one line in when displaying the codes in Table 3 and I manually added commas between the codes and state names to make it easy to use read.csv
+
+* Codes-Sex.txt -- I manually added commas between the codes and sex  to make it easy to use read.csv
+
+* Codes-Race.txt -- I shortened the labels and manually added commas between the codes and race to make it easy to use read.csv
 
 
 ### B. Maps   

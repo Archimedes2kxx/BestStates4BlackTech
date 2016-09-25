@@ -21,20 +21,20 @@ head(dfCensus2)
 
 ### 3.. Read manually edited codebooks 
 ###     ... commas added between codes and labels ... commas deleted within labels ... and 99 Hispanic added manually
-file = "Race-Codes-Short-Names.txt"
+file = "Codes-Race.txt"
 raceCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
 raceCodes
 
-file = "State-Codes.txt"
+file = "Codes-State.txt"
 stateCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
 stateCodes$State <-gsub("/.*","",stateCodes$State) ### Drop state initials, e.g., "New York/NY
 stateCodes
 
-file="Sex-Codes.txt"
+file="Codes-Sex.txt"
 sexCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
 sexCodes
 
-file="Occupation-Codes.txt"
+file="Codes-Occupation.txt"
 occupationCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
 occupationCodes
 
