@@ -211,16 +211,7 @@ maxAsianPerState
     
 makeTechMap <- function(df, race, maxPer, title) {
     ### raceTech <- paste0(race,"Tech")
-    
-    ### These maps will only show the lower 48 and DC; they don't process values for Hawaii and Alska
-    ### DC is so small that its colors are invisible. We want all the colors 
-    ### on the maps to be comparable. So if we place the same max value into
-    ### DC, it won't be visible ... but all other states will be colored
-    ### against this maximum
-    ### Observation and calculation shows that the highest concentration value
-    ### for any group was the Asian 29.1 value for California
-    ###  ... so place this max into DC for all groups, including Asians
-    
+   
     ### Insert dummy max value into District of Columbia
     df[df$state=="Dist of Col", "per_state"] <- maxPer 
     
