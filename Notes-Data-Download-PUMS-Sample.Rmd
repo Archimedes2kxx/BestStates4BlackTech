@@ -1,12 +1,11 @@
 ---
-title: 'Appendix #1 — Procedures for Collecting PUMS Sample Data from the 2014 ACS Survey'
+title: 'Procedures for Collecting PUMS Sample Data from the 2014 ACS Survey'
 author: "Roy L Beasley"
 date: "August 22, 2016"
 output: html_document
 ---
-### Appendix #1 -- Click-by-click Download Procedure
 
-American Community Service survey data for 2014 was obtained from the U.S. Census as follows:
+American Community Service survey data for 2014  obtained from the U.S. Census as follows:
 
 <b>A. Prepare your Mac or PC </b>    
 
@@ -69,5 +68,8 @@ American Community Service survey data for 2014 was obtained from the U.S. Censu
     + Click "Save As", 
     + In pop-up window, provide folder/directory location on your computer a name for the file (.fsf) in which to save the DataFerret script file (.fsf)
     + The next time you visit the DataFerret you can click "File", then click "Open" to load the .fsf file ... The Data Basket will be loaded with the variables you specified in the script you saved ... at which point you delete some variables ("Delete" key on upper right side of page) ...  and/or click the "Step 1" button to add new variables/values to your basket.
+    
+14. I downloaded the PUMS sample data for 2014 for race and thirteen specified occupations into a file called <b>[Race-CA-DC-GA-NC-NY-WA-Occupation-PUMS-2014.csv](Race-CA-DC-GA-NC-NY-WA-Occupation-PUMS-2014.csv)</b> in the report's repo.  I downloaded the ACS codebook into  <b>[Race-CA-DC-GA-NC-NY-WA-Occupation-PUMS-2014-CodeBook.txt](Race-CA-DC-GA-NC-NY-WA-Occupation-PUMS-2014-CodeBook.txt)</b>. Then I copied and pasted the codes for state, sex, occupation, and race into separate .txt files
+
     
 
