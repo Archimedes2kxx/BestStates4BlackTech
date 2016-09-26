@@ -171,7 +171,9 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 * California's prominence as the corporate headquarters of many of the nation's richest tech companies makes it necessary to closely examine the status of its minorities. Unfortunately the numbers were disappointing. As per the fifth column (T\_%), the `r prettyNum(dfParity_black["California", "per_blackTech"], big.mark=",", scientific=FALSE)`% Black share of tech in California was the lowest in the table by a wide margin. And its parity numbers in the last column (Par) were lower than all but one of the other nine states.    
 
-* Perhaps California's `r prettyNum(dfParity_black["California", "blackPop"], big.mark=",", scientific=FALSE)` Black population was too small compared to its largest-in-the-nation `r prettyNum( dfParity_black["California", "blackPop"]/dfParity_black["California", "per_blackPop"] * 100, big.mark=",", scientific=FALSE)` total population to produce enough qualified Black techs to earn a larger slice of the pie? Unfortunately, this hypothesis is undermined by even worse numbers for Hispanics in Table D. By 2014 Hispanics had become the largest racial/ethnic group in the state, larger than Whites. But as will be seen in Table 4D (below), the Hispanic parity values were much lower than the Black parity values. 
+* Perhaps California's `r prettyNum(dfParity_black["California", "blackPop"], big.mark=",", scientific=FALSE)` Black population wasn't large enough compared to the state's `r prettyNum( dfParity_black["California", "blackPop"]/dfParity_black["California", "per_blackPop"] * 100, big.mark=",", scientific=FALSE)` total population for Black techs to obtain a larger slice of the tech pie? Unfortunately, this "critical mass" hypothesis is undermined by even lower numbers for Hispanics in Table D (below). By 2014 Hispanics had become the largest racial/ethnic group in the state, `r prettyNum(dfParity_hispanic["California", "per_hispanicPop"], big.mark=",", scientific=FALSE)`%. If this hypothesis were true, Hispanic techs would occupy a much larger share of California's tech sector than Black techs. The Hispanic share of the state's total population was about seven times as large as the Black share, `r prettyNum(dfParity_black["California", "per_blackPop"], big.mark=",", scientific=FALSE)`%. So their tech share should have been about seven times as large as the Black share ... but it wasn't. As will be seen in Table 4D, the Hispanic share, `r prettyNum(dfParity_hispanic["California", "per_hispanicTech"], big.mark=",", scientific=FALSE)`%, was less than twice as large as the Black share. So lack of "critical mass" cannot explain either group's low share of California's tech sector.
+
+
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
 <b>Table 4C -- Asians in U.S. Information Technology -- Top 10 states</b>    
@@ -208,7 +210,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
-### Question 5 -- Was the size of a racial/ethnic group related to the group's share of the tech jobs in a stte? 
+### Question 5 -- Was the size of a racial/ethnic group related to the group's share of the tech jobs in a state? 
 
 Answer 5: As shown in four plots that follow, there was a positive relationship, but the relationship was strongest for Asians, weaker for Whites, still weaker for Blacks, and weakest for Hispanics
 
@@ -237,9 +239,12 @@ Answer 5: As shown in four plots that follow, there was a positive relationship,
 
 * The parity and beta1000 statistics shown in the table provide different ways to measure the same concept ==> The relative advantages that the nation as a whole provided to the four racial/ethnic groups in 2014. 
 
-* The parity ratios shown in the table are the simple ratios of each group's percentage share of the tech sector in the entire country to the group's percentage share of the total population in the entire country, i.e., column 2 (T_%) / column 4 (S_%). The more complex beta1000 statistics were the results of regressions that estimated a linear relationship between the size of a group's tech population (T_% in Tables A, B, C, and D) in every state to the group's total population in every state  (S_% in Tables A, B, C, and D).    
+* The percentages and ratios shown in the table are national percentages and national parity ratios -- not the state percentages and state parity ratios shown in Tables 4A, 4B, 4C, and 4D. In other words column 2 (T_%) shows the percentage of all techs in the nation who are in each group. Column 4 shows the percentage of the entire nation's population that is in each group. The national parity ratios for each group shown in column 5 (Par) result from dividing the national tech percentages in column 2 (T_%) by the national population percentages in column 4 (S_%). 
 
-* As can be seen from the last two columns in the table, the two measures provided the same results: Asians were the most advantaged {parity = `r dfTable5["Asian", "Par"]`, beta1000 = `r dfTable5["Asian", "beta1000"]` }, Whites second {parity = `r dfTable5["White", "Par"]`, beta1000 = `r dfTable5["White", "beta1000"]`}, Blacks third {parity = `r dfTable5["Black", "Par"]`, beta100 = `r dfTable5["Black", "beta1000"]`}, and Hispanics were the least advantaged {parity = `r dfTable5["Hispanic", "Par"]`, beta100 = `r dfTable5["Hispanic", "beta1000"]`}.
+
+* As per the plots shown in this section, the more complex beta1000 statistics were the results of regressions that estimated a linear relationship between the size of a group's tech population (T_% in Tables A, B, C, and D) in every state to the group's total population in every state  (S_% in Tables A, B, C, and D).    
+
+* As can be seen from the last two columns in the table, the two measures provided similar results: Asians were the most advantaged {parity = `r dfTable5["Asian", "Par"]`, beta1000 = `r dfTable5["Asian", "beta1000"]` }, Whites second {parity = `r dfTable5["White", "Par"]`, beta1000 = `r dfTable5["White", "beta1000"]`}, Blacks third {parity = `r dfTable5["Black", "Par"]`, beta100 = `r dfTable5["Black", "beta1000"]`}, and Hispanics were the least advantaged {parity = `r dfTable5["Hispanic", "Par"]`, beta100 = `r dfTable5["Hispanic", "beta1000"]`}.
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>
 
