@@ -3,3 +3,5 @@ This repo contains the data files, code books, and R code required to produce th
 The scripts and their embedded functions should be run in numerical order: Data-1A.R, and Data-1B.R create the dataframes required by Stats-2.R; Stats-2.R creates the objects required for the Report-3.Rmd R-markdown script 
 
 The repo contains two files whose names begin with "Notes-" prefix. One provides a detailed click-by-click description of the procedure I used to download the sample ACS PUMS data for 2014 used by the Data-1A.R script. The other covers other issues I encountered and the solutions I implemented, including a click-by-click description of my download procedure for obtaining the data for the Data-1B.R script.
+
+When running these scripts, all programs and data files should be in the same working directory.
