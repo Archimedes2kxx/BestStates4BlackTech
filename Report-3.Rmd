@@ -231,7 +231,7 @@ Answer 5: As shown in four plots that follow, there was a positive relationship,
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
-<b>Table 5 -- Summary of Racial/Ethnic Group Advantages</b>
+<b>Table 5 -- Summary of Racial/Ethnic Group National Advantages</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
     print(format(dfTable5, big.mark = ","), row.names=TRUE) 
 ```
@@ -255,7 +255,7 @@ Which states were the best states for Black and Hispanic tech? Given the limited
 I implemented this criterion by selecting the states with the ten highest numbers of techs in each group. This meant that I began with the states that appeared in Table 4B (Black) and Table 4D (Hispanic).
 
 2. <b>Select states that had the highest Black/Hispanic parity values</b>   
-I implemented this criterion by identifying the states in Tables 4B and 4D that had parity values in the top 50%  of all 50 states plus DC. Table 6 (below) summarizes the quartile breakdowns of the parity values for each racial/ethnic group. As per Table 6, the median Black parity value was  `r dfTable6["Black", "median"]`;  the median Hispanic parity value was `r dfTable6["Hispanic", "median"]`.   
+I implemented this criterion by identifying the states in Tables 4B and 4D that had state level parity values in the top 50%  of all 50 states plus DC. Table 6 (below) summarizes the quartile breakdowns of the parity values for each racial/ethnic group. As per Table 6, the median Black parity value was  `r dfTable6["Black", "median"]`;  the median Hispanic parity value was `r dfTable6["Hispanic", "median"]`.   
 
 <b>Table 6 -- Summary of Parity Values</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -278,7 +278,7 @@ Table 7A lists the states whose Black parity values were greater than or equal t
 ```
 
 4. <b>Best States</b>    
-I chose the "Best States" by sorting the list of finalists in the decreasing order of the racial/ethnic group's percentage share (T_%) of the tech sector. My original intention was to select the top five finalists according to this ranking. But there were only five finalists, so all five were selected. Tthe state at the top of each list was the best of the best, the state in the second row was the second best, and so on. Readers should note <b>my underlying assumption was that most people worked in the state in which they lived. So the number of tech residents in a state should be about the same as the number of tech jobs in a state.</b> Table 8A contains my "Best States" for Black tech; Table 8B contains my "Best States" for Hispanic tech. 
+I chose the "Best States" by sorting the list of finalists in the decreasing order of the racial/ethnic group's percentage share (T_%) of the tech sector. My original intention was to select the top five finalists according to this ranking. But there were only five finalists, so all five were selected. The state at the top of each list was the best of the best, the state in the second row was the second best, and so on. Readers should remember that <b>my underlying assumption was that most people worked in the state in which they lived. So the number of tech residents in a state should be about the same as the number of tech jobs in a state.</b> Table 8A contains my "Best States" for Black tech; Table 8B contains my "Best States" for Hispanic tech. 
 
 <b>Table 8A -- Five Best States for Black Tech</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
