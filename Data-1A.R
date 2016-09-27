@@ -1,10 +1,10 @@
 ### A. Read PUMS 2014 sample data from files downloaded from U.S. Census DataWeb site using DataFerret
 
-setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
+###setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
 library(dplyr)
 library(tidyr)
 
-### 1. Read original PUMS sample data and save
+### 1. Read downloaded PUMS sample data and save
 file = "Race-Sex-Hisp-InfoTechOccupations-AllStates-PersonalWeight-PUMS-2014-Data.csv"
 dfCensus1 = read.csv(file, header=TRUE, stringsAsFactors = FALSE)
 save(dfCensus1, file="dfCensus1.rda")
@@ -20,7 +20,7 @@ str(dfCensus2) ### 39692 observations ... for pop weights, state, race, sex, His
 head(dfCensus2)
 
 ### 3.. Read manually edited codebooks 
-###     ... commas added between codes and labels ... commas deleted within labels ... and 99 Hispanic added manually
+###  ... commas added between codes and labels ... commas deleted within labels ... and 99 Hispanic added manually
 file = "Codes-Race.txt"
 raceCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
 raceCodes
@@ -71,9 +71,6 @@ census3StateRace <- group_by(dfCensus3, state, race)
 head(census3StateRace)
 dfPtsPwtStateRace <- summarise(census3StateRace, ptsPwtStateRace = sum(personalWeight))
 head(dfPtsPwtStateRace, 10)
-### census3States <- group_by(dfCensus3, state)
-### dfPtsPwtState <- summarise(census3States, ptsPwtState = sum(personalWeight))
-### head(dfPtsPwtState)
 dfRaceEmploymentPerState <- spread(dfPtsPwtStateRace, key=race, value=ptsPwtStateRace)
 head(dfRaceEmploymentPerState)
 dfRaceEmploymentPerState[is.na(dfRaceEmploymentPerState)] <- 0 ### Replace NAs with zeros
@@ -102,13 +99,13 @@ head(dfRaceEmploymentPerState)
 vecTotalEmploymentPerState <- c(unlist(dfRaceEmploymentPerState[,2]))
 head(vecTotalEmploymentPerState)
 dfRaceShares <- round(100 * dfRaceEmploymentPerState[,3:7] / vecTotalEmploymentPerState, digits = 1) ### Need percents, so multiply by 100
-dfRaceSharesPerState <- dfRaceEmploymentPerState[,c(1, 3:7)] ### Dummy copy just to get the right dimensions 
+dfRaceSharesPerState <- dfRaceEmploymentPerState[,c(1, 3:7)] ### Dummy copy to get columns and types 
 head(dfRaceShares)
 
 dfRaceSharesPerState[, 2:6] <- dfRaceShares
 colnames(dfRaceSharesPerState) <- c("state", "per_white", "per_black", "per_asian", "per_hispanic", "per_OTHERS")
 
-### 9. Merge the two data frames on state, only common
+### 9. Merge the two data frames on state, only common variable
 dfEmploymentAndShares <- merge(dfRaceEmploymentPerState, dfRaceSharesPerState)
 
 ### 10. Add a totals row 
@@ -116,7 +113,7 @@ dfEmploymentAndShares <- merge(dfRaceEmploymentPerState, dfRaceSharesPerState)
 (allTech <- sum(allRacesInTech)) ### 4125164
 (raceSharesInTech <- round(100 * allRacesInTech/allTech, digits=1))
 
-dfTotalsRow <- dfEmploymentAndShares[1,] ### dummy to get columns and types
+dfTotalsRow <- dfEmploymentAndShares[1,] ### dummy coy to get columns and types
 dfTotalsRow$state <- "ALL STATES"
 dfTotalsRow[1,3:7] <- allRacesInTech
 dfTotalsRow[1,8:12] <- raceSharesInTech

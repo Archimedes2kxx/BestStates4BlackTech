@@ -3,12 +3,12 @@
 
 setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
 
-### 1. Read data ... American Fact finder URL ... table PEPSR6H
+### 1. Read downloaded data ... American Fact finder URL ... table PEPSR6H
 ### http://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=PEP_2015_PEPSR6H&prodType=table
 file = "PEP_2014_PEPSR6H_with_ann.csv"
 dfStatesPop1 <- read.csv(file, header=FALSE, stringsAsFactors = FALSE)
 
-### Get var names 
+### s=Set column names = variable names 
 varNames <- as.vector(unlist(dfStatesPop1[1,]))
 colnames(dfStatesPop1) <- varNames
 
@@ -21,7 +21,7 @@ dfNonHispanics$totpop <- NULL
 
 ### 3. Get data for hispanics
 dfHispanics <- subset(dfStatesPop1, Year.id=="est72014" & Sex.id =="totsex"& Hisp.id=="hisp", select=c(totpop))
-dfHispanics$hisp <- dfHispanics$totpop
+dfHispanics$hisp <- dfHispanics$totpop ### clumsy way to change names
 dfHispanics$totpop <- NULL
 
 ### 4. Get total pop of the state
