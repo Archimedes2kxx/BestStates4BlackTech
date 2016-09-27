@@ -54,7 +54,7 @@ My principal findings were straight-forward:
 
 
 ## Motivation   
-My motivation for conducting this study influenced my methods. The recent barrage of <b>[annual reports](https://techcrunch.com/tag/diversity-report/)</b> from some of the nation's leading information technology companies in Silicon Valley say the primary reason why those companies employed so few Black and Hispanic information technology professionals was because there were so few available. And the reason they weren't available was because there were so few Black and Hispanic tech students in the nation's academic pipelines.    
+My motivation for conducting this study influenced my methods. The recent barrage of <b>[annual reports](https://techcrunch.com/tag/diversity-report/)</b> from some of the nation's leading information technology companies in Silicon Valley said the primary reason why those companies employed so few Black and Hispanic information technology professionals was because there were so few available. And the reason they weren't available was because there were so few Black and Hispanic tech students in the nation's academic pipelines.    
 
 <b>Best Practices</b>   
 When reading the Silicon Valley reports I found myself shaking my head while wondering, "What numbers did they have to back up these assertions? And where did they get them from?" Whereas I would have said that the pipelines were half-full, these reports implied that the pipelines were perilously close to empty. But if the pipelines were close to empty, there shouldn't be very many Black or Hispanic employees in the U.S. tech sector, right? Which led me to wonder how many Black and Hispanic techs were out there and where were they located. 
