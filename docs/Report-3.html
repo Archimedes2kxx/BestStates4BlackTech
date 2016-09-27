@@ -38,6 +38,7 @@
 <div id="TOC" class="toc">
 <ul>
 <li><a href="#overview">Overview</a></li>
+<li><a href="#motivation">Motivation</a></li>
 <li><a href="#findings-answers-to-the-following-questions">Findings … <i><small>Answers to the following questions</small></i></a><ul>
 <li><a href="#question-1a-how-many-whites-blacks-asians-and-hispanics-were-living-in-the-u.s.-in-2014">Question 1A – How many Whites, Blacks, Asians, and Hispanics were living in the U.S. in 2014?</a></li>
 <li><a href="#question-1b-what-percent-of-the-u.s.-population-was-white-black-asian-and-hispanic-in-2014">Question 1B – What percent of the U.S. population was White, Black, Asian, and Hispanic in 2014?</a></li>
@@ -50,7 +51,6 @@
 <li><a href="#question-5-was-the-size-of-a-racialethnic-group-related-to-the-groups-share-of-the-tech-jobs-in-a-state">Question 5 – Was the size of a racial/ethnic group related to the group’s share of the tech jobs in a state?</a></li>
 </ul></li>
 <li><a href="#conclusions">Conclusions</a></li>
-<li><a href="#motivation">Motivation</a></li>
 <li><a href="#methods">Methods</a></li>
 </ul>
 </div>
@@ -70,6 +70,27 @@
 </center>
 <p></i></small></p></li>
 </ul>
+</div>
+<div id="motivation" class="section level2">
+<h2>Motivation</h2>
+<p>My motivation for conducting this study influenced my methods. The recent barrage of <b><a href="https://techcrunch.com/tag/diversity-report/">annual reports</a></b> from some of the nation’s leading information technology companies in Silicon Valley say the primary reason why those companies employed so few Black and Hispanic information technology professionals was because there were so few available. And the reason they weren’t available was because there were so few Black and Hispanic tech students in the nation’s academic pipelines.</p>
+<p><b>Best Practices</b><br />
+When reading the Silicon Valley reports I found myself shaking my head while wondering, “What numbers did they have to back up these assertions? And where did they get them from?” Whereas I would have said that the pipelines were half-full, these reports implied that the pipelines were perilously close to empty. But if the pipelines were close to empty, there shouldn’t be very many Black or Hispanic employees in the U.S. tech sector, right? Which led me to wonder how many Black and Hispanic techs were out there and where were they located.</p>
+<p>But what concerned me the most was the lack of context for assessing Silicon Valley’s diversity numbers. Were they as good as could be expected? Were they better? Were they worse? … And compared to what? Compared to the rest of California? Compared to other states in other parts of the country? The personal data that I had accumulated from more than 50 years in tech informed me that tech was much more diverse in the Eastern and Southern states. But personal data, while a useful source of productive hypotheses, is not credible, systematic proof.</p>
+<p>One of the most useful lessons that I learned as a consultant to the National Center for Productivity way back in the late 1970s was that the application of productivity metrics to just about any significant human activity invariably identified a broad middle that was above a tier of low performers and below a tier of high performers. Further inquiry usually disclosed that the high performers were doing things quite differently than the middle and low performers. Happily, the performance of the lower tiers could be improved by their adoption of the high performers’ “best practices” with appropriate adaptations to their local conditions.</p>
+<p>Given this insight, I set out to measure the productivity of all 50 states and the District of Columbia with regards to their providing opportunities for Blacks and Hispanics in their information technology sectors. If Silicon Valley proved to be a low performer in this national context, its executives would be an unlikely source of “best practices” that could improve their productivity</p>
+<p><b>Reproducible Reports</b><br />
+One of my most important take-aways from completing the <b><a href="https://www.coursera.org/specializations/jhu-data-science">Johns Hopkins “Data Science”</a></b> online certificate program a few months ago was the notion that reports should be “reproducible”. Authors should not only describe their methods for collecting and analyzing data; they should provide detailed step-by-step descriptions of their methods (including copies of their code) so that interested readers could readily reproduce the results on their own computers. Of course, the best researchers have always tried to achieve this objective and have often succeeded. What was new for me was the specific tools that the statisticians who taught the Hopkins courses recommended ==&gt; the <b><a href="https://en.wikipedia.org/wiki/R_">R programming language</a></b> and <b><a href="https://en.wikipedia.org/wiki/GitHub">GitHub</a></b>.</p>
+<ul>
+<li><p>Data should be downloaded from original sources, then analyzed, tabulated, mapped, and graphed via programs writen in R. Findings should be summarized in text laid out in a subset of <b><a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a></b> that an R application called <b><a href="http://kbroman.org/knitr_knutshell/pages/Rmarkdown.html">“knitr”</a></b> converts to HTML pages suitable for publication on Websites.</p></li>
+<li><p>Reproducible reports should be as concise as traditional reports, but the writer’s notes, programs, analytical tools, coding guides, data files, tables, maps, graphs, etc, etc, etc should be shared with the world via GitHub repositories. Of course Python, MATLAB, and other comparable languages could be used insted of R, and the supplementary files could be stored on other public repositories comparable to GitHub.</p></li>
+</ul>
+<p>This being my first attept to write a reproducible report, I wrote it in R and stored all of my supporting files in a public <b><a href="https://github.com/Archimedes2kxx/BestStatesForBlackTech">GitHub repo</a></b>. If readers disagree with my numbers, they won’t have to wonder how I got them <i>… #OldDogStillLearningNewTricks … :-)</i></p>
+<small><i>
+<center>
+<a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a>
+</center>
+<p></i></small></p>
 </div>
 <div id="findings-answers-to-the-following-questions" class="section level2">
 <h2>Findings … <i><small>Answers to the following questions</small></i></h2>
@@ -348,27 +369,6 @@ I chose the “Best States” by sorting the lists of finalists in decreasing or
 4 New Jersey  7.6 0.39
 5   Virginia  4.3 0.48</code></pre>
 <i>Question:  What were the best states for Asian tech? <br />Answer:  All of them … :-)</i> <small><i>
-<center>
-<a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a>
-</center>
-<p></i></small></p>
-</div>
-<div id="motivation" class="section level2">
-<h2>Motivation</h2>
-<p>My motivation for conducting this study influenced my methods. The recent barrage of <b><a href="https://techcrunch.com/tag/diversity-report/">annual reports</a></b> from some of the nation’s leading information technology companies in Silicon Valley say the primary reason why those companies employed so few Black and Hispanic information technology professionals was because there were so few available. And the reason they weren’t available was because there were so few Black and Hispanic tech students in the nation’s academic pipelines.</p>
-<p><b>Best Practices</b><br />
-When reading the Silicon Valley reports I found myself shaking my head while wondering, “What numbers did they have to back up these assertions? And where did they get them from?” Whereas I would have said that the pipelines were half-full, these reports implied that the pipelines were perilously close to empty. But if the pipelines were close to empty, there shouldn’t be very many Black or Hispanic employees in the U.S. tech sector, right? Which led me to wonder how many Black and Hispanic techs were out there and where were they located.</p>
-<p>But what concerned me the most was the lack of context for assessing Silicon Valley’s diversity numbers. Were they as good as could be expected? Were they better? Were they worse? … And compared to what? Compared to the rest of California? Compared to other states in other parts of the country? The personal data that I had accumulated from more than 50 years in tech informed me that tech was much more diverse in the Eastern and Southern states. But personal data, while a useful source of productive hypotheses, is not credible, systematic proof.</p>
-<p>One of the most useful lessons that I learned as a consultant to the National Center for Productivity way back in the late 1970s was that the application of productivity metrics to just about any significant human activity invariably identified a broad middle that was above a tier of low performers and below a tier of high performers. Further inquiry usually disclosed that the high performers were doing things quite differently than the middle and low performers. Happily, the performance of the lower tiers could be improved by their adoption of the high performers’ “best practices” with appropriate adaptations to their local conditions.</p>
-<p>Given this insight, I set out to measure the productivity of all 50 states and the District of Columbia with regards to their providing opportunities for Blacks and Hispanics in their information technology sectors. If Silicon Valley proved to be a low performer in this national context, its executives would be an unlikely source of “best practices” that could improve their productivity</p>
-<p><b>Reproducible Reports</b><br />
-One of my most important take-aways from completing the <b><a href="https://www.coursera.org/specializations/jhu-data-science">Johns Hopkins “Data Science”</a></b> online certificate program a few months ago was the notion that reports should be “reproducible”. Authors should not only describe their methods for collecting and analyzing data; they should provide detailed step-by-step descriptions of their methods (including copies of their code) so that interested readers could readily reproduce the results on their own computers. Of course, the best researchers have always tried to achieve this objective and have often succeeded. What was new for me was the specific tools that the statisticians who taught the Hopkins courses recommended ==&gt; the <b><a href="https://en.wikipedia.org/wiki/R_">R programming language</a></b> and <b><a href="https://en.wikipedia.org/wiki/GitHub">GitHub</a></b>.</p>
-<ul>
-<li><p>Data should be downloaded from original sources, then analyzed, tabulated, mapped, and graphed via programs writen in R. Findings should be summarized in text laid out in a subset of <b><a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a></b> that an R application called <b><a href="http://kbroman.org/knitr_knutshell/pages/Rmarkdown.html">“knitr”</a></b> converts to HTML pages suitable for publication on Websites.</p></li>
-<li><p>Reproducible reports should be as concise as traditional reports, but the writer’s notes, programs, analytical tools, coding guides, data files, tables, maps, graphs, etc, etc, etc should be shared with the world via GitHub repositories. Of course Python, MATLAB, and other comparable languages could be used insted of R, and the supplementary files could be stored on other public repositories comparable to GitHub.</p></li>
-</ul>
-<p>This being my first attept to write a reproducible report, I wrote it in R and stored all of my supporting files in a public <b><a href="https://github.com/Archimedes2kxx/BestStatesForBlackTech">GitHub repo</a></b>. If readers disagree with my numbers, they won’t have to wonder how I got them <i>… #OldDogStillLearningNewTricks … :-)</i></p>
-<small><i>
 <center>
 <a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a>
 </center>
