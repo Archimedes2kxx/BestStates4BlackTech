@@ -38,8 +38,6 @@ output:
     ### install_github("yihui/printr")
     ### library(printr)
     ### detach('package:printr', unload = TRUE)
-    
-    
 ```
 ## Overview   
 My principal findings were straight-forward:   
@@ -195,7 +193,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 * California's prominence as the corporate headquarters of many of the nation's richest tech companies makes it necessary to closely examine the status of its minorities. Unfortunately the numbers were disappointing. As per the fifth column (T\_%), the `r prettyNum(dfParity_black["California", "per_blackTech"], big.mark=",", scientific=FALSE)`% Black share of tech in California was the lowest in the table by a wide margin. And its parity numbers in the last column (Par) were lower than all but one of the other nine states.    
 
-* Perhaps California's `r prettyNum(dfParity_black["California", "blackPop"], big.mark=",", scientific=FALSE)` Black population wasn't large enough compared to the state's `r prettyNum( dfParity_black["California", "blackPop"]/dfParity_black["California", "per_blackPop"] * 100, big.mark=",", scientific=FALSE)` total population for Black techs to obtain a bigger slice of the tech pie? Unfortunately, this "critical mass" hypothesis is undermined by even lower proportions for Hispanics in Table D (below). By 2014 Hispanics had become the largest group in the state, `r prettyNum(dfParity_hispanic["California", "per_hispanicPop"], big.mark=",", scientific=FALSE)`%. The Hispanic share of the state's total population was about seven times as large as the Black share, `r prettyNum(dfParity_black["California", "per_blackPop"], big.mark=",", scientific=FALSE)`%. So their tech share should have been at least seven times as large ... but it wasn't. As per Table 4D, the Hispanic tech share, `r prettyNum(dfParity_hispanic["California", "per_hispanicTech"], big.mark=",", scientific=FALSE)`%, was less than four as large as the Black share, `r prettyNum(dfParity_black["California", "per_blackTech"], big.mark=",", scientific=FALSE)`%. So lack of "critical mass" can't explain either group's low share of California's tech sector. Other factors must be involved.
+* Perhaps California's `r prettyNum(dfParity_black["California", "blackPop"], big.mark=",", scientific=FALSE)` Black population wasn't large enough compared to the state's `r prettyNum( dfParity_black["California", "blackPop"]/dfParity_black["California", "per_blackPop"] * 100, big.mark=",", scientific=FALSE)` total population for Black techs to obtain a bigger slice of the tech pie? Unfortunately, this "critical mass" hypothesis is undermined by even lower proportions for Hispanics in Table D (below). By 2014 Hispanics had become the largest group in the state, `r prettyNum(dfParity_hispanic["California", "per_hispanicPop"], big.mark=",", scientific=FALSE)`%. The Hispanic share of the state's total population was about seven times as large as the Black share, `r prettyNum(dfParity_black["California", "per_blackPop"], big.mark=",", scientific=FALSE)`%. So their tech share should have been at least seven times as large ... but it wasn't. As per Table 4D, the Hispanic tech share, `r prettyNum(dfParity_hispanic["California", "per_hispanicTech"], big.mark=",", scientific=FALSE)`%, was less than four times as large as the Black share, `r prettyNum(dfParity_black["California", "per_blackTech"], big.mark=",", scientific=FALSE)`%. So lack of "critical mass" can't explain either group's low share of California's tech sector. Other factors must be involved.
 
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
@@ -211,7 +209,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 * As per the second row in the fourth column in Table 4C, California was home to `r prettyNum(dfParity_asian["California", "asianTech"], big.mark=",", scientific=FALSE)` Asian techs, which represented `r dfParity_asian["California", "per_state"]` percent of all of the Asian techs in the U.S. This was, by far, the highest concentration of any racial/ethnic group in any state. Asian techs were also `r dfParity_asian["California", "per_asianTech"]` percent of the `r prettyNum(dfParity_asian["California", "totalTech"], big.mark=",", scientific=FALSE)` techs in California, the highest percentage of Asians in the tech sector of any state. (See the <i>[full version](Table4C-Full-Asian-Employment.html)</i> of Tablc 4C)
 
-* Although the intensity of Asian invovement in the tech sector of California was impressive, Asian participation in the tech sector of every other state was also remarkable. The parity values in the last column of the table provide concise summaries. The <i>[full version](Table4C-Full-Asian-Employment.html)</i> of Table 4C shows that Asian parity values  ranged from 2.6 to 8.4. In other words, the Asian share of the tech sectors in the 50 states plus DC ranged from 2.6 times their share of the state's total population to 8.6 times their share of the state's total population.   
+* Although the intensity of Asian invovement in the tech sector of California was impressive, Asian participation in the tech sector of every other state was also remarkable. The parity values in the last column of the table provide concise summaries. The <i>[full version](Table4C-Full-Asian-Employment.html)</i> of Table 4C shows that Asian parity values  ranged from `r dfTable6["Asian", "min"]`  to `r dfTable6["Asian", "max"]`. In other words, the Asian share of the tech sectors in the 50 states plus DC ranged from `r dfTable6["Asian", "min"]` times their share of the state's total population to `r dfTable6["Asian", "max"]` times their share of the state's total population.   
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
@@ -278,7 +276,7 @@ Which states were the best states for Black and Hispanic tech? Given the limited
 1. <b>Select states that had the largest number of Black/Hispanic techs</b>   
 I implemented this criterion by selecting the states with the ten highest numbers of techs in each group. This meant that I began with the states that appeared in Table 4B (Black) and Table 4D (Hispanic).
 
-2. <b>Select states that had the highest Black/Hispanic parity values</b>   
+2. <b>Select states that had the largest Black/Hispanic parity values</b>   
 I implemented this criterion by identifying the states in Tables 4B and 4D that had state level parity values in the top 50%  of all 50 states plus DC. Table 6 (below) summarizes the quartile breakdowns of the parity values for each racial/ethnic group. As per Table 6, the median Black parity value was  `r dfTable6["Black", "median"]`;  the median Hispanic parity value was `r dfTable6["Hispanic", "median"]`.   
 
 <b>Table 6 -- Summary of Parity Values</b>
