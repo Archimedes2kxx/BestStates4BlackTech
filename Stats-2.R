@@ -1,12 +1,11 @@
 ### Generate tables and graphics to be included in report based on the data from Data-1A and Data-2B
 
 ################################################
-### use map_dat() as described on this URL
+### use map_dat() in ggplot2 as described on this URL
 ### http://is-r.tumblr.com/post/37708137014/us-state-maps-using-mapdata
 ##############################################
-  
 
-setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
+### setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
 load(file="dfEmploymentAndShares.rda")
 load(file="dfStatesPop3.rda") 
 load("dfCensus2.rda")  
@@ -41,6 +40,7 @@ dfTable2A <- dfEmploymentAndShares[1,2:7]
 colnames(dfTable2A) <- colNames
 dfTable2A
 
+### percents
 dfTable2B <- dfEmploymentAndShares[1,c(2,8:12)]
 dfTable2B[1,1] <- 100 ### 100 percent for ALL
 colnames(dfTable2B) <- colNames_per
@@ -49,7 +49,7 @@ dfTable2B <- round(data.frame(dfTable2B), digits=1)
 dfTable2B
 
 ######################
-### Table 3 Occupations by Sex
+### Table 3 Occupations by Sex ... more thanks to HW
 census2OccSex <- group_by(dfCensus2, occupation, sex)
 head(census2OccSex)
 dfPtsPwtOccSex <- summarise(census2OccSex, ptsPwtOccSex = sum(personalWeight))
@@ -77,7 +77,7 @@ dfOccupationSex <- rbind(dfOccupationSex, dfALL)
 dfOccupationSex
 str(dfOccupationSex)
 
-### Order by decreasing emploment, drop Female, no row names, etc
+### Order by decreasing occupation, drop Female, no row names, etc
 index <- order(dfOccupationSex$Total, decreasing=TRUE)
 dfOccupationSex <- dfOccupationSex[index,] 
 dfOccupationSex$Female <- NULL
@@ -90,17 +90,17 @@ save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3, file="dfTab1A1B2A2B3.
 ######################
 ### Tables 4A, 4B, 4C, 4D. Racial groups in each state  
 ### ... sorted by decreasing racialTechEmp so users can see "Top 10"
-### ... Only show top 10 in report, show full tables linked to report on git-io
+### ... Only show top 10 in report, show link to full tables in page on git-io
 
 makeParityTable <- function(race){
     per_race <- paste0("per_", race)
     pop_race <- paste0("pop_", race)
     dfEmp <- dfEmploymentAndShares[, c("state", "totals", race, per_race)]
     dfPop <- dfStatesPop3[, c("state", race, per_race)]
+    ### Example ==> c("state", "black", "per_black")
     
     ### Must change DC name to short form in dfPop before this merge
     dfPop[dfPop$state=="District of Columbia", "state"] <- "Dist of Col"
-    
     dfParity <- merge(dfEmp, dfPop, by="state")
     
     raceTech <- paste0(race, "Tech")
@@ -108,6 +108,7 @@ makeParityTable <- function(race){
     racePop <- paste0(race, "Pop")
     per_racePop <- paste0("per_", racePop)
     colnames(dfParity) <- c("state", "totalTech", raceTech, per_raceTech, racePop, per_racePop)
+    ### Example ==> c("state", "totalTech", "blackTech", "per_blackTech", "blackPop", "per_blackPop")
     rownames(dfParity) <- c(dfParity[,"state"]) 
     
     dfParity$parity <- round((dfParity[,per_raceTech]/dfParity[,per_racePop]), digits=2)
@@ -137,6 +138,7 @@ dfTable4B <- dfParity_black
 dfTable4C <- dfParity_asian
 dfTable4D <- dfParity_hispanic 
 
+### Don't display row names on printable copies of tables
 rownames(dfTable4A) <- NULL
 rownames(dfTable4B) <- NULL
 rownames(dfTable4C) <- NULL
@@ -181,6 +183,7 @@ getEmploymentRank <- function(race, state) {
     }
 }
 
+### Example of use of tool
 R <- getEmploymentRank("black", "California")
 R       
 
@@ -212,7 +215,7 @@ maxAsianPerState
 makeTechMap <- function(df, race, maxPer, title) {
     ### raceTech <- paste0(race,"Tech")
    
-    ### Insert dummy max value into District of Columbia
+    ### Insert dummy max value into District of Columbia, too small to be visible
     df[df$state=="Dist of Col", "per_state"] <- maxPer 
     
     ### and use full name of District, not short form used in these scripts
@@ -221,7 +224,6 @@ makeTechMap <- function(df, race, maxPer, title) {
     legend <- paste(toupper(substr(race, 1, 1)), substr(race, 2, nchar(race)), sep="") ### capitalize first letter of race ... aarrrrrrrrrrrggghhh!!!
     legend = paste0(legend, " %")
     dfMap <- subset(df, select=c("state", "per_state"), state!= c("ALL STATES"))     
-    
     dfMap$state <- tolower(dfMap$state)
     dfMap <- merge(states_map, dfMap, by.x="region", by.y= "state")
     dfMap <- arrange(dfMap, group, order) 
@@ -251,7 +253,7 @@ save(dfMap4A, dfMap4B, dfMap4C, dfMap4D, file="dfMap4.rda")
 
 ##########################
 ### Plots 5 ...
-### Run regressions before plots so can display beta values in upper left of each plot
+### Run regressions before plots so we can display beta values in upper left of each plot
 ### Regression racial population vs. racial Tech 
 
 makeLM <- function(df, race) {
@@ -272,6 +274,7 @@ lm_white <- makeLM(dfParity_white, "white")
 lm_hispanic <-makeLM(dfParity_hispanic, "hispanic")
 lm_asian <- makeLM(dfParity_asian, "asian")
 
+### Save betas for later tables
 beta1000 <- c(lm_white$coef[2], lm_black$coef[2], lm_asian$coef[2], lm_hispanic$coef[2])
 names(beta1000) <- c("white", "black", "asian", "hispanic")
 beta1000 <- round(beta1000, digits=2)
@@ -303,11 +306,11 @@ plotEmpVsPop <- function(df, race){
     raceTech <- paste0(race, "Tech")
     annot <- paste0("Beta = ", beta1000[race])
     
-    ### Example: aes(df[-1,x=I(df[-1,"blackPop"]/1000), y = df[-1,"blackTech"]
+    ### Example ==> aes(df[-1,x=I(df[-1,"blackPop"]/1000), y = df[-1,"blackTech"]
     ggScatter <- ggplot(df[-1,], aes(x=I(df[-1,racePop]/1000), y=df[-1,raceTech])) + geom_point(shape=1) 
     ggScatLine <- ggScatter + stat_smooth(method=lm, se=FALSE) + xlim(0, maxPop) + ylim(0, maxTech)
     
-    ### Example: xlab("blackPop/1000) + ylab("blackTech")
+    ### Example ==> xlab("blackPop/1000) + ylab("blackTech")
     ggScatLine <- ggScatLine + xlab(racePopLab) + ylab(raceTech)
     ggScatLine <- ggScatLine + ggtitle(paste0(raceTech, " vs ", racePopLab))
     ggScatLine <- ggScatLine + annotate("text", label=annot, x=-Inf, y=Inf, hjust=-.2, vjust=2)
@@ -376,7 +379,7 @@ matParity
 dfParity <- as.data.frame(matParity)
 dfParity
 
-dfParity <- dfParity[c("asian", "white", "black", "hispanic"),] ### reorder the rows
+dfParity <- dfParity[c("asian", "white", "black", "hispanic"),] 
 dfTable6 <- dfParity
 rownames(dfTable6) <- c("Asian", "White", "Black", "Hispanic") ### Caps on 1st letters
 dfTable6 <- round(dfTable6, digits=2)
@@ -388,7 +391,7 @@ dfTable6 <- round(dfTable6, digits=2)
 (dfTable6 <- subset(dfTable6, select=-c(mean)))
 
 ######################
-### Tables 7A, B, 8A, B
+### Tables 7A, B, 8A, B ... finalists have parity >= median
 dfFinalists_black <- subset(dfParity_black[2:11,], parity>=dfParity["black","median"])
 dfFinalists_black <- subset(dfFinalists_black, select=c("state", "per_blackTech", "parity"))
 dfTable7A <- dfFinalists_black
