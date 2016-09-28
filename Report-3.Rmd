@@ -172,7 +172,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 ```
 <b>Comments about Table 4A -- Whites in Tech</b>   
 
-* The numbers in the third (S_%) and fourth (WhiTech) columns of this table, i.e., the percentage of the nation's Black techs who lived in each state and the estimated number of techs (WhiTech) in each state are equivalent to the colors on Map 4A. Indeed, the colors on this map are based on the numbers in these columns.   
+* The numbers in the third (S_%) and fourth (WhiTech) columns of this table, i.e., the percentage of the nation's White techs who lived in each state and the estimated number of techs (WhiTech) in each state are equivalent to the colors on Map 4A. Indeed, the colors on this map are based on the numbers in these columns.   
 
 * To be specific, the third and fourth columns show that in 2014 the largest number of White techs lived in California; the next largest lived in Texas. White techs were found in every state after that in smaller and smaller numbers.   
 
