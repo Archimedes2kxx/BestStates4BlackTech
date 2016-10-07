@@ -1,52 +1,111 @@
 ### Generate tables and graphics to be included in report based on the data from Data-1A and Data-2B
 
+### Version 0.9 analyzes residence/employment by sex for Asian group 
+
 ################################################
-### use map_dat() in ggplot2 as described on this URL
+################################################ THurs 9/29 @ 5"12 pm
+### Use map_dat() in ggplot2 as described on this URL
 ### http://is-r.tumblr.com/post/37708137014/us-state-maps-using-mapdata
 ##############################################
 
-### setwd("/Users/roylbeasley/Google Drive/Diversity/Census-Bureau/BestStates4BlackTech")
 load(file="dfEmploymentAndShares.rda")
 load(file="dfStatesPop3.rda") 
-load("dfCensus2.rda")  
+load("dfCensus2.rda") 
+load("dfSexResidenceAndShares.rda")
 
 library(tidyr)
 library(maps)
-library(mapproj) ### needed by ggplot2, but not installed automaticallly
+library(mapproj) ### needed by ggplot2, but not installed automatically
 library(ggplot2)
 library(maps)
 library(dplyr)
 library(grid)
 library(gridExtra)
+library(gtable)
 
 ######################
-### Table 1A   Context -- How many people were living in the US in 2014 -- total, black, white, ### asian, hispanic, and OTHERS 
-(dfTable1A <- dfStatesPop3[1,2:7])
+### Table 1A. White, Black, Asian, Hispanic Components of U.S. Population in 2014
+(dfTable1Apop <- dfStatesPop3[1,2:7])
 colNames <- c("ALL", "White", "Black", "Asian", "Hispanic", "OTHERS")
-colnames(dfTable1A) <- colNames
+colnames(dfTable1Apop) <- colNames
+dfTable1Apop <- prettyNum(dfTable1Apop, big.mark = ",")
+dfTable1Apop
+
+dfTable1Aper <- dfStatesPop3[1,c(2,11:15)]
+dfTable1Aper[1,1] <- 100 ### 100 percent for ALL
+colNames_per <- c("ALL", "per_white", "per_black", "per_asian", "per_hispanic", "per_OTHERS")
+colnames(dfTable1Aper) <- colNames_per
+dfTable1Aper <- as.character(round(dfTable1Aper, digits=1))
+dfTable1Aper
+
+dfTable1A <- data.frame(rbind(dfTable1Apop, dfTable1Aper))
+rownames(dfTable1A) <- c("Number", "Percent")
 dfTable1A
 
+
+### Table 1B. White, Black, Asian, Hispanic Components of U.S. Tech Sector in 2014
+dfTable1Btech <- dfEmploymentAndShares[1,2:7]
+colnames(dfTable1Btech) <- colNames
+dfTable1Btech
+
+dfTable1Btech <- prettyNum(dfTable1Btech, big.mark = ",")
+dfTable1Btech
+
 ### Percentages of total, white, black, asian, hispanic, and OTHERS
-dfTable1B <- dfStatesPop3[1,c(2,8:12)]
-dfTable1B[1,1] <- 100 ### 100 percent for ALL
-colNames_per <- c("per_white", "per_black", "per_asian", "per_hispanic", "per_OTHERS")
-colnames(dfTable1B) <- colNames
-dfTable1B <- round(dfTable1B, digits=1)
+dfTable1Bper <- dfEmploymentAndShares[1,c(2,11:15)]
+dfTable1Bper[1,1] <- 100 ### 100 percent for ALL
+colNames_per <- c("ALL", "per_white", "per_black", "per_asian", "per_hispanic", "per_OTHERS")
+colnames(dfTable1Bper) <- colNames_per
+dfTable1Bper <- as.character(round(dfTable1Bper, digits=1))
+dfTable1Bper
+
+dfTable1B <- data.frame(rbind(dfTable1Btech, dfTable1Bper))
+rownames(dfTable1B) <- c("Number", "Percent")
 dfTable1B
 
-######################
-### Table 2 ... racial breakdown of tech employment
-dfTable2A <- dfEmploymentAndShares[1,2:7]
-colnames(dfTable2A) <- colNames
+
+### Table 2A. Female Components of U.S. U.S. Population  in 2014
+(dfTable2Apop <- dfStatesPop3[1,c(2,8:10)])
+dfTable2Apop$Male <- dfTable2Apop$totpop - dfTable2Apop$female
+dfTable2Apop <- dfTable2Apop[, c(1, 5, 2:4)]
+colNames <- c("ALL", "Male", "Female", "FemAsian", "FemNonAsian")
+colnames(dfTable2Apop) <- colNames
+dfTable2Apop <- prettyNum(dfTable2Apop, big.mark = ",")
+dfTable2Apop
+
+(dfTable2Aper <- dfStatesPop3[1,c(2,16:18)])
+dfTable2Aper[1,1] <- 100.0 ### 100 percent for ALL
+dfTable2Aper$per_Male <- round(100 - dfTable2Aper$per_female, digits=1)
+dfTable2Aper <- dfTable2Aper[, c(1,5, 2:4)]
+colnames <- c("ALL", "Male", "Female", "FemAsian", "FemNonAsian")
+colnames(dfTable2Aper) <- colNames
+
+dfTable2A <- data.frame(rbind(dfTable2Apop, dfTable2Aper))
+rownames(dfTable2A) <- c("Number", "Percent")
 dfTable2A
 
-### percents
-dfTable2B <- dfEmploymentAndShares[1,c(2,8:12)]
-dfTable2B[1,1] <- 100 ### 100 percent for ALL
-colnames(dfTable2B) <- colNames_per
-rownames(dfTable2B) <- NULL
-dfTable2B <- round(data.frame(dfTable2B), digits=1)
+
+### Table 2B. Male/Female Components of of U.S. Tech Sector in 2014
+(dfTable2Bpop <- dfEmploymentAndShares[1,c(2,8:10)])
+dfTable2Bpop$male <- dfTable2Bpop$totals - dfTable2Bpop$female
+dfTable2Bpop <- dfTable2Bpop[,c(1, 5, 2:4)] ### place males col 2
+colnames <- c("ALL", "Male", "Female", "FemAsian", "FemNonAsian")
+colnames(dfTable2Bpop) <- colnames
+(dfTable2Bpop <- prettyNum(dfTable2Bpop, big.mark = ",") )
+
+### Percentages of Male/Female 
+(dfTable2Bper <- dfEmploymentAndShares[1,c(2,16:18)])
+(dfTable2Bper$per_male <- 100 - as.numeric(dfTable2Bper$per_female))
+dfTable2Bper <- dfTable2Bper[, c(1,5,2:4)] ### males in col 2
+dfTable2Bper[1,1] <- 100 ### 100 percent for ALL
+colNames_per <- colnames
+colnames(dfTable2Bper) <- colNames_per
+
+dfTable2B <- data.frame(rbind(dfTable2Bpop, dfTable2Bper))
+rownames(dfTable2B) <- c("Number", "Percent")
 dfTable2B
+
+
 
 ######################
 ### Table 3 Occupations by Sex ... more thanks to HW
@@ -57,20 +116,23 @@ head(dfPtsPwtOccSex)
 dfOccupationSex <- spread(dfPtsPwtOccSex, key=sex, value=ptsPwtOccSex)
 head(dfOccupationSex)
 dfOccupationSex$perMale <- round((100 * dfOccupationSex$Male) /(dfOccupationSex$Male + dfOccupationSex$Female), digits=1)
+dfOccupationSex$perFemale <- round((100 * dfOccupationSex$Female) /(dfOccupationSex$Male + dfOccupationSex$Female), digits=1)
 head(dfOccupationSex)
 
 dfOccupationSex$Total <- dfOccupationSex$Male + dfOccupationSex$Female
-dfOccupationSex <- dfOccupationSex[, c(1,5,2:4)] ### Put total in second column
-colnames(dfOccupationSex) <- c("occupation", "Total", "Male","Female", "perMale")
+dfOccupationSex <- dfOccupationSex[, c(1,6,2:5)] ### Put total in second column
+colnames(dfOccupationSex) <- c("occupation", "AllTech", "Male","Female","perMale", "perFemale")
 dfOccupationSex <- as.data.frame(dfOccupationSex)
 dfOccupationSex
 
 ### Add total row for ALL
-techSums <- as.vector(colSums(dfOccupationSex[2:4]))
+(techSums <- as.vector(colSums(dfOccupationSex[2:4])))
 perMaleTechSums <- as.numeric(round((100 * techSums[2]/techSums[1]), digits = 1))
-dfALL <- data.frame("ALL", t(techSums), perMaleTechSums) ### note the transpose "t"
-colnames(dfALL) <- c("occupation", "Total", "Male","Female", "perMale")
+perFemaleTechSums <- as.numeric(round((100 * techSums[3]/techSums[1]), digits = 1))
 
+dfALL <- data.frame("ALL", t(techSums), perMaleTechSums, perFemaleTechSums) ### note the transpose "t"
+colnames(dfALL) <- c("occupation", "AllTech", "Male","Female", "perMale", "perFemale")
+dfALL
 dfOccupationSex$occupation <- as.character(dfOccupationSex$occupation)
 str(dfOccupationSex)
 dfOccupationSex <- rbind(dfOccupationSex, dfALL)
@@ -78,21 +140,21 @@ dfOccupationSex
 str(dfOccupationSex)
 
 ### Order by decreasing occupation, drop Female, no row names, etc
-index <- order(dfOccupationSex$Total, decreasing=TRUE)
+index <- order(dfOccupationSex$AllTech, decreasing=TRUE)
 dfOccupationSex <- dfOccupationSex[index,] 
-dfOccupationSex$Female <- NULL
 rownames(dfOccupationSex) <- NULL
-colnames(dfOccupationSex) <- c("Occupation", "Total", "Male", "%-Male")
+colnames(dfOccupationSex) <- c("Occupation", "AllTech", "Male", "Female","M_%", "F_%")
 (dfTable3 <- dfOccupationSex)
 
 save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3, file="dfTab1A1B2A2B3.rda")
 
+##################################
 ######################
-### Tables 4A, 4B, 4C, 4D. Racial groups in each state  
+### Tables 4A, 4B, 4C, 4D, 4E, 4F Racial, ethnic, female groups in each state  
 ### ... sorted by decreasing racialTechEmp so users can see "Top 10"
 ### ... Only show top 10 in report, show link to full tables in page on git-io
 
-makeParityTable <- function(race){
+makeTechPopTable <- function(race){
     per_race <- paste0("per_", race)
     pop_race <- paste0("pop_", race)
     dfEmp <- dfEmploymentAndShares[, c("state", "totals", race, per_race)]
@@ -101,67 +163,81 @@ makeParityTable <- function(race){
     
     ### Must change DC name to short form in dfPop before this merge
     dfPop[dfPop$state=="District of Columbia", "state"] <- "Dist of Col"
-    dfParity <- merge(dfEmp, dfPop, by="state")
+    dfTechPop <- merge(dfEmp, dfPop, by="state")
     
     raceTech <- paste0(race, "Tech")
     per_raceTech <- paste0("per_", raceTech)
     racePop <- paste0(race, "Pop")
     per_racePop <- paste0("per_", racePop)
-    colnames(dfParity) <- c("state", "totalTech", raceTech, per_raceTech, racePop, per_racePop)
+    colnames(dfTechPop) <- c("state", "totalTech", raceTech, per_raceTech, racePop, per_racePop)
     ### Example ==> c("state", "totalTech", "blackTech", "per_blackTech", "blackPop", "per_blackPop")
-    rownames(dfParity) <- c(dfParity[,"state"]) 
+    rownames(dfTechPop) <- c(dfTechPop[,"state"]) 
     
-    dfParity$parity <- round((dfParity[,per_raceTech]/dfParity[,per_racePop]), digits=2)
-    index <- order(dfParity[, raceTech], decreasing=TRUE)
-    dfParity <- dfParity[index,]
+    dfTechPop$parity <- round((dfTechPop[,per_raceTech]/dfTechPop[,per_racePop]), digits=2)
+    index <- order(dfTechPop[, raceTech], decreasing=TRUE)
+    dfTechPop <- dfTechPop[index,]
     
     ### Calculate the percentage of the total for each race is in each state
-    dfParity$per_state <- round(100 * dfParity[,raceTech]/dfParity[1,raceTech[1]], digits=1)
-    dfParity <- data.frame(dfParity[,c(1:2,8,3:7)]) ### move per_state to 3rd column
-    return(dfParity)
+    dfTechPop$per_state <- round(100 * dfTechPop[,raceTech]/dfTechPop[1,raceTech[1]], digits=1)
+    dfTechPop <- data.frame(dfTechPop[,c(1:2,8,3:7)]) ### move per_state to 3rd column
+    return(dfTechPop)
 }
 
-dfParity_white <- makeParityTable("white")
-dfParity_black <- makeParityTable("black")
-dfParity_hispanic <- makeParityTable("hispanic")
-dfParity_asian <- makeParityTable("asian")
-dfParity_OTHERS <-makeParityTable("OTHERS")
+dfTechPop_white <- makeTechPopTable("white")
+dfTechPop_black <- makeTechPopTable("black")
+dfTechPop_hispanic <- makeTechPopTable("hispanic")
+dfTechPop_asian <- makeTechPopTable("asian")
+dfTechPop_OTHERS <-makeTechPopTable("OTHERS")
+dfTechPop_female <-makeTechPopTable("female")
+dfTechPop_femAsian <-makeTechPopTable("femAsian")
+dfTechPop_femNonAsian <-makeTechPopTable("femNonAsian")
 
-head(dfParity_black,10)
-head(dfParity_white,10)
-head(dfParity_hispanic,20)
-head(dfParity_asian,20)
-tail(dfParity_asian,20)
+head(dfTechPop_femAsian, 10)
+head(dfTechPop_black,10)
+head(dfTechPop_white,10)
+head(dfTechPop_hispanic,10)
+head(dfTechPop_asian,10)
+head(dfTechPop_femNonAsian, 10)
 
-dfTable4A <- dfParity_white 
-dfTable4B <- dfParity_black
-dfTable4C <- dfParity_asian
-dfTable4D <- dfParity_hispanic 
+dfTable4A <- dfTechPop_white 
+dfTable4B <- dfTechPop_black
+dfTable4C <- dfTechPop_asian
+dfTable4D <- dfTechPop_hispanic 
+dfTable4E <- dfTechPop_femAsian
+dfTable4F <- dfTechPop_femNonAsian
 
-### Don't display row names on printable copies of tables
+### Don't display row names on printable copies of tables, same as state names
 rownames(dfTable4A) <- NULL
 rownames(dfTable4B) <- NULL
 rownames(dfTable4C) <- NULL
 rownames(dfTable4D) <- NULL
+rownames(dfTable4E) <- NULL
+rownames(dfTable4F) <- NULL
 
-save(dfTable4A, dfTable4B, dfTable4C, dfTable4D, dfParity_white, dfParity_black, dfParity_asian, dfParity_hispanic, file="dfTab4.rda")
+save(dfTable4A, dfTable4B, dfTable4C, dfTable4D, dfTable4E, dfTable4F, file="dfTab4.rda")
+     
+### dfTechPop_white, dfTechPop_black, dfTechPop_asian, dfTechPop_hispanic, dfTechPop_female, dfTechPop_femAsian, dfTechPop_fem, NonAsian
 
 ############
 ### handy tool for spot checking data
 selectParityDF <- function(race, state){
    if (race == "black") {
-       return(dfParity_black)
+       return(dfTechPop_black)
    } else {
        if (race =="white") {
-           return(dfParity_white)
+           return(dfTechPop_white)
        } else {
            if (race =="hispanic") {
-               return(dfParity_hispanic)
+               return(dfTechPop_hispanic)
            } else {
                if (race == "asian") {
-                    return(dfParity_asian)
+                    return(dfTechPop_asian)
                } else {
-                   return (0)
+                   if (race == "female") {
+                       return(dfTechPop_female)
+                   } else {
+                        return (0)
+                   }
                }
            }
        }
@@ -184,11 +260,11 @@ getEmploymentRank <- function(race, state) {
 }
 
 ### Example of use of tool
-R <- getEmploymentRank("black", "California")
+R <- getEmploymentRank("female", "Washington")
 R       
 
 ######################
-### Maps 4A, B, C, D ... state maps of white, black, asian, hispanics in  tech 
+### Maps 4A, B, C, D, E, F ... state maps of white, black, asian, hispanic, female Asians, and female non-Asians in  tech 
 ### Follow W. Chang's cookbook p 313 for U.S. with lower 48 states
 states_map <- map_data("state") ### from ggplot]
 theme_clean <- function(base_size = 12) {
@@ -209,11 +285,10 @@ theme_clean <- function(base_size = 12) {
     )
 }
 
-maxAsianPerState <- max(dfParity_asian[-1,"per_state"]) ### omit total row
-maxAsianPerState 
+### Explorations of the data showed that Asians had the highest concentration in California of any group in any state. So make their California concentratration the brightest color on all six maps. Store this concentration in the District of Columbia on each map because it is too small to be visible on these maps
+(maxAsianPerState <- max(dfTechPop_asian[-1,"per_state"])) ### omit total row
     
-makeTechMap <- function(df, race, maxPer, title) {
-    ### raceTech <- paste0(race,"Tech")
+makeTechPopMap <- function(df, race, maxPer, title) {
    
     ### Insert dummy max value into District of Columbia, too small to be visible
     df[df$state=="Dist of Col", "per_state"] <- maxPer 
@@ -221,8 +296,8 @@ makeTechMap <- function(df, race, maxPer, title) {
     ### and use full name of District, not short form used in these scripts
     df[df$state=="Dist of Col", "state"] <- "District of Columbia"
     
-    legend <- paste(toupper(substr(race, 1, 1)), substr(race, 2, nchar(race)), sep="") ### capitalize first letter of race ... aarrrrrrrrrrrggghhh!!!
-    legend = paste0(legend, " %")
+    ###Race <- paste(toupper(substr(race, 1, 1)), substr(race, 2, nchar(race)), sep="") ### capitalize first letter of race ... aarrrrrrrrrrrggghhh!!!
+    legend = paste0("%")
     dfMap <- subset(df, select=c("state", "per_state"), state!= c("ALL STATES"))     
     dfMap$state <- tolower(dfMap$state)
     dfMap <- merge(states_map, dfMap, by.x="region", by.y= "state")
@@ -235,25 +310,25 @@ makeTechMap <- function(df, race, maxPer, title) {
     ggMap <- ggMap + expand_limits(x=states_map$long, y=states_map$lat) 
     ggMap <- ggMap + coord_map("polyconic") + labs(fill=legend) + theme_clean()
     ggMap <- ggMap + ggtitle(title) 
-    ggmap <- ggMap + theme(legend.title=element_blank(), plot.margin=unit(c(1,1,1,1), "cm")) 
+    ggMap <- ggMap + guides(fill=guide_legend(title.position = "left"))
+    ggmap <- ggMap + theme(legend.title=element_blank(), plot.margin=unit(c(10,10,1,10), "cm")) 
     return(ggMap)
 }
 
-(black_ggMap<-makeTechMap(dfParity_black,"black", maxAsianPerState, "Map B -- Black Techs"))
-(white_ggMap <-makeTechMap(dfParity_white,"white", maxAsianPerState, "Map A -- White Techs"))
-(hispanic_ggMap <- makeTechMap(dfParity_hispanic,"hispanic", maxAsianPerState, "Map D -- Hispanic Techs"))
-(asian_ggMap <- makeTechMap(dfParity_asian,"asian", maxAsianPerState, "Map C -- Asian Techs"))
+(dfMap4A <-makeTechPopMap(dfTechPop_white,"white", maxAsianPerState, "A. White Techs"))
+(dfMap4B <-makeTechPopMap(dfTechPop_black,"black", maxAsianPerState, "B. Black Techs"))
+(dfMap4C <- makeTechPopMap(dfTechPop_asian,"asian", maxAsianPerState, "C. Asian Techs"))
+(dfMap4D <- makeTechPopMap(dfTechPop_hispanic,"hispanic", maxAsianPerState, "D. Hispanic Techs"))
+(dfMap4E <- makeTechPopMap(dfTechPop_femAsian,"femAsian", maxAsianPerState, "E. FemAsian Techs"))
+(dfMap4F <- makeTechPopMap(dfTechPop_femNonAsian,"femNonAsian", maxAsianPerState, "F. FemNonAsian Techs"))
 
-dfMap4A <- white_ggMap
-dfMap4B <- black_ggMap
-dfMap4C <- asian_ggMap
-dfMap4D <- hispanic_ggMap
+save(dfMap4A, dfMap4B, dfMap4C, dfMap4D, dfMap4E, dfMap4F, file="dfMap4.rda")
 
-save(dfMap4A, dfMap4B, dfMap4C, dfMap4D, file="dfMap4.rda")
-
+###########################
 ##########################
 ### Plots 5 ...
-### Run regressions before plots so we can display beta values in upper left of each plot
+### Run regressions before plots so we can display beta values in upper left of each plot and impose the full regression line on the scatterplot ... smooth_geom only producesshort stubs for some groups
+
 ### Regression racial population vs. racial Tech 
 
 makeLM <- function(df, race) {
@@ -261,157 +336,180 @@ makeLM <- function(df, race) {
     df <- subset(df, state != "ALL STATES")
     f <- paste0("I(", race, "Tech) ~ I(" , race, "Pop/1000)")
     lm_race <- lm(f, data = df)
-    pred <- paste0(race, "Pop")
-    resp <- paste0(race, "Tech")
     
     f <- paste0("I(per_", race, "Pop) ~ I(per_", race, "Tech)")
     lmModel <- lm(f, data = df)
     return(lm_race)
 }
 
-lm_black <- makeLM(dfParity_black, "black")
-lm_white <- makeLM(dfParity_white, "white")
-lm_hispanic <-makeLM(dfParity_hispanic, "hispanic")
-lm_asian <- makeLM(dfParity_asian, "asian")
+lm_black <- makeLM(dfTechPop_black, "black")
+lm_white <- makeLM(dfTechPop_white, "white")
+lm_asian <- makeLM(dfTechPop_asian, "asian")
+lm_hispanic <-makeLM(dfTechPop_hispanic, "hispanic")
+lm_OTHERS <- makeLM(dfTechPop_OTHERS, "OTHERS")
+lm_female <- makeLM(dfTechPop_female, "female")
+lm_femAsian <- makeLM(dfTechPop_femAsian, "femAsian")
+lm_femNonAsian <- makeLM(dfTechPop_femNonAsian, "femNonAsian")
 
 ### Save betas for later tables
-beta1000 <- c(lm_white$coef[2], lm_black$coef[2], lm_asian$coef[2], lm_hispanic$coef[2])
-names(beta1000) <- c("white", "black", "asian", "hispanic")
+beta1000 <- c(lm_white$coef[2], lm_black$coef[2], lm_asian$coef[2], lm_hispanic$coef[2], lm_OTHERS$coef[2], lm_female$coef[2], lm_femAsian$coef[2], lm_femNonAsian$coef[2])
+names(beta1000) <- c("white", "black", "asian", "hispanic", "OTHERS", "female",  "femAsian", "femNonAsian")
 beta1000 <- round(beta1000, digits=2)
 beta1000["black"]
 beta1000["asian"]
+beta1000["femAsian"]
+beta1000["female"]
 
-### Calculate max values for plots (below) ... ignore 1st row ... totals row
-dfParity_all_tech <- c(dfParity_black[-1,]$blackTech, dfParity_white[-1,]$whiteTech, dfParity_asian[-1,]$asianTech, dfParity_hispanic[-1,]$hispanicTech)
-maxTech <- max(dfParity_all_tech)
-maxTech
 
-dfParity_all_pop <- c(dfParity_black[-1,]$blackPop, dfParity_white[-1,]$whitePop, dfParity_asian[-1,]$asianPop, dfParity_hispanic[-1,]$hispanicPop)
-maxPop <- max(dfParity_all_pop)/1000
-maxPop
-
-### Add a phony extra point to the black data frame to extrapolate the regression line to the end of
-### the plot frame ... otherwise it's too short and stubby to compare its slope to the other lines
-df_maxPop <- data.frame(maxPop * 1000)
-colnames(df_maxPop) <- "blackPop"
-y_black_ex <- predict(lm_black, df_maxPop)
-dfEx_black <- data.frame(dfParity_black[,"blackPop"], dfParity_black[,"blackTech"])
-colnames(dfEx_black) <- c("blackPop", "blackTech")
-dfEx_black <- rbind(dfEx_black, c(maxPop * 1000, y_black_ex))
-
+#####################
+### Now the plots
 ###################
-plotEmpVsPop <- function(df, race){
+plotEmpVsPop <- function(df, race, lmGroup, maxPlotPop, maxPlotTech, alpha){
+    
+    ### Note: geom_smooth drew short stubby lines for some groups that
+    ### had small max populations ... so use geom_abline to draw 
+    ### full lines for all groups based on regression slope and intercept
+    AB <- summary(lmGroup)$coefficients[,1]
+    A <- AB[1] ### intercept of regression line
+    B <- AB[2] ### slope of regressionline
+    
     racePop <- paste0(race, "Pop")
-    racePopLab <- paste0(racePop, "/1000")
     raceTech <- paste0(race, "Tech")
     annot <- paste0("Beta = ", beta1000[race])
-    
+    Race <- paste(toupper(substr(race, 1, 1)), substr(race, 2, nchar(race)), sep="") ### capitalize first letter of race ... aarrrrrrrrrrrggghhh!!!    
     ### Example ==> aes(df[-1,x=I(df[-1,"blackPop"]/1000), y = df[-1,"blackTech"]
     ggScatter <- ggplot(df[-1,], aes(x=I(df[-1,racePop]/1000), y=df[-1,raceTech])) + geom_point(shape=1) 
-    ggScatLine <- ggScatter + stat_smooth(method=lm, se=FALSE) + xlim(0, maxPop) + ylim(0, maxTech)
+    ggScatLine <- ggScatter + xlim(0, maxPlotPop) + ylim(0, maxPlotTech)
+    ggScatLine <- ggScatLine + geom_abline(intercept=A, slope=B, colour="blue",size=0.8)
     
     ### Example ==> xlab("blackPop/1000) + ylab("blackTech")
-    ggScatLine <- ggScatLine + xlab(racePopLab) + ylab(raceTech)
-    ggScatLine <- ggScatLine + ggtitle(paste0(raceTech, " vs ", racePopLab))
+    ggScatLine <- ggScatLine + xlab("Pop/1000") + ylab("Tech")
+    ggScatLine <- ggScatLine + ggtitle(paste0(alpha, " ", Race," -- Tech vs Pop/1000")) + theme(plot.title = element_text(size=12))
     ggScatLine <- ggScatLine + annotate("text", label=annot, x=-Inf, y=Inf, hjust=-.2, vjust=2)
     return(ggScatLine)
 }
 
-(ggPlot_asian <- plotEmpVsPop(dfParity_asian, "asian"))
-(ggPlot_white <- plotEmpVsPop(dfParity_white, "white"))
-(ggPlot_black <- plotEmpVsPop(dfEx_black, "black"))
-(ggPlot_hispanic <- plotEmpVsPop(dfParity_hispanic, "hispanic"))
+(maxPlotTech <- max(dfEmploymentAndShares[-1, c(3:6)]))
 
+### mqx value for white, black, asian, hispanic, femAsian, femNonAsian
+(maxPlotPop <- max(dfStatesPop3[-1,c(3:6,9:10)])/1000)
+
+(ggPlot_white <- plotEmpVsPop(dfTechPop_white, "white", lm_white, maxPlotPop, maxPlotTech, "A."))
+(ggPlot_black <- plotEmpVsPop(dfTechPop_black, "black", lm_black, maxPlotPop, maxPlotTech, "B. ")) 
+(ggPlot_asian <- plotEmpVsPop(dfTechPop_asian, "asian", lm_asian, maxPlotPop, maxPlotTech, "C."))
+(ggPlot_hispanic <- plotEmpVsPop(dfTechPop_hispanic, "hispanic", lm_hispanic, maxPlotPop, maxPlotTech, "D."))
+(ggPlot_femAsian <- plotEmpVsPop(dfTechPop_femAsian, "femAsian", lm_femAsian, maxPlotPop, maxPlotTech, "E.")) 
+(ggPlot_femNonAsian <- plotEmpVsPop(dfTechPop_femNonAsian, "femNonAsian", lm_femNonAsian, maxPlotPop, maxPlotTech, "F."))
+
+
+###############################################################
 ##########################
-### Table 5 Summary tables top rows of Tables A, B, C, and D and beta1000
-matWhite <- as.matrix(dfTable4A[1,-c(1:3)])
-colnames(matWhite) <- NULL
-matBlack <- as.matrix(dfTable4B[1,-c(1:3)])
-colnames(matBlack) <- NULL
-matAsian <- as.matrix(dfTable4C[1,-c(1:3)])
-colnames(matAsian) <- NULL
-matHispanic <- as.matrix(dfTable4D[1,-c(1:3)])
-colnames(matHispanic) <- NULL
+### Table 5 ... summary of national advantages for each group
+makeSummary <- function(rList, beta){
+    rows <- length(rList)
+    cols <- dim(rList[[1]])[2] ### use cols in first df in list
+    mat <- matrix(nrow = rows, ncol = cols-3)
+    for(I in 1:rows){
+       df <- rList[[I]]
+       vec <- c(unlist(df[1, -c(1:3)])) ### not the first three cols
+       mat[I,] <- vec
+    }
+    rownames(mat) <- names(rList)
+    mat <- cbind(mat, beta)
+    colnames(mat) <- c("Tech", "T_%", "Population", "P_%", "Par", "beta1000")
+    
+    ### Sort by betas decreasing order
+    ### index <- order(mat[, "beta1000"], decreasing=TRUE)
+    ### mat <- mat[index,]
+    
+    dfTable <- as.data.frame(mat)
+    return(dfTable)
+}
 
-matTable5 <- rbind(matAsian, matWhite, matBlack, matHispanic)
-beta1000 <- beta1000[c("asian", "white", "black", "hispanic")]
-matTable5 <- cbind(matTable5, beta1000)
-matTable5
-colnames(matTable5) <- c("Tech", "T_%", "Population", "P_%", "Par", "beta1000")
+raceList <- list(dfTechPop_white, dfTechPop_black, dfTechPop_asian, dfTechPop_hispanic, dfTechPop_OTHERS, dfTechPop_female, dfTechPop_femAsian, dfTechPop_femNonAsian)
+names(raceList) <- c("White", "Black", "Asian", "Hispanic", "OTHERS", "Female", "FemAsian", "FemNonAsian")
+(dfTable5 <- makeSummary(raceList, beta1000))
 
-dfTable5 <- as.data.frame(matTable5)
-rownames(dfTable5) <- c("Asian", "White", "Black", "Hispanic")
-dfTable5
 
-### Add "Others" to the summary
-### head(dfParity_OTHERS)
-(dfOthers <- as.data.frame(dfParity_OTHERS[1,c(4:8)]))
-rownames(dfOthers) <- "Others"
-dfOthers$beta1000 <- NA
-colnames(dfOthers) <- c("Tech", "T_%", "Population", "P_%", "Par", "beta1000")
-dfTable5 <- rbind(dfTable5, dfOthers)
-dfTable5
-
-save(ggPlot_asian, ggPlot_white, ggPlot_black, ggPlot_hispanic, beta1000, dfTable5, file="dfPlot5Tab5beta1000.rda")
+save(ggPlot_asian, ggPlot_white, ggPlot_black, ggPlot_hispanic, ggPlot_femAsian, ggPlot_femNonAsian, beta1000, dfTable5, file="dfPlot5Tab5beta1000.rda")
 
 #######################################
 ######################
 #### Conclusions
+### Table 6. Stats for parity variable of racial groups in each state  
+makeParity <- function(listDFs){
+    ng <- length(listDFs)
+    matParity <- matrix(NA, nrow=ng, ncol = 6)
+    dfP <- data.frame(matParity)
+    colnames(dfP) <- c("min", "Q1", "med", "mean", "Q3", "max")
+    for (i in 1:ng) {
+        df<- listDFs[[i]]
+        dfP[i,] <- summary(df$parity)
+        
+        ### Change min to minimum value > 0 ... Census said NA because not enough
+        ### observations in sample to estimate techs in some small states
+        ### ... my code converted NA's to 0s for Techs ==> 0s for percent Techs
+        dfP[i,1] <- min(df[df[,"parity"]> 0, "parity"])
+    }
+    dfP <- subset(dfP, select=-c(mean)) ### Drop mean values
+    dfP <- round(dfP, digits=2)
+    rownames(dfP) <- names(listDFs)
+    return(dfP)
+}
 
-### Table 6. Parity stats for racial groups in each state  
-matParity <- matrix(NA, nrow=4, ncol = 6)
-rownames(matParity) <- c("black", "white", "hispanic", "asian")
-colnames(matParity) <- c("min", "Q1", "median", "mean", "Q3", "max")
-matParity["black",] <- summary(dfParity_black$parity)
-matParity["white",] <- summary(dfParity_white$parity)
-matParity["hispanic",] <- summary(dfParity_hispanic$parity)
-matParity["asian",] <- summary(dfParity_asian$parity)
-matParity
+listDFs <- list(dfTechPop_white, dfTechPop_black, dfTechPop_asian, dfTechPop_hispanic, dfTechPop_female, dfTechPop_femAsian, dfTechPop_femNonAsian)
+names(listDFs) <- c("white",  "black", "asian", "hispanic",  "female",  "femAsian", "femNonAsian")
+(dfParity <- makeParity(listDFs))
 
-### Zeros in original ACS PLUMS data merely meant not enough cases in a sample
-### So zero minimums are not informative. Replace 0s with min values above 0
-matParity["black", "min"]<-min(dfParity_black[dfParity_black[,"parity"]>0,"parity"])
-matParity["white", "min"]<-min(dfParity_white[dfParity_white[,"parity"]>0,"parity"])
-matParity["hispanic","min"]<-min(dfParity_hispanic[dfParity_hispanic[,"parity"]>0,"parity"])
-matParity["asian", "min"]<-min(dfParity_asian[dfParity_asian[,"parity"]>0,"parity"])
-matParity
-
-dfParity <- as.data.frame(matParity)
-dfParity
-
-dfParity <- dfParity[c("asian", "white", "black", "hispanic"),] 
 dfTable6 <- dfParity
-rownames(dfTable6) <- c("Asian", "White", "Black", "Hispanic") ### Caps on 1st letters
-dfTable6 <- round(dfTable6, digits=2)
+rownames(dfTable6) <- c("White", "Black", "Asian", "Hispanic", "Female", "FemAsian","FemNonAsian") ### Caps on 1st letters for inclusion in report
+(dfTable6)
 
-### Delete the mean value, not informative and might confuse readers because
-###  the parity value shown in Table 6 is merely the tech share / population share
-### This value differs from the mean of all of the parity values for all states
-###(dfTable6 <- dfTable6[, -4]) ### mean in 4th column
-(dfTable6 <- subset(dfTable6, select=-c(mean)))
+##################################
+####### Tables 7 ... Finalists for black, hispanic, femAsians, and femNonAsians
+makeTable7 <- function(dfIn, dfParity, race, letter) {
+    dfFinal <- subset(dfIn[2:11,], parity >= dfParity[race, "med"])
+    perRaceTech <- paste0("per_",race, "Tech")
+    Race <- paste(toupper(substr(race, 1, 1)), substr(race, 2, nchar(race)), sep="") ### capitalize first letter of race ... aarrrrrrrrrrrggghhh!!! 
+    
+    dfOut <- subset(dfFinal, select=c("state", perRaceTech, "parity"))
+    L <- dim(dfOut)[1]
+    L <- min(L,5)
+    dfOut <- head(dfOut[order(-dfOut$parity),],L)
+    rows <- as.character(seq(1:L)) ### some tables may be shorter than 5
+    rownames(dfOut) <- rows
+    tabName <- paste0("7", letter, ". ", Race)
+    colnames(dfOut) <- c(tabName, "Tech", "Parity")
 
-######################
-### Tables 7A, B, 8A, B ... finalists have parity >= median
-dfFinalists_black <- subset(dfParity_black[2:11,], parity>=dfParity["black","median"])
-dfFinalists_black <- subset(dfFinalists_black, select=c("state", "per_blackTech", "parity"))
-dfTable7A <- dfFinalists_black
-dfTable7A <- dfTable7A[order(-dfTable7A$parity),]
-rownames(dfTable7A) <- c("1", "2", "3", "4", "5")
-dfTable7A
-dfTable8A <- dfTable7A[order(-dfTable7A$per_blackTech),]
-dfTable8A <- dfTable8A[1:5,] ### Top 5
-rownames(dfTable8A) <- c("1", "2", "3", "4", "5")
-dfTable8A
+    return(dfOut)
+}
+### Tables 7 ... sorted by parity
+(dfTable7A <- makeTable7(dfTechPop_white , dfParity, "white", "A"))
+(dfTable7B <- makeTable7(dfTechPop_black , dfParity, "black", "B"))
+(dfTable7C <- makeTable7(dfTechPop_asian , dfParity, "asian", "C"))
+(dfTable7D <- makeTable7(dfTechPop_hispanic , dfParity, "hispanic", "D"))
+(dfTable7E <- makeTable7(dfTechPop_femAsian , dfParity, "femAsian", "E"))
+(dfTable7F <- makeTable7(dfTechPop_femNonAsian , dfParity, "femNonAsian","F"))
 
-dfFinalists_hispanic <- subset(dfParity_hispanic[2:11,], parity>=dfParity["hispanic","median"])
-dfFinalists_hispanic <- subset(dfFinalists_hispanic, select=c("state", "per_hispanicTech", "parity"))
-dfTable7B <- dfFinalists_hispanic
-dfTable7B <- dfTable7B[order(-dfTable7B$parity),]
-rownames(dfTable7B) <- c("1", "2", "3", "4", "5")
-dfTable7B
-dfTable8B <- dfTable7B[order(-dfTable7B$per_hispanicTech),]
-dfTable8B <- dfTable8B[1:5,] ### Top 5
-rownames(dfTable8B) <- c("1", "2", "3", "4", "5")
-dfTable8B
 
-save(dfTable6, dfTable7A, dfTable7B, dfTable8A, dfTable8B, file="dfTab67A7B8A8B.rda")
+### Sorted by tech share of the info tech sector 
+makeTable8 <- function(dfIn, Race, letter){
+    vec <- dfIn[, "Tech"] ###dfIn[,perRaceTech]
+    dfOut <- dfIn[order(-vec),]
+
+    L <- dim(dfOut)[1]
+    rows <- as.character(seq(1:L)) ### some tables may be shorter than 5
+    rownames(dfOut) <- rows
+    tabName <- paste0("8", letter, ". ", Race)
+    colnames(dfOut) <- c(tabName, "Tech", "Parity")
+    return(dfOut)
+}
+
+(dfTable8A <- makeTable8(dfTable7A,"White", "A")) ###, "White"
+(dfTable8B <- makeTable8(dfTable7B, "Black", "B")) ###, "Black"
+(dfTable8C <- makeTable8(dfTable7C, "Asian", "C")) ###, "Asian"
+(dfTable8D <- makeTable8(dfTable7D, "Hispanic", "D")) ###, "Hispanic"
+(dfTable8E <- makeTable8(dfTable7E, "FemAsian", "E")) ###, "FemAsian"
+(dfTable8F <- makeTable8(dfTable7F, "FemNonAsian", "F")) ###, "FemNonAsian"
+
+save(dfTable6, dfTable7A, dfTable7B, dfTable7C, dfTable7D, dfTable7E, dfTable7F, dfTable8A, dfTable8B, dfTable8C, dfTable8D, dfTable8E, dfTable8F, file="dfTab67A7B7C7D7E7F8A8B8C8D8E8F.rda")
