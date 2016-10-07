@@ -100,7 +100,7 @@ Answer 1 ... In 2014, as shown in Table 1A (below), the largest of the four raci
 * blah, blah, blah 
 
 #### Question 1B -- How many Whites, Blacks, Asians, Hispanics worked in tech in 2014? 
-Answer 2 ... As shown in Table 2 (below), in 2014 Whites were still a substantial majority (`r prettyNum(dfTable1B[1,2], big.mark=",", scientific=FALSE)`) of the tech sector (`r prettyNum(dfTable1B[2,2], big.mark=",", scientific=FALSE)`%); Hispanics placed second (`r prettyNum(dfTable1B[1,5], big.mark=",", scientific=FALSE)`); Blacks showed third (`r prettyNum(dfTable1B[1,2], big.mark=",", scientific=FALSE)`); and Asians came in fourth  (`r prettyNum(dfTable1B[1,4], big.mark=",", scientific=FALSE)`)
+Answer 1B ... As shown in Table 2 (below), in 2014 Whites were still a substantial majority (`r prettyNum(dfTable1B[1,2], big.mark=",", scientific=FALSE)`) of the tech sector (`r prettyNum(dfTable1B[2,2], big.mark=",", scientific=FALSE)`%); Asians placed second (`r prettyNum(dfTable1B[1,4], big.mark=",", scientific=FALSE)`); Blacks showed third (`r prettyNum(dfTable1B[1,3], big.mark=",", scientific=FALSE)`); and Hispanics came in fourth  (`r prettyNum(dfTable1B[1,5], big.mark=",", scientific=FALSE)`)
 
 <b>Table 1B -- Racial/Ethnic Composition of the U.S. Tech Sector in 2014</b>   
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
