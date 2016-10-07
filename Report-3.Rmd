@@ -49,7 +49,7 @@ tt3 <- ttheme_minimal(
 My principal findings were straight-forward:   
 
 * First, in 2014 there were approximately `r prettyNum(dfRaceResidenceAndShares[1,2], big.mark=",", scientific=FALSE)` employees in the entire U.S. information technology sector ==>  `r prettyNum(dfRaceResidenceAndShares[1,4], big.mark=",", scientific=FALSE)` were Black, and 
-`r prettyNum(dfRaceResidenceAndShares[1,6], big.mark=",", scientific=FALSE)` were Hispanic. (See Table 1A, Table 1B, Table 2A, and Table 2B.)   
+`r prettyNum(dfRaceResidenceAndShares[1,6], big.mark=",", scientific=FALSE)` were Hispanic. (See Table 1A, Table 1B, Table 2A, and Table 2B.)      
 
 * Second, the number of tech employees who were Black was higher in states that had larger Black populations and smaller in states that had smaller Black populations. The same relationship between population size and tech employment held true for Hispanics. (See Table 4B, Table 4D, and Table 6)
 
