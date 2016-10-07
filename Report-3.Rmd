@@ -194,7 +194,7 @@ Six data tables impose numeric precision on the qualitative insights provided by
 8. <b>Par</b> -- Parity ratio of the  percent of the state's tech population that belonged to the table's racial/ethnic group divided by the percent of the state's total population that belonged to that group, i.e., T_% / P_%. For example, Table 4A shows that the White parity ratio for California was  `r dfTable4A[dfTable4A=="California", "parity"]`, which is `r dfTable4A[dfTable4A=="California", 5]` divided by `r dfTable4A[dfTable4A=="California", 7]`<br /><br />
 
 <b>Table 4A -- Whites in U.S. Information Technology -- Top 10 States </b>   
-<i>[Click here for full version](Table4A-Full-White-Race-Residence.html)</i>
+<i>[Click here for full version](Table4A-Full-White-Employment.html)</i>
 ```{r, echo=FALSE, cache=TRUE, comment=NA}
     colnames(dfTable4A) <- c("State", "AllTech", "S_%", "WhiTech", "T_%", "WhiPop", "P_%", "Par")
 print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)  
@@ -210,7 +210,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
 <b>Table 4B -- Blacks in U.S. Information Technology -- Top 10 states</b>    
-<i>[Click here for full version](Table4B-Full-Black-Race-Residence.html)</i> 
+<i>[Click here for full version](Table4B-Full-Black-Employment.html)</i> 
 ```{r, echo=FALSE, cache=TRUE, comment=NA}
     colnames(dfTable4B) <- c("State", "AllTech", "S_%", "BlkTech", "T_%", "BlkPop", "P_%", "Par")  
     print(format(dfTable4B[1:11,], big.mark = ","), row.names=FALSE)  
@@ -229,7 +229,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
 <b>Table 4C -- Asians in U.S. Information Technology -- Top 10 states</b>    
-<i>[Click here for full version](Table4C-Full-Asian-Race-Residence.html)</i>
+<i>[Click here for full version](Table4C-Full-Asian-Employment.html)</i>
 
 ```{r, echo=FALSE, cache=TRUE, comment=NA}
     colnames(dfTable4C) <- c("State", "AllTech", "S_%",  "AsnTech", "T_%", "AsnPop", "P_%", "Par")
@@ -244,7 +244,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
 <b>Table 4D -- Hispanics in U.S. Information Technology -- Top 10 states</b>      
- <i>[Click here for full version](Table4D-Full-Hispanic-Race-Residence.html)</i> 
+ <i>[Click here for full version](Table4D-Full-Hispanic-Employment.html)</i> 
 
 ```{r, echo=FALSE, cache=TRUE, comment=NA}
     colnames(dfTable4D) <- c("State", "AllTech", "S_%", "HspTech", "T_%", "HspPop", "P_%", "Par")
@@ -262,7 +262,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 
 <b>Table 4E -- Asian Females in U.S. Information Technology -- Top 10 states</b>      
- <i>[Click here for full version](Table4E-Full-AsianFemale-Race-Residence.html)</i> 
+ <i>[Click here for full version](Table4E-Full-AsianFemale-Employment.html)</i> 
 
 ```{r, echo=FALSE, cache=TRUE, comment=NA}
     colnames(dfTable4D) <- c("State", "AllTech", "S_%", "AsiFemTech", "T_%", "NonAsiFemPop", "P_%", "Par")
@@ -275,7 +275,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 
 <b>Table 4F -- Non-Asian Females in U.S. Information Technology -- Top 10 states</b>      
- <i>[Click here for full version](Table4F-Full-NonAsianFemale-Race-Residence.html)</i> 
+ <i>[Click here for full version](Table4F-Full-NonAsianFemale-Employment.html)</i> 
 
 ```{r, echo=FALSE, cache=TRUE, comment=NA}
     colnames(dfTable4F) <- c("State", "AllTech", "S_%", "NonAsiTech", "T_%", "NonAsiPop", "P_%", "Par")
