@@ -56,7 +56,9 @@ My principal findings were straight-forward:
 
 * Fourth, females techs only held `r prettyNum(dfTable2B[2,3])` percent of the nation's `r prettyNum(dfTable2B[1,1], big.mark=",", scientific=FALSE)` tech positions. After considering the disproportionate number of tech positions allocated to Asian techs, I split the female tech category into Asian females and non-Asian females. I then found that Asian females also occupied disproportionately larger shares of the tech sectors in most states than their proportion of each state's population. Indeed, their shares ranged as high as 6.29 times their shares of state populations. (See Table 4E and Table 6.) By contrast, non-Asian females occupied much smaller shares of the state tech sectors than their shares of the state populations. (See Tables 2B, 3 and 6.)
 
-* Fifth, the strengths of these relationships varied widely: some states offered substantially larger employment opportunities for Blacks, Hispanics, and female techs than others. (See Tables 8B, 8D, 8E, and 8F)
+* Fifth, the strengths of these relationships varied widely: some states offered substantially larger employment opportunities for Blacks, Hispanics, and female techs than others. (See Tables 8B, 8D, 8E, and 8F)   
+
+* Sixth, California and New York, the states that employed the largest and second largest number of information technology professionals, were "best states" for white information technology professionals; but neither was a "best state" for for Blacks, Hispanics, Asians, Asian females, nor non-Asian females in tech.
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
 
