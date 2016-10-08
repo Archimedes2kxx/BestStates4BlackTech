@@ -28,7 +28,7 @@ output:
     library(mapproj) ### needed by ggplot2, but not installed automaticallly
     library(ggplot2)
     library(gridExtra)
-    library(printr)
+    ### library(printr)
     library(grid)
     library(gtable)
 
@@ -55,7 +55,7 @@ My principal findings were straight-forward:
 
 * Third, if all other things were equal, one would expect that the percentage of a state's tech sector that was Black would be about the same as the percentage of the state's total population that was Black. One would expect similar parity for the percentages of Hispanics. But all things were not equal, so I found that the percentage of the tech sector of most states that was Black, Hispanic, or female was substantially smaller than the percentage of the state's total population that was Black, Hispanic, or female. By contrast, I found that the percentage of state tech sectors that was Asian was always greater than their population percentage and ranged as high as `r dfTable6["Asian", "max"]` times their population percentage. (See Table 4C and Table 6)  
 
-* Fourth, females techs only held 25 XXX percent of the nation's 4,sss,sss XXX tech positions; but the disproportionate number of tech positions allocated to Asian techs, suggested that I split the female tech category into Asian females and non-Asian females. When I did so, I found that Asian females also occupied a disproportionately larger share of the tech sector in all 50 states and the District of Columbia than their proportion of each state's population. Indeed their share of tech ranged as high as 6.29 xxxx times their share of the state's population. (See Table 4E and Table 6.) By contrast, non-Asian females occupied a smaller share of the state's tech sector than their share of the state's population in all 50 states and DC. (See Table 4F and Table 6.)
+* Fourth, females techs only held 25 XXX percent of the nation's 4,sss,sss XXX tech positions; but the disproportionate number of tech positions allocated to Asian techs, suggested that I split the female tech category into Asian females and non-Asian females. When I did so, I found that Asian females also occupied a disproportionately larger share of the tech sector in all 50 states and the District of Columbia than their proportion of each state's population. Indeed their share of tech ranged as high as 6.29  times their share of the state's population. (See Table 4E and Table 6.) By contrast, non-Asian females occupied a smaller share of the state's tech sector than their share of the state's population in all 50 states and DC. (See Table 4F and Table 6.)
 
 * Fifth, the strengths of these relationships varied widely: some states offered substantially larger employment opportunities for Blacks, Hispanics, and female techs than others. (See Tables 8B, 8D, 8E, and 8F)
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
@@ -84,7 +84,8 @@ This being my first attept to write a reproducible report, I wrote it in R and s
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
-## Findings ... <i><small>Answers to the following questions</small></i> 
+## Findings ... <i><small>Answers to the following questions</small></i>
+My brief answers to the first three questions provide a broad statistical framwork for my extended responses to the fourth and fifth questions that form the core of this report.
 
 #### Question 1A -- How many Whites, Blacks, Asians, and Hispanics lived in the U.S. in 2014?    
 Answer 1 ... In 2014, as shown in Table 1A (below), the largest of the four racial/ethnic groups discussed in this report was White (`r prettyNum(dfTable1A[1,2], big.mark=",", scientific=FALSE)`); the smallest was Asian (`r prettyNum(dfTable1A[1,4], big.mark=",", scientific=FALSE)`). Hispanics, the largest minority (`r prettyNum(dfTable1A[1,5], big.mark=",", scientific=FALSE)`), had grown substantially larger than Blacks (`r prettyNum(dfTable1A[1,3], big.mark=",", scientific=FALSE)`).
@@ -94,49 +95,33 @@ Answer 1 ... In 2014, as shown in Table 1A (below), the largest of the four raci
    print(format(dfTable1A, big.mark=","), row.names=TRUE)
 ```
 
-<b>Comments on Table 1A</b>   
-
-* blah, blah, blah   
-* blah, blah, blah 
 
 #### Question 1B -- How many Whites, Blacks, Asians, Hispanics worked in tech in 2014? 
-Answer 1B ... As shown in Table 2 (below), in 2014 Whites were still a substantial majority (`r prettyNum(dfTable1B[1,2], big.mark=",", scientific=FALSE)`) of the tech sector (`r prettyNum(dfTable1B[2,2], big.mark=",", scientific=FALSE)`%); Asians placed second (`r prettyNum(dfTable1B[1,4], big.mark=",", scientific=FALSE)`); Blacks showed third (`r prettyNum(dfTable1B[1,3], big.mark=",", scientific=FALSE)`); and Hispanics came in fourth  (`r prettyNum(dfTable1B[1,5], big.mark=",", scientific=FALSE)`)
+Answer 1B ... As shown in Table 2 (below), the U.S. Census Bureau estimated that there were `r prettyNum(dfTable1B[1,1], big.mark=",", scientific=FALSE)` tech professionals in the U.S. in 2014.  Whites were a substantial majority (`r prettyNum(dfTable1B[1,2], big.mark=",", scientific=FALSE)`) of the tech sector (`r prettyNum(dfTable1B[2,2], big.mark=",", scientific=FALSE)`%); Asians placed second (`r prettyNum(dfTable1B[1,4], big.mark=",", scientific=FALSE)`); Blacks showed third (`r prettyNum(dfTable1B[1,3], big.mark=",", scientific=FALSE)`); and Hispanics came in fourth  (`r prettyNum(dfTable1B[1,5], big.mark=",", scientific=FALSE)`)
 
 <b>Table 1B -- Racial/Ethnic Composition of the U.S. Tech Sector in 2014</b>   
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
   print(format(dfTable1B, big.mark=","), row.names=TRUE)
 ```
 
-<b>Comments on Table 1B</b>   
-
-* blah, blah, blah   
-* blah, blah, blah 
-
-
 #### Question 2A -- What was the male/female composition of the U.S. population in 2014?
 
+Answer 2A ... blah, blah, blah   
 
 <b>Table 2A -- Male/Female Composition of the U.S. population in 2014</b>   
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
   print(format(dfTable2A, big.mark=","), row.names=TRUE)
 ```
 
-<b>Comments on Table 2A</b>   
-
-* blah, blah, blah   
-* blah, blah, blah    
-
 #### Question 2B -- What was the male/female composition of the tech sector in 2014? 
+
+Answer 2B ... blah, blah, blah   
 
 <b>Table 2B -- Male/Female Composition of the U.S. Tech Sector in 2014</b>   
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
   print(format(dfTable2B, big.mark=","), row.names=TRUE)
 ```
 
-<b>Comments on Table 2B</b>   
-
-* blah, blah, blah   
-* blah, blah, blah    
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>       
 
@@ -155,10 +140,19 @@ Answer 3C ... The third column of Table 3 (below) shows the percentage of techs 
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
-#### Question 4 -- Where did the racial, ethnic, female techs live in 2014?      
-Answer 4 ... The following paragraphs provide an extensive response to a more specific formulation of this question ==> In which states did White, Black, Asian, Hispanic, and female techs reside in 2014? <b>My underlying assumption was that most people worked in the state in which they lived. So the number of tech residents in a state should be about the same as the number of techs employed in that state.</b> (<i>Readers are reminded of two notable exceptions: New York City and Washington, DC wherein substantial numbers of out-of-state workers commute from nearby New Jersey and Connecticut, and from Maryand and Viginia, respectively.</i>) 
+#### Question 4 -- Where did the nation's Black, Hispanic, and female tech professionals work in 2014?      
+Answer 4 ... The following sections provide an extensive response to a more specific formulation of this question ==> In which states did White, Black, Asian, Hispanic, and female tech professionals reside in 2014? <b>My underlying assumption was that most people worked in the state in which they lived. So the number of tech residents in a state should be about the same as the number of techs employed in that state.</b> (<i>Readers are reminded of two notable exceptions: New York City and Washington, DC wherein substantial numbers of out-of-state workers commute from nearby New Jersey and Connecticut, and from Maryand and Viginia, respectively.</i>) 
 
-I've presented U.S. Census data that answers this question in two formats: as a set of choropleth maps and as a corresponding set of tables. I show the maps first because it's easier to see the residential patterns of the racial/ethnic/female groups by looking at multicolored maps than by scanning columns of data in long tables. Indeed, a quick scan of the maps makes it easier to see the same patterns in the data tables.
+Table 4 (below) lists the six states that employed the most techs in 2014. These states will also appear in just about every table that follows because  they employed such a large share (`r prettyNum(min(dfTable4[1, 9]))` percent) of all `r prettyNum(dfTable4[1, 1], big.mark=",", scientific=FALSE)` techs in the U.S.
+
+<b>Table 4 ... Biggest Half-Dozen Tech States in 2014</b>
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+rownames(dfTable4) <- ""
+### 1-row table is too long to print on one row, so totals in drop col 8
+print(format(dfTable4[,c(1:7,9)], big.mark = "," , rownames=FALSE ))
+```
+
+I've presented U.S. Census data that shows the geographic distribution of tech professionals in two formats: (1) as a set of choropleth maps and (2) as a corresponding set of tables. I show the maps first because it's easier to see the residential patterns of the racial/ethnic/female groups by looking at multicolored maps than by scanning columns of data in long tables. Indeed, a quick scan of the maps makes it easier to see the same patterns in the data tables.
 
 There are six maps (below), one for each racial/ethnic group plus two female groups, Asian females and non-Asian females. Map 4A shows the residential distribution of White techs; Map 4B shows the distribution of Black techs; Map 4C shows Asian techs; Map 4D shows Hispanics; Map E shows Asian females, and Map F shows non-Asian females. Each map colors the states with the largest number of tech residents in the darkest colors, and colors the states with the least tech residents in the lightest colors. The same colors represent the same percentages on all six maps
 
@@ -179,19 +173,18 @@ There are six maps (below), one for each racial/ethnic group plus two female gro
 
 * Map 4F shows that non-Asian females are have their largest shares of tech in California, Texas, and Florida, but less so than Asian females.
 
-
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>
 
 <b>Tables 4A, 4B, 4C, 4D, 4E, and 4F</b> ... <i>50 states plus DC</i>  
 Six data tables impose numeric precision on the qualitative insights provided by the corresponding maps. The tables are ordered by the number of techs from each group that lived in each state. The short versions that only contain the top ten rows are displayed below. To view the full tables that contain data for all 50 states plus the District of Columbia, please click the link below the table name. Each table (full and short version) has the following eight columns<br /><br />
 1. <b>State</b> -- State of residence for the techs whose data is shown in the other columns of each row<br /> <br />
-2. <b>AllTech</b> -- Data for all of the techs in the U.S. The data in this column is repeated in each of the four tables, but the order of the rows differs from one table to the next. For example Table 4A shows that the total number of techs in California in 2014 was `r prettyNum(dfTable4A[dfTable4A=="California", 2], big.mark=",", scientific=FALSE)`, and the total number in Texas was   `r prettyNum(dfTable4A[dfTable4A=="Texas", 2], big.mark=",", scientific=FALSE)` <br /> <br />
-3. <b>S_%</b> -- The state's share of each racial/ethnic group. More specifically, the percent of all U.S. techs in this racial group who lived in this state. For example, Table 4A shows that  `r dfTable4A[dfTable4A=="California", 3]` percent of all White techs lived in California in 2014, and `r dfTable4A[dfTable4A=="Texas", 3]` percent lived in Texas.<br /> <br />
-4. <b>WhiTech, BlkTech, AsiTech, HispTech, FemAsiTech, or FemNonAsiTech</b> -- White techs, Black techs, Asian techs, Hispanic, femal Asian techs, and female Non-Asian techs in tables A, B, C, D, E, and F, respectively. The data in this column shows the number of techs from the table's racial/ethnic group that lived in each state. For example, Table 4A shows that `r prettyNum(dfTable4A[dfTable4A=="California", 4], big.mark=",", scientific=FALSE)` White techs lived in California, and `r prettyNum(dfTable4A[dfTable4A=="Texas", 4], big.mark=",", scientific=FALSE)`   White techs lived in Texas. <b>The rows of each table are ordered by data in this column, i.e., by the number of techs in each state; states with higher numbers at the top, lower numbers at the bottom.</b><br /> <br />
-5. <b>T_%</b> -- Percent of of the state's techs who were in the table's racial/ethnic group. For exampleTable 4A shows that `r dfTable4A[dfTable4A=="California", 5]` percent of the techs in California were White, and `r dfTable4A[dfTable4A=="Texas", 5]` percent of the techs in Texas were White.<br /> <br />
-6. <b>WhiPop, BlkPop, AsiPop, HspPop, FemAsiTech, or FemNonAsiTech</b> -- White population, Black population, Asian population, Hispanic, female Asian population, or female non-Asian population in each state. For example Table 4A shows that the 2014 White (non-Hiispanic) population of California was `r prettyNum(dfTable4A[dfTable4A=="California", 6], big.mark=",", scientific=FALSE)`, and the White (non-Hispanic) population of Texas was `r prettyNum(dfTable4A[dfTable4A=="Texas", 6], big.mark=",", scientific=FALSE)`.<br /><br />
-7. <b>P_%</b> -- Percent of the state's total population that belonged to the table's racial/ethnic group. For example, Table 4A shows that in 2014,  `r dfTable4A[dfTable4A=="California", 7]` percent of the total population of California was White, and `r dfTable4A[dfTable4A=="Texas", 7]` percent of the total population of Texas was white<br /><br />
-8. <b>Par</b> -- Parity ratio of the  percent of the state's tech population that belonged to the table's racial/ethnic group divided by the percent of the state's total population that belonged to that group, i.e., T_% / P_%. For example, Table 4A shows that the White parity ratio for California was  `r dfTable4A[dfTable4A=="California", "parity"]`, which is `r dfTable4A[dfTable4A=="California", 5]` divided by `r dfTable4A[dfTable4A=="California", 7]`<br /><br />
+2. <b>AllTech</b> -- Data for all of the techs in the U.S. The data in this column is repeated in each of the four tables, but the order of the rows differs from one table to the next. For example Table 4A shows that the total number of techs in California in 2014 was `r prettyNum(dfTechPop_white["California", 2], big.mark=",", scientific=FALSE)`, and the total number in Texas was   `r prettyNum(dfTechPop_white["Texas", 2], big.mark=",", scientific=FALSE)` <br /> <br />
+3. <b>S_%</b> -- The state's share of each racial/ethnic group's national total. More specifically, the percent of all U.S. techs in a racial group who lived in each state. For example, Table 4A shows that  `r dfTechPop_white["California", 3]`  percent of all White techs lived in California in 2014, and `r dfTechPop_white["Texas", 3]`  percent lived in Texas.<br /> <br />
+4. <b>WhiTech, BlkTech, AsiTech, HispTech, FemAsiTech, or FemNonAsiTech</b> -- White techs, Black techs, Asian techs, Hispanic, femal Asian techs, and female Non-Asian techs in tables A, B, C, D, E, and F, respectively. The data in this column shows the number of techs from the table's racial/ethnic group that lived in each state. For example, Table 4A shows that `r prettyNum(dfTechPop_white["California", 4], big.mark=",", scientific=FALSE)` White techs lived in California, and `r prettyNum(dfTechPop_white["Texas", 4], big.mark=",", scientific=FALSE)` White techs lived in Texas. <b>The rows of each table are ordered by data in this column, i.e., by the number of techs in each state; states with higher numbers at the top, lower numbers at the bottom.</b><br /> <br />
+5. <b>T_%</b> -- Percent of of the state's techs who were in the table's racial/ethnic group. For exampleTable 4A shows that `r dfTechPop_white["California", 5]`  percent of the techs in California were White, and `r dfTechPop_white["Texas", 5]`  percent of the techs in Texas were White.<br /> <br />
+6. <b>WhiPop, BlkPop, AsiPop, HspPop, FemAsiTech, or FemNonAsiTech</b> -- White population, Black population, Asian population, Hispanic, female Asian population, or female non-Asian population in each state. For example Table 4A shows that the 2014 White (non-Hiispanic) population of California was `r prettyNum(dfTechPop_white["California", 6], big.mark=",", scientific=FALSE)`, and the White (non-Hispanic) population of Texas was `r prettyNum(dfTechPop_white["Texas", 6], big.mark=",", scientific=FALSE)`.<br /><br />
+7. <b>P_%</b> -- Percent of the state's total population that belonged to the table's racial/ethnic group. For example, Table 4A shows that in 2014,  `r dfTechPop_white["California", 7]` percent of the total population of California was White, and `r dfTechPop_white["Texas", 7]` percent of the total population of Texas was white<br />.<br />
+8. <b>Par</b> -- Parity ratio of the  percent of the state's tech population that belonged to the table's racial/ethnic group divided by the percent of the state's total population that belonged to that group, i.e., T_% / P_%. For example, Table 4A shows that the White parity ratio for California was  `r dfTechPop_white["California", "parity"]`, which is `r dfTechPop_white["California", 5]` divided by `r dfTechPop_white["California", 7]`<br /><br />
 
 <b>Table 4A -- Whites in U.S. Information Technology -- Top 10 States </b>   
 <i>[Click here for full version](Table4A-Full-White-Employment.html)</i>
@@ -206,7 +199,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 * To be specific, the third and fourth columns show that in 2014 the largest number of White techs lived in California; the next largest lived in Texas. White techs were found in every state after that in smaller and smaller numbers.   
 
-* This story is told succinctly by the parity values in the last column (Par) of Table 4A (and in its full version). White parity values were all close to 1.0, which means that the percentage of techs who were White in each state was more or less the same as the percentage of Whites in the state's total population. In other words, if you walked into a tech office in any state in the USA, you would probably encounter the same percentage of White techs as the percentage of White people you would encounter walking down the street -- with an important exception. As per Table 3, random encounters with 10 White people on a street would only involve five males; but random encounters with 10 White techs in an office would probably involve seven or eight males.
+* This story is captured by the parity values in the last column (Par) of Table 4A (and in its full version). White parity values were all close to 1.0, which means that the percentage of techs who were White in each state was more or less the same as the percentage of Whites in the state's total population. In other words, if you walked into a tech office in any state in the USA, you would probably encounter the same percentage of White techs as the percentage of White people you would encounter walking down the street -- with an important exception. Random encounters with 10 White people on a street would only involve five males; but as per Table 3 (above) random encounters with 10 White techs in an office would probably involve seven or eight males.
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
 <b>Table 4B -- Blacks in U.S. Information Technology -- Top 10 states</b>    
@@ -221,9 +214,9 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 * Column 4 (BlkTech) of Table 4B (above) shows that in 2014 the largest number of Black techs lived in Texas, second largest in Georgia, third in Virginia, fourth in New York, fifth in Maryland, sixth in Florida, and California placed seventh. Why? Because in 2014 the vast majority Black Americans still lived in Eastern and Southern states; so that's where most of the Black techs were found. This put most Black techs at a considerable disadvantage with regards to learning about and/or being recruited for tech jobs in Silicon Valley.
 
-* California's prominence as the corporate headquarters of many of the nation's richest tech companies makes it necessary to closely examine the status of its minorities. Unfortunately the numbers were disappointing. As per the fifth column (T\_%), the `r prettyNum(dfTable4B["California", "per_blackTech"], big.mark=",", scientific=FALSE)`% Black share of tech in California was the lowest in the table by a wide margin. And its parity numbers in the last column (Par) were lower than all but one of the other nine states.    
+* California's prominence as the corporate headquarters of many of the nation's richest tech companies makes it necessary to closely examine the status of its disadvantaged groups. Unfortunately the numbers were disappointing. As per the fifth column (T\_%), the `r prettyNum(dfTechPop_black["California", "per_blackTech"], big.mark=",", scientific=FALSE)`%  Black share of tech in California was the lowest in the table by a wide margin. And its parity numbers in the last column (Par) were lower than all but one of the other nine states.    
 
-* Perhaps California's `r prettyNum(dfTable4B["California", "blackPop"], big.mark=",", scientific=FALSE)` Black population wasn't large enough compared to the state's `r prettyNum( dfTable4B["California", "blackPop"]/dfTable4B["California", "per_blackPop"] * 100, big.mark=",", scientific=FALSE)` total population for Black techs to obtain a bigger slice of the tech pie? Unfortunately, this "critical mass" hypothesis is undermined by even lower proportions for Hispanics in Table D (below). By 2014 Hispanics had become the largest group in the state, `r prettyNum(dfTable4D["California", "per_hispanicPop"], big.mark=",", scientific=FALSE)`%, larger than any plausible "critical mass". The Hispanic share of the state's total population was about seven times as large as the Black share, `r prettyNum(dfTable4B["California", "per_blackPop"], big.mark=",", scientific=FALSE)`%. So its tech share should have been at least seven times as large ... but it wasn't. As per Table 4D, the Hispanic tech share, `r prettyNum(dfTable4B["California", "per_hispanicTech"], big.mark=",", scientific=FALSE)`%, was less than four times as large as the Black share, `r prettyNum(dfTable4B["California", "per_blackTech"], big.mark=",", scientific=FALSE)`%. So lack of "critical mass" can't explain either group's low share of California's tech sector. Other factors must have been involved.
+* Perhaps California's `r prettyNum(dfTechPop_black["California", "blackPop"], big.mark=",", scientific=FALSE)` Black population wasn't large enough compared to the state's `r prettyNum( dfTechPop_black["California", "blackPop"]/dfTechPop_black["California", "per_blackPop"] * 100, big.mark=",", scientific=FALSE)` total population for Black techs to obtain a bigger slice of the tech pie? Unfortunately, this "critical mass" hypothesis is undermined by even lower proportions for Hispanics in Table D (below). By 2014 Hispanics had become the largest group in the state, `r prettyNum(dfTechPop_hispanic["California", "per_hispanicPop"], big.mark=",", scientific=FALSE)`%, larger than any plausible "critical mass". The Hispanic share of the state's total population was about seven times as large as the Black share, `r prettyNum(dfTechPop_black["California", "per_blackPop"], big.mark=",", scientific=FALSE)`%. So its tech share should have been at least seven times as large ... but it wasn't. As per Table 4D, the Hispanic tech share, `r prettyNum(dfTechPop_hispanic["California", "per_hispanicTech"], big.mark=",", scientific=FALSE)`%, was less than four times as large as the Black share, `r prettyNum(dfTechPop_black["California", "per_blackTech"], big.mark=",", scientific=FALSE)`%. So lack of "critical mass" can't explain either group's low share of California's tech sector. Other factors must have been involved.
 
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
@@ -237,9 +230,9 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 ```
 <b>Comments about Table 4C -- Asians in Tech</b>    
 
-* As per the second row in the fourth column in Table 4C, California was home to `r prettyNum(dfTable4C["California", "asianTech"], big.mark=",", scientific=FALSE)` Asian techs, which represented `r dfTable4C["California", "per_state"]` percent of all of the Asian techs in the U.S. This was, by far, the highest concentration of any racial/ethnic group in any state. Asian techs were also `r dfTable4C["California", "per_asianTech"]` percent of the `r prettyNum(dfTable4C["California", "totalTech"], big.mark=",", scientific=FALSE)` techs in California, the highest percentage of Asians in the tech sector of any state. (See the <i>[full version](Table4C-Full-Asian-Race-Residence.html)</i> of Tablc 4C)
+* As per the second row in the fourth column in Table 4C, California was home to `r prettyNum(dfTechPop_asian["California", "asianTech"], big.mark=",", scientific=FALSE)`xxxx Asian techs, which represented `r dfTechPop_asian["California", "per_state"]`xxxx percent of all of the Asian techs in the U.S. This was, by far, the highest concentration of any racial/ethnic group in any state. Asian techs were also `r dfTechPop_asian["California", "per_asianTech"]`xxxx percent of the `r prettyNum(dfTechPop_asian["California", "totalTech"], big.mark=",", scientific=FALSE)`xxxx techs in California, the highest percentage of Asians in the tech sector of any state. (See the <i>[full version](Table4C-Full-Asian-Race-Residence.html)</i> of Tablc 4C)
 
-* Although the intensity of Asian invovement in the tech sector of California was impressive, Asian participation in the tech sector of every other state was also remarkable. The parity values in the last column of the table provide concise summaries. The <i>[full version](Table4C-Full-Asian-Race-Residence.html)</i> of Table 4C shows that Asian parity values  ranged from `r dfTable6["Asian", "min"]`  to `r dfTable6["Asian", "max"]`. In other words, the Asian share of the tech sectors in the 50 states plus DC ranged from `r dfTable6["Asian", "min"]` times their share of the state's total population to `r dfTable6["Asian", "max"]` times their share of the state's total population.   
+* Although the intensity of Asian invovement in the tech sector of California was impressive, Asian participation in the tech sector of every other state was also remarkable. The parity values in the last column of the table provide concise summaries. The <i>[full version](Table4C-Full-Asian-Race-Residence.html)</i> of Table 4C shows that Asian parity values  ranged from `r dfTable6["Asian", "min"]`xxxx  to `r dfTable6["Asian", "max"]`xxxx. In other words, the Asian share of the tech sectors in the 50 states plus DC ranged from `r dfTable6["Asian", "min"]`xxxx times their share of the state's total population to `r dfTable6["Asian", "max"]`xxxx times their share of the state's total population.   
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
@@ -252,16 +245,16 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 ```
 <b>Comments about Table 4D -- Hispanics in Tech</b>  
 
-* As per the third column (S_%) of Table 4D, Hispanic techs were concentrated in three states: California, Texas, and Florida. The table shows that `r dfTable4D["California", "per_state"]` percent lived in California,  `r dfTable4D["Texas", "per_state"]` percent lived in Texas, and  `r dfTable4D["Florida", "per_state"]` percent lived in Florida. Taken together, these three states accounted for `r dfTable4D["California", "per_state"] + dfTable4D["Texas", "per_state"] + dfTable4D["Florida", "per_state"] ` percent of the Hispanic techs in the entire country, i.e., about half. The other half live in the other 47 states and the District of Columbia.  
+* As per the third column (S_%) of Table 4D, Hispanic techs were concentrated in three states: California, Texas, and Florida. The table shows that `r dfTechPop_hispanic["California", "per_state"]`xxxx percent lived in California,  `r dfTechPop_hispanic["Texas", "per_state"]`xxxx percent lived in Texas, and  `r dfTechPop_hispanic["Florida", "per_state"]`xxxx percent lived in Florida. Taken together, these three states accounted for `r dfTechPop_hispanic["California", "per_state"] + dfTechPop_hispanic["Texas", "per_state"] + dfTechPop_hispanic["Florida", "per_state"] `xxxx percent of the Hispanic techs in the entire country, i.e., about half. The other half live in the other 47 states and the District of Columbia.  
 
-* All of the parity values of the top 10 states for Black techs shown in the last column of Table 4B are substantially higher than the parity values for all of the top 10 states for Hispanic techs shown in Table 4D ... with one exception: Florida, parity = `r dfTable4D["Florida", "parity"]`. Florida's parity value for Hispanic techs was more than twice the `r dfTable4D["California", "parity"]` parity value for Hispanics in California. Indeed, Table 4D shows that California had the lowest parity value of all of the top ten states for Hispanics. These considerations suggest the possbility that Hispanic techs may have encountered larger employment barriers than Black techs, especially in California.   
+* All of the parity values of the top 10 states for Black techs shown in the last column of Table 4B are substantially higher than the parity values for all of the top 10 states for Hispanic techs shown in Table 4D ... with one exception: Florida, parity = `r dfTechPop_hispanic["Florida", "parity"]`xxxx. Florida's parity value for Hispanic techs was more than twice the `r dfTechPop_hispanic["California", "parity"]`xxxx parity value for Hispanics in California. Indeed, Table 4D shows that California had the lowest parity value of all of the top ten states for Hispanics. These considerations suggests that Hispanic techs may have encountered larger employment barriers than Black techs, especially in California.   
 
-* Despite California's relatively low Hispanic parity, the fifth column (T_%) of Table 4D shows that `r dfTable4D["California", "per_hispanicTech"]` percent of the techs who lived in California were Hispanic. This figure is remarkable because it is two to three times as high as the 2 percent to 4 percent employment rates for Hispanic techs that have been reported by Silicon Valley's biggest firms in the last three years. It suggests that willingness to hire Hispanic techs was low throughout the state, but substantantially lower in the Valley.    
+* Despite California's relatively low Hispanic parity, the fifth column (T_%) of Table 4D shows that `r dfTechPop_hispanic["California", "per_hispanicTech"]`xxxx percent of the techs who lived in California were Hispanic. This figure is remarkable because it is two to three times as high as the 2 percent to 4 percent employment rates for Hispanic techs that have been reported by Silicon Valley's biggest firms in the last three years. It suggests that willingness to hire Hispanic techs was low throughout the state, but substantantially lower in the Valley.    
 
-* Perhaps the Valley required higher academic qualifications than other employers. But as I pointed out in a recent note on this blog (<i>["The California Pipelines of Silicon Valley"](http://hbcu-levers.blogspot.com/2016/07/the-california-pipelines-of-silicon.html)</i>), IPEDS data showed that 20 percent of the combined total of White, Black, Asian, and Hispanic students enrolled in the best colleges and universities in California were Hispanic. So there is reason to be skeptical about claims that very few Hispanic techs met the Valley's higher recruiting standards. 
+* Perhaps the Valley required higher academic qualifications than other employers. But as I pointed out in a recent note on this blog (<i>["The California Pipelines of Silicon Valley"](http://hbcu-levers.blogspot.com/2016/07/the-california-pipelines-of-silicon.html)</i>), IPEDS data showed that 20 percent of the combined total of White, Black, Asian, and Hispanic students enrolled in the best colleges and universities in California were Hispanic. So there is reason to be skeptical about claims that few Hispanic techs met the Valley's higher recruiting standards. 
 
 
-<b>Table 4E -- Asian Females in U.S. Information Technology -- Top 10 states</b>      
+<b>Table 4E -- Asian Females in U.S. Information Technology -- Top 10 states</b>     
  <i>[Click here for full version](Table4E-Full-AsianFemale-Employment.html)</i> 
 
 ```{r, echo=FALSE, cache=TRUE, comment=NA}
@@ -274,7 +267,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
  * blah blah
 
 
-<b>Table 4F -- Non-Asian Females in U.S. Information Technology -- Top 10 states</b>      
+<b>Table 4F -- Non-Asian Females in U.S. Information Technology -- Top 10 states</b>    
  <i>[Click here for full version](Table4F-Full-NonAsianFemale-Employment.html)</i> 
 
 ```{r, echo=FALSE, cache=TRUE, comment=NA}
@@ -290,7 +283,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 ### Question 5 -- Was the size of a racial/ethnic group related to the group's share of the tech jobs in a state? 
 
-Answer 5: As shown in four plots that follow, there was a positive relationship, but the relationship was strongest for Asians, weaker for Whites, still weaker for Blacks, and weakest for Hispanics
+Answer 5: As shown in four plots that follow, there was a positive relationship, but the relationship was strongest for Asians, weaker for Asian females, still weaker for Whites, weaker for Blacks, weaker for non-Asian females, and weakest for Hispanics
 
 <b>Plots 5 -- Plots of Tech Employment vs Race/Ethnic/Female Group Population</b>   
 ```{r, echo=FALSE, cache=FALSE, warning=FALSE}
@@ -303,9 +296,11 @@ Answer 5: As shown in four plots that follow, there was a positive relationship,
 
 * The regression lines and scatterplots of the <tech, population> data points appear in the four panels. The values of the slopes, called "beta1000", are displayed in the upper left corner of each plot. 
 
-* As per the values of the beta1000 slopes, If each ethnic/racial group's population increased by 1,000, Asian techs would increase by `r beta1000["asian"]`; Whites would increase by `r beta1000["white"]`, Blacks would increase by `r beta1000["black"]`; and Hispanics would increase by `r beta1000["hispanic"]`. The Asian line has the steepest slope; the Hispanic line has the flattest slope. <i>Note that the point on the far right side of the line in Plot B for Black techs was not a real data point; it was added to extrapolate what was otherwise a very short line in order to make the slope of the line more visible.</i>
+* As per the values of the beta1000 slopes, If each ethnic/racial group's population increased by 1,000, Asian techs would increase by `r beta1000["asian"]`; Whites would increase by `r beta1000["white"]`, Blacks would increase by `r beta1000["black"]`; and Hispanics would increase by `r beta1000["hispanic"]`. The Asian line has the steepest slope; the Hispanic line has the flattest slope. 
 
-* This kind of simple regression implicitly assumes that the 50 states and DC were all more or less equally receptive or resistant to including more techs from the same groups. This may indeed have been true for most states. However, Table 4B shows that the Black parity for Texas = `r dfTable4B["Texas", "parity"]`, whereas the Black parity for California = `r dfTable4B["California", "parity"]`. This suggests that Texas was more receptive to Black techs than California. And Table 4D shows that the Hispanic parity for Florida = `r dfTable4D["Florida", "parity"]`, while the Hispanic parity  for California = `r dfTable4D["California", "parity"]`. This suggests that Florida was more receptive to Hispanic techs than California.
+* This kind of simple regression implicitly assumes that the 50 states and DC were all more or less equally receptive or resistant to including more techs from the same groups. This may indeed have been true for most states. However, Table 4B shows that the Black parity for Texas = `r dfTechPop_black["Texas", "parity"]`, whereas the Black parity for California = `r dfTechPop_black["California", "parity"]`. This suggests that Texas was more receptive to Black techs than California. And Table 4D shows that the Hispanic parity for Florida = `r dfTechPop_hispanic["Florida", "parity"]`, while the Hispanic parity  for California = `r dfTechPop_hispanic["California", "parity"]`. This suggests that Florida was more receptive to Hispanic techs than California.   
+
+* blah, blah, blah about 5E and 5F
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
@@ -321,21 +316,20 @@ Answer 5: As shown in four plots that follow, there was a positive relationship,
 
 * The percentages and ratios shown in Table 5 are national percentages and national parity ratios -- not the state percentages and state parity ratios shown in Tables 4A, 4B, 4C, 4D, 4E, and 4F. In other words column 2 (T_%) shows the percentage of all techs in the nation who were in each group. Column 4 shows the percentage of the entire nation's population that was in each group. The national parity ratios for each group shown in column 5 (Par) are the result of dividing the national tech percentages in column 2 (T_%) by the national population percentages in column 4 (S_%). 
 
-
 * As per the plots shown in this section, the more complex beta1000 statistics were the results of regressions that estimated a linear relationship between the size of a group's tech population (T_% in Tables A, B, C, D, E, and F) in every state to the group's total population in every state  (S_% in Tables A, B, C, D, E, and F).    
 
-* As can be seen from the last two columns in the table, the two measures provided similar results: Asians were the most advantaged {parity = `r dfTable5["Asian", "Par"]`, beta1000 = `r dfTable5["Asian", "beta1000"]` }, Whites second {parity = `r dfTable5["White", "Par"]`, beta1000 = `r dfTable5["White", "beta1000"]`}, Blacks third {parity = `r dfTable5["Black", "Par"]`, beta100 = `r dfTable5["Black", "beta1000"]`}, and Hispanics were the least advantaged {parity = `r dfTable5["Hispanic", "Par"]`, beta100 = `r dfTable5["Hispanic", "beta1000"]`}. Asian females {parity = xxx} were advantaged that Whites {parity = yyy}, and far more advantaged than non-Asian females {parity = zzz}
+* As can be seen from the last two columns in the table, the two measures provided similar results: Asians were the most advantaged {parity = `r dfTable5["Asian", "Par"]`, beta1000 = `r dfTable5["Asian", "beta1000"]` }, Whites second {parity = `r dfTable5["White", "Par"]`, beta1000 = `r dfTable5["White", "beta1000"]`}, Blacks third {parity = `r dfTable5["Black", "Par"]`, beta100 = `r dfTable5["Black", "beta1000"]`}, and Hispanics were the least advantaged {parity = `r dfTable5["Hispanic", "Par"]`, beta100 = `r dfTable5["Hispanic", "beta1000"]`}. Asian females {parity = xxx} were more advantaged than Whites {parity = yyy}, and far more advantaged than non-Asian females {parity = zzz}
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>
 
 ## Conclusions    
-Which states were the best states for Black, Hispanic, and female tech? Given the limited scope of the data that I examined in this study, my selection criteria were rudimentary; so my conclusions should be regarded as tentative first approximations.   
+Which states were the best states for Black, Hispanic, and female tech? Given the limited scope of the data that I examined in this study, my selection criteria were rudimentary; so my conclusions should be regarded as tentative first approximations. Rather than just address this question for the disadvantaged Black, Hispanic, and female techs, I answered it for all six groups because the answers for the other three groups provide context for my conconclusions about the disadvantaged groups.
 
-1. <b>Select states that had the largest number of Black/Hispanic/female techs</b>   
-I implemented this criterion by selecting the states with the ten highest numbers of techs in each group. This meant that I began with the states that appeared in Table 4B (Black) and Table 4D (Hispanic).
+1. <b>Select states that had the largest numbers of techs in the racial/ethnic groups and the largest numbers Asian females and non-Asian females</b>   
+I implemented this criterion by selecting the states with the ten highest numbers of techs in each group. This meant that I began with the states that appeared in Tables 4A through 4F.
 
-2. <b>Select states that had the largest Black/Hispanic/female parity values</b>   
-I implemented this criterion by identifying the states in Tables 4B and 4D that had state level parity values in the top 50%  of all 50 states plus DC. Table 6 (below) summarizes the quartile breakdowns of the parity values for each racial/ethnic group. As per Table 6, the median Black parity value was  `r dfTable6["Black", "median"]`;  the median Hispanic parity value was `r dfTable6["Hispanic", "median"]`.   
+2. <b>Select states that had the largest parity values</b>   
+I implemented this criterion by identifying the states in Tables 4A through 4F that had state level parity values in the top 50% of all 50 states plus DC. Table 6 (below) summarizes the quartile breakdowns of the parity values for each group. For example, Table 6 shows the median Black parity value was  `r dfTable6["Black", "median"]`;  the median Hispanic parity value was `r dfTable6["Hispanic", "median"]`.   
 
 <b>Table 6 -- Summary of Parity Values</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -343,10 +337,10 @@ I implemented this criterion by identifying the states in Tables 4B and 4D that 
     print(dfTable6)  
 ```
 3. <b>Identify the finalists</b>   
-Table 7A lists the states whose Black parity values were greater than or equal to the median Black parity value. Table 7B lists the states whose Hispanic parity values were greater than or equal to the median Hispanic parity value.   
+Table 7A through 7F lists the states whose parity values were greater than or equal to the median parity value for each group. 
 
 <b>Tables 7A, 7B, 7C, 7D, 7E, 7F -- Finalists</b>
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     ###print(dfTable7F)  
     grid.arrange(tableGrob(dfTable7A), tableGrob(dfTable7B), tableGrob(dfTable7C), tableGrob(dfTable7D), tableGrob(dfTable7E), tableGrob(dfTable7F), nrow=3) 
 
@@ -354,18 +348,22 @@ Table 7A lists the states whose Black parity values were greater than or equal t
 
 
 4. <b>Best States</b>    
-I chose the "Best States" by sorting the lists of finalists in decreasing order of the racial/ethnic group's percentage share (T_%) of the tech sector. My original intention was to select the top five finalists according to this ranking. But there were only five finalists on each list, so all five were selected for each group. The state at the top of each list was the best of the best, the state in the second row was the second best, and so on. Readers should remember that <b>my underlying assumption was that most people worked in the state in which they lived. So the number of tech residents in a state should be about the same as the number of tech jobs in a state.</b> Table 8A contains my "Best States" for Black tech; Table 8B contains my "Best States" for Hispanic tech. 
+I chose the "Best States" by sorting the lists of finalists in decreasing order of each group's percentage share (T_%) of the tech sector. My original intention was to select the top five finalists according to this ranking. But no list had more than five finalists; so all finalists were selected for each group. The state at the top of each list was the best of the best for its group, the state in the second row was the second best, and so on. Readers should remember that <b>my underlying assumption was that most people worked in the state in which they lived. So the number of tech residents in a state should be about the same as the number of tech jobs in a state.</b>. 
 
 <b>Tables 8A, 8B, 8C, 8D, 8E, 8F -- Best States</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
         grid.arrange(tableGrob(dfTable8A, theme=tt3), tableGrob(dfTable8B, theme=tt3), tableGrob(dfTable8C, theme=tt3), tableGrob(dfTable8D, theme=tt3), tableGrob(dfTable8E, theme=tt3), tableGrob(dfTable8F, theme=tt3), nrow=3) 
 ```
 
-<b>Final Comments</b> 
+<b>Final Comments about Ver. 0.9 and Additional content for Vers. 1.0</b>   
+
+* blah-blah-blah ... Strength of weak ties, old tech states don't make anyone's best lists except Whites ... old White Boy network
+
+* blah-blah-blah ... H1-B visas for Asians Version 1.0  .... Palantir
 
 
 
-<i>Question:&nbsp;&nbsp;What were the best states for Asian tech?
+<i>Final Question:&nbsp;&nbsp;What were the best states for Asian tech?
 <br />Answer:&nbsp;&nbsp;All of them ... :-)</i>
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
@@ -391,7 +389,7 @@ I used the <b>[R Studio IDE](https://www.rstudio.com/)</b> to write the R script
 
 The scripts and embedded functions should be run in numerical order ==> Data-1A.R and Data-1B.R create the data frames required by Stats-2.R; Stats-2.R creates the tables, maps, graphs, and regression stats required by the R-markdown script in the Report-3.Rmd file that generates the report.
 
-Finally, this report represents my honest attempt to shed additional light on some important, but difficult issues. Therefore I would greatly appreciate readers' comments and suggested improvements ... but I would cherish their help in identifying any errors that I made in my data collection or analysis because bad reports don't support better policies ... :-)
+Finally, this report represents my honest attempt to shed additional light on some important, but difficult issues. Therefore I would greatly appreciate readers' comments and suggested improvements ... but I would cherish their help in identifying any errors that I made in my data collection or analysis because bad reports don't support good policies ... :-)
 <br />
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 

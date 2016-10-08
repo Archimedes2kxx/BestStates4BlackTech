@@ -148,6 +148,8 @@ colnames(dfOccupationSex) <- c("Occupation", "AllTech", "Male", "Female","M_%", 
 
 save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3, file="dfTab1A1B2A2B3.rda")
 
+
+
 ##################################
 ######################
 ### Tables 4A, 4B, 4C, 4D, 4E, 4F Racial, ethnic, female groups in each state  
@@ -214,11 +216,26 @@ rownames(dfTable4D) <- NULL
 rownames(dfTable4E) <- NULL
 rownames(dfTable4F) <- NULL
 
-save(dfTable4A, dfTable4B, dfTable4C, dfTable4D, dfTable4E, dfTable4F, file="dfTab4.rda")
-     
-### dfTechPop_white, dfTechPop_black, dfTechPop_asian, dfTechPop_hispanic, dfTechPop_female, dfTechPop_femAsian, dfTechPop_fem, NonAsian
+#################################
+################################
+### Table 4 ... Big Five
+dfTab <- subset(dfTechPop_white, select=c("state","totalTech"))
+dfTab <- dfTab[order(dfTab$"totalTech", decreasing=TRUE),]
+rownames(dfTab) <- NULL
+(dfTab<- (head(dfTab,7)))
 
-############
+sum6 <- sum(dfTab[2:7,2])
+perTop6 <- round(100*sum6/dfTab[1,2], digits=1)
+vec <- as.vector(c(dfTab[,2], sum6))
+(dfTable4 <- data.frame(t(vec), perTop6))
+colnames(dfTable4) <- c(dfTab[,1], "SumTop5", "%Top6")
+rownames(dfTable4) <- ""
+dfTable4
+
+save(dfTable4, dfTable4A, dfTable4B, dfTable4C, dfTable4D, dfTable4E, dfTable4F, dfTechPop_white, dfTechPop_black, dfTechPop_asian, dfTechPop_hispanic, dfTechPop_femAsian, dfTechPop_femNonAsian, file="dfTab4.rda")
+
+#######################################
+#######################################
 ### handy tool for spot checking data
 selectParityDF <- function(race, state){
    if (race == "black") {
@@ -468,7 +485,7 @@ rownames(dfTable6) <- c("White", "Black", "Asian", "Hispanic", "Female", "FemAsi
 ##################################
 ####### Tables 7 ... Finalists for black, hispanic, femAsians, and femNonAsians
 makeTable7 <- function(dfIn, dfParity, race, letter) {
-    dfFinal <- subset(dfIn[2:11,], parity >= dfParity[race, "med"])
+    dfFinal <- subset(dfIn[2:11,], parity >= dfParity[race, "med"]) 
     perRaceTech <- paste0("per_",race, "Tech")
     Race <- paste(toupper(substr(race, 1, 1)), substr(race, 2, nchar(race)), sep="") ### capitalize first letter of race ... aarrrrrrrrrrrggghhh!!! 
     
