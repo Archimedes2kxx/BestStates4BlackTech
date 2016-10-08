@@ -58,7 +58,7 @@ My principal findings were straight-forward:
 
 * Fifth, the strengths of these relationships varied widely: some states offered substantially larger employment opportunities for Blacks, Hispanics, and female techs than others. (See Tables 8B, 8D, 8E, and 8F)   
 
-* Sixth, California and New York, the states that employed the largest and second largest number of information technology professionals, were "best states" for white information technology professionals; but neither was a "best state" for for Blacks, Hispanics, Asians, Asian females, nor non-Asian females in tech.
+* Sixth, California and New York, the states that employed the largest and second largest number of information technology professionals, were "best states" for White information technology professionals; but neither was a "best state" for for Blacks, Hispanics, Asians, Asian females, nor non-Asian females in tech.
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
 
