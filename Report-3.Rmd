@@ -54,34 +54,34 @@ My principal findings were straight-forward:
 
 * Third, if all other things were equal, one would expect that the percentage of a state's tech sector that was Black would be about the same as the percentage of the state's total population that was Black. One would expect similar parity for the percentages of Hispanics and for females. But all things were not equal, so I found that the percentage of the tech sector of most states that was Black, Hispanic, or female was substantially smaller than the percentage of the state's total population that was Black, Hispanic, or female. By contrast, I found that the percentage of state tech sectors that was Asian was always greater than their population percentage and ranged as high as `r dfTable6["Asian", "max"]` times their population percentage. (See Tables 4C and 6)  
 
-* Fourth, females techs only held `r prettyNum(dfTable2B[2,3])` percent of the nation's `r prettyNum(dfTable2B[1,1], big.mark=",", scientific=FALSE)` tech positions. After considering the disproportionate number of tech positions allocated to Asian techs, I split the female tech category into Asian females and non-Asian females. I then found that Asian females also occupied disproportionately larger shares of the tech sectors in most states than their proportion of each state's population. Indeed, their shares ranged as high as 6.29 times their shares of state populations. (See Table 4E and Table 6.) By contrast, non-Asian females occupied much smaller shares of the state tech sectors than their shares of the state populations. (See Tables 2B, 3 and 6.)
+* Fourth, females techs only held `r prettyNum(dfTable2B[2,3])` percent of the nation's `r prettyNum(dfTable2B[1,1], big.mark=",", scientific=FALSE)` tech positions. After considering the disproportionate number of tech positions allocated to Asian techs, I split the female tech category into Asian females and non-Asian females. I then found that Asian females also occupied disproportionately larger shares of the tech sectors in most states than their share of each state's population. Indeed, their tech shares ranged as high as 6.29 times their shares of state populations. (See Table 4E and Table 6.) By contrast, non-Asian females occupied much smaller shares of the state tech sectors than their shares of the state populations. (See Tables 2B, 3 and 6.)
 
 * Fifth, the strengths of these relationships varied widely: some states offered substantially larger employment opportunities for Blacks, Hispanics, and female techs than others. (See Tables 8B, 8D, 8E, and 8F)   
 
-* Sixth, California and New York, the states that employed the largest and second largest number of information technology professionals, were "best states" for White information technology professionals; but neither was a "best state" for for Blacks, Hispanics, Asians, Asian females, nor non-Asian females in tech.
+* Sixth, California and New York, the states that employed the largest and second largest number of information technology professionals, were "best states" for White information technology professionals; but neither was a "best state" for Blacks, Hispanics, Asians, Asian females, or non-Asian females in tech.
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
 
 ## Motivation   
-My motivation for conducting this study influenced my methods. The recent barrage of <b>[annual reports](https://techcrunch.com/tag/diversity-report/)</b> from some of the nation's leading information technology companies in Silicon Valley said the primary reason why those companies employed so few Black and Hispanic information technology professionals was because there were so few available. And the reason they weren't available was because there were so few Black and Hispanic tech students in the nation's academic pipelines.    
+My motivation for conducting this study influenced my methods. The recent barrage of <b>[annual reports](https://techcrunch.com/tag/diversity-report/)</b> from some of the nation's leading information technology companies in Silicon Valley said the primary reason why those companies employed so few Black, Hispanic, and female information technology professionals was because there were so few available. And the reason they weren't available was because there were so few Black, Hispanic, and female tech students in the nation's academic pipelines.    
 
 <b>A. Best Practices</b>   
-When reading the Silicon Valley reports I found myself shaking my head while wondering, "What numbers did they have to back up these assertions? And where did they get them from?" Whereas I would have said that the pipelines were half-full, these reports implied that the pipelines were perilously close to empty. But if the pipelines were close to empty, there shouldn't be many Black or Hispanic employees in the U.S. tech sector, right? Which led me to wonder how many Black and Hispanic techs were out there and where were they located. 
+When reading the Silicon Valley reports I found myself shaking my head while wondering, "What numbers did they have to back up these assertions? And where did they get them from?" Whereas I would have said that the pipelines were half-full, these reports implied that the pipelines were perilously close to empty. But if the pipelines were close to empty, there shouldn't be many Black, Hispanic, or female employees in the U.S. tech sector, right? Which led me to wonder how many Black, Hispani, and femalec techs were out there and where were they located. 
 
-<b>But what concerned me the most was the lack of context for assessing Silicon Valley's diversity numbers. Were they as good as could be expected? Were they better? Were they worse? ... And compared to what?</b> Compared to the rest of California? Compared to other states in other parts of the country? The personal data that I had accumulated from more than 50 years in tech informed me that tech was much more diverse in the Eastern and Southern states. But personal data, while a useful source of productive hypotheses, is not credible, systematic proof. As a clever tech pundit recently proclaimed, <i>"The plural of personal anecdote is not data" ... :-)</i>
+<b>But what concerned me the most was the lack of context for assessing Silicon Valley's diversity numbers. Were they as good as could be expected? Were they worse? ... And compared to what?</b> Compared to the rest of California? Compared to other states in other parts of the country? The personal data that I had accumulated from more than 50 years in tech informed me that tech was much more diverse in the Eastern and Southern states. But personal data, while a useful source of productive hypotheses, is not credible, systematic proof. As a clever tech pundit recently proclaimed, <i>"The plural of personal anecdote is not data" ... :-)</i>
 
 One of the most useful lessons that I learned as a consultant to the National Center for Productivity way back in the late 1970s was that the application of performance metrics, even flawed metrics, to just about any significant human activity invariably identified a broad middle that was above a small tier of low performers and below another small tier of high performers. Further inquiry usually disclosed that the high performers were doing things quite differently than the middle and low performers. Happily, the performance of the lower tiers could be improved by their adoption of the high performers' <b>best practices</b> if they made appropriate adaptations of the best practices to their local working conditions. 
 
-Given this insight, I set out to measure the performance of all 50the opportunities their information technology sectors provided for Black, and Hispanic professionals. My initial explorations of the data convinced me that it was also imperative for me to examine the performance of these sectors for female professionals. If Silicon Valley proved to be a low performer in these national contexts, its executives would be  unlikely sources of best practices that could improve the Valley's performance.
+Given this insight, I set out to measure the performance of all 50 states and the District of Columbia with regards to the opportunities their tech sectors provided for Black, Hispanic, and female professionals. If Silicon Valley proved to be a low performer in these national contexts, its executives would be unlikely sources of best practices that could improve the Valley's performance.
 
 <b>B. Reproducible Reports</b>   
-One of my most important take-aways from completing the <b>[Johns Hopkins "Data Science"](https://www.coursera.org/specializations/jhu-data-science)</b> online certificate program a few months ago was the notion that reports should be "reproducible". Authors should not only describe their methods for collecting and analyzing data; they should provide detailed step-by-step descriptions of their methods (including copies of their code) so that interested readers could readily reproduce the results on their own computers. Of course, the best researchers have always tried to achieve this objective and have often succeeded. What was new for me was the specific tools that the statisticians who taught the Hopkins courses recommended ==> the <b>[R programming language](https://en.wikipedia.org/wiki/R_)</b> and <b>[GitHub](https://en.wikipedia.org/wiki/GitHub)</b>.    
+One of my most important take-aways from completing the <b>[Johns Hopkins "Data Science"](https://www.coursera.org/specializations/jhu-data-science)</b> online certificate program a few months ago was the notion that reports should be "reproducible". Authors should not only describe their methods for collecting and analyzing data; they should provide step-by-step descriptions of their methods (including copies of their code) so that interested readers could readily reproduce the results on their own computers. Of course, the best researchers have always tried to achieve this objective and have often succeeded. What was new for me was the specific tools that the statisticians who taught the Hopkins courses recommended ==> the <b>[R programming language](https://en.wikipedia.org/wiki/R_)</b> and <b>[GitHub](https://en.wikipedia.org/wiki/GitHub)</b>.    
 
 * Data should be downloaded from original sources, then analyzed, tabulated, mapped, and graphed via programs writen in R. Findings should be summarized in text laid out in a subset of <b>[Markdown](https://en.wikipedia.org/wiki/Markdown)</b> that an R application called <b>["knitr"](http://kbroman.org/knitr_knutshell/pages/Rmarkdown.html)</b> converts to HTML pages suitable for publication on Websites. 
 
 * Reproducible reports should be as concise as traditional reports, but the writer's notes, programs, analytical tools, coding guides, data files, tables, maps, graphs should be shared with the world via GitHub repositories. Of course Python, MATLAB, and other comparable languages could be used insted of R, and the supplementary files could be stored on other public repositories comparable to GitHub.     
 
-This being my first attept to write a reproducible report, I wrote it in R and stored all of my supporting files in a public <b>[GitHub repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b>. If readers disagree with my numbers, they won't have to wonder how I got them <i>... #OldDogStillLearningNewTricks ... :-)</i>   
+This being my first attept to write a reproducible report, I wrote it in R and stored my supporting files in a public <b>[GitHub repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b>. If readers disagree with my numbers, they won't have to wonder how I got them <i>... #OldDogStillLearningNewTricks ... :-)</i>   
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
@@ -282,7 +282,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
-### Question 5 -- Was the size of a racial/ethnic group related to the group's share of the tech jobs in a state? 
+### Question 5 -- Was the size of a group's share of a state's population related to the size of the group's share of the tech jobs in that state? 
 
 Answer 5: As shown in four plots that follow, there was a positive relationship, but the relationship was strongest for Asians, weaker for Asian females, still weaker for Whites, weaker for Blacks, weaker for non-Asian females, and weakest for Hispanics
 
@@ -356,16 +356,18 @@ I chose the "Best States" by sorting the lists of finalists in decreasing order 
         grid.arrange(tableGrob(dfTable8A, theme=tt3), tableGrob(dfTable8B, theme=tt3), tableGrob(dfTable8C, theme=tt3), tableGrob(dfTable8D, theme=tt3), tableGrob(dfTable8E, theme=tt3), tableGrob(dfTable8F, theme=tt3), nrow=3) 
 ```
 
-<b>Final Comments about Ver. 0.9 and Additional content for Vers. 1.0</b>   
 
-* blah-blah-blah ... Strength of weak ties, old tech states don't make anyone's best lists except Whites ... old White Boy network
+## Comments about Version 0.9 and additional content for Version 1.0</b>   
 
-* blah-blah-blah ... H1-B visas for Asians Version 1.0  .... Palantir
+* Lies, Damned Lies, and Statistical Categories
+
+... Strength of weak ties, old tech states don't make anyone's best lists except Whites ... old White Boy network
+
+* Version 1.0 -- H1-B visas for Asians 
+.... Palantir
 
 
 
-<i>Final Question:&nbsp;&nbsp;What were the best states for Asian tech?
-<br />Answer:&nbsp;&nbsp;All of them ... :-)</i>
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
 ## Methods   
