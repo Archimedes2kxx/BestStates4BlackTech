@@ -1,5 +1,5 @@
 ---
-title: "Best States: Black, Hispanic, Female Tech -- V0.9"
+title: "Best States for Black, Hispanic, and Female Tech -- V 0.9"
 author: "Roy L Beasley, PhD -- DLL Editor"
 
 output: 
@@ -13,7 +13,7 @@ output:
           
 ---
 
-```{r, echo=FALSE, cache=FALSE}
+```{r, echo=FALSE, cache=TRUE}
     
     load("dfRaceResidenceAndShares.rda")
     load("dfCensus2.rda") 
@@ -101,7 +101,7 @@ Answer 1 ... In 2014, as shown in Table 1A (below), the largest of the four raci
 Answer 1B ... As shown in Table 2 (below), the U.S. Census Bureau estimated that there were `r prettyNum(dfTable1B[1,1], big.mark=",", scientific=FALSE)` tech professionals in the U.S. in 2014.  Whites were a substantial majority (`r prettyNum(dfTable1B[1,2], big.mark=",", scientific=FALSE)`) of the tech sector (`r prettyNum(dfTable1B[2,2], big.mark=",", scientific=FALSE)`%); Asians placed second (`r prettyNum(dfTable1B[1,4], big.mark=",", scientific=FALSE)`); Blacks showed third (`r prettyNum(dfTable1B[1,3], big.mark=",", scientific=FALSE)`); and Hispanics came in fourth  (`r prettyNum(dfTable1B[1,5], big.mark=",", scientific=FALSE)`)
 
 <b>Table 1B -- Racial/Ethnic Composition of the U.S. Tech Sector in 2014</b>   
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
   print(format(dfTable1B, big.mark=","), row.names=TRUE)
 ```
 
@@ -110,7 +110,7 @@ Answer 1B ... As shown in Table 2 (below), the U.S. Census Bureau estimated that
 Answer 2A ... blah, blah, blah   
 
 <b>Table 2A -- Male/Female Composition of the U.S. population in 2014</b>   
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
   print(format(dfTable2A, big.mark=","), row.names=TRUE)
 ```
 
@@ -119,7 +119,7 @@ Answer 2A ... blah, blah, blah
 Answer 2B ... blah, blah, blah   
 
 <b>Table 2B -- Male/Female Composition of the U.S. Tech Sector in 2014</b>   
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
   print(format(dfTable2B, big.mark=","), row.names=TRUE)
 ```
 
@@ -136,7 +136,7 @@ Answer 3B ... The total number of techs in each category appear the second colum
 Answer 3C ... The third column of Table 3 (below) shows the percentage of techs in the second column who were male. Females were an overall minority of `r dfTable3[1,6] `% of all professionals in tech, and were a minority in every tech category, ranging from a low value of `r prettyNum(min(dfTable3[, 6]), scientific=FALSE)`% for to a high value of `r prettyNum(max(dfTable3[, 6]), scientific=FALSE)`%.
 
 <b>Table 3 -- Employment in U.S. Information Technology in 2014 with Female Percentages</b>   
-```{r, echo=FALSE, cache=FALSE,  comment=NA}
+```{r, echo=FALSE, cache=TRUE,  comment=NA}
    print(format(dfTable3[,c(1:2,6)], big.mark=","),row.names=FALSE) 
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
@@ -147,7 +147,7 @@ Answer 4 ... The following sections provide an extensive response to a more spec
 Table 4 (below) lists the six states that employed the most techs in 2014. These states will also appear in just about every table that follows because  they employed such a large share (`r prettyNum(min(dfTable4[1, 9]))` percent) of all `r prettyNum(dfTable4[1, 1], big.mark=",", scientific=FALSE)` techs in the U.S.
 
 <b>Table 4 ... Biggest Half-Dozen Tech States in 2014</b>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
 rownames(dfTable4) <- ""
 ### 1-row table is too long to print on one row, so totals in drop col 8
 print(format(dfTable4[,c(1:7,9)], big.mark = "," , rownames=FALSE ))
@@ -158,7 +158,7 @@ I've presented U.S. Census data that shows the geographic distribution of tech p
 There are six maps (below), one for each racial/ethnic group plus two female groups, Asian females and non-Asian females. Map 4A shows the residential distribution of White techs; Map 4B shows the distribution of Black techs; Map 4C shows Asian techs; Map 4D shows Hispanics; Map E shows Asian females, and Map F shows non-Asian females. Each map colors the states with the largest number of tech residents in the darkest colors, and colors the states with the least tech residents in the lightest colors. The same colors represent the same percentages on all six maps
 
 <b> Maps 4A (Whites), 4B (Blacks), 4C (Asians), 4D (Hispanics), 4E (Asian Females), and 4F (Non-Asian Females)</b> ... <em>Lower 48 and DC</em>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
     grid.arrange(dfMap4A, dfMap4B, dfMap4C, dfMap4D, dfMap4E, dfMap4F, ncol=2) 
 ```
 
@@ -287,7 +287,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 Answer 5: As shown in four plots that follow, there was a positive relationship, but the relationship was strongest for Asians, weaker for Asian females, still weaker for Whites, weaker for Blacks, weaker for non-Asian females, and weakest for Hispanics
 
 <b>Plots 5 -- Plots of Tech Employment vs Race/Ethnic/Female Group Population</b>   
-```{r, echo=FALSE, cache=FALSE, warning=FALSE}
+```{r, echo=FALSE, cache=TRUE, warning=FALSE}
     grid.arrange(ggPlot_white, ggPlot_black, ggPlot_asian, ggPlot_hispanic, ggPlot_femAsian, ggPlot_femNonAsian, ncol=2)
 ```
 
@@ -307,7 +307,7 @@ Answer 5: As shown in four plots that follow, there was a positive relationship,
 
 
 <b>Table 5 -- Summary of Racial/Ethnic/Female National Advantages</b>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
     print(format(dfTable5, big.mark = ","), row.names=TRUE) 
 ```
 
@@ -333,7 +333,7 @@ I implemented this criterion by selecting the states with the ten highest number
 I implemented this criterion by identifying the states in Tables 4A through 4F that had state level parity values in the top 50% of all 50 states plus DC. Table 6 (below) summarizes the quartile breakdowns of the parity values for each group. For example, Table 6 shows the median Black parity value was  `r dfTable6["Black", "median"]`;  the median Hispanic parity value was `r dfTable6["Hispanic", "median"]`.   
 
 <b>Table 6 -- Summary of Parity Values</b>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
     colnames(dfTable6) <- c("Min", "Q1", "Median", "Q3", "Max")
     print(dfTable6)  
 ```
@@ -341,7 +341,7 @@ I implemented this criterion by identifying the states in Tables 4A through 4F t
 Table 7A through 7F lists the states whose parity values were greater than or equal to the median parity value for each group. 
 
 <b>Tables 7A, 7B, 7C, 7D, 7E, 7F -- Finalists</b>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
     ###print(dfTable7F)  
     grid.arrange(tableGrob(dfTable7A), tableGrob(dfTable7B), tableGrob(dfTable7C), tableGrob(dfTable7D), tableGrob(dfTable7E), tableGrob(dfTable7F), nrow=3) 
 
@@ -352,19 +352,33 @@ Table 7A through 7F lists the states whose parity values were greater than or eq
 I chose the "Best States" by sorting the lists of finalists in decreasing order of each group's percentage share (T_%) of the tech sector. My original intention was to select the top five finalists according to this ranking. But no list had more than five finalists; so all finalists were selected for each group. The state at the top of each list was the best of the best for its group, the state in the second row was the second best, and so on. Readers should remember that <b>my underlying assumption was that most people worked in the states in which they lived. So the number of tech residents in a state should be about the same as the number of tech jobs in a state.</b>. 
 
 <b>Tables 8A, 8B, 8C, 8D, 8E, 8F -- Best States</b>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
         grid.arrange(tableGrob(dfTable8A, theme=tt3), tableGrob(dfTable8B, theme=tt3), tableGrob(dfTable8C, theme=tt3), tableGrob(dfTable8D, theme=tt3), tableGrob(dfTable8E, theme=tt3), tableGrob(dfTable8F, theme=tt3), nrow=3) 
 ```
 
 
-## Comments about Version 0.9 and additional content for Version 1.0</b>   
+## Final Comments</b>   
 
-* Lies, Damned Lies, and Statistical Categories
+Parity was a crude measure of the opportunities in tech that were provided by states to the groups considered in this study. As noted in the "Motivation" section (above), I was not surprised to find that states were assigned a wide range of values by this metric; but I was surprised by how easily this simple metric exposed the need to break these groups into subgroups in order to gain more useful insights.
 
-... Strength of weak ties, old tech states don't make anyone's best lists except Whites ... old White Boy network
+<b>Male vs. Female</b> -- The low betas, national parity values, and median parity values assigned to female techs -- xxx, yyy, and zzz -- in Tables 5 and 6 compared to the high betas, national parity values, and median parity values assigned to Asian techs as a whole -- xxx, yyy, and zzz -- suggested the need to break the female category into its Asian vs. non-Asian components, as I did in Tables 4E and 4F.   
 
-* Version 1.0 -- H1-B visas for Asians 
-.... Palantir
+* As shown in Tables 5 and 6, the betas, national parity values, and median parity values for Asian females -- xxx, yyy, and zzz -- were much higher than for non-Asian females -- xxx, yyy, and zzz. In other words, Asian females received substantially greater employment opportunities than non-Asian females all over the country. So what were they doing or perceived to be doing that made them more employable in the 50 states and DC? What were their "best practices" that accounted for their higher scores?
+
+* This is not to say that tech treated Asian males and Asian females the same. Not at all. The betas, national parity values, and median parity values assigned to Asians as a whole -- xxx, yyy, and zzz -- were much higher than the values assigned to Asian females -- xxx, yyy, and zzz. This meant that the values assigned to Asian males had to be much higher than the values assigned to Asian females. In other words Asian males received substantially greater employment opportunities per capita than Asian females.
+
+<b> Hispanic vs. Hispanic</b>, e.g., California/Texas (Mexican) vs. Florida (Cuban) ... As shown in Table 4D, California employed the largest number of Hispanics (xxx), Texas employed the second largest (xxx), and Florida employed the third largest number (xxx). <b>Nevertheless Florida was the "Best State" for Hispanics, whereas California and Texas didn't make it into the top 5</b>. Indeed Florida had the highest parity rating, xxx, of the ten biggest states in Table 4D, and its parity value was in the top quartile for all 50 states plus CD, as shown in Table 6.
+
+* In most states, being in tech means working in the information technology sections of government agencies or private corporations; whereas in California and to a lesser extent in Texas, a substantial number of techs work for software publishers whose only business is software  A large part of the Hispanic population in Florida has Cuban ancestry; whereas large parts of the Hispanic population in California and Texas have Mexican ancestry. Cuban entrepreneurs have established many prominent businesses in Florida. Indeed, Miami has been often been called the "financial capital" of Latin America,     
+
+* So it seems likely that Cuban American tech professionals would have encountered fewer hiring obstacles in Florida because they "looked like/sounded like" many corporate owner managers; the same could not be said for Mexican American tech professionals in Texas or California, especially in Silicon Valley. Accordingly, the final 1.0 version of this report will break the Hispanic group into three components -- Mexican American, Cuban American, and Others -- in order to test the validity of this hypothesis.
+
+<b> Black vs. Black</b>   
+
+* Eastern HBCU states vs other states
+
+<b> Asian vs. Asian + H1-B</b>
+
 
 
 
