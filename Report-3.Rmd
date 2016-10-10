@@ -326,16 +326,19 @@ Answer 5: As shown in four plots that follow, there was a positive relationship,
 ## Conclusions    
 Which states were the best states for Black, Hispanic, and female professionals in information technology? Given the limited scope of the data that I examined in this study, my selection criteria were rudimentary; so my conclusions should be regarded as tentative first approximations. Rather than just address this question for the disadvantaged Black, Hispanic, and female techs, I answered it for all six groups because the answers for the other three groups provided context for my conconclusions about the disadvantaged groups.
 
-1. <b>Select states that had the largest numbers of techs in the racial/ethnic groups and the largest numbers Asian females and non-Asian females</b>   
+1. <b>Select states that had the largest number of techs in the racial/ethnic groups and the largest number Asian females and non-Asian females</b>   
 I implemented this criterion by selecting the states with the ten highest numbers of techs in each group. This meant that I began with the states that appeared in short versions of Tables 4A through 4F.
 
-2. <b>Select states that had the largest parity values</b>   
-I implemented this criterion by identifying the states in Tables 4A through 4F that had state level parity values in the top 50% of all 50 states plus DC. Table 6 (below) summarizes the quartile breakdowns of the parity values for each group. For example, Table 6 shows the median Black parity value was  `r dfTable6["Black", "median"]`;  the median Hispanic parity value was `r dfTable6["Hispanic", "median"]`.   
+2. <b>Select states that had parity values above each group's median</b>   
+I implemented this criterion by identifying the states in Tables 4A through 4F that had state level parity values in the top 50% of all 50 states plus DC. Table 6 (below) summarizes the quartile breakdowns of the parity values for each group. For example, Table 6 shows the median Black parity value was  `r dfTable6["Black", 3]`;  the median Hispanic parity value was `r dfTable6["Hispanic", 3]`.  
+
+<i>Note that the first column in Table 6 shows the minimum non-zero parity values for each group. The PUMS sample for a few states had so few techs in some groups that the Census Bureau could not provide reliable estimates of the number of techs in that state based on the sample. I converted these missing values to zeros.)</i>
 
 <b>Table 6 -- Summary of Parity Values</b>
 ```{r, echo=FALSE, cache=TRUE, comment=NA}
     colnames(dfTable6) <- c("Min", "Q1", "Median", "Q3", "Max")
     print(dfTable6)  
+    print(colnames(dfTable6))
 ```
 3. <b>Identify the finalists</b>   
 Table 7A through 7F lists the states whose parity values were greater than or equal to the median parity value for each group. 
@@ -349,7 +352,7 @@ Table 7A through 7F lists the states whose parity values were greater than or eq
 
 
 4. <b>Best States</b>    
-I chose the "Best States" by sorting the lists of finalists in decreasing order of each group's percentage share (T_%) of the tech sector. My original intention was to select the top five finalists according to this ranking. But no list had more than five finalists; so all finalists were selected for each group. The state at the top of each list was the best of the best for its group, the state in the second row was the second best, and so on. Readers should remember that <b>my underlying assumption was that most people worked in the states in which they lived. So the number of tech residents in a state should be about the same as the number of tech jobs in a state.</b>. 
+I chose the "Best States" by sorting the lists of finalists in decreasing order of each group's percentage share (T_%) of the tech sector. My original intention was to select the top five finalists according to this ranking. But no list had more than five finalists; so all finalists were selected for each group. The state at the top of each list was the best of the best for its group, the state in the second row was the second best, and so on. Readers should remember that <b>my underlying assumption was that most people worked in the states in which they lived. So the number of tech residents in a state should be about the same as the number of tech jobs in a state.</b> 
 
 <b>Tables 8A, 8B, 8C, 8D, 8E, 8F -- Best States</b>
 ```{r, echo=FALSE, cache=TRUE, comment=NA}
@@ -359,7 +362,7 @@ I chose the "Best States" by sorting the lists of finalists in decreasing order 
 
 ## Final Comments</b>   
 
-Parity is a crude measure of the opportunities in tech that states provided to the groups considered in this study. I was not surprised that it assigned a wide range of values to the fify states and the District of Columbia; but I was surprised by how easily this simple metric exposed the need to break these groups into subgroups in order to gain more useful insights.
+Parity was a crude measure of the opportunities in tech that states provided to the groups considered in this study. But, as per my comments about perfmance measures in the "Motivation" section of this report, I was not surprised that it assigned a wide range of values to the fify states and the District of Columbia. Nevertheless, I was surprised by how effectively this simple metric suggested which groups should be broken into subgroups in order to obtain more useful insights.
 
 <b>Male vs. Female</b>   
 The low betas, national parity values, and median parity values assigned to female techs -- xxx, yyy, and zzz -- in Tables 5 and 6 compared to the high betas, national parity values, and median parity values assigned to Asian techs as a whole -- xxx, yyy, and zzz -- suggested the need to break the female category into its Asian vs. non-Asian components, as I did in Tables 4E and 4F.   
@@ -383,12 +386,13 @@ First, let me remind the reader that Table 1A showed that 12.4xxx percent of the
 
 * Table 6 showed that the national parity rating for Blacks in tech was 0.59xxx, i.e., 7.3xxx divided by 12.4xxx, which is more than half, i.e., greater than 0.50. Given that the vast majority of tech jobs required bachelors degrees, this meant that, contrary to the demeaning fables perpetrated by Silicon Valley's tech executives in their annual reports for the last three years, <b>the nation's Black academic pipelines were more than half-full; they were not periilously close to empty</b>. 
 
-* According to Table 8B, the five best states for Black tech professionals were the District of Columbia, Georgia, Virginia, Texas, and Florida. <b>These states are not just Southern states; they are HBCU states</b>, home to the <b>[Historically Black Colleges and Universities (HBCUs)](http://hbcu-levers.blogspot.com/p/hbcu-lists-profiles-2015.html)</b> that educated the overwhelming majority of Black college graduates before the Supreme Court's desegregation decision in 1954 and the Civil Rights legislation in 1964/65. To this day, when over 90 percent of Black students attend non-HBCUs, HBCUs still educate a large, disproportionate share of the nation's Black graduates in the STEM majors that provide entry into careers in information technology. (See my previous note on this blog <b>[HBCUs -- the Best Producers of Black Graduates in STEM](http://hbcu-levers.blogspot.com/p/using-data-from-ipeds-data-center-this.html)</b>)    
+* According to Table 8B, the five best states for Black tech professionals were the District of Columbia, Georgia, Virginia, Texas, and Florida. <b>These states weren't just Southern states; they were HBCU states</b>, homes to the <b>[Historically Black Colleges and Universities (HBCUs)](http://hbcu-levers.blogspot.com/p/hbcu-lists-profiles-2015.html)</b> that educated the overwhelming majority of Black college graduates before the Supreme Court's desegregation decision in 1954 and the Civil Rights legislation in 1964/65. To this day, when over 90 percent of Black students attend non-HBCUs, HBCUs still educate a large, disproportionate share of the nation's Black graduates in the STEM majors that provide entry into careers in information technology. (See my previous note on this blog <b>[HBCUs -- the Best Producers of Black Graduates in STEM](http://hbcu-levers.blogspot.com/p/using-data-from-ipeds-data-center-this.html)</b>)    
 
-* Given that most people attend colleges that are no more than a few hundred miles from their homes, the children of HBCU graduates have obtained STEM degrees from some of nation's best colleges located in the HBCU states, e.g, Georgia Tech, Emory, Duke, Chapel Hill, and Austin. The presence of so many older Black techs in these states created dense, overlapping support networks of role models, mentors, and tutors for Black students and new graduates, networks that were reinforced by memberships in fraternities, sororities, churches, and other social groups, networks that facilitated entry into the job market and subsequent promotion, networks that were not available to Black techs in California and other non-HBCU states.
+* Given that most people attend colleges that are no more than a few hundred miles from their homes, the children of HBCU graduates have obtained STEM degrees from some of nation's best colleges located in the HBCU states, e.g, Georgia Tech, Emory, Duke, Chapel Hill, and Austin. The presence of so many older Black techs in these states created dense, overlapping support networks of role models, mentors, and tutors for Black tech students and young Black tech graduates, networks that were reinforced by memberships in fraternities, sororities, churches, and other social groups, networks that facilitated their entry into the job market and subsequent promotion, networks that were not available to young Black techs in California and other non-HBCU states.
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
-<b> Asian vs. Asian</b>
+<b> Asian vs. Asian</b>   
+
 H1-B 
 
 
