@@ -13,6 +13,7 @@ load(file="dfStatesPop3.rda")
 load("dfCensus2.rda") 
 load("dfSexResidenceAndShares.rda")
 
+### install.packages("gridExtra")
 library(tidyr)
 library(maps)
 library(mapproj) ### needed by ggplot2, but not installed automatically
@@ -496,7 +497,7 @@ makeTable7 <- function(dfIn, dfParity, race, letter) {
     rows <- as.character(seq(1:L)) ### some tables may be shorter than 5
     rownames(dfOut) <- rows
     tabName <- paste0("7", letter, ". ", Race)
-    colnames(dfOut) <- c(tabName, "Tech", "Parity")
+    colnames(dfOut) <- c(tabName, "Tech %", "Parity")
 
     return(dfOut)
 }
@@ -511,14 +512,14 @@ makeTable7 <- function(dfIn, dfParity, race, letter) {
 
 ### Sorted by tech share of the info tech sector 
 makeTable8 <- function(dfIn, Race, letter){
-    vec <- dfIn[, "Tech"] ###dfIn[,perRaceTech]
+    vec <- dfIn[, "Tech %"] ###dfIn[,perRaceTech]
     dfOut <- dfIn[order(-vec),]
 
     L <- dim(dfOut)[1]
     rows <- as.character(seq(1:L)) ### some tables may be shorter than 5
     rownames(dfOut) <- rows
     tabName <- paste0("8", letter, ". ", Race)
-    colnames(dfOut) <- c(tabName, "Tech", "Parity")
+    colnames(dfOut) <- c(tabName, "Tech %", "Parity")
     return(dfOut)
 }
 

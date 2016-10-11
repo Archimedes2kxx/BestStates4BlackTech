@@ -13,7 +13,7 @@ output:
           
 ---
 
-```{r, echo=FALSE, cache=TRUE}
+```{r, echo=FALSE, cache=FALSE}
     
     load("dfRaceResidenceAndShares.rda")
     load("dfCensus2.rda") 
@@ -23,6 +23,7 @@ output:
     load("dfPlot5Tab5beta1000.rda")
     load("dfTab67A7B7C7D7E7F8A8B8C8D8E8F.rda")
     
+    ###install.packages("gridExtra")
     library(prettydoc)
     library(maps)    
     library(mapproj) ### needed by ggplot2, but not installed automaticallly
@@ -31,6 +32,7 @@ output:
     ### library(printr)
     library(grid)
     library(gtable)
+    library(grid)
 
     ### Intending to use Yihui Xie's printr package for better tables later
     ### install.packages("devtools")
@@ -343,7 +345,7 @@ I implemented this criterion by identifying the states in Tables 4A through 4F t
 Table 7A through 7F lists the states whose parity values were greater than or equal to the median parity value for each group. 
 
 <b>Tables 7A, 7B, 7C, 7D, 7E, 7F -- Finalists</b>
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     ###print(dfTable7F)  
     grid.arrange(tableGrob(dfTable7A), tableGrob(dfTable7B), tableGrob(dfTable7C), tableGrob(dfTable7D), tableGrob(dfTable7E), tableGrob(dfTable7F), nrow=3) 
 
@@ -351,10 +353,10 @@ Table 7A through 7F lists the states whose parity values were greater than or eq
 
 
 4. <b>Best States</b>    
-I chose the "Best States" by sorting the lists of finalists in decreasing order of each group's percentage share (T_%) of the tech sector. My original intention was to select the top five finalists according to this ranking. But no list had more than five finalists; so all finalists were selected for each group. The state at the top of each list was the best of the best for its group, the state in the second row was the second best, and so on. Readers should remember that <b>my underlying assumption was that most people worked in the states in which they lived. So the number of tech residents in a state should be about the same as the number of tech jobs in a state.</b> 
+I chose the "Best States" by sorting the lists of finalists in decreasing order of each group's percentage share (T_%) of the tech sector. My original intention was to select the top five finalists according to this ranking. But no list had more than five finalists; so all finalists were selected for each group. The state at the top of each list was the best of the best for its group, the state in the second row was the second best, and so on. <b>It should be noted that California was only a "Best State" for White professionals.</b> 
 
 <b>Tables 8A, 8B, 8C, 8D, 8E, 8F -- Best States</b>
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
         grid.arrange(tableGrob(dfTable8A, theme=tt3), tableGrob(dfTable8B, theme=tt3), tableGrob(dfTable8C, theme=tt3), tableGrob(dfTable8D, theme=tt3), tableGrob(dfTable8E, theme=tt3), tableGrob(dfTable8F, theme=tt3), nrow=3) 
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
@@ -403,7 +405,7 @@ This small joke raises a big question: How did Asian tech professionals attain s
 
 * My recent telephone conversation with a member of the U.S. Census Bureau's ACS user support team confirmed my understanding that the extensive PUMS sample data that I had downloaded did not distinguish between Americans and foreign residents. So the Asian data in Map 4C and Tables 4C, 6, and 8C combined two distinct subgroups -- Asian Americans and Asian Asians who were probably in this country on H-1B work visas. These foreign tech professionals had the strongest possible "weak ties" to their future employers because they had been proactively recruited by agents of U.S. companies who persuded them to come work for their U.S. clients in this country.
 
-* Table 9 (below) provides a rough indicator of the potential magnitude of this issue. The table's first row contains the same information about the Big Five states that was included in Table 4, i.e., the total number of tech professionals in each state. Its second row displays the total number of Asian techs in each state, as per Table 4C. Its third row contains an estimate of the number of H-1B visa holders in each state, an estimate that I obtained from the <b>[MyVisaJobs.com](http://www.myvisajobs.com/Reports/2015-H1B-Visa-Category.aspx?T=WS)</b> website. And its fourth row notes the percentage of Asian techs in the second row that might have come from Asian Asians in the third row. Of course, some of the foreign workers in the third row were not Asian Asian, but came from other parts of the world; and some were not employed as tech professionals.    
+* Table 9 (below) provides a rough indicator of the potential magnitude of this issue. The table's first row contains the same information about the Big Five states that was included in Table 4, i.e., the total number of tech professionals in each state. Its second row displays the total number of Asian techs in each state, as per Table 4C. Its third row contains estimates of the number of H-1B visa holders in each state, estimates that I obtained from the <b>[MyVisaJobs.com](http://www.myvisajobs.com/Reports/2015-H1B-Visa-Category.aspx?T=WS)</b> website. And its fourth row notes the percentage of Asian techs in the second row that might have come from Asian Asians in the third row. Of course, some of the foreign workers in the third row were not Asian Asian, but came from other parts of the world; and some were not employed as tech professionals.    
 
 * For the final 1.0 version of this report I will download another PUMS data sample. This time I will also include variables that indicate whether each member of the sample was a U.S. citizen or not, and indicate whether each member of the sample was born in Asia. Then I will examine parity data that only covers Asian Americans.
 
@@ -417,7 +419,7 @@ This small joke raises a big question: How did Asian tech professionals attain s
 I downloaded the  <b>[#PEPSR6H](http://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=PEP_2015_PEPSR6H&prodType=table)</b> data table from the Bureau's American Fact Finder Website. This table could be configured to provide the Bureau's estimates of the overall racial composition of the populations of the 50 states plus Washington DC in 2014. My step-by-step procedure for downloading the AFF data is described in <b>[Notes-Data-Raw-Maps-Plots](https://archimedes2kxx.github.io/BestStatesForBlackTech/Notes-Data-Raw-Maps-Plots)</b> on the GitHub repo.
 
 American Fact Finder contained a wide range of tables, but none of them broke the information technology sector down by race, ethnicity, and state. So I also used the U.S. Census Bureau's <b>[DataFerret](http://thedataweb.rm.census.gov/index.html)</b> Java
-application to download a subset of the Public Use Microdata Sample (PUMS) from the Bureau's American Community Survey for 2014. The subset (`r prettyNum(dim(dfCensus2)[1], big.mark=",", scientific=FALSE)` observations) was usually large enough to make good estimates of the employee counts and percentages of tech employment for Blacks, Whites, Asians, and Hispanics in tech occupations in the 50 states and DC. (<i>Note: For a few low population states, the ACS subset included missing values which meant that it wasn't large to provide reliable estimates of the racial/ethnic breakdown of tech employment in those states</i>.)  My step-by-step procedures for selecting and downloading the ACS data and its codebook is described in <b>[Notes-Data-Download-PUMS-Sample](https://archimedes2kxx.github.io/BestStatesForBlackTech/Notes-Data-Download-PUMS-Sample.html)</b> on the GitHub repo.<br />
+application to download a subset of the Public Use Microdata Sample (PUMS) from the Bureau's American Community Survey for 2014. The subset (`r prettyNum(dim(dfCensus2)[1], big.mark=",", scientific=FALSE)` observations) was usually large enough to make good estimates of the employee counts and percentages of tech employment for Blacks, Whites, Asians, and Hispanics in tech occupations in the 50 states and DC. (<i>Note: For a few low population states, the ACS subset included missing values which meant that it wasn't large enough to provide reliable estimates of the racial/ethnic breakdown of tech employment in those states</i>.)  My step-by-step procedures for selecting and downloading the ACS data and its codebook is described in <b>[Notes-Data-Download-PUMS-Sample](https://archimedes2kxx.github.io/BestStatesForBlackTech/Notes-Data-Download-PUMS-Sample.html)</b> on the GitHub repo.<br />
 
 <b>Selected Data</b><br/> 
 I used the DataFerret to download a subset of the PUMS 2014 sample about the sex, state of residence, race, and Hispanic status of employees in the tech sector in all 50 states plus the District of Columbia:<br />   
