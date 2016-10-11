@@ -346,7 +346,6 @@ Table 7A through 7F lists the states whose parity values were greater than or eq
 
 <b>Tables 7A, 7B, 7C, 7D, 7E, 7F -- Finalists</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-    ###print(dfTable7F)  
     grid.arrange(tableGrob(dfTable7A), tableGrob(dfTable7B), tableGrob(dfTable7C), tableGrob(dfTable7D), tableGrob(dfTable7E), tableGrob(dfTable7F), nrow=3) 
 
 ```
@@ -405,14 +404,14 @@ This small joke raises a big question: How did Asian tech professionals attain s
 
 * My recent telephone conversation with a member of the U.S. Census Bureau's ACS user support team confirmed my understanding that the extensive PUMS sample data that I had downloaded did not distinguish between Americans and foreign residents. So the Asian data in Map 4C and Tables 4C, 6, and 8C combined two distinct subgroups -- Asian Americans and Asian Asians who were probably in this country on H-1B work visas. These foreign tech professionals had the strongest possible "weak ties" to their future employers because they had been proactively recruited by agents of U.S. companies who persuded them to come work for their U.S. clients in this country.
 
-* Table 9 (below) provides a rough indicator of the potential magnitude of this issue. The table's first row contains the same information about the Big Five states that was included in Table 4, i.e., the total number of tech professionals in each state. Its second row displays the total number of Asian techs in each state, as per Table 4C. Its third row contains estimates of the number of H-1B visa holders in each state, estimates that I obtained from the <b>[MyVisaJobs.com](http://www.myvisajobs.com/Reports/2015-H1B-Visa-Category.aspx?T=WS)</b> website. And its fourth row notes the percentage of Asian techs in the second row that might have come from Asian Asians in the third row. Of course, some of the foreign workers in the third row were not Asian Asian, but came from other parts of the world; and some were not employed as tech professionals.    
+* Table 9 (below) provides a rough indicator of the potential magnitude of this issue. The table's first column contains the same information about the Big Six states included in Table 4, i.e., the total number of tech professionals in each state. Its second column displays the total number of Asian techs in each state, as per Table 4C. Its third column contains estimates of the number of H-1B visa holders in each state, estimates that I obtained from the <b>[MyVisaJobs.com](http://www.myvisajobs.com/Reports/2015-H1B-Visa-Category.aspx?T=WS)</b> website. And its fourth column notes the H-1B workers as a percentage of Asian techs in the second column . <b>Some of these percentages are absurd because some of the foreign workers in the third column were not from Asia, but from other parts of the world; and some were not employed as tech professionals.</b>    
 
-* For the final 1.0 version of this report I will download another PUMS data sample. This time I will also include variables that indicate whether each member of the sample was a U.S. citizen or not, and indicate whether each member of the sample was born in Asia. Then I will examine parity data that only covers Asian Americans.
+* For the final 1.0 version of this report I will download another PUMS data sample this  time including variables that indicate whether each member of the sample was a U.S. citizen or not and whether each member was born in Asia. Then I will examine parity data that only covers Asian Americans.
 
-<b>Table 9. Foreign Workers with H-1B Visas in Each State</b>
-
-
-
+<b>Table 9. Foreign Workers in Each State</b>
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+    print(format(dfTable9, big.mark=",")) 
+```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
 ## Methods   

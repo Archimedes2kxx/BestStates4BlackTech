@@ -530,4 +530,22 @@ makeTable8 <- function(dfIn, Race, letter){
 (dfTable8E <- makeTable8(dfTable7E, "FemAsian", "E")) ###, "FemAsian"
 (dfTable8F <- makeTable8(dfTable7F, "FemNonAsian", "F")) ###, "FemNonAsian"
 
-save(dfTable6, dfTable7A, dfTable7B, dfTable7C, dfTable7D, dfTable7E, dfTable7F, dfTable8A, dfTable8B, dfTable8C, dfTable8D, dfTable8E, dfTable8F, file="dfTab67A7B7C7D7E7F8A8B8C8D8E8F.rda")
+
+###########################
+### Table 9 ... Asians and H-1B techs
+dfTable9 <- data.frame(t(dfTable4[,2:7]))
+
+(asianTech <- dfTechPop_asian[c("California", "Texas", "New York", "Florida", "Virginia", "Illinois"), "asianTech"])
+dfTable9$totAsian <- asianTech
+
+### H-1B data from Website
+h1bTech <- c(98457, 51814, 	48836, 17629, 15467, 27399)
+dfTable9$h1bTech <- h1bTech
+
+perH1B <- round(c(100 * dfTable9$h1bTech/dfTable9$totAsian), digits=1)
+dfTable9$perH1B <- perH1B
+
+colnames(dfTable9) <- c("Total_T", "Asian_T", "H-1B", "H-1B_%")
+dfTable9
+
+save(dfTable6, dfTable7A, dfTable7B, dfTable7C, dfTable7D, dfTable7E, dfTable7F, dfTable8A, dfTable8B, dfTable8C, dfTable8D, dfTable8E, dfTable8F, dfTable9, file="dfTab67A7B7C7D7E7F8A8B8C8D8E8F.rda")
