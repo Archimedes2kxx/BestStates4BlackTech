@@ -258,28 +258,29 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 
 <b>Table 4E -- Asian Females in U.S. Information Technology -- Top 10 states</b>     
- <i>[Click here for full version](Table4E-Full-AsianFemale-Employment.html)</i> 
+ <i>[Click here for full version](Table4E-Full-Female-Asian-Employment.html)</i> 
 
 ```{r, echo=FALSE, cache=TRUE, comment=NA}
-    colnames(dfTable4D) <- c("State", "AllTech", "S_%", "AsiFemTech", "T_%", "NonAsiFemPop", "P_%", "Par")
-    print(format(dfTable4D[1:11,], big.mark=","), row.names=FALSE)  
+    colnames(dfTable4E) <- c("State", "AllTech", "S_%", "AsiFemTech", "T_%", "AsiFemPop", "P_%", "Par")
+    print(format(dfTable4E[1:11,], big.mark=","), row.names=FALSE)  
 ```
 <b>Comments about Table 4E -- Asian Females in Tech</b>    
  
- * blah blah
- * blah blah
+ * Comparing the third columns (S_%) of Tables 4E and 4F, we can see that Asian females in tech are concentrated in California (xxx %), but not as much as the entire Asian cohort (xxx %) So we can infer that a much higher percentage of Asian males were concentrated in California
+ 
+ * On the other hand, the total share (S_%) of Asian female techs in the Big Six states (California, Texas, New York, Florida, Virginia, and Illinois was xxx %, which is much larger than the xxx % in these states for the entire Asian cohort. So we can infer that Asian females are more highly concentrated in the Big Six states than Asian males. 
 
 
 <b>Table 4F -- Non-Asian Females in U.S. Information Technology -- Top 10 states</b>    
- <i>[Click here for full version](Table4F-Full-NonAsianFemale-Employment.html)</i> 
+ <i>[Click here for full version](Table4F-Full-Female-Non-Asian-Employment.html)</i> 
 
 ```{r, echo=FALSE, cache=TRUE, comment=NA}
-    colnames(dfTable4F) <- c("State", "AllTech", "S_%", "NonAsiTech", "T_%", "NonAsiPop", "P_%", "Par")
+    colnames(dfTable4F) <- c("State", "AllTech", "S_%", "NonAsiFTech", "T_%", "NonAsiFPop", "P_%", "Par")
     print(format(dfTable4F[1:11,], big.mark=","), row.names=FALSE)  
 ```
 <b>Comments about Table 4F -- Non-Asian Females in Tech</b>  
  
- * blah blah
+ * Whereas Asian female techs were highly concentrated in the Big Six states, non-Asian females were far more evenly dispersed throughout all fifty states and the District of Columbia. Indeed, the total share of non-Asian females in all ten states in Table 4F was only xxx percent.
  * blah blah
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 

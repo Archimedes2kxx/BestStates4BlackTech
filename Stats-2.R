@@ -219,7 +219,7 @@ rownames(dfTable4F) <- NULL
 
 #################################
 ################################
-### Table 4 ... Big Five
+### Table 4 ... Big Six
 dfTab <- subset(dfTechPop_white, select=c("state","totalTech"))
 dfTab <- dfTab[order(dfTab$"totalTech", decreasing=TRUE),]
 rownames(dfTab) <- NULL
