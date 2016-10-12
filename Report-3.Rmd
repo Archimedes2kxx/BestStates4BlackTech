@@ -191,7 +191,7 @@ Six data tables impose numeric precision on the qualitative insights provided by
 
 <b>Table 4A -- Whites in U.S. Information Technology -- Top 10 States </b>   
 <i>[Click here for full version](Table4A-Full-White-Employment.html)</i>
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4A) <- c("State", "AllTech", "S_%", "WhiTech", "T_%", "WhiPop", "P_%", "Par")
 print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)  
 
@@ -207,7 +207,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 <b>Table 4B -- Blacks in U.S. Information Technology -- Top 10 states</b>    
 <i>[Click here for full version](Table4B-Full-Black-Employment.html)</i> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4B) <- c("State", "AllTech", "S_%", "BlkTech", "T_%", "BlkPop", "P_%", "Par")  
     print(format(dfTable4B[1:11,], big.mark = ","), row.names=FALSE)  
 ```
@@ -227,7 +227,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <b>Table 4C -- Asians in U.S. Information Technology -- Top 10 states</b>    
 <i>[Click here for full version](Table4C-Full-Asian-Employment.html)</i>
 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4C) <- c("State", "AllTech", "S_%",  "AsnTech", "T_%", "AsnPop", "P_%", "Par")
     print(format(dfTable4C[1:11,], big.mark = ","), row.names=FALSE)  
 ```
@@ -242,7 +242,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <b>Table 4D -- Hispanics in U.S. Information Technology -- Top 10 states</b>      
  <i>[Click here for full version](Table4D-Full-Hispanic-Employment.html)</i> 
 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4D) <- c("State", "AllTech", "S_%", "HspTech", "T_%", "HspPop", "P_%", "Par")
     print(format(dfTable4D[1:11,], big.mark=","), row.names=FALSE)  
 ```
@@ -260,7 +260,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <b>Table 4E -- Asian Females in U.S. Information Technology -- Top 10 states</b>     
  <i>[Click here for full version](Table4E-Full-Female-Asian-Employment.html)</i> 
 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4E) <- c("State", "AllTech", "S_%", "AsiFemTech", "T_%", "AsiFemPop", "P_%", "Par")
     print(format(dfTable4E[1:11,], big.mark=","), row.names=FALSE)  
 ```
@@ -274,7 +274,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <b>Table 4F -- Non-Asian Females in U.S. Information Technology -- Top 10 states</b>    
  <i>[Click here for full version](Table4F-Full-Female-Non-Asian-Employment.html)</i> 
 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4F) <- c("State", "AllTech", "S_%", "NonAsiFTech", "T_%", "NonAsiFPop", "P_%", "Par")
     print(format(dfTable4F[1:11,], big.mark=","), row.names=FALSE)  
 ```
@@ -310,7 +310,7 @@ Answer 5: As shown in four plots that follow, there was a positive relationship,
 
 
 <b>Table 5 -- Summary of Racial/Ethnic/Female National Advantages</b>
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     print(format(dfTable5, big.mark = ","), row.names=TRUE) 
 ```
 
@@ -338,7 +338,7 @@ I implemented this criterion by identifying the states in Tables 4A through 4F t
 <i>Note that the first column in Table 6 shows the minimum non-zero parity values for each group. The PUMS sample for a few states had so few techs in some groups that the Census Bureau could not provide reliable estimates of the number of techs in that state based on the sample. I converted these missing values to zeros.)</i>
 
 <b>Table 6 -- Summary of Parity Values</b>
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable6) <- c("Min", "Q1", "Median", "Q3", "Max")
     print(dfTable6)  
 ```
@@ -397,7 +397,9 @@ First, let me remind the reader that Table 1A showed that `r dfTable1A[2,3]` 12.
 
 This small joke raises a big question: How did Asian tech professionals attain such high parity values in every state? 
 
-* Contrary to Silicon Valley's executive myth makers, Black Americans have made good use of the expanded education and employment opportunities provided by the Supreme Court's 1954 decision and the Civil Rights legislation that followed. But Black American academic pipelines are only half full because we are still overcoming the persistent evil legacy of hundreds of years of slavery and the decades of Jim Crow segregation that followed. Fortunately for Asian Americans, the oppression they faced before the Supreme Court and Congress outlawed racial exclusions from education and the workplace was orders of magnitude less debilitating, nor was its aftermath as persistent. So facing lesser obstacles, Asian Americans have attained greater gains.
+* Contrary to Silicon Valley's executive myth makers, Table 4B shows that Black Americans have made good use of the expanded education and employment opportunities provided by the Supreme Court's 1954 decision and the Civil Rights legislation that followed. But Black American academic pipelines are only half full because we are still overcoming the persistent evil legacy of hundreds of years of slavery and the decades of Jim Crow segregation that followed.    
+
+* Fortunately for Asian Americans, the oppression they faced before the Supreme Court and Congress outlawed racial exclusions from education and the workplace was orders of magnitude less debilitating, nor was its aftermath as persistent. So facing lesser obstacles, Asian Americans have attained greater gains.
 
 * Indeed, the remarkable success of Asian Americans in tech's academic pipelines and  subsequent employment reinvigorates the old ideal of America as a "Land of Opportunity". For example, as per Table 1A, Asians were only `r prettyNum(dfTable1A[2, 4])` percent of the nation's population in 2014. But according to U.S. Department of Education, Asian undergraduate enrollments at <b>[Cal Tech](http://nces.ed.gov/collegenavigator/?q=California+Institute+of+Technology&s=all&id=110404#enrolmt)</b> and <b>[M.I.T.](http://nces.ed.gov/collegenavigator/?q=Massachusetts+Institute+of+Technology&s=all&id=166683)</b> -- arguably the best technical institutions in the nation, if not the world --  are 45 percent and 25 percent, respectively. No one gets admitted to these highly competitive institutions without being very smart and being very well prepared.
 

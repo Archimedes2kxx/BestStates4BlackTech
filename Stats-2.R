@@ -181,7 +181,7 @@ makeTechPopTable <- function(race){
     dfTechPop <- dfTechPop[index,]
     
     ### Calculate the percentage of the total for each race is in each state
-    dfTechPop$per_state <- round(100 * dfTechPop[,raceTech]/dfTechPop[1,raceTech[1]], digits=1)
+    dfTechPop$per_state <- round(100 * dfTechPop[,raceTech]/dfTechPop[1,raceTech[1]], digits=2)
     dfTechPop <- data.frame(dfTechPop[,c(1:2,8,3:7)]) ### move per_state to 3rd column
     return(dfTechPop)
 }
