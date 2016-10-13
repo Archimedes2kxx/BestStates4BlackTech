@@ -13,7 +13,7 @@ output:
           
 ---
 
-```{r, echo=FALSE, cache=FALSE}
+```{r LOAD, echo=FALSE, cache=TRUE}
     
     load("dfRaceResidenceAndShares.rda")
     load("dfCensus2.rda") 
@@ -94,7 +94,7 @@ My brief answers to the first three questions provide a broad statistical framwo
 Answer 1A ... In 2014, as shown in Table 1A (below), the largest of the four racial/ethnic groups discussed in this report was White (`r prettyNum(dfTable1A[1,2], big.mark=",", scientific=FALSE)`); the smallest was Asian (`r prettyNum(dfTable1A[1,4], big.mark=",", scientific=FALSE)`). Hispanics, the largest minority (`r prettyNum(dfTable1A[1,5], big.mark=",", scientific=FALSE)`), had grown substantially larger than Blacks (`r prettyNum(dfTable1A[1,3], big.mark=",", scientific=FALSE)`).
 
 <b>Table 1A -- Racial/Ethnic Composition of the U.S. Population in 2014</b>
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA, dependson="LOAD"}
    print(format(dfTable1A, big.mark=","), row.names=TRUE)
 ```
 
@@ -103,25 +103,25 @@ Answer 1A ... In 2014, as shown in Table 1A (below), the largest of the four rac
 Answer 1B ... As shown in Table 1B (below), the U.S. Census Bureau estimated that there were `r prettyNum(dfTable1B[1,1], big.mark=",", scientific=FALSE)` tech professionals in the U.S. in 2014.  Whites were a substantial majority (`r prettyNum(dfTable1B[1,2], big.mark=",", scientific=FALSE)`) of the tech sector (`r prettyNum(dfTable1B[2,2], big.mark=",", scientific=FALSE)`%); Asians placed second (`r prettyNum(dfTable1B[1,4], big.mark=",", scientific=FALSE)`); Blacks showed third (`r prettyNum(dfTable1B[1,3], big.mark=",", scientific=FALSE)`); and Hispanics came in fourth  (`r prettyNum(dfTable1B[1,5], big.mark=",", scientific=FALSE)`)
 
 <b>Table 1B -- Racial/Ethnic Composition of the U.S. Tech Sector in 2014</b>   
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA, dependson="LOAD"}
   print(format(dfTable1B, big.mark=","), row.names=TRUE)
 ```
 
 #### Question 2A -- What was the male/female composition of the U.S. population in 2014?
 
-Answer 2A ... As shown in Table 2A (below), the population was close to an even split between males and females. But given the focus of this report, the table also breaks the female half into a small Asian component (xxx 2.8 percent) and a much larger non-Asian female component (xxx 48.0 percent)
+Answer 2A ... As shown in Table 2A (below), the population was close to an even split between males and females. But given the focus of this report, the table also breaks the female half into a small Asian component (`r dfTable2A["Percent", "FemAsian"]` xxx 2.8 percent) and a much larger non-Asian female component (`r dfTable2A["Percent", "FemNonAsian"]` xxx 48.0 percent)
 
 <b>Table 2A -- Male/Female Composition of the U.S. population in 2014</b>   
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA, dependson="LOAD"}
   print(format(dfTable2A, big.mark=","), row.names=TRUE)
 ```
 
 #### Question 2B -- What was the male/female composition of the tech sector in 2014? 
 
-Answer 2B ... As shown in Table 2B (below), the ratio of male to female techs was about three to one, more specifically xxx74.7 percent to xxx24.3 percent. The ratio of Non-Asian females to Asian females was about four to one, xxx19.3 percent to xxx5.0 percent.
+Answer 2B ... As shown in Table 2B (below), the ratio of male to female techs was about three to one, more specifically (`r dfTable2B["Percent", "Male"]` xxx74.7 percent to (`r dfTable2B["Percent", "Female"]` xxx24.3 percent. The ratio of Non-Asian females to Asian females was about four to one(`r dfTable2B["Percent", "FemNonAsian"]`, xxx19.3 percent to `r dfTable2B["Percent", "FemAsian"]` xxx5.0 percent.
 
 <b>Table 2B -- Male/Female Composition of the U.S. Tech Sector in 2014</b>   
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA, dependson="LOAD"}
   print(format(dfTable2B, big.mark=","), row.names=TRUE)
 ```
 
@@ -138,7 +138,7 @@ Answer 3B ... The total number of techs in each category appear the second colum
 Answer 3C ... The third column of Table 3 (below) shows the percentage of techs in the second column who were male. Females were an overall minority of `r dfTable3[1,6] `% of all professionals in tech, and were a minority in every tech category, ranging from a low value of `r prettyNum(min(dfTable3[, 6]), scientific=FALSE)`% for to a high value of `r prettyNum(max(dfTable3[, 6]), scientific=FALSE)`%.
 
 <b>Table 3 -- Employment in U.S. Information Technology in 2014 with Female Percentages</b>   
-```{r, echo=FALSE, cache=FALSE,  comment=NA}
+```{r, echo=FALSE, cache=TRUE,  comment=NA, dependson="LOAD"}
    print(format(dfTable3[,c(1:2,6)], big.mark=","),row.names=FALSE) 
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
@@ -193,7 +193,7 @@ Six data tables impose numeric precision on the qualitative insights provided by
 
 <b>Table 4A -- Whites in U.S. Information Technology -- Top 10 States </b>   
 <i>[Click here for full version](Table4A-Full-White-Employment.html)</i>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA, dependson="LOAD"}
     colnames(dfTable4A) <- c("State", "AllTech", "SS_%", "WhiTech", "T_%", "WhiPop", "P_%", "Par")
 print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)  
 
@@ -209,7 +209,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 <b>Table 4B -- Blacks in U.S. Information Technology -- Top 10 states</b>    
 <i>[Click here for full version](Table4B-Full-Black-Employment.html)</i> 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA, dependson="LOAD"}
     colnames(dfTable4B) <- c("State", "AllTech", "SS_%", "BlkTech", "T_%", "BlkPop", "P_%", "Par")  
     print(format(dfTable4B[1:11,], big.mark = ","), row.names=FALSE)  
 ```
@@ -226,7 +226,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <b>Table 4C -- Asians in U.S. Information Technology -- Top 10 states</b>    
 <i>[Click here for full version](Table4C-Full-Asian-Employment.html)</i>
 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, dependson="LOAD", comment=NA}
     colnames(dfTable4C) <- c("State", "AllTech", "SS_%",  "AsiTech", "T_%", "AsiPop", "P_%", "Par")
     print(format(dfTable4C[1:11,], big.mark = ","), row.names=FALSE)  
 ```
@@ -241,7 +241,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <b>Table 4D -- Hispanics in U.S. Information Technology -- Top 10 states</b>      
  <i>[Click here for full version](Table4D-Full-Hispanic-Employment.html)</i> 
 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA, dependson="LOAD"}
     colnames(dfTable4D) <- c("State", "AllTech", "SS_%", "HspTech", "T_%", "HspPop", "P_%", "Par")
     print(format(dfTable4D[1:11,], big.mark=","), row.names=FALSE)  
 ```
@@ -260,7 +260,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <b>Table 4E -- Asian Females in U.S. Information Technology -- Top 10 states</b>     
  <i>[Click here for full version](Table4E-Full-Female-Asian-Employment.html)</i> 
 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA, dependson="LOAD"}
     colnames(dfTable4E) <- c("State", "AllTech", "SS_%", "AsiFemTech", "T_%", "AsiFemPop", "P_%", "Par")
     print(format(dfTable4E[1:11,], big.mark=","), row.names=FALSE)  
 ```
@@ -268,7 +268,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <b>Table 4F -- Non-Asian Females in U.S. Information Technology -- Top 10 states</b>    
  <i>[Click here for full version](Table4F-Full-Female-Non-Asian-Employment.html)</i> 
 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA, dependson="LOAD"}
     colnames(dfTable4F) <- c("State", "AllTech", "SS_%", "NonAsiFTech", "T_%", "NonAsiFPop", "P_%", "Par")
     print(format(dfTable4F[1:11,], big.mark=","), row.names=FALSE)  
 ```
@@ -297,7 +297,7 @@ Answer 5: As shown in six plots that follow, there was a positive relationship, 
 
 * The regression lines and scatterplots of the <tech, population> data points appear in the six panels. The values of the slopes, called "beta1000", are displayed in the upper left corner of each plot. 
 
-* As per the values of the beta1000 slopes, If each ethnic/racial group's population increased by 1,000, Asian techs would increase by `r beta1000["asian"]`; Whites would increase by `r beta1000["white"]`, Blacks would increase by `r beta1000["black"]`; and Hispanics would increase by `r beta1000["hispanic"]`. The Asian line has the steepest slope; the Hispanic line has the flattest slope. Asian female techs had the second steepest slope, beta1000 = xxx20.99; non-Asian female techs had the second flattest slope, beta1000 = xxx4.34.
+* As per the values of the beta1000 slopes, If each ethnic/racial group's population increased by 1,000, Asian techs would increase by `r beta1000["asian"]`; Whites would increase by `r beta1000["white"]`, Blacks would increase by `r beta1000["black"]`; and Hispanics would increase by `r beta1000["hispanic"]`. The Asian line has the steepest slope; the Hispanic line has the flattest slope. Asian female techs had the second steepest slope, beta1000 = `r beta1000["femAsian"]` xxx20.99; non-Asian female techs had the second flattest slope, beta1000 = `r beta1000["femNonAsian"]` xxx4.34.
 
 * This kind of simple regression implicitly assumes that the 50 states and DC were all more or less equally receptive or resistant to including more techs from the same groups. This may indeed have been true for most states. However, Table 4B shows that the Black parity for Texas = `r dfTechPop_black["Texas", "parity"]`, whereas the Black parity for California = `r dfTechPop_black["California", "parity"]`. This suggests that Texas was more receptive to Black techs than California. And Table 4D shows that the Hispanic parity for Florida = `r dfTechPop_hispanic["Florida", "parity"]`, while the Hispanic parity  for California = `r dfTechPop_hispanic["California", "parity"]`. This suggests that Florida was more receptive to Hispanic techs than California.   
 
@@ -305,7 +305,7 @@ Answer 5: As shown in six plots that follow, there was a positive relationship, 
 
 
 <b>Table 5 -- Summary of Racial/Ethnic/Female National Advantages</b>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA, dependson="LOAD"}
     print(format(dfTable5, big.mark = ","), row.names=TRUE) 
 ```
 
@@ -333,7 +333,7 @@ I implemented this criterion by identifying the states in Tables 4A through 4F t
 <i>(Note that the first column in Table 6 shows the minimum non-zero parity values for each group. The PUMS sample for a few states had so few techs in some groups that the Census Bureau could not provide reliable estimates of the number of techs in that state based on the sample, so I converted these missing values to zeros.)</i>
 
 <b>Table 6 -- Summary of Parity Values</b>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA, dependson="LOAD"}
     colnames(dfTable6) <- c("Min", "Q1", "Median", "Q3", "Max")
     print(dfTable6)  
 ```
@@ -341,7 +341,7 @@ I implemented this criterion by identifying the states in Tables 4A through 4F t
 Table 7A through 7F lists the states whose parity values were greater than or equal to the median parity value for each group. 
 
 <b>Tables 7A, 7B, 7C, 7D, 7E, 7F -- Finalists</b>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA, dependson="LOAD"}
     grid.arrange(tableGrob(dfTable7A), tableGrob(dfTable7B), tableGrob(dfTable7C), tableGrob(dfTable7D), tableGrob(dfTable7E), tableGrob(dfTable7F), nrow=3) 
 
 ```
@@ -351,7 +351,7 @@ Table 7A through 7F lists the states whose parity values were greater than or eq
 I chose the "Best States" by sorting the lists of finalists in decreasing order of each group's percentage share (T_%) of the tech sector. My original intention was to select the top five finalists according to this ranking. But no list had more than five finalists; so all finalists were selected for each group. The state at the top of each list was the best of the best for its group, the state in the second row was the second best, and so on. <b>It should be noted that California was only a "Best State" for White professionals.</b> 
 
 <b>Tables 8A, 8B, 8C, 8D, 8E, 8F -- Best States</b>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA, dependson="LOAD"}
         grid.arrange(tableGrob(dfTable8A, theme=tt3), tableGrob(dfTable8B, theme=tt3), tableGrob(dfTable8C, theme=tt3), tableGrob(dfTable8D, theme=tt3), tableGrob(dfTable8E, theme=tt3), tableGrob(dfTable8F, theme=tt3), nrow=3) 
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
@@ -407,7 +407,7 @@ This small joke raises a big question: How did Asian tech professionals attain s
 * For the final 1.0 version of this report I will download another PUMS data sample, this  time including variables that indicate whether each member of the sample was a U.S. citizen or not and whether each member was born in Asia. Then I will examine parity data that only covers Asian Americans.
 
 <b>Table 9. Foreign Workers in Each State</b>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA, dependson="LOAD"}
     print(format(dfTable9, big.mark=",")) 
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
