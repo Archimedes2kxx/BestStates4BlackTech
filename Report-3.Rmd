@@ -167,7 +167,7 @@ There are six maps (below), one for each racial/ethnic group plus two female gro
     grid.arrange(dfMap4A, dfMap4B, dfMap4C, dfMap4D, dfMap4E, dfMap4F, ncol=2) 
 ```
 
-* Map 4A displays light hues for all states, indicatingn that White techs are spread across a large number of states, with the largest number living in California having marginally higher percentages that the other states. 
+* Map 4A displays light hues for all states, indicatingn that White techs are spread across a large number of states, with the largest number living in California having marginally higher percentages than the other states. 
 
 * Map 4B shows that most Black techs are located in the Eastern and Southern states, with the largest number living in Texas, second in Georgia, and third in Virginia
 
@@ -177,7 +177,7 @@ There are six maps (below), one for each racial/ethnic group plus two female gro
 
 * Map 4E shows that Asian female techs are highly concentrated in California.
 
-* Map 4F shows that non-Asian female techs are have their largest shares of tech in California, Texas, and Florida, but the distribution is far more dispersed than the distribution for Asian female techs.
+* Map 4F shows that non-Asian female techs have their largest shares of tech in California, Texas, and Florida, but the distribution is far more dispersed than the distribution for Asian female techs.
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>
 
