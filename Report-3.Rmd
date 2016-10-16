@@ -403,7 +403,7 @@ First, let me remind the reader that Table 1A showed that `r dfTable1A[2,3]` per
 
 * Table 9 (below) provides a rough indicator of the potential magnitude of this issue. The table's first column contains the total number of tech professionals in the Big Six states. Its second column displays the total number of Asian techs in each state, as per the full version of Table 4C. Its third column contains estimates of the number of H-1B visa holders in each state, estimates that I obtained from the <b>[MyVisaJobs.com](http://www.myvisajobs.com/Reports/2015-H1B-Visa-Category.aspx?T=WS)</b> website. And its fourth column notes the H-1B workers as a percentage of Asian techs in the second column. <b>Most of these percentages are absurd</b> because some of the foreign workers in the third column were not from Asia, but from other parts of the world; and some of the Asian Asians were not employed as tech professionals.    
 
-* For the final 1.0 version of this report I will download another PUMS data sample, this  time with variables that indicate whether each member of the sample was a U.S. citizen and whether each member was born in Asia. "Best States for Black, Hispanic, Female, and Asian Tech, Version 1.0" will examine parity data for Asian Americans. I will then post a companion op-ed -- "Why Are There So Many Asian Asians in U.S. Tech?" -- that will offer a plausible answer to the question in its title.
+* For the final 1.0 version of this report I will download another PUMS data sample, this  time with variables that indicate whether each member of the sample was a U.S. citizen and whether each member was born in Asia. "Best States for Black, Hispanic, Female, and Asian Tech, Version 1.0" will examine parity data for Asian Americans. I will then post a companion op-ed -- "Why Are There So Many Asian Asians in U.S. Tech?" -- that will offer a plausible answer to the question in its title. 
 
 <b>Table 9. Foreign Workers in Each State</b>
 ```{r, echo=FALSE, cache=TRUE, comment=NA, dependson="LOAD"}
@@ -433,7 +433,7 @@ I used the <b>[R Studio IDE](https://www.rstudio.com/)</b> to write the R script
 
 The scripts and embedded functions should be run in numerical order ==> Data-1A.R and Data-1B.R create the data frames required by Stats-2.R; Stats-2.R creates the tables, maps, graphs, and regression stats required by the R-markdown script in the Report-3.Rmd file that generates the report.
 
-Finally, this report represents my honest attempt to shed additional light on some important, but difficult issues. Therefore I would greatly appreciate readers' comments and suggested improvements ... but I would cherish their help in identifying any errors that I made in my data collection or analysis because bad reports don't support good policies ... :-)
+Finally, this report represents my honest attempt to shed additional light on some important, but difficult issues. Therefore I would greatly appreciate readers' comments and suggested improvements ... but I would cherish their help in identifying any errors that I made in my data collection or analysis because bad reports don't support good policies. Thank you ... :-)
 <br />
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
