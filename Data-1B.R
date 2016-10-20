@@ -25,10 +25,10 @@ dfNonHispanics <- subset(dfStatesPop1, Year.id=="est72014" & Sex.id =="totsex"  
 head(dfNonHispanics)
 
 ### 3. Get data for hispanics
-dfHispanics <- subset(dfStatesPop1, Year.id=="est72014" & Sex.id =="totsex"  & Hisp.id=="hisp", select= totpop)
-head(dfHispanics$totpop )
-dfHispanics$hisp <- dfHispanics$totpop 
-dfHispanics$totpop <- NULL
+dfHispanics <- subset(dfStatesPop1, Year.id=="est72014" & Sex.id =="totsex"  & Hisp.id=="hisp", select=totpop)
+head(dfHispanics$TotPop )
+dfHispanics$hisp <- dfHispanics$TotPop 
+dfHispanics$TotPop <- NULL
 head(dfHispanics)
 
 ### 4. Get total pop of the state
@@ -37,23 +37,23 @@ head(dfTotPop)
 
 ### 4F. Get total female pop of the states
 dfFemale <- subset(dfStatesPop1, Year.id=="est72014" & Sex.id=="female" & Hisp.id=="tothisp", select=c(`GEO.display-label`, totpop))
-colnames(dfFemale) <- c("state", "female")
+colnames(dfFemale) <- c("State", "Female")
 head(dfFemale)
 
 ### 4AF. Get data for all Asian females
 dfFemAsian <- subset(dfStatesPop1, Year.id=="est72014" & Sex.id =="female"  & Hisp.id=="nhisp", select=c(`GEO.display-label`,aa)) ### Asian American females
-colnames(dfFemAsian) <- c("state", "femAsian")
+colnames(dfFemAsian) <- c("State", "FemAsian")
 head(dfFemAsian)
 
 ##############################
 ### Modify code to add Female, femAsian, femNonAsian, per_female, per_femAsian, per_femNonAsian
 
 dfTotPopFemale <- merge(dfFemale, dfFemAsian)
-colnames(dfTotPopFemale) <- c("state", "female", "femAsian")
+colnames(dfTotPopFemale) <- c("State", "Female", "FemAsian")
 head(dfTotPopFemale)
 
 ### Variables are character, can't subtract yet
-### dfTotPopFemale$femNonAsian <- dfTotPopFemale$female - dfTotPopFemale$femAsian
+### dfTotPopFemale$FemNonAsian <- dfTotPopFemale$Female - dfTotPopFemale$femAsian
 ### head(dfTotPopFemale)
 
 ###############################
@@ -64,12 +64,12 @@ dfStatesPop2 <- cbind(dfTotPop, dfNonHispanics, dfHispanics, dfTotPopFemale[,2:3
 head(dfStatesPop2)
 
 ### 6. Confer short names on all variables
-columnNames <- c("state", "totpop", "white", "black", "amInAlNat", "asian", "pacific", "mixed" , "hispanic", "female", "femAsian")
+columnNames <- c("State", "TotPop", "White", "Black", "amInAlNat", "Asian", "pacific", "mixed" , "Hispanic", "Female", "FemAsian")
 colnames(dfStatesPop2) <- columnNames
 head(dfStatesPop2)
 
 ### 7. Convert state to factor
-dfStatesPop2$state <- as.factor(dfStatesPop2$state)
+dfStatesPop2$State <- as.factor(dfStatesPop2$State)
 head(dfStatesPop2)
 
 ### 8. Note that all variables are character, not integer, so convert
@@ -81,7 +81,7 @@ colnames(dfStatesPop2) <- columnNames ### ... yes, again
 head(dfStatesPop2)
 
 ### 9. Add non-Asian females
-dfStatesPop2$femNonAsian <- dfStatesPop2$female - dfStatesPop2$femAsian
+dfStatesPop2$emNonAsian <- dfStatesPop2$Female - dfStatesPop2$FemAsian
 
 ### 10. Combine races that will not be analyzed, then delete their columns
 dfStatesPop2$OTHERS <- dfStatesPop2$amInAlNat + dfStatesPop2$pacific + dfStatesPop2$mixed
@@ -92,30 +92,29 @@ head(dfStatesPop2)
 
 ### 11. Move female back to last position
 dfStatesPop2 <- cbind(dfStatesPop2[,1:6], dfStatesPop2[,10], dfStatesPop2[,7:9])
-colnames(dfStatesPop2) <- c("state", "totpop", "white", "black","asian", "hispanic", "OTHERS", "female", "femAsian", "femNonAsian")
+colnames(dfStatesPop2) <- c("State", "TotPop", "White", "Black","Asian", "Hispanic", "OTHERS", "Female", "FemAsian", "FemNonAsian")
 head(dfStatesPop2)
 
 ### 12. Calculate derived parameters ... percentage of each racial group in the total population ... add to data frame
 dfStatesPop3 <- dfStatesPop2
-dfStatesPop3$per_white <- round(100* dfStatesPop3$white / dfStatesPop3$totpop, digits = 1)
-dfStatesPop3$per_black <- round(100 * dfStatesPop3$black / dfStatesPop3$totpop, digits = 1)
-dfStatesPop3$per_asian <- round(100 * dfStatesPop3$asian / dfStatesPop3$totpop, digits = 1)
-dfStatesPop3$per_hispanic <- round(100 * dfStatesPop3$hisp / dfStatesPop3$totpop, digits = 1)
-dfStatesPop3$per_OTHERS <- round(100 * dfStatesPop3$OTHERS / dfStatesPop3$totpop, digits = 1)
-dfStatesPop3$per_female <- round(100 * dfStatesPop3$female / dfStatesPop3$totpop, digits = 1)
-dfStatesPop3$per_femAsian <- round(100 * dfStatesPop3$femAsian / dfStatesPop3$totpop, digits = 1)
-dfStatesPop3$per_femNonAsian <- round(100 * dfStatesPop3$femNonAsian / dfStatesPop3$totpop, digits = 1)
+dfStatesPop3$perWhite <- round(100* dfStatesPop3$White / dfStatesPop3$TotPop, digits = 1)
+dfStatesPop3$perBlack <- round(100 * dfStatesPop3$Black / dfStatesPop3$TotPop, digits = 1)
+dfStatesPop3$perAsian <- round(100 * dfStatesPop3$Asian / dfStatesPop3$TotPop, digits = 1)
+dfStatesPop3$perHispanic <- round(100 * dfStatesPop3$Hisp / dfStatesPop3$TotPop, digits = 1)
+dfStatesPop3$perOTHERS <- round(100 * dfStatesPop3$OTHERS / dfStatesPop3$TotPop, digits = 1)
+dfStatesPop3$perFemale <- round(100 * dfStatesPop3$Female / dfStatesPop3$TotPop, digits = 1)
+dfStatesPop3$perFemAsian <- round(100 * dfStatesPop3$FemAsian / dfStatesPop3$TotPop, digits = 1)
+dfStatesPop3$perFemNonAsian <- round(100 * dfStatesPop3$FemNonAsian / dfStatesPop3$TotPop, digits = 1)
 head(dfStatesPop3)
 
 ### 13. Add a totals row and save
 totEachRace <- colSums(dfStatesPop3[,3:10])
 totEachRace
 (allRacesInUS <- sum(totEachRace[1:5])) ### Don't include females in overallsum
-allRacesInTech
 (raceSharesInUS <- round(100 * totEachRace/allRacesInUS, digits=1))
  
 dfTotalsRow <- dfStatesPop3[1,] ### dummy copy to get columns and types
-dfTotalsRow$state <- "ALL STATES"
+dfTotalsRow$State <- "ALL STATES"
 dfTotalsRow[1,3:10] <- totEachRace
 dfTotalsRow[1,11:18] <- raceSharesInUS
 dfTotalsRow[1,2] <- sum(allRacesInUS)
@@ -127,7 +126,7 @@ save(dfStatesPop3, file = "dfStatesPop3.rda")
 
 ### 14. Examples of state AFF parameters ... add rownames
 dfStatesPop4 <- dfStatesPop3
-rownames(dfStatesPop4) <- c(dfStatesPop4$state)
+rownames(dfStatesPop4) <- c(dfStatesPop4$State)
 dfStatesPop4["California",]
 sum(dfStatesPop4["California", 3:7])
 
