@@ -1,5 +1,5 @@
 ---
-title: "Best States for Black, Hispanic, Female, and Asian Tech -- Version 0.91"
+title: "Best States for Black, Hispanic, Asian, and Female Tech -- Version 0.91"
 author: "Roy L Beasley, PhD -- DLL Editor"
 
 output: 
