@@ -435,7 +435,6 @@ rList <- list(dfTechPopWhite, dfTechPopBlack, dfTechPopAsian, dfTechPopHispanic,
 names(rList) <- c("White", "Black", "Asian", "Hispanic", "OTHERS", "Female", "FemAsian", "FemNonAsian")
 (dfTable5 <- makeSummary(rList, beta1000))
 
-
 save(ggPlotAsian, ggPlotWhite, ggPlotBlack, ggPlotHispanic, ggPlotFemAsian, ggPlotFemNonAsian, beta1000, dfTable5, file="dfPlot5Tab5beta1000.rda")
 
 #######################################

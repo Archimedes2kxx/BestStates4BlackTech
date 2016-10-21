@@ -435,19 +435,3 @@ The scripts and embedded functions should be run in numerical order ==> Data-1A.
 Finally, this report represents my honest attempt to shed additional light on some important, but difficult issues. Therefore I would greatly appreciate readers' comments and suggested improvements ... but I would cherish their help in identifying any errors that I made in my data collection or analysis because bad reports don't support good policies. Thank you ... :-)
 <br />
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
-
-## Roy's R Style Guide    
-
-* Capitalize the first letter of names of all groups everywhere, e.g., Black, White, Asian, Hispanic ... use same names in Data and Stat files as in Report files
-* Capitalize first letter of names of larger groupings, e.g, Pop, Tech as in Black.Pop, Asian.Tech
-* Include row names in all tables
-* Impose minimal formatting in the Data-1A, Data-1B. and Stats-2 modules
-* Impose most formatting in the chunks in the Report-3 markdown just before printing
-* Save the row names in the markdown chunks before printing
-* Restore the row names in the markdown in the same chunks after printing
-* Only save dfTables ... e.g. dfTable1A/B, dfTable2A/B, etc ... don't save other versions
-* Cite numbers in markdown text via row and column names in the tables; do not use row or column numbers
-* Otherwise follow Google's Style Guide for R 
-... including use dots instead of underscores in variable names, e.g, per.Black.Tech
-... including lower case for all other variables and identifiers (other than groups and larger groups)
-

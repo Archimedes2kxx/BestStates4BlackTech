@@ -10,7 +10,8 @@ save(dfCensus1, file="dfCensus1.rda")
 
 dfCensus2 = dfCensus1
 str(dfCensus2)
-colnames(dfCensus2) = c("personalWeight", "Race", "State", "Hisp", "Sex", "CIT", "WAOB","COW","Occupation") 
+colnames(dfCensus2) = c("personalWeight", "Race", "State", "Hisp", "Sex", "CIT", "WAOB","TypeEmp","Occupation") 
+str(dfCensus2)
 
 ### 2. Add new category to race = "hisp"
 ### ... ACS coded HISP = "1" for "not Hispanic" so change race values to 99 ("hispanic") when hisp != 1
@@ -18,6 +19,7 @@ rows <- dfCensus2$Hisp != "1"
 dfCensus2$Race[rows] <- 99
 str(dfCensus2) ### 39692 observations ... for pop weights, state, race, sex, Hispanic subgroups
 head(dfCensus2)
+table(dfCensus2$CIT)
 
 ### 3.. Read manually edited codebooks 
 ###  ... commas added between codes and labels ... commas deleted within labels ... and 99 Hispanic added manually
@@ -38,6 +40,10 @@ file="Codes-Occupation.txt"
 occupationCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
 occupationCodes
 
+#file="Codes-TypeEmp.txt"
+#typeEmpCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
+#typeEmpCodes
+
 ### 4. Convert coded categorical variables to factors ... sex, race, state, occupation ... drop padding/blanks before/after each category
 dfCensus2$Race <- as.factor(dfCensus2$Race)
 levels(dfCensus2$Race) <- trimws(raceCodes[,2])
@@ -50,8 +56,12 @@ levels(dfCensus2$State) <- trimws(stateCodes[,2])
 
 dfCensus2$Occupation <- as.factor(dfCensus2$Occupation)
 levels(dfCensus2$Occupation) <- trimws(occupationCodes[,2])
+
+#dfCensus2$TypeEmp <- as.factor(dfCensus2$TypeEmp)
+#levels(dfCensus2$TypeEmp) <- trimws(typeEmpCodes[,2])
  
 str(dfCensus2)
+head(dfCensus2, 50)
 save(dfCensus2, file="dfCensus2.rda")
 
 ### Stats-2 will calculate the first group of tables from dfCensus2 for the overall U.S. 
