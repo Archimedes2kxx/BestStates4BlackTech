@@ -52,6 +52,7 @@ levels(dfCensus2$Sex) <- trimws(sexCodes[,2])
 
 dfCensus2$State <- as.factor(dfCensus2$State)
 levels(dfCensus2$State) <- trimws(stateCodes[,2])
+### Note: the District of Columbia is abbreviated to "Dist of Col" to let table fit on one page without wrapping
 
 dfCensus2$Occupation <- as.factor(dfCensus2$Occupation)
 levels(dfCensus2$Occupation) <- trimws(occupationCodes[,2])

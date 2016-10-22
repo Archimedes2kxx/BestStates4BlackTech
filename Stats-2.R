@@ -478,7 +478,7 @@ makeTable7 <- function(dfIn, dfParity, Group, letter) {
     
     dfOut <- subset(dfFinal, select=c("State", perGroupTech, "Parity"))
     L <- dim(dfOut)[1]
-    L <- min(L, 3) ### min(L,5)
+    L <- min(L, 5) ### min(L,5)
     dfOut <- head(dfOut[order(-dfOut$Parity),],L)
     rows <- as.character(seq(1:L)) ### some tables may be shorter than 5
     rownames(dfOut) <- rows

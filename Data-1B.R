@@ -71,6 +71,8 @@ head(dfStatesPop2)
 
 ### 7. Convert state to factor
 dfStatesPop2[1,1] <- "ALL STATES"
+### Insert short name for DC
+dfStatesPop2[dfStatesPop2$State=="District of Columbia", "State"] <- "Dist of Col"
 dfStatesPop2$State <- as.factor(dfStatesPop2$State)
 head(dfStatesPop2)
 
