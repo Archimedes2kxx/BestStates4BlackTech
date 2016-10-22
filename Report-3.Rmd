@@ -165,7 +165,7 @@ There are six maps (below), one for each racial/ethnic group plus two female gro
 
 * Map 4A displays light hues for all states, indicatingn that White techs are spread across a large number of states, with the largest number living in California having marginally higher percentages than the other states. 
 
-* Map 4B shows that most Black techs are located in the Eastern and Southern states, with the largest number living in Texas, second in Georgia, and third in Virginia
+* Map 4B shows that most Black techs are located in the Eastern and Southern states, with the largest number working in Georgia, second in Texas, and third in Virginia
 
 * Map 4C shows that Asian techs are highly concentrated in California where their concentration is higher than any other group in any state. Otherwise Asians are spread out over other states with much smaller Asian workers   
 
@@ -215,9 +215,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 * As I noted earlier, New York City and Washington, DC have large daytime commuter populations. Therefore the number of Black techs who worked in New York state or in Washington, DC in 2014 may have been substantially larger than the number of Black techs listed in Table 4B.
 
-* Column 4 (BlkTech) of Table 4B (above) shows that in 2014 the largest number of Black techs worked in Texas, second largest in Georgia, third in Virginia, fourth in New York, fifth in Maryland, sixth in Florida, and California placed seventh. Why? Because in 2014 the vast majority Black Americans still worked in Eastern and Southern states; so that's where most of the Black techs were found. This put most Black techs at a considerable disadvantage with regards to learning about and/or being recruited for tech jobs in Silicon Valley.
-
-* California's prominence as the corporate headquarters of many of the nation's richest tech companies makes it necessary to closely examine the status of its disadvantaged groups. Unfortunately the numbers were disappointing. As per the fifth column (T\_%), the `r prettyNum(dfTable4B["California", "T_%"], big.mark=",", scientific=FALSE)`%  Black share of tech in California was the lowest in the short table by a wide margin. And its parity numbers in the last column (Par) were lower than all but one of the other nine states.    
+* Column 4 (BlkTech) of Table 4B (above) shows that in 2014 the largest number of Black techs worked in Georgia, second largest in Texas, third in Virginia, fourth in Maryland, and fifth in California. Why? Because in 2014 the vast majority Black Americans still lived in Eastern and Southern states; so that's where most of the Black techs were found. This put most Black techs at a considerable disadvantage with regards to learning about and/or being recruited for tech jobs in Silicon Valley.
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
