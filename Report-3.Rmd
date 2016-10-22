@@ -104,7 +104,7 @@ Answer 1B ... As shown in Table 1B (below), the U.S. Census Bureau estimated tha
 
 <b>Table 1B -- Racial/Ethnic Composition of the U.S. Tech Sector in 2014</b>   
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-  print(format(dfTable1B, big.mark=","), row.names=TRUE)
+    print(format(dfTable1B, big.mark=","), row.names=TRUE)
 ```
 
 #### Question 2A -- What was the male/female composition of the U.S. population in 2014?
@@ -118,7 +118,7 @@ Answer 2A ... As shown in Table 2A (below), the population was close to an even 
 
 #### Question 2B -- What was the male/female composition of the tech sector in 2014? 
 
-Answer 2B ... As shown in Table 2B (below), the ratio of male to female techs was about three to one, more specifically (`r dfTable2B["Percent", "Male"]` percent to (`r dfTable2B["Percent", "Female"]` percent. The ratio of Non-Asian females to Asian females was about four to one(`r dfTable2B["Percent", "FemNonAsian"]`, percent to `r dfTable2B["Percent", "FemAsian"]` percent.
+Answer 2B ... As shown in Table 2B (below), the ratio of male to female techs was about three to one, more specifically (`r dfTable2B["Percent", "Male"]` percent to (`r dfTable2B["Percent", "Female"]` percent. The ratio of Non-Asian females to Asian females was about four to one, i.e., (`r dfTable2B["Percent", "FemNonAsian"]` percent to `r dfTable2B["Percent", "FemAsian"]` percent).
 
 <b>Table 2B -- Male/Female Composition of the U.S. Tech Sector in 2014</b>   
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -132,10 +132,10 @@ Answer 2B ... As shown in Table 2B (below), the ratio of male to female techs wa
 Answer 3A ... For the purposes of this report, "information technology" was defined as the thirteen standard occupation categories (SOC) that appear in the first column of Table 3 (below). Eleven of these categories related to software, e.g., Software Developers, Computer Programmers, and Database Administrtors; only two related to hardware, i.e., Electrical and Electronics Engineers and Computer Hardware Engineers.  
 
 #### Question 3B -- How many techs were in each category?        
-Answer 3B ... The total number of techs in each category appear the second column of Table 3 (below). The top row shows that there were approximately `r prettyNum(dfTable3["ALL","AllTech"], big.mark=",", scientific=FALSE)` professionals in  all tech categories.
+Answer 3B ... The total number of techs in each category appear the second column of Table 3 (below). The top row shows that there were approximately `r prettyNum(dfTable3[dfTable3$Occupation=="ALL","AllTech"], big.mark=",", scientific=FALSE)` professionals in  all tech categories.
 
 #### Question 3C -- What was the male/female breakdown of employment within these categories?         
-Answer 3C ... The third column of Table 3 (below) shows the percentage of techs in the second column who were male. Females were an overall minority of `r dfTable3["ALL","F_%"] `% of all professionals in tech, and were a minority in every tech category, ranging from a low value of `r prettyNum(min(dfTable3[, "F_%"]), scientific=FALSE)`% for to a high value of `r prettyNum(max(dfTable3[, "F_%"]), scientific=FALSE)`%.
+Answer 3C ... The third column of Table 3 (below) shows the percentage of techs in the second column who were male. Females were an overall minority of `r dfTable3[dfTable3$Occupation=="ALL","F_%"] `% of all professionals in tech, and were a minority in every tech category, ranging from a low value of `r prettyNum(min(dfTable3[, "F_%"]), scientific=FALSE)`% for to a high value of `r prettyNum(max(dfTable3[, "F_%"]), scientific=FALSE)`%.
 
 <b>Table 3 -- Employment in U.S. Information Technology in 2014 with Female Percentages</b>   
 ```{r, echo=FALSE, cache=FALSE,  comment=NA}
@@ -297,7 +297,7 @@ Answer 5: As shown in six plots that follow, there was a positive relationship, 
 
 * The regression lines and scatterplots of the <tech, population> data points appear in the six panels. The values of the slopes, called "beta1000", are displayed in the upper left corner of each plot. 
 
-* As per the values of the beta1000 slopes, If each ethnic/racial group's population increased by 1,000, Asian techs would increase by `r beta1000["asian"]`; Whites would increase by `r beta1000["white"]`, Blacks would increase by `r beta1000["black"]`; and Hispanics would increase by `r beta1000["hispanic"]`. The Asian line has the steepest slope; the Hispanic line has the flattest slope. Asian female techs had the second steepest slope, beta1000 = `r beta1000["femAsian"]`; non-Asian female techs had the second flattest slope, beta1000 = `r beta1000["femNonAsian"]`.
+* As per the values of the beta1000 slopes, If each ethnic/racial group's population increased by 1,000, Asian techs would increase by `r beta1000["Asian"]`; Whites would increase by `r beta1000["White"]`, Blacks would increase by `r beta1000["Black"]`; and Hispanics would increase by `r beta1000["Hispanic"]`. The Asian line has the steepest slope; the Hispanic line has the flattest slope. Asian female techs had the second steepest slope, beta1000 = `r beta1000["FemAsian"]`; non-Asian female techs had the second flattest slope, beta1000 = `r beta1000["FemNonAsian"]`.
 
 * This kind of simple regression implicitly assumes that the 50 states and DC were all more or less equally receptive or resistant to including more techs from the same groups. This may indeed have been true for most states. However, Table 4B shows that the Black parity for Texas = `r dfTable4B["Texas", "Par"]`, whereas the Black parity for California = `r dfTable4B["California", "Par"]`. This suggests that Texas was more receptive to Black techs than California. And Table 4D shows that the Hispanic parity for Florida = `r dfTable4D["Florida", "Par"]`, while the Hispanic parity  for California = `r dfTable4D["California", "Par"]`. This suggests that Florida was more receptive to Hispanic techs than California.   
 
@@ -305,7 +305,7 @@ Answer 5: As shown in six plots that follow, there was a positive relationship, 
 
 
 <b>Table 5 -- Summary of Racial/Ethnic/Female National Advantages</b>
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     print(format(dfTable5, big.mark = ","), row.names=TRUE) 
 ```
 

@@ -29,6 +29,7 @@ library(gtable)
 (dfTable1Apop <- dfStatesPop3[1,2:7])
 colNames <- c("ALL", "White", "Black", "Asian", "Hispanic", "OTHERS")
 colnames(dfTable1Apop) <- colNames
+dfTable1Apop <- prettyNum(dfTable1Apop, big.mark = ",") 
 dfTable1Apop
 
 dfTable1Aper <- dfStatesPop3[1,c(2,11:15)]
@@ -46,6 +47,7 @@ dfTable1A
 ### Table 1B. White, Black, Asian, Hispanic Components of U.S. Tech Sector in 2014
 dfTable1Btech <- dfRaceSexCountAndShares[1,2:7]
 colnames(dfTable1Btech) <- colNames
+dfTable1Btech <- prettyNum(dfTable1Btech, big.mark = ",") 
 dfTable1Btech
 
 
@@ -216,8 +218,8 @@ dfTable4F <- dfTechPopFemNonAsian
 #################################
 ################################
 ### Table 4 ... Big Six
-dfTab <- subset(dfTechPopWhite, select=c("State","TotalTech"))
-dfTab <- dfTab[order(dfTab$"TotalTech", decreasing=TRUE),]
+dfTab <- subset(dfRaceSexCountAndShares, select=c("State","Totals"))
+dfTab <- dfTab[order(dfTab$"Totals", decreasing=TRUE),]
 rownames(dfTab) <- NULL
 (dfTab<- (head(dfTab,7)))
 
@@ -274,7 +276,7 @@ getEmploymentRank <- function(Race, State) {
 }
 
 ### Example of use of tool
-R <- getEmploymentRank("Female", "Texas")
+R <- getEmploymentRank("White", "Texas")
 R       
 
 ######################
@@ -476,7 +478,7 @@ makeTable7 <- function(dfIn, dfParity, Group, letter) {
     
     dfOut <- subset(dfFinal, select=c("State", perGroupTech, "Parity"))
     L <- dim(dfOut)[1]
-    L <- min(L,5)
+    L <- min(L, 3) ### min(L,5)
     dfOut <- head(dfOut[order(-dfOut$Parity),],L)
     rows <- as.character(seq(1:L)) ### some tables may be shorter than 5
     rownames(dfOut) <- rows

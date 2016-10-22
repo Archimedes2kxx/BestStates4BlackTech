@@ -1,17 +1,17 @@
-### A. Read PUMS 2014 sample data from files downloaded from U.S. Census DataWeb site using DataFerret
+### A. Read PUMS 2015 sample data from files downloaded from U.S. Census DataWeb site using DataFerret
 
 library(dplyr)
 library(tidyr)
 
 ### 1. Read downloaded PUMS sample data and save
-file = "Race-Sex-Hisp-Citizen-COW-WAOB-InfoTechOccupations-AllStates-PersonalWeight-PUMS-2014-DataFerret.csv"
+file = "Race-Sex-Hisp-Citizen-WAOB-InfoTechOccupations-AllStates-PersonalWeight-PUMS-2015-DataFerret.csv"
 dfCensus1 = read.csv(file, header=TRUE, stringsAsFactors = FALSE)
 save(dfCensus1, file="dfCensus1.rda")
 
 dfCensus2 = dfCensus1
 str(dfCensus2)
-colnames(dfCensus2) = c("personalWeight", "Race", "State", "Hisp", "Sex", "CIT", "WAOB","TypeEmp","Occupation") 
-str(dfCensus2)
+colnames(dfCensus2) = c("personalWeight", "Hisp", "WAOB" , "CIT", "Sex", "State", "Race","Occupation") 
+str(dfCensus2) ### 51542 obs. of  8 variables:
 
 ### 2. Add new category to race = "hisp"
 ### ... ACS coded HISP = "1" for "not Hispanic" so change race values to 99 ("hispanic") when hisp != 1
@@ -19,7 +19,6 @@ rows <- dfCensus2$Hisp != "1"
 dfCensus2$Race[rows] <- 99
 str(dfCensus2) ### 39692 observations ... for pop weights, state, race, sex, Hispanic subgroups
 head(dfCensus2)
-table(dfCensus2$CIT)
 
 ### 3.. Read manually edited codebooks 
 ###  ... commas added between codes and labels ... commas deleted within labels ... and 99 Hispanic added manually
@@ -61,7 +60,7 @@ levels(dfCensus2$Occupation) <- trimws(occupationCodes[,2])
 #levels(dfCensus2$TypeEmp) <- trimws(typeEmpCodes[,2])
  
 str(dfCensus2)
-head(dfCensus2, 50)
+head(dfCensus2, 10)
 save(dfCensus2, file="dfCensus2.rda")
 
 ### Stats-2 will calculate the first group of tables from dfCensus2 for the overall U.S. 
