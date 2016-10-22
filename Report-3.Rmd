@@ -213,7 +213,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 ```
 <b>Comments about Table 4B -- Blacks in Tech</b>   
 
-* As I noted earlier, New York City and Washington, DC have large daytime commuter populations. Therefore the number of Black techs who worked in New York state or in Washington, DC in 2015 may have been substantially larger than the number of Black techs listed in Table 4B.
+* Although most tech professionals worked in the same states in which they lived, New York City and Washington, DC had large daytime commuter populations. Many techs lived in Maryland and Virginia, but worked in DC;  and many who lived in New Jersey and Connecticut worked in New York. There were also substantial commuter flows in the opposite directions, i.e., techs who lived in the core cities but worked in the adjacent states.
 
 * Column 4 (BlkTech) of Table 4B (above) shows that in 2015 the largest number of Black techs worked in Georgia, second largest in Texas, third in Virginia, fourth in Maryland, and fifth in California. Why? Because in 2015 the vast majority Black Americans still lived in Eastern and Southern states; so that's where most of the Black techs were found. This put most Black techs at a considerable disadvantage with regards to learning about and/or being recruited for tech jobs in Silicon Valley.
 
