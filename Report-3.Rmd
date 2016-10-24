@@ -1,5 +1,5 @@
 ---
-title: "Best States for Black, Hispanic, Female, and Asian Tech -- Version 0.92"
+title: "Best States for Black, Hispanic, Asian, and Female Tech -- Version 0.93"
 author: "Roy L Beasley, PhD -- DLL Editor"
 
 output: 
@@ -48,17 +48,21 @@ tt3 <- ttheme_minimal(
   rowhead=list(fg_params=list(col="orange", fontface=3L)))
 ```
 ## Overview   
-My principal findings were straight-forward:   
+My principal findings were as follows:   
 
-* First, in 2015 there were approximately `r prettyNum(dfTable1B["Number","ALL"], big.mark=",", scientific=FALSE)` employees in the entire U.S. information technology sector ==>  `r prettyNum(dfTable1B["Number","Black"], big.mark=",", scientific=FALSE)` were Black; `r prettyNum(dfTable1B["Number","Hispanic"], big.mark=",", scientific=FALSE)` were Hispanic; and `r prettyNum(dfTable2B["Number","Female"], big.mark=",", scientific=FALSE)` were female. (See Table 1B and Table 2B.)      
+* In 2015 there were approximately `r prettyNum(dfTable1B["Number","ALL"], big.mark=",", scientific=FALSE)` American employees in the entire U.S. information technology sector ==>  `r prettyNum(dfTable1B["Number","Black"], big.mark=",", scientific=FALSE)` were Black Americans; `r prettyNum(dfTable1B["Number","Hispanic"], big.mark=",", scientific=FALSE)` were Hispanic Americans; `r prettyNum(dfTable1B["Number","Asian"], big.mark=",", scientific=FALSE)` were Asian Americans; and `r prettyNum(dfTable2B["Number","Female"], big.mark=",", scientific=FALSE)` were female Americans. (See Table 1B and Table 2B.)      
 
-* Second, the number of tech employees who were Black was higher in states that had larger Black populations and smaller in states that had smaller Black populations. The same relationship between population size and tech employment held true for Hispanics and females. (See Table 4B, Table 4D, and Table 4E)
+* The best states for Black American tech professionals were all HBCU states: `r dfTable8B[1, 1]`, `r dfTable8B[2, 1]`, `r dfTable8B[3, 1]`, `r dfTable8B[4, 1]`, and `r dfTable8B[5, 1]`. (See Table 8B)   
 
-* Third, if all other things were equal, one would expect that the percentage of a state's tech sector that was Black would be about the same as the percentage of the state's total population that was Black. One would expect similar parity for the percentages of Hispanics and for females. But all things were not equal, so I found that the percentage of the tech sector of most states that was Black, Hispanic, or female was substantially smaller than the percentage of the state's total population that was Black, Hispanic, or female. By contrast, I found that the percentage of state tech sectors that was Asian was always greater than their population percentage and ranged as high as `r dfTable6["Asian", "Max"]` times their population percentage. (See Tables 4C and 6)  
+* The best states for Hispanic American tech professionals were `r dfTable8D[1, 1]`, `r dfTable8D[2, 1]`, `r dfTable8D[3, 1]`, `r dfTable8D[4, 1]`, and `r dfTable8D[5, 1]`. (See Table 8D)   
 
-* Fourth, female techs only held `r prettyNum(dfTable2B["Percent","Female"])` percent of the nation's `r prettyNum(dfTable2B["Number","ALL"], big.mark=",", scientific=FALSE)` tech positions. After considering the disproportionate number of tech positions allocated to Asian techs, I split the female tech category into Asian females and non-Asian females. I then found that Asian females also occupied disproportionately larger shares of the tech sectors in most states than their share of each state's population. Indeed, their tech shares ranged as high as 6.29 times their shares of state populations. (See Table 4E and Table 6.) By contrast, non-Asian females occupied much smaller shares of the state tech sectors than their shares of the state populations. (See Tables 2B, 3 and 6.)
+* The best states for Asian American tech professionals were `r dfTable8C[1, 1]`, `r dfTable8C[2, 1]`, `r dfTable8C[3, 1]`, `r dfTable8C[4, 1]`, and `r dfTable8C[5, 1]`. (See Table 8C)    
 
-* Fifth, the strengths of these relationships varied widely: some states offered substantially larger employment opportunities for Blacks, Hispanics, and female techs than others. (See Tables 8B, 8D, 8E, and 8F) 
+* If all other things were equal, one would expect that the percentage of a state's tech sector that was Black would be about the same as the percentage of the state's total population that was Black. One would expect similar parity for the percentages of Hispanics and for females. But all things were not equal, so I found that the percentage of the tech sector of most states that was Black, Hispanic, or female was substantially smaller than the percentage of the state's total population that was Black, Hispanic, or female. By contrast, I found that the percentage of state tech sectors that was Asian was usually greater than their population percentage and ranged as high as `r dfTable6["Asian", "Max"]` times their population percentage. (See Tables 4C and 6)  
+
+* Female American tech professionals only held `r prettyNum(dfTable2B["Percent","Female"])` percent of the nation's `r prettyNum(dfTable2B["Number","ALL"], big.mark=",", scientific=FALSE)` of the tech positions occupied by Americans. After considering the disproportionate number of tech positions allocated to Asian American techs, I split the American female tech category into Asian American females and non-Asian American females. I then found that Asian American females also occupied disproportionately larger shares of the tech sectors in most states than their share of each state's population. Indeed, their tech shares ranged as high as XXXXX times their shares of state populations. (See Table 4E and Table 6.) By contrast, non-Asian American females occupied much smaller shares of the state tech sectors than their shares of the state populations. (See Tables 2B, 3 and 6.)   
+
+* Finally, in 2015 the U.S. information technology sector employed XXXX foreign tech professionals, most of whom came from Asia. It should be noted that this figure is almost as large as the combined total number of Black Americans (`r prettyNum(dfTable1B["Number","Black"], big.mark=",", scientific=FALSE)`) and Hispanic Americans ( `r prettyNum(dfTable1B["Number","Hispanic"], big.mark=",", scientific=FALSE)`) employed by the U.S. tech sector. 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
 
@@ -86,7 +90,7 @@ This being my first attept to write a reproducible report, I wrote it in R and s
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
 ## Findings ... <i><small>Answers to the following questions</small></i>
-My brief answers to the first three questions provide a broad statistical framwork for my extended responses to the fourth and fifth questions that form the core of this report. <b>Note: all the tables in this version of the report refer to techs who are U.S. citizens. A later version will include foreign techs as well as U.S. techs. </b>
+My brief answers to the first three questions provide a broad statistical framwork for my extended responses to the fourth and fifth questions that form the core of this report. <b>Note: all the tables in this version of the report refer to techs who are U.S. citizens. </b>
 
 #### Question 1A -- How many White, Black, Asian, and Hispanic tech professionals worked in the U.S. in 2015?    
 Answer 1A ... In 2015, as shown in Table 1A (below), the largest of the four racial/ethnic groups discussed in this report was White (`r prettyNum(dfTable1A["Number","White"], big.mark=",", scientific=FALSE)`); the smallest was Asian (`r prettyNum(dfTable1A["Number","Asian"], big.mark=",", scientific=FALSE)`). Hispanics, the largest minority (`r prettyNum(dfTable1A["Number","Hispanic"], big.mark=",", scientific=FALSE)`), had grown substantially larger than Blacks (`r prettyNum(dfTable1A["Number","Black"], big.mark=",", scientific=FALSE)`).
@@ -141,8 +145,8 @@ Answer 3C ... The third column of Table 3 (below) shows the percentage of techs 
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
-#### Question 4 -- Where did the nation's Black, Hispanic, and female tech professionals work in 2015?      
-Answer 4 ... The following sections provide an extensive response to a more specific formulation of this question ==> In which states did White, Black, Asian, Hispanic, and female tech professionals work in 2015?  
+#### Question 4 -- Where did the nation's Black, Hispanic, and female Anerican tech professionals work in 2015?      
+Answer 4 ... The following sections provide an extensive response to a more specific formulation of this question ==> In which states did White, Black, Asian, Hispanic, and female American tech professionals work in 2015?  
 
 Table 4 (below) lists the six states that employed the most techs in 2015. These states will also appear in just about every table that follows because  they employed such a large share (`r prettyNum(dfTable4[1, "Top6_%"])` percent) of all `r prettyNum(dfTable4[1, "ALL STATES"], big.mark=",", scientific=FALSE)` techs in the U.S.
 
@@ -398,9 +402,9 @@ First, let me remind the reader that Table 1A showed that `r dfTable1A["Percent"
 
 * Table 9 (below) provides a rough indicator of the potential magnitude of this issue. The table's first column contains the total number of tech professionals in the Big Six states. Its second column displays the total number of Asian techs in each state, as per the full version of Table 4C. Its third column contains estimates of the number of H-1B visa holders in each state, estimates that I obtained from the <b>[MyVisaJobs.com](http://www.myvisajobs.com/Reports/2015-H1B-Visa-Category.aspx?T=WS)</b> website. And its fourth column notes the H-1B workers as a percentage of Asian techs in the second column. <b>Most of these percentages are absurd</b> because some of the foreign workers in the third column were not from Asia, but from other parts of the world; and some of the Asian Asians were not employed as tech professionals.    
 
-* For the final 1.0 version of this report I will download another PUMS data sample, this  time with variables that indicate whether each member of the sample was a U.S. citizen and whether each member was born in Asia. "Best States for Black, Hispanic, Female, and Asian Tech, Version 1.0" will examine parity data for Asian Americans. I will then post a companion op-ed -- "Why Are There So Many Asian Asians in U.S. Tech?" -- that will offer a plausible answer to the question in its title. <b>Reminder: all the tables in this version of the report refer to techs who are U.S. citizens. A later version will include foreign techs as well as U.S. techs. </b>
+* The final 1.0 version of this report will use additional Census data to determine the number and geographical distribution of foreign Asian professionals in U.S. tech, i.e., how many are employed in each state. I will then post a companion op-ed -- "Why Are There So Many Foreign Asians in U.S. Tech?" -- that will offer a plausible answer to the question in its title. <b>Reminder: all the tables in this version of the report refer to tech professionals who are U.S. citizens.</b>
 
-<b>Table 9. Foreign Workers in Each State</b>
+<b>Table 9. Foreign Workers in the Biggest Tech States</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
     print(format(dfTable9, big.mark=",")) 
 ```
