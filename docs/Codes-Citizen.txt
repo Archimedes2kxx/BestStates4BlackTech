@@ -1,0 +1,6 @@
+Code, Citizen
+1,  Born U.S.
+2,  Born US Islands
+3,  Born abroad US parents
+4,  Naturalized
+5,  No

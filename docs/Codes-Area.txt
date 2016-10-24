@@ -1,0 +1,9 @@
+Code, Area
+1,  USA
+2,  US Islands
+3,  Latin America
+4,  Asia
+5,  Europe
+6,  Africa
+7,  North America
+8,  Oceania
