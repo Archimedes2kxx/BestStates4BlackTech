@@ -17,7 +17,7 @@ output:
     
     #### load("dfRaceWorkplaceAndShares.rda") ### Only use data in tables, plots, and maps
     load("dfCensus2.rda") 
-    load("dfTab1A1B2A2B3.rda")
+    load("dfTab1A1B2A2B3X3Y.rda")
     load("dfTab4.rda")   
     load("dfMap4.rda")
     load("dfPlot5Tab5beta1000.rda")
@@ -76,7 +76,7 @@ While reading the Silicon Valley reports I found myself shaking my head while wo
 
 One of the most useful lessons that I learned as a consultant to the National Center for Productivity way back in the late 1970s was that the application of performance metrics, even flawed metrics, to just about any significant human activity invariably identified a broad middle tier that was above a small tier of low performers and below another small tier of high performers. Further inquiry usually disclosed that the high performers were doing things quite differently than the middle and low performers. Happily, performers in the lower tiers could improve by adopting the high performers' <b>best practices</b> if they made appropriate adaptations of the best practices to their local working conditions. 
 
-Given this insight, I set out to apply a simple measure of the performance of all 50 states and the District of Columbia with regards to the opportunities their tech sectors provided for Black, Hispanic, and female professionals. If Silicon Valley proved to be a low performer in these national contexts, its executives would be unlikely sources of best practices that could improve the Valley's performance.
+Given this insight, I set out to apply a simple measure of the performance of all 50 states and the District of Columbia with regards to the opportunities their tech sectors provided for Black, Hispanic, and female professionals. 
 
 <b>B. Reproducible Reports</b>   
 One of my most important take-aways from completing the <b>[Johns Hopkins "Data Science"](https://www.coursera.org/specializations/jhu-data-science)</b> online certificate program a few months ago was the notion that reports should be "reproducible". Authors should not only describe their methods for collecting and analyzing data; they should provide step-by-step descriptions of their methods (including copies of their code) so that interested readers could readily reproduce the results on their own computers. Of course, the best researchers have always tried to achieve this objective and have often succeeded. What was new for me was the specific tools that the statisticians who taught the Hopkins courses recommended ==> the <b>[R programming language](https://en.wikipedia.org/wiki/R_)</b> and <b>[GitHub](https://en.wikipedia.org/wiki/GitHub)</b>.    

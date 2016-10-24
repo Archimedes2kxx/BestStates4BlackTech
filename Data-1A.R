@@ -72,11 +72,7 @@ str(dfCensus2) ### 45081 obs. of  9 variables:
 head(dfCensus2, 10)
 dfCensus2$Citizen <- TRUE
 dfCensus2$Citizen[dfCensus2$CIT=="No"] <- FALSE
-(tabCitizen <- t(table(dfCensus2$Citizen)))
-
 save(dfCensus2, file="dfCensus2.rda")
-
-
 
 ### Stats-2 will calculate the first group of tables from dfCensus2 for the overall U.S. 
 ### ... Total U.S. techs, male/female breakdown, total for each type of tech, total techs in each state
@@ -95,7 +91,7 @@ save(dfCensus2, file="dfCensus2.rda")
 #######################
 dfCensus3 <- subset(dfCensus2, Citizen==TRUE) 
 str(dfCensus3) ### 40278 obs. of  9 variables
-save(dfCensus3, tabCitizen, file="dfCensus3.rda")
+save(dfCensus3, file="dfCensus3.rda")
 
 census3StateRace <- group_by(dfCensus3, State, Race) 
 head(census3StateRace)
@@ -190,15 +186,15 @@ head(dfRaceSexCountAndShares)
 
 ###########################
 #####################
-### 14. Now tabulate the non citizens ... focus on Asians
+### 14. Tabulate the non citizens ... focus on Asians
 #######################
 dfCensus4 <- subset(dfCensus2, select=c("personalWeight","State", "Birth"), Citizen==FALSE) 
-str(dfCensus4) ### 4803 obs. of  9 variables:
+str(dfCensus4) ### 4803 obs. of  3 variables:
+save(dfCensus4, file="dfCensus4.rda")
 head(dfCensus4)
-table(dfCensus4$Birth)
+table(dfCensus4$Birth) ### raw ... unweighted by personal weights
 
-### repeat steps 5, 6, 7, 8 ... don't disaggregate male/female
-### Identify totals, Asians, Others
+### Identify totals, Asian, NotAsia
 census4StateBirth <- group_by(dfCensus4, State, Birth) 
 dfSumPwtStateBirth <- summarise(census4StateBirth, ptsPwtStateBirth = sum(personalWeight))
 head(dfSumPwtStateBirth) 
@@ -206,12 +202,13 @@ dfBirthPerState <- spread(dfSumPwtStateBirth, key=Birth, value=ptsPwtStateBirth,
 head(dfBirthPerState)
 str(dfBirthPerState)
 
-### Combine all Non-Asian into Others dfBirthsPerState$LatinAmerica + 
+### Combine all Non-Asian into Others dfBirthPerState$LatinAmerica + 
 dfBirthPerState$FrnOthers <- dfBirthPerState$"Latin America" + dfBirthPerState$Europe + dfBirthPerState$Africa + dfBirthPerState$"North America" + dfBirthPerState$Oceania 
 
 dfForeignTechStates <- subset(dfBirthPerState, select=-c(USA, `US Islands`, `Latin America`, Europe, Africa, `North America`, Oceania)) ### Delete the components of FrnOthers
 head(dfForeignTechStates)
-dfForeignTechStates[is.na(dfForeignTechStates)] <- 0 ### Replace NAs with zeros
+
+dfForeignTechStates[is.na(dfForeignTechStates)] <- 0 ### Not necessary after drop=FALSE??
 dfForeignTechStates$Foreign <- dfForeignTechStates$Asia + dfForeignTechStates$FrnOthers
 dfForeignTechStates <- dfForeignTechStates[,c(1, 4, 2, 3)] ### Put Foreign in 1st col
 colnames(dfForeignTechStates) <- c("State", "Foreign", "Asia", "NotAsia")

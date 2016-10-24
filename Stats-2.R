@@ -11,7 +11,7 @@
 load(file="dfRaceSexCountAndShares.rda")
 load(file="dfStatesPop3.rda") 
 load("dfCensus2.rda") 
-load("dfCensus3.rda") 
+load("dfCensus3.rda")
 
 ###load("dfSexWorkplaceAndShares.rda")
 
@@ -107,8 +107,6 @@ dfTable2B <- data.frame(rbind(dfTable2Bpop, dfTable2Bper))
 rownames(dfTable2B) <- c("Number", "Percent")
 dfTable2B
 
-
-
 ######################
 ### Table 3 Occupations by Sex ... more thanks to HW
 census3OccSex <- group_by(dfCensus3, Occupation, Sex)
@@ -148,7 +146,42 @@ rownames(dfOccupationSex) <- NULL
 colnames(dfOccupationSex) <- c("Occupation", "AllTech", "Male", "Female","M_%", "F_%")
 (dfTable3 <- dfOccupationSex)
 
-save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3, file="dfTab1A1B2A2B3.rda")
+############################
+### Table 3XY. Occupations of foreign techs from Asia
+dfCensus5 <- subset(dfCensus2, select=c("personalWeight","Occupation", "Birth"), Citizen==FALSE) 
+str(dfCensus5) ### 4803 obs. of  3 variables
+
+census5OccupationBirth <- group_by(dfCensus5, Occupation, Birth)
+dfSumPwtOccupationBirth <- summarise(census5OccupationBirth, ptsPwtOccupationBirth = sum(personalWeight))
+dfBirthPerOccupation <- spread(dfSumPwtOccupationBirth, key=Birth, value=ptsPwtOccupationBirth, fill=0, drop=FALSE)
+head(dfBirthPerOccupation)
+
+### Combine all Non-Asia into Others dfBirthPerOccupation$LatinAmerica + 
+dfBirthPerOccupation$NotAsia <- dfBirthPerOccupation$"Latin America" + dfBirthPerOccupation$Europe + dfBirthPerOccupation$Africa + dfBirthPerOccupation$"North America" + dfBirthPerOccupation$Oceania 
+
+dfForeignTechOccupations <- subset(dfBirthPerOccupation, select=-c(USA, `US Islands`, `Latin America`, Europe, Africa, `North America`, Oceania)) ### Delete the components of FrnOthers
+dfForeignTechOccupations
+
+allForeign <- colSums(dfForeignTechOccupations[,2:3])
+dfForeignTop <- dfForeignTechOccupations[1,] ### dummy copy first row to set the types
+dfForeignTop$Occupation <- "ALL"
+dfForeignTop[1,2:3] <- allForeign
+dfForeignTechOccupations <- rbind(dfForeignTop, dfForeignTechOccupations)
+dfForeignTechOccupations <- as.data.frame(dfForeignTechOccupations)
+
+dfForeignTechOccupations$`AOS_%` <- round(100*dfForeignTechOccupations$Asia/dfForeignTechOccupations[1,"Asia"], digits=1)
+dfForeignTechOccupations$`NAOS_%` <- round(100*dfForeignTechOccupations$NotAsia/dfForeignTechOccupations[1,"NotAsia"], digits=1)
+dfForeignTechOccupations
+
+dfTable3X <- subset(dfForeignTechOccupations, select=c(Occupation, Asia, `AOS_%`))
+index <- order(dfForeignTechOccupations$Asia, decreasing=TRUE)
+(dfTable3X <- dfTable3X[index,])
+
+dfTable3Y <- subset(dfForeignTechOccupations, select=c(Occupation, NotAsia, `NAOS_%`))
+index <- order(dfForeignTechOccupations$NotAsia, decreasing=TRUE)
+(dfTable3Y <- dfTable3Y[index,])
+
+save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3, dfTable3X, dfTable3Y, file="dfTab1A1B2A2B3X3Y.rda")
 
 ##################################
 ######################
