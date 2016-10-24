@@ -208,15 +208,6 @@ dfTable4D <- dfTechPopHispanic
 dfTable4E <- dfTechPopFemAsian
 dfTable4F <- dfTechPopFemNonAsian
 
-### Don't display row names on printable copies of tables, same as state names
-### NO, make this decision in the report script, chunk by chunk ... report is like CSS
-#rownames(dfTable4A) <- NULL
-#rownames(dfTable4B) <- NULL
-#rownames(dfTable4C) <- NULL
-#rownames(dfTable4D) <- NULL
-#rownames(dfTable4E) <- NULL
-#rownames(dfTable4F) <- NULL
-
 #################################
 ################################
 ### Table 4 ... Big Six

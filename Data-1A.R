@@ -10,7 +10,7 @@ save(dfCensus1, file="dfCensus1.rda")
 
 dfCensus2 = dfCensus1
 str(dfCensus2)
-colnames(dfCensus2) = c("personalWeight", "Hisp", "WAOB" , "CIT", "Sex", "State", "Race","Occupation") 
+colnames(dfCensus2) = c("personalWeight", "Hisp", "Birth" , "CIT", "Sex", "State", "Race","Occupation") 
 str(dfCensus2) ### 45081 obs. of  8 variables
 
 ### 2. Add new category to race = "hisp"
@@ -39,9 +39,9 @@ file="Codes-Occupation.txt"
 occupationCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
 occupationCodes
 
-###file="Codes-Area.txt"
-###areaCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses ###= "character")
-###areaCodes
+file="Codes-Area.txt"
+areaCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
+areaCodes
 
 file="Codes-Citizen.txt"
 citizenCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
@@ -61,8 +61,8 @@ levels(dfCensus2$State) <- trimws(stateCodes[,2])
 dfCensus2$Occupation <- as.factor(dfCensus2$Occupation)
 levels(dfCensus2$Occupation) <- trimws(occupationCodes[,2])
 
-### dfCensus2$Birth <- as.factor(dfCensus2$Birth)
-### levels(dfCensus2$Birth) <- trimws(areaCodes[,2])
+dfCensus2$Birth <- as.factor(dfCensus2$Birth)
+levels(dfCensus2$Birth) <- trimws(areaCodes[,2])
 
 dfCensus2$CIT <- as.factor(dfCensus2$CIT)
 levels(dfCensus2$CIT) <- trimws(citizenCodes[,2])
@@ -74,7 +74,7 @@ dfCensus2$Citizen <- TRUE
 dfCensus2$Citizen[dfCensus2$CIT=="No"] <- FALSE
 (tabCitizen <- t(table(dfCensus2$Citizen)))
 
-save(dfCensus2, tabCitizen, file="dfCensus2.rda")
+save(dfCensus2, file="dfCensus2.rda")
 
 
 
@@ -101,31 +101,25 @@ census3StateRace <- group_by(dfCensus3, State, Race)
 head(census3StateRace)
 dfPtsPwtStateRace <- summarise(census3StateRace, ptsPwtStateRace = sum(personalWeight))
 head(dfPtsPwtStateRace, 10)
-dfRaceSexCountPerState <- spread(dfPtsPwtStateRace, key=Race, value=ptsPwtStateRace)
-head(dfRaceSexCountPerState)
-dfRaceSexCountPerState[is.na(dfRaceSexCountPerState)] <- 0 ### Replace NAs with zeros
-head(dfRaceSexCountPerState)
+dfRaceCountPerState <- spread(dfPtsPwtStateRace, key=Race, value=ptsPwtStateRace)
+head(dfRaceCountPerState)
+dfRaceCountPerState[is.na(dfRaceCountPerState)] <- 0 ### Replace NAs with zeros
+head(dfRaceCountPerState)
 
 ##############
 ### 6. Combine all groups other than black, white, asian, and hispanic into OTHERS
 columnNames <- c("State", "White", "Black", "amInAlNat", "alNat", "otherNat", "Asian", "pacific", "other", "mixed" , "Hispanic")
-colnames(dfRaceSexCountPerState) <- columnNames
-dfRaceSexCountPerState$OTHERS <- dfRaceSexCountPerState$amInAlNat + dfRaceSexCountPerState$alNat + dfRaceSexCountPerState$otherNat + dfRaceSexCountPerState$pacific + dfRaceSexCountPerState$other + dfRaceSexCountPerState$mixed
+colnames(dfRaceCountPerState) <- columnNames
+dfRaceCountPerState$OTHERS <- dfRaceCountPerState$amInAlNat + dfRaceCountPerState$alNat + dfRaceCountPerState$otherNat + dfRaceCountPerState$pacific + dfRaceCountPerState$other + dfRaceCountPerState$mixed
 
-### Delete component columns of OTHERS
-dfRaceSexCountPerState$amInAlNat <- NULL
-dfRaceSexCountPerState$alNat <- NULL
-dfRaceSexCountPerState$otherNat <- NULL
-dfRaceSexCountPerState$pacific <- NULL
-dfRaceSexCountPerState$other <- NULL
-dfRaceSexCountPerState$mixed <- NULL
-head(dfRaceSexCountPerState)
+### Delete components of OTHERS
+dfRaceCountPerState <- subset(dfRaceCountPerState, select=-c(amInAlNat, alNat,otherNat, pacific, other, mixed))
 
 #################
 ### 7. Add "totals" column after "state" ... 
-dfRaceSexCountPerState$Totals <- rowSums(dfRaceSexCountPerState[,2:6])
-dfRaceSexCountPerState <- dfRaceSexCountPerState[,c(1,7, 2:6)] ### move totals into second column
-head(dfRaceSexCountPerState)
+dfRaceCountPerState$Totals <- rowSums(dfRaceCountPerState[,2:6])
+dfRaceCountPerState <- dfRaceCountPerState[,c(1,7, 2:6)] ### move totals into second column
+head(dfRaceCountPerState)
 
 #####################################
 ### 8 Calculate the Count each sex per each state ... Thank you, Hadley ... :-)
@@ -164,7 +158,7 @@ head(dfFemale)
 
 ##### column merge dfFemales at this point to end 
 ##dfRaceSexCountPerState2 <- dfRaceSexCountPerState
-dfRaceSexCountPerState <- merge(dfRaceSexCountPerState, dfFemale)
+dfRaceSexCountPerState <- merge(dfRaceCountPerState, dfFemale)
 head(dfRaceSexCountPerState)
 
 ### 11. Calculate each racial group's share of total tech Count in each state
@@ -194,18 +188,51 @@ dfTotalsRow[1,2] <- allTech
 dfRaceSexCountAndShares <- rbind(dfTotalsRow, dfRaceSexCountAndShares)
 head(dfRaceSexCountAndShares)
 
-
+###########################
 #####################
 ### 14. Now tabulate the non citizens ... focus on Asians
 #######################
-dfCensus4 <- subset(dfCensus2, Citizen==FALSE) 
+dfCensus4 <- subset(dfCensus2, select=c("personalWeight","State", "Birth"), Citizen==FALSE) 
 str(dfCensus4) ### 4803 obs. of  9 variables:
-table(dfCensus4$Race)
+head(dfCensus4)
+table(dfCensus4$Birth)
+
 ### repeat steps 5, 6, 7, 8 ... don't disaggregate male/female
 ### Identify totals, Asians, Others
+census4StateBirth <- group_by(dfCensus4, State, Birth) 
+dfSumPwtStateBirth <- summarise(census4StateBirth, ptsPwtStateBirth = sum(personalWeight))
+head(dfSumPwtStateBirth) 
+dfBirthPerState <- spread(dfSumPwtStateBirth, key=Birth, value=ptsPwtStateBirth, fill=0, drop=FALSE)
+head(dfBirthPerState)
+str(dfBirthPerState)
 
+### Combine all Non-Asian into Others dfBirthsPerState$LatinAmerica + 
+dfBirthPerState$FrnOthers <- dfBirthPerState$"Latin America" + dfBirthPerState$Europe + dfBirthPerState$Africa + dfBirthPerState$"North America" + dfBirthPerState$Oceania 
 
+dfForeignTechStates <- subset(dfBirthPerState, select=-c(USA, `US Islands`, `Latin America`, Europe, Africa, `North America`, Oceania)) ### Delete the components of FrnOthers
+head(dfForeignTechStates)
+dfForeignTechStates[is.na(dfForeignTechStates)] <- 0 ### Replace NAs with zeros
+dfForeignTechStates$Foreign <- dfForeignTechStates$Asia + dfForeignTechStates$FrnOthers
+dfForeignTechStates <- dfForeignTechStates[,c(1, 4, 2, 3)] ### Put Foreign in 1st col
+colnames(dfForeignTechStates) <- c("State", "Foreign", "Asia", "NotAsia")
+head(dfForeignTechStates)
+
+### Add totals row at top
+(allForeign <- colSums(dfForeignTechStates[,2:4]))
+dfForeignTop <- dfForeignTechStates[1,] ### dummy copy first row to set the types
+dfForeignTop$State <- "ALL STATES"
+dfForeignTop[1,2:4] <- allForeign
+dfForeignTechStates <- rbind(dfForeignTop, dfForeignTechStates)
+
+dim(dfForeignTechStates)
+dfForeignTechStates <- as.data.frame(dfForeignTechStates)
+rownames(dfForeignTechStates) <- dfForeignTechStates[,1]
+
+dfForeignTechStates$`Asia %` <- round(100 * dfForeignTechStates$Asia/dfForeignTechStates$Foreign, digits=2)
+head(dfForeignTechStates)
+
+##############
 ### Save
-save(dfRaceSexCountAndShares, file="dfRaceSexCountAndShares.rda")
+save(dfRaceSexCountAndShares, dfForeignTechStates, file="dfRaceSexCountAndShares.rda")
 
 
