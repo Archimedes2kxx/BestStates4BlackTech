@@ -116,7 +116,7 @@ Answer 2A ... As shown in Table 2A (below), the population was close to an even 
 
 #### Question 2B -- What was the male/female composition of the tech sector in 2015? 
 
-Answer 2B ... As shown in Table 2B (below), the ratio of male to female techs was about three to one, more specifically (`r dfTable2B["Percent", "Male"]` percent to (`r dfTable2B["Percent", "Female"]` percent. The ratio of Non-Asian females to Asian females was about four to one, i.e., (`r dfTable2B["Percent", "FemNonAsian"]` percent to `r dfTable2B["Percent", "FemAsian"]` percent).
+Answer 2B ... As shown in Table 2B (below), the ratio of male to female techs was about three to one, more specifically `r dfTable2B["Percent", "Male"]` percent to `r dfTable2B["Percent", "Female"]` percent. The ratio of Non-Asian females to Asian females was about seven to one, i.e., `r dfTable2B["Percent", "FemNonAsian"]` percent to `r dfTable2B["Percent", "FemAsian"]` percent.
 
 <b>Table 2B -- Male/Female Composition of the U.S. Tech Sector in 2015</b>   
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
