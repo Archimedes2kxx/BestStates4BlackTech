@@ -95,6 +95,7 @@ save(dfCensus2, tabCitizen, file="dfCensus2.rda")
 #######################
 dfCensus3 <- subset(dfCensus2, Citizen==TRUE) 
 str(dfCensus3) ### 40278 obs. of  9 variables
+save(dfCensus3, tabCitizen, file="dfCensus3.rda")
 
 census3StateRace <- group_by(dfCensus3, State, Race) 
 head(census3StateRace)

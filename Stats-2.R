@@ -11,6 +11,8 @@
 load(file="dfRaceSexCountAndShares.rda")
 load(file="dfStatesPop3.rda") 
 load("dfCensus2.rda") 
+load("dfCensus3.rda") 
+
 ###load("dfSexWorkplaceAndShares.rda")
 
 ### install.packages("gridExtra")
@@ -109,9 +111,9 @@ dfTable2B
 
 ######################
 ### Table 3 Occupations by Sex ... more thanks to HW
-census2OccSex <- group_by(dfCensus2, Occupation, Sex)
-head(census2OccSex)
-dfPtsPwtOccSex <- summarise(census2OccSex, ptsPwtOccSex = sum(personalWeight))
+census3OccSex <- group_by(dfCensus3, Occupation, Sex)
+head(census3OccSex)
+dfPtsPwtOccSex <- summarise(census3OccSex, ptsPwtOccSex = sum(personalWeight))
 head(dfPtsPwtOccSex)
 dfOccupationSex <- spread(dfPtsPwtOccSex, key=Sex, value=ptsPwtOccSex)
 head(dfOccupationSex)
