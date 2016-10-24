@@ -1,5 +1,5 @@
 ---
-title: "Best States for Black, Hispanic, Asian, and Female Tech -- Version 0.91"
+title: "Best States for Black, Hispanic, Asian, and Female Tech -- Version 0.92"
 author: "Roy L Beasley, PhD -- DLL Editor"
 
 output: 
@@ -130,7 +130,7 @@ Answer 2B ... As shown in Table 2B (below), the ratio of male to female techs wa
 Answer 3A ... For the purposes of this report, "information technology" was defined as the thirteen standard occupation categories (SOC) that appear in the first column of Table 3 (below). Twelve of these categories related to software, e.g., Software Developers, Computer Programmers, and Database Administrtors; only one relates to hardware, i.e., Computer Hardware Engineers.  
 
 #### Question 3B -- How many techs were in each category?        
-Answer 3B ... The total number of techs in each category appear the second column of Table 3 (below). The top row shows that there were approximately `r prettyNum(dfTable3[dfTable3$Occupation=="ALL","AllTech"], big.mark=",", scientific=FALSE)` professionals in  all tech categories.
+Answer 3B ... The total number of techs in each category appear the second column of Table 3 (below). The top row shows that there were approximately `r prettyNum(dfTable3[dfTable3$Occupation=="ALL","AllTech"], big.mark=",", scientific=FALSE)` professionals in  all tech categories. <b>Note that this total includes  all techs in the U.S., citizens and foreign. All subsequent tables in this version of the report will only refer to techs who are U.S. citizens. A later version of this report will modify the subsequent tables so that they also refer to all techs, citizens and foreign. </b>
 
 #### Question 3C -- What was the male/female breakdown of employment within these categories?         
 Answer 3C ... The third column of Table 3 (below) shows the percentage of techs in the second column who were male. Females were an overall minority of `r dfTable3[dfTable3$Occupation=="ALL","F_%"] `% of all professionals in tech, and were a minority in every tech category, ranging from a low value of `r prettyNum(min(dfTable3[, "F_%"]), scientific=FALSE)`% for to a high value of `r prettyNum(max(dfTable3[, "F_%"]), scientific=FALSE)`%.
@@ -398,7 +398,7 @@ First, let me remind the reader that Table 1A showed that `r dfTable1A["Percent"
 
 * Table 9 (below) provides a rough indicator of the potential magnitude of this issue. The table's first column contains the total number of tech professionals in the Big Six states. Its second column displays the total number of Asian techs in each state, as per the full version of Table 4C. Its third column contains estimates of the number of H-1B visa holders in each state, estimates that I obtained from the <b>[MyVisaJobs.com](http://www.myvisajobs.com/Reports/2015-H1B-Visa-Category.aspx?T=WS)</b> website. And its fourth column notes the H-1B workers as a percentage of Asian techs in the second column. <b>Most of these percentages are absurd</b> because some of the foreign workers in the third column were not from Asia, but from other parts of the world; and some of the Asian Asians were not employed as tech professionals.    
 
-* For the final 1.0 version of this report I will download another PUMS data sample, this  time with variables that indicate whether each member of the sample was a U.S. citizen and whether each member was born in Asia. "Best States for Black, Hispanic, Female, and Asian Tech, Version 1.0" will examine parity data for Asian Americans. I will then post a companion op-ed -- "Why Are There So Many Asian Asians in U.S. Tech?" -- that will offer a plausible answer to the question in its title. 
+* For the final 1.0 version of this report I will download another PUMS data sample, this  time with variables that indicate whether each member of the sample was a U.S. citizen and whether each member was born in Asia. "Best States for Black, Hispanic, Female, and Asian Tech, Version 1.0" will examine parity data for Asian Americans. I will then post a companion op-ed -- "Why Are There So Many Asian Asians in U.S. Tech?" -- that will offer a plausible answer to the question in its title. <b>Note: Tables 4 through 9 in the current version of this report only refer to techs who are U.S. citizens. In a later version, the "tech" columns in these tables will refer to the total number of all techs in each state, i.e., the combined totals of citizens and foreign techs.</b>
 
 <b>Table 9. Foreign Workers in Each State</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
