@@ -10,7 +10,7 @@ output:
     toc_depth: 4
     fig_width: 7
     fig_height: 6
-          
+            
 ---
 
 ```{r LOAD, echo=FALSE, cache=FALSE}
@@ -199,9 +199,9 @@ There are eight maps (below), one for each racial/ethnic group plus two female g
 
 * Map 4F shows that non-Asian female techs have their largest shares of tech in California, Texas, and Florida, but the distribution is far more dispersed than the distribution for Asian female techs.   
 
-* Map 4G shows that foreign tech workers from Asia ...   
+* Map 4G shows that foreign tech workers from Asia ...   blah blah blah
 
-* Map 4H shows that foreign tech workers from outside Asia ...
+* Map 4H shows that foreign tech workers from outside Asia ...   blah blah blah
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>
 
