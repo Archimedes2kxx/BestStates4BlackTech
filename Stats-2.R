@@ -119,7 +119,7 @@ head(dfOccupationSex)
 
 dfOccupationSex$Total <- dfOccupationSex$Male + dfOccupationSex$Female
 dfOccupationSex <- dfOccupationSex[, c(1,6,2:5)] ### Put total in second column
-colnames(dfOccupationSex) <- c("Occupation", "AllTech", "Male","Female","perMale", "perFemale")
+colnames(dfOccupationSex) <- c("Occupation", "TechStaff", "Male","Female","perMale", "perFemale")
 dfOccupationSex <- as.data.frame(dfOccupationSex)
 dfOccupationSex
 
@@ -129,7 +129,7 @@ perMaleTechSums <- as.numeric(round((100 * techSums[2]/techSums[1]), digits = 1)
 perFemaleTechSums <- as.numeric(round((100 * techSums[3]/techSums[1]), digits = 1))
 
 dfALL <- data.frame("ALL", t(techSums), perMaleTechSums, perFemaleTechSums) ### note the transpose "t"
-colnames(dfALL) <- c("Occupation", "AllTech", "Male","Female", "perMale", "perFemale")
+colnames(dfALL) <- c("Occupation", "TechStaff", "Male","Female", "perMale", "perFemale")
 dfALL
 dfOccupationSex$Occupation <- as.character(dfOccupationSex$Occupation)
 str(dfOccupationSex)
@@ -137,12 +137,12 @@ dfOccupationSex <- rbind(dfOccupationSex, dfALL)
 dfOccupationSex
 
 ### Order by decreasing occupation, drop Female, no row names, etc
-index <- order(dfOccupationSex$AllTech, decreasing=TRUE)
+index <- order(dfOccupationSex$TechStaff, decreasing=TRUE)
 dfOccupationSex <- dfOccupationSex[index,] 
 rownames(dfOccupationSex) <- NULL
-dfOccupationSex$`T_%` <- round(100*dfOccupationSex$AllTech/dfOccupationSex[1,"AllTech"], digits=1)
+dfOccupationSex$`T_%` <- round(100*dfOccupationSex$TechStaff/dfOccupationSex[1,"TechStaff"], digits=1)
 dfOccupationSex <- dfOccupationSex[,c(1,2,7, 3, 5, 4, 6)]
-colnames(dfOccupationSex) <- c("Occupation", "AllTech", "TS_%", "Male", "M_%", "Female", "F_%")
+colnames(dfOccupationSex) <- c("Occupation", "TechStaff", "TS_%", "Male", "M_%", "Female", "F_%")
 (dfTable3 <- dfOccupationSex)
 
 ############################

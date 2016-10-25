@@ -134,10 +134,10 @@ Answer 2B ... As shown in Table 2B (below), the ratio of male to female techs wa
 Answer 3A ... For the purposes of this report, "information technology" was defined as the thirteen standard occupation categories (SOC) that appear in the first column of Table 3 (below). Twelve of these categories related to software, e.g., Software Developers, Computer Programmers, and Database Administrtors; only one relates to hardware, i.e., Computer Hardware Engineers.  
 
 #### Question 3B -- How many techs were in each category?        
-Answer 3B ... The total number of techs in each category appear the second column of Table 3 (below). The top row shows that there were approximately `r prettyNum(dfTable3[dfTable3$Occupation=="ALL","AllTech"], big.mark=",", scientific=FALSE)` professionals in  all tech categories. 
+Answer 3B ... The total number of techs in each category appear the second column of Table 3 (below). The top row shows that there were approximately `r prettyNum(dfTable3[dfTable3$Occupation=="ALL","TechStaff"], big.mark=",", scientific=FALSE)` professionals in  all tech categories. 
 
 #### Question 3C -- What was the male/female breakdown of employment within these categories?         
-Answer 3C ... The third column of Table 3 (below) shows the percentage of techs in the second column who were male. Females were an overall minority of `r dfTable3[dfTable3$Occupation=="ALL","F_%"] `% of all professionals in tech, and were a minority in every tech category, ranging from a low value of `r prettyNum(min(dfTable3[, "F_%"]), scientific=FALSE)`% for to a high value of `r prettyNum(max(dfTable3[, "F_%"]), scientific=FALSE)`%.
+Answer 3C ... The fourth column of Table 3 (below) shows the percentage of techs in the second column who were female. Females were an overall minority of `r dfTable3[dfTable3$Occupation=="ALL","F_%"] `% of all professionals in tech, and were a minority in every tech category, ranging from a low value of `r prettyNum(min(dfTable3[, "F_%"]), scientific=FALSE)`% for to a high value of `r prettyNum(max(dfTable3[, "F_%"]), scientific=FALSE)`%.
 
 <b>Table 3 -- Employment in U.S. Information Technology in 2015 with Female Percentages</b>   
 ```{r, echo=FALSE, cache=FALSE,  comment=NA}
