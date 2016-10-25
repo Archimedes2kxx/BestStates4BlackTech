@@ -143,10 +143,10 @@ rownames(dfOccupationSex) <- NULL
 dfOccupationSex$`T_%` <- round(100*dfOccupationSex$TechStaff/dfOccupationSex[1,"TechStaff"], digits=1)
 dfOccupationSex <- dfOccupationSex[,c(1,2,7, 3, 5, 4, 6)]
 colnames(dfOccupationSex) <- c("Occupation", "TechStaff", "TS_%", "Male", "M_%", "Female", "F_%")
-(dfTable3 <- dfOccupationSex)
+(dfTable3ABC <- dfOccupationSex)
 
 ############################
-### Table 3XY. Occupations of foreign techs from Asia
+### Table 3D and 3E. Occupations of foreign techs from Asia and elsewhere
 dfCensus5 <- subset(dfCensus2, select=c("personalWeight","Occupation", "Birth"), Citizen==FALSE) 
 str(dfCensus5) ### 4803 obs. of  3 variables
 
@@ -172,15 +172,15 @@ dfForeignTechOccupations$`AOS_%` <- round(100*dfForeignTechOccupations$Asia/dfFo
 dfForeignTechOccupations$`NAOS_%` <- round(100*dfForeignTechOccupations$NotAsia/dfForeignTechOccupations[1,"NotAsia"], digits=1)
 dfForeignTechOccupations
 
-dfTable3X <- subset(dfForeignTechOccupations, select=c(Occupation, Asia, `AOS_%`))
+dfTable3D <- subset(dfForeignTechOccupations, select=c(Occupation, Asia, `AOS_%`))
 index <- order(dfForeignTechOccupations$Asia, decreasing=TRUE)
-(dfTable3X <- dfTable3X[index,])
+(dfTable3D <- dfTable3D[index,])
 
-dfTable3Y <- subset(dfForeignTechOccupations, select=c(Occupation, NotAsia, `NAOS_%`))
+dfTable3E <- subset(dfForeignTechOccupations, select=c(Occupation, NotAsia, `NAOS_%`))
 index <- order(dfForeignTechOccupations$NotAsia, decreasing=TRUE)
-(dfTable3Y <- dfTable3Y[index,])
+(dfTable3E <- dfTable3E[index,])
 
-save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3, dfTable3X, dfTable3Y, file="dfTab1A1B2A2B3X3Y.rda")
+save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3ABC, dfTable3D, dfTable3E, file="dfTab1A1B2A2B3ABCDE.rda")
 
 ##################################
 ######################
@@ -240,6 +240,35 @@ dfTable4D <- dfTechPopHispanic
 dfTable4E <- dfTechPopFemAsian
 dfTable4F <- dfTechPopFemNonAsian
 
+##### Make foreign tech tables
+makeForeignTechTable <- function(Area){
+    perArea <- paste0("per", Area)
+    dfTech <- dfForeignTechStates[, c("State", "Foreign", Area, perArea)]
+    ### Example ==> c("State", "Foreign", "Asia", "perAsia")
+    
+    AreaTech <- paste0(Area, "Tech")
+    perAreaTech <- paste0("per", AreaTech)
+ 
+    colnames(dfTech) <- c("State", "Foreign", AreaTech, perAreaTech)
+    ### Example ==> c("State", "TotalTech", "AsiaTech", "perAsiaTech")
+    rownames(dfTech) <- c(dfTech[,"State"]) 
+    
+    index <- order(dfTech[, AreaTech], decreasing=TRUE)
+    dfTech <- dfTech[index,]
+    
+    ### Calculate the percentage of the total for each Area is in each state
+    dfTech$perState <- round(100 * dfTech[,AreaTech]/dfTech[1,AreaTech[1]], digits=2)
+    dfTech <- data.frame(dfTech[,c(1:2,5,3:4)]) ### move perState to 3rd column
+    return(dfTech)
+}
+
+dfTable4G <- makeForeignTechTable("Asia")
+head(dfTable4G)
+dfTable4H <- makeForeignTechTable("NotAsia")
+head(dfTable4H)
+
+
+
 #################################
 ################################
 ### Table 4 ... Big Six
@@ -256,7 +285,7 @@ colnames(dfTable4) <- c(dfTab[,1], "SumTop6", "Top6_%")
 rownames(dfTable4) <- ""
 dfTable4
 
-save(dfTable4, dfTable4A, dfTable4B, dfTable4C, dfTable4D, dfTable4E, dfTable4F, file="dfTab4.rda")
+save(dfTable4, dfTable4A, dfTable4B, dfTable4C, dfTable4D, dfTable4E, dfTable4F, dfTable4G, dfTable4H, file="dfTab4.rda")
 
 #######################################
 #######################################
@@ -361,8 +390,10 @@ makeTechPopMap <- function(df, Group, maxPer, title) {
 (dfMap4D <- makeTechPopMap(dfTechPopHispanic,"Hispanic", maxAsianPerState, "D. Hispanic Techs"))
 (dfMap4E <- makeTechPopMap(dfTechPopFemAsian,"FemAsian", maxAsianPerState, "E. FemAsian Techs"))
 (dfMap4F <- makeTechPopMap(dfTechPopFemNonAsian,"FemNonAsian", maxAsianPerState, "F. FemNonAsian Techs"))
+(dfMap4G <- makeTechPopMap(dfTable4G,"Asia", maxAsianPerState, "G. Foreign (Asia) Techs"))
+(dfMap4H <- makeTechPopMap(dfTable4H,"NotAsia", maxAsianPerState, "H. Foreign (not Asia) Techs"))
 
-save(dfMap4A, dfMap4B, dfMap4C, dfMap4D, dfMap4E, dfMap4F, file="dfMap4.rda")
+save(dfMap4A, dfMap4B, dfMap4C, dfMap4D, dfMap4E, dfMap4F, dfMap4G, dfMap4H, file="dfMap4.rda")
 
 ###########################
 ##########################

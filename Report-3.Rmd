@@ -1,5 +1,5 @@
 ---
-title: "Best States for Black, Hispanic, Asian, and Female Tech -- Version 0.94"
+title: "Best States for Black, Hispanic, Asian, and Female Tech -- Version 0.95"
 author: "Roy L Beasley, PhD -- DLL Editor"
 
 output: 
@@ -17,7 +17,7 @@ output:
     
     #### load("dfRaceWorkplaceAndShares.rda") ### Only use data in tables, plots, and maps
     load("dfCensus2.rda") 
-    load("dfTab1A1B2A2B3X3Y.rda")
+    load("dfTab1A1B2A2B3ABCDE.rda")
     load("dfTab4.rda")   
     load("dfMap4.rda")
     load("dfPlot5Tab5beta1000.rda")
@@ -62,7 +62,7 @@ tt3 <- ttheme_minimal(
 
 * Female American tech professionals only held `r prettyNum(dfTable2B["Percent","Female"])` percent of the nation's `r prettyNum(dfTable2B["Number","ALL"], big.mark=",", scientific=FALSE)` of the tech positions that were occupied by Americans. After considering the disproportionate number of tech positions allocated to Asian American techs, I split the American female tech category into Asian American females and non-Asian American females. I then found that Asian American females also occupied disproportionately larger shares of the tech sectors in most states than their share of each state's population. Indeed, their tech shares ranged as high as `r dfTable6["FemAsian", "Max"]` times their shares of state populations. (See Table 4E and Table 6.) By contrast, non-Asian American females occupied much smaller shares of the state tech sectors than their shares of the state populations. (See Tables 2B, 3 and 6.)   
 
-* Finally, in 2015 the U.S. information technology sector employed XXXX foreign tech professionals, most of whom came from Asia. It should be noted that this figure is almost as large as the combined total number of Black Americans (`r prettyNum(dfTable1B["Number","Black"], big.mark=",", scientific=FALSE)`) and Hispanic Americans ( `r prettyNum(dfTable1B["Number","Hispanic"], big.mark=",", scientific=FALSE)`) employed by the U.S. tech sector. 
+* Finally, in 2015 the U.S. information technology sector employed `r prettyNum(dfTable3D[1,"Asia"], big.mark=",", scientific=FALSE)` foreign tech professionals from Asia who moved here to work for their clients in this country. It should be noted that this figure is substantially larger than the `r prettyNum(dfTable1B["Number","Black"], big.mark=",", scientific=FALSE)` Black American or the  `r prettyNum(dfTable1B["Number","Hispanic"], big.mark=",", scientific=FALSE)` Hispanic American tech professionals. U.S. tech also employed `r prettyNum(dfTable3E[1,"NotAsia"], big.mark=",", scientific=FALSE)` foreign  professionals who came here from countries outside of Asia.
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
 
@@ -111,16 +111,16 @@ Answer 1B ... As shown in Table 1B (below), the U.S. Census Bureau estimated tha
 
 #### Question 2A -- What was the male/female composition of the U.S. population in 2015?
 
-Answer 2A ... As shown in Table 2A (below), the population was close to an even split between males and females. But given the focus of this report, the table also breaks the female half into a small Asian component (`r dfTable2A["Percent", "FemAsian"]` percent) and a much larger non-Asian female component (`r dfTable2A["Percent", "FemNonAsian"]` percent)
+Answer 2A ... As shown in Table 2A (below), the population was close to an even split between males and females. But given the focus of this report, the table also breaks the female half into a small Asian American component (`r dfTable2A["Percent", "FemAsian"]` percent) and a much larger non-Asian American female component (`r dfTable2A["Percent", "FemNonAsian"]` percent)
 
-<b>Table 2A -- Male/Female Composition of the U.S. population in 2015</b>   
+<b>Table 2A -- American Male/Female Composition of the U.S. population in 2015</b>   
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
   print(format(dfTable2A, big.mark=","), row.names=TRUE)
 ```
 
 #### Question 2B -- What was the male/female composition of the tech sector in 2015? 
 
-Answer 2B ... As shown in Table 2B (below), the ratio of male to female techs was about three to one, more specifically `r dfTable2B["Percent", "Male"]` percent to `r dfTable2B["Percent", "Female"]` percent. The ratio of Non-Asian females to Asian females was about seven to one, i.e., `r dfTable2B["Percent", "FemNonAsian"]` percent to `r dfTable2B["Percent", "FemAsian"]` percent.
+Answer 2B ... As shown in Table 2B (below), the ratio of male to female techs was about  `r round(as.numeric(dfTable2B["Percent", "Male"])/as.numeric(dfTable2B["Percent", "Female"]), digits=0)` to 1, more specifically `r dfTable2B["Percent", "Male"]` percent to `r dfTable2B["Percent", "Female"]` percent. The ratio of Non-Asian American females to Asian American females was about `r round(as.numeric(dfTable2B["Percent", "FemNonAsian"])/as.numeric(dfTable2B["Percent", "FemAsian"]), digits=0)` to 1, i.e., `r dfTable2B["Percent", "FemNonAsian"]` percent to `r dfTable2B["Percent", "FemAsian"]` percent.
 
 <b>Table 2B -- Male/Female Composition of the U.S. Tech Sector in 2015</b>   
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -131,24 +131,39 @@ Answer 2B ... As shown in Table 2B (below), the ratio of male to female techs wa
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>       
 
 #### Question 3A -- Which standard occupation categories specified "information technology" for this report? 
-Answer 3A ... For the purposes of this report, "information technology" was defined as the thirteen standard occupation categories (SOC) that appear in the first column of Table 3 (below). Twelve of these categories related to software, e.g., Software Developers, Computer Programmers, and Database Administrtors; only one relates to hardware, i.e., Computer Hardware Engineers.  
+Answer 3A ... For the purposes of this report, "information technology" was defined as the thirteen standard occupation categories (SOC) that appear in the first column of Table 3ABC (below). Twelve of these categories related to software, e.g., Software Developers, Computer Programmers, and Database Administrtors; only one relates to hardware, i.e., Computer Hardware Engineers.  
 
 #### Question 3B -- How many techs were in each category?        
-Answer 3B ... The total number of techs in each category appear the second column of Table 3 (below). The top row shows that there were approximately `r prettyNum(dfTable3[dfTable3$Occupation=="ALL","TechStaff"], big.mark=",", scientific=FALSE)` professionals in  all tech categories. 
+Answer 3B ... The total number of techs in each category appear the second column of Table 3ABC (below). The top row shows that there were approximately `r prettyNum(dfTable3ABC[dfTable3ABC$Occupation=="ALL","TechStaff"], big.mark=",", scientific=FALSE)` professionals in  all tech categories. 
 
 #### Question 3C -- What was the male/female breakdown of employment within these categories?         
-Answer 3C ... The fourth column of Table 3 (below) shows the percentage of techs in the second column who were female. Females were an overall minority of `r dfTable3[dfTable3$Occupation=="ALL","F_%"] `% of all professionals in tech, and were a minority in every tech category, ranging from a low value of `r prettyNum(min(dfTable3[, "F_%"]), scientific=FALSE)`% for to a high value of `r prettyNum(max(dfTable3[, "F_%"]), scientific=FALSE)`%.
+Answer 3C ... The fourth column of Table 3ABC (below) shows the percentage of techs in the second column who were female. Females were an overall minority of `r dfTable3ABC[dfTable3ABC$Occupation=="ALL","F_%"] `% of all professionals in tech, and were a minority in every tech category, ranging from a low value of `r prettyNum(min(dfTable3ABC[, "F_%"]), scientific=FALSE)`% for to a high value of `r prettyNum(max(dfTable3ABC[, "F_%"]), scientific=FALSE)`%.
 
-<b>Table 3 -- Employment in U.S. Information Technology in 2015 with Female Percentages</b>   
+<b>Table 3ABC -- Employment in U.S. Information Technology in 2015 with Female Percentages</b>   
 ```{r, echo=FALSE, cache=FALSE,  comment=NA}
-   print(format(dfTable3[,c(1:3, 7)], big.mark=","),row.names=FALSE) 
+   print(format(dfTable3ABC[,c(1:3, 7)], big.mark=","),row.names=FALSE) 
 ```
-
-
-
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
-#### Question 4 -- Where did the nation's Black, Hispanic, and female Anerican tech professionals work in 2015?      
+#### Question 3D -- How many foreign tech professionals from Asia worked in the U.S. in 2015?    
+Answer 3D ... As per Table 3D (below), there were blah blah blah ...
+
+<b>Table 3D -- Foreign Tech Professionals from Asia Working in the U.S. in 2015</b>   
+```{r, echo=FALSE, cache=FALSE,  comment=NA}
+   print(format(dfTable3D, big.mark=","),row.names=FALSE) 
+```
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
+
+#### Question 3E -- How many foreign tech professionals worked in the U.S. in 2015 who were not from Asia?    
+Answer 3E ... As per Table 3E (below), there were blah blah blah   ...
+
+<b>Table 3E -- Foreign Tech Professionals Working in the U.S. in 2015 Who Were Not Form Asia</b>   
+```{r, echo=FALSE, cache=FALSE,  comment=NA}
+   print(format(dfTable3E, big.mark=","),row.names=FALSE) 
+```
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
+
+#### Question 4 -- Where did American White, Black, Asian, Hispanic, and female tech professionals work in 2015?      
 Answer 4 ... The following sections provide an extensive response to a more specific formulation of this question ==> In which states did White, Black, Asian, Hispanic, and female American tech professionals work in 2015?  
 
 Table 4 (below) lists the six states that employed the most techs in 2015. These states will also appear in just about every table that follows because  they employed such a large share (`r prettyNum(dfTable4[1, "Top6_%"])` percent) of all `r prettyNum(dfTable4[1, "ALL STATES"], big.mark=",", scientific=FALSE)` techs in the U.S.
@@ -163,11 +178,13 @@ print(format(dfTable4[,c(1:7,9)], big.mark = "," , rownames=FALSE ))
  
 I've presented U.S. Census data that shows the geographic distribution of tech professionals in two formats: (1) as a set of choropleth maps and (2) as a corresponding set of tables. I show the maps first because it's easier to see the workplace patterns of the racial/ethnic/female groups by looking at multicolored maps than by scanning columns of data in long tables. Indeed, a quick scan of the maps makes it easier to spot the same patterns in the data tables.
 
-There are six maps (below), one for each racial/ethnic group plus two female groups, Asian females and non-Asian females. Map 4A shows the workplace distribution of White techs; Map 4B shows the distribution of Black techs; Map 4C shows Asian techs; Map 4D shows Hispanic; Map E shows Asian female, and Map F shows non-Asian female. Each map colors the states with the largest number of tech workers in the darkest colors, and colors the states with the least tech workers in the lightest colors. The same colors represent the same percentages on all six maps
+There are eight maps (below), one for each racial/ethnic group plus two female groups, Asian females and non-Asian females, and two foreign groups, Asian and non-Asian. Map 4A shows the workplace distribution of White techs; Map 4B shows the distribution of Black techs; Map 4C shows Asian techs; Map 4D shows Hispanic; Map E shows Asian female; Map F shows non-Asian female; Map G shows foreign Asian; and Map H shows foreign non-Asian tech professionals. Each map colors the states with the largest number of tech workers in the darkest colors, and colors the states with the least tech workers in the lightest colors. The same colors represent the same percentages on all eight maps
 
-<b> Maps 4A (Whites), 4B (Blacks), 4C (Asians), 4D (Hispanics), 4E (Asian Females), and 4F (Non-Asian Females)</b> ... <em>Lower 48 and DC</em>
+<b> Maps 4A (Whites), 4B (Blacks), 4C (Asians), 4D (Hispanics), 4E (Asian Females), and 4F (Non-Asian Females), 4G (Foreign Asian), 4H (Foreign, Non-Asian</b> ... <em>Lower 48 and DC</em>
+
+
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-    grid.arrange(dfMap4A, dfMap4B, dfMap4C, dfMap4D, dfMap4E, dfMap4F, ncol=2) 
+    grid.arrange(dfMap4A, dfMap4B, dfMap4C, dfMap4D, dfMap4E, dfMap4F, dfMap4G, dfMap4H, ncol=2) 
 ```
 
 * Map 4A displays light hues for all states, indicatingn that White techs are spread across a large number of states, with the largest number living in California having marginally higher percentages than the other states. 
@@ -180,12 +197,16 @@ There are six maps (below), one for each racial/ethnic group plus two female gro
 
 * Map 4E shows that Asian female techs are highly concentrated in California.
 
-* Map 4F shows that non-Asian female techs have their largest shares of tech in California, Texas, and Florida, but the distribution is far more dispersed than the distribution for Asian female techs.
+* Map 4F shows that non-Asian female techs have their largest shares of tech in California, Texas, and Florida, but the distribution is far more dispersed than the distribution for Asian female techs.   
+
+* Map 4G shows that foreign tech workers from Asia ...   
+
+* Map 4H shows that foreign tech workers from outside Asia ...
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>
 
-<b>Tables 4A, 4B, 4C, 4D, 4E, and 4F</b> ... <i>50 states plus DC</i>  
-Six data tables impose numeric precision on the qualitative insights provided by the corresponding maps. The tables are ordered by the number of techs from each group that worked in each state. The short versions that only contain the top ten rows are displayed below. To view the full tables that contain data for all 50 states plus the District of Columbia, please click the link below the table name. Each table (full and short versions) has the following eight columns:<br /><br />
+<b>Tables 4A, 4B, 4C, 4D, 4E, 4F, 4G, and 4H</b> ... <i>50 states plus DC</i>  
+Eight data tables impose numeric precision on the qualitative insights provided by the corresponding maps. The tables are ordered by the number of techs from each group that worked in each state. The short versions that only contain the top ten rows are displayed below. To view the full tables that contain data for all 50 states plus the District of Columbia, please click the link below the table name. Each table (full and short versions) has the following eight columns:<br /><br />
 1. <b>State</b> -- State of workplace for the techs whose data is shown in the other columns of each row<br /> <br />
 2. <b>AllTech</b> -- Data for all of the techs in the U.S. The data in this column is repeated in each of the six tables, but the order of the rows differs from one table to the next. For example Table 4A shows that the total number of techs in California in 2015 was `r prettyNum(dfTable4A["California", "TotalTech"], big.mark=",", scientific=FALSE)`, and the total number in Texas was   `r prettyNum(dfTable4A["Texas", "TotalTech"], big.mark=",", scientific=FALSE)` <br /> <br />
 3. <b>SS_%</b> -- The state's share of each group's national total. More specifically, the percent of all U.S. techs in a group that worked in each state. For example, Table 4A shows that  `r dfTable4A["California", "perState"]`  percent of all White techs worked in California in 2015, and `r dfTable4A["Texas", "perState"]`  percent worked in Texas.<br /> <br />
@@ -282,6 +303,32 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
  * Non-Asian females showed no such concentration in California or in any other state. To be sure, California employed the most non-Asian female techs (`r dfTable4F["California", "SS_%"]` %), but this was not much larger than the percentage in Texas (`r dfTable4F["Texas", "SS_%"]` %), which was not much larger than in New York (`r dfTable4F["New York", "SS_%"]` %), etc. 
  
  * The most striking differences between the distributions of Asian and non-Asian female techs were found in the parity values shown in the last columns of these tables. The parity values for non-Asian female techs were substantially lower than the parity values for Asian female techs. To be specific, Table 4F (full version) shows that all `r sum(dfTable4F$Par[-1] < 0.9)` states plus DC had parity values less than 0.9 for non-Asian female techs; and `r sum(dfTable4F$Par[-1] < 0.5)` had values less than 0.5. By contrast, Table 4E (full version) shows that `r sum(dfTable4E$Par[-1] > 1.2)` states plus DC had Asian female parity values greater than 1.1 ...  `r sum(dfTable4E$Par[-1] > 1.5)` had Asian female parity values greater than 1.5 ... and  `r sum(dfTable4E$Par[-1] > 2.5)` had Asian female parity values greater than 2.5
+
+
+<b>Table 4G -- Foreign Tech Professionals from Asia -- Top 10 States </b>   
+<i>[Click here for full version](Table4G-Full-Foreign-Asia-Employment.html)</i>
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+    ### Change of column names is permanent from here on ... matches displayed colum names
+    colnames(dfTable4G) <- c("State", "Foreign", "SS_%", "AsiaTech", "T_%")
+print(format(dfTable4G[1:11,], big.mark = ","), row.names=FALSE)  
+
+```
+
+
+<b>Table 4H -- Foreign Tech Professionals not from Asia -- Top 10 States </b>   
+<i>[Click here for full version](Table4G-Full-Foreign-Not-Asia-Employment.html)</i>
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+    ### Change of column names is permanent from here on ... matches displayed colum names
+    colnames(dfTable4H) <- c("State", "Foreign", "SS_%", "NotAsiaTech", "T_%")
+print(format(dfTable4H[1:11,], big.mark = ","), row.names=FALSE)  
+
+```
+<b>Comments about Table 4G and 4H -- Foreign Techs from Asia and elsewhere</b>    
+
+* blah-blah-blah   
+* blah-blah-blah   
+* blah-blah-blah   
+
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
@@ -407,7 +454,7 @@ First, let me remind the reader that Table 1A showed that `r dfTable1A["Percent"
 
 * Foreign tech professionals had the strongest possible "weak ties" to their future employers because they had been proactively recruited by agents of U.S. companies who persuded them migrate to the U.S. in order to work for their U.S. clients in the U.S., primarily under the <b>[H-1B visa program](https://www.uscis.gov/eir/visa-guide/h-1b-specialty-occupation/understanding-h-1b-requirements)</b>
 
-* The final 1.0 version of this report will use additional Census data to determine the number and geographical distribution of foreign professionals in U.S. tech, i.e., how many were employed in each state. I will then post a companion op-ed -- "Why Are There So Many Foreign Asian Professionals in U.S. Tech?" -- that will offer a plausible answer to the question in its title. <b>Reminder: all the tables in this version of the report refer to tech professionals who are U.S. citizens.</b>
+* The final 1.0 version of this report will use additional Census data to determine the number and geographical distribution of foreign professionals in U.S. tech, i.e., how many were employed in each state. I will then post a companion op-ed -- "Why Are There So Many Foreign Asian Professionals in U.S. Tech?" -- that will offer a plausible answer to the question in its title. 
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 

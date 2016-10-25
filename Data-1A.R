@@ -225,11 +225,11 @@ dim(dfForeignTechStates)
 dfForeignTechStates <- as.data.frame(dfForeignTechStates)
 rownames(dfForeignTechStates) <- dfForeignTechStates[,1]
 
-dfForeignTechStates$`Asia %` <- round(100 * dfForeignTechStates$Asia/dfForeignTechStates$Foreign, digits=2)
+dfForeignTechStates$perAsia <- round(100 * dfForeignTechStates$Asia/dfForeignTechStates$Foreign, digits=2)
+dfForeignTechStates$perNotAsia <- round((100 - dfForeignTechStates$perAsia), digits=2)
 head(dfForeignTechStates)
 
 ##############
-### Save
 save(dfRaceSexCountAndShares, dfForeignTechStates, file="dfRaceSexCountAndShares.rda")
 
 
