@@ -1,7 +1,5 @@
 ### Generate tables and graphics to be included in report based on the data from Data-1A and Data-2B
 
-### Version 0.9 analyzes Workplace by sex for Asian group 
-
 ################################################
 ################################################ THurs 9/29 @ 5"12 pm
 ### Use map_dat() in ggplot2 as described on this URL
@@ -93,11 +91,11 @@ dfTable2Bpop$Male <- dfTable2Bpop$Totals - dfTable2Bpop$Female
 dfTable2Bpop <- dfTable2Bpop[,c(1, 5, 2:4)] ### place males col 2
 colnames <- c("ALL", "Male", "Female", "FemAsian", "FemNonAsian")
 colnames(dfTable2Bpop) <- colnames
-(dfTable2Bpop <- prettyNum(dfTable2Bpop, big.mark = ",") )
+dfTable2Bpop <- prettyNum(dfTable2Bpop, big.mark = ",") 
 
 ### Percentages of Male/Female 
-(dfTable2Bper <- dfRaceSexCountAndShares[1,c(2,16:18)])
-(dfTable2Bper$perMale <- 100 - as.numeric(dfTable2Bper$perFemale))
+dfTable2Bper <- dfRaceSexCountAndShares[1,c(2,16:18)]
+dfTable2Bper$perMale <- 100 - as.numeric(dfTable2Bper$perFemale)
 dfTable2Bper <- dfTable2Bper[, c(1,5,2:4)] ### males in col 2
 dfTable2Bper[1,1] <- 100 ### 100 percent for ALL
 colNames_per <- colnames
@@ -126,7 +124,7 @@ dfOccupationSex <- as.data.frame(dfOccupationSex)
 dfOccupationSex
 
 ### Add total row for ALL
-(techSums <- as.vector(colSums(dfOccupationSex[2:4])))
+techSums <- as.vector(colSums(dfOccupationSex[2:4]))
 perMaleTechSums <- as.numeric(round((100 * techSums[2]/techSums[1]), digits = 1))
 perFemaleTechSums <- as.numeric(round((100 * techSums[3]/techSums[1]), digits = 1))
 
@@ -137,13 +135,14 @@ dfOccupationSex$Occupation <- as.character(dfOccupationSex$Occupation)
 str(dfOccupationSex)
 dfOccupationSex <- rbind(dfOccupationSex, dfALL)
 dfOccupationSex
-str(dfOccupationSex)
 
 ### Order by decreasing occupation, drop Female, no row names, etc
 index <- order(dfOccupationSex$AllTech, decreasing=TRUE)
 dfOccupationSex <- dfOccupationSex[index,] 
 rownames(dfOccupationSex) <- NULL
-colnames(dfOccupationSex) <- c("Occupation", "AllTech", "Male", "Female","M_%", "F_%")
+dfOccupationSex$`T_%` <- round(100*dfOccupationSex$AllTech/dfOccupationSex[1,"AllTech"], digits=1)
+dfOccupationSex <- dfOccupationSex[,c(1,2,7, 3, 5, 4, 6)]
+colnames(dfOccupationSex) <- c("Occupation", "AllTech", "TS_%", "Male", "M_%", "Female", "F_%")
 (dfTable3 <- dfOccupationSex)
 
 ############################
