@@ -141,7 +141,7 @@ Answer 3C ... The third column of Table 3 (below) shows the percentage of techs 
 
 <b>Table 3 -- Employment in U.S. Information Technology in 2015 with Female Percentages</b>   
 ```{r, echo=FALSE, cache=FALSE,  comment=NA}
-   print(format(dfTable3[,c(1:3, 6,7)], big.mark=","),row.names=FALSE) 
+   print(format(dfTable3[,c(1:3, 7)], big.mark=","),row.names=FALSE) 
 ```
 
 
