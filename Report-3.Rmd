@@ -90,7 +90,7 @@ This being my first attept to write a reproducible report, I wrote it in R and s
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
 ## Findings ... <i><small>Answers to the following questions</small></i>
-My brief answers to the first three questions provide a broad statistical framwork for my extended responses to the fourth and fifth questions that form the core of this report. <b>Note: all the tables in this version of the report refer to techs who are U.S. citizens. </b>
+My brief answers to the first three questions provide a broad statistical framwork for my extended responses to the fourth and fifth questions that form the core of this report. 
 
 #### Question 1A -- How many White, Black, Asian, and Hispanic Americans lived in the U.S. in 2015?    
 Answer 1A ... In 2015, as shown in Table 1A (below), the largest of the four racial/ethnic groups discussed in this report was White (`r prettyNum(dfTable1A["Number","White"], big.mark=",", scientific=FALSE)`); the smallest was Asian (`r prettyNum(dfTable1A["Number","Asian"], big.mark=",", scientific=FALSE)`). Hispanics, the largest minority (`r prettyNum(dfTable1A["Number","Hispanic"], big.mark=",", scientific=FALSE)`), had grown substantially larger than Blacks (`r prettyNum(dfTable1A["Number","Black"], big.mark=",", scientific=FALSE)`).
