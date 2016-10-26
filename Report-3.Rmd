@@ -458,7 +458,7 @@ First, let me remind the reader that Table 1A showed that `r dfTable1A["Percent"
 
 * Foreign tech professionals had the strongest possible "weak ties" to their future employers because they had been proactively recruited by agents of U.S. companies who persuded them migrate to the U.S. in order to work for their U.S. clients in the U.S., primarily under the <b>[H-1B visa program](https://www.uscis.gov/eir/visa-guide/h-1b-specialty-occupation/understanding-h-1b-requirements)</b>
 
-* The final 1.0 version of this report will use additional Census data to determine the number and geographical distribution of foreign professionals in U.S. tech, i.e., how many were employed in each state. I will then post a companion op-ed -- "Why Are There So Many Foreign Asian Professionals in U.S. Tech?" -- that will offer a plausible answer to the question in its title. 
+* I will soon post a companion op-ed to this report -- "<b>Why Are There So Many Foreign Asian Professionals in U.S. Tech?</b>" -- that will offer a plausible answer to the question in its title based on the data compiled for this report.
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
