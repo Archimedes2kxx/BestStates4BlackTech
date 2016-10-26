@@ -89,8 +89,8 @@ This being my first attept to write a reproducible report, I wrote it in R and s
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
-## Findings ... <i><small>Answers to the following questions</small></i>
-My brief answers to the first three questions provide a broad statistical framwork for my extended responses to the fourth and fifth questions that form the core of this report. 
+## Findings
+My brief answers to the first three sets of questions provide a broad statistical framwork for my extended responses to the fourth and fifth questions that form the core of this report. 
 
 #### Question 1A -- How many White, Black, Asian, and Hispanic Americans lived in the U.S. in 2015?    
 Answer 1A ... In 2015, as shown in Table 1A (below), the largest of the four racial/ethnic groups discussed in this report was White (`r prettyNum(dfTable1A["Number","White"], big.mark=",", scientific=FALSE)`); the smallest was Asian (`r prettyNum(dfTable1A["Number","Asian"], big.mark=",", scientific=FALSE)`). Hispanics, the largest minority (`r prettyNum(dfTable1A["Number","Hispanic"], big.mark=",", scientific=FALSE)`), had grown substantially larger than Blacks (`r prettyNum(dfTable1A["Number","Black"], big.mark=",", scientific=FALSE)`).
@@ -191,11 +191,11 @@ There are eight maps (below), one for each racial/ethnic group plus two female g
     grid.arrange(dfMap4A, dfMap4B, dfMap4C, dfMap4D, dfMap4E, dfMap4F, dfMap4G, dfMap4H, ncol=2) 
 ```
 
-* Map 4A displays light hues for all states, indicatingn that White techs are spread across a large number of states, with the largest number living in California having marginally higher percentages than the other states. 
+* Map 4A displays light hues for all states, indicating that White techs are spread across a large number of states, with Californiand Texas having marginally higher percentages than the other states. 
 
 * Map 4B shows that most Black techs are located in the Eastern and Southern states, with the largest number working in Georgia, second in Texas, and third in Virginia
 
-* Map 4C shows that Asian techs are highly concentrated in California where their concentration is higher than any other group in any state. Otherwise Asians are spread out over other states with much smaller Asian workers   
+* Map 4C shows that Asian American techs are highly concentrated in California where their concentration is higher than any other group in any state. Otherwise Asians are spread out over other states with much smaller numbers Asian American professionals.   
 
 * Map 4D shows that Hispanic techs are concentrated in California, Texas, and Florida   
 
@@ -376,7 +376,7 @@ Answer 5: As shown in six plots that follow, there was a positive relationship, 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>
 
 ## <i>"And the best states are ... "</i>
-Which states were the best states for Black, Hispanic, Asian, and female professionals in information technology? Given the limited scope of the data that I examined in this study, my selection criteria were rudimentary; so my conclusions should be regarded as tentative first approximations. Rather than just address this question for the disadvantaged Black, Hispanic, and female techs, I answered it for all six groups because the answers for the other groups provided context for my conconclusions about the disadvantaged groups.
+Which states were the best states for White, Black, Hispanic, Asian, and female professionals in information technology? Given the limited scope of the data that I examined in this study, my selection criteria were rudimentary; so my conclusions should be regarded as tentative first approximations. 
 
 1. <b>Select states that had the largest number of techs in the racial/ethnic groups and the largest number Asian females and non-Asian females</b>   
 I implemented this criterion by selecting the states with the ten highest numbers of techs in each group. This meant that I began with the states that appeared in short versions of Tables 4A through 4F.
