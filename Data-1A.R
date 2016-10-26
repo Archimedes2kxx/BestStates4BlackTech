@@ -13,13 +13,29 @@ str(dfCensus2)
 colnames(dfCensus2) = c("personalWeight", "Hisp", "Birth" , "CIT", "Sex", "State", "Race","Occupation") 
 str(dfCensus2) ### 45081 obs. of  8 variables
 
+#################################
+### 1A. Evil Twin Data from 2010
+file2010 = "Race-Sex-Hisp-Citizen-WAOB-InfoTechOccupations-AllStates-PersonalWeight-PUMS-2010-DataFerret.csv"
+dfCensus2.2010 = read.csv(file2010, header=TRUE, stringsAsFactors = FALSE)
+colnames(dfCensus2.2010) = c("personalWeight", "Hisp", "Birth" , "CIT", "Sex", "State", "Race","Occupation") 
+str(dfCensus2.2010) ### 42843 obs. of  8 variables
+### End of EviL TWIN 201L
+########################################
+
 ### 2. Add new category to race = "hisp"
 ### ... ACS coded HISP = "1" for "not Hispanic" so change race values to 99 ("hispanic") when hisp != 1
 rows <- dfCensus2$Hisp != "1"
 dfCensus2$Race[rows] <- 99
-str(dfCensus2) ### 39692 observations ... for pop weights, state, race, sex, Hispanic subgroups
+str(dfCensus2) ### 45081 observations ... for pop weights, state, race, sex, Hispanic subgroups
 head(dfCensus2)
 
+### Evil twin ... 2010
+rows <- dfCensus2.2010$Hisp != "1"
+dfCensus2.2010$Race[rows] <- 99
+str(dfCensus2.2010) ### 42843  observations ... for pop weights, state, race, sex, Hispanic subgroups
+head(dfCensus2.2010)
+
+##################################
 ### 3.. Read manually edited codebooks 
 ###  ... commas added between codes and labels ... commas deleted within labels ... and 99 Hispanic added manually
 file = "Codes-Race.txt"
@@ -47,7 +63,7 @@ file="Codes-Citizen.txt"
 citizenCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
 citizenCodes
 
-### 4. Convert coded categorical variables to factors ... sex, race, state, occupation ... drop padding/blanks before/after each category
+### 4. Convert coded categorical variables to factors ... sex, race, state, occupation ... drop padding/blanks before/after each category 
 dfCensus2$Race <- as.factor(dfCensus2$Race)
 levels(dfCensus2$Race) <- trimws(raceCodes[,2])
 
@@ -67,12 +83,42 @@ levels(dfCensus2$Birth) <- trimws(areaCodes[,2])
 dfCensus2$CIT <- as.factor(dfCensus2$CIT)
 levels(dfCensus2$CIT) <- trimws(citizenCodes[,2])
 
-################
 str(dfCensus2) ### 45081 obs. of  9 variables:
 head(dfCensus2, 10)
 dfCensus2$Citizen <- TRUE
 dfCensus2$Citizen[dfCensus2$CIT=="No"] <- FALSE
 save(dfCensus2, file="dfCensus2.rda")
+
+
+######################################
+### 4. Evil twin ... 2010 ... categories to factors
+dfCensus2.2010$Race <- as.factor(dfCensus2.2010$Race)
+levels(dfCensus2.2010$Race) <- trimws(raceCodes[,2])
+
+dfCensus2.2010$Sex <- as.factor(dfCensus2.2010$Sex)
+levels(dfCensus2.2010$Sex) <- trimws(sexCodes[,2])
+
+dfCensus2.2010$State <- as.factor(dfCensus2.2010$State)
+levels(dfCensus2.2010$State) <- trimws(stateCodes[,2])
+### Note: the District of Columbia is abbreviated to "Dist of Col" to let table fit on one page without wrapping
+
+dfCensus2.2010$Occupation <- as.factor(dfCensus2.2010$Occupation)
+levels(dfCensus2.2010$Occupation) <- trimws(occupationCodes[,2])
+
+dfCensus2.2010$Birth <- as.factor(dfCensus2.2010$Birth)
+levels(dfCensus2.2010$Birth) <- trimws(areaCodes[,2])
+
+dfCensus2.2010$CIT <- as.factor(dfCensus2.2010$CIT)
+levels(dfCensus2.2010$CIT) <- trimws(citizenCodes[,2])
+
+str(dfCensus2.2010) ### 42843 obs. of  9 variables:
+head(dfCensus2.2010, 10)
+dfCensus2.2010$Citizen <- TRUE
+dfCensus2.2010$Citizen[dfCensus2.2010$CIT=="No"] <- FALSE
+save(dfCensus2.2010, file="dfCensus2.2010.rda")
+
+################ End of Evil Twin 2010
+##########################################
 
 ### Stats-2 will calculate the first group of tables from dfCensus2 for the overall U.S. 
 ### ... Total U.S. techs, male/female breakdown, total for each type of tech, total techs in each state

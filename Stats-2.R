@@ -8,10 +8,9 @@
 
 load(file="dfRaceSexCountAndShares.rda")
 load(file="dfStatesPop3.rda") 
-load("dfCensus2.rda") 
 load("dfCensus3.rda")
-
-###load("dfSexWorkplaceAndShares.rda")
+load("dfCensus2.rda")
+load("dfCensus2.2010.rda")
 
 ### install.packages("gridExtra")
 library(tidyr)
@@ -43,13 +42,11 @@ dfTable1A <- data.frame(rbind(dfTable1Apop, dfTable1Aper))
 rownames(dfTable1A) <- c("Number", "Percent")
 dfTable1A
 
-
 ### Table 1B. White, Black, Asian, Hispanic Components of U.S. Tech Sector in 2014
 dfTable1Btech <- dfRaceSexCountAndShares[1,2:7]
 colnames(dfTable1Btech) <- colNames
 dfTable1Btech <- prettyNum(dfTable1Btech, big.mark = ",") 
 dfTable1Btech
-
 
 ### Percentages of total, white, black, asian, hispanic, and OTHERS
 dfTable1Bper <- dfRaceSexCountAndShares[1,c(2,11:15)]
