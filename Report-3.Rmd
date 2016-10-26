@@ -70,7 +70,7 @@ tt3 <- ttheme_minimal(
 My motivation for conducting this study influenced my methods. The recent barrage of <b>[annual reports](https://techcrunch.com/tag/diversity-report/)</b> from some of the nation's leading information technology companies in Silicon Valley said the primary reason why those companies employed so few Black, Hispanic, and female information technology professionals was because there were so few available. And the reason they weren't available was because there were so few Black, Hispanic, and female tech students in the nation's academic pipelines.    
 
 <b>A. Best Practices</b>   
-While reading the Silicon Valley reports I found myself shaking my head while wondering, "What numbers did they have to back up these assertions? And where did they get them from?" Whereas I would have said that the pipelines were half-full, these reports implied that the pipelines were perilously close to empty. But if the pipelines were close to empty, there shouldn't be many Black, Hispanic, or female employees in the U.S. tech sector, right? This led me to wonder how many Black, Hispanic, and femalec techs were out there and where they were located. 
+While reading the Silicon Valley reports I found myself shaking my head while wondering, "What numbers did they have to back up these assertions? And where did they get them from?" Whereas I would have said that the pipelines were half-full, these reports implied that the pipelines were perilously close to empty. But if the pipelines were close to empty, there shouldn't be many Black, Hispanic, or female employees in the U.S. tech sector, right? This led me to wonder how many Black, Hispanic, and female techs were out there and where they were located. 
 
 <b>What concerned me the most was the lack of context for assessing Silicon Valley's diversity numbers. Were they as good as could be expected? Were they worse? ... And compared to what?</b> Compared to the rest of California? Compared to other states in other parts of the country? The personal data that I had accumulated from more than 50 years in tech informed me that tech was much more diverse in the Eastern and Southern states. But personal data, while a useful source of productive hypotheses, does not provide credible, systematic proof. As a clever tech pundit recently proclaimed, <i>"The plural of personal anecdote is not data" ... :-)</i>
 
@@ -155,12 +155,16 @@ Answer 3D ... As per Table 3D (below), there were blah blah blah ...
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
 #### Question 3E -- How many foreign tech professionals worked in the U.S. in 2015 who were not from Asia?    
-Answer 3E ... As per Table 3E (below), there were blah blah blah   ...
+Answer 3E ... As per Table 3E (below), there were blah, blah, blah   ...  
 
 <b>Table 3E -- Foreign Tech Professionals Working in the U.S. in 2015 Who Were Not Form Asia</b>   
 ```{r, echo=FALSE, cache=FALSE,  comment=NA}
    print(format(dfTable3E, big.mark=","),row.names=FALSE) 
 ```
+
+
+#### Question 3F -- Did the employment of foreign tech professionals increase between 2010 and 2015?   
+Answer 3F ... As per Table 3F (below), there were blah, blah, blah
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
 #### Question 4 -- Where did American White, Black, Asian, Hispanic, and female tech professionals work in 2015?      
@@ -371,8 +375,8 @@ Answer 5: As shown in six plots that follow, there was a positive relationship, 
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>
 
-## Conclusions    
-Which states were the best states for Black, Hispanic, and female professionals in information technology? Given the limited scope of the data that I examined in this study, my selection criteria were rudimentary; so my conclusions should be regarded as tentative first approximations. Rather than just address this question for the disadvantaged Black, Hispanic, and female techs, I answered it for all six groups because the answers for the other groups provided context for my conconclusions about the disadvantaged groups.
+## <i>"And the best states are ... "</i>
+Which states were the best states for Black, Hispanic, Asian, and female professionals in information technology? Given the limited scope of the data that I examined in this study, my selection criteria were rudimentary; so my conclusions should be regarded as tentative first approximations. Rather than just address this question for the disadvantaged Black, Hispanic, and female techs, I answered it for all six groups because the answers for the other groups provided context for my conconclusions about the disadvantaged groups.
 
 1. <b>Select states that had the largest number of techs in the racial/ethnic groups and the largest number Asian females and non-Asian females</b>   
 I implemented this criterion by selecting the states with the ten highest numbers of techs in each group. This meant that I began with the states that appeared in short versions of Tables 4A through 4F.
