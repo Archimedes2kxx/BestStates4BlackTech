@@ -13,7 +13,7 @@ output:
                
 ---
 
-```{r LOAD, echo=FALSE, cache=TRUE}
+```{r LOAD, echo=FALSE, cache=FALSE}
     
     #### load("dfRaceWorkplaceAndShares.rda") ### Only use data in tables, plots, and maps
     load("dfCensus2.rda") 
@@ -64,7 +64,7 @@ tt3 <- ttheme_minimal(
 
 * Finally, in 2015 the U.S. information technology sector employed `r prettyNum(dfTable3D[1,"Asia"], big.mark=",", scientific=FALSE)` foreign tech professionals from Asia who moved here to work for their clients in this country. It should be noted that this figure is substantially larger than the `r prettyNum(dfTable1B["Number","Black"], big.mark=",", scientific=FALSE)` Black American or the  `r prettyNum(dfTable1B["Number","Hispanic"], big.mark=",", scientific=FALSE)` Hispanic American tech professionals. U.S. tech also employed `r prettyNum(dfTable3E[1,"NotAsia"], big.mark=",", scientific=FALSE)` foreign  professionals who came here from countries outside of Asia.
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
-
+    
 
 ## Findings
 Brief answers to the first three sets of questions provide a broad statistical framwork for extended responses to the fourth and fifth questions that form the core of this report. 
