@@ -125,7 +125,7 @@ Answer 3C ... The fourth column of Table 3ABC (below) shows the percentage of te
 #### Question 3D -- How many foreign tech professionals from Asia worked in the U.S. in 2015?    
 Answer 3D ... As per Table 3D (below), there were blah blah blah ...
 
-<b>Table 3D -- Foreign Professionals from Asia Working in the U.S. Tech in 2015</b>   
+<b>Table 3D -- Foreign Professionals from Asia Working in U.S. Tech in 2015</b>   
 ```{r, echo=FALSE, cache=FALSE,  comment=NA}
    print(format(dfTable3D, big.mark=","),row.names=FALSE) 
 ```
@@ -134,7 +134,7 @@ Answer 3D ... As per Table 3D (below), there were blah blah blah ...
 #### Question 3E -- How many foreign tech professionals worked in the U.S. in 2015 who were not from Asia?    
 Answer 3E ... As per Table 3E (below), there were blah, blah, blah   ...  
 
-<b>Table 3E -- Foreign Professionals Not From Asia Working in the U.S. Tech in 2015</b>   
+<b>Table 3E -- Foreign Professionals Not From Asia Working in U.S. Tech in 2015</b>   
 ```{r, echo=FALSE, cache=FALSE,  comment=NA}
    print(format(dfTable3E, big.mark=","),row.names=FALSE) 
 ```

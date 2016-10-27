@@ -165,8 +165,8 @@ dfForeignTop[1,2:3] <- allForeign
 dfForeignTechOccupations <- rbind(dfForeignTop, dfForeignTechOccupations)
 dfForeignTechOccupations <- as.data.frame(dfForeignTechOccupations)
 
-dfForeignTechOccupations$`AOS_%` <- round(100*dfForeignTechOccupations$Asia/dfForeignTechOccupations[1,"Asia"], digits=2)
-dfForeignTechOccupations$`NAOS_%` <- round(100*dfForeignTechOccupations$NotAsia/dfForeignTechOccupations[1,"NotAsia"], digits=2)
+dfForeignTechOccupations$`AOS_%` <- round(100*dfForeignTechOccupations$Asia/dfForeignTechOccupations[1,"Asia"], digits=1)
+dfForeignTechOccupations$`NAOS_%` <- round(100*dfForeignTechOccupations$NotAsia/dfForeignTechOccupations[1,"NotAsia"], digits=1)
 dfForeignTechOccupations
 
 dfTable3D <- subset(dfForeignTechOccupations, select=c(Occupation, Asia, `AOS_%`))
@@ -206,8 +206,8 @@ dfForeignTop.2010[1,2:3] <- allForeign.2010
 dfForeignTechOccupations.2010 <- rbind(dfForeignTop.2010, dfForeignTechOccupations.2010)
 dfForeignTechOccupations.2010 <- as.data.frame(dfForeignTechOccupations.2010)
 
-dfForeignTechOccupations.2010$`AOS_%` <- round(100*dfForeignTechOccupations.2010$Asia/dfForeignTechOccupations.2010[1,"Asia"], digits=2)
-dfForeignTechOccupations.2010$`NAOS_%` <- round(100*dfForeignTechOccupations.2010$NotAsia/dfForeignTechOccupations.2010[1,"NotAsia"], digits=2)
+dfForeignTechOccupations.2010$`AOS_%` <- round(100*dfForeignTechOccupations.2010$Asia/dfForeignTechOccupations.2010[1,"Asia"], digits=1)
+dfForeignTechOccupations.2010$`NAOS_%` <- round(100*dfForeignTechOccupations.2010$NotAsia/dfForeignTechOccupations.2010[1,"NotAsia"], digits=1)
 dfForeignTechOccupations.2010
 
 dfTable3GG <- subset(dfForeignTechOccupations.2010, select=c(Occupation, Asia, `AOS_%`))
