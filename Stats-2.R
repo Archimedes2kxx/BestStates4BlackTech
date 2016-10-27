@@ -180,6 +180,11 @@ index <- order(dfForeignTechOccupations$NotAsia, decreasing=TRUE)
 ############################
 ### Evil Twin from 2010 time ... again
 
+
+########################
+#### Tables 3F  ... compare with 2010 with 2015 American
+
+
 dfCensus5.2010 <- subset(dfCensus2.2010, select=c("personalWeight","Occupation", "Birth"), Citizen==FALSE) 
 str(dfCensus5.2010) ### 3687 obs. of  3 variables:
 
@@ -205,24 +210,42 @@ dfForeignTechOccupations.2010$`AOS_%` <- round(100*dfForeignTechOccupations.2010
 dfForeignTechOccupations.2010$`NAOS_%` <- round(100*dfForeignTechOccupations.2010$NotAsia/dfForeignTechOccupations.2010[1,"NotAsia"], digits=2)
 dfForeignTechOccupations.2010
 
-dfTable3F <- subset(dfForeignTechOccupations.2010, select=c(Occupation, Asia, `AOS_%`))
+dfTable3GG <- subset(dfForeignTechOccupations.2010, select=c(Occupation, Asia, `AOS_%`))
 index <- order(dfForeignTechOccupations.2010$Asia, decreasing=TRUE)
-(dfTable3F <- dfTable3F[index,])
+(dfTable3GG <- dfTable3GG[index,])
 
-dfTable3G <- subset(dfForeignTechOccupations.2010, select=c(Occupation, NotAsia, `NAOS_%`))
+dfTable3HH <- subset(dfForeignTechOccupations.2010, select=c(Occupation, NotAsia, `NAOS_%`))
 index <- order(dfForeignTechOccupations.2010$NotAsia, decreasing=TRUE)
-(dfTable3G <- dfTable3G[index,])
+(dfTable3HH <- dfTable3HH[index,])
 
-########################
-#### Tables 3F ns 3G ... compare with 2010 with 2015
-
+### Tables 3G Change in Foreign Asian
+dfTable3G <- dfTable3D ### set up dimensions and some cols and order of rows
+(dfTable3G <- dfTable3G[order(dfTable3G$Occupation),])
+dfTable3G$`AOS_%`<- NULL
+(dfTable3GG <- dfTable3GG[order(dfTable3GG$Occupation),])
+dfTable3G$Asia.2010 <- dfTable3GG$Asia
+dfTable3G$Change <- dfTable3G$Asia - dfTable3G$Asia.2010
+dfTable3G$Per <- round((100 * dfTable3G$Change / dfTable3G$Asia.2010), digits=1)
+dfTable3G <- dfTable3G[,c(1,3,2,4,5)] ### put 2010 before 2015
+dfTable3G <- dfTable3G[order(dfTable3G$Asia, decreasing = TRUE),]
+dfTable3G
 
 ############################
-### Tables 3G Change in Foreign NotAsian
+### Tables 3H Change in Foreign NotAsian
+dfTable3H <- dfTable3E ### set up dimensions and some cols and order of rows
+(dfTable3H <- dfTable3H[order(dfTable3H$Occupation),])
+dfTable3H$`NAOS_%`<- NULL
+(dfTable3HH <- dfTable3HH[order(dfTable3HH$Occupation),])
+dfTable3H$NotAsia.2010 <- dfTable3HH$NotAsia
+dfTable3H$Change <- dfTable3H$NotAsia - dfTable3H$NotAsia.2010
+dfTable3H$Per <- round((100 * dfTable3H$Change / dfTable3H$NotAsia.2010), digits=1)
+dfTable3H <- dfTable3H[,c(1,3,2,4,5)] ### put 2010 before 2015
+colnames(dfTable3H) <- c("Occupation", "NAsia.2010", "NAsia", "Chng", "Per")
+dfTable3H <- dfTable3H[order(dfTable3H$NAsia, decreasing = TRUE),]
+dfTable3H
 
 
-
-save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3ABC, dfTable3D, dfTable3E, file="dfTab1A1B2A2B3ABCDE.rda")
+save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3ABC, dfTable3D, dfTable3E, dfTable3G, dfTable3H, file="dfTab1A1B2A2B3ABCDEFGH.rda")
 
 ##################################
 ######################

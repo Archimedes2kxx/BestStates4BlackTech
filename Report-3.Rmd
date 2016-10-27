@@ -1,5 +1,5 @@
 ---
-title: "Best States for Black, Hispanic, Asian, and Female Tech -- Version 0.96"
+title: "Best States for Black, Hispanic, Asian, and Female Tech -- Version 0.97"
 author: "Roy L Beasley, PhD -- DLL Editor"
 
 output: 
@@ -17,7 +17,7 @@ output:
     
     #### load("dfRaceWorkplaceAndShares.rda") ### Only use data in tables, plots, and maps
     load("dfCensus2.rda") 
-    load("dfTab1A1B2A2B3ABCDE.rda")
+    load("dfTab1A1B2A2B3ABCDEFGH.rda")
     load("dfTab4.rda")   
     load("dfMap4.rda")
     load("dfPlot5Tab5beta1000.rda")
@@ -73,7 +73,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
 Answer 1A ... In 2015, as shown in Table 1A (below), the largest of the four racial/ethnic groups discussed in this report was White (`r prettyNum(dfTable1A["Number","White"], big.mark=",", scientific=FALSE)`); the smallest was Asian (`r prettyNum(dfTable1A["Number","Asian"], big.mark=",", scientific=FALSE)`). Hispanics, the largest minority (`r prettyNum(dfTable1A["Number","Hispanic"], big.mark=",", scientific=FALSE)`), had grown substantially larger than Blacks (`r prettyNum(dfTable1A["Number","Black"], big.mark=",", scientific=FALSE)`).
 
 <b>Table 1A -- Racial/Ethnic Composition of the U.S. Population in 2015</b>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
    print(format(dfTable1A, big.mark=","), row.names=TRUE)
 ```
 
@@ -82,7 +82,7 @@ Answer 1A ... In 2015, as shown in Table 1A (below), the largest of the four rac
 Answer 1B ... As shown in Table 1B (below), the U.S. Census Bureau estimated that there were `r prettyNum(dfTable1B["Number","ALL"], big.mark=",", scientific=FALSE)` American tech professionals in the U.S. in 2015.  Whites were a substantial majority (`r prettyNum(dfTable1B["Number","White"], big.mark=",", scientific=FALSE)`) of the tech sector (`r prettyNum(dfTable1B["Percent","White"], big.mark=",", scientific=FALSE)`%); Asians placed second (`r prettyNum(dfTable1B["Number","Asian"], big.mark=",", scientific=FALSE)`); Blacks showed third (`r prettyNum(dfTable1B["Number","Black"], big.mark=",", scientific=FALSE)`); and Hispanics came in fourth  (`r prettyNum(dfTable1B["Number","Hispanic"], big.mark=",", scientific=FALSE)`)
 
 <b>Table 1B -- Racial/Ethnic Composition of the U.S. Tech Sector in 2015</b>   
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
     print(format(dfTable1B, big.mark=","), row.names=TRUE)
 ```
 
@@ -91,7 +91,7 @@ Answer 1B ... As shown in Table 1B (below), the U.S. Census Bureau estimated tha
 Answer 2A ... As shown in Table 2A (below), the population was close to an even split between males and females. But given the focus of this report, the table also breaks the female half into a small Asian American component (`r dfTable2A["Percent", "FemAsian"]` percent) and a much larger non-Asian American female component (`r dfTable2A["Percent", "FemNonAsian"]` percent)
 
 <b>Table 2A -- American Male/Female Composition of the U.S. population in 2015</b>   
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
   print(format(dfTable2A, big.mark=","), row.names=TRUE)
 ```
 
@@ -100,7 +100,7 @@ Answer 2A ... As shown in Table 2A (below), the population was close to an even 
 Answer 2B ... As shown in Table 2B (below), the ratio of male to female techs was about  `r round(as.numeric(dfTable2B["Percent", "Male"])/as.numeric(dfTable2B["Percent", "Female"]), digits=0)` to 1, more specifically `r dfTable2B["Percent", "Male"]` percent to `r dfTable2B["Percent", "Female"]` percent. The ratio of Non-Asian American females to Asian American females was about `r round(as.numeric(dfTable2B["Percent", "FemNonAsian"])/as.numeric(dfTable2B["Percent", "FemAsian"]), digits=0)` to 1, i.e., `r dfTable2B["Percent", "FemNonAsian"]` percent to `r dfTable2B["Percent", "FemAsian"]` percent.
 
 <b>Table 2B -- Male/Female Composition of the U.S. Tech Sector in 2015</b>   
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
   print(format(dfTable2B, big.mark=","), row.names=TRUE)
 ```
 
@@ -142,17 +142,24 @@ Answer 3E ... As per Table 3E (below), there were blah, blah, blah   ...
 #### Question 3F -- How many jobs for American professionals were added to  U.S. tech between 2010 and 2015? 
 Answer 3F ... As per Table 3F (below), there were blah, blah, blah  
 
-<b>Table F -- Change in American Professionals Between 2010 and 2015</b>  
+<b>Table F -- Change in American Tech Professionals Between 2010 and 2015</b>  
 
 #### Question 3G -- How many jobs for foreign professionals from Asia were added to  U.S. tech between 2010 and 2015?   
 Answer 3G ... As per Table 3F (below), there were blah, blah, blah
 
-<b>Table G -- Change in Professionals from Asia Between 2010 and 2015</b> 
+<b>Table 3G -- Change in Professionals from Asia Between 2010 and 2015</b> 
+```{r, echo=FALSE, cache=FALSE,  comment=NA}
+   print(format(dfTable3G, big.mark=","),row.names=FALSE) 
+```
+
 
 #### Question 3H -- How many jobs for foreign professionals not from Asia were added to U.S. tech between 2010 and 2015?   
 Answer 3H ... As per Table 3H (below), there were blah, blah, blah   
 
-<b>Table H -- Change in Professionals Not from Asia Between 2010 and 2015</b> 
+<b>Table H -- Change in Professionals Not from Asia Between 2010 and 2015</b>   
+```{r, echo=FALSE, cache=FALSE,  comment=NA}
+   print(format(dfTable3H, big.mark=","),row.names=FALSE) 
+```
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
@@ -162,7 +169,7 @@ Answer 4 ... The following sections provide an extensive response to a more spec
 Table 4 (below) lists the six states that employed the most techs in 2015. These states will also appear in just about every table that follows because  they employed such a large share (`r prettyNum(dfTable4[1, "Top6_%"])` percent) of all `r prettyNum(dfTable4[1, "ALL STATES"], big.mark=",", scientific=FALSE)` techs in the U.S.
 
 <b>Table 4 ... Biggest Half-Dozen Tech States in 2015</b>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
 colnames(dfTable4) <- c("ALL STATES", "CA", "TX", "NY", "FL", "VA", "IL", "Total", "T6_%")
 ### rownames(dfTable4) <- ""
 ### 1-row table is too long to print on one row, so totals in drop col 8 and use state abbreviations
@@ -176,7 +183,7 @@ There are eight maps (below), one for each racial/ethnic group plus two female g
 <b> Maps 4A (Whites), 4B (Blacks), 4C (Asians), 4D (Hispanics), 4E (Asian Females), and 4F (Non-Asian Females), 4G (Foreign Asian), 4H (Foreign, Non-Asian</b> ... <em>Lower 48 and DC</em>
 
 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
     grid.arrange(dfMap4A, dfMap4B, dfMap4C, dfMap4D, dfMap4E, dfMap4F, dfMap4G, dfMap4H, ncol=2) 
 ```
 
@@ -211,7 +218,7 @@ Eight data tables impose numeric precision on the qualitative insights provided 
 
 <b>Table 4A -- Whites in U.S. Information Technology -- Top 10 States </b>   
 <i>[Click here for full version](Table4A-Full-White-Employment.html)</i>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
     ### Change of column names is permanent from here on ... matches displayed colum names
     colnames(dfTable4A) <- c("State", "AllTech", "SS_%", "WhiTech", "T_%", "WhiPop", "P_%", "Par")
 print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)  
@@ -228,7 +235,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 <b>Table 4B -- Blacks in U.S. Information Technology -- Top 10 states</b>    
 <i>[Click here for full version](Table4B-Full-Black-Employment.html)</i> 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
     colnames(dfTable4B) <- c("State", "AllTech", "SS_%", "BlkTech", "T_%", "BlkPop", "P_%", "Par")  
     print(format(dfTable4B[1:11,], big.mark = ","), row.names=FALSE)  
 ```
@@ -243,7 +250,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <b>Table 4C -- Asians in U.S. Information Technology -- Top 10 states</b>    
 <i>[Click here for full version](Table4C-Full-Asian-Employment.html)</i>
 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
     colnames(dfTable4C) <- c("State", "AllTech", "SS_%",  "AsiTech", "T_%", "AsiPop", "P_%", "Par")
     print(format(dfTable4C[1:11,], big.mark = ","), row.names=FALSE)  
 ```
@@ -258,7 +265,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <b>Table 4D -- Hispanics in U.S. Information Technology -- Top 10 states</b>      
  <i>[Click here for full version](Table4D-Full-Hispanic-Employment.html)</i> 
 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
     colnames(dfTable4D) <- c("State", "AllTech", "SS_%", "HspTech", "T_%", "HspPop", "P_%", "Par")
     print(format(dfTable4D[1:11,], big.mark=","), row.names=FALSE)  
 ```
@@ -277,7 +284,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <b>Table 4E -- Asian Females in U.S. Information Technology -- Top 10 states</b>     
  <i>[Click here for full version](Table4E-Full-Female-Asian-Employment.html)</i> 
 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
     colnames(dfTable4E) <- c("State", "AllTech", "SS_%", "AsFemTech", "T_%", "AsFemPop", "P_%", "Par")
     print(format(dfTable4E[1:11,], big.mark=","), row.names=FALSE)  
 ```
@@ -285,7 +292,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <b>Table 4F -- Non-Asian Females in U.S. Information Technology -- Top 10 states</b>    
  <i>[Click here for full version](Table4F-Full-Female-Non-Asian-Employment.html)</i> 
 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
     colnames(dfTable4F) <- c("State", "AllTech", "SS_%", "NonAsFTech", "T_%", "NonAsFPop", "P_%", "Par")
     print(format(dfTable4F[1:11,], big.mark=","), row.names=FALSE)  
 ```
@@ -300,7 +307,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 <b>Table 4G -- Foreign Tech Professionals from Asia -- Top 10 States </b>   
 <i>[Click here for full version](Table4G-Full-Foreign-Asia-Employment.html)</i>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
     ### Change of column names is permanent from here on ... matches displayed colum names
     colnames(dfTable4G) <- c("State", "Foreign", "SS_%", "AsiaTech", "T_%")
 print(format(dfTable4G[1:11,], big.mark = ","), row.names=FALSE)  
@@ -310,7 +317,7 @@ print(format(dfTable4G[1:11,], big.mark = ","), row.names=FALSE)
 
 <b>Table 4H -- Foreign Tech Professionals not from Asia -- Top 10 States </b>   
 <i>[Click here for full version](Table4G-Full-Foreign-Not-Asia-Employment.html)</i>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
     ### Change of column names is permanent from here on ... matches displayed colum names
     colnames(dfTable4H) <- c("State", "Foreign", "SS_%", "NotAsiaTech", "T_%")
 print(format(dfTable4H[1:11,], big.mark = ","), row.names=FALSE)  
@@ -330,7 +337,7 @@ print(format(dfTable4H[1:11,], big.mark = ","), row.names=FALSE)
 Answer 5: As shown in six plots that follow, there was a positive relationship, but the relationship was strongest for Asians, weaker for Asian females, still weaker for Whites, weaker for Blacks, weaker for non-Asian females, and weakest for Hispanics
 
 <b>Plots 5 -- Plots of Tech Employment vs Race/Ethnic/Female Group Population</b>   
-```{r, echo=FALSE, cache=FALSE, warning=FALSE}
+```{r, echo=FALSE, cache=TRUE, warning=FALSE}
     grid.arrange(ggPlotWhite, ggPlotBlack, ggPlotAsian, ggPlotHispanic, ggPlotFemAsian, ggPlotFemNonAsian, ncol=2)
 ```
 
@@ -348,7 +355,7 @@ Answer 5: As shown in six plots that follow, there was a positive relationship, 
 
 
 <b>Table 5 -- Summary of Racial/Ethnic/Female National Advantages</b>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
     print(format(dfTable5, big.mark = ","), row.names=TRUE) 
 ```
 
@@ -376,7 +383,7 @@ This criterion was implemented by identifying the states in Tables 4A through 4F
 <i>(Note that the first column in Table 6 shows the minimum non-zero parity values for each group. The PUMS sample for a few states had so few techs in some groups that the Census data could not provide reliable estimates of the number of techs in that state based on the sample, so missing values to zeros.)</i>
 
 <b>Table 6 -- Summary of Parity Values</b>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
     colnames(dfTable6) <- c("Min", "Q1", "Median", "Q3", "Max")
     print(dfTable6)  
 ```
@@ -384,7 +391,7 @@ This criterion was implemented by identifying the states in Tables 4A through 4F
 Table 7A through 7F lists the states whose parity values were greater than or equal to the median parity value for each group. 
 
 <b>Tables 7A, 7B, 7C, 7D, 7E, 7F -- Finalists</b>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
     grid.arrange(tableGrob(dfTable7A), tableGrob(dfTable7B), tableGrob(dfTable7C), tableGrob(dfTable7D), tableGrob(dfTable7E), tableGrob(dfTable7F), nrow=3) 
 
 ```
@@ -394,7 +401,7 @@ Table 7A through 7F lists the states whose parity values were greater than or eq
 The "Best States" were chosen by sorting the finalists in decreasing order of each group's percentage share (T_%) of the tech sector. The state at the top of each list was the best of the best for its group, the state in the second row was the second best, and so on. 
 
 <b>Tables 8A, 8B, 8C, 8D, 8E, 8F -- Best States</b>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=TRUE, comment=NA}
         grid.arrange(tableGrob(dfTable8A, theme=tt3), tableGrob(dfTable8B, theme=tt3), tableGrob(dfTable8C, theme=tt3), tableGrob(dfTable8D, theme=tt3), tableGrob(dfTable8E, theme=tt3), tableGrob(dfTable8F, theme=tt3), nrow=3) 
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
