@@ -228,6 +228,7 @@ dfTable3G$Change <- dfTable3G$Asia - dfTable3G$Asia.2010
 dfTable3G$Per <- round((100 * dfTable3G$Change / dfTable3G$Asia.2010), digits=1)
 dfTable3G <- dfTable3G[,c(1,3,2,4,5)] ### put 2010 before 2015
 dfTable3G <- dfTable3G[order(dfTable3G$Asia, decreasing = TRUE),]
+colnames(dfTable3G) <- c("Occupation", "As.2010", "As.2015", "Chng", "Per")
 dfTable3G
 
 ############################
@@ -240,7 +241,7 @@ dfTable3H$NotAsia.2010 <- dfTable3HH$NotAsia
 dfTable3H$Change <- dfTable3H$NotAsia - dfTable3H$NotAsia.2010
 dfTable3H$Per <- round((100 * dfTable3H$Change / dfTable3H$NotAsia.2010), digits=1)
 dfTable3H <- dfTable3H[,c(1,3,2,4,5)] ### put 2010 before 2015
-colnames(dfTable3H) <- c("Occupation", "NAsia.2010", "NAsia", "Chng", "Per")
+colnames(dfTable3H) <- c("Occupation", "NAs.2010", "NAs.2015", "Chng", "Per")
 dfTable3H <- dfTable3H[order(dfTable3H$NAsia, decreasing = TRUE),]
 dfTable3H
 
