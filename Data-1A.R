@@ -267,7 +267,7 @@ dfForeignTop <- dfForeignTechStates[1,] ### dummy copy first row to set the type
 dfForeignTop$State <- "ALL STATES"
 dfForeignTop[1,2:4] <- allForeign
 dfForeignTechStates <- rbind(dfForeignTop, dfForeignTechStates)
-
+  
 dim(dfForeignTechStates)
 dfForeignTechStates <- as.data.frame(dfForeignTechStates)
 rownames(dfForeignTechStates) <- dfForeignTechStates[,1]
