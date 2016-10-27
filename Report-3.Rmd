@@ -116,7 +116,7 @@ Answer 3B ... The total number of techs in each category appear the second colum
 #### Question 3C -- What was the male/female breakdown of employment within these categories?         
 Answer 3C ... The fourth column of Table 3ABC (below) shows the percentage of techs in the second column who were female. Females were an overall minority of `r dfTable3ABC[dfTable3ABC$Occupation=="ALL","F_%"] `% of all professionals in tech, and were a minority in every tech category, ranging from a low value of `r prettyNum(min(dfTable3ABC[, "F_%"]), scientific=FALSE)`% for to a high value of `r prettyNum(max(dfTable3ABC[, "F_%"]), scientific=FALSE)`%.
 
-<b>Table 3ABC -- Employment in U.S. Information Technology in 2015 with Female Percentages</b>   
+<b>Table 3ABC -- American Professionals in U.S.Tech in 2015 with Female Percentages</b>   
 ```{r, echo=FALSE, cache=FALSE,  comment=NA}
    print(format(dfTable3ABC[,c(1:3, 7)], big.mark=","),row.names=FALSE) 
 ```
@@ -125,7 +125,7 @@ Answer 3C ... The fourth column of Table 3ABC (below) shows the percentage of te
 #### Question 3D -- How many foreign tech professionals from Asia worked in the U.S. in 2015?    
 Answer 3D ... As per Table 3D (below), there were blah blah blah ...
 
-<b>Table 3D -- Foreign Tech Professionals from Asia Working in the U.S. in 2015</b>   
+<b>Table 3D -- Foreign Professionals from Asia Working in the U.S. Tech in 2015</b>   
 ```{r, echo=FALSE, cache=FALSE,  comment=NA}
    print(format(dfTable3D, big.mark=","),row.names=FALSE) 
 ```
@@ -134,14 +134,26 @@ Answer 3D ... As per Table 3D (below), there were blah blah blah ...
 #### Question 3E -- How many foreign tech professionals worked in the U.S. in 2015 who were not from Asia?    
 Answer 3E ... As per Table 3E (below), there were blah, blah, blah   ...  
 
-<b>Table 3E -- Foreign Tech Professionals Working in the U.S. in 2015 Who Were Not Form Asia</b>   
+<b>Table 3E -- Foreign Professionals Not From Asia Working in the U.S. Tech in 2015</b>   
 ```{r, echo=FALSE, cache=FALSE,  comment=NA}
    print(format(dfTable3E, big.mark=","),row.names=FALSE) 
 ```
 
+#### Question 3F -- How many jobs for American professionals were added to  U.S. tech between 2010 and 2015? 
+Answer 3F ... As per Table 3F (below), there were blah, blah, blah  
 
-#### Question 3F -- Did the employment of foreign tech professionals increase between 2010 and 2015?   
-Answer 3F ... As per Table 3F (below), there were blah, blah, blah
+<b>Table F -- Change in American Professionals Between 2010 and 2015</b>  
+
+#### Question 3G -- How many jobs for foreign professionals from Asia were added to  U.S. tech between 2010 and 2015?   
+Answer 3G ... As per Table 3F (below), there were blah, blah, blah
+
+<b>Table G -- Change in Professionals from Asia Between 2010 and 2015</b> 
+
+#### Question 3H -- How many jobs for foreign professionals not from Asia were added to U.S. tech between 2010 and 2015?   
+Answer 3H ... As per Table 3H (below), there were blah, blah, blah   
+
+<b>Table H -- Change in Professionals Not from Asia Between 2010 and 2015</b> 
+
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
 #### Question 4 -- Where did American White, Black, Asian, Hispanic, and female tech professionals work in 2015?      
@@ -313,7 +325,7 @@ print(format(dfTable4H[1:11,], big.mark = ","), row.names=FALSE)
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
-### Question 5 -- Was the size of a group's share of a state's population related to the size of the group's share of the tech jobs in that state? 
+### Question 5 -- Was the size of an American group's share of a state's population related to the size of the group's share of the tech jobs in that state? 
 
 Answer 5: As shown in six plots that follow, there was a positive relationship, but the relationship was strongest for Asians, weaker for Asian females, still weaker for Whites, weaker for Blacks, weaker for non-Asian females, and weakest for Hispanics
 
