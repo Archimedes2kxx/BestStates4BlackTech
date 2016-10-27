@@ -191,7 +191,7 @@ Eight data tables impose numeric precision on the qualitative insights provided 
 1. <b>State</b> -- State of workplace for the techs whose data is shown in the other columns of each row<br /> <br />
 2. <b>AllTech</b> -- Data for all of the techs in the U.S. The data in this column is repeated in each of the six tables, but the order of the rows differs from one table to the next. For example Table 4A shows that the total number of techs in California in 2015 was `r prettyNum(dfTable4A["California", "TotalTech"], big.mark=",", scientific=FALSE)`, and the total number in Texas was   `r prettyNum(dfTable4A["Texas", "TotalTech"], big.mark=",", scientific=FALSE)` <br /> <br />
 3. <b>SS_%</b> -- The state's share of each group's national total. More specifically, the percent of all U.S. techs in a group that worked in each state. For example, Table 4A shows that  `r dfTable4A["California", "perState"]`  percent of all White techs worked in California in 2015, and `r dfTable4A["Texas", "perState"]`  percent worked in Texas.<br /> <br />
-4. <b>WhiTech, BlkTech, AsiTech, HispTech, FemAsiTech, or FemNonAsiTech</b> -- White techs, Black techs, Asian techs, Hispanic techs, Asian female techs, and Non-Asian female techs in tables A, B, C, D, E, and F, respectively. The data in this column shows the number of techs from the table's group that worked in each state. For example, Table 4A shows that `r prettyNum(dfTable4A["California", "WhiteTech"], big.mark=",", scientific=FALSE)` White techs worked in California, and `r prettyNum(dfTable4A["Texas", "WhiteTech"], big.mark=",", scientific=FALSE)` White techs worked in Texas. <b>The rows of each table are ordered by data in this column, i.e., by the number of techs in each state; states with higher numbers are at the top of the table; states with lower numbers are at the bottom.</b><br /> <br />
+4. <b>WhiTech, BlkTech, AsiTech, HispTech, FemAsiTech, or FemNonAsTech</b> -- White techs, Black techs, Asian techs, Hispanic techs, Asian female techs, and Non-Asian female techs in tables A, B, C, D, E, and F, respectively. The data in this column shows the number of techs from the table's group that worked in each state. For example, Table 4A shows that `r prettyNum(dfTable4A["California", "WhiteTech"], big.mark=",", scientific=FALSE)` White techs worked in California, and `r prettyNum(dfTable4A["Texas", "WhiteTech"], big.mark=",", scientific=FALSE)` White techs worked in Texas. <b>The rows of each table are ordered by data in this column, i.e., by the number of techs in each state; states with higher numbers are at the top of the table; states with lower numbers are at the bottom.</b><br /> <br />
 5. <b>T_%</b> -- Percent of a state's techs who were in the table's group. For exampleTable 4A shows that `r dfTable4A["California", "perWhiteTech"]`  percent of the techs in California were White, and `r dfTable4A["Texas", "perWhiteTech"]`  percent of the techs in Texas were White.<br /> <br />
 6. <b>WhiPop, BlkPop, AsiPop, HspPop, FemAsiPop, or FemNonAsiPop</b> -- White population, Black population, Asian population, Hispanic population, female Asian population, or female non-Asian population in each state. For example, Table 4A shows that the 2015 White  population of California was `r prettyNum(dfTable4A["California", "WhitePop"], big.mark=",", scientific=FALSE)`, and the White population of Texas was `r prettyNum(dfTable4A["Texas", "WhitePop"], big.mark=",", scientific=FALSE)`.<br /><br />
 7. <b>P_%</b> -- Percent of the state's total population that belonged to the table's  group. For example, Table 4A shows that in 2015, `r dfTable4A["California", "perWhitePop"]` percent of the total population of California was White, and `r dfTable4A["Texas", "perWhitePop"]` percent of the total population of Texas was white<br />.<br />
@@ -266,7 +266,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
  <i>[Click here for full version](Table4E-Full-Female-Asian-Employment.html)</i> 
 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-    colnames(dfTable4E) <- c("State", "AllTech", "SS_%", "AsiFemTech", "T_%", "AsiFemPop", "P_%", "Par")
+    colnames(dfTable4E) <- c("State", "AllTech", "SS_%", "AsFemTech", "T_%", "AsFemPop", "P_%", "Par")
     print(format(dfTable4E[1:11,], big.mark=","), row.names=FALSE)  
 ```
 
@@ -274,7 +274,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
  <i>[Click here for full version](Table4F-Full-Female-Non-Asian-Employment.html)</i> 
 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-    colnames(dfTable4F) <- c("State", "AllTech", "SS_%", "NonAsiFTech", "T_%", "NonAsiFPop", "P_%", "Par")
+    colnames(dfTable4F) <- c("State", "AllTech", "SS_%", "NonAsFTech", "T_%", "NonAsFPop", "P_%", "Par")
     print(format(dfTable4F[1:11,], big.mark=","), row.names=FALSE)  
 ```
 <b>Comments about Tables 4E and 4F</b>    
