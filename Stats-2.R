@@ -152,7 +152,7 @@ dfSumPwtOccupationBirth <- summarise(census5OccupationBirth, ptsPwtOccupationBir
 dfBirthPerOccupation <- spread(dfSumPwtOccupationBirth, key=Birth, value=ptsPwtOccupationBirth, fill=0, drop=FALSE)
 head(dfBirthPerOccupation)
 
-### Combine all Non-Asia into Others dfBirthPerOccupation$LatinAmerica + 
+### Combine all Non-Asia into Others dfBirthPerOccupation.2010$LatinAmerica + 
 dfBirthPerOccupation$NotAsia <- dfBirthPerOccupation$"Latin America" + dfBirthPerOccupation$Europe + dfBirthPerOccupation$Africa + dfBirthPerOccupation$"North America" + dfBirthPerOccupation$Oceania 
 
 dfForeignTechOccupations <- subset(dfBirthPerOccupation, select=-c(USA, `US Islands`, `Latin America`, Europe, Africa, `North America`, Oceania)) ### Delete the components of FrnOthers
@@ -165,8 +165,8 @@ dfForeignTop[1,2:3] <- allForeign
 dfForeignTechOccupations <- rbind(dfForeignTop, dfForeignTechOccupations)
 dfForeignTechOccupations <- as.data.frame(dfForeignTechOccupations)
 
-dfForeignTechOccupations$`AOS_%` <- round(100*dfForeignTechOccupations$Asia/dfForeignTechOccupations[1,"Asia"], digits=1)
-dfForeignTechOccupations$`NAOS_%` <- round(100*dfForeignTechOccupations$NotAsia/dfForeignTechOccupations[1,"NotAsia"], digits=1)
+dfForeignTechOccupations$`AOS_%` <- round(100*dfForeignTechOccupations$Asia/dfForeignTechOccupations[1,"Asia"], digits=2)
+dfForeignTechOccupations$`NAOS_%` <- round(100*dfForeignTechOccupations$NotAsia/dfForeignTechOccupations[1,"NotAsia"], digits=2)
 dfForeignTechOccupations
 
 dfTable3D <- subset(dfForeignTechOccupations, select=c(Occupation, Asia, `AOS_%`))
@@ -176,6 +176,51 @@ index <- order(dfForeignTechOccupations$Asia, decreasing=TRUE)
 dfTable3E <- subset(dfForeignTechOccupations, select=c(Occupation, NotAsia, `NAOS_%`))
 index <- order(dfForeignTechOccupations$NotAsia, decreasing=TRUE)
 (dfTable3E <- dfTable3E[index,])
+
+############################
+### Evil Twin from 2010 time ... again
+
+dfCensus5.2010 <- subset(dfCensus2.2010, select=c("personalWeight","Occupation", "Birth"), Citizen==FALSE) 
+str(dfCensus5.2010) ### 3687 obs. of  3 variables:
+
+census5.2010OccupationBirth <- group_by(dfCensus5.2010, Occupation, Birth)
+dfSumPwtOccupationBirth.2010 <- summarise(census5.2010OccupationBirth, ptsPwtOccupationBirth.2010 = sum(personalWeight))
+dfBirthPerOccupation.2010 <- spread(dfSumPwtOccupationBirth.2010, key=Birth, value=ptsPwtOccupationBirth.2010, fill=0, drop=FALSE)
+head(dfBirthPerOccupation.2010)
+
+### Combine all Non-Asia into Others dfBirthPerOccupation.2010$LatinAmerica + 
+dfBirthPerOccupation.2010$NotAsia <- dfBirthPerOccupation.2010$"Latin America" + dfBirthPerOccupation.2010$Europe + dfBirthPerOccupation.2010$Africa + dfBirthPerOccupation.2010$"North America" + dfBirthPerOccupation.2010$Oceania 
+
+dfForeignTechOccupations.2010 <- subset(dfBirthPerOccupation.2010, select=-c(USA, `US Islands`, `Latin America`, Europe, Africa, `North America`, Oceania)) ### Delete the components of FrnOthers
+dfForeignTechOccupations.2010
+
+allForeign.2010 <- colSums(dfForeignTechOccupations.2010[,2:3])
+dfForeignTop.2010 <- dfForeignTechOccupations.2010[1,] ### dummy copy first row to set the types
+dfForeignTop.2010$Occupation <- "ALL"
+dfForeignTop.2010[1,2:3] <- allForeign.2010
+dfForeignTechOccupations.2010 <- rbind(dfForeignTop.2010, dfForeignTechOccupations.2010)
+dfForeignTechOccupations.2010 <- as.data.frame(dfForeignTechOccupations.2010)
+
+dfForeignTechOccupations.2010$`AOS_%` <- round(100*dfForeignTechOccupations.2010$Asia/dfForeignTechOccupations.2010[1,"Asia"], digits=2)
+dfForeignTechOccupations.2010$`NAOS_%` <- round(100*dfForeignTechOccupations.2010$NotAsia/dfForeignTechOccupations.2010[1,"NotAsia"], digits=2)
+dfForeignTechOccupations.2010
+
+dfTable3F <- subset(dfForeignTechOccupations.2010, select=c(Occupation, Asia, `AOS_%`))
+index <- order(dfForeignTechOccupations.2010$Asia, decreasing=TRUE)
+(dfTable3F <- dfTable3F[index,])
+
+dfTable3G <- subset(dfForeignTechOccupations.2010, select=c(Occupation, NotAsia, `NAOS_%`))
+index <- order(dfForeignTechOccupations.2010$NotAsia, decreasing=TRUE)
+(dfTable3G <- dfTable3G[index,])
+
+########################
+#### Tables 3F ns 3G ... compare with 2010 with 2015
+
+
+############################
+### Tables 3G Change in Foreign NotAsian
+
+
 
 save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3ABC, dfTable3D, dfTable3E, file="dfTab1A1B2A2B3ABCDE.rda")
 

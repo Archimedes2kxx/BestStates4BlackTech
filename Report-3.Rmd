@@ -1,5 +1,5 @@
 ---
-title: "Best States for Black, Hispanic, Asian, and Female Tech -- Version 0.95"
+title: "Best States for Black, Hispanic, Asian, and Female Tech -- Version 0.96"
 author: "Roy L Beasley, PhD -- DLL Editor"
 
 output: 
@@ -58,39 +58,16 @@ tt3 <- ttheme_minimal(
 
 * The best states for Asian American tech professionals were `r dfTable8C[1, 1]`, `r dfTable8C[2, 1]`, `r dfTable8C[3, 1]`, `r dfTable8C[4, 1]`, and `r dfTable8C[5, 1]`. (See Table 8C)    
 
-* If all other things were equal, one would expect that the percentage of a state's tech sector that was Black would be about the same as the percentage of the state's total population that was Black. One would expect similar parity for the percentages of Hispanics and for females. But all things were not equal, so I found that the percentage of the tech sector of most states that was Black, Hispanic, or female was substantially smaller than the percentage of the state's total population that was Black, Hispanic, or female. By contrast, I found that the percentage of state tech sectors that was Asian was usually greater than their population percentage and ranged as high as `r dfTable6["Asian", "Max"]` times their population percentage. (See Tables 4C and 6)  
+* If all other things were equal, one would expect that the percentage of a state's tech sector that was Black would be about the same as the percentage of the state's total population that was Black. One would expect similar parity for the percentages of Hispanics and for females. But all things were not equal, so the percentage of the tech sector of most states that was Black, Hispanic, or female was substantially smaller than the percentage of the state's total population that was Black, Hispanic, or female. By contrast, the percentage of state tech sectors that was Asian was usually greater than their population percentage and ranged as high as `r dfTable6["Asian", "Max"]` times their population percentage. (See Tables 4C and 6)  
 
-* Female American tech professionals only held `r prettyNum(dfTable2B["Percent","Female"])` percent of the nation's `r prettyNum(dfTable2B["Number","ALL"], big.mark=",", scientific=FALSE)` of the tech positions that were occupied by Americans. After considering the disproportionate number of tech positions allocated to Asian American techs, I split the American female tech category into Asian American females and non-Asian American females. I then found that Asian American females also occupied disproportionately larger shares of the tech sectors in most states than their share of each state's population. Indeed, their tech shares ranged as high as `r dfTable6["FemAsian", "Max"]` times their shares of state populations. (See Table 4E and Table 6.) By contrast, non-Asian American females occupied much smaller shares of the state tech sectors than their shares of the state populations. (See Tables 2B, 3 and 6.)   
+* Female American tech professionals only held `r prettyNum(dfTable2B["Percent","Female"])` percent of the nation's `r prettyNum(dfTable2B["Number","ALL"], big.mark=",", scientific=FALSE)` of the tech positions that were occupied by Americans.But Asian American females occupied disproportionately larger shares of the tech sectors in most states than their share of each state's population. Indeed, their tech shares ranged as high as `r dfTable6["FemAsian", "Max"]` times their shares of state populations. (See Table 4E and Table 6.) By contrast, non-Asian American females occupied much smaller shares of the state tech sectors than their shares of the state populations. (See Tables 2B, 3 and 6.)   
 
 * Finally, in 2015 the U.S. information technology sector employed `r prettyNum(dfTable3D[1,"Asia"], big.mark=",", scientific=FALSE)` foreign tech professionals from Asia who moved here to work for their clients in this country. It should be noted that this figure is substantially larger than the `r prettyNum(dfTable1B["Number","Black"], big.mark=",", scientific=FALSE)` Black American or the  `r prettyNum(dfTable1B["Number","Hispanic"], big.mark=",", scientific=FALSE)` Hispanic American tech professionals. U.S. tech also employed `r prettyNum(dfTable3E[1,"NotAsia"], big.mark=",", scientific=FALSE)` foreign  professionals who came here from countries outside of Asia.
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
 
-## Motivation   
-My motivation for conducting this study influenced my methods. The recent barrage of <b>[annual reports](https://techcrunch.com/tag/diversity-report/)</b> from some of the nation's leading information technology companies in Silicon Valley said the primary reason why those companies employed so few Black, Hispanic, and female information technology professionals was because there were so few available. And the reason they weren't available was because there were so few Black, Hispanic, and female tech students in the nation's academic pipelines.    
-
-<b>A. Best Practices</b>   
-While reading the Silicon Valley reports I found myself shaking my head while wondering, "What numbers did they have to back up these assertions? And where did they get them from?" Whereas I would have said that the pipelines were half-full, these reports implied that the pipelines were perilously close to empty. But if the pipelines were close to empty, there shouldn't be many Black, Hispanic, or female employees in the U.S. tech sector, right? This led me to wonder how many Black, Hispanic, and female techs were out there and where they were located. 
-
-<b>What concerned me the most was the lack of context for assessing Silicon Valley's diversity numbers. Were they as good as could be expected? Were they worse? ... And compared to what?</b> Compared to the rest of California? Compared to other states in other parts of the country? The personal data that I had accumulated from more than 50 years in tech informed me that tech was much more diverse in the Eastern and Southern states. But personal data, while a useful source of productive hypotheses, does not provide credible, systematic proof. As a clever tech pundit recently proclaimed, <i>"The plural of personal anecdote is not data" ... :-)</i>
-
-One of the most useful lessons that I learned as a consultant to the National Center for Productivity way back in the late 1970s was that the application of performance metrics, even flawed metrics, to just about any significant human activity invariably identified a broad middle tier that was above a small tier of low performers and below another small tier of high performers. Further inquiry usually disclosed that the high performers were doing things quite differently than the middle and low performers. Happily, performers in the lower tiers could improve by adopting the high performers' <b>best practices</b> if they made appropriate adaptations of the best practices to their local working conditions. 
-
-Given this insight, I set out to apply a simple measure of the performance of all 50 states and the District of Columbia with regards to the opportunities their tech sectors provided for Black, Hispanic, and female professionals. 
-
-<b>B. Reproducible Reports</b>   
-One of my most important take-aways from completing the <b>[Johns Hopkins "Data Science"](https://www.coursera.org/specializations/jhu-data-science)</b> online certificate program a few months ago was the notion that reports should be "reproducible". Authors should not only describe their methods for collecting and analyzing data; they should provide step-by-step descriptions of their methods (including copies of their code) so that interested readers could readily reproduce the results on their own computers. Of course, the best researchers have always tried to achieve this objective and have often succeeded. What was new for me was the specific tools that the statisticians who taught the Hopkins courses recommended ==> the <b>[R programming language](https://en.wikipedia.org/wiki/R_)</b> and <b>[GitHub](https://en.wikipedia.org/wiki/GitHub)</b>.    
-
-* Data should be downloaded from original sources, then analyzed, tabulated, mapped, and graphed via programs writen in R. Findings should be summarized in text laid out in a subset of <b>[Markdown](https://en.wikipedia.org/wiki/Markdown)</b> that an R application called <b>["knitr"](http://kbroman.org/knitr_knutshell/pages/Rmarkdown.html)</b> would convert to HTML pages suitable for publication on Websites. 
-
-* Reproducible reports should be as concise as traditional reports, but the writer's notes, programs, analytical tools, coding guides, data files, tables, maps, and graphs should be shared with the world via GitHub repositories. Of course Python, MATLAB, or other comparable languages could be used insted of R, and the supplementary files could be stored on other public repositories comparable to GitHub.     
-
-This being my first attept to write a reproducible report, I wrote it in R and stored my supporting files in a public <b>[GitHub repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b>. If readers disagree with my numbers, they won't have to wonder how I got them <i>... #OldDogStillLearningNewTricks ... :-)</i>   
-
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
-
 ## Findings
-My brief answers to the first three sets of questions provide a broad statistical framwork for my extended responses to the fourth and fifth questions that form the core of this report. 
+Brief answers to the first three sets of questions provide a broad statistical framwork for extended responses to the fourth and fifth questions that form the core of this report. 
 
 #### Question 1A -- How many White, Black, Asian, and Hispanic Americans lived in the U.S. in 2015?    
 Answer 1A ... In 2015, as shown in Table 1A (below), the largest of the four racial/ethnic groups discussed in this report was White (`r prettyNum(dfTable1A["Number","White"], big.mark=",", scientific=FALSE)`); the smallest was Asian (`r prettyNum(dfTable1A["Number","Asian"], big.mark=",", scientific=FALSE)`). Hispanics, the largest minority (`r prettyNum(dfTable1A["Number","Hispanic"], big.mark=",", scientific=FALSE)`), had grown substantially larger than Blacks (`r prettyNum(dfTable1A["Number","Black"], big.mark=",", scientific=FALSE)`).
@@ -234,7 +211,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 * To be specific, the third and fourth columns show that in 2015 the largest number of White techs worked in California; the next largest worked in Texas. White techs were found in every state after that in smaller and smaller numbers.   
 
-* This story is captured by the parity values in the last column (Par) of Table 4A (and in its full version). White parity values were all close to 1.0. This meant that the percentage of techs who were White in each state was more or less the same as the percentage of Whites in the state's total population. In other words, if you walked into a tech office in any state in the USA, you would probably encounter the same percentage of White techs as the percentage of White people you would encounter walking down the street in that state -- with an important caveat:  random encounters with 10 White people on a street would only involve five males; but as per Table 3 (above), random encounters with 10 White techs in an office would probably involve seven or eight males.
+* This story is captured by the parity values in the last column (Par) of Table 4A (and in its full version). White parity values were all close to 1.0. Therefore the percentage of techs who were White in each state was more or less the same as the percentage of Whites in the state's total population. In other words, if you walked into a tech office in any state in the USA, you would probably encounter the same percentage of White techs as the percentage of White people you would encounter walking down the street in that state -- with an important caveat:  random encounters with 10 White people on a street would only involve five males; but as per Table 3 (above), random encounters with 10 White techs in an office would probably involve seven or eight males.
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
 <b>Table 4B -- Blacks in U.S. Information Technology -- Top 10 states</b>    
@@ -376,15 +353,15 @@ Answer 5: As shown in six plots that follow, there was a positive relationship, 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>
 
 ## <i>"And the best states are ... "</i>
-Which states were the best states for White, Black, Hispanic, Asian, and female professionals in information technology? Given the limited scope of the data that I examined in this study, my selection criteria were rudimentary; so my conclusions should be regarded as tentative first approximations. 
+Which states were the best states for White, Black, Hispanic, Asian, and female professionals in information technology? Given the limited scope of the data that examined in this study, its selection criteria were rudimentary; so its conclusions should be regarded as tentative first approximations. 
 
 1. <b>Select states that had the largest number of techs in the racial/ethnic groups and the largest number Asian females and non-Asian females</b>   
-I implemented this criterion by selecting the states with the ten highest numbers of techs in each group. This meant that I began with the states that appeared in short versions of Tables 4A through 4F.
+This criterion was implemented by selecting the states with the ten highest numbers of techs in each group, i.e., the states that appeared in short versions of Tables 4A through 4F.
 
 2. <b>Select states that had parity values above each group's median</b>   
-I implemented this criterion by identifying the states in Tables 4A through 4F that had state level parity values in the top 50% of all 50 states plus DC. Table 6 (below) summarizes the quartile breakdowns of the parity values for each group. For example, Table 6 shows the median Black parity value was `r dfTable6["Black", "Med"]`;  the median Hispanic parity value was `r dfTable6["Hispanic", "Med"]`.  
+This criterion was implemented by identifying the states in Tables 4A through 4F that had state level parity values in the top 50% of all 50 states plus DC. Table 6 (below) summarizes the quartile breakdowns of the parity values for each group. For example, Table 6 shows the median Black parity value was `r dfTable6["Black", "Med"]`;  the median Hispanic parity value was `r dfTable6["Hispanic", "Med"]`.  
 
-<i>(Note that the first column in Table 6 shows the minimum non-zero parity values for each group. The PUMS sample for a few states had so few techs in some groups that the Census data could not provide reliable estimates of the number of techs in that state based on the sample, so I converted these missing values to zeros.)</i>
+<i>(Note that the first column in Table 6 shows the minimum non-zero parity values for each group. The PUMS sample for a few states had so few techs in some groups that the Census data could not provide reliable estimates of the number of techs in that state based on the sample, so missing values to zeros.)</i>
 
 <b>Table 6 -- Summary of Parity Values</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -402,7 +379,7 @@ Table 7A through 7F lists the states whose parity values were greater than or eq
 
 
 4. <b>Best States</b>    
-I chose the "Best States" by sorting the lists of finalists in decreasing order of each group's percentage share (T_%) of the tech sector. The state at the top of each list was the best of the best for its group, the state in the second row was the second best, and so on. 
+The "Best States" were chosen by sorting the finalists in decreasing order of each group's percentage share (T_%) of the tech sector. The state at the top of each list was the best of the best for its group, the state in the second row was the second best, and so on. 
 
 <b>Tables 8A, 8B, 8C, 8D, 8E, 8F -- Best States</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -412,14 +389,14 @@ I chose the "Best States" by sorting the lists of finalists in decreasing order 
 
 ## Final Comments</b>   
 
-I admit that parity was a crude measure of the opportunities in tech that states provided to the groups considered in this study. But, as per my comments about performance measures in the "Motivation" section of this report, I was not surprised that this metric assigned a wide range of values to the fify states and the District of Columbia. Nevertheless, I was surprised by how effectively this simple metric suggested which groups should be broken into subgroups in order to obtain more useful insights.
+Parity was a crude measure of the opportunities in tech that states provided to the groups considered in this study. Nevertheless, this simple metric suggested which groups should be broken into subgroups in order to obtain more useful insights.
 
 <b>Female vs. Female</b>   
-The low betas and national parity values in Table 5 that were assigned to female techs (`r dfTable5["Female", "beta1000"]` and `r dfTable5["Female", "Par"]`) compared to the high betas and national parity values assigned to Asian techs as a whole (`r dfTable5["Asian", "beta1000"]` and `r dfTable5["Asian", "Par"]`) suggested that I break the female category into its Asian vs. non-Asian components, as I did in Tables 4E and 4F.   
+The low betas and national parity values in Table 5 that were assigned to female techs (`r dfTable5["Female", "beta1000"]` and `r dfTable5["Female", "Par"]`) compared to the high betas and national parity values assigned to Asian techs as a whole (`r dfTable5["Asian", "beta1000"]` and `r dfTable5["Asian", "Par"]`) suggested that that the female category be broken into its Asian vs. non-Asian components, as per Tables 4E and 4F.   
 
 * As shown in Tables 5, the betas and national parity values for Asian females (`r dfTable5["FemAsian", "beta1000"]` and `r dfTable5["FemAsian", "Par"]`) were much higher than the values for non-Asian females (`r dfTable5["FemNonAsian", "beta1000"]` and `r dfTable5["FemNonAsi", "Par"]`).  In other words, Asian females received substantially greater employment opportunities than non-Asian females all over the country. So what were they doing or perceived to be doing that made them more employable in the 50 states and DC? What were their "best practices" that accounted for their higher scores?
 
-* This is not to say that tech treated Asian males and Asian females the same. Not at all. The betas and national parity values assigned to Asians as a whole (`r dfTable5["Asian", "beta1000"]` and `r dfTable5["Asian", "Par"]`) were much higher than the values assigned to Asian females (`r dfTable5["FemAsian", "beta1000"]` and `r dfTable5["FemAsian", "Par"]`). This meant that the values assigned to Asian males had to be much higher than the values assigned to Asian females. In other words Asian males received substantially greater employment opportunities per capita than Asian females.
+* This is not to say that tech treated Asian males and Asian females the same. Not at all. The betas and national parity values assigned to Asians as a whole (`r dfTable5["Asian", "beta1000"]` and `r dfTable5["Asian", "Par"]`) were much higher than the values assigned to Asian females (`r dfTable5["FemAsian", "beta1000"]` and `r dfTable5["FemAsian", "Par"]`). Therefore the values assigned to Asian males had to be much higher than the values assigned to Asian females. In other words Asian males received substantially greater employment opportunities per capita than Asian females.
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
 <b> Hispanic vs. Hispanic</b>   
@@ -432,9 +409,9 @@ As shown in Table 4D, California employed the largest number of Hispanics (`r pr
 
  
 <b> Black vs. Black</b>   
-First, let me remind the reader that Table 1A showed that `r dfTable1A["Percent","Black"]` percent of the U.S. population in 2015 was Black; and Table 1B showed that the nation's `r dfTable1B["Number","Black"]`   Black tech professionals represented `r dfTable1B["Percent","Black"]` percent of the nation's `r dfTable1B["Number","ALL"]` tech professionals. 
+Table 1A showed that `r dfTable1A["Percent","Black"]` percent of the U.S. population in 2015 was Black; and Table 1B showed that the nation's `r dfTable1B["Number","Black"]`   Black tech professionals represented `r dfTable1B["Percent","Black"]` percent of the nation's `r dfTable1B["Number","ALL"]` tech professionals. 
 
-* Table 5 showed that the national parity rating for Blacks in tech was `r dfTable5["Black", "Par"]`, i.e., `r dfTable1B["Percent","Black"]` divided by `r dfTable1A["Percent","Black"]`, which was more than half, i.e., greater than 0.50. Given that the vast majority of tech jobs required bachelors degrees, this meant that, contrary to the fables perpetrated by Silicon Valley's tech executives in their annual reports for the last three years, <b>the nation's Black academic pipelines were more than half-full; they were not perilously close to empty</b>.  
+* Table 5 showed that the national parity rating for Blacks in tech was `r dfTable5["Black", "Par"]`, i.e., `r dfTable1B["Percent","Black"]` divided by `r dfTable1A["Percent","Black"]`, which was more than half, i.e., greater than 0.50. The vast majority of tech jobs required bachelors degrees. This meant that, contrary to popular misconceptions, <b>the nation's Black academic pipelines were more than half-full; they were not perilously close to empty</b>.  
 
 * According to Table 8B, the best states for Black tech professionals were  `r dfTable8B[1, 1]`, `r dfTable8B[2, 1]`, `r dfTable8B[3, 1]`, `r dfTable8B[4, 1]`, and `r dfTable8B[5, 1]`. <b>These states weren't just Southern states; they were HBCU states</b>, homes to the <b>[Historically Black Colleges and Universities (HBCUs)](http://hbcu-levers.blogspot.com/p/hbcu-lists-profiles-2015.html)</b> that educated the overwhelming majority of Black college graduates before the Supreme Court's desegregation decision in 1954 and the Civil Rights legislation in 1964/65. To this day, when over 90 percent of Black students attend non-HBCUs, HBCUs still educate a large, disproportionate share of the nation's Black graduates in the STEM majors that provide entry into careers in information technology. (See my previous note on this blog <b>[HBCUs -- the Best Producers of Black Graduates in STEM](http://hbcu-levers.blogspot.com/p/using-data-from-ipeds-data-center-this.html)</b>)    
 
@@ -458,9 +435,34 @@ First, let me remind the reader that Table 1A showed that `r dfTable1A["Percent"
 
 * Foreign tech professionals had the strongest possible "weak ties" to their future employers because they had been proactively recruited by agents of U.S. companies who persuded them migrate to the U.S. in order to work for their U.S. clients in the U.S., primarily under the <b>[H-1B visa program](https://www.uscis.gov/eir/visa-guide/h-1b-specialty-occupation/understanding-h-1b-requirements)</b>
 
-* I will soon post a companion op-ed to this report -- "<b>Why Are There So Many Foreign Asian Professionals in U.S. Tech?</b>" -- that will offer a plausible answer to the question in its title based on the data compiled for this report.
+* The DLL will soon post a companion op-ed -- "<b>Why Are There So Many Foreign Asian Professionals in U.S. Tech?</b>" -- that will offer a plausible answer to the question in its title based on the data compiled for this report.
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
+
+
+## Personal Motivation   
+As the DLL Editor, my motivation for conducting this study influenced my methods. The recent barrage of <b>[annual reports](https://techcrunch.com/tag/diversity-report/)</b> from some of the nation's leading information technology companies in Silicon Valley said the primary reason why those companies employed so few Black, Hispanic, and female information technology professionals was because there were so few available. And the reason they weren't available was because there were so few Black, Hispanic, and female tech students in the nation's academic pipelines.    
+
+<b>A. Best Practices</b>   
+While reading the Silicon Valley reports I found myself shaking my head while wondering, "What numbers did they have to back up these assertions? And where did they get them from?" Whereas I would have said that the pipelines were half-full, these reports implied that the pipelines were perilously close to empty. But if the pipelines were close to empty, there shouldn't be many Black, Hispanic, or female employees in the U.S. tech sector, right? This led me to wonder how many Black, Hispanic, and female techs were out there and where they were located. 
+
+<b>What concerned me the most was the lack of context for assessing Silicon Valley's diversity numbers. Were they as good as could be expected? Were they worse? ... And compared to what?</b> Compared to the rest of California? Compared to other states in other parts of the country? The personal data that I had accumulated from more than 50 years in tech informed me that tech was much more diverse in the Eastern and Southern states. But personal data, while a useful source of productive hypotheses, does not provide credible, systematic proof. As a clever tech pundit recently proclaimed, <i>"The plural of personal anecdote is not data" ... :-)</i>
+
+One of the most useful lessons that I learned as a consultant to the National Center for Productivity way back in the late 1970s was that the application of performance metrics, even flawed metrics, to just about any significant human activity invariably identified a broad middle tier that was above a small tier of low performers and below another small tier of high performers. Further inquiry usually disclosed that the high performers were doing things quite differently than the middle and low performers. Happily, performers in the lower tiers could improve by adopting the high performers' <b>best practices</b> if they made appropriate adaptations of the best practices to their local working conditions. 
+
+Given this insight, I set out to apply a simple measure of the performance of all 50 states and the District of Columbia with regards to the opportunities their tech sectors provided for Black, Hispanic, and female professionals. 
+
+<b>B. Reproducible Reports</b>   
+One of my most important take-aways from completing the <b>[Johns Hopkins "Data Science"](https://www.coursera.org/specializations/jhu-data-science)</b> online certificate program a few months ago was the notion that reports should be "reproducible". Authors should not only describe their methods for collecting and analyzing data; they should provide step-by-step descriptions of their methods (including copies of their code) so that interested readers could readily reproduce the results on their own computers. Of course, the best researchers have always tried to achieve this objective and have often succeeded. What was new for me was the specific tools that the statisticians who taught the Hopkins courses recommended ==> the <b>[R programming language](https://en.wikipedia.org/wiki/R_)</b> and <b>[GitHub](https://en.wikipedia.org/wiki/GitHub)</b>.    
+
+* Data should be downloaded from original sources, then analyzed, tabulated, mapped, and graphed via programs writen in R. Findings should be summarized in text laid out in a subset of <b>[Markdown](https://en.wikipedia.org/wiki/Markdown)</b> that an R application called <b>["knitr"](http://kbroman.org/knitr_knutshell/pages/Rmarkdown.html)</b> would convert to HTML pages suitable for publication on Websites. 
+
+* Reproducible reports should be as concise as traditional reports, but the writer's notes, programs, analytical tools, coding guides, data files, tables, maps, and graphs should be shared with the world via GitHub repositories. Of course Python, MATLAB, or other comparable languages could be used insted of R, and the supplementary files could be stored on other public repositories comparable to GitHub.     
+
+This being my first attept to write a reproducible report, I wrote it in R and stored my supporting files in a public <b>[GitHub repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b>. If readers disagree with my numbers, they won't have to wonder how I got them <i>... #OldDogStillLearningNewTricks ... :-)</i>   
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
+
 
 ## Methods   
 I downloaded the  <b>[#PEPSR6H](http://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=PEP_2015_PEPSR6H&prodType=table)</b> data table from the Bureau's American Fact Finder Website. This table could be configured to provide the Bureau's estimates of the overall racial composition of the populations of the 50 states plus Washington DC in 2015. My step-by-step procedure for downloading the AFF data is described in <b>[Notes-Data-Raw-Maps-Plots](https://archimedes2kxx.github.io/BestStatesForBlackTech/Notes-Data-Raw-Maps-Plots)</b> on the <b>[GitHub repo](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b>.

@@ -17,9 +17,10 @@ str(dfCensus2) ### 45081 obs. of  8 variables
 ### 1A. Evil Twin Data from 2010
 file2010 = "Race-Sex-Hisp-Citizen-WAOB-InfoTechOccupations-AllStates-PersonalWeight-PUMS-2010-DataFerret.csv"
 dfCensus2.2010 = read.csv(file2010, header=TRUE, stringsAsFactors = FALSE)
-colnames(dfCensus2.2010) = c("personalWeight", "Hisp", "Birth" , "CIT", "Sex", "State", "Race","Occupation") 
+str(dfCensus2.2010) ### Always check the order of the variables for new data.frames
+colnames(dfCensus2.2010) = c("personalWeight", "Hisp", "State" , "Race", "Birth", "CIT", "Sex", "Occupation") 
 str(dfCensus2.2010) ### 42843 obs. of  8 variables
-### End of EviL TWIN 201L
+
 ########################################
 
 ### 2. Add new category to race = "hisp"
@@ -32,7 +33,7 @@ head(dfCensus2)
 ### Evil twin ... 2010
 rows <- dfCensus2.2010$Hisp != "1"
 dfCensus2.2010$Race[rows] <- 99
-str(dfCensus2.2010) ### 42843  observations ... for pop weights, state, race, sex, Hispanic subgroups
+str(dfCensus2.2010) ### 37135  observations ... for pop weights, state, race, sex, Hispanic subgroups
 head(dfCensus2.2010)
 
 ##################################
@@ -111,7 +112,7 @@ levels(dfCensus2.2010$Birth) <- trimws(areaCodes[,2])
 dfCensus2.2010$CIT <- as.factor(dfCensus2.2010$CIT)
 levels(dfCensus2.2010$CIT) <- trimws(citizenCodes[,2])
 
-str(dfCensus2.2010) ### 42843 obs. of  9 variables:
+str(dfCensus2.2010) ### 37135 obs. of  8 variables:
 head(dfCensus2.2010, 10)
 dfCensus2.2010$Citizen <- TRUE
 dfCensus2.2010$Citizen[dfCensus2.2010$CIT=="No"] <- FALSE
