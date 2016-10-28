@@ -231,7 +231,7 @@ dfTable3F$Asia2010 <- dfTable3FF$Asia
 dfTable3F$Per <- round((100 * dfTable3F$Change / dfTable3F$Asia2010), digits=1)
 dfTable3F <- dfTable3F[,c(1,3,2,4,5)] ### put 2010 before 2015
 dfTable3F <- dfTable3F[order(dfTable3F$Asia, decreasing = TRUE),]
-colnames(dfTable3F) <- c("Occupation", "As2010", "As2015", "Chng", "Per")
+colnames(dfTable3F) <- c("Occupation", "As2010", "As2015", "Change", "Per")
 dfTable3F
 
 ############################
@@ -247,7 +247,7 @@ dfTable3G$NAsia2010 <- dfTable3GG$NAsia
 dfTable3G$Per <- round((100 * dfTable3G$Change / dfTable3G$NAsia2010), digits=1)
 dfTable3G <- dfTable3G[,c(1,3,2,4,5)] ### put 2010 before 2015
 dfTable3G <- dfTable3G[order(dfTable3G$NAsia, decreasing = TRUE),]
-colnames(dfTable3G) <- c("Occupation", "NAs2010", "NAs2015", "Chng", "Per")
+colnames(dfTable3G) <- c("Occupation", "NAs2010", "NAs2015", "Change", "Per")
 dfTable3G
 
 save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3ABC, dfTable3D, dfTable3F, dfTable3G, file="dfTab1A1B2A2B3ABCDEFGH.rda")

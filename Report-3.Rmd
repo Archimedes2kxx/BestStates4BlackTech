@@ -116,7 +116,7 @@ Answer 3B ... The total number of techs in each category appear the second colum
 #### Question 3C -- What was the male/female breakdown of employment within these categories?         
 Answer 3C ... The fourth column of Table 3ABC (below) shows the percentage of techs in the second column who were female. Females were an overall minority of `r dfTable3ABC[dfTable3ABC$Occupation=="ALL","F_%"] `% of all professionals in tech, and were a minority in every tech category, ranging from a low value of `r prettyNum(min(dfTable3ABC[, "F_%"]), scientific=FALSE)`% for to a high value of `r prettyNum(max(dfTable3ABC[, "F_%"]), scientific=FALSE)`%.
 
-<b>Table 3ABC -- American Professionals in U.S.Tech in 2015 with Female Percentages</b>   
+<b>Table 3ABC -- American Professionals in U.S.Tech in 2015</b>   
 ```{r, echo=FALSE, cache=FALSE,  comment=NA}
    print(format(dfTable3ABC[,c(1:3, 6, 7)], big.mark=","),row.names=FALSE) 
 ```
@@ -131,11 +131,11 @@ Answer 3D ... As per Table 3D (below), there were blah blah blah ...
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
-#### Question 3E -- How many American tech professionals worked in the U.S. in 2015?    
+#### Question 3E -- How many American professionals were added to U.S. tech between 2010 and 2015?    
 Answer 3E ... As per Table 3E (below), there were blah, blah, blah   ...  
 
 
-#### Question 3F -- How many jobs for foreign professionals from Asia were added to  U.S. tech between 2010 and 2015?   
+#### Question 3F -- How many foreign professionals from Asia were added to  U.S. tech between 2010 and 2015?   
 Answer 3F ... As per Table 3F (below), there were blah, blah, blah
 
 <b>Table 3F -- Change in Professionals from Asia Between 2010 and 2015</b> 
@@ -143,7 +143,7 @@ Answer 3F ... As per Table 3F (below), there were blah, blah, blah
    print(format(dfTable3F, big.mark=","),row.names=FALSE) 
 ```
 
-#### Question 3G -- How many jobs for foreign professionals not from Asia were added to U.S. tech between 2010 and 2015?   
+#### Question 3G -- How many foreign professionals not from Asia were added to U.S. tech between 2010 and 2015?   
 Answer 3G ... As per Table 3H (below), there were blah, blah, blah   
 
 <b>Table G -- Change in Professionals Not from Asia Between 2010 and 2015</b>   
