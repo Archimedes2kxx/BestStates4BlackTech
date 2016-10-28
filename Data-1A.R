@@ -90,6 +90,9 @@ dfCensus2$Citizen <- TRUE
 dfCensus2$Citizen[dfCensus2$CIT=="No"] <- FALSE
 save(dfCensus2, file="dfCensus2.rda")
 
+dfCensus3 <- subset(dfCensus2, Citizen==TRUE) 
+str(dfCensus3) ### 40278 obs. of  9 variables
+save(dfCensus3, file="dfCensus3.rda")
 
 ######################################
 ### 4. Evil twin ... 2010 ... categories to factors
@@ -118,6 +121,9 @@ dfCensus2.2010$Citizen <- TRUE
 dfCensus2.2010$Citizen[dfCensus2.2010$CIT=="No"] <- FALSE
 save(dfCensus2.2010, file="dfCensus2.2010.rda")
 
+dfCensus3.2010 <- subset(dfCensus2.2010, Citizen==TRUE) 
+str(dfCensus3.2010) ### 33448 obs. of  9 variables
+save(dfCensus3.2010, file="dfCensus3.2010.rda")
 ################ End of Evil Twin 2010
 ##########################################
 
@@ -136,9 +142,7 @@ save(dfCensus2.2010, file="dfCensus2.2010.rda")
 ### 5. Calculate racial group's Count per each state ... Thank you, Hadley ... :-)
 ###### Only analyze U.S. citizens #############
 #######################
-dfCensus3 <- subset(dfCensus2, Citizen==TRUE) 
-str(dfCensus3) ### 40278 obs. of  9 variables
-save(dfCensus3, file="dfCensus3.rda")
+
 
 census3StateRace <- group_by(dfCensus3, State, Race) 
 head(census3StateRace)

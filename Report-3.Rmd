@@ -1,5 +1,5 @@
 ---
-title: "Best States for Black, Hispanic, Asian, and Female Tech -- Version 0.97"
+title: "Best States for Black, Hispanic, Asian, and Female Tech -- Version 0.98"
 author: "Roy L Beasley, PhD -- DLL Editor"
 
 output: 
@@ -133,7 +133,9 @@ Answer 3D ... As per Table 3D (below), there were blah blah blah ...
 
 #### Question 3E -- How many American professionals were added to U.S. tech between 2010 and 2015?    
 Answer 3E ... As per Table 3E (below), there were blah, blah, blah   ...  
-
+```{r, echo=FALSE, cache=FALSE,  comment=NA}
+   print(format(dfTable3E, big.mark=","),row.names=FALSE) 
+```
 
 #### Question 3F -- How many foreign professionals from Asia were added to  U.S. tech between 2010 and 2015?   
 Answer 3F ... As per Table 3F (below), there were blah, blah, blah

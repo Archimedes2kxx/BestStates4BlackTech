@@ -11,6 +11,7 @@ load(file="dfStatesPop3.rda")
 load("dfCensus3.rda")
 load("dfCensus2.rda")
 load("dfCensus2.2010.rda")
+load("dfCensus3.2010.rda")
 
 ### install.packages("gridExtra")
 library(tidyr)
@@ -110,11 +111,12 @@ dfPtsPwtOccSex <- summarise(census3OccSex, ptsPwtOccSex = sum(personalWeight))
 head(dfPtsPwtOccSex)
 dfOccupationSex <- spread(dfPtsPwtOccSex, key=Sex, value=ptsPwtOccSex)
 head(dfOccupationSex)
-dfOccupationSex$perMale <- round((100 * dfOccupationSex$Male) /(dfOccupationSex$Male + dfOccupationSex$Female), digits=1)
-dfOccupationSex$perFemale <- round((100 * dfOccupationSex$Female) /(dfOccupationSex$Male + dfOccupationSex$Female), digits=1)
+dfOccupationSex$Total <- dfOccupationSex$Male + dfOccupationSex$Female
+dfOccupationSex$perMale <- round((100 * dfOccupationSex$Male) /(dfOccupationSex$Total), digits=1)
+dfOccupationSex$perFemale <- round((100 * dfOccupationSex$Female) /(dfOccupationSex$Total), digits=1)
 head(dfOccupationSex)
 
-dfOccupationSex$Total <- dfOccupationSex$Male + dfOccupationSex$Female
+
 dfOccupationSex <- dfOccupationSex[, c(1,6,2:5)] ### Put total in second column
 colnames(dfOccupationSex) <- c("Occupation", "TechStaff", "Male","Female","perMale", "perFemale")
 dfOccupationSex <- as.data.frame(dfOccupationSex)
@@ -133,7 +135,7 @@ str(dfOccupationSex)
 dfOccupationSex <- rbind(dfOccupationSex, dfALL)
 dfOccupationSex
 
-### Order by decreasing occupation, drop Female, no row names, etc
+### Order by decreasing occupation
 index <- order(dfOccupationSex$TechStaff, decreasing=TRUE)
 dfOccupationSex <- dfOccupationSex[index,] 
 rownames(dfOccupationSex) <- NULL
@@ -142,6 +144,48 @@ dfOccupationSex <- dfOccupationSex[,c(1,2,7, 3, 5, 4, 6)]
 colnames(dfOccupationSex) <- c("Occupation", "TechStaff", "TS_%", "Male", "M_%", "Female", "F_%")
 (dfTable3ABC <- dfOccupationSex)
 
+##############################
+##############################
+### Evil twin from 2010
+### Table 3 Occupations by Sex ... more thanks to HW
+census3OccSex.2010 <- group_by(dfCensus3.2010, Occupation, Sex)
+head(census3OccSex.2010)
+dfPtsPwtOccSex.2010 <- summarise(census3OccSex.2010, ptsPwtOccSex.2010 = sum(personalWeight))
+head(dfPtsPwtOccSex.2010)
+dfOccupationSex.2010 <- spread(dfPtsPwtOccSex.2010, key=Sex, value=ptsPwtOccSex.2010)
+head(dfOccupationSex.2010)
+dfOccupationSex.2010$Total <- dfOccupationSex.2010$Male + dfOccupationSex.2010$Female
+###dfOccupationSex$perMale <- round((100 * dfOccupationSex$Male) /(dfOccupationSex$Male + dfOccupationSex$Female), digits=1)
+dfOccupationSex.2010$perFemale <- round((100 * dfOccupationSex.2010$Female) /(dfOccupationSex.2010$Total), digits=1)
+head(dfOccupationSex.2010)
+
+dfOccupationSex.2010 <- dfOccupationSex.2010[, c(1,4, 3, 5)] ### Put total in second column
+colnames(dfOccupationSex.2010) <- c("Occupation", "TechStaff", "Female", "perFemale")
+dfOccupationSex.2010 <- as.data.frame(dfOccupationSex.2010)
+dfOccupationSex.2010
+
+### Add total row for ALL
+techSums.2010 <- as.vector(colSums(dfOccupationSex.2010[2:3]))
+###perMaleTechSums.2010 <- as.numeric(round((100 * techSums[2]/techSums[1]), digits = 1))
+perFemaleTechSums.2010 <- as.numeric(round((100 * techSums.2010[2]/techSums.2010[1]), digits = 1))
+
+dfALL.2010 <- data.frame("ALL", t(techSums.2010), perFemaleTechSums.2010) ### note the transpose "t"
+colnames(dfALL.2010) <- c("Occupation", "TechStaff", "Female", "perFemale")
+
+dfOccupationSex.2010$Occupation <- as.character(dfOccupationSex.2010$Occupation)
+dfOccupationSex.2010 <- rbind(dfOccupationSex.2010, dfALL.2010)
+dfOccupationSex.2010
+
+### Order by decreasing occupation
+index <- order(dfOccupationSex.2010$TechStaff, decreasing=TRUE)
+dfOccupationSex.2010 <- dfOccupationSex.2010[index,] 
+rownames(dfOccupationSex.2010) <- NULL
+###dfOccupationSex.2010$`T_%` <- round(100*dfOccupationSex$TechStaff/dfOccupationSex[1,"TechStaff"], digits=1)
+dfOccupationSex.2010 <- dfOccupationSex.2010[,c(1,2, 4)]
+colnames(dfOccupationSex.2010) <- c("Occupation", "Tech2010", "F2010_%")
+dfOccupationSex.2010
+
+############################################
 ############################
 ### Table 3D . Occupations of foreign techs from Asia and elsewhere
 dfCensus5 <- subset(dfCensus2, select=c("personalWeight","Occupation", "Birth"), Citizen==FALSE) 
@@ -175,13 +219,27 @@ colnames(dfTable3D) <- c("Occupation", "Foreign", "Asia", "AS_%", "NAsia", "NAS_
 index <- order(dfTable3D$Foreign, decreasing=TRUE)
 (dfTable3D <- dfTable3D[index,])
 
-
+###############################################
 ############################
 ### Evil Twin from 2010 time ... again
 
 
 ########################
 ### Tables 3E  ... compare with 2010 with 2015 American
+dfTable3E <- dfOccupationSex.2010
+### Order by occupations
+index <- order(dfTable3E$Occupation, decreasing=TRUE)
+(dfTable3E <- dfTable3E[index,])
+dfTable3ABCcopy <- dfTable3ABC
+index <- order(dfTable3ABC$Occupation, decreasing=TRUE)
+dfTable3ABCcopy <- dfTable3ABCcopy[index,]
+dfTable3E$Tech2015 <- dfTable3ABCcopy$TechStaff
+dfTable3E$Change <- dfTable3E$Tech2015 - dfTable3E$Tech2010
+dfTable3E$perChange <- round(100 * dfTable3E$Change / dfTable3E$Tech2010, digits=1)
+index <- order(dfTable3E$Tech2015, decreasing=TRUE)
+dfTable3E <- dfTable3E[index,]
+colnames(dfTable3E) <- c("Occupation", "Tech10", "F10_%", "Tech15", "Change", "Ch_%")
+(dfTable3E <- dfTable3E[,c(1,2,4,5,6,3)])
 
 
 ### Tables 3F and 3G ... compare 2010 to 2015 for Asuab (3F)   and Non-Asian (3G)
@@ -212,12 +270,12 @@ dfForeignTechOccupations.2010$`NAS_%` <- round(100*dfForeignTechOccupations.2010
 dfForeignTechOccupations.2010
 
 dfTable3FF <- subset(dfForeignTechOccupations.2010, select=c(Occupation, Asia, `AS_%`))
-index <- order(dfForeignTechOccupations.2010$Asia, decreasing=TRUE)
-(dfTable3FF <- dfTable3FF[index,])
+###index <- order(dfForeignTechOccupations.2010$Asia, decreasing=TRUE)
+###(dfTable3FF <- dfTable3FF[index,])
 
 dfTable3GG <- subset(dfForeignTechOccupations.2010, select=c(Occupation, NAsia, `NAS_%`))
-index <- order(dfForeignTechOccupations.2010$NAsia, decreasing=TRUE)
-(dfTable3GG <- dfTable3GG[index,])
+###index <- order(dfForeignTechOccupations.2010$NAsia, decreasing=TRUE)
+###(dfTable3GG <- dfTable3GG[index,])
 
 ### Tables 3F Change in Foreign Asian
 dfTable3F <- dfTable3D ### set up dimensions and some cols and order of rows
@@ -231,7 +289,7 @@ dfTable3F$Asia2010 <- dfTable3FF$Asia
 dfTable3F$Per <- round((100 * dfTable3F$Change / dfTable3F$Asia2010), digits=1)
 dfTable3F <- dfTable3F[,c(1,3,2,4,5)] ### put 2010 before 2015
 dfTable3F <- dfTable3F[order(dfTable3F$Asia, decreasing = TRUE),]
-colnames(dfTable3F) <- c("Occupation", "As2010", "As2015", "Change", "Per")
+colnames(dfTable3F) <- c("Occupation", "As2010", "As2015", "Change", "Ch_%")
 dfTable3F
 
 ############################
@@ -247,10 +305,10 @@ dfTable3G$NAsia2010 <- dfTable3GG$NAsia
 dfTable3G$Per <- round((100 * dfTable3G$Change / dfTable3G$NAsia2010), digits=1)
 dfTable3G <- dfTable3G[,c(1,3,2,4,5)] ### put 2010 before 2015
 dfTable3G <- dfTable3G[order(dfTable3G$NAsia, decreasing = TRUE),]
-colnames(dfTable3G) <- c("Occupation", "NAs2010", "NAs2015", "Change", "Per")
+colnames(dfTable3G) <- c("Occupation", "NAs2010", "NAs2015", "Change", "Ch_%")
 dfTable3G
 
-save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3ABC, dfTable3D, dfTable3F, dfTable3G, file="dfTab1A1B2A2B3ABCDEFGH.rda")
+save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3ABC, dfTable3D, dfTable3E, dfTable3F, dfTable3G, file="dfTab1A1B2A2B3ABCDEFGH.rda")
 
 ##################################
 ######################
