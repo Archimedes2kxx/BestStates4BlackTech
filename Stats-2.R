@@ -104,7 +104,7 @@ rownames(dfTable2B) <- c("Num", "Per")
 dfTable2B
 
 ######################
-### Table 3 Occupations by Sex ... more thanks to HW
+### Table 3ABC Occupations by Sex ... more thanks to HW
 census3OccSex <- group_by(dfCensus3, Occupation, Sex)
 head(census3OccSex)
 dfPtsPwtOccSex <- summarise(census3OccSex, ptsPwtOccSex = sum(personalWeight))
@@ -117,7 +117,7 @@ dfOccupationSex$perFemale <- round((100 * dfOccupationSex$Female) /(dfOccupation
 head(dfOccupationSex)
 
 
-dfOccupationSex <- dfOccupationSex[, c(1,6,2:5)] ### Put total in second column
+dfOccupationSex <- dfOccupationSex[, c(1,4,2:3, 5:6)] ### Put total in second column
 colnames(dfOccupationSex) <- c("Occupation", "TechStaff", "Male","Female","perMale", "perFemale")
 dfOccupationSex <- as.data.frame(dfOccupationSex)
 dfOccupationSex
@@ -147,7 +147,7 @@ colnames(dfOccupationSex) <- c("Occupation", "TechStaff", "TS_%", "Male", "M_%",
 ##############################
 ##############################
 ### Evil twin from 2010
-### Table 3 Occupations by Sex ... more thanks to HW
+### Like Table 3ABC Occupations by Sex ... more thanks to HW
 census3OccSex.2010 <- group_by(dfCensus3.2010, Occupation, Sex)
 head(census3OccSex.2010)
 dfPtsPwtOccSex.2010 <- summarise(census3OccSex.2010, ptsPwtOccSex.2010 = sum(personalWeight))
@@ -185,9 +185,26 @@ dfOccupationSex.2010 <- dfOccupationSex.2010[,c(1,2, 4)]
 colnames(dfOccupationSex.2010) <- c("Occupation", "Tech2010", "F2010_%")
 dfOccupationSex.2010
 
+### Tables 3D  ... compare with 2010 with 2015 American
+dfTable3D <- dfOccupationSex.2010
+### Order by occupations
+index <- order(dfTable3D$Occupation, decreasing=TRUE)
+(dfTable3D <- dfTable3D[index,])
+dfTable3ABCcopy <- dfTable3ABC
+index <- order(dfTable3ABC$Occupation, decreasing=TRUE)
+dfTable3ABCcopy <- dfTable3ABCcopy[index,]
+dfTable3D$Tech2015 <- dfTable3ABCcopy$TechStaff
+dfTable3D$Change <- dfTable3D$Tech2015 - dfTable3D$Tech2010
+dfTable3D$perChange <- round(100 * dfTable3D$Change / dfTable3D$Tech2010, digits=1)
+index <- order(dfTable3D$Tech2015, decreasing=TRUE)
+dfTable3D <- dfTable3D[index,]
+colnames(dfTable3D) <- c("Occupation", "Tech10", "F10_%", "Tech15", "Change", "Ch_%")
+(dfTable3D <- dfTable3D[,c(1,2,4,5,6,3)])
+
+
 ############################################
 ############################
-### Table 3D . Occupations of foreign techs from Asia and elsewhere
+### Table 3E . Occupations of foreign techs from Asia and elsewhere
 dfCensus5 <- subset(dfCensus2, select=c("personalWeight","Occupation", "Birth"), Citizen==FALSE) 
 str(dfCensus5) ### 4803 obs. of  3 variables
 
@@ -214,33 +231,14 @@ dfForeignTechOccupations$`NAS_%` <- round(100*dfForeignTechOccupations$NotAsia/d
 dfForeignTechOccupations$Foreign <- dfForeignTechOccupations$Asia + dfForeignTechOccupations$NotAsia
 dfForeignTechOccupations
 
-dfTable3D <- dfForeignTechOccupations[, c(1, 6, 2, 4, 3, 5)]
-colnames(dfTable3D) <- c("Occupation", "Foreign", "Asia", "AS_%", "NAsia", "NAS_%")
-index <- order(dfTable3D$Foreign, decreasing=TRUE)
-(dfTable3D <- dfTable3D[index,])
-
-###############################################
-############################
-### Evil Twin from 2010 time ... again
-
-
-########################
-### Tables 3E  ... compare with 2010 with 2015 American
-dfTable3E <- dfOccupationSex.2010
-### Order by occupations
-index <- order(dfTable3E$Occupation, decreasing=TRUE)
+dfTable3E <- dfForeignTechOccupations[, c(1, 6, 2, 4, 3, 5)]
+colnames(dfTable3E) <- c("Occupation", "Foreign", "Asia", "AS_%", "NAsia", "NAS_%")
+index <- order(dfTable3E$Foreign, decreasing=TRUE)
 (dfTable3E <- dfTable3E[index,])
-dfTable3ABCcopy <- dfTable3ABC
-index <- order(dfTable3ABC$Occupation, decreasing=TRUE)
-dfTable3ABCcopy <- dfTable3ABCcopy[index,]
-dfTable3E$Tech2015 <- dfTable3ABCcopy$TechStaff
-dfTable3E$Change <- dfTable3E$Tech2015 - dfTable3E$Tech2010
-dfTable3E$perChange <- round(100 * dfTable3E$Change / dfTable3E$Tech2010, digits=1)
-index <- order(dfTable3E$Tech2015, decreasing=TRUE)
-dfTable3E <- dfTable3E[index,]
-colnames(dfTable3E) <- c("Occupation", "Tech10", "F10_%", "Tech15", "Change", "Ch_%")
-(dfTable3E <- dfTable3E[,c(1,2,4,5,6,3)])
 
+### Up to here is OK
+####################################
+####################################
 
 ### Tables 3F and 3G ... compare 2010 to 2015 for Asuab (3F)   and Non-Asian (3G)
 dfCensus5.2010 <- subset(dfCensus2.2010, select=c("personalWeight","Occupation", "Birth"), Citizen==FALSE) 
@@ -278,7 +276,7 @@ dfTable3GG <- subset(dfForeignTechOccupations.2010, select=c(Occupation, NAsia, 
 ###(dfTable3GG <- dfTable3GG[index,])
 
 ### Tables 3F Change in Foreign Asian
-dfTable3F <- dfTable3D ### set up dimensions and some cols and order of rows
+dfTable3F <- dfTable3E ### set up dimensions and some cols and order of rows
 (dfTable3F <- dfTable3F[order(dfTable3F$Occupation),])
 dfTable3F <- subset(dfTable3F, select=-c(Foreign, NAsia))
 dfTable3F$`AS_%`<- NULL
@@ -294,7 +292,7 @@ dfTable3F
 
 ############################
 ### Tables 3G Change in Foreign NotAsian
-dfTable3G <- dfTable3D ### set up dimensions and some cols and order of rows
+dfTable3G <- dfTable3E ### set up dimensions and some cols and order of rows
 (dfTable3G <- dfTable3G[order(dfTable3G$Occupation),])
 dfTable3G <- subset(dfTable3G, select=-c(Foreign, Asia))
 dfTable3G$`AS_%`<- NULL
