@@ -118,7 +118,7 @@ Answer 3C ... The fourth column of Table 3ABC (below) shows the percentage of te
 
 <b>Table 3ABC -- American Professionals in U.S.Tech in 2015 with Female Percentages</b>   
 ```{r, echo=FALSE, cache=FALSE,  comment=NA}
-   print(format(dfTable3ABC[,c(1:3, 7)], big.mark=","),row.names=FALSE) 
+   print(format(dfTable3ABC[,c(1:3, 6, 7)], big.mark=","),row.names=FALSE) 
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
