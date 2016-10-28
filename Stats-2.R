@@ -39,7 +39,7 @@ dfTable1Aper <- as.character(round(dfTable1Aper, digits=1))
 dfTable1Aper
 
 dfTable1A <- data.frame(rbind(dfTable1Apop, dfTable1Aper))
-rownames(dfTable1A) <- c("Number", "Percent")
+rownames(dfTable1A) <- c("Num", "Per")
 dfTable1A
 
 ### Table 1B. White, Black, Asian, Hispanic Components of U.S. Tech Sector in 2014
@@ -57,7 +57,7 @@ dfTable1Bper <- as.character(round(dfTable1Bper, digits=1))
 dfTable1Bper
 
 dfTable1B <- data.frame(rbind(dfTable1Btech, dfTable1Bper))
-rownames(dfTable1B) <- c("Number", "Percent")
+rownames(dfTable1B) <- c("Num", "Per")
 dfTable1B
 
 
@@ -78,7 +78,7 @@ colnames <- c("ALL", "Male", "Female", "FemAsian", "FemNonAsian")
 colnames(dfTable2Aper) <- colNames
 
 dfTable2A <- data.frame(rbind(dfTable2Apop, dfTable2Aper))
-rownames(dfTable2A) <- c("Number", "Percent")
+rownames(dfTable2A) <- c("Num", "Per")
 dfTable2A
 
 
@@ -99,7 +99,7 @@ colNames_per <- colnames
 colnames(dfTable2Bper) <- colNames_per
 
 dfTable2B <- data.frame(rbind(dfTable2Bpop, dfTable2Bper))
-rownames(dfTable2B) <- c("Number", "Percent")
+rownames(dfTable2B) <- c("Num", "Per")
 dfTable2B
 
 ######################

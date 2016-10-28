@@ -50,7 +50,7 @@ tt3 <- ttheme_minimal(
 ## Overview   
 <i>Please note that all of the figures in this overview and in the subsequent report are estimates based on U.S. Census survey samples. So all figures should be read as "approximately xxx" even when the word "approximately" does not appear. </i>  
 
-* In 2015 there were approximately `r prettyNum(dfTable1B["Number","ALL"], big.mark=",", scientific=FALSE)` American employees in the entire U.S. information technology sector ==>  `r prettyNum(dfTable1B["Number","Black"], big.mark=",", scientific=FALSE)` were Black Americans; `r prettyNum(dfTable1B["Number","Hispanic"], big.mark=",", scientific=FALSE)` were Hispanic Americans; `r prettyNum(dfTable1B["Number","Asian"], big.mark=",", scientific=FALSE)` were Asian Americans; and `r prettyNum(dfTable2B["Number","Female"], big.mark=",", scientific=FALSE)` were female Americans. (See Table 1B and Table 2B.)      
+* In 2015 there were approximately `r prettyNum(dfTable1B["Num","ALL"], big.mark=",", scientific=FALSE)` American employees in the entire U.S. information technology sector ==>  `r prettyNum(dfTable1B["Num","Black"], big.mark=",", scientific=FALSE)` were Black Americans; `r prettyNum(dfTable1B["Num","Hispanic"], big.mark=",", scientific=FALSE)` were Hispanic Americans; `r prettyNum(dfTable1B["Num","Asian"], big.mark=",", scientific=FALSE)` were Asian Americans; and `r prettyNum(dfTable2B["Num","Female"], big.mark=",", scientific=FALSE)` were female Americans. (See Table 1B and Table 2B.)      
 
 * The best states for Black American tech professionals were all HBCU states: `r dfTable8B[1, 1]`, `r dfTable8B[2, 1]`, `r dfTable8B[3, 1]`, `r dfTable8B[4, 1]`, and `r dfTable8B[5, 1]`. (See Table 8B)   
 
@@ -60,9 +60,9 @@ tt3 <- ttheme_minimal(
 
 * If all other things were equal, one would expect that the percentage of a state's tech sector that was Black would be about the same as the percentage of the state's total population that was Black. One would expect similar parity for the percentages of Hispanics and for females. But all things were not equal, so the percentage of the tech sector of most states that was Black, Hispanic, or female was substantially smaller than the percentage of the state's total population that was Black, Hispanic, or female. By contrast, the percentage of state tech sectors that was Asian was usually greater than their population percentage and ranged as high as `r dfTable6["Asian", "Max"]` times their population percentage. (See Tables 4C and 6)  
 
-* Female American tech professionals only held `r prettyNum(dfTable2B["Percent","Female"])` percent of the nation's `r prettyNum(dfTable2B["Number","ALL"], big.mark=",", scientific=FALSE)` of the tech positions that were occupied by Americans.But Asian American females occupied disproportionately larger shares of the tech sectors in most states than their share of each state's population. Indeed, their tech shares ranged as high as `r dfTable6["FemAsian", "Max"]` times their shares of state populations. (See Table 4E and Table 6.) By contrast, non-Asian American females occupied much smaller shares of the state tech sectors than their shares of the state populations. (See Tables 2B, 3 and 6.)   
+* Female American tech professionals only held `r prettyNum(dfTable2B["Per","Female"])` percent of the nation's `r prettyNum(dfTable2B["Num","ALL"], big.mark=",", scientific=FALSE)` of the tech positions that were occupied by Americans.But Asian American females occupied disproportionately larger shares of the tech sectors in most states than their share of each state's population. Indeed, their tech shares ranged as high as `r dfTable6["FemAsian", "Max"]` times their shares of state populations. (See Table 4E and Table 6.) By contrast, non-Asian American females occupied much smaller shares of the state tech sectors than their shares of the state populations. (See Tables 2B, 3 and 6.)   
 
-* Finally, in 2015 the U.S. information technology sector employed `r prettyNum(dfTable3D[1,"Asia"], big.mark=",", scientific=FALSE)` foreign tech professionals from Asia who moved here to work for their clients in this country. It should be noted that this figure is substantially larger than the `r prettyNum(dfTable1B["Number","Black"], big.mark=",", scientific=FALSE)` Black American or the  `r prettyNum(dfTable1B["Number","Hispanic"], big.mark=",", scientific=FALSE)` Hispanic American tech professionals. U.S. tech also employed `r prettyNum(dfTable3D[1,"NAsia"], big.mark=",", scientific=FALSE)` foreign  professionals who came here from countries outside of Asia.
+* Finally, in 2015 the U.S. information technology sector employed `r prettyNum(dfTable3D[1,"Asia"], big.mark=",", scientific=FALSE)` foreign tech professionals from Asia who moved here to work for their clients in this country. It should be noted that this figure is substantially larger than the `r prettyNum(dfTable1B["Num","Black"], big.mark=",", scientific=FALSE)` Black American or the  `r prettyNum(dfTable1B["Num","Hispanic"], big.mark=",", scientific=FALSE)` Hispanic American tech professionals. U.S. tech also employed `r prettyNum(dfTable3D[1,"NAsia"], big.mark=",", scientific=FALSE)` foreign  professionals who came here from countries outside of Asia.
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
     
 
@@ -70,37 +70,37 @@ tt3 <- ttheme_minimal(
 Brief answers to the first three sets of questions provide a broad statistical framwork for extended responses to the fourth and fifth questions that form the core of this report. 
 
 #### Question 1A -- How many White, Black, Asian, and Hispanic Americans lived in the U.S. in 2015?    
-Answer 1A ... In 2015, as shown in Table 1A (below), the largest of the four racial/ethnic groups discussed in this report was White (`r prettyNum(dfTable1A["Number","White"], big.mark=",", scientific=FALSE)`); the smallest was Asian (`r prettyNum(dfTable1A["Number","Asian"], big.mark=",", scientific=FALSE)`). Hispanics, the largest minority (`r prettyNum(dfTable1A["Number","Hispanic"], big.mark=",", scientific=FALSE)`), had grown substantially larger than Blacks (`r prettyNum(dfTable1A["Number","Black"], big.mark=",", scientific=FALSE)`).
+Answer 1A ... In 2015, as shown in Table 1A (below), the largest of the four racial/ethnic groups discussed in this report was White (`r prettyNum(dfTable1A["Num","White"], big.mark=",", scientific=FALSE)`); the smallest was Asian (`r prettyNum(dfTable1A["Num","Asian"], big.mark=",", scientific=FALSE)`). Hispanics, the largest minority (`r prettyNum(dfTable1A["Num","Hispanic"], big.mark=",", scientific=FALSE)`), had grown substantially larger than Blacks (`r prettyNum(dfTable1A["Num","Black"], big.mark=",", scientific=FALSE)`).
 
 <b>Table 1A -- Racial/Ethnic Composition of the U.S. Population in 2015</b>
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable1A, big.mark=","), row.names=TRUE)
 ```
 
 
 #### Question 1B -- How many White, Black, Asian, and Hispanic American professionals worked in tech in 2015? 
-Answer 1B ... As shown in Table 1B (below), the U.S. Census Bureau estimated that there were `r prettyNum(dfTable1B["Number","ALL"], big.mark=",", scientific=FALSE)` American tech professionals in the U.S. in 2015.  Whites were a substantial majority (`r prettyNum(dfTable1B["Number","White"], big.mark=",", scientific=FALSE)`) of the tech sector (`r prettyNum(dfTable1B["Percent","White"], big.mark=",", scientific=FALSE)`%); Asians placed second (`r prettyNum(dfTable1B["Number","Asian"], big.mark=",", scientific=FALSE)`); Blacks showed third (`r prettyNum(dfTable1B["Number","Black"], big.mark=",", scientific=FALSE)`); and Hispanics came in fourth  (`r prettyNum(dfTable1B["Number","Hispanic"], big.mark=",", scientific=FALSE)`)
+Answer 1B ... As shown in Table 1B (below), the U.S. Census Bureau estimated that there were `r prettyNum(dfTable1B["Num","ALL"], big.mark=",", scientific=FALSE)` American tech professionals in the U.S. in 2015.  Whites were a substantial majority (`r prettyNum(dfTable1B["Num","White"], big.mark=",", scientific=FALSE)`) of the tech sector (`r prettyNum(dfTable1B["Per","White"], big.mark=",", scientific=FALSE)`%); Asians placed second (`r prettyNum(dfTable1B["Num","Asian"], big.mark=",", scientific=FALSE)`); Blacks showed third (`r prettyNum(dfTable1B["Num","Black"], big.mark=",", scientific=FALSE)`); and Hispanics came in fourth  (`r prettyNum(dfTable1B["Num","Hispanic"], big.mark=",", scientific=FALSE)`)
 
 <b>Table 1B -- Racial/Ethnic Composition of the U.S. Tech Sector in 2015</b>   
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     print(format(dfTable1B, big.mark=","), row.names=TRUE)
 ```
 
 #### Question 2A -- What was the male/female composition of the U.S. population in 2015?
 
-Answer 2A ... As shown in Table 2A (below), the population was close to an even split between males and females. But given the focus of this report, the table also breaks the female half into a small Asian American component (`r dfTable2A["Percent", "FemAsian"]` percent) and a much larger non-Asian American female component (`r dfTable2A["Percent", "FemNonAsian"]` percent)
+Answer 2A ... As shown in Table 2A (below), the population was close to an even split between males and females. But given the focus of this report, the table also breaks the female half into a small Asian American component (`r dfTable2A["Per", "FemAsian"]` percent) and a much larger non-Asian American female component (`r dfTable2A["Per", "FemNonAsian"]` percent)
 
 <b>Table 2A -- American Male/Female Composition of the U.S. population in 2015</b>   
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
   print(format(dfTable2A, big.mark=","), row.names=TRUE)
 ```
 
 #### Question 2B -- What was the male/female composition of the tech sector in 2015? 
 
-Answer 2B ... As shown in Table 2B (below), the ratio of male to female techs was about  `r round(as.numeric(dfTable2B["Percent", "Male"])/as.numeric(dfTable2B["Percent", "Female"]), digits=0)` to 1, more specifically `r dfTable2B["Percent", "Male"]` percent to `r dfTable2B["Percent", "Female"]` percent. The ratio of Non-Asian American females to Asian American females was about `r round(as.numeric(dfTable2B["Percent", "FemNonAsian"])/as.numeric(dfTable2B["Percent", "FemAsian"]), digits=0)` to 1, i.e., `r dfTable2B["Percent", "FemNonAsian"]` percent to `r dfTable2B["Percent", "FemAsian"]` percent.
+Answer 2B ... As shown in Table 2B (below), the ratio of male to female techs was about  `r round(as.numeric(dfTable2B["Per", "Male"])/as.numeric(dfTable2B["Per", "Female"]), digits=0)` to 1, more specifically `r dfTable2B["Per", "Male"]` percent to `r dfTable2B["Per", "Female"]` percent. The ratio of Non-Asian American females to Asian American females was about `r round(as.numeric(dfTable2B["Per", "FemNonAsian"])/as.numeric(dfTable2B["Per", "FemAsian"]), digits=0)` to 1, i.e., `r dfTable2B["Per", "FemNonAsian"]` percent to `r dfTable2B["Per", "FemAsian"]` percent.
 
 <b>Table 2B -- Male/Female Composition of the U.S. Tech Sector in 2015</b>   
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
   print(format(dfTable2B, big.mark=","), row.names=TRUE)
 ```
 
@@ -418,9 +418,9 @@ As shown in Table 4D, California employed the largest number of Hispanics (`r pr
 
  
 <b> Black vs. Black</b>   
-Table 1A showed that `r dfTable1A["Percent","Black"]` percent of the U.S. population in 2015 was Black; and Table 1B showed that the nation's `r dfTable1B["Number","Black"]`   Black tech professionals represented `r dfTable1B["Percent","Black"]` percent of the nation's `r dfTable1B["Number","ALL"]` tech professionals. 
+Table 1A showed that `r dfTable1A["Per","Black"]` percent of the U.S. population in 2015 was Black; and Table 1B showed that the nation's `r dfTable1B["Num","Black"]`   Black tech professionals represented `r dfTable1B["Per","Black"]` percent of the nation's `r dfTable1B["Num","ALL"]` tech professionals. 
 
-* Table 5 showed that the national parity rating for Blacks in tech was `r dfTable5["Black", "Par"]`, i.e., `r dfTable1B["Percent","Black"]` divided by `r dfTable1A["Percent","Black"]`, which was more than half, i.e., greater than 0.50. The vast majority of tech jobs required bachelors degrees. This meant that, contrary to popular misconceptions, <b>the nation's Black academic pipelines were more than half-full; they were not perilously close to empty</b>.  
+* Table 5 showed that the national parity rating for Blacks in tech was `r dfTable5["Black", "Par"]`, i.e., `r dfTable1B["Per","Black"]` divided by `r dfTable1A["Per","Black"]`, which was more than half, i.e., greater than 0.50. The vast majority of tech jobs required bachelors degrees. This meant that, contrary to popular misconceptions, <b>the nation's Black academic pipelines were more than half-full; they were not perilously close to empty</b>.  
 
 * According to Table 8B, the best states for Black tech professionals were  `r dfTable8B[1, 1]`, `r dfTable8B[2, 1]`, `r dfTable8B[3, 1]`, `r dfTable8B[4, 1]`, and `r dfTable8B[5, 1]`. <b>These states weren't just Southern states; they were HBCU states</b>, homes to the <b>[Historically Black Colleges and Universities (HBCUs)](http://hbcu-levers.blogspot.com/p/hbcu-lists-profiles-2015.html)</b> that educated the overwhelming majority of Black college graduates before the Supreme Court's desegregation decision in 1954 and the Civil Rights legislation in 1964/65. To this day, when over 90 percent of Black students attend non-HBCUs, HBCUs still educate a large, disproportionate share of the nation's Black graduates in the STEM majors that provide entry into careers in information technology. (See my previous note on this blog <b>[HBCUs -- the Best Producers of Black Graduates in STEM](http://hbcu-levers.blogspot.com/p/using-data-from-ipeds-data-center-this.html)</b>)    
 
@@ -434,7 +434,7 @@ Table 1A showed that `r dfTable1A["Percent","Black"]` percent of the U.S. popula
 
 * Fortunately for Asian Americans, the oppression they faced before the Supreme Court and Congress outlawed racial exclusions from education and the workplace was orders of magnitude less debilitating, nor was its aftermath as persistent. So facing lesser obstacles, Asian Americans have attained greater gains.
 
-* Indeed, the remarkable success of Asian Americans in tech's academic pipelines and  subsequent employment reinvigorates the old ideal of America as a "Land of Opportunity". For example, as per Table 1A, Asians were only `r prettyNum(dfTable1A["Percent", "Asian"])` percent of the nation's population in 2015. But according to U.S. Department of Education, Asian undergraduate enrollments at <b>[Cal Tech](http://nces.ed.gov/collegenavigator/?q=California+Institute+of+Technology&s=all&id=110404#enrolmt)</b> and <b>[M.I.T.](http://nces.ed.gov/collegenavigator/?q=Massachusetts+Institute+of+Technology&s=all&id=166683)</b> -- arguably the best technical institutions in the nation, if not the world --  are 45 percent and 25 percent, respectively. No one gets admitted to these highly competitive institutions without being very smart and being very well prepared.   
+* Indeed, the remarkable success of Asian Americans in tech's academic pipelines and  subsequent employment reinvigorates the old ideal of America as a "Land of Opportunity". For example, as per Table 1A, Asians were only `r prettyNum(dfTable1A["Per", "Asian"])` percent of the nation's population in 2015. But according to U.S. Department of Education, Asian undergraduate enrollments at <b>[Cal Tech](http://nces.ed.gov/collegenavigator/?q=California+Institute+of+Technology&s=all&id=110404#enrolmt)</b> and <b>[M.I.T.](http://nces.ed.gov/collegenavigator/?q=Massachusetts+Institute+of+Technology&s=all&id=166683)</b> -- arguably the best technical institutions in the nation, if not the world --  are 45 percent and 25 percent, respectively. No one gets admitted to these highly competitive institutions without being very smart and being very well prepared.   
 
 *  While smarts and thorough preparation are usually sufficient to gain admission to the best colleges and universities, being hired for the best jobs can also be a function of who you know ... or more precisely, as Granovetter first observed in one of the most widely cited papers ever published ("<b>[The Strength of Weak Ties](https://en.wikipedia.org/wiki/Interpersonal_ties)</b>"), it's who you know who knows someone who can hire you. So the more Asian Americans that were hired, the more indirect contacts other Asian Americans obtained. 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
