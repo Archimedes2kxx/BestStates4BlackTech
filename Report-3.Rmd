@@ -108,7 +108,7 @@ Answer 2B ... As shown in Table 2B (below), the ratio of male to female techs wa
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>       
 
 #### Question 3A -- Which standard occupation categories specified "information technology" for this report? 
-Answer 3A ... For the purposes of this report, "information technology" was defined as the thirteen standard occupation categories (SOC) that appear in the first column of Table 3ABC (below). Twelve of these categories related to software, e.g., Software Developers, Computer Programmers, and Database Administrtors; only one relates to hardware, i.e., Computer Hardware Engineers.  
+Answer 3A ... For the purposes of this report, "information technology" was defined as the thirteen standard occupation categories (SOC) that appear in the first column of Table 3ABC (below). Twelve of these categories related to software, e.g., Software Developers, Computer Programmers, and Database Administrtors; only one relates to hardware, i.e., Computer Hardware Engineers.  The thirteen categories in the tables in this section provide profiles of the American professionals in U.S. tech in 2015, of the foreign professionals in U.S. tech in 2015, and of the changes in these profiles between 2010 and 2015.
 
 #### Question 3B -- How many techs were in each category?        
 Answer 3B ... The total number of techs in each category appear the second column of Table 3ABC (below). The top row shows that there were approximately `r prettyNum(dfTable3ABC[dfTable3ABC$Occupation=="ALL","TechStaff"], big.mark=",", scientific=FALSE)` professionals in  all tech categories. 
