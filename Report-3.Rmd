@@ -62,7 +62,7 @@ tt3 <- ttheme_minimal(
 
 * Female American tech professionals only held `r prettyNum(dfTable2B["Percent","Female"])` percent of the nation's `r prettyNum(dfTable2B["Number","ALL"], big.mark=",", scientific=FALSE)` of the tech positions that were occupied by Americans.But Asian American females occupied disproportionately larger shares of the tech sectors in most states than their share of each state's population. Indeed, their tech shares ranged as high as `r dfTable6["FemAsian", "Max"]` times their shares of state populations. (See Table 4E and Table 6.) By contrast, non-Asian American females occupied much smaller shares of the state tech sectors than their shares of the state populations. (See Tables 2B, 3 and 6.)   
 
-* Finally, in 2015 the U.S. information technology sector employed `r prettyNum(dfTable3D[1,"Asia"], big.mark=",", scientific=FALSE)` foreign tech professionals from Asia who moved here to work for their clients in this country. It should be noted that this figure is substantially larger than the `r prettyNum(dfTable1B["Number","Black"], big.mark=",", scientific=FALSE)` Black American or the  `r prettyNum(dfTable1B["Number","Hispanic"], big.mark=",", scientific=FALSE)` Hispanic American tech professionals. U.S. tech also employed `r prettyNum(dfTable3E[1,"NotAsia"], big.mark=",", scientific=FALSE)` foreign  professionals who came here from countries outside of Asia.
+* Finally, in 2015 the U.S. information technology sector employed `r prettyNum(dfTable3D[1,"Asia"], big.mark=",", scientific=FALSE)` foreign tech professionals from Asia who moved here to work for their clients in this country. It should be noted that this figure is substantially larger than the `r prettyNum(dfTable1B["Number","Black"], big.mark=",", scientific=FALSE)` Black American or the  `r prettyNum(dfTable1B["Number","Hispanic"], big.mark=",", scientific=FALSE)` Hispanic American tech professionals. U.S. tech also employed `r prettyNum(dfTable3D[1,"NAsia"], big.mark=",", scientific=FALSE)` foreign  professionals who came here from countries outside of Asia.
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
     
 
@@ -122,43 +122,33 @@ Answer 3C ... The fourth column of Table 3ABC (below) shows the percentage of te
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
-#### Question 3D -- How many foreign tech professionals from Asia worked in the U.S. in 2015?    
+#### Question 3D -- How many foreign tech professionals worked in the U.S. in 2015?    
 Answer 3D ... As per Table 3D (below), there were blah blah blah ...
 
-<b>Table 3D -- Foreign Professionals from Asia Working in U.S. Tech in 2015</b>   
+<b>Table 3D -- Foreign Professionals Working in U.S. Tech in 2015</b>   
 ```{r, echo=FALSE, cache=FALSE,  comment=NA}
    print(format(dfTable3D, big.mark=","),row.names=FALSE) 
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
-#### Question 3E -- How many foreign tech professionals worked in the U.S. in 2015 who were not from Asia?    
+#### Question 3E -- How many American tech professionals worked in the U.S. in 2015?    
 Answer 3E ... As per Table 3E (below), there were blah, blah, blah   ...  
 
-<b>Table 3E -- Foreign Professionals Not From Asia Working in U.S. Tech in 2015</b>   
+
+#### Question 3F -- How many jobs for foreign professionals from Asia were added to  U.S. tech between 2010 and 2015?   
+Answer 3F ... As per Table 3F (below), there were blah, blah, blah
+
+<b>Table 3F -- Change in Professionals from Asia Between 2010 and 2015</b> 
 ```{r, echo=FALSE, cache=FALSE,  comment=NA}
-   print(format(dfTable3E, big.mark=","),row.names=FALSE) 
+   print(format(dfTable3F, big.mark=","),row.names=FALSE) 
 ```
 
-#### Question 3F -- How many jobs for American professionals were added to  U.S. tech between 2010 and 2015? 
-Answer 3F ... As per Table 3F (below), there were blah, blah, blah  
+#### Question 3G -- How many jobs for foreign professionals not from Asia were added to U.S. tech between 2010 and 2015?   
+Answer 3G ... As per Table 3H (below), there were blah, blah, blah   
 
-<b>Table F -- Change in American Tech Professionals Between 2010 and 2015</b>  
-
-#### Question 3G -- How many jobs for foreign professionals from Asia were added to  U.S. tech between 2010 and 2015?   
-Answer 3G ... As per Table 3F (below), there were blah, blah, blah
-
-<b>Table 3G -- Change in Professionals from Asia Between 2010 and 2015</b> 
+<b>Table G -- Change in Professionals Not from Asia Between 2010 and 2015</b>   
 ```{r, echo=FALSE, cache=FALSE,  comment=NA}
    print(format(dfTable3G, big.mark=","),row.names=FALSE) 
-```
-
-
-#### Question 3H -- How many jobs for foreign professionals not from Asia were added to U.S. tech between 2010 and 2015?   
-Answer 3H ... As per Table 3H (below), there were blah, blah, blah   
-
-<b>Table H -- Change in Professionals Not from Asia Between 2010 and 2015</b>   
-```{r, echo=FALSE, cache=FALSE,  comment=NA}
-   print(format(dfTable3H, big.mark=","),row.names=FALSE) 
 ```
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    

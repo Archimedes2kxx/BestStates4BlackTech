@@ -143,7 +143,7 @@ colnames(dfOccupationSex) <- c("Occupation", "TechStaff", "TS_%", "Male", "M_%",
 (dfTable3ABC <- dfOccupationSex)
 
 ############################
-### Table 3D and 3E. Occupations of foreign techs from Asia and elsewhere
+### Table 3D . Occupations of foreign techs from Asia and elsewhere
 dfCensus5 <- subset(dfCensus2, select=c("personalWeight","Occupation", "Birth"), Citizen==FALSE) 
 str(dfCensus5) ### 4803 obs. of  3 variables
 
@@ -165,26 +165,26 @@ dfForeignTop[1,2:3] <- allForeign
 dfForeignTechOccupations <- rbind(dfForeignTop, dfForeignTechOccupations)
 dfForeignTechOccupations <- as.data.frame(dfForeignTechOccupations)
 
-dfForeignTechOccupations$`AOS_%` <- round(100*dfForeignTechOccupations$Asia/dfForeignTechOccupations[1,"Asia"], digits=1)
-dfForeignTechOccupations$`NAOS_%` <- round(100*dfForeignTechOccupations$NotAsia/dfForeignTechOccupations[1,"NotAsia"], digits=1)
+dfForeignTechOccupations$`AS_%` <- round(100*dfForeignTechOccupations$Asia/dfForeignTechOccupations[1,"Asia"], digits=1)
+dfForeignTechOccupations$`NAS_%` <- round(100*dfForeignTechOccupations$NotAsia/dfForeignTechOccupations[1,"NotAsia"], digits=1)
+dfForeignTechOccupations$Foreign <- dfForeignTechOccupations$Asia + dfForeignTechOccupations$NotAsia
 dfForeignTechOccupations
 
-dfTable3D <- subset(dfForeignTechOccupations, select=c(Occupation, Asia, `AOS_%`))
-index <- order(dfForeignTechOccupations$Asia, decreasing=TRUE)
+dfTable3D <- dfForeignTechOccupations[, c(1, 6, 2, 4, 3, 5)]
+colnames(dfTable3D) <- c("Occupation", "Foreign", "Asia", "AS_%", "NAsia", "NAS_%")
+index <- order(dfTable3D$Foreign, decreasing=TRUE)
 (dfTable3D <- dfTable3D[index,])
 
-dfTable3E <- subset(dfForeignTechOccupations, select=c(Occupation, NotAsia, `NAOS_%`))
-index <- order(dfForeignTechOccupations$NotAsia, decreasing=TRUE)
-(dfTable3E <- dfTable3E[index,])
 
 ############################
 ### Evil Twin from 2010 time ... again
 
 
 ########################
-#### Tables 3F  ... compare with 2010 with 2015 American
+### Tables 3E  ... compare with 2010 with 2015 American
 
 
+### Tables 3F and 3G ... compare 2010 to 2015 for Asuab (3F)   and Non-Asian (3G)
 dfCensus5.2010 <- subset(dfCensus2.2010, select=c("personalWeight","Occupation", "Birth"), Citizen==FALSE) 
 str(dfCensus5.2010) ### 3687 obs. of  3 variables:
 
@@ -194,7 +194,7 @@ dfBirthPerOccupation.2010 <- spread(dfSumPwtOccupationBirth.2010, key=Birth, val
 head(dfBirthPerOccupation.2010)
 
 ### Combine all Non-Asia into Others dfBirthPerOccupation.2010$LatinAmerica + 
-dfBirthPerOccupation.2010$NotAsia <- dfBirthPerOccupation.2010$"Latin America" + dfBirthPerOccupation.2010$Europe + dfBirthPerOccupation.2010$Africa + dfBirthPerOccupation.2010$"North America" + dfBirthPerOccupation.2010$Oceania 
+dfBirthPerOccupation.2010$NAsia <- dfBirthPerOccupation.2010$"Latin America" + dfBirthPerOccupation.2010$Europe + dfBirthPerOccupation.2010$Africa + dfBirthPerOccupation.2010$"North America" + dfBirthPerOccupation.2010$Oceania 
 
 dfForeignTechOccupations.2010 <- subset(dfBirthPerOccupation.2010, select=-c(USA, `US Islands`, `Latin America`, Europe, Africa, `North America`, Oceania)) ### Delete the components of FrnOthers
 dfForeignTechOccupations.2010
@@ -205,48 +205,52 @@ dfForeignTop.2010$Occupation <- "ALL"
 dfForeignTop.2010[1,2:3] <- allForeign.2010
 dfForeignTechOccupations.2010 <- rbind(dfForeignTop.2010, dfForeignTechOccupations.2010)
 dfForeignTechOccupations.2010 <- as.data.frame(dfForeignTechOccupations.2010)
-
-dfForeignTechOccupations.2010$`AOS_%` <- round(100*dfForeignTechOccupations.2010$Asia/dfForeignTechOccupations.2010[1,"Asia"], digits=1)
-dfForeignTechOccupations.2010$`NAOS_%` <- round(100*dfForeignTechOccupations.2010$NotAsia/dfForeignTechOccupations.2010[1,"NotAsia"], digits=1)
 dfForeignTechOccupations.2010
 
-dfTable3GG <- subset(dfForeignTechOccupations.2010, select=c(Occupation, Asia, `AOS_%`))
+dfForeignTechOccupations.2010$`AS_%` <- round(100*dfForeignTechOccupations.2010$Asia/dfForeignTechOccupations.2010[1,"Asia"], digits=1)
+dfForeignTechOccupations.2010$`NAS_%` <- round(100*dfForeignTechOccupations.2010$NAsia/dfForeignTechOccupations.2010[1,"NAsia"], digits=1)
+dfForeignTechOccupations.2010
+
+dfTable3FF <- subset(dfForeignTechOccupations.2010, select=c(Occupation, Asia, `AS_%`))
 index <- order(dfForeignTechOccupations.2010$Asia, decreasing=TRUE)
+(dfTable3FF <- dfTable3FF[index,])
+
+dfTable3GG <- subset(dfForeignTechOccupations.2010, select=c(Occupation, NAsia, `NAS_%`))
+index <- order(dfForeignTechOccupations.2010$NAsia, decreasing=TRUE)
 (dfTable3GG <- dfTable3GG[index,])
 
-dfTable3HH <- subset(dfForeignTechOccupations.2010, select=c(Occupation, NotAsia, `NAOS_%`))
-index <- order(dfForeignTechOccupations.2010$NotAsia, decreasing=TRUE)
-(dfTable3HH <- dfTable3HH[index,])
-
-### Tables 3G Change in Foreign Asian
-dfTable3G <- dfTable3D ### set up dimensions and some cols and order of rows
-(dfTable3G <- dfTable3G[order(dfTable3G$Occupation),])
-dfTable3G$`AOS_%`<- NULL
-(dfTable3GG <- dfTable3GG[order(dfTable3GG$Occupation),])
-dfTable3G$Asia.2010 <- dfTable3GG$Asia
-dfTable3G$Change <- dfTable3G$Asia - dfTable3G$Asia.2010
-dfTable3G$Per <- round((100 * dfTable3G$Change / dfTable3G$Asia.2010), digits=1)
-dfTable3G <- dfTable3G[,c(1,3,2,4,5)] ### put 2010 before 2015
-dfTable3G <- dfTable3G[order(dfTable3G$Asia, decreasing = TRUE),]
-colnames(dfTable3G) <- c("Occupation", "As2010", "As2015", "Chng", "Per")
-dfTable3G
+### Tables 3F Change in Foreign Asian
+dfTable3F <- dfTable3D ### set up dimensions and some cols and order of rows
+(dfTable3F <- dfTable3F[order(dfTable3F$Occupation),])
+dfTable3F <- subset(dfTable3F, select=-c(Foreign, NAsia))
+dfTable3F$`AS_%`<- NULL
+dfTable3F$`NAS_%` <- NULL
+(dfTable3FF <- dfTable3FF[order(dfTable3FF$Occupation),])
+dfTable3F$Asia2010 <- dfTable3FF$Asia
+(dfTable3F$Change <- dfTable3F$Asia - dfTable3F$Asia2010)
+dfTable3F$Per <- round((100 * dfTable3F$Change / dfTable3F$Asia2010), digits=1)
+dfTable3F <- dfTable3F[,c(1,3,2,4,5)] ### put 2010 before 2015
+dfTable3F <- dfTable3F[order(dfTable3F$Asia, decreasing = TRUE),]
+colnames(dfTable3F) <- c("Occupation", "As2010", "As2015", "Chng", "Per")
+dfTable3F
 
 ############################
-### Tables 3H Change in Foreign NotAsian
-dfTable3H <- dfTable3E ### set up dimensions and some cols and order of rows
-(dfTable3H <- dfTable3H[order(dfTable3H$Occupation),])
-dfTable3H$`NAOS_%`<- NULL
-(dfTable3HH <- dfTable3HH[order(dfTable3HH$Occupation),])
-dfTable3H$NotAsia.2010 <- dfTable3HH$NotAsia
-dfTable3H$Change <- dfTable3H$NotAsia - dfTable3H$NotAsia.2010
-dfTable3H$Per <- round((100 * dfTable3H$Change / dfTable3H$NotAsia.2010), digits=1)
-dfTable3H <- dfTable3H[,c(1,3,2,4,5)] ### put 2010 before 2015
-colnames(dfTable3H) <- c("Occupation", "NAs2010", "NAs2015", "Chng", "Per")
-dfTable3H <- dfTable3H[order(dfTable3H$NAs2015, decreasing = TRUE),]
-dfTable3H
+### Tables 3G Change in Foreign NotAsian
+dfTable3G <- dfTable3D ### set up dimensions and some cols and order of rows
+(dfTable3G <- dfTable3G[order(dfTable3G$Occupation),])
+dfTable3G <- subset(dfTable3G, select=-c(Foreign, Asia))
+dfTable3G$`AS_%`<- NULL
+dfTable3G$`NAS_%` <- NULL
+(dfTable3GG <- dfTable3GG[order(dfTable3GG$Occupation),])
+dfTable3G$NAsia2010 <- dfTable3GG$NAsia
+(dfTable3G$Change <- dfTable3G$NAsia - dfTable3G$NAsia2010)
+dfTable3G$Per <- round((100 * dfTable3G$Change / dfTable3G$NAsia2010), digits=1)
+dfTable3G <- dfTable3G[,c(1,3,2,4,5)] ### put 2010 before 2015
+dfTable3G <- dfTable3G[order(dfTable3G$NAsia, decreasing = TRUE),]
+colnames(dfTable3G) <- c("Occupation", "NAs2010", "NAs2015", "Chng", "Per")
+dfTable3G
 
-
-save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3ABC, dfTable3D, dfTable3E, dfTable3G, dfTable3H, file="dfTab1A1B2A2B3ABCDEFGH.rda")
+save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3ABC, dfTable3D, dfTable3F, dfTable3G, file="dfTab1A1B2A2B3ABCDEFGH.rda")
 
 ##################################
 ######################
