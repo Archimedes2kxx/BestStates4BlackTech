@@ -69,7 +69,7 @@ tt3 <- ttheme_minimal(
 ## Findings
 Brief answers to the first three sets of questions provide a broad statistical framwork for extended responses to the fourth and fifth questions that form the core of this report. 
 
-#### Question 1A -- How many White, Black, Asian, and Hispanic residents lived in the U.S. in 2015?    
+#### Question 1A -- How many White, Black, Asian, and Hispanic Americans lived in the U.S. in 2015?    
 Answer 1A ... In 2015, as shown in Table 1A (below), the largest of the four racial/ethnic groups discussed in this report was White (`r prettyNum(dfTable1A["Num","White"], big.mark=",", scientific=FALSE)`); the smallest was Asian (`r prettyNum(dfTable1A["Num","Asian"], big.mark=",", scientific=FALSE)`). Hispanics, the largest minority (`r prettyNum(dfTable1A["Num","Hispanic"], big.mark=",", scientific=FALSE)`), had grown substantially larger than Blacks (`r prettyNum(dfTable1A["Num","Black"], big.mark=",", scientific=FALSE)`).
 
 <b>Table 1A -- Racial/Ethnic Composition of the U.S. Population in 2015</b>
@@ -86,20 +86,20 @@ Answer 1B ... As shown in Table 1B (below), the U.S. Census Bureau estimated tha
     print(format(dfTable1B, big.mark=","), row.names=TRUE)
 ```
 
-#### Question 2A -- What was the American male/female composition of the U.S. population in 2015?
+#### Question 2A -- What was the male/female composition of the U.S. population in 2015?
 
 Answer 2A ... As shown in Table 2A (below), the population was close to an even split between males and females. But given the focus of this report, the table also breaks the female half into a small Asian American component (`r dfTable2A["Per", "FemAsian"]` percent) and a much larger non-Asian American female component (`r dfTable2A["Per", "FemNonAsian"]` percent)
 
-<b>Table 2A -- Male/Female Composition of the U.S. population in 2015</b>   
+<b>Table 2A -- American Male/Female Composition of the U.S. population in 2015</b>   
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
   print(format(dfTable2A, big.mark=","), row.names=TRUE)
 ```
 
-#### Question 2B -- What was the American male/female composition of the tech sector in 2015? 
+#### Question 2B -- What was the male/female composition of the tech sector in 2015? 
 
 Answer 2B ... As shown in Table 2B (below), the ratio of male to female techs was about  `r round(as.numeric(dfTable2B["Per", "Male"])/as.numeric(dfTable2B["Per", "Female"]), digits=0)` to 1, more specifically `r dfTable2B["Per", "Male"]` percent to `r dfTable2B["Per", "Female"]` percent. The ratio of Non-Asian American females to Asian American females was about `r round(as.numeric(dfTable2B["Per", "FemNonAsian"])/as.numeric(dfTable2B["Per", "FemAsian"]), digits=0)` to 1, i.e., `r dfTable2B["Per", "FemNonAsian"]` percent to `r dfTable2B["Per", "FemAsian"]` percent.
 
-<b>Table 2B -- American Male/Female Composition of the U.S. Tech Sector in 2015</b>   
+<b>Table 2B -- Male/Female Composition of the U.S. Tech Sector in 2015</b>   
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
   print(format(dfTable2B, big.mark=","), row.names=TRUE)
 ```
@@ -118,7 +118,7 @@ Answer 3B ... The total number of American techs in each category appear the sec
 #### Question 3C -- What was the American male/female breakdown of employment within these categories?         
 Answer 3C ... The fourth column of Table 3ABC (below) shows the percentage of the American techs in the second column who were female. Females were an overall minority of `r dfTable3ABC[dfTable3ABC$Occupation=="ALL","F_%"] `% of all professionals in tech, and were a minority in every tech category, ranging from a low value of `r prettyNum(min(dfTable3ABC[, "F_%"]), scientific=FALSE)`% for to a high value of `r prettyNum(max(dfTable3ABC[, "F_%"]), scientific=FALSE)`%.
 
-<b>Table 3ABC -- American Professionals in U.S. Tech in 2015</b>   
+<b>Table 3ABC -- American Professionals in U.S.Tech in 2015</b>   
 ```{r, echo=FALSE, cache=FALSE,  comment=NA}
    print(format(dfTable3ABC[,c(1:3, 6, 7)], big.mark=","),row.names=FALSE) 
 ```
@@ -161,8 +161,8 @@ Answer 3G ... As per Table 3H (below), there were blah, blah, blah
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
-#### Question 4 -- Where did American White, Black, Asian, Hispanic, and female tech professionals work in 2015?      
-Answer 4 ... The following sections provide an extensive response to a more specific formulation of this question ==> In which states did American White, Black, Asian, Hispanic, and female  tech professionals work in 2015?  
+#### Question 4 -- Where did American and foreign tech professionals work in 2015?      
+Answer 4 ... The following sections provide an extensive response to a more specific formulation of this question ==> In which states did American and foreign tech professionals work in 2015?  
 
 Table 4 (below) lists the six states that employed the most American techs in 2015. These states will also appear in just about every table that follows because  they employed such a large share (`r prettyNum(dfTable4[1, "Top6_%"])` percent) of all `r prettyNum(dfTable4[1, "ALL STATES"], big.mark=",", scientific=FALSE)` techs in the U.S.
 
@@ -333,7 +333,7 @@ print(format(dfTable4H[1:11,], big.mark = ","), row.names=FALSE)
 
 Answer 5: As shown in six plots that follow, there was a positive relationship, but the relationship was strongest for Asians, weaker for Asian American females, still weaker for Whites, weaker for Black American, weaker for non-Asian American females, and weakest for Hispanic Americans.
 
-<b>Plots 5 -- Plots of Tech Employment vs Race/Ethnic/Female Group Population</b>   
+<b>Plots 5 -- Plots of American Tech Employment vs Race/Ethnic/Female Group Population</b>   
 ```{r, echo=FALSE, cache=TRUE, warning=FALSE}
     grid.arrange(ggPlotWhite, ggPlotBlack, ggPlotAsian, ggPlotHispanic, ggPlotFemAsian, ggPlotFemNonAsian, ncol=2)
 ```
@@ -351,7 +351,7 @@ Answer 5: As shown in six plots that follow, there was a positive relationship, 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
 
-<b>Table 5 -- Summary of Racial/Ethnic/Female National Advantages</b>
+<b>Table 5 -- Summary of Parity Values for American Groups</b>
 ```{r, echo=FALSE, cache=TRUE, comment=NA}
     print(format(dfTable5, big.mark = ","), row.names=TRUE) 
 ```
@@ -431,10 +431,10 @@ Table 1A showed that `r dfTable1A["Per","Black"]` percent of the U.S. population
 
 * According to Table 8B, the best states for Black American tech professionals were  `r dfTable8B[1, 1]`, `r dfTable8B[2, 1]`, `r dfTable8B[3, 1]`, `r dfTable8B[4, 1]`, and `r dfTable8B[5, 1]`. <b>These states weren't just Southern states; they were HBCU states</b>, homes to the <b>[Historically Black Colleges and Universities (HBCUs)](http://hbcu-levers.blogspot.com/p/hbcu-lists-profiles-2015.html)</b> that educated the overwhelming majority of Black college graduates before the Supreme Court's desegregation decision in 1954 and the Civil Rights legislation in 1964/65. To this day, when over 90 percent of Black American students attend non-HBCUs, HBCUs still educate a large, disproportionate share of the nation's Black American graduates in the STEM majors that provide entry into careers in information technology. (See my previous note on this blog <b>[HBCUs -- the Best Producers of Black Graduates in STEM](http://hbcu-levers.blogspot.com/p/using-data-from-ipeds-data-center-this.html)</b>)    
 
-* Most people attend colleges that are no more than a few hundred miles from their homes, so the children of HBCU graduates have obtained STEM degrees from some of nation's best colleges located in the HBCU states, e.g, Georgia Tech, Emory, Duke, Chapel Hill, and Austin. The presence of so many older Black techs in these states created dense, overlapping support networks of role models, mentors, and tutors for Black tech students and young Black American tech graduates, networks that were reinforced by memberships in fraternities, sororities, churches, and other social groups, networks that facilitated their entry into the job market and subsequent promotion, networks that were not available to young Black American techs in California and other non-HBCU states.
+* Most people attend colleges that are no more than a few hundred miles from their homes, so the children of HBCU graduates have obtained STEM degrees from some of nation's best colleges located in the HBCU states, e.g, Georgia Tech, Emory, Duke, Chapel Hill, and Austin. The presence of so many older Black techs in these states created dense, overlapping support networks of role models, mentors, and tutors for Black tech students and young Black tech graduates, networks that were reinforced by memberships in fraternities, sororities, churches, and other social groups, networks that facilitated their entry into the job market and subsequent promotion, networks that were not available to young Black techs in California and other non-HBCU states.
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
-<b> Asian Americans vs. Black Americans</b>   
+<b> Asian vs. Black</b>   
 <i>Question:</i> How did Asian American tech professionals attain such high parity values in every state?
 
 * Contrary to Silicon Valley's executive myth makers, Table 4B shows that Black Americans have made good use of the expanded education and employment opportunities provided by the Supreme Court's 1954 decision and the Civil Rights legislation that followed. But Black American academic pipelines are only half full because we are still overcoming the persistent evil legacy of hundreds of years of slavery and the decades of Jim Crow segregation that followed.    
