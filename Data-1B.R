@@ -126,3 +126,4 @@ sum(dfStatesPop4["California", 3:7])
 ### Note the URL for Census data about racial shares of total U.S. pop
 ### https://www.census.gov/quickfacts/table/PST045215/00  
 
+### I really only want U.S. citizens ... can I eliminate non-citizens as in Data-1A???
