@@ -5,3 +5,5 @@ To Do List
 2. Note describing breaking scripts into small segments to minimize to give focus to each segment and minimize damage caused by accidental changes in code
 
 3. Note describing future version that would compare state distribution of all groups in 2010 vs state distribution of groups in 2015
+
+4. Interactive version, Shiny app, that displays profiles of states for each group (white, black, asian, hispanic, female, foreign asian, foreign non-asian) for 2010 or 2015 … then calculates changes, percent changes for focal group … interactive, i.e, tables generated real time
