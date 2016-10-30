@@ -1,0 +1,7 @@
+To Do List
+
+1. Note describing use of total population for states in parity denominators because Fact Finder table I used did not all me to identify citizens vs. non-citizens … One correction would be to subtract all the number of foreign techs in each state from the total population … but I think total population also includes other foreigners (including illegals) so foreign techs would be probably be a small correction that would still leave larger non-citizen components in the state population … In other words the parity ratios are probably lower than reality of citizenTechs / citizenPopulation
+
+2. Note describing breaking scripts into small segments to minimize to give focus to each segment and minimize damage caused by accidental changes in code
+
+3. Note describing future version that would compare state distribution of all groups in 2010 vs state distribution of groups in 2015
