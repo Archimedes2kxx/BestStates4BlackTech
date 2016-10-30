@@ -6,4 +6,13 @@ To Do List
 
 3. Note describing future version that would compare state distribution of all groups in 2010 vs state distribution of groups in 2015
 
-4. Interactive version, Shiny app, that displays profiles of states for each group (white, black, asian, hispanic, female, foreign asian, foreign non-asian) for 2010 or 2015 … then calculates changes, percent changes for focal group … interactive, i.e, tables generated real time
+4. Interactive version, Shiny app, that displays  profiles of each state for each group (white, black, asian, hispanic, female, foreign asian, foreign non-asian) for 2010 or 2015 … then calculates changes, percent changes for focal group … interactive, i.e, tables generated real time. Need more extensive Census samples because current data yields missing values for more in-depth analysis
+
+5. Provide missing comments for
+Table 3E
+Table 3F
+Table 3G
+table 4G/4H
+Map 4G
+Map 4H
+

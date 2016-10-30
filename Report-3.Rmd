@@ -303,7 +303,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
  
  * Non-Asian American females showed no such concentration in California or in any other state. To be sure, California employed the most non-Asian female techs (`r dfTable4F["California", "SS_%"]` %), but this was not much larger than the percentage in Texas (`r dfTable4F["Texas", "SS_%"]` %), which was not much larger than in New York (`r dfTable4F["New York", "SS_%"]` %), etc. 
  
- * The most striking differences between the distributions of Asian and non-Asian American female techs were found in the parity values shown in the last columns of these tables. The parity values for non-Asian female techs were substantially lower than the parity values for Asian female techs. To be specific, Table 4F (full version) shows that all `r sum(dfTable4F$Par[-1] < 0.9)` states plus DC had parity values less than 0.9 for non-Asian female techs; and `r sum(dfTable4F$Par[-1] < 0.5)` had values less than 0.5. By contrast, Table 4E (full version) shows that `r sum(dfTable4E$Par[-1] > 1.2)` states plus DC had Asian female parity values greater than 1.1 ...  `r sum(dfTable4E$Par[-1] > 1.5)` had Asian female parity values greater than 1.5 ... and  `r sum(dfTable4E$Par[-1] > 2.5)` had Asian female parity values greater than 2.5
+ * The most striking differences between the distributions of Asian and non-Asian American female techs were found in the parity values shown in the last columns of these tables. The parity values for non-Asian American female techs were substantially lower than the parity values for Asian American female techs. To be specific, Table 4F (full version) shows that all `r sum(dfTable4F$Par[-1] < 0.9)` states plus DC had parity values less than 0.9 for non-Asian female techs; and `r sum(dfTable4F$Par[-1] < 0.5)` had values less than 0.5. By contrast, Table 4E (full version) shows that `r sum(dfTable4E$Par[-1] > 1.2)` states plus DC had Asian female parity values greater than 1.1 ...  `r sum(dfTable4E$Par[-1] > 1.5)` had Asian female parity values greater than 1.5 ... and  `r sum(dfTable4E$Par[-1] > 2.5)` had Asian female parity values greater than 2.5
 
 
 <b>Table 4G -- Foreign Tech Professionals from Asia -- Top 10 States </b>   
@@ -315,19 +315,11 @@ print(format(dfTable4G[1:11,], big.mark = ","), row.names=FALSE)
 
 ```
 
-<b>Table 4H -- Foreign Tech Professionals not from Asia -- Top 10 States </b>   
-<i>[Click here for full version](Table4G-Full-Foreign-Not-Asia-Employment.html)</i>
-```{r, echo=FALSE, cache=TRUE, comment=NA}
-    ### Change of column names is permanent from here on ... matches displayed colum names
-    colnames(dfTable4H) <- c("State", "Foreign", "SS_%", "NotAsiaTech", "T_%")
-print(format(dfTable4H[1:11,], big.mark = ","), row.names=FALSE)  
-
-```
-<b>Comments about Table 4G and 4H -- Foreign Techs from Asia and elsewhere</b>    
+<b>Comments about Table 4G -- Foreign Techs from Asia </b>    
 
 * blah-blah-blah   
 * blah-blah-blah   
-* blah-blah-blah   
+* Note: Non-asian foreign workers have 100 - percent of jobs held by Asians so no table is required   
 
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 

@@ -231,9 +231,8 @@ makeTechPopMap <- function(df, Group, maxPer, title) {
 (dfMap4E <- makeTechPopMap(dfTechPopFemAsian,"FemAsian", maxAsianPerState, "E. FemAsian Techs"))
 (dfMap4F <- makeTechPopMap(dfTechPopFemNonAsian,"FemNonAsian", maxAsianPerState, "F. FemNonAsian Techs"))
 (dfMap4G <- makeTechPopMap(dfTable4G,"Asia", maxAsianPerState, "G. Foreign (Asia) Techs"))
-(dfMap4H <- makeTechPopMap(dfTable4H,"NotAsia", maxAsianPerState, "H. Foreign (not Asia) Techs"))
 
-save(dfMap4A, dfMap4B, dfMap4C, dfMap4D, dfMap4E, dfMap4F, dfMap4G, dfMap4H, file="dfMap4.rda")
+save(dfMap4A, dfMap4B, dfMap4C, dfMap4D, dfMap4E, dfMap4F, dfMap4G, file="dfMap4.rda")
 
 ###########################
 ##########################
