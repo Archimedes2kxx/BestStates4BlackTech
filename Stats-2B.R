@@ -174,7 +174,7 @@ R <- getEmploymentRank("White", "Texas")
 R       
 
 ######################
-### Maps 4A, B, C, D, E, F ... state maps of white, black, asian, hispanic, female Asians, and female non-Asians in  tech 
+### Maps 4A, B, C, D, E, F, G ... state maps of white, black, asian, hispanic, female Asians, and female non-Asians in  tech 
 ### Follow W. Chang's cookbook p 313 for U.S. with lower 48 states
 states_map <- map_data("state") ### from ggplot]
 theme_clean <- function(base_size = 12) {

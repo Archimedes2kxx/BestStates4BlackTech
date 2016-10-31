@@ -215,7 +215,7 @@ Eight data tables impose numeric precision on the qualitative insights provided 
 5. <b>T_%</b> -- Percent of a state's techs who were in the table's group. For exampleTable 4A shows that `r dfTable4A["California", "perWhiteTech"]`  percent of the techs in California were White, and `r dfTable4A["Texas", "perWhiteTech"]`  percent of the techs in Texas were White.<br /> <br />
 6. <b>WhiPop, BlkPop, AsiPop, HspPop, FemAsiPop, or FemNonAsiPop</b> -- White population, Black population, Asian population, Hispanic population, female Asian population, or female non-Asian population in each state. For example, Table 4A shows that the 2015 White  population of California was `r prettyNum(dfTable4A["California", "WhitePop"], big.mark=",", scientific=FALSE)`, and the White population of Texas was `r prettyNum(dfTable4A["Texas", "WhitePop"], big.mark=",", scientific=FALSE)`.<br /><br />
 7. <b>P_%</b> -- Percent of the state's total population that belonged to the table's  group. For example, Table 4A shows that in 2015, `r dfTable4A["California", "perWhitePop"]` percent of the total population of California was White, and `r dfTable4A["Texas", "perWhitePop"]` percent of the total population of Texas was white<br />.<br />
-8. <b>Par</b> -- Parity = The ratio of the  percent of the state's tech population that belonged to the table's group divided by the percent of the state's total population that belonged to that group, i.e., T_% / P_%. For example, Table 4A shows that the White parity ratio for California was  `r dfTable4A["California", "Parity"]`, which is `r dfTable4A["California", "WhiteTech"]`% divided by `r dfTable4A["California", "WhitePop"]`%<br /><br />
+8. <b>Par</b> -- Parity = The ratio of the  percent of the state's tech population that belonged to the table's group divided by the percent of the state's total population that belonged to that group, i.e., T_% / P_%. For example, Table 4A shows that the White parity ratio for California was  `r dfTable4A["California", "Parity"]`, which is `r dfTable4A["California", "perWhiteTech"]`% divided by `r dfTable4A["California", "perWhitePop"]`%<br /><br />
 
 <b>Table 4A -- White American Professionals in U.S. Information Technology -- Top 10 States </b>   
 <i>[Click here for full version](Table4A-Full-White-Employment.html)</i>
@@ -315,12 +315,18 @@ print(format(dfTable4G[1:11,], big.mark = ","), row.names=FALSE)
 
 ```
 
-<b>Comments about Table 4G -- Foreign Techs from Asia </b>    
+<b>Table 4H --  Foreign Tech Professionals NOT from Asia -- Top 10 States </b>   
+<i>[Click here for full version](Table4H-Full-Foreign-Asia-Employment.html)</i>
+```{r, echo=FALSE, cache=TRUE, comment=NA}
+    ### Change of column names is permanent from here on ... matches displayed colum names
+    colnames(dfTable4H) <- c("State", "Foreign", "SS_%", "NAsiaTech", "T_%")
+print(format(dfTable4H[1:11,], big.mark = ","), row.names=FALSE)  
+
+```
+<b>Comments about Table 4H -- Foreign Techs Not from Asia </b>    
 
 * blah-blah-blah   
-* blah-blah-blah   
-* Note: Non-asian foreign workers have 100 - percent of jobs held by Asians so no table is required   
-
+* blah-blah-blah  
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
