@@ -142,7 +142,7 @@ dfOccupationSex <- dfOccupationSex[index,]
 rownames(dfOccupationSex) <- NULL
 dfOccupationSex$`T_%` <- round(100*dfOccupationSex$Tech2015/dfOccupationSex[1,"Tech2015"], digits=1)
 dfOccupationSex <- dfOccupationSex[,c(1,2,7, 3, 5, 4, 6)]
-colnames(dfOccupationSex) <- c("Occupation", "Tech2015", "TS_%", "Male", "M_%", "Female", "F_%")
+colnames(dfOccupationSex) <- c("Occupation", "Tech2015", "TS_%", "Male", "M_%", "Female", "F15_%")
 (dfTable3ABC <- dfOccupationSex)
 
 ##############################
@@ -206,38 +206,54 @@ colnames(dfTable3D) <- c("Occupation", "Tech10", "F10_%", "Tech15", "Change", "C
 ############################################
 ############################
 ### Table 3E . Occupations of foreign techs from Asia and elsewhere
-dfCensus5 <- subset(dfCensus2, select=c("personalWeight","Occupation", "Birth"), Citizen==FALSE) 
-### str(dfCensus5) ### 4803 obs. of  3 variables
+dfCensus5 <- subset(dfCensus2, select=c("personalWeight", "Sex", "Occupation", "Birth"), Citizen==FALSE) 
+str(dfCensus5) ### 4803 obs. of  3 variables
+dfCensus5$Occupation <- as.character(dfCensus5$Occupation)
 
+### WAOB = World Area of Birth = continent on which person was born
 census5OccupationBirth <- group_by(dfCensus5, Occupation, Birth)
 dfSumPwtOccupationBirth <- summarise(census5OccupationBirth, ptsPwtOccupationBirth = sum(personalWeight))
 dfBirthPerOccupation <- spread(dfSumPwtOccupationBirth, key=Birth, value=ptsPwtOccupationBirth, fill=0, drop=FALSE)
-### head(dfBirthPerOccupation)
+indexBirth <- order(dfBirthPerOccupation$Occupation, decreasing=FALSE)
+dfBirthPerOccupation <- dfBirthPerOccupation[indexBirth,]
+dfBirthPerOccupation
+
+### Add Sex
+census5OccupationSex <- group_by(dfCensus5, Occupation, Sex)
+dfSumPwtOccupationSex <- summarise(census5OccupationSex, ptsPwtOccupationSex = sum(personalWeight))
+dfSexPerOccupation <- spread(dfSumPwtOccupationSex, key=Sex, value=ptsPwtOccupationSex, fill=0, drop=FALSE)
+indexSex <- order(dfSexPerOccupation$Occupation, decreasing=FALSE)
+dfSexPerOccupation <- dfSexPerOccupation[indexSex,]
+head(dfSexPerOccupation)
 
 ### Combine all Non-Asia into Others dfBirthPerOccupation.2010$LatinAmerica + 
 dfBirthPerOccupation$NotAsia <- dfBirthPerOccupation$"Latin America" + dfBirthPerOccupation$Europe + dfBirthPerOccupation$Africa + dfBirthPerOccupation$"North America" + dfBirthPerOccupation$Oceania 
-
 dfForeignTechOccupations <- subset(dfBirthPerOccupation, select=-c(USA, `US Islands`, `Latin America`, Europe, Africa, `North America`, Oceania)) ### Delete the components of FrnOthers
-### dfForeignTechOccupations
 
-allForeign <- colSums(dfForeignTechOccupations[,2:3])
+dfForeignTechOccupations <- merge(dfForeignTechOccupations, dfSexPerOccupation) ### Occupations in same order
+dfForeignTechOccupations
+
+allForeign <- colSums(dfForeignTechOccupations[,2:5])
 dfForeignTop <- dfForeignTechOccupations[1,] ### dummy copy first row to set the types
 dfForeignTop$Occupation <- "ALL"
-dfForeignTop[1,2:3] <- allForeign
+dfForeignTop[1,2:5] <- allForeign
 dfForeignTechOccupations <- rbind(dfForeignTop, dfForeignTechOccupations)
 dfForeignTechOccupations <- as.data.frame(dfForeignTechOccupations)
 
 dfForeignTechOccupations$`AS_%` <- round(100*dfForeignTechOccupations$Asia/dfForeignTechOccupations[1,"Asia"], digits=1)
 dfForeignTechOccupations$`NAS_%` <- round(100*dfForeignTechOccupations$NotAsia/dfForeignTechOccupations[1,"NotAsia"], digits=1)
 dfForeignTechOccupations$Foreign <- dfForeignTechOccupations$Asia + dfForeignTechOccupations$NotAsia
-### dfForeignTechOccupations
+dfForeignTechOccupations$`F15_%` <- round(100*dfForeignTechOccupations$Female/dfForeignTechOccupations$Foreign, digits=1)
+dfForeignTechOccupations <- subset(dfForeignTechOccupations, select=-c(Male, Female))
+dfForeignTechOccupations
 
-dfTable3E <- dfForeignTechOccupations[, c(1, 6, 2, 4, 3, 5)]
-colnames(dfTable3E) <- c("Occupation", "Foreign", "Asia", "AS_%", "NAsia", "NAS_%")
+dfTable3E <- dfForeignTechOccupations[, c(1, 6, 2, 4, 3, 5, 7)]
+colnames(dfTable3E) <- c("Occupation", "Foreign", "Asia", "AS_%", "NAsia", "NAS_%", "F15_%")
 index <- order(dfTable3E$Foreign, decreasing=TRUE)
 (dfTable3E <- dfTable3E[index,])
 
-### Tables 3F and 3G ... compare 2010 to 2015 for Asuab (3F)   and Non-Asian (3G)
+#################################
+### Tables 3F and 3G ... compare 2010 to 2015 for Asia (3F)   and Non-Asian (3G)
 dfCensus5.2010 <- subset(dfCensus2.2010, select=c("personalWeight","Occupation", "Birth"), Citizen==FALSE) 
 ### str(dfCensus5.2010) ### 3687 obs. of  3 variables:
 
@@ -275,7 +291,7 @@ dfTable3GG <- subset(dfForeignTechOccupations.2010, select=c(Occupation, NAsia, 
 ### Tables 3F Change in Foreign Asian
 dfTable3F <- dfTable3E ### set up dimensions and some cols and order of rows
 dfTable3F <- dfTable3F[order(dfTable3F$Occupation),]
-dfTable3F <- subset(dfTable3F, select=-c(Foreign, NAsia))
+dfTable3F <- subset(dfTable3F, select=-c(Foreign, NAsia, `F15_%`))
 dfTable3F$`AS_%`<- NULL
 dfTable3F$`NAS_%` <- NULL
 dfTable3FF <- dfTable3FF[order(dfTable3FF$Occupation),]
@@ -291,7 +307,7 @@ dfTable3F
 ### Tables 3G Change in Foreign NotAsian
 dfTable3G <- dfTable3E ### set up dimensions and some cols and order of rows
 dfTable3G <- dfTable3G[order(dfTable3G$Occupation),]
-dfTable3G <- subset(dfTable3G, select=-c(Foreign, Asia))
+dfTable3G <- subset(dfTable3G, select=-c(Foreign, Asia, `F15_%`))
 dfTable3G$`AS_%`<- NULL
 dfTable3G$`NAS_%` <- NULL
 dfTable3GG <- dfTable3GG[order(dfTable3GG$Occupation),]
