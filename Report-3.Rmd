@@ -167,7 +167,7 @@ Answer 3G ... As per Table 3H (below), there were blah, blah, blah
 #### Question 4 -- Where did American and foreign tech professionals work in 2015?      
 Answer 4 ... The following sections provide an extensive response to a more specific formulation of this question ==> In which states did American and foreign tech professionals work in 2015?  
 
-Table 4 (below) lists the six states that employed the most American techs in 2015. These states will also appear in just about every table that follows because  they employed such a large share (`r prettyNum(dfTable4[1, "Top6_%"])` percent) of all `r prettyNum(dfTable4[1, "ALL STATES"], big.mark=",", scientific=FALSE)` techs in the U.S.
+Table 4 (below) lists the six states that employed the most American techs in 2015. These states will also appear in just about every table that follows because  they employed such a large share (`r prettyNum(dfTable4[1, "Top6_%"])` percent) of the `r prettyNum(dfTable4[1, "ALL STATES"], big.mark=",", scientific=FALSE)` American techs in the U.S.
 
 <b>Table 4 ... Biggest Half-Dozen Tech States in 2015</b>
 ```{r, echo=FALSE, cache=TRUE, comment=NA}
