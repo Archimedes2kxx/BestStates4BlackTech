@@ -276,8 +276,8 @@ dim(dfForeignTechStates)
 dfForeignTechStates <- as.data.frame(dfForeignTechStates)
 rownames(dfForeignTechStates) <- dfForeignTechStates[,1]
 
-dfForeignTechStates$perAsia <- round(100 * dfForeignTechStates$Asia/dfForeignTechStates$Foreign, digits=2)
-dfForeignTechStates$perNotAsia <- round((100 - dfForeignTechStates$perAsia), digits=2)
+dfForeignTechStates$perAsia <- round((100 * dfForeignTechStates$Asia/dfForeignTechStates$Foreign), digits=1)
+dfForeignTechStates$perNotAsia <- round((100 - dfForeignTechStates$perAsia), digits=1)
 head(dfForeignTechStates)
 
 ##############

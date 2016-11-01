@@ -52,7 +52,7 @@ makeTechPopTable <- function(Race){
     dfTechPop <- dfTechPop[index,]
     
     ### Calculate the percentage of the total for each race is in each state
-    dfTechPop$perState <- round(100 * dfTechPop[,RaceTech]/dfTechPop[1,RaceTech[1]], digits=2)
+    dfTechPop$perState <- round(100 * dfTechPop[,RaceTech]/dfTechPop[1,RaceTech[1]], digits=1)
     dfTechPop <- data.frame(dfTechPop[,c(1:2,8,3:7)]) ### move perState to 3rd column
     return(dfTechPop)
 }
@@ -97,8 +97,9 @@ makeForeignTechTable <- function(Area){
     dfTech <- dfTech[index,]
     
     ### Calculate the percentage of the total for each Area is in each state
-    dfTech$perState <- round(100 * dfTech[,AreaTech]/dfTech[1,AreaTech[1]], digits=2)
+    dfTech$perState <- round(100 * dfTech[,AreaTech]/dfTech[1,AreaTech[1]], digits=1)
     dfTech <- data.frame(dfTech[,c(1:2,5,3:4)]) ### move perState to 3rd column
+    
     return(dfTech)
 }
 
@@ -231,8 +232,9 @@ makeTechPopMap <- function(df, Group, maxPer, title) {
 (dfMap4E <- makeTechPopMap(dfTechPopFemAsian,"FemAsian", maxAsianPerState, "E. FemAsian Techs"))
 (dfMap4F <- makeTechPopMap(dfTechPopFemNonAsian,"FemNonAsian", maxAsianPerState, "F. FemNonAsian Techs"))
 (dfMap4G <- makeTechPopMap(dfTable4G,"Asia", maxAsianPerState, "G. Foreign (Asia) Techs"))
+(dfMap4H <- makeTechPopMap(dfTable4H,"Asia", maxAsianPerState, "G. Foreign (Not Asia) Techs"))
 
-save(dfMap4A, dfMap4B, dfMap4C, dfMap4D, dfMap4E, dfMap4F, dfMap4G, file="dfMap4.rda")
+save(dfMap4A, dfMap4B, dfMap4C, dfMap4D, dfMap4E, dfMap4F, dfMap4G, dfMap4H, file="dfMap4.rda")
 
 ###########################
 ##########################
