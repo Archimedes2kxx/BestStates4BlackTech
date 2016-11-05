@@ -1,4 +1,5 @@
 ### A. Read PUMS 2015 sample data from files downloaded from U.S. Census DataWeb site using DataFerret
+### ==> data about techs in each of the 50 states plus DC
 
 library(dplyr)
 library(tidyr)
@@ -125,9 +126,7 @@ save(dfCensus3.2010, file="dfCensus3.2010.rda")
 census3StateRace <- group_by(dfCensus3, State, Race) 
 head(census3StateRace)
 dfPtsPwtStateRace <- summarise(census3StateRace, ptsPwtStateRace = sum(personalWeight))
-head(dfPtsPwtStateRace, 10)
 dfRaceCountPerState <- spread(dfPtsPwtStateRace, key=Race, value=ptsPwtStateRace)
-head(dfRaceCountPerState)
 dfRaceCountPerState[is.na(dfRaceCountPerState)] <- 0 ### Replace NAs with zeros
 head(dfRaceCountPerState)
 
@@ -149,13 +148,9 @@ head(dfRaceCountPerState)
 #####################################
 ### 8 Calculate the Count each sex per each state ... Thank you, Hadley ... :-)
 census3StateSex <- group_by(dfCensus3, State, Sex) 
-head(census3StateSex)
 dfPtsPwtStateSex <- summarise(census3StateSex, ptsPwtStateSex = sum(personalWeight))
-head(dfPtsPwtStateSex, 10)
 dfSexCountPerState <- spread(dfPtsPwtStateSex, key=Sex, value=ptsPwtStateSex)
-head(dfSexCountPerState)
 dfSexCountPerState[is.na(dfSexCountPerState)] <- 0 ### Replace NAs with zeros
-head(dfSexCountPerState)
 dfFemale <- subset(dfSexCountPerState, select=c(State, Female))
 colnames(dfFemale) =  c("State", "Female")
 head(dfFemale)
@@ -163,13 +158,9 @@ head(dfFemale)
 ##################
 ### 9. Asian females
 census3StateRaceSex <- group_by(dfCensus3, State, Sex, Race) 
-head(census3StateRaceSex, 20)
 dfSumPwtStateRaceSex <- summarise(census3StateRaceSex, SumPwtStateRaceSex = sum(personalWeight))
-head(dfSumPwtStateRaceSex, 20)
 dfRaceSexPerState <- spread(dfSumPwtStateRaceSex, key=Race, value=SumPwtStateRaceSex)
-head(dfRaceSexPerState)
 dfRaceSexPerState[is.na(dfRaceSexPerState)] <- 0 ### Replace NAs with zeros
-head(dfRaceSexPerState)
 dfFemAsian <- subset(dfRaceSexPerState, Sex=="Female", select=c(State,Asian))
 colnames(dfFemAsian) =  c("State", "FemAsian")
 head(dfFemAsian)
@@ -200,7 +191,7 @@ colnames(dfRaceSexCountSharesPerState) <- c("State", "perWhite", "perBlack", "pe
 dfRaceSexCountAndShares <- merge(dfRaceSexCountPerState, dfRaceSexCountSharesPerState)
 head(dfRaceSexCountAndShares)
 
-### 13. Add a totals row 
+### 13. Add a totals row ... MAKE THIS A FUNCTION ... ALSO USED BY DATA-1B
 (allRacesInTech <- colSums(dfRaceSexCountAndShares[,3:10]))
 (allTech <- sum(allRacesInTech[1:5])) ### 4125164 ... don't include females for total
 (raceSharesInTech <- round(100 * allRacesInTech/allTech, digits=1))

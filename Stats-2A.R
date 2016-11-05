@@ -82,7 +82,7 @@ colnames(dfTable2Aper) <- colNames
 dfTable2A <- data.frame(rbind(dfTable2Apop, dfTable2Aper))
 rownames(dfTable2A) <- c("Num", "Per")
 dfTable2A
-
+  
 
 ### Table 2B. Male/Female Components of of U.S. Tech Sector in 2014
 dfTable2Bpop <- dfRaceSexCountAndShares[1,c(2,8:10)]

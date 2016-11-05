@@ -133,7 +133,7 @@ head(dfRaceSexCountAndShares)
 ##############################
 ##############################
 
-### 13. Add a totals row 
+### 13. Add a totals row ... MAKE THIS A FUNCTION ... ALSO USED BY DATA-1A
 (allRacesInPop <- colSums(dfRaceSexCountAndShares[,3:10]))
 (allPop <- sum(allRacesInPop[1:5])) ### 148297138 ... don't include females for total
 (raceSharesInPop <- round(100 * allRacesInPop/allPop, digits=1))
