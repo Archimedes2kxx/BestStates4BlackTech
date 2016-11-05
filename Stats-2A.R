@@ -6,7 +6,7 @@
 ### Use map_dat() in ggplot2 as described on this URL
 ### http://is-r.tumblr.com/post/37708137014/us-state-maps-using-mapdata
 ##############################################
-
+load(file="functions-0.rda")
 load(file="dfRaceSexCountAndShares.rda")
 load(file="dfStatesPop3.rda") 
 load("dfCensus3.rda")

@@ -2,6 +2,7 @@
 
 library(dplyr)
 library(tidyr)
+load(file="functions-0.rda")
 
 ### 1. Read downloaded PUMS sample data and save
 file = "Race-Sex-Hisp-Citizen-WAOB-InfoTechOccupations-AllStates-PersonalWeight-PUMS-2015-DataFerret.csv"
@@ -39,30 +40,7 @@ head(dfCensus2.2010)
 ##################################
 ### 3.. Read manually edited codebooks 
 ###  ... commas added between codes and labels ... commas deleted within labels ... and 99 Hispanic added manually
-file = "Codes-Race.txt"
-raceCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
-raceCodes
 
-file = "Codes-State.txt"
-stateCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
-stateCodes$State <-gsub("/.*","",stateCodes$State) ### Drop state initials, e.g., "New York/NY
-stateCodes
-
-file="Codes-Sex.txt"
-sexCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
-sexCodes
-
-file="Codes-Occupation.txt"
-occupationCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
-occupationCodes
-
-file="Codes-Area.txt"
-areaCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
-areaCodes
-
-file="Codes-Citizen.txt"
-citizenCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
-citizenCodes
 
 ### 4. Convert coded categorical variables to factors ... sex, race, state, occupation ... drop padding/blanks before/after each category 
 dfCensus2$Race <- as.factor(dfCensus2$Race)
