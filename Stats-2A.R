@@ -1,11 +1,15 @@
 ### Stat-2A Demographic tables and profiles ... Tables 1, 2, and 3
-### Generate
+
+### These scripts are ugly, especially the "Evil Twin" duplicated code segments ... but they get the job done
+### Goal: Convert more chunks into readable functions, then move functions into the functions-0.R file
+### ===> Reduce the size of the ugly remaining scripgs; hopefully make them more readable
 
 ################################################
-################################################ THurs 9/29 @ 5"12 pm
+################################################ 
 ### Use map_dat() in ggplot2 as described on this URL
 ### http://is-r.tumblr.com/post/37708137014/us-state-maps-using-mapdata
 ##############################################
+
 load(file="functions-0.rda")
 load(file="dfRaceSexCountAndShares.rda")
 load(file="dfStatesPop3.rda") 
@@ -117,7 +121,6 @@ dfOccupationSex$perMale <- round((100 * dfOccupationSex$Male) /(dfOccupationSex$
 dfOccupationSex$perFemale <- round((100 * dfOccupationSex$Female) /(dfOccupationSex$Total), digits=1)
 ### head(dfOccupationSex)
 
-
 dfOccupationSex <- dfOccupationSex[, c(1,4,2:3, 5:6)] ### Put total in second column
 colnames(dfOccupationSex) <- c("Occupation", "Tech2015", "Male","Female","perMale", "perFemale")
 dfOccupationSex <- as.data.frame(dfOccupationSex)
@@ -185,20 +188,26 @@ rownames(dfOccupationSex.2010) <- NULL
 dfOccupationSex.2010 <- dfOccupationSex.2010[,c(1,2, 4)]
 colnames(dfOccupationSex.2010) <- c("Occupation", "Tech2010", "F2010_%")
 ### dfOccupationSex.2010
+###############################
+#############################
 
 ### Tables 3D  ... compare with 2010 with 2015 American
 dfTable3D <- dfOccupationSex.2010
 ### Order by occupations
 index <- order(dfTable3D$Occupation, decreasing=TRUE)
 dfTable3D <- dfTable3D[index,]
+
 dfTable3ABCcopy <- dfTable3ABC
 index <- order(dfTable3ABC$Occupation, decreasing=TRUE)
 dfTable3ABCcopy <- dfTable3ABCcopy[index,]
+
 dfTable3D$Tech2015 <- dfTable3ABCcopy$Tech2015
 dfTable3D$Change <- dfTable3D$Tech2015 - dfTable3D$Tech2010
 dfTable3D$perChange <- round(100 * dfTable3D$Change / dfTable3D$Tech2010, digits=1)
+
 index <- order(dfTable3D$Tech2015, decreasing=TRUE)
 dfTable3D <- dfTable3D[index,]
+
 colnames(dfTable3D) <- c("Occupation", "Tech10", "perF10", "Tech15", "Change", "perCh")
 (dfTable3D <- dfTable3D[,c(1,2,4,5,6,3)])
 
@@ -214,6 +223,7 @@ dfCensus5$Occupation <- as.character(dfCensus5$Occupation)
 census5OccupationBirth <- group_by(dfCensus5, Occupation, Birth)
 dfSumPwtOccupationBirth <- summarise(census5OccupationBirth, ptsPwtOccupationBirth = sum(personalWeight))
 dfBirthPerOccupation <- spread(dfSumPwtOccupationBirth, key=Birth, value=ptsPwtOccupationBirth, fill=0, drop=FALSE)
+
 indexBirth <- order(dfBirthPerOccupation$Occupation, decreasing=FALSE)
 dfBirthPerOccupation <- dfBirthPerOccupation[indexBirth,]
 dfBirthPerOccupation
@@ -222,6 +232,7 @@ dfBirthPerOccupation
 census5OccupationSex <- group_by(dfCensus5, Occupation, Sex)
 dfSumPwtOccupationSex <- summarise(census5OccupationSex, ptsPwtOccupationSex = sum(personalWeight))
 dfSexPerOccupation <- spread(dfSumPwtOccupationSex, key=Sex, value=ptsPwtOccupationSex, fill=0, drop=FALSE)
+
 indexSex <- order(dfSexPerOccupation$Occupation, decreasing=FALSE)
 dfSexPerOccupation <- dfSexPerOccupation[indexSex,]
 head(dfSexPerOccupation)
@@ -240,33 +251,34 @@ dfForeignTop[1,2:5] <- allForeign
 dfForeignTechOccupations <- rbind(dfForeignTop, dfForeignTechOccupations)
 dfForeignTechOccupations <- as.data.frame(dfForeignTechOccupations)
 
-dfForeignTechOccupations$`AS_%` <- round(100*dfForeignTechOccupations$Asia/dfForeignTechOccupations[1,"Asia"], digits=1)
-dfForeignTechOccupations$`NAS_%` <- round(100*dfForeignTechOccupations$NotAsia/dfForeignTechOccupations[1,"NotAsia"], digits=1)
+dfForeignTechOccupations$perAs <- round(100*dfForeignTechOccupations$Asia/dfForeignTechOccupations[1,"Asia"], digits=1)
+dfForeignTechOccupations$perNAs <- round(100*dfForeignTechOccupations$NotAsia/dfForeignTechOccupations[1,"NotAsia"], digits=1)
 dfForeignTechOccupations$Foreign <- dfForeignTechOccupations$Asia + dfForeignTechOccupations$NotAsia
 dfForeignTechOccupations$`perF15` <- round(100*dfForeignTechOccupations$Female/dfForeignTechOccupations$Foreign, digits=1)
 dfForeignTechOccupations <- subset(dfForeignTechOccupations, select=-c(Male, Female))
 dfForeignTechOccupations
 
 dfTable3E <- dfForeignTechOccupations[, c(1, 6, 2, 4, 3, 5, 7)]
-colnames(dfTable3E) <- c("Occupation", "Foreign", "Asia", "AS_%", "NAsia", "NAS_%", "perF15")
+colnames(dfTable3E) <- c("Occupation", "Foreign", "Asia", "perAs", "NAsia", "perNAs", "perF15")
 index <- order(dfTable3E$Foreign, decreasing=TRUE)
 (dfTable3E <- dfTable3E[index,])
 
 #################################
+#################################
 ### Tables 3F and 3G ... compare 2010 to 2015 for Asia (3F)   and Non-Asian (3G)
 dfCensus5.2010 <- subset(dfCensus2.2010, select=c("personalWeight","Occupation", "Birth"), Citizen==FALSE) 
-### str(dfCensus5.2010) ### 3687 obs. of  3 variables:
+str(dfCensus5.2010) ### 3687 obs. of  3 variables:
 
 census5.2010OccupationBirth <- group_by(dfCensus5.2010, Occupation, Birth)
 dfSumPwtOccupationBirth.2010 <- summarise(census5.2010OccupationBirth, ptsPwtOccupationBirth.2010 = sum(personalWeight))
 dfBirthPerOccupation.2010 <- spread(dfSumPwtOccupationBirth.2010, key=Birth, value=ptsPwtOccupationBirth.2010, fill=0, drop=FALSE)
-### head(dfBirthPerOccupation.2010)
+head(dfBirthPerOccupation.2010)
 
 ### Combine all Non-Asia into Others dfBirthPerOccupation.2010$LatinAmerica + 
 dfBirthPerOccupation.2010$NAsia <- dfBirthPerOccupation.2010$"Latin America" + dfBirthPerOccupation.2010$Europe + dfBirthPerOccupation.2010$Africa + dfBirthPerOccupation.2010$"North America" + dfBirthPerOccupation.2010$Oceania 
 
 dfForeignTechOccupations.2010 <- subset(dfBirthPerOccupation.2010, select=-c(USA, `US Islands`, `Latin America`, Europe, Africa, `North America`, Oceania)) ### Delete the components of FrnOthers
-### dfForeignTechOccupations.2010
+dfForeignTechOccupations.2010
 
 allForeign.2010 <- colSums(dfForeignTechOccupations.2010[,2:3])
 dfForeignTop.2010 <- dfForeignTechOccupations.2010[1,] ### dummy copy first row to set the types
@@ -274,49 +286,55 @@ dfForeignTop.2010$Occupation <- "ALL"
 dfForeignTop.2010[1,2:3] <- allForeign.2010
 dfForeignTechOccupations.2010 <- rbind(dfForeignTop.2010, dfForeignTechOccupations.2010)
 dfForeignTechOccupations.2010 <- as.data.frame(dfForeignTechOccupations.2010)
-### dfForeignTechOccupations.2010
+dfForeignTechOccupations.2010
 
-dfForeignTechOccupations.2010$`AS_%` <- round(100*dfForeignTechOccupations.2010$Asia/dfForeignTechOccupations.2010[1,"Asia"], digits=1)
-dfForeignTechOccupations.2010$`NAS_%` <- round(100*dfForeignTechOccupations.2010$NAsia/dfForeignTechOccupations.2010[1,"NAsia"], digits=1)
-### dfForeignTechOccupations.2010
+dfForeignTechOccupations.2010$perAs <- round(100*dfForeignTechOccupations.2010$Asia/dfForeignTechOccupations.2010[1,"Asia"], digits=1)
+dfForeignTechOccupations.2010$perNAs <- round(100*dfForeignTechOccupations.2010$NAsia/dfForeignTechOccupations.2010[1,"NAsia"], digits=1)
+dfForeignTechOccupations.2010
 
-dfTable3FF <- subset(dfForeignTechOccupations.2010, select=c(Occupation, Asia, `AS_%`))
-###index <- order(dfForeignTechOccupations.2010$Asia, decreasing=TRUE)
-###(dfTable3FF <- dfTable3FF[index,])
+### Asian 2010
+dfTable3FF <- subset(dfForeignTechOccupations.2010, select=c(Occupation, Asia, perAs))
+index <- order(dfForeignTechOccupations.2010$Occupation, decreasing=TRUE)
+(dfTable3FF <- dfTable3FF[index,])
 
-dfTable3GG <- subset(dfForeignTechOccupations.2010, select=c(Occupation, NAsia, `NAS_%`))
-###index <- order(dfForeignTechOccupations.2010$NAsia, decreasing=TRUE)
-###(dfTable3GG <- dfTable3GG[index,])
+### NonAsian 2010
+dfTable3GG <- subset(dfForeignTechOccupations.2010, select=c(Occupation, NAsia, perNAs))
+index <- order(dfForeignTechOccupations.2010$Occupation, decreasing=TRUE)
+(dfTable3GG <- dfTable3GG[index,])
 
+###################
 ### Tables 3F Change in Foreign Asian
 dfTable3F <- dfTable3E ### set up dimensions and some cols and order of rows
-dfTable3F <- dfTable3F[order(dfTable3F$Occupation),]
-dfTable3F <- subset(dfTable3F, select=-c(Foreign, NAsia, `perF15`))
-dfTable3F$`AS_%`<- NULL
-dfTable3F$`NAS_%` <- NULL
-dfTable3FF <- dfTable3FF[order(dfTable3FF$Occupation),]
+dfTable3F <- subset(dfTable3F, select=c(Occupation, Asia))
+index <- order(dfTable3F$Occupation, decreasing=TRUE)
+dfTable3F <- dfTable3F[index,]
+dfTable3F
+
 dfTable3F$Asia2010 <- dfTable3FF$Asia
 dfTable3F$Change <- dfTable3F$Asia - dfTable3F$Asia2010
 dfTable3F$Per <- round((100 * dfTable3F$Change / dfTable3F$Asia2010), digits=1)
 dfTable3F <- dfTable3F[,c(1,3,2,4,5)] ### put 2010 before 2015
-dfTable3F <- dfTable3F[order(dfTable3F$Asia, decreasing = TRUE),]
 colnames(dfTable3F) <- c("Occupation", "As2010", "As2015", "Change", "perCh")
+dfTable3F <- dfTable3F[order(dfTable3F$As2015, decreasing = TRUE),]
+rownames(dfTable3F) <- NULL
 dfTable3F
 
 ############################
 ### Tables 3G Change in Foreign NotAsian
 dfTable3G <- dfTable3E ### set up dimensions and some cols and order of rows
-dfTable3G <- dfTable3G[order(dfTable3G$Occupation),]
-dfTable3G <- subset(dfTable3G, select=-c(Foreign, Asia, `perF15`))
-dfTable3G$`AS_%`<- NULL
-dfTable3G$`NAS_%` <- NULL
-dfTable3GG <- dfTable3GG[order(dfTable3GG$Occupation),]
+dfTable3G <- subset(dfTable3G, select=c(Occupation, NAsia))
+index <- order(dfTable3G$Occupation, decreasing=TRUE)
+dfTable3G <- dfTable3G[index,]
+dfTable3G
+
 dfTable3G$NAsia2010 <- dfTable3GG$NAsia
 dfTable3G$Change <- dfTable3G$NAsia - dfTable3G$NAsia2010
 dfTable3G$Per <- round((100 * dfTable3G$Change / dfTable3G$NAsia2010), digits=1)
 dfTable3G <- dfTable3G[,c(1,3,2,4,5)] ### put 2010 before 2015
-dfTable3G <- dfTable3G[order(dfTable3G$NAsia, decreasing = TRUE),]
+index <- order(dfTable3G$NAsia, decreasing = TRUE)
+dfTable3G <- dfTable3G[index,]
 colnames(dfTable3G) <- c("Occupation", "NAs2010", "NAs2015", "Change", "perCh")
+rownames(dfTable3G) <- NULL
 dfTable3G
 
 save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3ABC, dfTable3D, dfTable3E, dfTable3F, dfTable3G, file="dfTab1A1B2A2B3ABCDEFGH.rda")

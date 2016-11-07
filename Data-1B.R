@@ -1,20 +1,26 @@
 ### A. Read PUMS 2015 sample data from files downloaded from U.S. Census DataWeb site using DataFerret to get population estimates of citizens in U.S. workforce by states
 
+### These scripts are ugly ... but they get the job done
+### Goal: Convert more chunks into readable functions, then move functions into the functions-0.R file
+### ===> Reduce the size of the ugly remaining scripgs; hopefully make them more readable
+
 library(dplyr)
 library(tidyr)
 load(file = "functions-0.rda")
 
-### 1. Read downloaded PUMS sample data and save
+### 1. Read downloaded PUMS sample data and save ... NO occupation, NO area of birth
 file = "Race-Sex-Hisp-Citizen-AllStates-PersonalWeight-PUMS-2015-DataFerret.csv"
 dfCensusPop1 = read.csv(file, header=TRUE, stringsAsFactors = FALSE)
 head(dfCensusPop1)
 save(dfCensusPop1, file="dfCensusPop1.rda")
 str(dfCensusPop1) ### 1411289 obs. of  6 variables:
+
 sum(dfCensusPop1$PWGTP) ### 2015 total U.S. workforce = 148,297,138 includes non-citizens
 
 str(dfCensusPop1) ### 1411289 obs. of  6 variables:
-colnames(dfCensusPop1) = c("personalWeight", "Race", "Sex",   "CIT", "State", "Hisp") 
+colnames(dfCensusPop1) = c("personalWeight", "Race", "Sex",   "Citizen", "State", "Hisp") 
 str(dfCensusPop1) ### 1411289 obs. of  6 variables:
+table(dfCensusPop1$Citizen) ### 95867  non-citizens on 11/6/16
 
 ### 2. Add new category to race = "hisp"
 ### ... ACS coded HISP = "1" for "not Hispanic" so change race values to 99 ("hispanic") when hisp != 1
@@ -22,42 +28,46 @@ rows <- dfCensusPop1$Hisp != "1"
 dfCensusPop1$Race[rows] <- 99
 str(dfCensusPop1) ### 1315422 obs. of  5 variables:
 head(dfCensusPop1)
-##
 
-### load codes from file
+### 3. load codes from file
+listCodes <- readCodeBooks()
 
 ### 4. Convert coded categorical variables to factors ... sex, race, state ... drop padding/blanks before/after each category 
 dfCensusPop1$Race <- as.factor(dfCensusPop1$Race)
-(levels(dfCensusPop1$Race) <- trimws(raceCodes[,2]))
+(levels(dfCensusPop1$Race) <- trimws(listCodes[["Race"]][,2]))
 
 dfCensusPop1$Sex <- as.factor(dfCensusPop1$Sex)
-(levels(dfCensusPop1$Sex) <- trimws(sexCodes[,2]))
+(levels(dfCensusPop1$Sex) <- trimws(listCodes[["Sex"]][,2]))
 
 dfCensusPop1$State <- as.factor(dfCensusPop1$State)
-levels(dfCensusPop1$State) <- trimws(stateCodes[,2])
+levels(dfCensusPop1$State) <- trimws(listCodes[["State"]][,2])
 ### Note: the District of Columbia is abbreviated to "Dist of Col" to let table fit on one page without wrapping
 levels(dfCensusPop1$State)
 
-dfCensusPop1$CIT <- as.factor(dfCensusPop1$CIT)
-levels(dfCensusPop1$CIT) <- trimws(citizenCodes[,2])
-levels(dfCensusPop1$CIT)
+dfCensusPop1$Citizen <- as.factor(dfCensusPop1$Citizen)
+levels(dfCensusPop1$Citizen) <- trimws(listCodes[["Citizen"]][,2])
+levels(dfCensusPop1$Citizen)
+str(dfCensusPop1) 
 
-head(dfCensusPop1)
+### This samba stems from my lack facility with factors
+table(dfCensusPop1$Citizen) ### 4803 non-citizens
+dfCensusPop1$Citizen2 <- TRUE 
+dfCensusPop1$Citizen2[dfCensusPop1$Citizen == "No"] <- FALSE
+table(dfCensusPop1$Citizen2) ### false, true = 95867 1315422 
+dfCensusPop1$Citizen <- dfCensusPop1$Citizen2
+dfCensusPop1$Citizen2 <- NULL
+str(dfCensusPop1)
 
-str(dfCensusPop1) ### 45081 obs. of  9 variables:
-head(dfCensusPop1)
-dfCensusPop1$Citizen <- TRUE
-dfCensusPop1$Citizen[dfCensusPop1$CIT=="No"] <- FALSE
 save(dfCensusPop1, file="dfCensusPop1.rda")
 
-###sum(is.na(dfCensusPop1$CIT))
+###sum(is.na(dfCensusPop1$Citizen))
 
 dfCensusPop2 <- subset(dfCensusPop1, Citizen==TRUE) 
 str(dfCensusPop2) ### 1315422 obs. of  5 variables:
 dfCensusPop2 <- subset(dfCensusPop2, select=c(personalWeight, State, Race, Sex))
 str(dfCensusPop2)
 head(dfCensusPop2)
-sum(dfCensusPop2$personalWeight) ### 135,475,088 citizen workers
+sum(dfCensusPop2$personalWeight) ### 135475088 U.S. citizens in workforce
 
 ######################
 ### 5. Calculate racial group's Count per each state ... Thank you, Hadley ... :-)
@@ -79,10 +89,8 @@ head(dfRaceCountPerState)
 
 #################
 ### 7. Add "totals" column after "state" ... 
-dfRaceCountPerState$TotPop <- rowSums(dfRaceCountPerState[,2:6])
-dfRaceCountPerState <- dfRaceCountPerState[,c(1,7, 2:6)] ### move totals into second column
+dfRaceCountPerState <- addTotCol(dfRaceCountPerState, 2:6, "TotPop")
 head(dfRaceCountPerState)
-tail(dfRaceCountPerState)
 
 #####################################
 ### 8 Calculate the Count each sex per each state ... Thank you, Hadley ... :-)
@@ -116,27 +124,15 @@ head(dfFemale)
 dfRaceSexCountPerState <- merge(dfRaceCountPerState, dfFemale)
 head(dfRaceSexCountPerState)
 
-### 11. Calculate each racial group's share of total tech Count in each state
-vecTotalRaceSexCountPerState <- c(unlist(dfRaceSexCountPerState[,2]))
-head(vecTotalRaceSexCountPerState)
-dfRaceSexCountShares <- round(100 * dfRaceSexCountPerState[,3:10] / vecTotalRaceSexCountPerState, digits = 1) ### Need percents, so multiply by 100
-head(dfRaceSexCountShares)
-
-dfRaceSexCountSharesPerState <- dfRaceSexCountPerState[,c(1, 3:10)] ### Dummy copy to get columns and types 
-dfRaceSexCountSharesPerState[, 2:9] <- dfRaceSexCountShares
-colnames(dfRaceSexCountSharesPerState) <- c("State", "perWhite", "perBlack", "perAsian", "perHispanic", "perOTHERS", "perFemale", "perFemAsian", "perFemNonAsian")
-
-### 12. Merge the two data frames on state, only common variable
-dfRaceSexCountAndShares <- merge(dfRaceSexCountPerState, dfRaceSexCountSharesPerState)
-head(dfRaceSexCountAndShares)
-
-##############################
-##############################
+### 11/12. Calculate each racial group's share of total tech Count in each state
+dfRaceSexCountAndShares <- addPerCols(dfRaceSexCountPerState, 2, 3:10)
 
 ### 13. Add a totals row ... MAKE THIS A FUNCTION ... ALSO USED BY DATA-1A
 (allRacesInPop <- colSums(dfRaceSexCountAndShares[,3:10]))
 (allPop <- sum(allRacesInPop[1:5])) ### 148297138 ... don't include females for total
 (raceSharesInPop <- round(100 * allRacesInPop/allPop, digits=1))
+
+dfTest <- dfRaceSexCountAndShares
 
 dfTotalsRow <- dfRaceSexCountAndShares[1,] ### dummy coy to get columns and types
 dfTotalsRow$State <- "ALL STATES"
@@ -150,3 +146,8 @@ rownames(dfStatesPop3) <- dfStatesPop3$State
 head(dfStatesPop3)
 tail(dfStatesPop3)
 save(dfStatesPop3, file = "dfStatesPop3.rda")
+
+dfTest  <- addTotalsRow(dfTest, 2, 3:10, 11:18, "ALL STATES")
+head(dfTest)
+tail(dfTest)
+    

@@ -2,53 +2,92 @@
 
 
 ##################################
-### Data-1
-addTopRow <- function(){
-    ### function adds a top row to a dataframe
+### Data-1A & Data-1B
+addTotCol <- function(df, colSeq, totName){
+### Add a totals column named via totName, inserted after first column, e.g., "State"
+### e.g. State, Total, C2, C3, ... C6
+    
+    L <- length(colSeq)
+    colnames <- colnames(df[,colSeq])
+    df$Total <- rowSums(df[,colSeq])
+    df2 <- df[, c(1, L+2, colSeq)]
+    colnames(df2) <- c(colnames(df[,1]), totName, colnames)
+    return(df2)
 }
 
+addPerCols <- function(df, denomCol, numerCols) {
+### Add percentage columns, where denomCol is the denominator and numerCols are the numerators
+### Creates standard names for percentage cols = "per" + oroginal col name
+### denomCol should always be 2, the Totals column
+   
+    df <- as.data.frame(df)
+    colnames <- colnames(df[, numerCols])
+    dfNumerCols <- subset(df, select=c(numerCols))
+    denomVec <- t(df[, denomCol]) ### note the t() transposing to row vector
+    perCols <- round((100 * dfNumerCols/denomVec), digits=1)
+    colnames(perCols) <- paste0("per", colnames)
+    df2 <- cbind(df, perCols)
+    return(df2)
+### For foreign techs and other data frames the denominator will be zero, which will generate a NAN value for percentage ... convert NANs to zeros
+}
 
-##################################
-### Data -1B
-
+readCodeBooks <- function() {
 ### Read manually edited codebooks 
 ###  ... commas added between codes and labels ... commas deleted within labels ... and 99 Hispanic added manually
-file = "Codes-Race.txt"
-raceCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
-raceCodes
+    file = "Codes-Race.txt"
+    raceCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
+    raceCodes
+    
+    file = "Codes-State.txt"
+    ### Note: the District of Columbia is abbreviated to "Dist of Col" to let table fit on one page without wrapping
+    stateCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
+    stateCodes$State <-gsub("/.*","",stateCodes$State) ### Drop state initials, e.g., "New York/NY
+    stateCodes
+    
+    file="Codes-Sex.txt"
+    sexCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
+    sexCodes
+    
+    file="Codes-Citizen.txt"
+    citizenCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
+    citizenCodes
+    
+    file="Codes-Occupation.txt"
+    occupationCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
+    occupationCodes
+    
+    file="Codes-Area.txt"
+    areaCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
+    areaCodes
+    
+    listCodes <- list(Birth=areaCodes, Occupation=occupationCodes, Citizen=citizenCodes, Sex=sexCodes, State=stateCodes, Race=raceCodes)
+    return(listCodes)
+}
 
-file = "Codes-State.txt"
-### Note: the District of Columbia is abbreviated to "Dist of Col" to let table fit on one page without wrapping
-stateCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
-stateCodes$State <-gsub("/.*","",stateCodes$State) ### Drop state initials, e.g., "New York/NY
-stateCodes
+addTotalsRow <- function(df, totCol, numCols, perCols, nameTotRow){
+### Add totals row to a data.frame 
+### Typical ... State, Col with totals for each row, columns with numbers, cols with percents
+    sumNumCols <- colSums(df[, numCols])
+    sumTotCol <- sum(df[,totCol])
+    perColsShares <- round(100 * sumNumCols/sumTotCol, digits=1)
+    
+    dfTotalsRow <- df[1,] ### dummy copy to get columns and types
+    ### dfTotalsRow[1,1] <- nameTotRow
+    dfTotalsRow$State <- nameTotRow
+    dfTotalsRow[1,totCol] <- sumTotCol
+    dfTotalsRow[1,numCols] <- sumNumCols
+    dfTotalsRow[1,perCols] <- perColsShares
 
-file="Codes-Sex.txt"
-sexCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
-sexCodes
+    df2 <- rbind(dfTotalsRow, df)  
+    rownames(df2) <- df2$State
+    return(df2)
+}
 
-file="Codes-Citizen.txt"
-citizenCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
-citizenCodes
-
-file="Codes-Occupation.txt"
-occupationCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
-occupationCodes
-
-file="Codes-Area.txt"
-areaCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
-areaCodes
-
-listCodes <- list(raceCodes, stateCodes, sexCodes, citizenCodes, areaCodes, occupationCodes)
 
 ##################################
 ### Stats-2A
 
 
-
-
-
-##################################
 ### Stats2B
 
 makeTechPopTable <- function(Race){
@@ -81,7 +120,6 @@ makeTechPopTable <- function(Race){
 }
 
 makeForeignTechTable <- function(Area){
-    ### This table doesn't contain columns about the total workforce or parity
     perArea <- paste0("per", Area)
     dfTech <- dfForeignTechStates[, c("State", "Foreign", Area, perArea)]
     ### Example ==> c("State", "Foreign", "Asia", "perAsia")
@@ -103,8 +141,46 @@ makeForeignTechTable <- function(Area){
     return(dfTech)
 }
 
+selectParityDF <- function(Race, State){
+    if (Race == "Black") {
+        return(dfTechPopBlack)
+    } else {
+        if (Race =="White") {
+            return(dfTechPopWhite)
+        } else {
+            if (Race =="Hispanic") {
+                return(dfTechPopHispanic)
+            } else {
+                if (Race == "Asian") {
+                    return(dfTechPopAsian)
+                } else {
+                    if (Race == "Female") {
+                        return(dfTechPopFemale)
+                    } else {
+                        return (0)
+                    }
+                }
+            }
+        }
+    }
+}
+
+getEmploymentRank <- function(Race, State) {
+    df <- selectParityDF(Race, State)
+    if (is.null(dim(df))) { 
+        print(paste("Bad race input ... "))
+        return(df)
+    }
+    df <- df[-1,] ### drop the top ALL row
+    R <- which(df$State == State) 
+    if (length(R) != 0) {
+        return(R)
+    } else {
+        print(paste("Bad state input"))
+    }
+}
+
 theme_clean <- function(base_size = 12) {
-### function is helper for makeTechPopMap function that follows
     require(grid) # Needed for unit() function
     theme_grey(base_size) %+replace%
         theme(
@@ -122,6 +198,7 @@ theme_clean <- function(base_size = 12) {
         )
 }
 
+### Explorations of the data showed that Asians had the highest concentration in California of any group in any state. So make their California concentratration the brightest color on all six maps. Store this concentration in the District of Columbia on each map because it is too small to be visible on these maps
 
 makeTechPopMap <- function(df, Group, maxPer, title) {
     
@@ -138,9 +215,11 @@ makeTechPopMap <- function(df, Group, maxPer, title) {
     dfMap <- arrange(dfMap, group, order) 
     GroupData <- dfMap[,"perState"]
     
+    ### high="#BB650B"
+    
     ggMap <- ggplot(data=dfMap, aes(map_id=region, fill=GroupData))
     ggMap <- ggMap + geom_map(map=states_map, colour="black")
-    ggMap <- ggMap + scale_fill_gradient2(low="#559999", mid="grey90", high="#BB650B", midpoint= median(GroupData))       
+    ggMap <- ggMap + scale_fill_gradient2(low="#559999", mid="grey90", high="#FF0000", midpoint= median(GroupData))       
     ggMap <- ggMap + expand_limits(x=states_map$long, y=states_map$lat) 
     ggMap <- ggMap + coord_map("polyconic") + labs(fill=legend) + theme_clean()
     ggMap <- ggMap + ggtitle(title) 
@@ -199,7 +278,6 @@ makeSummary <- function(rList, beta){
     return(dfTable)
 }
 
-listStats2B <- list(makeSummary, plotEmpVsPop, makeLM, makeTechPopMap, theme_clean, getEmploymentRank, selectParityDF, makeForeignTechTable, makeTechPopTable)
 
 ####################################
 ### Stats-2C
@@ -222,6 +300,8 @@ makeParity <- function(listDFs){
     rownames(dfP) <- names(listDFs)
     return(dfP)
 }
+
+
 
 makeTable7 <- function(dfIn, dfParity, Group, letter) {
     dfFinal <- subset(dfIn[2:11,], Parity >= dfParity[Group, "Med"]) 
@@ -251,8 +331,6 @@ makeTable8 <- function(dfIn, Group, letter){
     return(dfOut)
 }
 
-listStats2C <- list(makeParity, makeTable7, makeTable8)
-
 ###################################
-save(listCodes, listStats2B, listStats2C, file="function-0.rda")
+save(addTotCol, addPerCols, readCodeBooks, addTotalsRow, makeSummary, plotEmpVsPop, makeLM, makeTechPopMap, theme_clean, getEmploymentRank, selectParityDF, makeForeignTechTable, makeTechPopTable, makeParity, makeTable7, makeTable8, file="functions-0.rda")
 
