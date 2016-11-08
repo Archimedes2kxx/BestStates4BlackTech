@@ -6,27 +6,18 @@ To Do List
 
 3. Note describing future version that would compare state distribution of all groups in 2010 vs state distribution of groups in 2015
 
-4. Interactive version, Shiny app, that displays  profiles of each state for each group (white, black, asian, hispanic, female, foreign asian, foreign non-asian) for 2010 or 2015 … then calculates changes, percent changes for focal group … interactive, i.e, tables generated real time. Need more extensive Census samples because current data yields missing values for more in-depth analysis
+4. Data-1A, 1B, and Stats-2A contain lots of ugly, repetitive junk code ... extract functions and place functions in the functions-0 library ==> clean scripts
 
-5. Data-1A, 1B, and Stats-2A contain lots of ugly, repetitive junk code ... extract functions and place functions in the functions-0 library ==> clean scripts
-
-6. Future reports ... Best States for Black, Hispanic, Asian, female ==> doctors, lawyers, engineers, physical sciences, biosciences, etc, etc, etc
-
-7. Functions
+Functions
     a) Add total col ... Code is DONE, now implement everywhere
     b) Add percentage columns ... Code is DONE, now implement everywhere
     c) Add top row sums and or percentages ... Code is DONE, now implement everywhere
     d) Convert raw inputs to factors Data-1A and Data-1B ????
     e) MAIN EVENT ==> Read census data to create initial tables for given year and citizen status
         e.g. techs in 2010, techs in 2015, workforce in 2010, workforce in 2015, foreign techs in 2010
-    f) Change color of maps ... all states below 10% = vague, above 10% = inceasingly vivid
+    f) Change color of maps ... all states below 10% = vague, above 10% = inceasingly vivid ... DONE
     
-8. Version 2.0 
-    a) Interactive Shiny app that can display distribution of any group across categories by states
-        e.g. Black Americans in Georgia, Asian Americans in California, Hispanic Ams in Florida
-        ... interactive, on demand
-    b) Interactive Shiny app with tables to compare any two years for any group, not just foreign
-        e.g. Black Americans in 2010 vs. 2015, Females in 2010 vs. 2015
-    
-    
+5. Version 2.0 
+Interactive version, Shiny app, that displays  profiles of each state for each group (white, black, asian, hispanic, female, foreign asian, foreign non-asian) for 2010 or 2015 … then calculates changes, percent changes for focal group … interactive, i.e, tables generated real time. Need more extensive Census samples because current data yields missing values for more in-depth analysis
 
+6. Future reports ... Best States for Black, Hispanic, Asian, female ==> doctors, lawyers, engineers, physical sciences, biosciences, etc, etc, etc
