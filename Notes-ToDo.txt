@@ -12,10 +12,23 @@ Functions
     a) Add total col ... Code is DONE, now implement everywhere
     b) Add percentage columns ... Code is DONE, now implement everywhere
     c) Add top row sums and or percentages ... Code is DONE, now implement everywhere
-    d) Convert raw inputs to factors Data-1A and Data-1B ????
-    e) MAIN EVENT ==> Read census data to create initial tables for given year and citizen status
-        e.g. techs in 2010, techs in 2015, workforce in 2010, workforce in 2015, foreign techs in 2010
+    d) Revise Stats-2A to functions + scripts ==> Tables 1A, 1B, 2A, 2B as before
+        Tables 3 series 
+        Create year-to-year change in profile, e.g., 2010 to 2015 
+        Hispanic, Female ==>  count2010, count2015, Change, perChange
+        
+        Profiles #1 - A All, B Black, C White, D Hispanic, E Asian, F Foreign Asian, G Foreign NonAsian
+        Occupation, Tech15, TS_%, Fem, Per15
+        
+        Profiles #2 - AA, BB, CC, DD, EE, Ff, GG
+        Occupation, Tech10, Tech15, Change, PerChange, PerF10
+        
+    e) Revise Data-1 and Data-2 to Data-1 with large function + small script
+        ==> Read census data to create initial tables for given year and citizen status 
+        ...  e.g. techs in 2010, techs in 2015, workforce in 2010, workforce in 2015, foreign techs in 2010
+        Code is Done, now verify and delete old code
     f) Change color of maps ... all states below 10% = vague, above 10% = inceasingly vivid ... DONE
+    g) 
     
 5. Version 2.0 
 Interactive version, Shiny app, that displays  profiles of each state for each group (white, black, asian, hispanic, female, foreign asian, foreign non-asian) for 2010 or 2015 … then calculates changes, percent changes for focal group … interactive, i.e, tables generated real time. Need more extensive Census samples because current data yields missing values for more in-depth analysis

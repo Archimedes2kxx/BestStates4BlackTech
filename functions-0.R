@@ -1,5 +1,5 @@
-### Functions used by other files    
 
+### Functions used by other files    
 
 ##################################
 ### Data-1A & Data-1B
@@ -8,7 +8,7 @@ addTotCol <- function(df, colSeq, totName){
 ### e.g. State, Total, C2, C3, ... C6
     
     L <- length(colSeq)
-    colnames <- colnames(df[,colSeq])
+    colnames <- colnames(df[,colSeq]) ### Get names of colums to be added together, column by column
     df$Total <- rowSums(df[,colSeq])
     df2 <- df[, c(1, L+2, colSeq)]
     colnames(df2) <- c(colnames(df[,1]), totName, colnames)
@@ -23,12 +23,14 @@ addPerCols <- function(df, denomCol, numerCols) {
     df <- as.data.frame(df)
     colnames <- colnames(df[, numerCols])
     dfNumerCols <- subset(df, select=c(numerCols))
-    denomVec <- t(df[, denomCol]) ### note the t() transposing to row vector
+    denomVec <- t(df[, denomCol]) ### note the t() transposing to row vector to a column
     perCols <- round((100 * dfNumerCols/denomVec), digits=1)
     colnames(perCols) <- paste0("per", colnames)
     df2 <- cbind(df, perCols)
+    
+    ### For foreign techs and other data frames the denominator might be zero, which will generate a NAN value for percentage ... convert NANs to zeros   
+    df2[is.na(df2)] <- 0 
     return(df2)
-### For foreign techs and other data frames the denominator will be zero, which will generate a NAN value for percentage ... convert NANs to zeros
 }
 
 readCodeBooks <- function() {
@@ -83,10 +85,160 @@ addTotalsRow <- function(df, totCol, numCols, perCols, nameTotRow){
     return(df2)
 }
 
+createPopRaceAndShares <- function(df, bCitizen=TRUE){
+### Create race, sex, count, and shares dataframe with values derived from the Census file
+###
+### Function expects a data frame whose columns are named with the following names, no variations
+###   "personalWeight", "Race", "Sex", "Citizen", "State", "Hisp", "Citizen", Birth", "Occupation"
+### But the data frame for some data frames will not contain Citizen or Birth or Occupation
+### 
+### If the subset of Citizens is required, bCitizen bool = TRUE
+### If foreigners are required, bCitizen = FALSE
+### Current versions of Best States will not required both citizens and foreigners
+###
+### User renames the dataframe upon return   
+
+### 1. Add new category to race = "hisp"
+    ### ... ACS coded HISP = "1" for "not Hispanic" --change race values to 99 ("hispanic") when hisp != 1
+    rows <- df$Hisp != "1"
+    df$Race[rows] <- 99
+    head(df) 
+    
+### 2. Codebooks
+    listCodes <- readCodeBooks()
+    
+### 3. Convert coded categorical variables to factors ... sex, race, state, occupation ... drop padding/blanks before/after each category 
+    df$Race <- as.factor(df$Race)
+    ### listCodes [[ ]] required to dig out the second column in the code table, and for other codes
+    levels(df$Race) <- trimws(listCodes[["Race"]][,2]) 
+    
+    df$Sex <- as.factor(df$Sex)
+    levels(df$Sex) <- trimws(listCodes[["Sex"]][,2])
+    
+    df$State <- as.factor(df$State)
+    levels(df$State) <- trimws(listCodes[["State"]][,2])
+    ### Note: District of Columbia abbreviated "Dist of Col" ... let table fit on blog page without wrapping
+    
+    if("Occupation" %in% names(df)) {
+        df$Occupation <- as.factor(df$Occupation)
+        levels(df$Occupation) <- trimws(listCodes[["Occupation"]][,2])
+    }
+    
+    if("Birth" %in% names(df)) {    
+        df$Birth <- as.factor(df$Birth)
+        levels(df$Birth) <- trimws(listCodes[["Birth"]][,2])
+    }
+    
+    if("Citizen" %in% names(df)) {
+        df$Citizen <- as.factor(df$Citizen)
+        levels(df$Citizen) <- trimws(listCodes[["Citizen"]][,2])   
+    }
+
+### 4. Get citizen subset or foreign subset ... but never both citizens and foreign
+    if(bCitizen == TRUE) {
+        df3 <- subset(df, Citizen!="No") 
+    } else {
+        df3 <- subset(df, Citizen=="No")
+    }
+    
+### 5. Calculate racial group's Count per each state
+    census3StateRace <- group_by(df3, State, Race) 
+    dfPtsPwtStateRace <- summarise(census3StateRace, ptsPwtStateRace = sum(personalWeight))
+    dfRaceCountPerState <- spread(dfPtsPwtStateRace, key=Race, value=ptsPwtStateRace, fill=0, drop=FALSE)
+    ###dfRaceCountPerState[is.na(dfRaceCountPerState)] <- 0 ### Replace NAs with zeros
+    ### print(head(dfRaceCountPerState))
+ 
+### 6. Combine all groups other than black, white, asian, and hispanic into OTHERS
+    ### if (bCitizen == TRUE) {
+        columnNames <- c("State", "White", "Black", "amIn", "alNat", "amInAlNat", "Asian", 
+                         "pacific", "other", "many" , "Hispanic")
+        colnames(dfRaceCountPerState) <- columnNames
+        dfRaceCountPerState$OTHERS <- dfRaceCountPerState$amIn + dfRaceCountPerState$alNat 
+        + dfRaceCountPerState$amInAlNat + dfRaceCountPerState$pacific + dfRaceCountPerState$other 
+        + dfRaceCountPerState$many
+        dfRaceCountPerState <- subset(dfRaceCountPerState, select=-c(amIn, alNat, amInAlNat, 
+                                                                     pacific, other, many))
+### 7. Add "totals" column after "state" ... 
+    dfRaceCountPerState <- addTotCol(dfRaceCountPerState, 2:6, "Totals")
+   ### print(head(dfRaceCountPerState))
+    
+### 8 Calculate the Count each sex per state ... Thank you, Hadley ... :-)
+    census3StateSex <- group_by(df3, State, Sex) 
+    dfPtsPwtStateSex <- summarise(census3StateSex, ptsPwtStateSex = sum(personalWeight))
+    dfSexCountPerState <- spread(dfPtsPwtStateSex, key=Sex, value=ptsPwtStateSex)
+    dfSexCountPerState[is.na(dfSexCountPerState)] <- 0 ### Replace NAs with zeros
+    dfFemale <- subset(dfSexCountPerState, select=c(State, Female))
+    colnames(dfFemale) =  c("State", "Female")
+ 
+### 9. Asian females
+    census3StateRaceSex <- group_by(df3, State, Sex, Race) 
+    dfSumPwtStateRaceSex <- summarise(census3StateRaceSex, SumPwtStateRaceSex = sum(personalWeight))
+    dfRaceSexPerState <- spread(dfSumPwtStateRaceSex, key=Race, value=SumPwtStateRaceSex)
+    dfRaceSexPerState[is.na(dfRaceSexPerState)] <- 0 ### Replace NAs with zeros
+    dfFemAsian <- subset(dfRaceSexPerState, Sex=="Female", select=c(State,Asian))
+    colnames(dfFemAsian) =  c("State", "FemAsian")
+    
+### 10. Combine the two female dfs, create FemNonAsian
+    dfFemale <- merge(dfFemale, dfFemAsian)
+    ### head(dfFemale)
+    dfFemale$FemNonAsian <- dfFemale$Female - dfFemale$FemAsian
+
+    ##### column merge dfFemales at this point to end 
+    dfRaceSexCountPerState <- merge(dfRaceCountPerState, dfFemale)
+    ### head(dfRaceSexCountPerState)
+    ### print(head(dfRaceSexCountPerState))
+    
+### 11/12. Calculate each racial group's share of total tech Count in each state
+    dfRaceSexCountAndShares <- addPerCols(dfRaceSexCountPerState, 2, 3:10)
+    
+### 13. Add a totals row 
+    dfRaceSexCountAndShares  <- addTotalsRow(dfRaceSexCountAndShares, 2, 3:10, 11:18, "ALL STATES")
+    
+    ### print(head(dfRaceSexCountAndShares))
+    return(dfRaceSexCountAndShares)
+}
+
+createDfOccupationRaceSexProfile <- function(df, bCitizen=TRUE){
+    listCodes <- readCodeBooks()
+    
+    ### Convert coded categorical variables to factors
+    df$Race <- as.factor(df$Race)
+    ### listCodes [[ ]] required to dig out the second column in the code table, and for other codes
+    levels(df$Race) <- trimws(listCodes[["Race"]][,2]) 
+    
+    df$Sex <- as.factor(df$Sex)
+    levels(df$Sex) <- trimws(listCodes[["Sex"]][,2])
+    
+    ### Save this chunk for later versions of profiles by states
+    ### df$State <- as.factor(df$State) ### later on do profiles by states
+    ### levels(df$State) <- trimws(listCodes[["State"]][,2])
+    ### Note: District of Columbia abbreviated "Dist of Col" ... let table fit on blog page without wrapping
+
+    df$Occupation <- as.factor(df$Occupation)
+    levels(df$Occupation) <- trimws(listCodes[["Occupation"]][,2])
+    
+    OccRaceSex <- group_by(df, Occupation, Race, Sex)
+    dfPtsPwtOccRaceSex <- summarise(OccRaceSex, ptsPwtOccRaceSex = sum(personalWeight))
+    dfOccupationRaceSex <- spread(dfPtsPwtOccRaceSex, key=Sex, value=ptsPwtOccRaceSex, fill=0, drop=FALSE)
+    dfOccupationRaceSex <- as.data.frame((dfOccupationRaceSex))
+    
+    return(dfOccupationRaceSex)
+}
 
 ##################################
 ### Stats-2A
+createProfile <- function(df, group) {
+### Profile contains  Occupation, Tech15, TS_%, Fem, Per15
+    
+    return(dfProfile)
+}
 
+createCompProfile <- function(df, group) {
+### Comparison profile contains Occupation, Tech10, Tech15, Change, PerChange, PerF10
+    
+    
+    return(dfCompProfile)
+}
 
 ### Stats2B
 
@@ -139,45 +291,6 @@ makeForeignTechTable <- function(Area){
     dfTech <- data.frame(dfTech[,c(1:2,5,3:4)]) ### move perState to 3rd column
     
     return(dfTech)
-}
-
-selectParityDF <- function(Race, State){
-    if (Race == "Black") {
-        return(dfTechPopBlack)
-    } else {
-        if (Race =="White") {
-            return(dfTechPopWhite)
-        } else {
-            if (Race =="Hispanic") {
-                return(dfTechPopHispanic)
-            } else {
-                if (Race == "Asian") {
-                    return(dfTechPopAsian)
-                } else {
-                    if (Race == "Female") {
-                        return(dfTechPopFemale)
-                    } else {
-                        return (0)
-                    }
-                }
-            }
-        }
-    }
-}
-
-getEmploymentRank <- function(Race, State) {
-    df <- selectParityDF(Race, State)
-    if (is.null(dim(df))) { 
-        print(paste("Bad race input ... "))
-        return(df)
-    }
-    df <- df[-1,] ### drop the top ALL row
-    R <- which(df$State == State) 
-    if (length(R) != 0) {
-        return(R)
-    } else {
-        print(paste("Bad state input"))
-    }
 }
 
 theme_clean <- function(base_size = 12) {
@@ -332,5 +445,5 @@ makeTable8 <- function(dfIn, Group, letter){
 }
 
 ###################################
-save(addTotCol, addPerCols, readCodeBooks, addTotalsRow, makeSummary, plotEmpVsPop, makeLM, makeTechPopMap, theme_clean, getEmploymentRank, selectParityDF, makeForeignTechTable, makeTechPopTable, makeParity, makeTable7, makeTable8, file="functions-0.rda")
+save(createDfOccupationRaceSexProfille, createPopRaceAndShares, addTotCol, addPerCols, readCodeBooks, addTotalsRow, makeSummary, plotEmpVsPop, makeLM, makeTechPopMap, theme_clean, getEmploymentRank, selectParityDF, makeForeignTechTable, makeTechPopTable, makeParity, makeTable7, makeTable8, file="functions-0.rda")
 
