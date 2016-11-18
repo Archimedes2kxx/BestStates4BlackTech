@@ -251,11 +251,10 @@
 
 ####################################
 ####################################
-### Table 3F -- Profile of Foreign Techs in California in 2015
-print("California ... California California")
-    dfProfileF <- createProfile(dfProfileForeignersState, group="", state="California")
-    dfProfileF.2010 <- createProfile(dfProfileForeignersState.2010, group="", state="California")
-    dfProfileF.2010
+### Table 3F -- Profile of Foreign Techs in Texas in 2015
+    print("Texas ... Texas Texas")
+    dfProfileF <- createProfile(dfProfileForeignersState, group="", state="Texas")
+    dfProfileF.2010 <- createProfile(dfProfileForeignersState.2010, group="", state="Texas")
     
     dfTable3F <- subset(dfProfileF, select=-c(Male, perMale))
     colnames(dfTable3F) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
@@ -265,26 +264,28 @@ print("California ... California California")
     dfTable3FF <- createCompareProfile(dfProfileF.2010, dfProfileF)
     colnames(dfTable3FF) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
     dfTable3FF
+    
+print("END OF Texas ... Texas Texas")
+
+###############################################
+###############################################    
+### Table 3G -- Profile of Foreign Techs in California in 2015
+print("California ... California California")
+    dfProfileG <- createProfile(dfProfileForeignersState, group="", state="California")
+    dfProfileG.2010 <- createProfile(dfProfileForeignersState.2010, group="", state="California")
+    dfProfileG.2010
+    
+    dfTable3G <- subset(dfProfileG, select=-c(Male, perMale))
+    colnames(dfTable3G) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
+    dfTable3G
+    
+    ### Table 3GG -- Compare Foreign Techs 2010 to all 2015
+    dfTable3GG <- createCompareProfile(dfProfileG.2010, dfProfileG)
+    colnames(dfTable3GG) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
+    dfTable3GG
 
 print("END OF California ... California California")
 
-####################################
-####################################
-### Table GF -- Profile of Foreign Techs in Texas in 2015
-print("Texas ... Texas Texas")
-dfProfileG <- createProfile(dfProfileForeignersState, group="", state="Texas")
-dfProfileG.2010 <- createProfile(dfProfileForeignersState.2010, group="", state="Texas")
-
-dfTable3G <- subset(dfProfileG, select=-c(Male, perMale))
-colnames(dfTable3G) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
-dfTable3G
-
-### Table 3GG -- Compare Foreign Techs 2010 to all 2015
-dfTable3GG <- createCompareProfile(dfProfileG.2010, dfProfileG)
-colnames(dfTable3GG) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
-dfTable3GG
-
-print("END OF Texas ... Texas Texas")
-###############################################
-###############################################
+########################################
+########################################
 save(dfTable1, dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable3, dfTable3Comp, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3F, dfTable3FF, dfTable3G,dfTable3GG, file="dfTab1A1B2A2B3ABCDEFG.rda")
