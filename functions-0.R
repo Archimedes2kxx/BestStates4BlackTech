@@ -3,39 +3,10 @@
 
 ##################################
 ### Data-1A & Data-1B
-addTotCol <- function(df, colSeq, totName){
-### Add a totals column named via totName, inserted after first column, e.g., "State"
-### e.g. State, Total, C2, C3, ... C6
-    
-    L <- length(colSeq)
-    colnames <- colnames(df[,colSeq]) ### Get names of colums to be added together, column by column
-    df$Total <- rowSums(df[,colSeq])
-    df2 <- df[, c(1, L+2, colSeq)]
-    colnames(df2) <- c(colnames(df[,1]), totName, colnames)
-    return(df2)
-}
-
-addPerCols <- function(df, denomCol, numerCols) {
-### Add percentage columns, where denomCol is the denominator and numerCols are the numerators
-### Creates standard names for percentage cols = "per" + oroginal col name
-### denomCol should always be 2, the Totals column
-   
-    df <- as.data.frame(df)
-    colnames <- colnames(df[, numerCols])
-    dfNumerCols <- subset(df, select=c(numerCols))
-    denomVec <- t(df[, denomCol]) ### note the t() transposing to row vector to a column
-    perCols <- round((100 * dfNumerCols/denomVec), digits=1)
-    colnames(perCols) <- paste0("per", colnames)
-    df2 <- cbind(df, perCols)
-    
-    ### For foreign techs and other data frames the denominator might be zero, which will generate a NAN value for percentage ... convert NANs to zeros   
-    df2[is.na(df2)] <- 0 
-    return(df2)
-}
 
 readCodeBooks <- function() {
-### Read manually edited codebooks 
-###  ... commas added between codes and labels ... commas deleted within labels ... and 99 Hispanic added manually
+    ### Read manually edited codebooks 
+    ###  ... commas added between codes and labels ... commas deleted within labels ... and 99 Hispanic added manually
     file = "Codes-Race.txt"
     raceCodes = read.csv(file, header=TRUE, stringsAsFactors = FALSE, colClasses = "character")
     raceCodes
@@ -66,6 +37,47 @@ readCodeBooks <- function() {
     return(listCodes)
 }
 
+addTotCol <- function(df, colSeq, totName){
+### Add a totals column named via totName, inserted after first column, e.g., "State"
+### e.g. State, Total, C2, C3, ... C6
+    
+    L <- length(colSeq)
+    colnames <- colnames(df[,colSeq]) ### Get names of colums to be added together, column by column
+    df$Total <- rowSums(df[,colSeq])
+    df2 <- df[, c(1, L+2, colSeq)]
+    colnames(df2) <- c(colnames(df[,1]), totName, colnames)
+    return(df2)
+}
+
+addPerCols <- function(df, denomCol, numerCols) {
+### Add percentage columns, where denomCol is the denominator and numerCols are the numerators
+### Creates standard names for percentage cols = "per" + oroginal col name
+### denomCol should always be 2, the Totals column
+   
+    df <- as.data.frame(df)
+    colnames <- colnames(df[, numerCols])
+    dfNumerCols <- subset(df, select=c(numerCols))
+    denomVec <- t(df[, denomCol]) ### note the t() transposing to row vector to a column
+    perCols <- round((100 * dfNumerCols/denomVec), digits=1)
+    colnames(perCols) <- paste0("per", colnames)
+    df2 <- cbind(df, perCols)
+    
+    ### For foreign techs and other data frames the denominator might be zero, which will generate a NAN value for percentage ... convert NANs to zeros   
+    df2[is.na(df2)] <- 0 
+    return(df2)
+}
+
+addTotColSharePerRowCol <- function(df, target) {
+### Given a col with a total in the top row, calculate the percent of each row of the total ... insert before target col ... new col called "perShare"
+    total <- df[1,target]
+    cols <- dim(df)[2]
+    df$perShare <- round(100 * df[,target]/total, digits=1)
+    
+    ### position shares before target
+    df <-df[,c(1:(target-1), (cols + 1), target: cols)]
+    return(df)
+}
+
 addTotalsRow <- function(df, totCol, numCols, perCols, nameTotRow){
 ### Add totals row to a data.frame 
 ### Typical ... State, Col with totals for each row, columns with numbers, cols with percents
@@ -74,14 +86,16 @@ addTotalsRow <- function(df, totCol, numCols, perCols, nameTotRow){
     perColsShares <- round(100 * sumNumCols/sumTotCol, digits=1)
     
     dfTotalsRow <- df[1,] ### dummy copy to get columns and types
-    ### dfTotalsRow[1,1] <- nameTotRow
-    dfTotalsRow$State <- nameTotRow
+    levels <- levels(df[,1])
+    levels(dfTotalsRow[,1]) <- c(nameTotRow, levels)
+
+    dfTotalsRow[1,1] <- nameTotRow
     dfTotalsRow[1,totCol] <- sumTotCol
     dfTotalsRow[1,numCols] <- sumNumCols
     dfTotalsRow[1,perCols] <- perColsShares
 
     df2 <- rbind(dfTotalsRow, df)  
-    rownames(df2) <- df2$State
+    rownames(df2) <- df2[, 1]
     return(df2)
 }
 
@@ -145,9 +159,7 @@ createPopRaceAndShares <- function(df, bCitizen=TRUE){
     census3StateRace <- group_by(df3, State, Race) 
     dfPtsPwtStateRace <- summarise(census3StateRace, ptsPwtStateRace = sum(personalWeight))
     dfRaceCountPerState <- spread(dfPtsPwtStateRace, key=Race, value=ptsPwtStateRace, fill=0, drop=FALSE)
-    ###dfRaceCountPerState[is.na(dfRaceCountPerState)] <- 0 ### Replace NAs with zeros
-    ### print(head(dfRaceCountPerState))
- 
+    
 ### 6. Combine all groups other than black, white, asian, and hispanic into OTHERS
     ### if (bCitizen == TRUE) {
         columnNames <- c("State", "White", "Black", "amIn", "alNat", "amInAlNat", "Asian", 
@@ -198,7 +210,13 @@ createPopRaceAndShares <- function(df, bCitizen=TRUE){
     return(dfRaceSexCountAndShares)
 }
 
-createDfOccupationRaceSexProfile <- function(df, bCitizen=TRUE){
+createOccupationRaceSexProfiles <- function(df){
+    ### Add new category to race = "hisp"
+    ### ... ACS coded HISP = "1" for "not Hispanic" --change race values to 99 ("hispanic") when hisp != 1
+    rows <- df$Hisp != "1"
+    df$Race[rows] <- 99
+    head(df) 
+    
     listCodes <- readCodeBooks()
     
     ### Convert coded categorical variables to factors
@@ -208,38 +226,137 @@ createDfOccupationRaceSexProfile <- function(df, bCitizen=TRUE){
     
     df$Sex <- as.factor(df$Sex)
     levels(df$Sex) <- trimws(listCodes[["Sex"]][,2])
-    
-    ### Save this chunk for later versions of profiles by states
-    ### df$State <- as.factor(df$State) ### later on do profiles by states
-    ### levels(df$State) <- trimws(listCodes[["State"]][,2])
-    ### Note: District of Columbia abbreviated "Dist of Col" ... let table fit on blog page without wrapping
 
     df$Occupation <- as.factor(df$Occupation)
     levels(df$Occupation) <- trimws(listCodes[["Occupation"]][,2])
     
     OccRaceSex <- group_by(df, Occupation, Race, Sex)
     dfPtsPwtOccRaceSex <- summarise(OccRaceSex, ptsPwtOccRaceSex = sum(personalWeight))
-    dfOccupationRaceSex <- spread(dfPtsPwtOccRaceSex, key=Sex, value=ptsPwtOccRaceSex, fill=0, drop=FALSE)
-    dfOccupationRaceSex <- as.data.frame((dfOccupationRaceSex))
+    dfOccupationRaceSexProfiles <- spread(dfPtsPwtOccRaceSex, key=Sex, value=ptsPwtOccRaceSex, fill=0, drop=FALSE)
+    dfOccupationRaceSexProfiles <- as.data.frame((dfOccupationRaceSexProfiles))
     
-    return(dfOccupationRaceSex)
+    ### Occupation Race Male Female
+    return(dfOccupationRaceSexProfiles)
 }
+
+createOccupationStateRaceSexProfiles <- function(df){
+    ### Add new category to race = "hisp"
+    ### ... ACS coded HISP = "1" for "not Hispanic" --change race values to 99 ("hispanic") when hisp != 1
+    rows <- df$Hisp != "1"
+    df$Race[rows] <- 99
+    head(df) 
+    
+    listCodes <- readCodeBooks()
+    
+    ### Convert coded categorical variables to factors
+    df$State <- as.factor(df$State)
+    levels(df$State) <- trimws(listCodes[["State"]][,2])
+    ### Note: District of Columbia abbreviated "Dist of Col" ... let table fit on blog page without wrapping
+    
+    df$Race <- as.factor(df$Race)
+    ### listCodes [[ ]] required to dig out the second column in the code table, and for other codes
+    levels(df$Race) <- trimws(listCodes[["Race"]][,2]) 
+    
+    df$Sex <- as.factor(df$Sex)
+    levels(df$Sex) <- trimws(listCodes[["Sex"]][,2])
+    
+    df$Occupation <- as.factor(df$Occupation)
+    levels(df$Occupation) <- trimws(listCodes[["Occupation"]][,2])
+    
+    OccStateSex <- group_by(df, Occupation, State, Sex)
+    df2 <- summarise(OccStateSex, ptsPwtOccSex = sum(personalWeight))
+    df2 <- spread(df2, key=Sex, value=ptsPwtOccSex, fill=0, drop=FALSE)
+    
+### Roll up the state
+    OccState <- group_by(df2, State)
+    df3 <- summarise(df2, Male=sum(Male), Female=sum(Female), fill=0, drop=FALSE)
+    df3 <- subset(df3, select=-c(fill, drop))
+print(paste("End of CreateOccupationStateSexProfiles"))
+print(str(df3))
+print(head(df3))    
+    ### Occupation State Male Female
+    return(df3)
+}
+
 
 ##################################
 ### Stats-2A
-createProfile <- function(df, group) {
-### Profile contains  Occupation, Tech15, TS_%, Fem, Per15
+
+createProfile <- function(df, group, state="") {
+### Input data frame = Occupation Race Male Female for the specified group   
+### Output data frame =  Occupation, Tech15, TS_%, Fem, Per15 for the specified group
+
+print(paste("The state = ", state))
+#1. Select the group's records
+    if (group != "") {
+        df <- subset(df, Race == group)
+    }
+    print(paste("Here's the str for the input df"))
+    print(str(df))
+    print(head(df))
+    print(paste("before selecting", state))
     
+#2. Select data columns
+    if (state!="") {
+        df <- subset(df, State==state, select=c("Occupation", "Male", "Female"))
+        print(paste("State = ", state))
+        df$State <- NULL 
+        print(str(df))
+        
+    } else {
+        df <- subset(df, select=c("Occupation", "Male", "Female"))
+        print(str(df))
+    }
+
+    eachOcc <- group_by(df, Occupation)
+    print(str(df))
+    df <- summarise(eachOcc, Male=sum(Male), Female=sum(Female), fill=0, drop=FALSE)
+    df <- subset(df, select=-c(fill, drop))
+
+print(paste("in the middle, after Hadley dance"))
+str(df)
+print(head(df))
+    df <- addTotCol(df, 2:3, "Total")
+print(head(df))
+    df <- addPerCols(df, 2, 3:4)
+    df <- addTotalsRow(df, 2, 3:4, 5:6, "All Occupations")
+    df <- addTotColSharePerRowCol(df, 2)
+    index <- order(df[,2], decreasing = TRUE)
+    dfProfile <- df[index,]
     return(dfProfile)
 }
 
-createCompProfile <- function(df, group) {
-### Comparison profile contains Occupation, Tech10, Tech15, Change, PerChange, PerF10
+createCompareProfile <- function(df1, df2) {
+### Input ==> Occupation, Total, share, Male, Female, perMale, perFemale
+### Output ==> Occupation, Tech10, Tech15, Change, PerChange, PerF10
+### df1 is earlier year, e.g., 2010 ... df2 is later year, e.g., 2015
     
+### 1. Impose same order on both data frames
+    index <- order(df1$Occupation)
+    df1 <- df1[index,]
+    index <- order(df2$Occupation)
+    df2 <- df2[index,]
+
+### 2. Rename columns with suffixes to tell variables from each other
+    colnames1 <- colnames(df1)
+    colnames(df1) <- c(paste0(colnames1, "1"))
+    colnames2 <- colnames(df2)
+    colnames(df2) <- c(paste0(colnames2, "2"))   
+
+### 3. Merge and create Change and perChange
+    df3 <- merge(df1, df2, by.x="Occupation1", by.y="Occupation2")
+    df3$Change <- df3$Total2 - df3$Total1
+    df3$perChange <- round(100 * df3$Change/ df3$Total1, digits=1)
+    df4 <- subset(df3, select=c(Occupation1, Total1, Total2, Change, perChange, perFemale1))
     
+    index = order(df4$Total2, decreasing = TRUE) ### Order by later year, 2015
+    df4 <- df4[index,]
+    
+    dfCompProfile <- df4
     return(dfCompProfile)
 }
 
+############################
 ### Stats2B
 
 makeTechPopTable <- function(Race){
@@ -265,15 +382,16 @@ makeTechPopTable <- function(Race){
     index <- order(dfTechPop[, RaceTech], decreasing=TRUE)
     dfTechPop <- dfTechPop[index,]
     
-    ### Calculate the percentage of the total for each race is in each state
-    dfTechPop$perState <- round(100 * dfTechPop[,RaceTech]/dfTechPop[1,RaceTech[1]], digits=1)
-    dfTechPop <- data.frame(dfTechPop[,c(1:2,8,3:7)]) ### move perState to 3rd column
+    colnames <- as.vector(colnames(dfTechPop))
+    L <- length(colnames)
+    dfTechPop <- addTotColSharePerRowCol(dfTechPop, 3)
+    colnames(dfTechPop) <- c(colnames[1:2], "perState", c(colnames[3:L]))
     return(dfTechPop)
 }
 
 makeForeignTechTable <- function(Area){
     perArea <- paste0("per", Area)
-    dfTech <- dfForeignTechStates[, c("State", "Foreign", Area, perArea)]
+    dfTech <- dfForeignRaceSexCountAndShares[, c("State", "Totals", Area, perArea)]
     ### Example ==> c("State", "Foreign", "Asia", "perAsia")
     
     AreaTech <- paste0(Area, "Tech")
@@ -285,12 +403,53 @@ makeForeignTechTable <- function(Area){
     
     index <- order(dfTech[, AreaTech], decreasing=TRUE)
     dfTech <- dfTech[index,]
-    
-    ### Calculate the percentage of the total for each Area is in each state
-    dfTech$perState <- round(100 * dfTech[,AreaTech]/dfTech[1,AreaTech[1]], digits=1)
-    dfTech <- data.frame(dfTech[,c(1:2,5,3:4)]) ### move perState to 3rd column
+    dfTech <- addTotColSharePerRowCol(dfTech, 3)
     
     return(dfTech)
+}
+
+makeForeignNonAsianTechTable <- function(dfAsian){
+### Handle this as special case ... derive from Asian tech table
+    dfNonAsian <- subset(dfAsian, select=c(State, Foreign, AsianTech))
+    dfNonAsian <- as.data.frame(dfNonAsian)
+    dfNonAsian$NonAsianTech <- dfNonAsian$Foreign - dfNonAsian$AsianTech
+    dfNonAsian$AsianTech <- NULL
+    
+    dfNonAsian <- addPerCols(dfNonAsian, 2, 3)
+    dfNonAsian <- addTotColSharePerRowCol(dfNonAsian, 3) 
+    
+    return(dfNonAsian)
+}
+
+addMissingStatesToTable <- function(dfFor, dfAll){
+### Special function adds states missing from Foreign Asian and Foreign NonAsian 4 Table
+###    with zero values
+### dfAll is a data frame whose State column contains all states
+    
+    dfAll <- dfAll[1:5]
+    dfAll[, c(2:5)] <- 0 ### initialize all data slots to zeros
+    colnames(dfAll) <- colnames(dfFor)
+    
+    index1 <- order(dfAll$State)
+    dfAll <- dfAll[index1,]
+    
+    index2 <- order(dfFor$State)
+    dfFor <- dfFor[index2,]
+
+    allStates <- as.character(dfAll$State) ### list of all states
+    fStates <- as.character(dfFor$State)
+    
+    j <- 1
+    bComplete <- as.vector(allStates %in% fStates)
+    for (i in 1:52) {
+        if (bComplete[i]){ ### Copy data for states that are complete, no missing
+            dfAll[i,] <- dfFor[j,] 
+            j <- j + 1
+        }
+    }
+    index3 <- order(dfAll$perState, decreasing = TRUE)
+    dfAll <- dfAll[index3,]
+    return(dfAll)
 }
 
 theme_clean <- function(base_size = 12) {
@@ -316,8 +475,9 @@ theme_clean <- function(base_size = 12) {
 makeTechPopMap <- function(df, Group, maxPer, title) {
     
     ### Insert dummy max value into District of Columbia, too small to be visible
+    df$State <- as.character(df$State) ### convert to char to enable change in DC
     df[df$State=="Dist of Col", "perState"] <- maxPer 
-    
+
     ### and use full name of District, not short form used in these scripts
     df[df$State=="Dist of Col", "State"] <- "District of Columbia"
     
@@ -325,7 +485,7 @@ makeTechPopMap <- function(df, Group, maxPer, title) {
     dfMap <- subset(df, select=c("State", "perState"), State!= c("ALL STATES"))     
     dfMap$state <- tolower(dfMap$State)
     dfMap <- merge(states_map, dfMap, by.x="region", by.y= "state")
-    dfMap <- arrange(dfMap, group, order) 
+    ####dfMap <- arrange(dfMap, group, order) 
     GroupData <- dfMap[,"perState"]
     
     ### high="#BB650B"
@@ -414,8 +574,6 @@ makeParity <- function(listDFs){
     return(dfP)
 }
 
-
-
 makeTable7 <- function(dfIn, dfParity, Group, letter) {
     dfFinal <- subset(dfIn[2:11,], Parity >= dfParity[Group, "Med"]) 
     perGroupTech <- paste0("per",Group, "Tech")
@@ -445,5 +603,5 @@ makeTable8 <- function(dfIn, Group, letter){
 }
 
 ###################################
-save(createDfOccupationRaceSexProfille, createPopRaceAndShares, addTotCol, addPerCols, readCodeBooks, addTotalsRow, makeSummary, plotEmpVsPop, makeLM, makeTechPopMap, theme_clean, getEmploymentRank, selectParityDF, makeForeignTechTable, makeTechPopTable, makeParity, makeTable7, makeTable8, file="functions-0.rda")
+save(readCodeBooks, addTotCol, addPerCols, addTotColSharePerRowCol, addTotalsRow, addMissingStatesToTable, createOccupationRaceSexProfiles, createOccupationStateRaceSexProfiles, createPopRaceAndShares, createProfile, createCompareProfile, makeSummary, plotEmpVsPop, makeLM, makeTechPopMap, theme_clean, makeForeignTechTable, makeForeignNonAsianTechTable, makeTechPopTable, makeParity, makeTable7, makeTable8, file="functions-0.rda")
 

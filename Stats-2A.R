@@ -1,340 +1,290 @@
 ### Stat-2A Demographic tables and profiles ... Tables 1, 2, and 3
 
-### These scripts are ugly, especially the "Evil Twin" duplicated code segments ... but they get the job done
-### Goal: Convert more chunks into readable functions, then move functions into the functions-0.R file
-### ===> Reduce the size of the ugly remaining scripgs; hopefully make them more readable
-
 ################################################
 ################################################ 
 ### Use map_dat() in ggplot2 as described on this URL
 ### http://is-r.tumblr.com/post/37708137014/us-state-maps-using-mapdata
 ##############################################
-
-load(file="functions-0.rda")
-load(file="dfRaceSexCountAndShares.rda")
-load(file="dfStatesPop3.rda") 
-load("dfCensus3.rda")
-load("dfCensus2.rda")
-load("dfCensus2.2010.rda")
-load("dfCensus3.2010.rda")
-
-### install.packages("gridExtra")
-library(tidyr)
-library(maps)
-library(mapproj) ### needed by ggplot2, but not installed automatically
-library(ggplot2)
-library(maps)
-library(dplyr)
-library(grid)
-library(gridExtra)
-library(gtable)
+    
+    load(file="functions-0.rda")
+    load(file="dfRaceSexCountAndShares.rda")
+    load(file="dfRaceSexCountAndShares.2010.rda")
+    load("dfProfiles.rda")
+    load("dfProfiles.2010.rda")
+    load(file="dfStatesPop3.rda")
+    
+    ### install.packages("gridExtra")
+    library(tidyr)
+    library(maps)
+    library(mapproj) ### needed by ggplot2, but not installed automatically
+    library(ggplot2)
+    library(maps)
+    library(dplyr)
+    library(grid)
+    library(gridExtra)
+    library(gtable)
 
 ######################
-### Table 1A. White, Black, Asian, Hispanic Components of U.S. Population in 2014
-dfTable1Apop <- dfStatesPop3[1,2:7]
-colNames <- c("ALL", "White", "Black", "Asian", "Hispanic", "OTHERS")
-colnames(dfTable1Apop) <- colNames
-dfTable1Apop <- prettyNum(dfTable1Apop, big.mark = ",") 
-### dfTable1Apop
+### Table 1A. Total U.S. workforce, citizens, foreign workers in 2010
+    
+    ### head(dfStatesPop3Foreign)
+    totCitizens <- dfStatesPop3["ALL STATES","Totals"]
+    totForeign <- dfStatesPop3Foreign["ALL STATES","Totals"]
+    totWorkforce <- totCitizens + totForeign
+    perCit <- round(100*totCitizens/totWorkforce, digits=1)
+    perFor <- round(100*totForeign/totWorkforce, digits=1)
+    perTot <- 100.0
 
-dfTable1Aper <- dfStatesPop3[1,c(2,11:15)]
-dfTable1Aper[1,1] <- 100 ### 100 percent for ALL
-colNames_per <- c("ALL", "perWhite", "perBlack", "perAsian", "perHispanic", "perOTHERS")
-colnames(dfTable1Aper) <- colNames_per
-dfTable1Aper <- as.character(round(dfTable1Aper, digits=1))
-### dfTable1Aper
+    df1 <- data.frame(totWorkforce, totCitizens, totForeign)
+    df1 <- prettyNum(df1, big.mark = ",") 
+    df2 <- as.character(data.frame(perTot, perCit, perFor))
+    dfTable1A <- rbind(df1, df2)
+    
+    colnames(dfTable1A) <- c("Total", "Citiens", "Foreign")
+    rownames(dfTable1A) <- c("Num", "Per")
+    print(dfTable1A, quote=FALSE)
+   
+    
+### Table 1B. White, Black, Asian, Hispanic American Components of U.S. Population in 2014
+    dfTable1Bpop <- dfStatesPop3[1,2:7]
+    colNames <- c("ALL", "White", "Black", "Asian", "Hispanic", "OTHERS")
+    colnames(dfTable1Bpop) <- colNames
+    dfTable1Bpop <- prettyNum(dfTable1Bpop, big.mark = ",") 
+    ### dfTable1Bpop
+    
+    dfTable1Bper <- dfStatesPop3[1,c(2,11:15)]
+    dfTable1Bper[1,1] <- 100 ### 100 percent for ALL
+    colNames_per <- c("ALL", "perWhite", "perBlack", "perAsian", "perHispanic", "perOTHERS")
+    colnames(dfTable1Bper) <- colNames_per
+    dfTable1Bper <- as.character(round(dfTable1Bper, digits=1))
+    ### dfTable1Bper
+    
+    dfTable1B <- data.frame(rbind(dfTable1Bpop, dfTable1Bper))
+    rownames(dfTable1B) <- c("Num", "Per")
+    dfTable1B
 
-dfTable1A <- data.frame(rbind(dfTable1Apop, dfTable1Aper))
-rownames(dfTable1A) <- c("Num", "Per")
-dfTable1A
-
-### Table 1B. White, Black, Asian, Hispanic Components of U.S. Tech Sector in 2014
-dfTable1Btech <- dfRaceSexCountAndShares[1,2:7]
-colnames(dfTable1Btech) <- colNames
-dfTable1Btech <- prettyNum(dfTable1Btech, big.mark = ",") 
-### dfTable1Btech
+### Table 1C U.S. Tech Sector
+    (totCitTech <- dfRaceSexCountAndShares["ALL STATES", "Totals"])
+    (totForTech <- dfForeignRaceSexCountAndShares["ALL STATES", "Totals"])
+    totTech <- totCitTech + totForTech
+    perCitTech <- round(100 * totCitTech/totTech, digits=1)
+    perForTech <- round(100 * totForTech/totTech, digits=1)
+    perTotTech <- 100.0
+    
+    df1 <- data.frame(totTech, totCitTech, totForTech)
+    df1 <- prettyNum(df1, big.mark = ",") 
+    df2 <- as.character(data.frame(perTotTech, perCitTech, perForTech))
+    dfTable1C <- rbind(df1, df2)
+    
+    colnames(dfTable1C) <- c("Total", "Citiens", "Foreign")
+    rownames(dfTable1C) <- c("Num", "Per")
+    print(dfTable1C, quote=FALSE)
+    
+### Table 1D. White, Black, Asian, Hispanic Components of U.S. Tech Sector in 2014
+    dfTable1Dtech <- dfRaceSexCountAndShares[1,2:7]
+    colnames(dfTable1Dtech) <- colNames
+    dfTable1Dtech <- prettyNum(dfTable1Dtech, big.mark = ",") 
+    dfTable1Dtech
 
 ### Percentages of total, white, black, asian, hispanic, and OTHERS
-dfTable1Bper <- dfRaceSexCountAndShares[1,c(2,11:15)]
-dfTable1Bper[1,1] <- 100 ### 100 percent for ALL
-colNames_per <- c("ALL", "perWhite", "perBlack", "perAsian", "perHispanic", "perOTHERS")
-colnames(dfTable1Bper) <- colNames_per
-dfTable1Bper <- as.character(round(dfTable1Bper, digits=1))
-### dfTable1Bper
+    dfTable1Dper <- dfRaceSexCountAndShares[1,c(2,11:15)]
+    dfTable1Dper[1,1] <- 100 ### 100 percent for ALL
+    colNames_per <- c("ALL", "perWhite", "perBlack", "perAsian", "perHispanic", "perOTHERS")
+    colnames(dfTable1Dper) <- colNames_per
+    dfTable1Dper <- as.character(round(dfTable1Dper, digits=1))
+    dfTable1Dper
+    
+    dfTable1D <- data.frame(rbind(dfTable1Dtech,dfTable1Dper))
+    rownames(dfTable1D) <- c("Num", "Per")
+    dfTable1D
 
-dfTable1B <- data.frame(rbind(dfTable1Btech, dfTable1Bper))
-rownames(dfTable1B) <- c("Num", "Per")
-dfTable1B
-
-
+### Table 1E. Foreign professionals in U.S. Tech
+    (totForeignTech <-dfForeignRaceSexCountAndShares["ALL STATES", "Totals"])
+    (totAsianTech <- dfForeignRaceSexCountAndShares["ALL STATES", "Asian"])
+    (totNonAsianTech <- totForeignTech - totAsianTech)
+    
+    perAsianTech <- round(100 * totAsianTech/totForeignTech, digits=1)
+    perNonAsianTech <- round(100 * totNonAsianTech/totForeignTech, digits=1)
+    perTotForeignTech <- 100.0
+    
+    df1 <- data.frame(totForeignTech, totAsianTech, totNonAsianTech)
+    df1 <- prettyNum(df1, big.mark = ",") 
+    df2 <- as.character(data.frame(perTotForeignTech, perAsianTech, perNonAsianTech))
+    dfTable1E <- rbind(df1, df2)
+    
+    colnames(dfTable1E) <- c("Foreign", "Asian", "Non-Asian")
+    rownames(dfTable1E) <- c("Num", "Per")
+    print(dfTable1E, quote=FALSE)   
+   
 ### Table 2A. Female Components of U.S. U.S. Population  in 2014
-(dfTable2Apop <- dfStatesPop3[1,c(2,8:10)])
-dfTable2Apop$Male <- dfTable2Apop$TotPop - dfTable2Apop$Female
-dfTable2Apop <- dfTable2Apop[, c(1, 5, 2:4)]
-colNames <- c("ALL", "Male", "Female", "FemAsian", "FemNonAsian")
-colnames(dfTable2Apop) <- colNames
-dfTable2Apop <- prettyNum(dfTable2Apop, big.mark = ",")
-### dfTable2Apop
-
-dfTable2Aper <- dfStatesPop3[1,c(2,16:18)]
-dfTable2Aper[1,1] <- 100.0 ### 100 percent for ALL
-dfTable2Aper$perMale <- round(100 - dfTable2Aper$perFemale, digits=1)
-dfTable2Aper <- dfTable2Aper[, c(1,5, 2:4)]
-colnames <- c("ALL", "Male", "Female", "FemAsian", "FemNonAsian")
-colnames(dfTable2Aper) <- colNames
-
-dfTable2A <- data.frame(rbind(dfTable2Apop, dfTable2Aper))
-rownames(dfTable2A) <- c("Num", "Per")
-dfTable2A
+    (dfTable2Apop <- dfStatesPop3[1,c(2,8:10)])
+    dfTable2Apop$Male <- dfTable2Apop$Totals - dfTable2Apop$Female
+    dfTable2Apop <- dfTable2Apop[, c(1, 5, 2:4)]
+    
+    colNames <- c("ALL", "Male", "Female", "FemAsian", "FemNonAsian")
+    colnames(dfTable2Apop) <- colNames
+    dfTable2Apop <- prettyNum(dfTable2Apop, big.mark = ",")
+    dfTable2Apop
+    
+    dfTable2Aper <- dfStatesPop3[1,c(2,16:18)]
+    dfTable2Aper[1,1] <- 100.0 ### 100 percent for ALL
+    dfTable2Aper$perMale <- round(100 - dfTable2Aper$perFemale, digits=1)
+    dfTable2Aper <- dfTable2Aper[, c(1,5, 2:4)]
+    
+    colnames <- c("ALL", "Male", "Female", "FemAsian", "FemNonAsian")
+    colnames(dfTable2Aper) <- colNames
+    dfTable2A <- data.frame(rbind(dfTable2Apop, dfTable2Aper))
+    rownames(dfTable2A) <- c("Num", "Per")
+    dfTable2A
   
-
 ### Table 2B. Male/Female Components of of U.S. Tech Sector in 2014
-dfTable2Bpop <- dfRaceSexCountAndShares[1,c(2,8:10)]
-dfTable2Bpop$Male <- dfTable2Bpop$Totals - dfTable2Bpop$Female
-dfTable2Bpop <- dfTable2Bpop[,c(1, 5, 2:4)] ### place males col 2
-colnames <- c("ALL", "Male", "Female", "FemAsian", "FemNonAsian")
-colnames(dfTable2Bpop) <- colnames
-dfTable2Bpop <- prettyNum(dfTable2Bpop, big.mark = ",") 
+    dfTable2Bpop <- dfRaceSexCountAndShares[1,c(2,8:10)]
+    dfTable2Bpop$Male <- dfTable2Bpop$Totals - dfTable2Bpop$Female
+    dfTable2Bpop <- dfTable2Bpop[,c(1, 5, 2:4)] ### place males col 2
+    
+    colnames <- c("ALL", "Male", "Female", "FemAsian", "FemNonAsian")
+    colnames(dfTable2Bpop) <- colnames
+    dfTable2Bpop <- prettyNum(dfTable2Bpop, big.mark = ",") 
 
 ### Percentages of Male/Female 
-dfTable2Bper <- dfRaceSexCountAndShares[1,c(2,16:18)]
-dfTable2Bper$perMale <- 100 - as.numeric(dfTable2Bper$perFemale)
-dfTable2Bper <- dfTable2Bper[, c(1,5,2:4)] ### males in col 2
-dfTable2Bper[1,1] <- 100 ### 100 percent for ALL
-colNames_per <- colnames
-colnames(dfTable2Bper) <- colNames_per
+    dfTable2Bper <- dfRaceSexCountAndShares[1,c(2,16:18)]
+    dfTable2Bper$perMale <- 100 - as.numeric(dfTable2Bper$perFemale)
+    dfTable2Bper <- dfTable2Bper[, c(1,5,2:4)] ### males in col 2
+    dfTable2Bper[1,1] <- 100 ### 100 percent for ALL
+    
+    colNames_per <- colnames
+    colnames(dfTable2Bper) <- colNames_per
+    
+    dfTable2B <- data.frame(rbind(dfTable2Bpop, dfTable2Bper))
+    rownames(dfTable2B) <- c("Num", "Per")
+    dfTable2B
 
-dfTable2B <- data.frame(rbind(dfTable2Bpop, dfTable2Bper))
-rownames(dfTable2B) <- c("Num", "Per")
-dfTable2B
-
-######################
-### Table 3ABC Occupations by Sex ... more thanks to HW
-census3OccSex <- group_by(dfCensus3, Occupation, Sex)
-head(census3OccSex)
-dfPtsPwtOccSex <- summarise(census3OccSex, ptsPwtOccSex = sum(personalWeight))
-head(dfPtsPwtOccSex)
-dfOccupationSex <- spread(dfPtsPwtOccSex, key=Sex, value=ptsPwtOccSex)
-head(dfOccupationSex)
-dfOccupationSex$Total <- dfOccupationSex$Male + dfOccupationSex$Female
-dfOccupationSex$perMale <- round((100 * dfOccupationSex$Male) /(dfOccupationSex$Total), digits=1)
-dfOccupationSex$perFemale <- round((100 * dfOccupationSex$Female) /(dfOccupationSex$Total), digits=1)
-### head(dfOccupationSex)
-
-dfOccupationSex <- dfOccupationSex[, c(1,4,2:3, 5:6)] ### Put total in second column
-colnames(dfOccupationSex) <- c("Occupation", "Tech2015", "Male","Female","perMale", "perFemale")
-dfOccupationSex <- as.data.frame(dfOccupationSex)
-### dfOccupationSex
-
-### Add total row for ALL
-techSums <- as.vector(colSums(dfOccupationSex[2:4]))
-perMaleTechSums <- as.numeric(round((100 * techSums[2]/techSums[1]), digits = 1))
-perFemaleTechSums <- as.numeric(round((100 * techSums[3]/techSums[1]), digits = 1))
-
-dfALL <- data.frame("ALL", t(techSums), perMaleTechSums, perFemaleTechSums) ### note the transpose "t"
-colnames(dfALL) <- c("Occupation", "Tech2015", "Male","Female", "perMale", "perFemale")
-### dfALL
-dfOccupationSex$Occupation <- as.character(dfOccupationSex$Occupation)
-### str(dfOccupationSex)
-dfOccupationSex <- rbind(dfOccupationSex, dfALL)
-### dfOccupationSex
-
-### Order by decreasing occupation
-index <- order(dfOccupationSex$Tech2015, decreasing=TRUE)
-dfOccupationSex <- dfOccupationSex[index,] 
-rownames(dfOccupationSex) <- NULL
-dfOccupationSex$`T_%` <- round(100*dfOccupationSex$Tech2015/dfOccupationSex[1,"Tech2015"], digits=1)
-dfOccupationSex <- dfOccupationSex[,c(1,2,7, 3, 5, 4, 6)]
-colnames(dfOccupationSex) <- c("Occupation", "Tech2015", "TS_%", "Male", "M_%", "Female", "perF15")
-(dfTable3ABC <- dfOccupationSex)
-
-##############################
-##############################
-### Evil twin from 2010
-### Like Table 3ABC Occupations by Sex ... more thanks to HW
-census3OccSex.2010 <- group_by(dfCensus3.2010, Occupation, Sex)
-### head(census3OccSex.2010)
-dfPtsPwtOccSex.2010 <- summarise(census3OccSex.2010, ptsPwtOccSex.2010 = sum(personalWeight))
-### head(dfPtsPwtOccSex.2010)
-dfOccupationSex.2010 <- spread(dfPtsPwtOccSex.2010, key=Sex, value=ptsPwtOccSex.2010)
-### head(dfOccupationSex.2010)
-dfOccupationSex.2010$Total <- dfOccupationSex.2010$Male + dfOccupationSex.2010$Female
-###dfOccupationSex$perMale <- round((100 * dfOccupationSex$Male) /(dfOccupationSex$Male + dfOccupationSex$Female), digits=1)
-dfOccupationSex.2010$perFemale <- round((100 * dfOccupationSex.2010$Female) /(dfOccupationSex.2010$Total), digits=1)
-### head(dfOccupationSex.2010)
-
-dfOccupationSex.2010 <- dfOccupationSex.2010[, c(1,4, 3, 5)] ### Put total in second column
-colnames(dfOccupationSex.2010) <- c("Occupation", "Tech2010", "Female", "perFemale")
-dfOccupationSex.2010 <- as.data.frame(dfOccupationSex.2010)
-### dfOccupationSex.2010
-
-### Add total row for ALL
-techSums.2010 <- as.vector(colSums(dfOccupationSex.2010[2:3]))
-###perMaleTechSums.2010 <- as.numeric(round((100 * techSums[2]/techSums[1]), digits = 1))
-perFemaleTechSums.2010 <- as.numeric(round((100 * techSums.2010[2]/techSums.2010[1]), digits = 1))
-
-dfALL.2010 <- data.frame("ALL", t(techSums.2010), perFemaleTechSums.2010) ### note the transpose "t"
-colnames(dfALL.2010) <- c("Occupation", "Tech2010", "Female", "perFemale")
-
-dfOccupationSex.2010$Occupation <- as.character(dfOccupationSex.2010$Occupation)
-dfOccupationSex.2010 <- rbind(dfOccupationSex.2010, dfALL.2010)
-### dfOccupationSex.2010
-
-### Order by decreasing occupation
-index <- order(dfOccupationSex.2010$Tech2010, decreasing=TRUE)
-dfOccupationSex.2010 <- dfOccupationSex.2010[index,] 
-rownames(dfOccupationSex.2010) <- NULL
-###dfOccupationSex.2010$`T_%` <- round(100*dfOccupationSex$Tech2010/dfOccupationSex[1,"Tech2010"], digits=1)
-dfOccupationSex.2010 <- dfOccupationSex.2010[,c(1,2, 4)]
-colnames(dfOccupationSex.2010) <- c("Occupation", "Tech2010", "F2010_%")
-### dfOccupationSex.2010
-###############################
-#############################
-
-### Tables 3D  ... compare with 2010 with 2015 American
-dfTable3D <- dfOccupationSex.2010
-### Order by occupations
-index <- order(dfTable3D$Occupation, decreasing=TRUE)
-dfTable3D <- dfTable3D[index,]
-
-dfTable3ABCcopy <- dfTable3ABC
-index <- order(dfTable3ABC$Occupation, decreasing=TRUE)
-dfTable3ABCcopy <- dfTable3ABCcopy[index,]
-
-dfTable3D$Tech2015 <- dfTable3ABCcopy$Tech2015
-dfTable3D$Change <- dfTable3D$Tech2015 - dfTable3D$Tech2010
-dfTable3D$perChange <- round(100 * dfTable3D$Change / dfTable3D$Tech2010, digits=1)
-
-index <- order(dfTable3D$Tech2015, decreasing=TRUE)
-dfTable3D <- dfTable3D[index,]
-
-colnames(dfTable3D) <- c("Occupation", "Tech10", "perF10", "Tech15", "Change", "perCh")
-(dfTable3D <- dfTable3D[,c(1,2,4,5,6,3)])
-
-
-############################################
+###########################
 ############################
-### Table 3E . Occupations of foreign techs from Asia and elsewhere
-dfCensus5 <- subset(dfCensus2, select=c("personalWeight", "Sex", "Occupation", "Birth"), Citizen==FALSE) 
-str(dfCensus5) ### 4803 obs. of  3 variables
-dfCensus5$Occupation <- as.character(dfCensus5$Occupation)
+### Table 3 -- Profile of all U.S. Techs 2015
+    dfProfile <- createProfile(dfProfileCitizens, group="")
+    dfProfile.2010 <- createProfile(dfProfileCitizens.2010, group="")
+    
+    dfTable3 <- subset(dfProfile, select=-c(Male, perMale))
+    colnames(dfTable3) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
+    head(dfTable3)
+    
+    ### Table 3.Comp -- Compare all U.S. Techs 2010 to all 2015
+    dfTable3Comp <- createCompareProfile(dfProfile.2010, dfProfile)
+    colnames(dfTable3Comp) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "PerF10")
+    head(dfTable3Comp)
 
-### WAOB = World Area of Birth = continent on which person was born
-census5OccupationBirth <- group_by(dfCensus5, Occupation, Birth)
-dfSumPwtOccupationBirth <- summarise(census5OccupationBirth, ptsPwtOccupationBirth = sum(personalWeight))
-dfBirthPerOccupation <- spread(dfSumPwtOccupationBirth, key=Birth, value=ptsPwtOccupationBirth, fill=0, drop=FALSE)
+####################################
+####################################
+### Table 3A -- Profile of U.S. White Techs 2015
+    dfProfileA <- createProfile(dfProfileCitizens, group="White")
+    dfProfileA.2010 <- createProfile(dfProfileCitizens.2010, group="White")
+    
+    dfTable3A <- subset(dfProfileA, select=-c(Male, perMale))
+    colnames(dfTable3A) <- c("Occupation", "perTS","Tech15", "Fem", "per15")
+    head(dfTable3A)
+    
+    ### Table 3AA -- Compare U.S. White Techs 2010 to all 2015
+    dfTable3AA <- createCompareProfile(dfProfileA.2010, dfProfileA)
+    colnames(dfTable3AA) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
+    head(dfTable3AA)
 
-indexBirth <- order(dfBirthPerOccupation$Occupation, decreasing=FALSE)
-dfBirthPerOccupation <- dfBirthPerOccupation[indexBirth,]
-dfBirthPerOccupation
+####################################
+####################################
+### Table 3B -- Profile of U.S. Black Techs 2015
+    dfProfileB <- createProfile(dfProfileCitizens, group="Black")
+    dfProfileB.2010 <- createProfile(dfProfileCitizens.2010, group="Black")
+    
+    dfTable3B <- subset(dfProfileB, select=-c(Male, perMale))
+    colnames(dfTable3B) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
+    head(dfTable3B)
+    
+    ### Table 3BB -- Compare U.S. Black Techs 2010 to all 2015
+    dfTable3BB <- createCompareProfile(dfProfileB.2010, dfProfileB)
+    colnames(dfTable3BB) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
+    head(dfTable3BB)
 
-### Add Sex
-census5OccupationSex <- group_by(dfCensus5, Occupation, Sex)
-dfSumPwtOccupationSex <- summarise(census5OccupationSex, ptsPwtOccupationSex = sum(personalWeight))
-dfSexPerOccupation <- spread(dfSumPwtOccupationSex, key=Sex, value=ptsPwtOccupationSex, fill=0, drop=FALSE)
+####################################
+####################################
+### Table 3C -- Profile of U.S. Hispanic Techs 2015
+    dfProfileC <- createProfile(dfProfileCitizens, group="Hispanic")
+    dfProfileC.2010 <- createProfile(dfProfileCitizens.2010, group="Hispanic")
+    
+    dfTable3C <- subset(dfProfileC, select=-c(Male, perMale))
+    colnames(dfTable3C) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
+    head(dfTable3C)
+    
+    ### Table 3CC -- Compare U.S. Hispanic Techs 2010 to all 2015
+    dfTable3CC <- createCompareProfile(dfProfileC.2010, dfProfileC)
+    colnames(dfTable3CC) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
+    head(dfTable3CC)
 
-indexSex <- order(dfSexPerOccupation$Occupation, decreasing=FALSE)
-dfSexPerOccupation <- dfSexPerOccupation[indexSex,]
-head(dfSexPerOccupation)
+####################################
+####################################
+### Table 3D -- Profile of U.S. Asian Techs 2015
+    dfProfileD <- createProfile(dfProfileCitizens, group="Asian")
+    dfProfileD.2010 <- createProfile(dfProfileCitizens.2010, group="Asian")
+    
+    dfTable3D <- subset(dfProfileD, select=-c(Male, perMale))
+    colnames(dfTable3D) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
+    head(dfTable3D)
+    
+    ### Table 3DD -- Compare U.S. Hispanics Techs 2010 to all 2015
+    dfTable3DD <- createCompareProfile(dfProfileD.2010, dfProfileD)
+    colnames(dfTable3DD) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
+    head(dfTable3DD)
 
-### Combine all Non-Asia into Others dfBirthPerOccupation.2010$LatinAmerica + 
-dfBirthPerOccupation$NotAsia <- dfBirthPerOccupation$"Latin America" + dfBirthPerOccupation$Europe + dfBirthPerOccupation$Africa + dfBirthPerOccupation$"North America" + dfBirthPerOccupation$Oceania 
-dfForeignTechOccupations <- subset(dfBirthPerOccupation, select=-c(USA, `US Islands`, `Latin America`, Europe, Africa, `North America`, Oceania)) ### Delete the components of FrnOthers
+####################################
+####################################
+### Table 3E -- Profile of Foreign Techs 2015
+    dfProfileE <- createProfile(dfProfileForeigners, group="")
+    dfProfileE.2010 <- createProfile(dfProfileForeigners.2010, group="")
+    
+    dfTable3E <- subset(dfProfileE, select=-c(Male, perMale))
+    colnames(dfTable3E) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
+    head(dfTable3E)
+    
+    ### Table 3EE -- Compare Foreign Techs 2010 to all 2015
+    dfTable3EE <- createCompareProfile(dfProfileE.2010, dfProfileE)
+    colnames(dfTable3EE) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
+    head(dfTable3EE)
 
-dfForeignTechOccupations <- merge(dfForeignTechOccupations, dfSexPerOccupation) ### Occupations in same order
-dfForeignTechOccupations
+####################################
+####################################
+### Table 3F -- Profile of Foreign Techs in California in 2015
+print("California ... California California")
+    dfProfileF <- createProfile(dfProfileForeignersState, group="", state="California")
+    dfProfileF.2010 <- createProfile(dfProfileForeignersState.2010, group="", state="California")
+    dfProfileF.2010
+    
+    dfTable3F <- subset(dfProfileF, select=-c(Male, perMale))
+    colnames(dfTable3F) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
+    dfTable3F
+    
+    ### Table 3FF -- Compare Foreign Techs 2010 to all 2015
+    dfTable3FF <- createCompareProfile(dfProfileF.2010, dfProfileF)
+    colnames(dfTable3FF) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
+    dfTable3FF
 
-allForeign <- colSums(dfForeignTechOccupations[,2:5])
-dfForeignTop <- dfForeignTechOccupations[1,] ### dummy copy first row to set the types
-dfForeignTop$Occupation <- "ALL"
-dfForeignTop[1,2:5] <- allForeign
-dfForeignTechOccupations <- rbind(dfForeignTop, dfForeignTechOccupations)
-dfForeignTechOccupations <- as.data.frame(dfForeignTechOccupations)
+print("END OF California ... California California")
 
-dfForeignTechOccupations$perAs <- round(100*dfForeignTechOccupations$Asia/dfForeignTechOccupations[1,"Asia"], digits=1)
-dfForeignTechOccupations$perNAs <- round(100*dfForeignTechOccupations$NotAsia/dfForeignTechOccupations[1,"NotAsia"], digits=1)
-dfForeignTechOccupations$Foreign <- dfForeignTechOccupations$Asia + dfForeignTechOccupations$NotAsia
-dfForeignTechOccupations$`perF15` <- round(100*dfForeignTechOccupations$Female/dfForeignTechOccupations$Foreign, digits=1)
-dfForeignTechOccupations <- subset(dfForeignTechOccupations, select=-c(Male, Female))
-dfForeignTechOccupations
+####################################
+####################################
+### Table GF -- Profile of Foreign Techs in Texas in 2015
+print("Texas ... Texas Texas")
+dfProfileG <- createProfile(dfProfileForeignersState, group="", state="Texas")
+dfProfileG.2010 <- createProfile(dfProfileForeignersState.2010, group="", state="Texas")
 
-dfTable3E <- dfForeignTechOccupations[, c(1, 6, 2, 4, 3, 5, 7)]
-colnames(dfTable3E) <- c("Occupation", "Foreign", "Asia", "perAs", "NAsia", "perNAs", "perF15")
-index <- order(dfTable3E$Foreign, decreasing=TRUE)
-(dfTable3E <- dfTable3E[index,])
-
-#################################
-#################################
-### Tables 3F and 3G ... compare 2010 to 2015 for Asia (3F)   and Non-Asian (3G)
-dfCensus5.2010 <- subset(dfCensus2.2010, select=c("personalWeight","Occupation", "Birth"), Citizen==FALSE) 
-str(dfCensus5.2010) ### 3687 obs. of  3 variables:
-
-census5.2010OccupationBirth <- group_by(dfCensus5.2010, Occupation, Birth)
-dfSumPwtOccupationBirth.2010 <- summarise(census5.2010OccupationBirth, ptsPwtOccupationBirth.2010 = sum(personalWeight))
-dfBirthPerOccupation.2010 <- spread(dfSumPwtOccupationBirth.2010, key=Birth, value=ptsPwtOccupationBirth.2010, fill=0, drop=FALSE)
-head(dfBirthPerOccupation.2010)
-
-### Combine all Non-Asia into Others dfBirthPerOccupation.2010$LatinAmerica + 
-dfBirthPerOccupation.2010$NAsia <- dfBirthPerOccupation.2010$"Latin America" + dfBirthPerOccupation.2010$Europe + dfBirthPerOccupation.2010$Africa + dfBirthPerOccupation.2010$"North America" + dfBirthPerOccupation.2010$Oceania 
-
-dfForeignTechOccupations.2010 <- subset(dfBirthPerOccupation.2010, select=-c(USA, `US Islands`, `Latin America`, Europe, Africa, `North America`, Oceania)) ### Delete the components of FrnOthers
-dfForeignTechOccupations.2010
-
-allForeign.2010 <- colSums(dfForeignTechOccupations.2010[,2:3])
-dfForeignTop.2010 <- dfForeignTechOccupations.2010[1,] ### dummy copy first row to set the types
-dfForeignTop.2010$Occupation <- "ALL"
-dfForeignTop.2010[1,2:3] <- allForeign.2010
-dfForeignTechOccupations.2010 <- rbind(dfForeignTop.2010, dfForeignTechOccupations.2010)
-dfForeignTechOccupations.2010 <- as.data.frame(dfForeignTechOccupations.2010)
-dfForeignTechOccupations.2010
-
-dfForeignTechOccupations.2010$perAs <- round(100*dfForeignTechOccupations.2010$Asia/dfForeignTechOccupations.2010[1,"Asia"], digits=1)
-dfForeignTechOccupations.2010$perNAs <- round(100*dfForeignTechOccupations.2010$NAsia/dfForeignTechOccupations.2010[1,"NAsia"], digits=1)
-dfForeignTechOccupations.2010
-
-### Asian 2010
-dfTable3FF <- subset(dfForeignTechOccupations.2010, select=c(Occupation, Asia, perAs))
-index <- order(dfForeignTechOccupations.2010$Occupation, decreasing=TRUE)
-(dfTable3FF <- dfTable3FF[index,])
-
-### NonAsian 2010
-dfTable3GG <- subset(dfForeignTechOccupations.2010, select=c(Occupation, NAsia, perNAs))
-index <- order(dfForeignTechOccupations.2010$Occupation, decreasing=TRUE)
-(dfTable3GG <- dfTable3GG[index,])
-
-###################
-### Tables 3F Change in Foreign Asian
-dfTable3F <- dfTable3E ### set up dimensions and some cols and order of rows
-dfTable3F <- subset(dfTable3F, select=c(Occupation, Asia))
-index <- order(dfTable3F$Occupation, decreasing=TRUE)
-dfTable3F <- dfTable3F[index,]
-dfTable3F
-
-dfTable3F$Asia2010 <- dfTable3FF$Asia
-dfTable3F$Change <- dfTable3F$Asia - dfTable3F$Asia2010
-dfTable3F$Per <- round((100 * dfTable3F$Change / dfTable3F$Asia2010), digits=1)
-dfTable3F <- dfTable3F[,c(1,3,2,4,5)] ### put 2010 before 2015
-colnames(dfTable3F) <- c("Occupation", "As2010", "As2015", "Change", "perCh")
-dfTable3F <- dfTable3F[order(dfTable3F$As2015, decreasing = TRUE),]
-rownames(dfTable3F) <- NULL
-dfTable3F
-
-############################
-### Tables 3G Change in Foreign NotAsian
-dfTable3G <- dfTable3E ### set up dimensions and some cols and order of rows
-dfTable3G <- subset(dfTable3G, select=c(Occupation, NAsia))
-index <- order(dfTable3G$Occupation, decreasing=TRUE)
-dfTable3G <- dfTable3G[index,]
+dfTable3G <- subset(dfProfileG, select=-c(Male, perMale))
+colnames(dfTable3G) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
 dfTable3G
 
-dfTable3G$NAsia2010 <- dfTable3GG$NAsia
-dfTable3G$Change <- dfTable3G$NAsia - dfTable3G$NAsia2010
-dfTable3G$Per <- round((100 * dfTable3G$Change / dfTable3G$NAsia2010), digits=1)
-dfTable3G <- dfTable3G[,c(1,3,2,4,5)] ### put 2010 before 2015
-index <- order(dfTable3G$NAsia, decreasing = TRUE)
-dfTable3G <- dfTable3G[index,]
-colnames(dfTable3G) <- c("Occupation", "NAs2010", "NAs2015", "Change", "perCh")
-rownames(dfTable3G) <- NULL
-dfTable3G
+### Table 3GG -- Compare Foreign Techs 2010 to all 2015
+dfTable3GG <- createCompareProfile(dfProfileG.2010, dfProfileG)
+colnames(dfTable3GG) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
+dfTable3GG
 
-save(dfTable1A, dfTable1B, dfTable2A, dfTable2B, dfTable3ABC, dfTable3D, dfTable3E, dfTable3F, dfTable3G, file="dfTab1A1B2A2B3ABCDEFGH.rda")
+print("END OF Texas ... Texas Texas")
+###############################################
+###############################################
+save(dfTable1, dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable3, dfTable3Comp, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3F, dfTable3FF, dfTable3G,dfTable3GG, file="dfTab1A1B2A2B3ABCDEFG.rda")
