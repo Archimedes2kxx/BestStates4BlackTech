@@ -165,12 +165,12 @@
     dfProfileZ.2010 <- createProfile(dfProfileCitizens.2010, group="", state="")
     
     dfTable3Z <- subset(dfProfileZ, select=-c(Male, perMale))
-    colnames(dfTable3Z) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
+    colnames(dfTable3Z) <- c("Occupation", "perTS", "Tech15", "Fem", "perF15")
     head(dfTable3Z)
     
     ### Table 3ZZ -- Compare all U.S. Techs 2010 to all 2015
     dfTable3ZZ <- createCompareProfile(dfProfileZ.2010, dfProfileZ)
-    colnames(dfTable3ZZ) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "PerF10")
+    colnames(dfTable3ZZ) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
     dfTable3ZZ
 
 ####################################
@@ -289,4 +289,4 @@ print("END OF California ... California California")
 
 ########################################
 ########################################
-save(dfTable1, dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable3Z, dfTable3ZZ, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3F, dfTable3FF,  dfTable3FL, dfTable3FLFL, file="dfTab1A1B2A2B3ABCDEF.rda")
+save(dfTable1, dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable3Z, dfTable3ZZ, dfProfileZ.2010, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3F, dfTable3FF,  dfTable3FL, dfTable3FLFL, file="dfTab1A1B2A2B3ABCDEF.rda")
