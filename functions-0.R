@@ -147,33 +147,29 @@ createPopRaceAndShares <- function(df, bCitizen=TRUE){
         df$Citizen <- as.factor(df$Citizen)
         levels(df$Citizen) <- trimws(listCodes[["Citizen"]][,2])   
     }
-
+    
+    
 ### 4. Get citizen subset or foreign subset ... but never both citizens and foreign
     if(bCitizen == TRUE) {
         df3 <- subset(df, Citizen!="No") 
     } else {
         df3 <- subset(df, Citizen=="No")
     }
-    
+
 ### 5. Calculate racial group's Count per each state
     census3StateRace <- group_by(df3, State, Race) 
     dfPtsPwtStateRace <- summarise(census3StateRace, ptsPwtStateRace = sum(personalWeight))
     dfRaceCountPerState <- spread(dfPtsPwtStateRace, key=Race, value=ptsPwtStateRace, fill=0, drop=FALSE)
-    
+
 ### 6. Combine all groups other than black, white, asian, and hispanic into OTHERS
-    ### if (bCitizen == TRUE) {
-        columnNames <- c("State", "White", "Black", "amIn", "alNat", "amInAlNat", "Asian", 
-                         "pacific", "other", "many" , "Hispanic")
-        colnames(dfRaceCountPerState) <- columnNames
-        dfRaceCountPerState$OTHERS <- dfRaceCountPerState$amIn + dfRaceCountPerState$alNat 
-        + dfRaceCountPerState$amInAlNat + dfRaceCountPerState$pacific + dfRaceCountPerState$other 
-        + dfRaceCountPerState$many
-        dfRaceCountPerState <- subset(dfRaceCountPerState, select=-c(amIn, alNat, amInAlNat, 
-                                                                     pacific, other, many))
+    columnNames <- c("State", "White", "Black", "amIn", "alNat", "amInAlNat", "Asian", "pacific", "other", "many" , "Hispanic")
+    colnames(dfRaceCountPerState) <- columnNames
+    dfRaceCountPerState$OTHERS <- dfRaceCountPerState$amIn + dfRaceCountPerState$alNat + dfRaceCountPerState$amInAlNat + dfRaceCountPerState$pacific + dfRaceCountPerState$other + dfRaceCountPerState$many
+    dfRaceCountPerState <- subset(dfRaceCountPerState, select=-c(amIn, alNat, amInAlNat, pacific, other, many))
+
 ### 7. Add "totals" column after "state" ... 
     dfRaceCountPerState <- addTotCol(dfRaceCountPerState, 2:6, "Totals")
-   ### print(head(dfRaceCountPerState))
-    
+          
 ### 8 Calculate the Count each sex per state ... Thank you, Hadley ... :-)
     census3StateSex <- group_by(df3, State, Sex) 
     dfPtsPwtStateSex <- summarise(census3StateSex, ptsPwtStateSex = sum(personalWeight))
@@ -271,9 +267,7 @@ createOccupationStateRaceSexProfiles <- function(df){
     OccState <- group_by(df2, State)
     df3 <- summarise(df2, Male=sum(Male), Female=sum(Female), fill=0, drop=FALSE)
     df3 <- subset(df3, select=-c(fill, drop))
-print(paste("End of CreateOccupationStateSexProfiles"))
-print(str(df3))
-print(head(df3))    
+   
     ### Occupation State Male Female
     return(df3)
 }
@@ -282,40 +276,29 @@ print(head(df3))
 ##################################
 ### Stats-2A
 
-createProfile <- function(df, group, state="") {
+createProfile <- function(df, group="", state="") {
 ### Input data frame = Occupation Race Male Female for the specified group   
-### Output data frame =  Occupation, Tech15, TS_%, Fem, Per15 for the specified group
+### Output data frame =  Occupation, Tech15, perTS, Fem, Per15 for the specified group
 
 print(paste("The state = ", state))
 #1. Select the group's records
     if (group != "") {
         df <- subset(df, Race == group)
     }
-    print(paste("Here's the str for the input df"))
-    print(str(df))
-    print(head(df))
-    print(paste("before selecting", state))
     
 #2. Select data columns
     if (state!="") {
         df <- subset(df, State==state, select=c("Occupation", "Male", "Female"))
-        print(paste("State = ", state))
         df$State <- NULL 
-        print(str(df))
         
     } else {
         df <- subset(df, select=c("Occupation", "Male", "Female"))
-        print(str(df))
     }
 
     eachOcc <- group_by(df, Occupation)
-    print(str(df))
     df <- summarise(eachOcc, Male=sum(Male), Female=sum(Female), fill=0, drop=FALSE)
     df <- subset(df, select=-c(fill, drop))
 
-print(paste("in the middle, after Hadley dance"))
-str(df)
-print(head(df))
     df <- addTotCol(df, 2:3, "Total")
 print(head(df))
     df <- addPerCols(df, 2, 3:4)

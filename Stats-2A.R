@@ -40,7 +40,7 @@
     df2 <- as.character(data.frame(perTot, perCit, perFor))
     dfTable1A <- rbind(df1, df2)
     
-    colnames(dfTable1A) <- c("Total", "Citiens", "Foreign")
+    colnames(dfTable1A) <- c("Total", "Citizens", "Foreign")
     rownames(dfTable1A) <- c("Num", "Per")
     print(dfTable1A, quote=FALSE)
    
@@ -57,11 +57,10 @@
     colNames_per <- c("ALL", "perWhite", "perBlack", "perAsian", "perHispanic", "perOTHERS")
     colnames(dfTable1Bper) <- colNames_per
     dfTable1Bper <- as.character(round(dfTable1Bper, digits=1))
-    ### dfTable1Bper
     
     dfTable1B <- data.frame(rbind(dfTable1Bpop, dfTable1Bper))
     rownames(dfTable1B) <- c("Num", "Per")
-    dfTable1B
+    print(dfTable1B, quote=FALSE)
 
 ### Table 1C U.S. Tech Sector
     (totCitTech <- dfRaceSexCountAndShares["ALL STATES", "Totals"])
@@ -76,7 +75,7 @@
     df2 <- as.character(data.frame(perTotTech, perCitTech, perForTech))
     dfTable1C <- rbind(df1, df2)
     
-    colnames(dfTable1C) <- c("Total", "Citiens", "Foreign")
+    colnames(dfTable1C) <- c("Total", "Citizens", "Foreign")
     rownames(dfTable1C) <- c("Num", "Per")
     print(dfTable1C, quote=FALSE)
     
@@ -84,7 +83,7 @@
     dfTable1Dtech <- dfRaceSexCountAndShares[1,2:7]
     colnames(dfTable1Dtech) <- colNames
     dfTable1Dtech <- prettyNum(dfTable1Dtech, big.mark = ",") 
-    dfTable1Dtech
+    ### print(dfTable1Dtech, quote=FALSE)
 
 ### Percentages of total, white, black, asian, hispanic, and OTHERS
     dfTable1Dper <- dfRaceSexCountAndShares[1,c(2,11:15)]
@@ -92,16 +91,16 @@
     colNames_per <- c("ALL", "perWhite", "perBlack", "perAsian", "perHispanic", "perOTHERS")
     colnames(dfTable1Dper) <- colNames_per
     dfTable1Dper <- as.character(round(dfTable1Dper, digits=1))
-    dfTable1Dper
+    #### dfTable1Dper
     
     dfTable1D <- data.frame(rbind(dfTable1Dtech,dfTable1Dper))
     rownames(dfTable1D) <- c("Num", "Per")
-    dfTable1D
+    print(dfTable1D, quote=FALSE)
 
 ### Table 1E. Foreign professionals in U.S. Tech
-    (totForeignTech <-dfForeignRaceSexCountAndShares["ALL STATES", "Totals"])
-    (totAsianTech <- dfForeignRaceSexCountAndShares["ALL STATES", "Asian"])
-    (totNonAsianTech <- totForeignTech - totAsianTech)
+    totForeignTech <-dfForeignRaceSexCountAndShares["ALL STATES", "Totals"]
+    totAsianTech <- dfForeignRaceSexCountAndShares["ALL STATES", "Asian"]
+    totNonAsianTech <- totForeignTech - totAsianTech
     
     perAsianTech <- round(100 * totAsianTech/totForeignTech, digits=1)
     perNonAsianTech <- round(100 * totNonAsianTech/totForeignTech, digits=1)
@@ -124,7 +123,7 @@
     colNames <- c("ALL", "Male", "Female", "FemAsian", "FemNonAsian")
     colnames(dfTable2Apop) <- colNames
     dfTable2Apop <- prettyNum(dfTable2Apop, big.mark = ",")
-    dfTable2Apop
+    ### dfTable2Apop
     
     dfTable2Aper <- dfStatesPop3[1,c(2,16:18)]
     dfTable2Aper[1,1] <- 100.0 ### 100 percent for ALL
@@ -161,18 +160,18 @@
 
 ###########################
 ############################
-### Table 3 -- Profile of all U.S. Techs 2015
-    dfProfile <- createProfile(dfProfileCitizens, group="")
-    dfProfile.2010 <- createProfile(dfProfileCitizens.2010, group="")
+### Table 3Z -- Profile of all U.S. Techs 2015
+    dfProfileZ <- createProfile(dfProfileCitizens, group="", state="")
+    dfProfileZ.2010 <- createProfile(dfProfileCitizens.2010, group="", state="")
     
-    dfTable3 <- subset(dfProfile, select=-c(Male, perMale))
-    colnames(dfTable3) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
-    head(dfTable3)
+    dfTable3Z <- subset(dfProfileZ, select=-c(Male, perMale))
+    colnames(dfTable3Z) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
+    head(dfTable3Z)
     
-    ### Table 3.Comp -- Compare all U.S. Techs 2010 to all 2015
-    dfTable3Comp <- createCompareProfile(dfProfile.2010, dfProfile)
-    colnames(dfTable3Comp) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "PerF10")
-    head(dfTable3Comp)
+    ### Table 3ZZ -- Compare all U.S. Techs 2010 to all 2015
+    dfTable3ZZ <- createCompareProfile(dfProfileZ.2010, dfProfileZ)
+    colnames(dfTable3ZZ) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "PerF10")
+    dfTable3ZZ
 
 ####################################
 ####################################
@@ -182,12 +181,12 @@
     
     dfTable3A <- subset(dfProfileA, select=-c(Male, perMale))
     colnames(dfTable3A) <- c("Occupation", "perTS","Tech15", "Fem", "per15")
-    head(dfTable3A)
+    ### head(dfTable3A)
     
     ### Table 3AA -- Compare U.S. White Techs 2010 to all 2015
     dfTable3AA <- createCompareProfile(dfProfileA.2010, dfProfileA)
     colnames(dfTable3AA) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
-    head(dfTable3AA)
+    dfTable3AA
 
 ####################################
 ####################################
@@ -251,41 +250,43 @@
 
 ####################################
 ####################################
-### Table 3F -- Profile of Foreign Techs in Texas in 2015
-    print("Texas ... Texas Texas")
-    dfProfileF <- createProfile(dfProfileForeignersState, group="", state="Texas")
-    dfProfileF.2010 <- createProfile(dfProfileForeignersState.2010, group="", state="Texas")
+### Table 3FL -- Profile of Foreign Techs in Florida in 2015
+    print("Florida ... Florida Florida")
+    dfProfileFL <- createProfile(dfProfileForeignersState, group="", state="Florida")
+    dfProfileFL.2010 <- createProfile(dfProfileForeignersState.2010, group="", state="Florida")
+    
+    dfTable3FL <- subset(dfProfileFL, select=-c(Male, perMale))
+    colnames(dfTable3FL) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
+    dfTable3FL
+    
+    ### Table 3FLFL -- Compare Foreign Techs 2010 to all 2015
+    dfTable3FLFL <- createCompareProfile(dfProfileFL.2010, dfProfileFL)
+    colnames(dfTable3FLFL) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
+    dfTable3FLFL
+    
+print("END OF Florida ... Florida Florida")
+
+###############################################
+###############################################    
+### Table 3F -- Profile of Foreign Techs in California in 2015
+print("California ... California California")
+    dfProfileF <- createProfile(dfProfileForeignersState, group="", state="California")
+    dfProfileF.2010 <- createProfile(dfProfileForeignersState.2010, group="", state="California")
+    ### dfProfileF.2010
     
     dfTable3F <- subset(dfProfileF, select=-c(Male, perMale))
     colnames(dfTable3F) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
     dfTable3F
     
     ### Table 3FF -- Compare Foreign Techs 2010 to all 2015
-    dfTable3FF <- createCompareProfile(dfProfileF.2010, dfProfileF)
+    dfTable3FF <- createCompareProfile(dfProfileF.2010, dfProfileG)
     colnames(dfTable3FF) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
     dfTable3FF
-    
-print("END OF Texas ... Texas Texas")
-
-###############################################
-###############################################    
-### Table 3G -- Profile of Foreign Techs in California in 2015
-print("California ... California California")
-    dfProfileG <- createProfile(dfProfileForeignersState, group="", state="California")
-    dfProfileG.2010 <- createProfile(dfProfileForeignersState.2010, group="", state="California")
-    dfProfileG.2010
-    
-    dfTable3G <- subset(dfProfileG, select=-c(Male, perMale))
-    colnames(dfTable3G) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
-    dfTable3G
-    
-    ### Table 3GG -- Compare Foreign Techs 2010 to all 2015
-    dfTable3GG <- createCompareProfile(dfProfileG.2010, dfProfileG)
-    colnames(dfTable3GG) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
-    dfTable3GG
 
 print("END OF California ... California California")
 
+
+
 ########################################
 ########################################
-save(dfTable1, dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable3, dfTable3Comp, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3F, dfTable3FF, dfTable3G,dfTable3GG, file="dfTab1A1B2A2B3ABCDEFG.rda")
+save(dfTable1, dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable3Z, dfTable3ZZ, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3F, dfTable3FF,  dfTable3FL, dfTable3FLFL, file="dfTab1A1B2A2B3ABCDEF.rda")
