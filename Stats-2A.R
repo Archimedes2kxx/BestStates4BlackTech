@@ -98,7 +98,7 @@
     print(dfTable1D, quote=FALSE)
 
 ### Table 1E. Foreign professionals in U.S. Tech
-    totForeignTech <-dfForeignRaceSexCountAndShares["ALL STATES", "Total"]
+    totForeignTech <-dfForeignRaceSexCountAndShares["ALL STATES", "Totals"]
     totAsianTech <- dfForeignRaceSexCountAndShares["ALL STATES", "Asian"]
     totNonAsianTech <- totForeignTech - totAsianTech
     
@@ -111,7 +111,7 @@
     df2 <- as.character(data.frame(perTotForeignTech, perAsianTech, perNonAsianTech))
     dfTable1E <- rbind(df1, df2)
     
-    colnames(dfTable1E) <- c("Foreign", "Asian", "Non-Asian")
+    colnames(dfTable1E) <- c("Total", "Asian", "Non-Asian")
     rownames(dfTable1E) <- c("Num", "Per")
     print(dfTable1E, quote=FALSE)   
    

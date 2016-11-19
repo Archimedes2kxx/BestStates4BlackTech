@@ -74,7 +74,7 @@ otherPerForeignIncrease <- round(100.0 - caPerForeignIncrease, digits=1)
 
 * The increase in foreign tech professionals was highest in California. The number of foreign tech professionals working in California increased by `r prettyNum(dfTable3FF[1,"perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015, i.e. from  `r prettyNum(dfTable3FF[1,"Tech10"], big.mark=",", scientific=FALSE)` to  `r prettyNum(dfTable3FF[1,"Tech15"], big.mark=",", scientific=FALSE)`. In other words, California accounted for `r caPerForeignIncrease` percent of the  `r prettyNum(dfTable3EE[1,"Change"], big.mark=",", scientific=FALSE)` increase in the number of foreign professionals working in U.S. tech during that time frame. The remaining `r otherPerForeignIncrease` percent was spread across the other 49 states and the District of Columbia. (See Tables 3EE and 3FF)
 
-* The `r prettyNum(dfTable1E["Num","Asian"], big.mark=",", scientific=FALSE)` professionals imported from Asia in 2015 was substantially larger than the `r prettyNum(dfTable1D["Num","Black"], big.mark=",", scientific=FALSE)` Black American or the  `r prettyNum(dfTable1D["Num","Hispanic"], big.mark=",", scientific=FALSE)` Hispanic American professionals employed by U.S. tech in 2015. Indeed,  the `r prettyNum(dfTable1E[1,"Foreign"], big.mark=",", scientific=FALSE)` combined total of foreign professionals imported from Asia and from elsewhere in 2015 was almost as large as the  `r prettyNum((as.numeric(gsub(",", "",dfTable1D["Num","Black"])) + as.numeric(gsub(",", "", dfTable1D["Num","Hispanic"]))), big.mark=",", scientific=FALSE)` combined total of Black and Hispanic American professionals employed by U.S. tech.  (See Tables 1D and 1E.)
+* The `r prettyNum(dfTable1E["Num","Asian"], big.mark=",", scientific=FALSE)` professionals imported from Asia in 2015 was substantially larger than the `r prettyNum(dfTable1D["Num","Black"], big.mark=",", scientific=FALSE)` Black American or the  `r prettyNum(dfTable1D["Num","Hispanic"], big.mark=",", scientific=FALSE)` Hispanic American professionals employed by U.S. tech in 2015. Indeed,  the `r prettyNum(dfTable1E[1,"Total"], big.mark=",", scientific=FALSE)` combined total of foreign professionals imported from Asia and from elsewhere in 2015 was almost as large as the  `r prettyNum((as.numeric(gsub(",", "",dfTable1D["Num","Black"])) + as.numeric(gsub(",", "", dfTable1D["Num","Hispanic"]))), big.mark=",", scientific=FALSE)` combined total of Black and Hispanic American professionals employed by U.S. tech.  (See Tables 1D and 1E.)
 
 * The best states for Black American tech professionals were HBCU states: `r dfTable8B[1, 1]`, `r dfTable8B[2, 1]`, `r dfTable8B[3, 1]`, `r dfTable8B[4, 1]` and `r dfTable8B[5, 1]`. (See Table 8B)   
 
@@ -139,7 +139,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
 
 <i>Answer 1E</i> ...  The total number of tech workers imported from Asia and from countries outside of Asia shown in Table 1E (below) will recur in subsequent tables.
   
-<b>Table 1E -- Asian and Non-Asian Components of the U.S. Tech Sector in 2015</b> 
+<b>Table 1E -- Foreign Asian and Non-Asian Components of the U.S. Tech Sector in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable1E, big.mark=","), row.names=TRUE, quote = FALSE)
 ```
