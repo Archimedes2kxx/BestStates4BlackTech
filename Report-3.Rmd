@@ -1,5 +1,5 @@
 ---
-title: "Best States for American Black, Hispanic, Asian, and Female Tech -- Version 0.99G"
+title: "Best States for American Black, Hispanic, Asian, and Female Tech -- Version 0.99H"
 author: "Roy L Beasley, PhD -- DLL Editor"
 
 output: 
@@ -56,7 +56,7 @@ otherPerForeignIncrease <- round(100.0 - caPerForeignIncrease, digits=1)
 ## Overview   
 <i>Please note that all of the figures in this overview and in the subsequent report are estimates based on U.S. Census survey samples. So all figures should be read as "approximately" even when the word "approximately" does not appear. </i>  
 
-* In 2015 there were approximately `r prettyNum(dfTable1A["Num","Total"], big.mark=",", scientific=FALSE)` professionals in the entire U.S. workforce. Of these approximately  `r prettyNum(dfTable1A["Num","Citizens"], big.mark=",", scientific=FALSE)` were Americans; `r prettyNum(dfTable1A["Num","Foreign"], big.mark=",", scientific=FALSE)` were foreign professionals  (See Table 1A)
+* In 2015 there were approximately `r prettyNum(dfTable1A["Num","Total"], big.mark=",", scientific=FALSE)` workers in the entire U.S. workforce. Of these approximately  `r prettyNum(dfTable1A["Num","Citizens"], big.mark=",", scientific=FALSE)` were Americans; `r prettyNum(dfTable1A["Num","Foreign"], big.mark=",", scientific=FALSE)` were foreign professionals  (See Table 1A)
 
 * In 2015 there were approximately `r prettyNum(dfTable1D["Num","White"], big.mark=",", scientific=FALSE)` White Americans in U.S. tech; `r prettyNum(dfTable1D["Num","Black"], big.mark=",", scientific=FALSE)` Black Americans; `r prettyNum(dfTable1D["Num","Hispanic"], big.mark=",", scientific=FALSE)` Hispanic Americans; `r prettyNum(dfTable1D["Num","Asian"], big.mark=",", scientific=FALSE)` Asian Americans; and `r prettyNum(dfTable2B["Num","Female"], big.mark=",", scientific=FALSE)` female Americans. (See Table 1D and Table 2B.)   
 
@@ -70,7 +70,7 @@ otherPerForeignIncrease <- round(100.0 - caPerForeignIncrease, digits=1)
 
 * The number of tech jobs held by American females grew by  `r perFemIncrease` percent between 2010 and 2015, i.e., from  `r prettyNum(dfProfileZ.2010[1,"Female"], big.mark=",", scientific=FALSE)`, to `r prettyNum(dfTable3Z[1,"Fem"], big.mark=",", scientific=FALSE)`. However American females occupied a smaller percentage of the tech jobs held by American tech professionals in 2015 than they did in 2010, i.e., `r prettyNum(dfTable3ZZ[1,"perF10"], big.mark=",", scientific=FALSE)` percent in 2010 compared to only  `r prettyNum(dfTable3Z[1,"perF15"], big.mark=",", scientific=FALSE)` percent in 2015. (See Table 3Z and 3ZZ)
 
-* The number of tech jobs held by foreign professionals in U.S. tech grew by  `r prettyNum(dfTable3EE[1,"perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015, i.e., from  `r prettyNum(dfTable3EE[1,"Tech10"], big.mark=",", scientific=FALSE)` to `r prettyNum(dfTable3EE[1,"Tech15"], big.mark=",", scientific=FALSE)`. (See Table 3EE.)
+* The number of tech jobs held by foreign professionals in U.S. tech grew by  `r prettyNum(dfTable3EE[1,"Change"], big.mark=",", scientific=FALSE)` or `r prettyNum(dfTable3EE[1,"perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015, i.e., from  `r prettyNum(dfTable3EE[1,"Tech10"], big.mark=",", scientific=FALSE)` to `r prettyNum(dfTable3EE[1,"Tech15"], big.mark=",", scientific=FALSE)`. (See Table 3EE.)
 
 * The increase in foreign tech professionals was highest in California. The number of foreign tech professionals working in California increased by `r prettyNum(dfTable3FF[1,"perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015, i.e. from  `r prettyNum(dfTable3FF[1,"Tech10"], big.mark=",", scientific=FALSE)` to  `r prettyNum(dfTable3FF[1,"Tech15"], big.mark=",", scientific=FALSE)`. In other words, California accounted for `r caPerForeignIncrease` percent of the  `r prettyNum(dfTable3EE[1,"Change"], big.mark=",", scientific=FALSE)` increase in the number of foreign professionals working in U.S. tech during that time frame. The remaining `r otherPerForeignIncrease` percent was spread across the other 49 states and the District of Columbia. (See Tables 3EE and 3FF)
 
@@ -92,7 +92,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
 
 <i>Question 1A</i> -- How many American workers were in the U.S. workforce in 2015? How many foreign workers? (<i>Note: the workforce contained persons 16 and over who held a job or were temporarily unemployed.</i>)
 
-<i>Answer 1A</i> ... blah blah See Table 1A
+<i>Answer 1A</i> The answers to this question are shown in Table 1A (below). Many of the tables in this section have the same format. The top row, labelled "Num" as an abbreviation for "Number", shows how many workers fall into the category of the heading of the column: American "Citizen", "Foreign" worker, and their combined "Total". The second row, labelled "Per" as short for "Percentage", shows the percentge of the "Total" for each of the numbers in the first row.
 
 <b>Table 1A -- American and Foreign Components of the U.S. Workforce in the 50 states plus the District of Columbia in 2015</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -105,6 +105,8 @@ Brief answers to the first three sets of questions provide a broad statistical f
 
 <i>Answer 1B</i> ... In 2015, as shown in Table 1B (below), there were approximately `r prettyNum(dfTable1B["Num","ALL"], big.mark=",", scientific=FALSE)` citizens in the workforce, a/k/a "labor force", in the 50 states plus DC. in 2015? The largest of the four racial/ethnic groups discussed in this report was White American (`r prettyNum(dfTable1B["Num","White"], big.mark=",", scientific=FALSE)`); the smallest was Asian American (`r prettyNum(dfTable1B["Num","Asian"], big.mark=",", scientific=FALSE)`). Hispanic American, the largest minority (`r prettyNum(dfTable1B["Num","Hispanic"], big.mark=",", scientific=FALSE)`), was substantially larger than Black American (`r prettyNum(dfTable1B["Num","Black"], big.mark=",", scientific=FALSE)`).
 
+<i>Note that the last column "OTHERS" includes workers who described themselves as members of another racial broup not included in the previous categories, or as biracial or multiracial. Also note that "White", "Black", and "Asian" include workers who described themselves as "White, but not Hispanic", "Black, but not Hispnic", and "Asian, but not Hispanic".</i>
+
 <b>Table 1B -- American Racial/Ethnic Groups in the U.S. Workforce in the 50 states plus the District of Columbia in 2015 </b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable1B, big.mark=","), row.names=TRUE)
@@ -114,7 +116,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
  
 <i>Question 1C</i> -- How many U.S. citizens and how many foreign employees worked in the the tech sectors of the 50 states plus the District of Columbia  in 2015
 
-<i>Answer 1C</i> ... Most of the tables in this report will deal with American techs or foreign techs, but not both. Therefore the totals in the second and third columns of this small table will recur in many subsequent tables.  
+<i>Answer 1C</i> ... Most of the tables in this report will deal with American techs or foreign techs, but not both. Therefore the counts in the second and third columns of this small table will recur in many subsequent tables.  
 
 <b>Table 1C -- American and Foreign Components of the U.S. Tech Sector in 2015</b>    
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -124,7 +126,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
  
 <i>Question 1D</i> -- How many White, Black, Asian, and Hispanic Americans were in the U.S. tech sector of the 50 states plus the District of Columbia in 2015? 
 
-<i>Answer 1D</i> ... As shown in Table 1B (below), there were approximately `r prettyNum(dfTable1D["Num","ALL"], big.mark=",", scientific=FALSE)` American tech professionals in the U.S. in 2015.  White Americans were a substantial majority (`r prettyNum(dfTable1D["Num","White"], big.mark=",", scientific=FALSE)`) of the tech sector (`r prettyNum(dfTable1D["Per","White"], big.mark=",", scientific=FALSE)`%); Asians placed second (`r prettyNum(dfTable1D["Num","Asian"], big.mark=",", scientific=FALSE)`); Blacks showed third (`r prettyNum(dfTable1D["Num","Black"], big.mark=",", scientific=FALSE)`); and Hispanic Americans came in fourth  (`r prettyNum(dfTable1D["Num","Hispanic"], big.mark=",", scientific=FALSE)`)
+<i>Answer 1D</i> ... As shown in Table 1B (below), there were approximately `r prettyNum(dfTable1D["Num","Total"], big.mark=",", scientific=FALSE)` American tech professionals in the U.S. in 2015.  White Americans were a substantial majority (`r prettyNum(dfTable1D["Num","White"], big.mark=",", scientific=FALSE)`) of the tech sector (`r prettyNum(dfTable1D["Per","White"], big.mark=",", scientific=FALSE)`%); Asians placed second (`r prettyNum(dfTable1D["Num","Asian"], big.mark=",", scientific=FALSE)`); Blacks showed third (`r prettyNum(dfTable1D["Num","Black"], big.mark=",", scientific=FALSE)`); and Hispanic Americans came in fourth  (`r prettyNum(dfTable1D["Num","Hispanic"], big.mark=",", scientific=FALSE)`)
 
 <b>Table 1D -- American Racial/Ethnic Groups in the U.S. Tech Sector in 2015</b>   
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -135,7 +137,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
 
 <i>Question 1E</i> -- How many Asian and non-Asian foreign employees were in U.S. tech in the 50 states plus the District of Columbia in 2015? 
 
-<i>Answer 1E</i> ...  blah blah Table Table 1E  
+<i>Answer 1E</i> ...  The total number of tech workers imported from Asia and from countries outside of Asia shown in Table 1E (below) will recur in subsequent tables.
   
 <b>Table 1E -- Asian and Non-Asian Components of the U.S. Tech Sector in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -165,16 +167,33 @@ Answer 2B ... As shown in Table 2B (below), the ratio of American male to Americ
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>       
 
-
 #### Question 3 -- How did the racial, ethnic, foreign, and male/female shares of the job categories in U.S. tech change between 2010 and 2015?  
-<i>Note: The seven tables that provide the answers to the third set of questions display profiles of the various groups considered in this report ... </i>  
 
-For the purposes of this report, "information technology" was defined as the thirteen standard occupation categories (SOC) that appear in the first column of the following tables. Twelve of these categories related to software, e.g., Software Developers, Computer Programmers, and Database Administrators; only one relates to hardware, i.e., Computer Hardware Engineers.  
+The seven pairs of tables in this section display profiles of the various groups considered in this report. 
 
+For the purposes of this report, "information technology" was defined as the thirteen standard occupation categories (SOC) that appear in the first column of the following tables. Twelve categories related to software, e.g., Software Developers, Computer Programmers, and Database Administrators; only one related to hardware, i.e., Computer Hardware Engineers.     
 
-<i>Question 3</i> -- How many American male vs. female techs were in each category in 2010 and 2015 in the 50 states and the District of Columbia?
+The first column of each table contains a list of job categories. Some categories were abbreviated to enable the rows of the table to be short enough to appear on the same line. Abbreviations include "Comp" for "Computer"; "Info" for "Information"; and "Net" for "Network". Column headings were also abbreviated as follows:   
 
- <i>Answer 3</i> ... blah, blah, blah
+* <b>Tech10</b> ... the number of tech workers in each job category in 2010   
+
+* <b>Tech15</b> ... the number of tech workers in each job category in 2015   
+
+* <b>perTS</b> ... the "Percentage of Tech Share", which shows the percentage of the total number of tech workers that were employed in each job category. For example, the xxx workers in "Software Development" represented xxx percent of the xxx total number of tech workers in 2015. The xxx workers "Computer Programmers" were xxx percent of the total XXX tech workers.   
+
+* <b>Fem</b> ... the number of "Female" tech workers". The number of males can be calculated by substracting the female workers from the total number of workers in each category. For example, there were xxx software developers in 2015 of which xxx were female. So the number of male software developers was xxx - xxx = xxx. 
+
+* <b>perF10</b> ... the "Percent Female in 2010" displays the percent of jobs in each category that were held by female techs in 2010
+
+* <b>perF15</b> ... the "Percent Female in 2015" displays the percent of jobs in each category that were held by female techs in 2015.
+
+* <b>Change</b> ... the difference between the number of workers in each job category in 2010 and the number in 2015.   
+
+* <b>perCh</b> ... the change from 2010 to 2015 as a percentage of the jobs in 2010.  
+
+<i>Question 3.0</i> -- How many American male vs. female techs were in each category in 2010 and 2015 in the 50 states and the District of Columbia?
+
+ <i>Answer 3.0</i> ... As per its title, Tables 3Z and 3ZZ (below) only contains data about tech workers who were American citizens; data about foreign workers will appear in Table 3E and 3F (subsequent.)
  
  <b>Table 3Z -- American Male/Female Composition of U.S. Tech in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -189,7 +208,7 @@ For the purposes of this report, "information technology" was defined as the thi
 
 <i>Question 3A</i> -- How many White American male vs. female techs were in each category in 2010 and 2015 in the 50 states and the District of Columbia?
 
- <i>Answer 3A</i> ... blah, blah, blah
+ <i>Answer 3A</i> ... Data for White American techs in 2015 is in Table 3A; data that compares 2010 to 2015 is in Table 3AA.
  
  <b>Table 3A -- White American Male/Female Composition of U.S. Tech in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -204,7 +223,7 @@ For the purposes of this report, "information technology" was defined as the thi
 
 <i>Question 3B</i> -- How many Black American male vs. female techs were in each category in 2010 and 2015 in the 50 states and the District of Columbia?  
 
-<i>Answer 3B</i> ... blah, blah, blah
+ <i>Answer 3B</i> ... Data for Black American techs in 2015 is in Table 3B; data that compares 2010 to 2015 is in Table 3BB.
 
  <b>Table 3B -- Black American Male/Female Composition of U.S. Tech in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -219,6 +238,8 @@ For the purposes of this report, "information technology" was defined as the thi
 
 <i>Question 3C</i> -- How many Asian American male vs. female techs were in each category in 2010 and 2015 in the 50 states and the District of Columbia?
 
+ <i>Answer 3C</i> ... Data for Asian American techs in 2015 is in Table 3C; data that compares 2010 to 2015 is in Table 3CC.
+
  <b>Table 3C -- Asian American Male/Female Composition of U.S. Tech in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3C, big.mark=","), row.names=FALSE, quote=FALSE)
@@ -231,8 +252,7 @@ For the purposes of this report, "information technology" was defined as the thi
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
 <i>Question 3D</i> -- How many Hispanic American male vs. female techs were in each category in 2010 and 2015 in the 50 states and the District of Columbia?     
-
-<i>Answer 3D</i> ... blah, blah, blah
+ <i>Answer 3D</i> ... Data for Hispanic American techs in 2015 is in Table 3D; data that compares 2010 to 2015 is in Table 3DD.
 
  <b>Table 3D -- Hispanic American Male/Female Composition of U.S. Tech in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -247,7 +267,7 @@ For the purposes of this report, "information technology" was defined as the thi
 
 <i>Question 3E</i> -- How many foreign male vs. female tech were in each category in 2010 and 2015 in the 50 states and the District of Columbia? 
 
-<i>Answer 3E</i> ... blah, blah, blah
+ <i>Answer 3A</i> ... Data for foreign tech workers in 2015 is in Table 3A; data that compares 2010 to 2015 is in Table 3EE.
 
  <b>Table 3E -- Foreign Male/Female Composition of U.S. Tech in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -264,7 +284,11 @@ For the purposes of this report, "information technology" was defined as the thi
 
 <i>Question 3F</i> -- How many foreign male vs. female tech were in each category in 2010 and 2015 in California? 
 
- <i>Answer 3F</i> ... blah, blah, blah
+  <i>Answer 3F</i> ... Data for foreign techs working in California in 2015 is in Table 3F; data that compares 2010 employment to 2015 is in Table 3FF. Note that the huge increases in the estimated number of foreign techs in all job categories were reflected in the four digit percentage increases shown in the "perCh" column. The "Inf" entries (abbreviations for "Infinite") merely indicates that there were zero foreign techs in those categories in 2010.   
+
+* The number of foreign tech professionals working in California increased by `r prettyNum(dfTable3FF[1,"perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015, i.e. from  `r prettyNum(dfTable3FF[1,"Tech10"], big.mark=",", scientific=FALSE)` to  `r prettyNum(dfTable3FF[1,"Tech15"], big.mark=",", scientific=FALSE)`.       
+
+*  California accounted for `r caPerForeignIncrease` percent of the  `r prettyNum(dfTable3EE[1,"Change"], big.mark=",", scientific=FALSE)` increase in the number of foreign professionals working in U.S. tech during that time frame. The remaining `r otherPerForeignIncrease` percent was spread across the other 49 states and the District of Columbia.
  
  <b>Table 3F -- California Foreign Male/Female Composition of U.S. Tech in 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}

@@ -47,14 +47,14 @@
     
 ### Table 1B. White, Black, Asian, Hispanic American Components of U.S. Population in 2014
     dfTable1Bpop <- dfStatesPop3[1,2:7]
-    colNames <- c("ALL", "White", "Black", "Asian", "Hispanic", "OTHERS")
+    colNames <- c("Total", "White", "Black", "Asian", "Hispanic", "OTHERS")
     colnames(dfTable1Bpop) <- colNames
     dfTable1Bpop <- prettyNum(dfTable1Bpop, big.mark = ",") 
     ### dfTable1Bpop
     
     dfTable1Bper <- dfStatesPop3[1,c(2,11:15)]
     dfTable1Bper[1,1] <- 100 ### 100 percent for ALL
-    colNames_per <- c("ALL", "perWhite", "perBlack", "perAsian", "perHispanic", "perOTHERS")
+    colNames_per <- c("Total", "perWhite", "perBlack", "perAsian", "perHispanic", "perOTHERS")
     colnames(dfTable1Bper) <- colNames_per
     dfTable1Bper <- as.character(round(dfTable1Bper, digits=1))
     
@@ -98,7 +98,7 @@
     print(dfTable1D, quote=FALSE)
 
 ### Table 1E. Foreign professionals in U.S. Tech
-    totForeignTech <-dfForeignRaceSexCountAndShares["ALL STATES", "Totals"]
+    totForeignTech <-dfForeignRaceSexCountAndShares["ALL STATES", "Total"]
     totAsianTech <- dfForeignRaceSexCountAndShares["ALL STATES", "Asian"]
     totNonAsianTech <- totForeignTech - totAsianTech
     
@@ -120,7 +120,7 @@
     dfTable2Apop$Male <- dfTable2Apop$Totals - dfTable2Apop$Female
     dfTable2Apop <- dfTable2Apop[, c(1, 5, 2:4)]
     
-    colNames <- c("ALL", "Male", "Female", "FemAsian", "FemNonAsian")
+    colNames <- c("Total", "Male", "Female", "FemAsian", "FemNonAsian")
     colnames(dfTable2Apop) <- colNames
     dfTable2Apop <- prettyNum(dfTable2Apop, big.mark = ",")
     ### dfTable2Apop
@@ -130,7 +130,7 @@
     dfTable2Aper$perMale <- round(100 - dfTable2Aper$perFemale, digits=1)
     dfTable2Aper <- dfTable2Aper[, c(1,5, 2:4)]
     
-    colnames <- c("ALL", "Male", "Female", "FemAsian", "FemNonAsian")
+    colnames <- c("Total", "Male", "Female", "FemAsian", "FemNonAsian")
     colnames(dfTable2Aper) <- colNames
     dfTable2A <- data.frame(rbind(dfTable2Apop, dfTable2Aper))
     rownames(dfTable2A) <- c("Num", "Per")
@@ -141,7 +141,7 @@
     dfTable2Bpop$Male <- dfTable2Bpop$Totals - dfTable2Bpop$Female
     dfTable2Bpop <- dfTable2Bpop[,c(1, 5, 2:4)] ### place males col 2
     
-    colnames <- c("ALL", "Male", "Female", "FemAsian", "FemNonAsian")
+    colnames <- c("Total", "Male", "Female", "FemAsian", "FemNonAsian")
     colnames(dfTable2Bpop) <- colnames
     dfTable2Bpop <- prettyNum(dfTable2Bpop, big.mark = ",") 
 
