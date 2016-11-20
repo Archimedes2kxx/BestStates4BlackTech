@@ -96,7 +96,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
 
 <b>Table 1A -- American and Foreign Components of the U.S. Workforce in the 50 states plus the District of Columbia in 2015</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable1A, big.mark=","), quote=FALSE, row.names=TRUE)
+   print(dfTable1A, quote=FALSE, row.names=TRUE)
 ```
      
  <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>      
@@ -109,7 +109,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
 
 <b>Table 1B -- American Racial/Ethnic Groups in the U.S. Workforce in the 50 states plus the District of Columbia in 2015 </b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable1B, big.mark=","), row.names=TRUE, quote=FALSE)
+   print(dfTable1B, row.names=TRUE, quote=FALSE)
 ```
       
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>      
@@ -120,7 +120,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
 
 <b>Table 1C -- American and Foreign Components of the U.S. Tech Sector in 2015</b>    
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable1C, big.mark=","), row.names=TRUE, quote=FALSE)
+   print(dfTable1C, row.names=TRUE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>      
  
@@ -130,7 +130,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
 
 <b>Table 1D -- American Racial/Ethnic Groups in the U.S. Tech Sector in 2015</b>   
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-    print(format(dfTable1D, big.mark=","), row.names=TRUE, quote=FALSE)
+    print(dfTable1D, row.names=TRUE, quote=FALSE)
 ```
   
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>      
@@ -141,7 +141,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
   
 <b>Table 1E -- Foreign Asian and Non-Asian Components of the U.S. Tech Sector in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable1E, big.mark=","), row.names=TRUE, quote = FALSE)
+   print(dfTable1E, row.names=TRUE, quote = FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 

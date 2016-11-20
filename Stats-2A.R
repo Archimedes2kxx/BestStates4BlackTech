@@ -127,12 +127,12 @@
     dfTable3ZZ
     
  ### Better approach, wrap this stuff in  functions  
-    df1 <- dfProfileCitizens.2010
-    df2 <- dfProfileCitizens
+   ### df1 <- dfProfileCitizens.2010
+ ###    df2 <- dfProfileCitizens
     
-    zProfiles <- createListProfiles(df1, df2) 
-    (dfTable3Zz <- zProfiles[[1]])
-    (dfTable3ZZz <- zProfiles[[2]])
+   ### zProfiles <- createListProfiles(df1, df2) 
+   ### (dfTable3Zz <- zProfiles[[1]])
+   ### (dfTable3ZZz <- zProfiles[[2]])
     
     
     
@@ -205,8 +205,8 @@
 ####################################
 ####################################
 ### Table 3E -- Profile of Foreign Techs 2015
-    dfProfileE <- createProfile(dfProfileForeigners, group="")
-    dfProfileE.2010 <- createProfile(dfProfileForeigners.2010, group="")
+    dfProfileE <- createProfile(dfProfileForeigners, group=NULL)
+    dfProfileE.2010 <- createProfile(dfProfileForeigners.2010, group=NULL)
     
     dfTable3E <- subset(dfProfileE, select=-c(Male, perMale))
     colnames(dfTable3E) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
@@ -221,8 +221,8 @@
 ####################################
 ### Table 3FL -- Profile of Foreign Techs in Florida in 2015
     print("Florida ... Florida Florida")
-    dfProfileFL <- createProfile(dfProfileForeignersState, group="", state="Florida")
-    dfProfileFL.2010 <- createProfile(dfProfileForeignersState.2010, group="", state="Florida")
+    dfProfileFL <- createProfile(dfProfileForeignersState, group=NULL, state="Florida")
+    dfProfileFL.2010 <- createProfile(dfProfileForeignersState.2010, group=NULL, state="Florida")
     
     dfTable3FL <- subset(dfProfileFL, select=-c(Male, perMale))
     colnames(dfTable3FL) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
@@ -239,8 +239,8 @@ print("END OF Florida ... Florida Florida")
 ###############################################    
 ### Table 3F -- Profile of Foreign Techs in California in 2015
 print("California ... California California")
-    dfProfileF <- createProfile(dfProfileForeignersState, group="", state="California")
-    dfProfileF.2010 <- createProfile(dfProfileForeignersState.2010, group="", state="California")
+    dfProfileF <- createProfile(dfProfileForeignersState, group=NULL, state="California")
+    dfProfileF.2010 <- createProfile(dfProfileForeignersState.2010, group=NULL, state="California")
     ### dfProfileF.2010
     
     dfTable3F <- subset(dfProfileF, select=-c(Male, perMale))

@@ -1,8 +1,8 @@
 
-### Functions used by other files    
+### Functions used by scripts inData and Stat files   
 
 ##################################
-### Data-1A & Data-1B
+### Data-1
 
 readCodeBooks <- function() {
     ### Read manually edited codebooks 
@@ -276,18 +276,41 @@ createOccupationStateRaceSexProfiles <- function(df){
 ##################################
 ### Stats-2A
 
-createProfile <- function(df, group="", state="") {
-### Input data frame = Occupation Race Male Female for the specified group   
+makeNumPerTable <- function(df, Total=NULL){
+### Function expects a data frame with one row and named columns
+### Calculates total; then computes percentages of Total for each value
+### BInds percentages as second row, then adds rownames "Num" and "Per"
+    
+    names <- colnames(df)
+    if(is.null(Total)) { ### Make total if user does not provide
+        Total <- as.data.frame(sum(df))
+        df1 <- cbind(Total, df)
+        colnames(df1) <- c("Total", unlist(names))
+    } else {
+        df1 <- df
+    }
+    
+    perRow <- round(100 * df1[1,]/df1[1,1], digits=1)
+    df2 <- (as.character(perRow))
+
+    df1 <- prettyNum(df1, big.mark = ",")
+    df <- rbind(df1, df2)
+    rownames(df) <- c("Num", "Per")
+    
+    return(df)
+}
+
+createProfile <- function(df, group=NULL, state=NULL) {
+### Input data frame = Occupation State Race Male Female for the specified group   
 ### Output data frame =  Occupation, Tech15, perTS, Fem, Per15 for the specified group
 
-print(paste("The state = ", state))
 #1. Select the group's records
-    if (group != "") {
+    if (!is.null(group)) {
         df <- subset(df, Race == group)
     }
     
 #2. Select data columns
-    if (state!="") {
+    if (!is.null(state)) {
         df <- subset(df, State==state, select=c("Occupation", "Male", "Female"))
         df$State <- NULL 
         
@@ -300,7 +323,6 @@ print(paste("The state = ", state))
     df <- subset(df, select=-c(fill, drop))
 
     df <- addTotCol(df, 2:3, "Total")
-print(head(df))
     df <- addPerCols(df, 2, 3:4)
     df <- addTotalsRow(df, 2, 3:4, 5:6, "All Occupations")
     df <- addTotColSharePerRowCol(df, 2)
@@ -339,6 +361,27 @@ createCompareProfile <- function(df1, df2) {
     return(dfCompProfile)
 }
 
+createListProfiles <- function(df1, df2, group=NULL, state=NULL) {
+### df1 is data frame that contains the early year, df2 contains the second year
+### Returns list of data frames, 1 = display Table for year 1, 2 = compare table for years 1 and 2, full data frame for year 1, and full data frame for year 2
+    
+    ##@ print(paste("Group =", group))
+    ### print(is.null(group))
+    dfFullTab1 <- createProfile(df1, group=group, state=state)
+    dfFullTab2 <- createProfile(df2, group=group, state=state)
+    
+    dfDisplayTab2 <- subset(dfFullTab2, select=-c(Male, perMale))
+    colnames(dfDisplayTab2) <- c("Occupation", "perTS", "Tech15", "Fem", "perF15")
+    
+    ### Compare year1 to year2
+    dfCompTab <- createCompareProfile(dfFullTab1, dfFullTab2)
+    colnames(dfCompTab) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
+    listProfiles <-list(dfDisplayTab2, dfCompTab, dfFullTab1, dfFullTab2) 
+    
+    return(listProfiles)
+}
+
+############################
 ############################
 ### Stats2B
 
@@ -518,6 +561,7 @@ plotEmpVsPop <- function(df, Group, lmGroup, maxPlotPop, maxPlotTech, alpha){
 }
 
 makeSummary <- function(rList, beta){
+### Creates Table 5 summary of Tech, perTech, Pop, perPop, Parity, betas for each state
     rows <- length(rList)
     cols <- dim(rList[[1]])[2] ### use cols in first df in list
     mat <- matrix(nrow = rows, ncol = cols-3)
@@ -586,5 +630,5 @@ makeTable8 <- function(dfIn, Group, letter){
 }
 
 ###################################
-save(readCodeBooks, addTotCol, addPerCols, addTotColSharePerRowCol, addTotalsRow, addMissingStatesToTable, createOccupationRaceSexProfiles, createOccupationStateRaceSexProfiles, createPopRaceAndShares, createProfile, createCompareProfile, makeSummary, plotEmpVsPop, makeLM, makeTechPopMap, theme_clean, makeForeignTechTable, makeForeignNonAsianTechTable, makeTechPopTable, makeParity, makeTable7, makeTable8, file="functions-0.rda")
+save(readCodeBooks, addTotCol, addPerCols, addTotColSharePerRowCol, addTotalsRow, addMissingStatesToTable, createOccupationRaceSexProfiles, createOccupationStateRaceSexProfiles, createPopRaceAndShares, makeNumPerTable, createProfile, createCompareProfile, createListProfiles, makeSummary, plotEmpVsPop, makeLM, makeTechPopMap, theme_clean, makeForeignTechTable, makeForeignNonAsianTechTable, makeTechPopTable, makeParity, makeTable7, makeTable8, file="functions-0.rda")
 
