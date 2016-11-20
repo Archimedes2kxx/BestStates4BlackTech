@@ -26,143 +26,96 @@
 
 ######################
 ### Table 1A. Total U.S. workforce, citizens, foreign workers in 2010
-    
-    ### head(dfStatesPop3Foreign)
     totCitizens <- dfStatesPop3["ALL STATES","Totals"]
     totForeign <- dfStatesPop3Foreign["ALL STATES","Totals"]
-    totWorkforce <- totCitizens + totForeign
-    perCit <- round(100*totCitizens/totWorkforce, digits=1)
-    perFor <- round(100*totForeign/totWorkforce, digits=1)
-    perTot <- 100.0
-
-    df1 <- data.frame(totWorkforce, totCitizens, totForeign)
-    df1 <- prettyNum(df1, big.mark = ",") 
-    df2 <- as.character(data.frame(perTot, perCit, perFor))
-    dfTable1A <- rbind(df1, df2)
+    rowDf <- data.frame(Citizens=totCitizens, Foreign=totForeign)
     
-    colnames(dfTable1A) <- c("Total", "Citizens", "Foreign")
-    rownames(dfTable1A) <- c("Num", "Per")
+    dfTable1A<- makeNumPerTable(rowDf)
     print(dfTable1A, quote=FALSE)
-   
-    
+
+######################    
 ### Table 1B. White, Black, Asian, Hispanic American Components of U.S. Population in 2014
-    dfTable1Bpop <- dfStatesPop3[1,2:7]
-    colNames <- c("Total", "White", "Black", "Asian", "Hispanic", "OTHERS")
-    colnames(dfTable1Bpop) <- colNames
-    dfTable1Bpop <- prettyNum(dfTable1Bpop, big.mark = ",") 
-    ### dfTable1Bpop
+    rowDf <- dfStatesPop3[1,2:7]
+    colnames(rowDf) <- c("Total", "White", "Black", "Asian", "Hispanic", "OTHERS")
+    Total <- rowDf[1,1]
     
-    dfTable1Bper <- dfStatesPop3[1,c(2,11:15)]
-    dfTable1Bper[1,1] <- 100 ### 100 percent for ALL
-    colNames_per <- c("Total", "perWhite", "perBlack", "perAsian", "perHispanic", "perOTHERS")
-    colnames(dfTable1Bper) <- colNames_per
-    dfTable1Bper <- as.character(round(dfTable1Bper, digits=1))
-    
-    dfTable1B <- data.frame(rbind(dfTable1Bpop, dfTable1Bper))
-    rownames(dfTable1B) <- c("Num", "Per")
+    dfTable1B<- makeNumPerTable(rowDf, Total)
     print(dfTable1B, quote=FALSE)
 
+######################      
 ### Table 1C U.S. Tech Sector
-    (totCitTech <- dfRaceSexCountAndShares["ALL STATES", "Totals"])
-    (totForTech <- dfForeignRaceSexCountAndShares["ALL STATES", "Totals"])
-    totTech <- totCitTech + totForTech
-    perCitTech <- round(100 * totCitTech/totTech, digits=1)
-    perForTech <- round(100 * totForTech/totTech, digits=1)
-    perTotTech <- 100.0
+    totCitTech <- as.numeric(dfRaceSexCountAndShares["ALL STATES", "Totals"])
+    totForTech <- as.numeric(dfForeignRaceSexCountAndShares["ALL STATES", "Totals"])
+    rowDf <- data.frame(Citizens=totCitTech, Foreign=totForTech)
     
-    df1 <- data.frame(totTech, totCitTech, totForTech)
-    df1 <- prettyNum(df1, big.mark = ",") 
-    df2 <- as.character(data.frame(perTotTech, perCitTech, perForTech))
-    dfTable1C <- rbind(df1, df2)
-    
-    colnames(dfTable1C) <- c("Total", "Citizens", "Foreign")
-    rownames(dfTable1C) <- c("Num", "Per")
-    print(dfTable1C, quote=FALSE)
-    
+    dfTable1C<- makeNumPerTable(rowDf)
+    print(dfTable1C, quote=FALSE)    
+
+######################      
 ### Table 1D. White, Black, Asian, Hispanic Components of U.S. Tech Sector in 2014
-    dfTable1Dtech <- dfRaceSexCountAndShares[1,2:7]
-    colnames(dfTable1Dtech) <- colNames
-    dfTable1Dtech <- prettyNum(dfTable1Dtech, big.mark = ",") 
-    ### print(dfTable1Dtech, quote=FALSE)
-
-### Percentages of total, white, black, asian, hispanic, and OTHERS
-    dfTable1Dper <- dfRaceSexCountAndShares[1,c(2,11:15)]
-    dfTable1Dper[1,1] <- 100 ### 100 percent for ALL
-    colNames_per <- c("ALL", "perWhite", "perBlack", "perAsian", "perHispanic", "perOTHERS")
-    colnames(dfTable1Dper) <- colNames_per
-    dfTable1Dper <- as.character(round(dfTable1Dper, digits=1))
-    #### dfTable1Dper
+    rowDf <- dfRaceSexCountAndShares[1,2:7]
+    colnames(rowDf) <- c("Total", "White", "Black", "Asian", "Hispanic", "OTHERS")
+    Total <- rowDf[1,1]
     
-    dfTable1D <- data.frame(rbind(dfTable1Dtech,dfTable1Dper))
-    rownames(dfTable1D) <- c("Num", "Per")
-    print(dfTable1D, quote=FALSE)
+    dfTable1D<- makeNumPerTable(rowDf, Total)
+    print(dfTable1D, quote=FALSE)    
 
+######################      
 ### Table 1E. Foreign professionals in U.S. Tech
     totForeignTech <-dfForeignRaceSexCountAndShares["ALL STATES", "Totals"]
     totAsianTech <- dfForeignRaceSexCountAndShares["ALL STATES", "Asian"]
     totNonAsianTech <- totForeignTech - totAsianTech
     
-    perAsianTech <- round(100 * totAsianTech/totForeignTech, digits=1)
-    perNonAsianTech <- round(100 * totNonAsianTech/totForeignTech, digits=1)
-    perTotForeignTech <- 100.0
+    rowDf <- data.frame(Total=totForeignTech, Asian=totAsianTech, `NonAsian`=totNonAsianTech)
+    dfTable1E<- makeNumPerTable(rowDf, Total)
+    print(dfTable1E, quote=FALSE) 
     
-    df1 <- data.frame(totForeignTech, totAsianTech, totNonAsianTech)
-    df1 <- prettyNum(df1, big.mark = ",") 
-    df2 <- as.character(data.frame(perTotForeignTech, perAsianTech, perNonAsianTech))
-    dfTable1E <- rbind(df1, df2)
-    
-    colnames(dfTable1E) <- c("Total", "Asian", "Non-Asian")
-    rownames(dfTable1E) <- c("Num", "Per")
-    print(dfTable1E, quote=FALSE)   
-   
+##########################
+##########################
 ### Table 2A. Female Components of U.S. U.S. Population  in 2014
-    (dfTable2Apop <- dfStatesPop3[1,c(2,8:10)])
-    dfTable2Apop$Male <- dfTable2Apop$Totals - dfTable2Apop$Female
-    dfTable2Apop <- dfTable2Apop[, c(1, 5, 2:4)]
+    totPop <- dfStatesPop3[1, "Totals"]
+    totFemale <- dfStatesPop3[1, "Female"]
+    totMale <- totPop - totFemale
     
-    colNames <- c("Total", "Male", "Female", "FemAsian", "FemNonAsian")
-    colnames(dfTable2Apop) <- colNames
-    dfTable2Apop <- prettyNum(dfTable2Apop, big.mark = ",")
-    ### dfTable2Apop
+    rowDf <- data.frame(Total=totPop, Male=totMale, Female=totFemale)
+    dfTable2Aleft <- makeNumPerTable(rowDf, Total)
+    ### print(dfTable2Aleft, quote=FALSE)
     
-    dfTable2Aper <- dfStatesPop3[1,c(2,16:18)]
-    dfTable2Aper[1,1] <- 100.0 ### 100 percent for ALL
-    dfTable2Aper$perMale <- round(100 - dfTable2Aper$perFemale, digits=1)
-    dfTable2Aper <- dfTable2Aper[, c(1,5, 2:4)]
+    totFemAsian <-dfStatesPop3[1, "FemAsian"]
+    totFemNonAsian <- dfStatesPop3[1, "FemNonAsian"]
+    rowDf <- data.frame(Total=totPop, FemAsian=totFemAsian, FemNonAsian=totFemNonAsian)
+    dfTable2Aright <- makeNumPerTable(rowDf, Total)
+    dfTable2Aright <- subset(dfTable2Aright, select=-Total)
+   ### print(dfTable2Aright, quote=FALSE)
     
-    colnames <- c("Total", "Male", "Female", "FemAsian", "FemNonAsian")
-    colnames(dfTable2Aper) <- colNames
-    dfTable2A <- data.frame(rbind(dfTable2Apop, dfTable2Aper))
-    rownames(dfTable2A) <- c("Num", "Per")
-    dfTable2A
-  
-### Table 2B. Male/Female Components of of U.S. Tech Sector in 2014
-    dfTable2Bpop <- dfRaceSexCountAndShares[1,c(2,8:10)]
-    dfTable2Bpop$Male <- dfTable2Bpop$Totals - dfTable2Bpop$Female
-    dfTable2Bpop <- dfTable2Bpop[,c(1, 5, 2:4)] ### place males col 2
-    
-    colnames <- c("Total", "Male", "Female", "FemAsian", "FemNonAsian")
-    colnames(dfTable2Bpop) <- colnames
-    dfTable2Bpop <- prettyNum(dfTable2Bpop, big.mark = ",") 
+    dfTable2A <- cbind(dfTable2Aleft, dfTable2Aright)
+    print(dfTable2A, quote=FALSE)
 
-### Percentages of Male/Female 
-    dfTable2Bper <- dfRaceSexCountAndShares[1,c(2,16:18)]
-    dfTable2Bper$perMale <- 100 - as.numeric(dfTable2Bper$perFemale)
-    dfTable2Bper <- dfTable2Bper[, c(1,5,2:4)] ### males in col 2
-    dfTable2Bper[1,1] <- 100 ### 100 percent for ALL
+######################    
+### Table 2B. Male/Female Components of of U.S. Tech Sector in 2014
+    totPop <- dfRaceSexCountAndShares[1, "Totals"]
+    totFemale <- dfRaceSexCountAndShares[1, "Female"]
+    totMale <- totPop - totFemale
     
-    colNames_per <- colnames
-    colnames(dfTable2Bper) <- colNames_per
+    rowDf <- data.frame(Total=totPop, Male=totMale, Female=totFemale)
+    dfTable2Bleft <- makeNumPerTable(rowDf, Total)
+    ### print(dfTable2Bleft, quote=FALSE)
     
-    dfTable2B <- data.frame(rbind(dfTable2Bpop, dfTable2Bper))
-    rownames(dfTable2B) <- c("Num", "Per")
-    dfTable2B
+    totFemAsian <-dfRaceSexCountAndShares[1, "FemAsian"]
+    totFemNonAsian <- dfRaceSexCountAndShares[1, "FemNonAsian"]
+    rowDf <- data.frame(Total=totPop, FemAsian=totFemAsian, FemNonAsian=totFemNonAsian)
+    dfTable2Bright <- makeNumPerTable(rowDf, Total)
+    dfTable2Bright <- subset(dfTable2Bright, select=-Total)
+    ### print(dfTable2Bright, quote=FALSE)
+    
+    dfTable2B <- cbind(dfTable2Bleft, dfTable2Bright)
+    print(dfTable2B, quote=FALSE)
 
 ###########################
 ############################
 ### Table 3Z -- Profile of all U.S. Techs 2015
-    dfProfileZ <- createProfile(dfProfileCitizens, group="", state="")
-    dfProfileZ.2010 <- createProfile(dfProfileCitizens.2010, group="", state="")
+    dfProfileZ <- createProfile(dfProfileCitizens, group=NULL, state=NULL)
+    dfProfileZ.2010 <- createProfile(dfProfileCitizens.2010, group=NULL, state=NULL)
     
     dfTable3Z <- subset(dfProfileZ, select=-c(Male, perMale))
     colnames(dfTable3Z) <- c("Occupation", "perTS", "Tech15", "Fem", "perF15")
@@ -172,7 +125,18 @@
     dfTable3ZZ <- createCompareProfile(dfProfileZ.2010, dfProfileZ)
     colnames(dfTable3ZZ) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
     dfTable3ZZ
-
+    
+ ### Better approach, wrap this stuff in  functions  
+    df1 <- dfProfileCitizens.2010
+    df2 <- dfProfileCitizens
+    
+    zProfiles <- createListProfiles(df1, df2) 
+    (dfTable3Zz <- zProfiles[[1]])
+    (dfTable3ZZz <- zProfiles[[2]])
+    
+    
+    
+    
 ####################################
 ####################################
 ### Table 3A -- Profile of U.S. White Techs 2015
@@ -187,6 +151,11 @@
     dfTable3AA <- createCompareProfile(dfProfileA.2010, dfProfileA)
     colnames(dfTable3AA) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
     dfTable3AA
+    
+    
+    aProfiles <- createListProfiles(df1, df2, group="White") 
+    (dfTable3Aa <- aProfiles[[1]])
+    (dfTable3AAa <- aProfiles[[2]])
 
 ####################################
 ####################################
