@@ -1,5 +1,5 @@
 ---
-title: "Best States for American Black, Hispanic, Asian, and Female Tech -- Version 0.99H"
+title: "Best States for American Black, Hispanic, Asian, and Female Tech -- Version 0.99J"
 author: "Roy L Beasley, PhD -- DLL Editor"
 
 output: 
@@ -236,16 +236,16 @@ The first column of each table contains a list of job categories. Some categorie
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
-<i>Question 3C</i> -- How many Asian American male vs. female techs were in each category in 2010 and 2015 in the 50 states and the District of Columbia?
+<i>Question 3C</i> -- How many Hispanic American male vs. female techs were in each category in 2010 and 2015 in the 50 states and the District of Columbia?
 
- <i>Answer 3C</i> ... Data for Asian American techs in 2015 is in Table 3C; data that compares 2010 to 2015 is in Table 3CC.
+ <i>Answer 3C</i> ... Data for Hispanic American techs in 2015 is in Table 3C; data that compares 2010 to 2015 is in Table 3CC.
 
  <b>Table 3C -- Asian American Male/Female Composition of U.S. Tech in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3C, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
- <b>Table 3CC -- Changes in the Asian American Composition of U.S. Tech Between 2010 and 2015</b> 
+ <b>Table 3CC -- Changes in the Hispanic American Composition of U.S. Tech Between 2010 and 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3CC, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
@@ -254,12 +254,12 @@ The first column of each table contains a list of job categories. Some categorie
 <i>Question 3D</i> -- How many Hispanic American male vs. female techs were in each category in 2010 and 2015 in the 50 states and the District of Columbia?     
  <i>Answer 3D</i> ... Data for Hispanic American techs in 2015 is in Table 3D; data that compares 2010 to 2015 is in Table 3DD.
 
- <b>Table 3D -- Hispanic American Male/Female Composition of U.S. Tech in 2015</b> 
+ <b>Table 3D -- Asian American Male/Female Composition of U.S. Tech in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3D, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
- <b>Table 3DD -- Changes in the Hispanic American Composition of U.S. Tech Between 2010 and 2015</b> 
+ <b>Table 3DD -- Changes in the Asian American Composition of U.S. Tech Between 2010 and 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3DD, big.mark=","), row.names=FALSE, quote=FALSE)
 ```

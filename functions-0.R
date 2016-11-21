@@ -303,7 +303,8 @@ makeNumPerTable <- function(df, Total=NULL){
 createProfile <- function(df, group=NULL, state=NULL) {
 ### Input data frame = Occupation State Race Male Female for the specified group   
 ### Output data frame =  Occupation, Tech15, perTS, Fem, Per15 for the specified group
-
+print(paste("group = ", group))
+      
 #1. Select the group's records
     if (!is.null(group)) {
         df <- subset(df, Race == group)
@@ -311,7 +312,8 @@ createProfile <- function(df, group=NULL, state=NULL) {
     
 #2. Select data columns
     if (!is.null(state)) {
-        df <- subset(df, State==state, select=c("Occupation", "Male", "Female"))
+print(paste("state = ", state))
+        df <- subset(df, state==state, select=c("Occupation", "Male", "Female"))
         df$State <- NULL 
         
     } else {
@@ -365,8 +367,9 @@ createListProfiles <- function(df1, df2, group=NULL, state=NULL) {
 ### df1 is data frame that contains the early year, df2 contains the second year
 ### Returns list of data frames, 1 = display Table for year 1, 2 = compare table for years 1 and 2, full data frame for year 1, and full data frame for year 2
     
-    ##@ print(paste("Group =", group))
-    ### print(is.null(group))
+    print(paste("Group =", group))
+    print(is.null(group))
+    
     dfFullTab1 <- createProfile(df1, group=group, state=state)
     dfFullTab2 <- createProfile(df2, group=group, state=state)
     

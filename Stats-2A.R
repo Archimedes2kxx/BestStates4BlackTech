@@ -113,29 +113,13 @@
 
 ###########################
 ############################
+    df1 <- dfProfileCitizens.2010
+    df2 <- dfProfileCitizens
+    
 ### Table 3Z -- Profile of all U.S. Techs 2015
-    dfProfileZ <- createProfile(dfProfileCitizens, group=NULL, state=NULL)
-    dfProfileZ.2010 <- createProfile(dfProfileCitizens.2010, group=NULL, state=NULL)
-    
-    dfTable3Z <- subset(dfProfileZ, select=-c(Male, perMale))
-    colnames(dfTable3Z) <- c("Occupation", "perTS", "Tech15", "Fem", "perF15")
-    head(dfTable3Z)
-    
-    ### Table 3ZZ -- Compare all U.S. Techs 2010 to all 2015
-    dfTable3ZZ <- createCompareProfile(dfProfileZ.2010, dfProfileZ)
-    colnames(dfTable3ZZ) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
-    dfTable3ZZ
-    
- ### Better approach, wrap this stuff in  functions  
-   ### df1 <- dfProfileCitizens.2010
- ###    df2 <- dfProfileCitizens
-    
-   ### zProfiles <- createListProfiles(df1, df2) 
-   ### (dfTable3Zz <- zProfiles[[1]])
-   ### (dfTable3ZZz <- zProfiles[[2]])
-    
-    
-    
+   Profiles <- createListProfiles(df1, df2) 
+   (dfTable3Z <- Profiles[[1]])
+   (dfTable3ZZ <- Profiles[[2]])
     
 ####################################
 ####################################
@@ -143,19 +127,18 @@
     dfProfileA <- createProfile(dfProfileCitizens, group="White")
     dfProfileA.2010 <- createProfile(dfProfileCitizens.2010, group="White")
     
-    dfTable3A <- subset(dfProfileA, select=-c(Male, perMale))
-    colnames(dfTable3A) <- c("Occupation", "perTS","Tech15", "Fem", "per15")
-    ### head(dfTable3A)
+    dfTable3Ax <- subset(dfProfileA, select=-c(Male, perMale))
+    colnames(dfTable3Ax) <- c("Occupation", "perTS","Tech15", "Fem", "per15")
+    dfTable3Ax
     
     ### Table 3AA -- Compare U.S. White Techs 2010 to all 2015
-    dfTable3AA <- createCompareProfile(dfProfileA.2010, dfProfileA)
-    colnames(dfTable3AA) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
-    dfTable3AA
+    dfTable3AAx <- createCompareProfile(dfProfileA.2010, dfProfileA)
+    colnames(dfTable3AAx) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
+    dfTable3AAx
     
-    
-    aProfiles <- createListProfiles(df1, df2, group="White") 
-    (dfTable3Aa <- aProfiles[[1]])
-    (dfTable3AAa <- aProfiles[[2]])
+    Profiles <- createListProfiles(df1, df2, group="White") 
+    (dfTable3A <- Profiles[[1]])
+    (dfTable3AA <- Profiles[[2]])
 
 ####################################
 ####################################
@@ -163,29 +146,37 @@
     dfProfileB <- createProfile(dfProfileCitizens, group="Black")
     dfProfileB.2010 <- createProfile(dfProfileCitizens.2010, group="Black")
     
-    dfTable3B <- subset(dfProfileB, select=-c(Male, perMale))
-    colnames(dfTable3B) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
-    head(dfTable3B)
+    dfTable3Bx <- subset(dfProfileB, select=-c(Male, perMale))
+    colnames(dfTable3Bx) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
+    dfTable3Bx
     
     ### Table 3BB -- Compare U.S. Black Techs 2010 to all 2015
-    dfTable3BB <- createCompareProfile(dfProfileB.2010, dfProfileB)
-    colnames(dfTable3BB) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
-    head(dfTable3BB)
-
+    dfTable3BBx <- createCompareProfile(dfProfileB.2010, dfProfileB)
+    colnames(dfTable3BBx) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
+    dfTable3BBx
+    
+    Profiles <- createListProfiles(df1, df2, group="Black") 
+    (dfTable3B <- Profiles[[1]])
+    (dfTable3BB <- Profiles[[2]])
+    
 ####################################
 ####################################
 ### Table 3C -- Profile of U.S. Hispanic Techs 2015
     dfProfileC <- createProfile(dfProfileCitizens, group="Hispanic")
     dfProfileC.2010 <- createProfile(dfProfileCitizens.2010, group="Hispanic")
     
-    dfTable3C <- subset(dfProfileC, select=-c(Male, perMale))
-    colnames(dfTable3C) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
-    head(dfTable3C)
+    dfTable3Cx <- subset(dfProfileC, select=-c(Male, perMale))
+    colnames(dfTable3Cx) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
+    dfTable3Cx
     
     ### Table 3CC -- Compare U.S. Hispanic Techs 2010 to all 2015
-    dfTable3CC <- createCompareProfile(dfProfileC.2010, dfProfileC)
-    colnames(dfTable3CC) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
-    head(dfTable3CC)
+    dfTable3CCx <- createCompareProfile(dfProfileC.2010, dfProfileC)
+    colnames(dfTable3CCx) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
+    dfTable3CCx
+    
+    Profiles <- createListProfiles(df1, df2, group="Hispanic") 
+    (dfTable3C <- Profiles[[1]])
+    (dfTable3CC <- Profiles[[2]])
 
 ####################################
 ####################################
@@ -193,30 +184,41 @@
     dfProfileD <- createProfile(dfProfileCitizens, group="Asian")
     dfProfileD.2010 <- createProfile(dfProfileCitizens.2010, group="Asian")
     
-    dfTable3D <- subset(dfProfileD, select=-c(Male, perMale))
-    colnames(dfTable3D) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
-    head(dfTable3D)
+    dfTable3Dx <- subset(dfProfileD, select=-c(Male, perMale))
+    colnames(dfTable3Dx) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
+    dfTable3Dx
     
     ### Table 3DD -- Compare U.S. Hispanics Techs 2010 to all 2015
-    dfTable3DD <- createCompareProfile(dfProfileD.2010, dfProfileD)
-    colnames(dfTable3DD) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
-    head(dfTable3DD)
+    dfTable3DDx <- createCompareProfile(dfProfileD.2010, dfProfileD)
+    colnames(dfTable3DDx) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
+    dfTable3DDx
+    
+    Profiles <- createListProfiles(df1, df2, group="Asian") 
+    (dfTable3D <- Profiles[[1]])
+    (dfTable3DD <- Profiles[[2]])
 
 ####################################
 ####################################
+    dfFor1 <- dfProfileForeigners.2010
+    dfFor2 <- dfProfileForeigners    
+    
 ### Table 3E -- Profile of Foreign Techs 2015
     dfProfileE <- createProfile(dfProfileForeigners, group=NULL)
     dfProfileE.2010 <- createProfile(dfProfileForeigners.2010, group=NULL)
     
-    dfTable3E <- subset(dfProfileE, select=-c(Male, perMale))
-    colnames(dfTable3E) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
-    head(dfTable3E)
+    dfTable3Ex <- subset(dfProfileE, select=-c(Male, perMale))
+    colnames(dfTable3Ex) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
+    dfTable3Ex
     
     ### Table 3EE -- Compare Foreign Techs 2010 to all 2015
-    dfTable3EE <- createCompareProfile(dfProfileE.2010, dfProfileE)
-    colnames(dfTable3EE) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
-    head(dfTable3EE)
-
+    dfTable3EEx <- createCompareProfile(dfProfileE.2010, dfProfileE)
+    colnames(dfTable3EEx) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
+    dfTable3EEx
+    
+    Profiles <- createListProfiles(df1, df2) 
+    (dfTable3E <- Profiles[[1]])
+    (dfTable3EE <- Profiles[[2]])
+    
 ####################################
 ####################################
 ### Table 3FL -- Profile of Foreign Techs in Florida in 2015
@@ -224,15 +226,19 @@
     dfProfileFL <- createProfile(dfProfileForeignersState, group=NULL, state="Florida")
     dfProfileFL.2010 <- createProfile(dfProfileForeignersState.2010, group=NULL, state="Florida")
     
-    dfTable3FL <- subset(dfProfileFL, select=-c(Male, perMale))
-    colnames(dfTable3FL) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
-    dfTable3FL
+    dfTable3FLx <- subset(dfProfileFL, select=-c(Male, perMale))
+    colnames(dfTable3FLx) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
+    dfTable3FLx
     
     ### Table 3FLFL -- Compare Foreign Techs 2010 to all 2015
-    dfTable3FLFL <- createCompareProfile(dfProfileFL.2010, dfProfileFL)
-    colnames(dfTable3FLFL) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
-    dfTable3FLFL
-    
+    dfTable3FLFLx <- createCompareProfile(dfProfileFL.2010, dfProfileFL)
+    colnames(dfTable3FLFLx) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
+    dfTable3FLFLx
+ 
+    Profiles <- createListProfiles(dfFor1, dfFor2, state="Florida") 
+    (dfTable3FL <- Profiles[[1]])
+    (dfTable3FLFL <- Profiles[[2]])    
+       
 print("END OF Florida ... Florida Florida")
 
 ###############################################
@@ -243,17 +249,20 @@ print("California ... California California")
     dfProfileF.2010 <- createProfile(dfProfileForeignersState.2010, group=NULL, state="California")
     ### dfProfileF.2010
     
-    dfTable3F <- subset(dfProfileF, select=-c(Male, perMale))
-    colnames(dfTable3F) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
-    dfTable3F
+    dfTable3Fx <- subset(dfProfileF, select=-c(Male, perMale))
+    colnames(dfTable3Fx) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
+    dfTable3Fx
     
     ### Table 3FF -- Compare Foreign Techs 2010 to all 2015
-    dfTable3FF <- createCompareProfile(dfProfileF.2010, dfProfileG)
-    colnames(dfTable3FF) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
-    dfTable3FF
+    dfTable3FFx <- createCompareProfile(dfProfileF.2010, dfProfileG)
+    colnames(dfTable3FFx) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
+    dfTable3FFx
 
+    Profiles <- createListProfiles(dfFor1, dfFor2, state="Cqlifornia") 
+    (dfTable3F <- Profiles[[1]])
+    (dfTable3FF <- Profiles[[2]])    
+    
 print("END OF California ... California California")
-
 
 
 ########################################
