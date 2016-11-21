@@ -199,47 +199,13 @@
 
 ####################################
 ####################################
-    dfFor1 <- dfProfileForeigners.2010
-    dfFor2 <- dfProfileForeigners    
+    dfFor1 <- dfProfileForeignersState.2010
+    dfFor2 <- dfProfileForeignersState    
     
 ### Table 3E -- Profile of Foreign Techs 2015
-    dfProfileE <- createProfile(dfProfileForeigners, group=NULL)
-    dfProfileE.2010 <- createProfile(dfProfileForeigners.2010, group=NULL)
-    
-    dfTable3Ex <- subset(dfProfileE, select=-c(Male, perMale))
-    colnames(dfTable3Ex) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
-    dfTable3Ex
-    
-    ### Table 3EE -- Compare Foreign Techs 2010 to all 2015
-    dfTable3EEx <- createCompareProfile(dfProfileE.2010, dfProfileE)
-    colnames(dfTable3EEx) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
-    dfTable3EEx
-    
-    Profiles <- createListProfiles(df1, df2) 
+    Profiles <- createListProfiles(dfFor1, dfFor2) 
     (dfTable3E <- Profiles[[1]])
     (dfTable3EE <- Profiles[[2]])
-    
-####################################
-####################################
-### Table 3FL -- Profile of Foreign Techs in Florida in 2015
-    print("Florida ... Florida Florida")
-    dfProfileFL <- createProfile(dfProfileForeignersState, group=NULL, state="Florida")
-    dfProfileFL.2010 <- createProfile(dfProfileForeignersState.2010, group=NULL, state="Florida")
-    
-    dfTable3FLx <- subset(dfProfileFL, select=-c(Male, perMale))
-    colnames(dfTable3FLx) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
-    dfTable3FLx
-    
-    ### Table 3FLFL -- Compare Foreign Techs 2010 to all 2015
-    dfTable3FLFLx <- createCompareProfile(dfProfileFL.2010, dfProfileFL)
-    colnames(dfTable3FLFLx) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
-    dfTable3FLFLx
- 
-    Profiles <- createListProfiles(dfFor1, dfFor2, state="Florida") 
-    (dfTable3FL <- Profiles[[1]])
-    (dfTable3FLFL <- Profiles[[2]])    
-       
-print("END OF Florida ... Florida Florida")
 
 ###############################################
 ###############################################    
@@ -258,13 +224,58 @@ print("California ... California California")
     colnames(dfTable3FFx) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
     dfTable3FFx
 
-    Profiles <- createListProfiles(dfFor1, dfFor2, state="Cqlifornia") 
+    Profiles <- createListProfiles(dfFor1, dfFor2, state="California") 
     (dfTable3F <- Profiles[[1]])
     (dfTable3FF <- Profiles[[2]])    
     
+    (dfTable3CAfor <- dfTable3F)
+    (dfTable3CACAfor <- dfTable3F)
 print("END OF California ... California California")
 
+####################################
+####################################
+### Table 3FL -- Profile of Foreign Techs in Florida in 2015
+print("Florida ... Florida Florida")
+
+Profiles <- createListProfiles(dfFor1, dfFor2, state="Florida") 
+(dfTable3FLfor <- Profiles[[1]])
+(dfTable3FLFLfor <- Profiles[[2]])    
+
+####################################
+####################################
+### Table 3NY -- Profile of Foreign Techs in New York in 2015
+
+Profiles <- createListProfiles(dfFor1, dfFor2, state="New York") 
+(dfTable3NYfor <- Profiles[[1]])
+(dfTable3NYNYfor <- Profiles[[2]]) 
+
+####################################
+####################################
+### Table 3TX -- Profile of Foreign Techs in Texas in 2015
+
+Profiles <- createListProfiles(dfFor1, dfFor2, state="Texas") 
+(dfTable3TXfor <- Profiles[[1]])
+(dfTable3TXTXfor <- Profiles[[2]]) 
 
 ########################################
 ########################################
-save(dfTable1, dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable3Z, dfTable3ZZ, dfProfileZ.2010, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3F, dfTable3FF,  dfTable3FL, dfTable3FLFL, file="dfTab1A1B2A2B3ABCDEF.rda")
+### Table 3VA -- Profile of Foreign Techs in Virginia in 2015
+
+Profiles <- createListProfiles(dfFor1, dfFor2, state="Virginia") 
+(dfTable3VAfor <- Profiles[[1]])
+(dfTable3VAVAfor <- Profiles[[2]]) 
+
+########################################
+########################################
+### Table 3IL -- Profile of Foreign Techs in Illinois in 2015
+
+Profiles <- createListProfiles(dfFor1, dfFor2, state="Illinois") 
+(dfTable3ILfor <- Profiles[[1]])
+(dfTable3ILILfor <- Profiles[[2]]) 
+
+########################################
+########################################
+save(dfTable1, dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable3Z, dfTable3ZZ, dfProfileZ.2010, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3F, dfTable3FF, file="dfTab1A1B2A2B3ABCDEF.rda")
+
+save(dfTable3CAfor, dfTable3CACAfor, dfTable3TXfor, dfTable3TXTXfor, dfTable3NYfor, dfTable3NYNYfor, dfTable3FLfor, dfTable3FLFLfor, dfTable3VAfor, dfTable3VAVAfor, dfTable3ILfor, dfTable3ILILfor, file="APPENDIX.rda")
+
