@@ -229,7 +229,7 @@ print("California ... California California")
     (dfTable3FF <- Profiles[[2]])    
     
     (dfTable3CAfor <- dfTable3F)
-    (dfTable3CACAfor <- dfTable3F)
+    (dfTable3CACAfor <- dfTable3FF)
 print("END OF California ... California California")
 
 ####################################

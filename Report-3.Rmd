@@ -1,5 +1,5 @@
 ---
-title: "Best States for American Black, Hispanic, Asian, and Female Tech -- Version 0.99J"
+title: "Best States for American Black, Hispanic, Asian, and Female Tech -- Version 0.99H"
 author: "Roy L Beasley, PhD -- DLL Editor"
 
 output: 
@@ -671,7 +671,8 @@ Finally, this report represents my honest attempt to shed additional light on so
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3TXTXfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>     
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
+
 ### New York   
 
  <b>Table 3NYfor -- New York Foreign Male/Female Composition of U.S. Tech in 2015</b>  
