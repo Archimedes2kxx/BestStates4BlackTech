@@ -1,5 +1,5 @@
 ---
-title: "Best States for American Black, Hispanic, Asian, and Female Tech -- Version 0.99K"
+title: "Best States for American Black, Hispanic, Asian, and Female Tech -- Version 0.99M"
 author: "Roy L Beasley, PhD -- DLL Editor"
 
 output: 
@@ -595,7 +595,9 @@ Table 1A showed that `r dfTable1B["Per","Black"]` percent of the total U.S. work
 
 * Foreign tech professionals had the strongest possible "weak ties" to their future employers because they had been proactively recruited by agents of U.S. companies who persuded them migrate to the U.S. in order to work for their U.S. clients in the U.S., primarily under the <b>[H-1B visa program](https://www.uscis.gov/eir/visa-guide/h-1b-specialty-occupation/understanding-h-1b-requirements)</b>
 
-* The DLL will soon post a companion op-ed -- <i>"Why Are There So Many Foreign Asian Professionals in U.S. Tech?</i>" -- that will offer a plausible answer to the question in its title based on the data compiled for this report.
+* As can be seen from the tables in the <B>[APPENDIX](https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html#appendix-profiles-of-racialethnic-groups-sex-and-foreign-composition-of-six-biggest-tech-states-in-2015)</b> section of this report, California's increased use of foreign tech professionals in the last few years is orders of magnitude larger than other states. California's foreign tech tables display four digit percentage increases in the imporation of foreign techs. Whereas the increased use of foreign techs by the other five big tech states might be tactical responsonses to local shortfalls in the availability of American techs, California's substantially larger use of foreign professionals seems more like a long-term strategy that is widely shared by upper level tech managers in that state, especially in Silicon Valley.
+
+* The DLL will soon post a companion op-ed -- <i>"Why Are There So Many Foreign Techs in California?</i>" -- that will offer a plausible answer to the question in its title based on the data compiled for this report and data gathered from other sources.
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
@@ -641,9 +643,9 @@ Here's the <b>[Census Bureau's description](https://usa.ipums.org/usa/voliii/ACS
    
 I used the <b>[R Studio IDE](https://www.rstudio.com/)</b> to write the R scripts and functions that produced the report's tables, maps, graphs, and stats. My R code can be found in the Data-1A.R, Data-1B.R, Stats-2A.R, Stats-2B.R, Stats-2C.R., and Report-3.Rmd files in the <b>[Best States ](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b> repo, as well as copies of the codebooks and .csv files I downloaded from the Census. I composed the text of the report in R-Markdown, embedded the data objects, converted the R-markdown to HTML via knitr, pushed the report to git-io pages, then made the pages accessible to readers of the DLL's <b>[Tech-Levers](http://hbcu-levers.blogspot.com/p/draft-of-best-states-for-blacks-in-tech.html)</b> blog via an iframe on a page on the blog. 
 
-The scripts and embedded functions should be run in numerical order ==> Data-1A.R and Data-1B.R create the data frames required by Stats-2A.R, Stats-2B.R, and Stats-2C.R. The Stats files create the tables, maps, graphs, and regressions required by the R-markdown script in the Report-3.Rmd file that generates the report.
+The scripts and embedded functions should be loaded in numerical order ==> functions-0 then Data-1.R The Data-1 module creates the data frames required by Stats-2A.R, Stats-2B.R, and Stats-2C.R. The Stats modules create the tables, maps, graphs, and regressions required by the R-markdown script in the Report-3.Rmd file that generates the report.
 
-Finally, this report represents my honest attempt to shed additional light on some important, but difficult issues. Therefore I would greatly appreciate readers' comments and suggested improvements ... but I would cherish their help in identifying any errors that I made in my data collection or analysis because bad reports don't support good policies. Thank you ... :-)
+Finally, this report represents my honest attempt to shed additional light on some important, troublesome issues. Therefore I would greatly appreciate readers' comments and suggested improvements ... but I would cherish their help in identifying any errors that I made in my data collection or analysis because bad reports don't support good policies. Thank you ... :-)
 <br />
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
@@ -689,6 +691,8 @@ Finally, this report represents my honest attempt to shed additional light on so
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
+
+
  <b>Table 3CAfor -- Foreign Male/Female Composition of Tech in California in 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3CAfor, big.mark=","), row.names=FALSE, quote=FALSE)
@@ -704,6 +708,40 @@ Finally, this report represents my honest attempt to shed additional light on so
 
 ### Texas ... Texas ... Texas ... Texas ... Texas ... Texas ... Texas ...  
 
+ <b>Table 3TX -- American Male/Female Composition of Tech in Texas in 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3TX, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<b>Table 3TXTX -- Changes in American Composition of Tech in Texas between 2010 and 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3TXTX, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
+
+ <b>Table 3TXblack -- Black American Male/Female Composition of Tech in Texas in 2015</b>  
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3TXblack, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<b>Table 3TXTXblack -- Changes in Black American Composition of Tech in Texas between 2010 and 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3TXTXblack, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
+
+ <b>Table 3TXhispanic -- Hispanic American Male/Female Composition of Tech in Texas in 2015</b>  
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3TXhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<b>Table 3TXTXhispanic -- Changes in Hispanic American Composition of Tech in TExas between 2010 and 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3TXTXhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
 <b>Table 3TXfor -- Foreign Male/Female Composition of Tech in Texas in 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3TXfor, big.mark=","), row.names=FALSE, quote=FALSE)
@@ -716,6 +754,41 @@ Finally, this report represents my honest attempt to shed additional light on so
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
 ### New York ... New York ... New York ... New York ... 
+
+ <b>Table 3NY -- American Male/Female Composition of Tech in New York in 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3NY, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<b>Table 3NYNY -- Changes in American Composition of Tech in New York between 2010 and 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3NYNY, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
+
+ <b>Table 3NYblack -- Black American Male/Female Composition of Tech in New York in 2015</b>  
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3NYblack, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<b>Table 3NYNYblack -- Changes in Black American Composition of Tech in New York between 2010 and 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3NYNYblack, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
+
+ <b>Table 3NYhispanic -- Hispanic American Male/Female Composition of Tech in New York in 2015</b>  
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3NYhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<b>Table 3NYNYhispanic -- Changes in Hispanic American Composition of Tech in New York between 2010 and 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3NYNYhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
 
  <b>Table 3NYfor -- Foreign Male/Female Composition of Tech in New York 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}  
@@ -731,6 +804,40 @@ Finally, this report represents my honest attempt to shed additional light on so
 
 ### Florida ... Florida ... Florida ... Florida ...  
  
+ <b>Table 3FL -- American Male/Female Composition of Tech in Florida in 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3FL, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<b>Table 3FLFL -- Changes in American Composition of Tech in Florida between 2010 and 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3FLFL, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
+
+ <b>Table 3FLblack -- Black American Male/Female Composition of Tech in Florida in 2015</b>  
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3FLblack, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<b>Table 3FLFLblack -- Changes in Black American Composition of Tech in Florida between 2010 and 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3FLFLblack, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
+
+ <b>Table 3FLhispanic -- Hispanic American Male/Female Composition of Tech in Florida in 2015</b>  
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3FLhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<b>Table 3FLFLhispanic -- Changes in Hispanic American Composition of Tech in Florida between 2010 and 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3FLFLhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
 <b>Table 3FLfor -- Foreign Male/Female Composition of Tech in Florida in 2015</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3FLfor, big.mark=","), row.names=FALSE, quote=FALSE)
@@ -744,6 +851,40 @@ Finally, this report represents my honest attempt to shed additional light on so
 
 ### Virginia ... Virginia ... Virginia ... 
  
+ <b>Table 3VA -- American Male/Female Composition of Tech in Virginia in 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3VA, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<b>Table 3VAVA -- Changes in American Composition of Tech in Virginia between 2010 and 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3VAVA, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
+
+ <b>Table 3VAblack -- Black American Male/Female Composition of Tech in Virginia in 2015</b>  
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3VAblack, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<b>Table 3VAVAblack -- Changes in Black American Composition of Tech in Virginia between 2010 and 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3VAVAblack, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
+
+ <b>Table 3VAhispanic -- Hispanic American Male/Female Composition of Tech in Virginia in 2015</b>  
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3VAhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<b>Table 3VAVAhispanic -- Changes in Hispanic American Composition of Tech in Virginia between 2010 and 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3VAVAhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+ 
 <b>Table 3VAfor -- Foreign Male/Female Composition of Tech in Virginia in 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3VAfor, big.mark=","), row.names=FALSE, quote=FALSE)
@@ -756,6 +897,40 @@ Finally, this report represents my honest attempt to shed additional light on so
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
 ### Illinois ... Illinois ... 
+ 
+ <b>Table 3IL -- American Male/Female Composition of Tech in Illinois in 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3IL, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<b>Table 3ILIL -- Changes in American Composition of Tech in Illinois between 2010 and 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3ILIL, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
+
+ <b>Table 3ILblack -- Black American Male/Female Composition of Tech in Illinois in 2015</b>  
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3ILblack, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<b>Table 3ILILblack -- Changes in Black American Composition of Tech in Illinois between 2010 and 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3ILILblack, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
+
+ <b>Table 3ILhispanic -- Hispanic American Male/Female Composition of Tech in Illinois in 2015</b>  
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3ILhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<b>Table 3ILILhispanic -- Changes in Hispanic American Composition of Tech in Illinois between 2010 and 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3ILILhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
+```
  
 <b>Table 3ILfor -- Foreign Male/Female Composition of Tech in Illinois in 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}

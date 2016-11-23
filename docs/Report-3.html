@@ -13,7 +13,7 @@
 <meta name="author" content="Roy L Beasley, PhD – DLL Editor" />
 
 
-<title>Best States for American Black, Hispanic, Asian, and Female Tech – Version 0.99K</title>
+<title>Best States for American Black, Hispanic, Asian, and Female Tech – Version 0.99M</title>
 
 
 
@@ -30,7 +30,7 @@
 
 
 <section class="page-header">
-<h1 class="title toc-ignore project-name">Best States for American Black, Hispanic, Asian, and Female Tech – Version 0.99K</h1>
+<h1 class="title toc-ignore project-name">Best States for American Black, Hispanic, Asian, and Female Tech – Version 0.99M</h1>
 <h4 class="author project-author">Roy L Beasley, PhD – DLL Editor</h4>
 </section>
 
@@ -789,7 +789,8 @@ Table 1A showed that 11.6 percent of the total U.S. workforce in 2015 was Black 
 <i>Question:</i> How did foreign Asian tech professionals obtain so many tech jobs in every state?</p>
 <ul>
 <li><p>Foreign tech professionals had the strongest possible “weak ties” to their future employers because they had been proactively recruited by agents of U.S. companies who persuded them migrate to the U.S. in order to work for their U.S. clients in the U.S., primarily under the <b><a href="https://www.uscis.gov/eir/visa-guide/h-1b-specialty-occupation/understanding-h-1b-requirements">H-1B visa program</a></b></p></li>
-<li><p>The DLL will soon post a companion op-ed – <i>“Why Are There So Many Foreign Asian Professionals in U.S. Tech?</i>” – that will offer a plausible answer to the question in its title based on the data compiled for this report.</p></li>
+<li><p>As can be seen from the tables in the <B><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html#appendix-profiles-of-racialethnic-groups-sex-and-foreign-composition-of-six-biggest-tech-states-in-2015">APPENDIX</a></b> section of this report, California’s increased use of foreign tech professionals in the last few years is orders of magnitude larger than other states. California’s foreign tech tables display four digit percentage increases in the imporation of foreign techs. Whereas the increased use of foreign techs by the other five big tech states might be tactical responsonses to local shortfalls in the availability of American techs, California’s substantially larger use of foreign professionals seems more like a long-term strategy that is widely shared by upper level tech managers in that state, especially in Silicon Valley.</p></li>
+<li><p>The DLL will soon post a companion op-ed – <i>“Why Are There So Many Foreign Techs in California?</i>” – that will offer a plausible answer to the question in its title based on the data compiled for this report and data gathered from other sources.</p></li>
 </ul>
 <small><i>
 <center>
@@ -829,8 +830,8 @@ One of my most important take-aways from completing the <b><a href="https://www.
 Each row in the downloaded PUMS table contained the anonymized responses of a real employee in the ACS 2015 survey, i.e., sex, race/ethnicity, occupation, and state of Workplace. Each observation also contained a number called “personal weight” which is the Census Bureau’s estimate of how many people in the real population were like each person in the sample. An estimate of the total number of employees in the real population was found by adding up the personal weights of the employees in the sample. This also applied to subgroups, e.g, male vs. female, state of Workplace, etc. The percentage share of a subgroup’s Workplace was obtained by dividing the estimated Workplace in the subgroup by the estimated Workplace in the entire group, i.e., dividing the sum of personal weights in a subgroup by the sum of personal weights in the larger group. <br /><br /> Here’s the <b><a href="https://usa.ipums.org/usa/voliii/ACSsamp.shtml">Census Bureau’s description</a></b> of this process:<br /><i>“Production of Estimates”</i> – The ACS PUMS sample is not self - weighted. To produce estimates or tabulations of characteristics from the ACS PUMS simply add the weights of all persons or housing units that possess the characteristic of interest. For instance, if the characteristic of interest is “total number of black teachers”, simply determine the race and occupation of all persons and cumulate the weights of those who match the characteristics of interest. To get estimates of proportions simply divide the weighted estimate of persons or housing units with a given characteristic by the weighted estimate of the base. For example, the proportion of “black teachers” is obtained by dividing the weighted estimate of black teachers by the PUMS estimate of teachers.&quot;</p></li>
 </ul>
 <p>I used the <b><a href="https://www.rstudio.com/">R Studio IDE</a></b> to write the R scripts and functions that produced the report’s tables, maps, graphs, and stats. My R code can be found in the Data-1A.R, Data-1B.R, Stats-2A.R, Stats-2B.R, Stats-2C.R., and Report-3.Rmd files in the <b><a href="https://github.com/Archimedes2kxx/BestStatesForBlackTech">Best States</a></b> repo, as well as copies of the codebooks and .csv files I downloaded from the Census. I composed the text of the report in R-Markdown, embedded the data objects, converted the R-markdown to HTML via knitr, pushed the report to git-io pages, then made the pages accessible to readers of the DLL’s <b><a href="http://hbcu-levers.blogspot.com/p/draft-of-best-states-for-blacks-in-tech.html">Tech-Levers</a></b> blog via an iframe on a page on the blog.</p>
-<p>The scripts and embedded functions should be run in numerical order ==&gt; Data-1A.R and Data-1B.R create the data frames required by Stats-2A.R, Stats-2B.R, and Stats-2C.R. The Stats files create the tables, maps, graphs, and regressions required by the R-markdown script in the Report-3.Rmd file that generates the report.</p>
-Finally, this report represents my honest attempt to shed additional light on some important, but difficult issues. Therefore I would greatly appreciate readers’ comments and suggested improvements … but I would cherish their help in identifying any errors that I made in my data collection or analysis because bad reports don’t support good policies. Thank you … :-) <br /> <small><i>
+<p>The scripts and embedded functions should be loaded in numerical order ==&gt; functions-0 then Data-1.R The Data-1 module creates the data frames required by Stats-2A.R, Stats-2B.R, and Stats-2C.R. The Stats modules create the tables, maps, graphs, and regressions required by the R-markdown script in the Report-3.Rmd file that generates the report.</p>
+Finally, this report represents my honest attempt to shed additional light on some important, troublesome issues. Therefore I would greatly appreciate readers’ comments and suggested improvements … but I would cherish their help in identifying any errors that I made in my data collection or analysis because bad reports don’t support good policies. Thank you … :-) <br /> <small><i>
 <center>
 <a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a>
 </center>
@@ -992,6 +993,112 @@ Finally, this report represents my honest attempt to shed additional light on so
 </div>
 <div id="texas-texas-texas-texas-texas-texas-texas" class="section level3">
 <h3>Texas … Texas … Texas … Texas … Texas … Texas … Texas …</h3>
+<p><b>Table 3TX – American Male/Female Composition of Tech in Texas in 2015</b></p>
+<pre><code>                 Occupation perTS  Tech15    Fem perF15
+            All Occupations 100.0 328,635 81,307   24.7
+        SOFTWARE DEVELOPERS  20.8  68,305 14,562   21.3
+   COMP SUPPORT SPECIALISTS  16.3  53,409 13,519   25.3
+     COMP OCCUPATIONS OTHER  14.4  47,318 11,636   24.6
+ COMP/INFO SYSTEMS MANAGERS  13.4  44,156 10,923   24.7
+      COMP SYSTEMS ANALYSTS  10.5  34,598 13,502   39.0
+           COMP PROGRAMMERS   8.6  28,301  4,890   17.3
+        NET/COMP SYS ADMINS   4.8  15,891  3,101   19.5
+             WEB DEVELOPERS   3.6  11,905  4,450   37.4
+        COMP NET ARCHITECTS   2.8   9,212  1,088   11.8
+    DATABASE ADMINISTRATORS   2.0   6,696  2,542   38.0
+     INFO SECURITY ANALYSTS   1.9   6,224    607    9.8
+    COMP HARDWARE ENGINEERS   0.5   1,795    110    6.1
+ COMP/INFO RSRCH SCIENTISTS   0.3     825    377   45.7</code></pre>
+<p><b>Table 3TXTX – Changes in American Composition of Tech in Texas between 2010 and 2015</b></p>
+<pre><code>                 Occupation  Tech10  Tech15 Change perCh perF10
+            All Occupations 261,026 328,635 67,609  25.9   25.8
+        SOFTWARE DEVELOPERS  48,308  68,305 19,997  41.4   20.1
+   COMP SUPPORT SPECIALISTS  47,218  53,409  6,191  13.1   26.7
+     COMP OCCUPATIONS OTHER  19,494  47,318 27,824 142.7   25.4
+ COMP/INFO SYSTEMS MANAGERS  33,424  44,156 10,732  32.1   30.6
+      COMP SYSTEMS ANALYSTS  34,302  34,598    296   0.9   37.0
+           COMP PROGRAMMERS  31,589  28,301 -3,288 -10.4   18.0
+        NET/COMP SYS ADMINS  14,817  15,891  1,074   7.2   19.4
+             WEB DEVELOPERS   9,231  11,905  2,674  29.0   29.4
+        COMP NET ARCHITECTS   6,626   9,212  2,586  39.0   11.8
+    DATABASE ADMINISTRATORS   7,249   6,696   -553  -7.6   34.8
+     INFO SECURITY ANALYSTS   3,565   6,224  2,659  74.6   26.3
+    COMP HARDWARE ENGINEERS   3,982   1,795 -2,187 -54.9   20.1
+ COMP/INFO RSRCH SCIENTISTS   1,221     825   -396 -32.4   74.1</code></pre>
+<small><i>
+<center>
+<a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a>
+</center>
+<p></i></small></p>
+<p><b>Table 3TXblack – Black American Male/Female Composition of Tech in Texas in 2015</b></p>
+<pre><code>                 Occupation perTS Tech15    Fem perF15
+            All Occupations 100.0 31,437 11,489   36.5
+   COMP SUPPORT SPECIALISTS  27.3  8,583  2,275   26.5
+     COMP OCCUPATIONS OTHER  17.6  5,530  1,991   36.0
+        SOFTWARE DEVELOPERS  13.6  4,268  1,180   27.6
+      COMP SYSTEMS ANALYSTS  12.6  3,964  2,935   74.0
+ COMP/INFO SYSTEMS MANAGERS  10.2  3,208  1,222   38.1
+             WEB DEVELOPERS   4.1  1,284    946   73.7
+           COMP PROGRAMMERS   3.8  1,208    456   37.7
+     INFO SECURITY ANALYSTS   3.2    993    171   17.2
+        NET/COMP SYS ADMINS   2.7    861      0    0.0
+    DATABASE ADMINISTRATORS   2.5    786    134   17.0
+        COMP NET ARCHITECTS   2.1    663    179   27.0
+    COMP HARDWARE ENGINEERS   0.3     89      0    0.0
+ COMP/INFO RSRCH SCIENTISTS   0.0      0      0    0.0</code></pre>
+<p><b>Table 3TXTXblack – Changes in Black American Composition of Tech in Texas between 2010 and 2015</b></p>
+<pre><code>                 Occupation Tech10 Tech15 Change  perCh perF10
+            All Occupations 18,942 31,437 12,495   66.0   37.7
+   COMP SUPPORT SPECIALISTS  5,558  8,583  3,025   54.4   39.7
+     COMP OCCUPATIONS OTHER  1,885  5,530  3,645  193.4   56.0
+        SOFTWARE DEVELOPERS  1,376  4,268  2,892  210.2   17.2
+      COMP SYSTEMS ANALYSTS  3,824  3,964    140    3.7   40.8
+ COMP/INFO SYSTEMS MANAGERS  1,737  3,208  1,471   84.7   30.7
+             WEB DEVELOPERS    806  1,284    478   59.3   39.3
+           COMP PROGRAMMERS  1,310  1,208   -102   -7.8   17.8
+     INFO SECURITY ANALYSTS    650    993    343   52.8   69.5
+        NET/COMP SYS ADMINS    500    861    361   72.2   13.4
+    DATABASE ADMINISTRATORS    568    786    218   38.4   48.8
+        COMP NET ARCHITECTS    372    663    291   78.2    0.0
+    COMP HARDWARE ENGINEERS      0     89     89    Inf    0.0
+ COMP/INFO RSRCH SCIENTISTS    356      0   -356 -100.0   57.3</code></pre>
+<small><i>
+<center>
+<a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a>
+</center>
+<p></i></small></p>
+<p><b>Table 3TXhispanic – Hispanic American Male/Female Composition of Tech in Texas in 2015</b></p>
+<pre><code>                 Occupation perTS Tech15    Fem perF15
+            All Occupations 100.0 46,261 11,594   25.1
+   COMP SUPPORT SPECIALISTS  21.9 10,129  2,834   28.0
+     COMP OCCUPATIONS OTHER  19.0  8,782  2,133   24.3
+        SOFTWARE DEVELOPERS  14.9  6,879  1,664   24.2
+      COMP SYSTEMS ANALYSTS  11.4  5,252  1,891   36.0
+ COMP/INFO SYSTEMS MANAGERS   9.2  4,249    901   21.2
+        NET/COMP SYS ADMINS   8.4  3,880    816   21.0
+           COMP PROGRAMMERS   5.6  2,592    312   12.0
+             WEB DEVELOPERS   3.6  1,654    372   22.5
+        COMP NET ARCHITECTS   2.0    918    356   38.8
+    DATABASE ADMINISTRATORS   1.6    763    229   30.0
+     INFO SECURITY ANALYSTS   1.1    525     36    6.9
+ COMP/INFO RSRCH SCIENTISTS   0.8    390     50   12.8
+    COMP HARDWARE ENGINEERS   0.5    248      0    0.0</code></pre>
+<p><b>Table 3TXTXhispanic – Changes in Hispanic American Composition of Tech in TExas between 2010 and 2015</b></p>
+<pre><code>                 Occupation Tech10 Tech15 Change perCh perF10
+            All Occupations 37,149 46,261  9,112  24.5   24.6
+   COMP SUPPORT SPECIALISTS 10,156 10,129    -27  -0.3   21.4
+     COMP OCCUPATIONS OTHER  3,154  8,782  5,628 178.4   19.7
+        SOFTWARE DEVELOPERS  5,088  6,879  1,791  35.2   29.7
+      COMP SYSTEMS ANALYSTS  3,921  5,252  1,331  33.9   40.3
+ COMP/INFO SYSTEMS MANAGERS  3,286  4,249    963  29.3   29.1
+        NET/COMP SYS ADMINS  2,997  3,880    883  29.5   17.2
+           COMP PROGRAMMERS  4,373  2,592 -1,781 -40.7   22.6
+             WEB DEVELOPERS  1,191  1,654    463  38.9    1.4
+        COMP NET ARCHITECTS    693    918    225  32.5   11.0
+    DATABASE ADMINISTRATORS  1,125    763   -362 -32.2   14.2
+     INFO SECURITY ANALYSTS    526    525     -1  -0.2   41.3
+ COMP/INFO RSRCH SCIENTISTS    305    390     85  27.9  100.0
+    COMP HARDWARE ENGINEERS    334    248    -86 -25.7    0.0</code></pre>
 <p><b>Table 3TXfor – Foreign Male/Female Composition of Tech in Texas in 2015</b></p>
 <pre><code>                 Occupation perTS Tech15 Fem perF15
             All Occupations 100.0  2,190 286   13.1
@@ -1032,6 +1139,112 @@ Finally, this report represents my honest attempt to shed additional light on so
 </div>
 <div id="new-york-new-york-new-york-new-york" class="section level3">
 <h3>New York … New York … New York … New York …</h3>
+<p><b>Table 3NY – American Male/Female Composition of Tech in New York in 2015</b></p>
+<pre><code>                 Occupation perTS  Tech15    Fem perF15
+            All Occupations 100.0 240,885 56,652   23.5
+        SOFTWARE DEVELOPERS  18.0  43,378  7,333   16.9
+   COMP SUPPORT SPECIALISTS  14.4  34,799  8,196   23.6
+      COMP SYSTEMS ANALYSTS  12.8  30,898 10,715   34.7
+     COMP OCCUPATIONS OTHER  12.6  30,397  6,420   21.1
+ COMP/INFO SYSTEMS MANAGERS  12.2  29,324  7,688   26.2
+           COMP PROGRAMMERS  11.7  28,158  6,621   23.5
+             WEB DEVELOPERS   5.7  13,849  4,810   34.7
+        NET/COMP SYS ADMINS   4.1   9,928  1,317   13.3
+        COMP NET ARCHITECTS   3.0   7,240    205    2.8
+    DATABASE ADMINISTRATORS   2.5   5,948  1,771   29.8
+     INFO SECURITY ANALYSTS   1.3   3,219  1,156   35.9
+    COMP HARDWARE ENGINEERS   1.0   2,368    284   12.0
+ COMP/INFO RSRCH SCIENTISTS   0.6   1,379    136    9.9</code></pre>
+<p><b>Table 3NYNY – Changes in American Composition of Tech in New York between 2010 and 2015</b></p>
+<pre><code>                 Occupation  Tech10  Tech15 Change perCh perF10
+            All Occupations 200,259 240,885 40,626  20.3   25.4
+        SOFTWARE DEVELOPERS  31,844  43,378 11,534  36.2   19.9
+   COMP SUPPORT SPECIALISTS  22,859  34,799 11,940  52.2   23.8
+      COMP SYSTEMS ANALYSTS  28,850  30,898  2,048   7.1   35.4
+     COMP OCCUPATIONS OTHER  20,920  30,397  9,477  45.3   18.2
+ COMP/INFO SYSTEMS MANAGERS  24,694  29,324  4,630  18.7   31.1
+           COMP PROGRAMMERS  30,846  28,158 -2,688  -8.7   21.6
+             WEB DEVELOPERS  12,842  13,849  1,007   7.8   35.4
+        NET/COMP SYS ADMINS  12,450   9,928 -2,522 -20.3   20.6
+        COMP NET ARCHITECTS   5,133   7,240  2,107  41.0    6.8
+    DATABASE ADMINISTRATORS   4,340   5,948  1,608  37.1   45.0
+     INFO SECURITY ANALYSTS   2,152   3,219  1,067  49.6   30.8
+    COMP HARDWARE ENGINEERS   3,164   2,368   -796 -25.2   13.7
+ COMP/INFO RSRCH SCIENTISTS     165   1,379  1,214 735.8   52.7</code></pre>
+<small><i>
+<center>
+<a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a>
+</center>
+<p></i></small></p>
+<p><b>Table 3NYblack – Black American Male/Female Composition of Tech in New York in 2015</b></p>
+<pre><code>                 Occupation perTS Tech15   Fem perF15
+            All Occupations 100.0 17,100 4,467   26.1
+     COMP OCCUPATIONS OTHER  17.9  3,069   743   24.2
+   COMP SUPPORT SPECIALISTS  17.5  3,000 1,331   44.4
+      COMP SYSTEMS ANALYSTS  14.2  2,434   827   34.0
+ COMP/INFO SYSTEMS MANAGERS  12.8  2,188   475   21.7
+        SOFTWARE DEVELOPERS   9.1  1,548   273   17.6
+           COMP PROGRAMMERS   8.8  1,509   599   39.7
+             WEB DEVELOPERS   7.0  1,202     0    0.0
+    DATABASE ADMINISTRATORS   6.8  1,155   219   19.0
+        COMP NET ARCHITECTS   3.8    654     0    0.0
+        NET/COMP SYS ADMINS   0.9    153     0    0.0
+    COMP HARDWARE ENGINEERS   0.7    120     0    0.0
+     INFO SECURITY ANALYSTS   0.4     68     0    0.0
+ COMP/INFO RSRCH SCIENTISTS   0.0      0     0    0.0</code></pre>
+<p><b>Table 3NYNYblack – Changes in Black American Composition of Tech in New York between 2010 and 2015</b></p>
+<pre><code>                 Occupation Tech10 Tech15 Change perCh perF10
+            All Occupations 15,492 17,100  1,608  10.4   25.7
+     COMP OCCUPATIONS OTHER  2,902  3,069    167   5.8   31.0
+   COMP SUPPORT SPECIALISTS  3,986  3,000   -986 -24.7   19.6
+      COMP SYSTEMS ANALYSTS  2,859  2,434   -425 -14.9   33.7
+ COMP/INFO SYSTEMS MANAGERS    939  2,188  1,249 133.0   29.1
+        SOFTWARE DEVELOPERS  1,104  1,548    444  40.2   35.7
+           COMP PROGRAMMERS    690  1,509    819 118.7   24.6
+             WEB DEVELOPERS    640  1,202    562  87.8    0.0
+    DATABASE ADMINISTRATORS    377  1,155    778 206.4    0.0
+        COMP NET ARCHITECTS    350    654    304  86.9   38.9
+        NET/COMP SYS ADMINS  1,106    153   -953 -86.2   33.1
+    COMP HARDWARE ENGINEERS    162    120    -42 -25.9    0.0
+     INFO SECURITY ANALYSTS    377     68   -309 -82.0    0.0
+ COMP/INFO RSRCH SCIENTISTS      0      0      0   NaN    0.0</code></pre>
+<small><i>
+<center>
+<a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a>
+</center>
+<p></i></small></p>
+<p><b>Table 3NYhispanic – Hispanic American Male/Female Composition of Tech in New York in 2015</b></p>
+<pre><code>                 Occupation perTS Tech15   Fem perF15
+            All Occupations 100.0 21,662 5,663   26.1
+   COMP SUPPORT SPECIALISTS  22.2  4,813 1,759   36.5
+        SOFTWARE DEVELOPERS  17.7  3,832   414   10.8
+ COMP/INFO SYSTEMS MANAGERS  16.6  3,593 1,074   29.9
+     COMP OCCUPATIONS OTHER  10.7  2,316     0    0.0
+      COMP SYSTEMS ANALYSTS   8.7  1,875 1,289   68.7
+           COMP PROGRAMMERS   6.5  1,399   206   14.7
+        NET/COMP SYS ADMINS   6.0  1,301   230   17.7
+             WEB DEVELOPERS   4.4    955   368   38.5
+    DATABASE ADMINISTRATORS   2.4    516   171   33.1
+        COMP NET ARCHITECTS   2.0    439     0    0.0
+    COMP HARDWARE ENGINEERS   1.1    234     0    0.0
+ COMP/INFO RSRCH SCIENTISTS   0.9    188    97   51.6
+     INFO SECURITY ANALYSTS   0.9    201    55   27.4</code></pre>
+<p><b>Table 3NYNYhispanic – Changes in Hispanic American Composition of Tech in New York between 2010 and 2015</b></p>
+<pre><code>                 Occupation Tech10 Tech15 Change perCh perF10
+            All Occupations 12,681 21,662  8,981  70.8   27.9
+   COMP SUPPORT SPECIALISTS  1,652  4,813  3,161 191.3   16.9
+        SOFTWARE DEVELOPERS    749  3,832  3,083 411.6   38.7
+ COMP/INFO SYSTEMS MANAGERS  2,308  3,593  1,285  55.7   43.8
+     COMP OCCUPATIONS OTHER  2,417  2,316   -101  -4.2    1.2
+      COMP SYSTEMS ANALYSTS  1,858  1,875     17   0.9   44.6
+           COMP PROGRAMMERS    890  1,399    509  57.2   47.1
+        NET/COMP SYS ADMINS    987  1,301    314  31.8   15.7
+             WEB DEVELOPERS    552    955    403  73.0   26.4
+    DATABASE ADMINISTRATORS    377    516    139  36.9   57.8
+        COMP NET ARCHITECTS    364    439     75  20.6    0.0
+    COMP HARDWARE ENGINEERS    334    234   -100 -29.9   21.3
+     INFO SECURITY ANALYSTS    193    201      8   4.1   49.7
+ COMP/INFO RSRCH SCIENTISTS      0    188    188   Inf    0.0</code></pre>
 <p><b>Table 3NYfor – Foreign Male/Female Composition of Tech in New York 2015</b></p>
 <pre><code>                 Occupation perTS Tech15   Fem perF15
             All Occupations 100.0 16,699 3,802   22.8
@@ -1072,6 +1285,112 @@ Finally, this report represents my honest attempt to shed additional light on so
 </div>
 <div id="florida-florida-florida-florida" class="section level3">
 <h3>Florida … Florida … Florida … Florida …</h3>
+<p><b>Table 3FL – American Male/Female Composition of Tech in Florida in 2015</b></p>
+<pre><code>                 Occupation perTS  Tech15    Fem perF15
+            All Occupations 100.0 193,697 51,910   26.8
+   COMP SUPPORT SPECIALISTS  17.6  34,021 10,410   30.6
+        SOFTWARE DEVELOPERS  16.9  32,703  6,518   19.9
+     COMP OCCUPATIONS OTHER  14.8  28,670  7,890   27.5
+ COMP/INFO SYSTEMS MANAGERS  13.0  25,177  7,364   29.2
+           COMP PROGRAMMERS  10.1  19,519  4,203   21.5
+      COMP SYSTEMS ANALYSTS   8.9  17,209  6,176   35.9
+             WEB DEVELOPERS   5.8  11,212  4,849   43.2
+        NET/COMP SYS ADMINS   5.3  10,249  1,948   19.0
+    DATABASE ADMINISTRATORS   2.6   4,973  1,598   32.1
+        COMP NET ARCHITECTS   2.4   4,567    135    3.0
+     INFO SECURITY ANALYSTS   1.5   2,856    466   16.3
+    COMP HARDWARE ENGINEERS   1.1   2,158    295   13.7
+ COMP/INFO RSRCH SCIENTISTS   0.2     383     58   15.1</code></pre>
+<p><b>Table 3FLFL – Changes in American Composition of Tech in Florida between 2010 and 2015</b></p>
+<pre><code>                 Occupation  Tech10  Tech15 Change perCh perF10
+            All Occupations 145,995 193,697 47,702  32.7   24.6
+   COMP SUPPORT SPECIALISTS  23,895  34,021 10,126  42.4   27.3
+        SOFTWARE DEVELOPERS  27,357  32,703  5,346  19.5   21.2
+     COMP OCCUPATIONS OTHER  14,017  28,670 14,653 104.5   20.4
+ COMP/INFO SYSTEMS MANAGERS  18,104  25,177  7,073  39.1   27.5
+           COMP PROGRAMMERS  17,698  19,519  1,821  10.3   19.4
+      COMP SYSTEMS ANALYSTS  15,317  17,209  1,892  12.4   36.5
+             WEB DEVELOPERS   7,497  11,212  3,715  49.6   23.0
+        NET/COMP SYS ADMINS   9,803  10,249    446   4.5   19.2
+    DATABASE ADMINISTRATORS   4,666   4,973    307   6.6   38.3
+        COMP NET ARCHITECTS   3,130   4,567  1,437  45.9    8.3
+     INFO SECURITY ANALYSTS   1,346   2,856  1,510 112.2   34.5
+    COMP HARDWARE ENGINEERS   3,035   2,158   -877 -28.9   18.3
+ COMP/INFO RSRCH SCIENTISTS     130     383    253 194.6   44.6</code></pre>
+<small><i>
+<center>
+<a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a>
+</center>
+<p></i></small></p>
+<p><b>Table 3FLblack – Black American Male/Female Composition of Tech in Florida in 2015</b></p>
+<pre><code>                 Occupation perTS Tech15   Fem perF15
+            All Occupations 100.0 16,999 5,916   34.8
+   COMP SUPPORT SPECIALISTS  29.3  4,975 2,227   44.8
+     COMP OCCUPATIONS OTHER  19.8  3,365 1,527   45.4
+ COMP/INFO SYSTEMS MANAGERS  14.6  2,481   786   31.7
+        SOFTWARE DEVELOPERS  13.9  2,361   185    7.8
+        NET/COMP SYS ADMINS   7.1  1,210    39    3.2
+      COMP SYSTEMS ANALYSTS   6.8  1,164   645   55.4
+           COMP PROGRAMMERS   3.2    544   237   43.6
+             WEB DEVELOPERS   1.5    263    99   37.6
+        COMP NET ARCHITECTS   1.5    248     0    0.0
+    COMP HARDWARE ENGINEERS   1.3    217     0    0.0
+    DATABASE ADMINISTRATORS   0.6    103   103  100.0
+     INFO SECURITY ANALYSTS   0.4     68    68  100.0
+ COMP/INFO RSRCH SCIENTISTS   0.0      0     0    0.0</code></pre>
+<p><b>Table 3FLFLblack – Changes in Black American Composition of Tech in Florida between 2010 and 2015</b></p>
+<pre><code>                 Occupation Tech10 Tech15 Change  perCh perF10
+            All Occupations 10,896 16,999  6,103   56.0   33.0
+   COMP SUPPORT SPECIALISTS  2,206  4,975  2,769  125.5   33.9
+     COMP OCCUPATIONS OTHER  1,558  3,365  1,807  116.0   30.3
+ COMP/INFO SYSTEMS MANAGERS    633  2,481  1,848  291.9   43.8
+        SOFTWARE DEVELOPERS  1,735  2,361    626   36.1   19.4
+        NET/COMP SYS ADMINS    586  1,210    624  106.5   38.7
+      COMP SYSTEMS ANALYSTS  1,355  1,164   -191  -14.1   44.3
+           COMP PROGRAMMERS  1,209    544   -665  -55.0   51.9
+             WEB DEVELOPERS    659    263   -396  -60.1    0.0
+        COMP NET ARCHITECTS     50    248    198  396.0    0.0
+    COMP HARDWARE ENGINEERS    120    217     97   80.8   61.7
+    DATABASE ADMINISTRATORS    638    103   -535  -83.9   24.8
+     INFO SECURITY ANALYSTS     75     68     -7   -9.3  100.0
+ COMP/INFO RSRCH SCIENTISTS     72      0    -72 -100.0    0.0</code></pre>
+<small><i>
+<center>
+<a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a>
+</center>
+<p></i></small></p>
+<p><b>Table 3FLhispanic – Hispanic American Male/Female Composition of Tech in Florida in 2015</b></p>
+<pre><code>                 Occupation perTS Tech15   Fem perF15
+            All Occupations 100.0 32,968 7,862   23.8
+   COMP SUPPORT SPECIALISTS  22.8  7,510 2,163   28.8
+     COMP OCCUPATIONS OTHER  16.5  5,431 1,213   22.3
+        SOFTWARE DEVELOPERS  15.5  5,115   761   14.9
+           COMP PROGRAMMERS  10.7  3,541   851   24.0
+ COMP/INFO SYSTEMS MANAGERS   9.5  3,142   870   27.7
+      COMP SYSTEMS ANALYSTS   8.7  2,865 1,181   41.2
+        NET/COMP SYS ADMINS   6.6  2,163   392   18.1
+             WEB DEVELOPERS   4.3  1,416   174   12.3
+    DATABASE ADMINISTRATORS   3.4  1,128   257   22.8
+        COMP NET ARCHITECTS   1.3    425     0    0.0
+    COMP HARDWARE ENGINEERS   0.5    174     0    0.0
+     INFO SECURITY ANALYSTS   0.2     58     0    0.0
+ COMP/INFO RSRCH SCIENTISTS   0.0      0     0    0.0</code></pre>
+<p><b>Table 3FLFLhispanic – Changes in Hispanic American Composition of Tech in Florida between 2010 and 2015</b></p>
+<pre><code>                 Occupation Tech10 Tech15 Change perCh perF10
+            All Occupations 21,882 32,968 11,086  50.7   20.6
+   COMP SUPPORT SPECIALISTS  4,011  7,510  3,499  87.2   31.0
+     COMP OCCUPATIONS OTHER  2,832  5,431  2,599  91.8   14.4
+        SOFTWARE DEVELOPERS  2,306  5,115  2,809 121.8   23.3
+           COMP PROGRAMMERS  2,677  3,541    864  32.3    5.7
+ COMP/INFO SYSTEMS MANAGERS  3,152  3,142    -10  -0.3   15.9
+      COMP SYSTEMS ANALYSTS  2,098  2,865    767  36.6   38.0
+        NET/COMP SYS ADMINS  1,714  2,163    449  26.2   18.9
+             WEB DEVELOPERS  1,344  1,416     72   5.4   14.4
+    DATABASE ADMINISTRATORS    520  1,128    608 116.9    8.7
+        COMP NET ARCHITECTS    577    425   -152 -26.3   35.7
+    COMP HARDWARE ENGINEERS    520    174   -346 -66.5   17.7
+     INFO SECURITY ANALYSTS    131     58    -73 -55.7    0.0
+ COMP/INFO RSRCH SCIENTISTS      0      0      0   NaN    0.0</code></pre>
 <p><b>Table 3FLfor – Foreign Male/Female Composition of Tech in Florida in 2015</b></p>
 <pre><code>                 Occupation perTS Tech15   Fem perF15
             All Occupations 100.0 23,049 4,762   20.7
@@ -1112,6 +1431,112 @@ Finally, this report represents my honest attempt to shed additional light on so
 </div>
 <div id="virginia-virginia-virginia" class="section level3">
 <h3>Virginia … Virginia … Virginia …</h3>
+<p><b>Table 3VA – American Male/Female Composition of Tech in Virginia in 2015</b></p>
+<pre><code>                 Occupation perTS  Tech15    Fem perF15
+            All Occupations 100.0 186,597 54,764   29.3
+        SOFTWARE DEVELOPERS  26.4  49,194 11,316   23.0
+     COMP OCCUPATIONS OTHER  13.9  26,027  6,919   26.6
+      COMP SYSTEMS ANALYSTS  12.7  23,725 11,015   46.4
+ COMP/INFO SYSTEMS MANAGERS  11.8  22,092  6,681   30.2
+   COMP SUPPORT SPECIALISTS  11.3  21,022  5,693   27.1
+        NET/COMP SYS ADMINS   5.3   9,975  2,465   24.7
+           COMP PROGRAMMERS   5.2   9,640  4,077   42.3
+             WEB DEVELOPERS   3.3   6,192  2,079   33.6
+    DATABASE ADMINISTRATORS   2.9   5,427  2,403   44.3
+     INFO SECURITY ANALYSTS   2.7   5,043    831   16.5
+        COMP NET ARCHITECTS   2.7   4,957    482    9.7
+ COMP/INFO RSRCH SCIENTISTS   1.0   1,811    746   41.2
+    COMP HARDWARE ENGINEERS   0.8   1,492     57    3.8</code></pre>
+<p><b>Table 3VAVA – Changes in American Composition of Tech in Virginia between 2010 and 2015</b></p>
+<pre><code>                 Occupation  Tech10  Tech15 Change perCh perF10
+            All Occupations 166,793 186,597 19,804  11.9   27.7
+        SOFTWARE DEVELOPERS  41,159  49,194  8,035  19.5   25.0
+     COMP OCCUPATIONS OTHER  12,942  26,027 13,085 101.1   29.6
+      COMP SYSTEMS ANALYSTS  22,155  23,725  1,570   7.1   32.8
+ COMP/INFO SYSTEMS MANAGERS  21,288  22,092    804   3.8   34.7
+   COMP SUPPORT SPECIALISTS  21,441  21,022   -419  -2.0   29.4
+        NET/COMP SYS ADMINS  14,544   9,975 -4,569 -31.4   19.8
+           COMP PROGRAMMERS  13,257   9,640 -3,617 -27.3   22.9
+             WEB DEVELOPERS   3,801   6,192  2,391  62.9   38.4
+    DATABASE ADMINISTRATORS   3,343   5,427  2,084  62.3   45.8
+     INFO SECURITY ANALYSTS   5,061   5,043    -18  -0.4   20.3
+        COMP NET ARCHITECTS   5,042   4,957    -85  -1.7    6.6
+ COMP/INFO RSRCH SCIENTISTS     968   1,811    843  87.1   73.3
+    COMP HARDWARE ENGINEERS   1,792   1,492   -300 -16.7    9.8</code></pre>
+<small><i>
+<center>
+<a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a>
+</center>
+<p></i></small></p>
+<p><b>Table 3VAblack – Black American Male/Female Composition of Tech in Virginia in 2015</b></p>
+<pre><code>                 Occupation perTS Tech15    Fem perF15
+            All Occupations 100.0 28,381 11,356   40.0
+     COMP OCCUPATIONS OTHER  20.8  5,892  1,897   32.2
+        SOFTWARE DEVELOPERS  17.7  5,030  2,342   46.6
+   COMP SUPPORT SPECIALISTS  15.7  4,455  1,588   35.6
+      COMP SYSTEMS ANALYSTS  11.4  3,227  1,644   50.9
+ COMP/INFO SYSTEMS MANAGERS  10.2  2,891  1,805   62.4
+        NET/COMP SYS ADMINS   7.3  2,076    809   39.0
+           COMP PROGRAMMERS   6.9  1,965    752   38.3
+     INFO SECURITY ANALYSTS   3.2    895    155   17.3
+ COMP/INFO RSRCH SCIENTISTS   2.8    787    179   22.7
+        COMP NET ARCHITECTS   2.2    620    126   20.3
+             WEB DEVELOPERS   0.8    228     59   25.9
+    DATABASE ADMINISTRATORS   0.7    202      0    0.0
+    COMP HARDWARE ENGINEERS   0.4    113      0    0.0</code></pre>
+<p><b>Table 3VAVAblack – Changes in Black American Composition of Tech in Virginia between 2010 and 2015</b></p>
+<pre><code>                 Occupation Tech10 Tech15 Change   perCh perF10
+            All Occupations 22,087 28,381  6,294    28.5   40.9
+     COMP OCCUPATIONS OTHER  2,340  5,892  3,552   151.8   27.2
+        SOFTWARE DEVELOPERS  5,374  5,030   -344    -6.4   39.2
+   COMP SUPPORT SPECIALISTS  3,723  4,455    732    19.7   45.8
+      COMP SYSTEMS ANALYSTS  2,165  3,227  1,062    49.1   34.5
+ COMP/INFO SYSTEMS MANAGERS  3,494  2,891   -603   -17.3   67.0
+        NET/COMP SYS ADMINS  2,162  2,076    -86    -4.0   22.3
+           COMP PROGRAMMERS    985  1,965    980    99.5   10.1
+     INFO SECURITY ANALYSTS    581    895    314    54.0   20.5
+ COMP/INFO RSRCH SCIENTISTS     67    787    720 1,074.6  100.0
+        COMP NET ARCHITECTS    207    620    413   199.5    0.0
+             WEB DEVELOPERS    128    228    100    78.1  100.0
+    DATABASE ADMINISTRATORS    761    202   -559   -73.5   79.1
+    COMP HARDWARE ENGINEERS    100    113     13    13.0    0.0</code></pre>
+<small><i>
+<center>
+<a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a>
+</center>
+<p></i></small></p>
+<p><b>Table 3VAhispanic – Hispanic American Male/Female Composition of Tech in Virginia in 2015</b></p>
+<pre><code>                 Occupation perTS Tech15   Fem perF15
+            All Occupations 100.0  7,940 2,852   35.9
+        SOFTWARE DEVELOPERS  19.5  1,551    84    5.4
+     COMP OCCUPATIONS OTHER  14.4  1,142   199   17.4
+      COMP SYSTEMS ANALYSTS  14.0  1,111   729   65.6
+ COMP/INFO SYSTEMS MANAGERS  13.4  1,062   731   68.8
+        NET/COMP SYS ADMINS   9.2    731   244   33.4
+   COMP SUPPORT SPECIALISTS   8.5    676    60    8.9
+    DATABASE ADMINISTRATORS   6.4    508   508  100.0
+     INFO SECURITY ANALYSTS   4.9    386     0    0.0
+             WEB DEVELOPERS   4.3    342   239   69.9
+        COMP NET ARCHITECTS   2.9    234     0    0.0
+           COMP PROGRAMMERS   2.5    197    58   29.4
+ COMP/INFO RSRCH SCIENTISTS   0.0      0     0    0.0
+    COMP HARDWARE ENGINEERS   0.0      0     0    0.0</code></pre>
+<p><b>Table 3VAVAhispanic – Changes in Hispanic American Composition of Tech in Virginia between 2010 and 2015</b></p>
+<pre><code>                 Occupation Tech10 Tech15 Change  perCh perF10
+            All Occupations  4,888  7,940  3,052   62.4   24.4
+        SOFTWARE DEVELOPERS  1,413  1,551    138    9.8   12.7
+     COMP OCCUPATIONS OTHER    159  1,142    983  618.2   42.1
+      COMP SYSTEMS ANALYSTS  1,231  1,111   -120   -9.7   59.8
+ COMP/INFO SYSTEMS MANAGERS    444  1,062    618  139.2   30.9
+        NET/COMP SYS ADMINS    377    731    354   93.9   19.4
+   COMP SUPPORT SPECIALISTS    584    676     92   15.8    0.0
+    DATABASE ADMINISTRATORS      0    508    508    Inf    0.0
+     INFO SECURITY ANALYSTS    337    386     49   14.5    0.0
+             WEB DEVELOPERS      0    342    342    Inf    0.0
+        COMP NET ARCHITECTS    176    234     58   33.0    0.0
+           COMP PROGRAMMERS    113    197     84   74.3    0.0
+    COMP HARDWARE ENGINEERS     54      0    -54 -100.0    0.0
+ COMP/INFO RSRCH SCIENTISTS      0      0      0    NaN    0.0</code></pre>
 <p><b>Table 3VAfor – Foreign Male/Female Composition of Tech in Virginia in 2015</b></p>
 <pre><code>                 Occupation perTS Tech15   Fem perF15
             All Occupations 100.0 31,201 5,112   16.4
@@ -1152,6 +1577,112 @@ Finally, this report represents my honest attempt to shed additional light on so
 </div>
 <div id="illinois-illinois" class="section level3">
 <h3>Illinois … Illinois …</h3>
+<p><b>Table 3IL – American Male/Female Composition of Tech in Illinois in 2015</b></p>
+<pre><code>                 Occupation perTS  Tech15    Fem perF15
+            All Occupations 100.0 173,972 42,974   24.7
+        SOFTWARE DEVELOPERS  17.2  29,982  4,866   16.2
+   COMP SUPPORT SPECIALISTS  14.7  25,593  6,042   23.6
+     COMP OCCUPATIONS OTHER  13.9  24,172  6,150   25.4
+      COMP SYSTEMS ANALYSTS  13.2  23,045  9,856   42.8
+ COMP/INFO SYSTEMS MANAGERS  12.9  22,452  6,900   30.7
+           COMP PROGRAMMERS  10.1  17,634  3,849   21.8
+        NET/COMP SYS ADMINS   5.1   8,935  1,164   13.0
+             WEB DEVELOPERS   4.1   7,068  2,309   32.7
+        COMP NET ARCHITECTS   3.0   5,139    173    3.4
+    DATABASE ADMINISTRATORS   2.4   4,212    973   23.1
+     INFO SECURITY ANALYSTS   1.9   3,345    254    7.6
+    COMP HARDWARE ENGINEERS   1.3   2,263    306   13.5
+ COMP/INFO RSRCH SCIENTISTS   0.1     132    132  100.0</code></pre>
+<p><b>Table 3ILIL – Changes in American Composition of Tech in Illinois between 2010 and 2015</b></p>
+<pre><code>                 Occupation  Tech10  Tech15 Change perCh perF10
+            All Occupations 149,428 173,972 24,544  16.4   27.3
+        SOFTWARE DEVELOPERS  21,772  29,982  8,210  37.7   16.4
+   COMP SUPPORT SPECIALISTS  21,451  25,593  4,142  19.3   33.7
+     COMP OCCUPATIONS OTHER  13,404  24,172 10,768  80.3   29.5
+      COMP SYSTEMS ANALYSTS  21,484  23,045  1,561   7.3   34.2
+ COMP/INFO SYSTEMS MANAGERS  24,536  22,452 -2,084  -8.5   28.8
+           COMP PROGRAMMERS  19,094  17,634 -1,460  -7.6   27.3
+        NET/COMP SYS ADMINS   9,163   8,935   -228  -2.5   19.6
+             WEB DEVELOPERS   6,232   7,068    836  13.4   28.0
+        COMP NET ARCHITECTS   4,167   5,139    972  23.3    4.8
+    DATABASE ADMINISTRATORS   4,599   4,212   -387  -8.4   48.6
+     INFO SECURITY ANALYSTS   1,936   3,345  1,409  72.8    6.2
+    COMP HARDWARE ENGINEERS   1,199   2,263  1,064  88.7   20.3
+ COMP/INFO RSRCH SCIENTISTS     391     132   -259 -66.2   11.8</code></pre>
+<small><i>
+<center>
+<a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a>
+</center>
+<p></i></small></p>
+<p><b>Table 3ILblack – Black American Male/Female Composition of Tech in Illinois in 2015</b></p>
+<pre><code>                 Occupation perTS Tech15   Fem perF15
+            All Occupations 100.0 12,503 3,283   26.3
+     COMP OCCUPATIONS OTHER  20.0  2,505   356   14.2
+   COMP SUPPORT SPECIALISTS  16.8  2,099   903   43.0
+      COMP SYSTEMS ANALYSTS  13.9  1,737   725   41.7
+        SOFTWARE DEVELOPERS  10.6  1,328   165   12.4
+ COMP/INFO SYSTEMS MANAGERS   9.8  1,226   273   22.3
+           COMP PROGRAMMERS   6.8    846   534   63.1
+        COMP NET ARCHITECTS   6.7    838    86   10.3
+        NET/COMP SYS ADMINS   6.0    750    77   10.3
+    DATABASE ADMINISTRATORS   3.7    461   164   35.6
+     INFO SECURITY ANALYSTS   3.5    441     0    0.0
+             WEB DEVELOPERS   1.6    204     0    0.0
+    COMP HARDWARE ENGINEERS   0.5     68     0    0.0
+ COMP/INFO RSRCH SCIENTISTS   0.0      0     0    0.0</code></pre>
+<p><b>Table 3ILILblack – Changes in Black American Composition of Tech in Illinois between 2010 and 2015</b></p>
+<pre><code>                 Occupation Tech10 Tech15 Change  perCh perF10
+            All Occupations 10,998 12,503  1,505   13.7   50.1
+     COMP OCCUPATIONS OTHER  1,391  2,505  1,114   80.1   42.3
+   COMP SUPPORT SPECIALISTS  2,200  2,099   -101   -4.6   53.0
+      COMP SYSTEMS ANALYSTS  1,307  1,737    430   32.9   53.0
+        SOFTWARE DEVELOPERS    697  1,328    631   90.5   27.8
+ COMP/INFO SYSTEMS MANAGERS  1,346  1,226   -120   -8.9   70.0
+           COMP PROGRAMMERS  1,586    846   -740  -46.7   34.0
+        COMP NET ARCHITECTS    259    838    579  223.6   24.7
+        NET/COMP SYS ADMINS    363    750    387  106.6   62.5
+    DATABASE ADMINISTRATORS    866    461   -405  -46.8  100.0
+     INFO SECURITY ANALYSTS    325    441    116   35.7   36.9
+             WEB DEVELOPERS    598    204   -394  -65.9   19.1
+    COMP HARDWARE ENGINEERS      0     68     68    Inf    0.0
+ COMP/INFO RSRCH SCIENTISTS     60      0    -60 -100.0    0.0</code></pre>
+<small><i>
+<center>
+<a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a>
+</center>
+<p></i></small></p>
+<p><b>Table 3ILhispanic – Hispanic American Male/Female Composition of Tech in Illinois in 2015</b></p>
+<pre><code>                 Occupation perTS Tech15   Fem perF15
+            All Occupations 100.0 11,901 2,649   22.3
+   COMP SUPPORT SPECIALISTS  21.9  2,607   894   34.3
+     COMP OCCUPATIONS OTHER  16.6  1,975   163    8.3
+      COMP SYSTEMS ANALYSTS  15.7  1,870   711   38.0
+           COMP PROGRAMMERS  13.0  1,543   112    7.3
+        NET/COMP SYS ADMINS  10.2  1,208   138   11.4
+        SOFTWARE DEVELOPERS   5.4    639   180   28.2
+    DATABASE ADMINISTRATORS   5.1    604   152   25.2
+             WEB DEVELOPERS   4.7    559     0    0.0
+ COMP/INFO SYSTEMS MANAGERS   3.0    360   207   57.5
+        COMP NET ARCHITECTS   1.9    228     0    0.0
+     INFO SECURITY ANALYSTS   1.3    156     0    0.0
+    COMP HARDWARE ENGINEERS   1.3    152    92   60.5
+ COMP/INFO RSRCH SCIENTISTS   0.0      0     0    0.0</code></pre>
+<p><b>Table 3ILILhispanic – Changes in Hispanic American Composition of Tech in Illinois between 2010 and 2015</b></p>
+<pre><code>                 Occupation Tech10 Tech15 Change  perCh perF10
+            All Occupations  9,102 11,901  2,799   30.8   23.7
+   COMP SUPPORT SPECIALISTS  1,614  2,607    993   61.5   36.6
+     COMP OCCUPATIONS OTHER    372  1,975  1,603  430.9   58.1
+      COMP SYSTEMS ANALYSTS    616  1,870  1,254  203.6    9.3
+           COMP PROGRAMMERS  1,372  1,543    171   12.5   23.7
+        NET/COMP SYS ADMINS  1,302  1,208    -94   -7.2    5.3
+        SOFTWARE DEVELOPERS  1,324    639   -685  -51.7   16.5
+    DATABASE ADMINISTRATORS    615    604    -11   -1.8   17.2
+             WEB DEVELOPERS     83    559    476  573.5    0.0
+ COMP/INFO SYSTEMS MANAGERS    928    360   -568  -61.2   62.3
+        COMP NET ARCHITECTS    644    228   -416  -64.6    0.0
+     INFO SECURITY ANALYSTS      0    156    156    Inf    0.0
+    COMP HARDWARE ENGINEERS     78    152     74   94.9    0.0
+ COMP/INFO RSRCH SCIENTISTS    154      0   -154 -100.0    0.0</code></pre>
 <p><b>Table 3ILfor – Foreign Male/Female Composition of Tech in Illinois in 2015</b></p>
 <pre><code>                 Occupation perTS Tech15   Fem perF15
             All Occupations 100.0 25,359 5,773   22.8
