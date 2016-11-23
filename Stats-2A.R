@@ -182,11 +182,15 @@
     
     Profiles <- createListProfiles(dfForS1, dfForS2, state="California") 
     (dfTable3F <- Profiles[[1]])
-    (dfTable3FF <- Profiles[[2]])    
+    (dfTable3FF <- Profiles[[2]]) 
     
 ###############################################
 ############################################### 
 ### APPENDIX 
+    
+    dfTable3CAfor <- dfTable3F
+    dfTable3CACAfor <- dfTable3FF
+    
     Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state="California", group="White") 
     (dfTable3CAwhite <- Profiles[[1]])
     (dfTable3CACAwhite <- Profiles[[2]])  

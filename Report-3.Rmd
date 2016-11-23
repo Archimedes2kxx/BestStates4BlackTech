@@ -158,7 +158,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
   print(format(dfTable2A, big.mark=","), row.names=TRUE, quote=FALSE)
 ```
 
-<i>Question 2B</i> -- What was the foreign (non-American) male/female composition of the tech sector in the 50 states plus the District of Columbia in 2015?
+<i>Question 2B</i> -- What was the American male/female composition of the tech sector in the 50 states plus the District of Columbia in 2015?
 
 Answer 2B ... As shown in Table 2B (below), the ratio of American male to American female techs was about  `r round(as.numeric(dfTable2B["Per", "Male"])/as.numeric(dfTable2B["Per", "Female"]), digits=0)` to 1, more specifically `r dfTable2B["Per", "Male"]` percent to `r dfTable2B["Per", "Female"]` percent. The ratio of Non-Asian American females to Asian American females was about `r round(as.numeric(dfTable2B["Per", "FemNonAsian"])/as.numeric(dfTable2B["Per", "FemAsian"]), digits=0)` to 1, i.e., `r dfTable2B["Per", "FemNonAsian"]` percent to `r dfTable2B["Per", "FemAsian"]` percent.
 
@@ -195,7 +195,7 @@ The first column of each table contains a list of job categories. Some categorie
 
 <i>Question 3.0</i> -- How many American male vs. female techs were in each category in 2010 and 2015 in the 50 states and the District of Columbia?
 
- <i>Answer 3.0</i> ... As per its title, Tables 3Z and 3ZZ (below) only contains data about tech workers who were American citizens; data about foreign workers will appear in Table 3E and 3F (subsequent.)
+ <i>Answer 3.0</i> ... As per its title, Tables 3Z and 3ZZ (below) only contains data about tech workers who were American citizens; data about foreign workers will appear in Tables 3E and 3F (subsequent.)
  
  <b>Table 3Z -- American Male/Female Composition of U.S. Tech in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -253,7 +253,8 @@ The first column of each table contains a list of job categories. Some categorie
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
-<i>Question 3D</i> -- How many Hispanic American male vs. female techs were in each category in 2010 and 2015 in the 50 states and the District of Columbia?     
+<i>Question 3D</i> -- How many Hispanic American male vs. female techs were in each category in 2010 and 2015 in the 50 states and the District of Columbia?   
+
  <i>Answer 3D</i> ... Data for Hispanic American techs in 2015 is in Table 3D; data that compares 2010 to 2015 is in Table 3DD.
 
  <b>Table 3D -- Asian American Male/Female Composition of U.S. Tech in 2015</b> 
