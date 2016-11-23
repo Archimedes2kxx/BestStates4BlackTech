@@ -1,5 +1,5 @@
 ---
-title: "Best States for American Black, Hispanic, Asian, and Female Tech -- Version 0.99J"
+title: "Best States for American Black, Hispanic, Asian, and Female Tech -- Version 0.99K"
 author: "Roy L Beasley, PhD -- DLL Editor"
 
 output: 
@@ -22,7 +22,7 @@ output:
     load("dfMap4.rda")
     load("dfPlot5Tab5beta1000.rda")
     load("dfTab67A7B7C7D7E7F8A8B8C8D8E8F.rda")
-    load("APPENDIX.rda")
+    load("APPENDIX.rda")  
     
     ###install.packages("gridExtra")
     library(prettydoc)
@@ -651,7 +651,7 @@ Finally, this report represents my honest attempt to shed additional light on so
 
 ### California ... California ...California ... California ... California ...  
 
- <b>Table 3CA -- American Male/Female Composition of Tech in California in 2015</b>  
+ <b>Table 3CA -- American Male/Female Composition of Tech in California in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3CA, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
@@ -660,6 +660,7 @@ Finally, this report represents my honest attempt to shed additional light on so
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3CACA, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
+
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
  <b>Table 3CAblack -- Black American Male/Female Composition of Tech in California in 2015</b>  
@@ -671,6 +672,7 @@ Finally, this report represents my honest attempt to shed additional light on so
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3CACAblack, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
+
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
  <b>Table 3CAhispanic -- Hispanic American Male/Female Composition of Tech in California in 2015</b>  
@@ -682,6 +684,7 @@ Finally, this report represents my honest attempt to shed additional light on so
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3CACAhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
+
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
  <b>Table 3CAfor -- Foreign Male/Female Composition of Tech in California in 2015</b>  
@@ -693,6 +696,7 @@ Finally, this report represents my honest attempt to shed additional light on so
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3CACAfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
+
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
 
@@ -712,9 +716,10 @@ Finally, this report represents my honest attempt to shed additional light on so
 ### New York ... New York ... New York ... New York ... 
 
  <b>Table 3NYfor -- Foreign Male/Female Composition of Tech in New York 2015</b>  
-```{r, echo=FALSE, cache=FALSE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}  
    print(format(dfTable3NYfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
+
 
 <b>Table 3NYNYfor -- Changes in Male/Female Composition of Tech in New York between 2010 and 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -749,7 +754,7 @@ Finally, this report represents my honest attempt to shed additional light on so
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
 ### Illinois ... Illinois ... 
-
+ 
 <b>Table 3ILfor -- Foreign Male/Female Composition of Tech in Illinois in 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3ILfor, big.mark=","), row.names=FALSE, quote=FALSE)
