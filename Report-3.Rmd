@@ -577,7 +577,7 @@ Table 1A showed that `r dfTable1B["Per","Black"]` percent of the total U.S. work
 * Most people attend colleges that are no more than a few hundred miles from their homes, so the children of HBCU graduates have obtained STEM degrees from some of nation's best colleges located in the HBCU states, e.g, Georgia Tech, Emory, Duke, Chapel Hill, and Austin. The presence of so many older Black techs in these states created dense, overlapping support networks of role models, mentors, and tutors for Black tech students and young Black tech graduates, networks that were reinforced by memberships in fraternities, sororities, churches, and other social groups, networks that facilitated their entry into the job market and subsequent promotion, networks that were not available to young Black techs in California and other non-HBCU states.
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
-<b> Asian American  Black American</b>   
+<b> Asian American vs. Black American</b>   
 <i>Question:</i> How did Asian American tech professionals attain such high parity values in every state?
 
 * Contrary to Silicon Valley's executive myth makers, Table 4B shows that Black Americans have made good use of the expanded education and employment opportunities provided by the Supreme Court's 1954 decision and the Civil Rights legislation that followed. But Black American academic pipelines are only half full because we are still overcoming the persistent evil legacy of hundreds of years of slavery and the decades of Jim Crow segregation that followed.    
@@ -648,7 +648,7 @@ Finally, this report represents my honest attempt to shed additional light on so
 
 ## Appendix -- Profiles of Racial/Ethnic Group, Sex, and Foreign Composition of Six Biggest Tech States in 2015
 
-### California ... California ...California ... California ... 
+### California ... California ...California ... California ... California ... California ... 
 
  <b>Table 3CAblack -- Black American Male/Female Composition of Tech in California in 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -672,7 +672,7 @@ Finally, this report represents my honest attempt to shed additional light on so
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
-### Texas ... Texas ... Texas ... Texas ...    
+### Texas ... Texas ... Texas ... Texas ... Texas ... Texas ... Texas ...  Texas ...  
 
 <b>Table 3TXfor -- Foreign Male/Female Composition of Tech in Texas in 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -685,7 +685,7 @@ Finally, this report represents my honest attempt to shed additional light on so
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
-### New York ... New York ... New York ... New York ... 
+### New York ... New York ... New York ... New York ... New York ... 
 
  <b>Table 3NYfor -- Foreign Male/Female Composition of Tech in New York 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -698,7 +698,7 @@ Finally, this report represents my honest attempt to shed additional light on so
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>     
 
-### Florida ... Florida ... Florida ... Florida ... 
+### Florida ... Florida ... Florida ... Florida ... Florida ... 
  
 <b>Table 3FLfor -- Foreign Male/Female Composition of Tech in Florida in 2015</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -724,7 +724,7 @@ Finally, this report represents my honest attempt to shed additional light on so
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
-### Illinois ... Illinois ... Illinois ... Illinois ...
+### Illinois ... Illinois ... Illinois ... 
 
 <b>Table 3ILfor -- Foreign Male/Female Composition of Tech in Illinois in 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
