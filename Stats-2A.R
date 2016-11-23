@@ -202,16 +202,14 @@
     Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state="California", group="Asian") 
     (dfTable3CAasian <- Profiles[[1]])
     (dfTable3CAasian <- Profiles[[2]])    
-    
-    (dfTable3CAfor <- dfTable3F)
-    (dfTable3CACAfor <- dfTable3FF) 
+
     
 ####################################
 ####################################
 ### Table 3FL -- Profile of Foreign Techs in Florida in 2015
 print("Florida ... Florida Florida")
 
-Profiles <- createListProfiles(dfFor1, dfFor2, state="Florida") 
+Profiles <- createListProfiles(dfForS1, dfForS2, state="Florida") 
 (dfTable3FLfor <- Profiles[[1]])
 (dfTable3FLFLfor <- Profiles[[2]])    
 
@@ -219,7 +217,7 @@ Profiles <- createListProfiles(dfFor1, dfFor2, state="Florida")
 ####################################
 ### Table 3NY -- Profile of Foreign Techs in New York in 2015
 
-Profiles <- createListProfiles(dfFor1, dfFor2, state="New York") 
+Profiles <- createListProfiles(dfForS1, dfForS2, state="New York") 
 (dfTable3NYfor <- Profiles[[1]])
 (dfTable3NYNYfor <- Profiles[[2]]) 
 
@@ -227,7 +225,7 @@ Profiles <- createListProfiles(dfFor1, dfFor2, state="New York")
 ####################################
 ### Table 3TX -- Profile of Foreign Techs in Texas in 2015
 
-Profiles <- createListProfiles(dfFor1, dfFor2, state="Texas") 
+Profiles <- createListProfiles(dfForS1, dfForS2, state="Texas") 
 (dfTable3TXfor <- Profiles[[1]])
 (dfTable3TXTXfor <- Profiles[[2]]) 
 
@@ -235,7 +233,7 @@ Profiles <- createListProfiles(dfFor1, dfFor2, state="Texas")
 ########################################
 ### Table 3VA -- Profile of Foreign Techs in Virginia in 2015
 
-Profiles <- createListProfiles(dfFor1, dfFor2, state="Virginia") 
+Profiles <- createListProfiles(dfForS1, dfForS2, state="Virginia") 
 (dfTable3VAfor <- Profiles[[1]])
 (dfTable3VAVAfor <- Profiles[[2]]) 
 
@@ -243,16 +241,16 @@ Profiles <- createListProfiles(dfFor1, dfFor2, state="Virginia")
 ########################################
 ### Table 3IL -- Profile of Foreign Techs in Illinois in 2015
 
-Profiles <- createListProfiles(dfFor1, dfFor2, state="Illinois") 
+Profiles <- createListProfiles(dfForS1, dfForS2, state="Illinois") 
 (dfTable3ILfor <- Profiles[[1]])
 (dfTable3ILILfor <- Profiles[[2]]) 
 
 ########################################
 ########################################
-### Table 3IL -- Black American Techs in Illinois  in 2015
-Profiles <- createListProfiles(dfRS1, dfRS2, state="Illinois", group="Black") 
-(dfTable3ILfor <- Profiles[[1]])
-(dfTable3ILILfor <- Profiles[[2]]) 
+### Table 3IL -- Black American Techs in Illinoi in 2015
+Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state="Illinois", group="Black") 
+(dfTable3ILblack <- Profiles[[1]])
+(dfTable3ILILblack <- Profiles[[2]]) 
 
 ########################################
 ########################################

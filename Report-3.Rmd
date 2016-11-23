@@ -731,7 +731,7 @@ Finally, this report represents my honest attempt to shed additional light on so
    print(format(dfTable3ILfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
-<b>Table 3ILILfor -- Changes Foreign Male/Female Composition of Tech in Illinois between 2010 and 2015</b> 
+<b>Table 3ILILfor -- Changes in Foreign Male/Female Composition of Tech in Illinois between 2010 and 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3ILILfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
