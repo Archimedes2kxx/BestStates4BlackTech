@@ -113,94 +113,63 @@
 
 ###########################
 ############################
-    df1 <- dfProfileCitizens.2010
-    df2 <- dfProfileCitizens
+### Initialize raw profile data frames
+    dfCit1 <- dfProfileCitizens.2010
+    dfCit2 <- dfProfileCitizens
     
+    dfCitR1 <- dfProfileCitizens_RawRace.2010
+    dfCitR2 <- dfProfileCitizens_RawRace
+
+    dfCitRS1 <- dfProfileCitizens_RawRaceState.2010
+    dfCitRS2 <- dfProfileCitizens_RawRaceState
+    
+    dfFor1 <- dfProfileForeigners.2010
+    dfFor2 <- dfProfileForeigners  
+    
+    dfForS1 <- dfProfileForeigners_RawState.2010
+    dfForS2 <- dfProfileForeigners_RawState 
+
+####################################
+####################################        
 ### Table 3Z -- Profile of all U.S. Techs 2015
-   Profiles <- createListProfiles(df1, df2) 
+   Profiles <- createListProfiles(dfCit1, dfCit2) 
    (dfTable3Z <- Profiles[[1]])
    (dfTable3ZZ <- Profiles[[2]])
     
 ####################################
 ####################################
 ### Table 3A -- Profile of U.S. White Techs 2015
-    dfProfileA <- createProfile(dfProfileCitizens, group="White")
-    dfProfileA.2010 <- createProfile(dfProfileCitizens.2010, group="White")
-    
-    dfTable3Ax <- subset(dfProfileA, select=-c(Male, perMale))
-    colnames(dfTable3Ax) <- c("Occupation", "perTS","Tech15", "Fem", "per15")
-    dfTable3Ax
-    
-    ### Table 3AA -- Compare U.S. White Techs 2010 to all 2015
-    dfTable3AAx <- createCompareProfile(dfProfileA.2010, dfProfileA)
-    colnames(dfTable3AAx) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
-    dfTable3AAx
-    
-    Profiles <- createListProfiles(df1, df2, group="White") 
+
+    Profiles <- createListProfiles(dfCitR1, dfCitR2, group="White") 
     (dfTable3A <- Profiles[[1]])
     (dfTable3AA <- Profiles[[2]])
 
 ####################################
 ####################################
 ### Table 3B -- Profile of U.S. Black Techs 2015
-    dfProfileB <- createProfile(dfProfileCitizens, group="Black")
-    dfProfileB.2010 <- createProfile(dfProfileCitizens.2010, group="Black")
     
-    dfTable3Bx <- subset(dfProfileB, select=-c(Male, perMale))
-    colnames(dfTable3Bx) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
-    dfTable3Bx
-    
-    ### Table 3BB -- Compare U.S. Black Techs 2010 to all 2015
-    dfTable3BBx <- createCompareProfile(dfProfileB.2010, dfProfileB)
-    colnames(dfTable3BBx) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
-    dfTable3BBx
-    
-    Profiles <- createListProfiles(df1, df2, group="Black") 
+    Profiles <- createListProfiles(dfCitR1, dfCitR2, group="Black") 
     (dfTable3B <- Profiles[[1]])
     (dfTable3BB <- Profiles[[2]])
     
 ####################################
 ####################################
 ### Table 3C -- Profile of U.S. Hispanic Techs 2015
-    dfProfileC <- createProfile(dfProfileCitizens, group="Hispanic")
-    dfProfileC.2010 <- createProfile(dfProfileCitizens.2010, group="Hispanic")
-    
-    dfTable3Cx <- subset(dfProfileC, select=-c(Male, perMale))
-    colnames(dfTable3Cx) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
-    dfTable3Cx
-    
-    ### Table 3CC -- Compare U.S. Hispanic Techs 2010 to all 2015
-    dfTable3CCx <- createCompareProfile(dfProfileC.2010, dfProfileC)
-    colnames(dfTable3CCx) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
-    dfTable3CCx
-    
-    Profiles <- createListProfiles(df1, df2, group="Hispanic") 
+
+    Profiles <- createListProfiles(dfCitR1, dfCitR2, group="Hispanic") 
     (dfTable3C <- Profiles[[1]])
     (dfTable3CC <- Profiles[[2]])
 
 ####################################
 ####################################
 ### Table 3D -- Profile of U.S. Asian Techs 2015
-    dfProfileD <- createProfile(dfProfileCitizens, group="Asian")
-    dfProfileD.2010 <- createProfile(dfProfileCitizens.2010, group="Asian")
     
-    dfTable3Dx <- subset(dfProfileD, select=-c(Male, perMale))
-    colnames(dfTable3Dx) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
-    dfTable3Dx
-    
-    ### Table 3DD -- Compare U.S. Hispanics Techs 2010 to all 2015
-    dfTable3DDx <- createCompareProfile(dfProfileD.2010, dfProfileD)
-    colnames(dfTable3DDx) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
-    dfTable3DDx
-    
-    Profiles <- createListProfiles(df1, df2, group="Asian") 
+    Profiles <- createListProfiles(dfCitR1, dfCitR2, group="Asian") 
     (dfTable3D <- Profiles[[1]])
     (dfTable3DD <- Profiles[[2]])
 
 ####################################
 ####################################
-    dfFor1 <- dfProfileForeignersState.2010
-    dfFor2 <- dfProfileForeignersState    
     
 ### Table 3E -- Profile of Foreign Techs 2015
     Profiles <- createListProfiles(dfFor1, dfFor2) 
@@ -210,28 +179,33 @@
 ###############################################
 ###############################################    
 ### Table 3F -- Profile of Foreign Techs in California in 2015
-print("California ... California California")
-    dfProfileF <- createProfile(dfProfileForeignersState, group=NULL, state="California")
-    dfProfileF.2010 <- createProfile(dfProfileForeignersState.2010, group=NULL, state="California")
-    ### dfProfileF.2010
     
-    dfTable3Fx <- subset(dfProfileF, select=-c(Male, perMale))
-    colnames(dfTable3Fx) <- c("Occupation", "perTS", "Tech15", "Fem", "per15")
-    dfTable3Fx
-    
-    ### Table 3FF -- Compare Foreign Techs 2010 to all 2015
-    dfTable3FFx <- createCompareProfile(dfProfileF.2010, dfProfileG)
-    colnames(dfTable3FFx) <- c("Occupation", "Tech10", "Tech15", "Change", "perCh", "perF10")
-    dfTable3FFx
-
-    Profiles <- createListProfiles(dfFor1, dfFor2, state="California") 
+    Profiles <- createListProfiles(dfForS1, dfForS2, state="California") 
     (dfTable3F <- Profiles[[1]])
     (dfTable3FF <- Profiles[[2]])    
     
-    (dfTable3CAfor <- dfTable3F)
-    (dfTable3CACAfor <- dfTable3FF)
-print("END OF California ... California California")
+###############################################
+############################################### 
+### APPENDIX 
+    Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state="California", group="White") 
+    (dfTable3CAwhite <- Profiles[[1]])
+    (dfTable3CACAwhite <- Profiles[[2]])  
+    
+    Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state="California", group="Black") 
+    (dfTable3CAblack <- Profiles[[1]])
+    (dfTable3CACAblack <- Profiles[[2]])  
 
+    Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state="California", group="Hispanic") 
+    (dfTable3CAhispanic <- Profiles[[1]])
+    (dfTable3CAhispanic <- Profiles[[2]])      
+    
+    Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state="California", group="Asian") 
+    (dfTable3CAasian <- Profiles[[1]])
+    (dfTable3CAasian <- Profiles[[2]])    
+    
+    (dfTable3CAfor <- dfTable3F)
+    (dfTable3CACAfor <- dfTable3FF) 
+    
 ####################################
 ####################################
 ### Table 3FL -- Profile of Foreign Techs in Florida in 2015
@@ -275,7 +249,14 @@ Profiles <- createListProfiles(dfFor1, dfFor2, state="Illinois")
 
 ########################################
 ########################################
-save(dfTable1, dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable3Z, dfTable3ZZ, dfProfileZ.2010, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3F, dfTable3FF, file="dfTab1A1B2A2B3ABCDEF.rda")
+### Table 3IL -- Black American Techs in California  in 2015
+Profiles <- createListProfiles(dfRS1, dfRS2, state="California", group="Black") 
+(dfTable3ILfor <- Profiles[[1]])
+(dfTable3ILILfor <- Profiles[[2]]) 
+
+########################################
+########################################
+save(dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable3Z, dfTable3ZZ, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3F, dfTable3FF, file="dfTab1A1B2A2B3ABCDEF.rda")
 
 save(dfTable3CAfor, dfTable3CACAfor, dfTable3TXfor, dfTable3TXTXfor, dfTable3NYfor, dfTable3NYNYfor, dfTable3FLfor, dfTable3FLFLfor, dfTable3VAfor, dfTable3VAVAfor, dfTable3ILfor, dfTable3ILILfor, file="APPENDIX.rda")
 

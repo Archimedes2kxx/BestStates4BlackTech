@@ -173,7 +173,7 @@ createPopRaceAndShares <- function(df, bCitizen=TRUE){
 ### 8 Calculate the Count each sex per state ... Thank you, Hadley ... :-)
     census3StateSex <- group_by(df3, State, Sex) 
     dfPtsPwtStateSex <- summarise(census3StateSex, ptsPwtStateSex = sum(personalWeight))
-    dfSexCountPerState <- spread(dfPtsPwtStateSex, key=Sex, value=ptsPwtStateSex)
+    dfSexCountPerState <- spread(dfPtsPwtStateSex, key=Sex, value=ptsPwtStateSex, fill=0, drop=FALSE)
     dfSexCountPerState[is.na(dfSexCountPerState)] <- 0 ### Replace NAs with zeros
     dfFemale <- subset(dfSexCountPerState, select=c(State, Female))
     colnames(dfFemale) =  c("State", "Female")
@@ -181,7 +181,7 @@ createPopRaceAndShares <- function(df, bCitizen=TRUE){
 ### 9. Asian females
     census3StateRaceSex <- group_by(df3, State, Sex, Race) 
     dfSumPwtStateRaceSex <- summarise(census3StateRaceSex, SumPwtStateRaceSex = sum(personalWeight))
-    dfRaceSexPerState <- spread(dfSumPwtStateRaceSex, key=Race, value=SumPwtStateRaceSex)
+    dfRaceSexPerState <- spread(dfSumPwtStateRaceSex, key=Race, value=SumPwtStateRaceSex, fill=0, drop=FALSE)
     dfRaceSexPerState[is.na(dfRaceSexPerState)] <- 0 ### Replace NAs with zeros
     dfFemAsian <- subset(dfRaceSexPerState, Sex=="Female", select=c(State,Asian))
     colnames(dfFemAsian) =  c("State", "FemAsian")
@@ -235,7 +235,7 @@ createOccupationRaceSexProfiles <- function(df){
     return(dfOccupationRaceSexProfiles)
 }
 
-createOccupationStateRaceSexProfiles <- function(df){
+createOccupationStateRaceSexProfiles_RawData <- function(df, bNoState=TRUE, bNoRace=TRUE){
     ### Add new category to race = "hisp"
     ### ... ACS coded HISP = "1" for "not Hispanic" --change race values to 99 ("hispanic") when hisp != 1
     rows <- df$Hisp != "1"
@@ -259,19 +259,34 @@ createOccupationStateRaceSexProfiles <- function(df){
     df$Occupation <- as.factor(df$Occupation)
     levels(df$Occupation) <- trimws(listCodes[["Occupation"]][,2])
     
-    OccStateSex <- group_by(df, Occupation, State, Sex)
-    df2 <- summarise(OccStateSex, ptsPwtOccSex = sum(personalWeight))
-    df2 <- spread(df2, key=Sex, value=ptsPwtOccSex, fill=0, drop=FALSE)
+    OccStateRaceSex <- group_by(df, Occupation, State, Race, Sex)
+    df2 <- summarise(OccStateRaceSex, ptsPwtOccStateRaceSex = sum(personalWeight))
+    df2 <- spread(df2, key=Sex, value=ptsPwtOccStateRaceSex, fill=0, drop=FALSE)
     
-### Roll up the state
-    OccState <- group_by(df2, State)
-    df3 <- summarise(df2, Male=sum(Male), Female=sum(Female), fill=0, drop=FALSE)
-    df3 <- subset(df3, select=-c(fill, drop))
-   
-    ### Occupation State Male Female
+    ### Roll up state if state is not required
+    if (bNoState) {
+        if(bNoRace) { 
+            Occ_RaceState <- group_by(df2, Occupation)
+            ### summarise drops state and race ... leaves Occupation, Male, Female
+            df3 <- summarise(Occ_RaceState, Male=sum(Male), Female=sum(Female))
+            
+        } else { ### summarise drops state, keeps race ... leaves Occupation, Race, Male, Female 
+            OccRace_State <- group_by(df2, Occupation, Race)
+            df3 <- summarise(OccRace_State, Male=sum(Male), Female=sum(Female))
+     
+        }
+    } else { ### Don't drop state
+        if(bNoRace) { ### drop race
+            OccState_Race <- group_by(df2, Occupation, State)
+            ### don't drop state, drop race ... leaves Occupation, State, Male, Female
+            df3 <- summarise(OccState_Race, Male=sum(Male), Female=sum(Female))
+            
+        } else { ### don't drop staor or race ... leaves Occupation, State, Race, Male, Female
+            df3 <- df2
+        }
+    }
     return(df3)
 }
-
 
 ##################################
 ### Stats-2A
@@ -633,5 +648,5 @@ makeTable8 <- function(dfIn, Group, letter){
 }
 
 ###################################
-save(readCodeBooks, addTotCol, addPerCols, addTotColSharePerRowCol, addTotalsRow, addMissingStatesToTable, createOccupationRaceSexProfiles, createOccupationStateRaceSexProfiles, createPopRaceAndShares, makeNumPerTable, createProfile, createCompareProfile, createListProfiles, makeSummary, plotEmpVsPop, makeLM, makeTechPopMap, theme_clean, makeForeignTechTable, makeForeignNonAsianTechTable, makeTechPopTable, makeParity, makeTable7, makeTable8, file="functions-0.rda")
+save(readCodeBooks, addTotCol, addPerCols, addTotColSharePerRowCol, addTotalsRow, addMissingStatesToTable, createOccupationRaceSexProfiles, createOccupationStateRaceSexProfiles, createOccupationStateRaceSexProfiles_RawData, createPopRaceAndShares, makeNumPerTable, createProfile, createCompareProfile, createListProfiles, makeSummary, plotEmpVsPop, makeLM, makeTechPopMap, theme_clean, makeForeignTechTable, makeForeignNonAsianTechTable, makeTechPopTable, makeParity, makeTable7, makeTable8, file="functions-0.rda")
 
