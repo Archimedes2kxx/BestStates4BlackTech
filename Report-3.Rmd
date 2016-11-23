@@ -650,12 +650,23 @@ Finally, this report represents my honest attempt to shed additional light on so
 
 ### California    
 
- <b>Table 3CAfor -- California Foreign Male/Female Composition of U.S. Tech in 2015</b>  
+ <b>Table 3CAblack -- Black American Male/Female Composition of Tech in California in 2015</b>  
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3CAblack, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<b>Table 3CACAblack -- Changes in Black American Composition of Tech in California between 2010 and 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3CACAblack, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
+
+ <b>Table 3CAfor -- Foreign Male/Female Composition of Tech in California in 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3CAfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
-<b>Table 3CACAfor -- Changes in the California Foreign Male/Female Composition of U.S. Tech between 2010 and 2015</b> 
+<b>Table 3CACAfor -- Changes in Foreign Male/Female Composition of Tech in California between 2010 and 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3CACAfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
@@ -663,12 +674,12 @@ Finally, this report represents my honest attempt to shed additional light on so
 
 ### Texas   
 
-<b>Table 3TXfor -- Texas Foreign Male/Female Composition of U.S. Tech in 2015</b>  
+<b>Table 3TXfor -- Foreign Male/Female Composition of Tech in Texas in 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3TXfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
-<b>Table 3TXTXfor -- Changes in the Texas Foreign Male/Female Composition of U.S. Tech between 2010 and 2015</b> 
+<b>Table 3TXTXfor -- Changes in Foreign Male/Female Composition of Tech in Texas between 2010 and 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3TXTXfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
@@ -676,12 +687,12 @@ Finally, this report represents my honest attempt to shed additional light on so
 
 ### New York   
 
- <b>Table 3NYfor -- New York Foreign Male/Female Composition of U.S. Tech in 2015</b>  
+ <b>Table 3NYfor -- Foreign Male/Female Composition of Tech in New York 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3NYfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
-<b>Table 3NYNYfor -- Changes in the New York Foreign Male/Female Composition of U.S. Tech between 2010 and 2015</b> 
+<b>Table 3NYNYfor -- Changes in Male/Female Composition of Tech in New York between 2010 and 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3NYNYfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
@@ -689,12 +700,12 @@ Finally, this report represents my honest attempt to shed additional light on so
 
 ### Florida   
  
-<b>Table 3FLfor -- Florida Foreign Male/Female Composition of U.S. Tech in 2015</b>
+<b>Table 3FLfor -- Foreign Male/Female Composition of Tech in Florida in 2015</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3FLfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
-<b>Table 3FLFLfor -- Changes in the Florida Foreign Male/Female Composition of U.S. Tech between 2010 and 2015</b> 
+<b>Table 3FLFLfor -- Changes in Foreign Male/Female Composition of Tech in Florida between 2010 and 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3FLFLfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
@@ -702,12 +713,12 @@ Finally, this report represents my honest attempt to shed additional light on so
 
 ### Virginia   
  
-<b>Table 3VAfor -- Virginia Foreign Male/Female Composition of U.S. Tech in 2015</b>  
+<b>Table 3VAfor -- Foreign Male/Female Composition of Tech in Virginia in 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3VAfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
-<b>Table 3VAVAfor -- Changes in the Virginia Foreign Male/Female Composition of U.S. Tech between 2010 and 2015</b> 
+<b>Table 3VAVAfor -- Changes in Foreign Male/Female Composition of Tech in Virginia between 2010 and 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3VAVAfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
@@ -715,12 +726,12 @@ Finally, this report represents my honest attempt to shed additional light on so
 
 ### Illinois
 
-<b>Table 3ILfor -- Illinois Foreign Male/Female Composition of U.S. Tech in 2015</b>  
+<b>Table 3ILfor -- Foreign Male/Female Composition of Tech in Illinois in 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3ILfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
-<b>Table 3ILILfor -- Changes in the Illinois Foreign Male/Female Composition of U.S. Tech between 2010 and 2015</b> 
+<b>Table 3ILILfor -- Changes Foreign Male/Female Composition of Tech in Illinois between 2010 and 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3ILILfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```

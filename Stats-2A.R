@@ -249,8 +249,8 @@ Profiles <- createListProfiles(dfFor1, dfFor2, state="Illinois")
 
 ########################################
 ########################################
-### Table 3IL -- Black American Techs in California  in 2015
-Profiles <- createListProfiles(dfRS1, dfRS2, state="California", group="Black") 
+### Table 3IL -- Black American Techs in Illinois  in 2015
+Profiles <- createListProfiles(dfRS1, dfRS2, state="Illinois", group="Black") 
 (dfTable3ILfor <- Profiles[[1]])
 (dfTable3ILILfor <- Profiles[[2]]) 
 
@@ -258,5 +258,5 @@ Profiles <- createListProfiles(dfRS1, dfRS2, state="California", group="Black")
 ########################################
 save(dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable3Z, dfTable3ZZ, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3F, dfTable3FF, file="dfTab1A1B2A2B3ABCDEF.rda")
 
-save(dfTable3CAfor, dfTable3CACAfor, dfTable3TXfor, dfTable3TXTXfor, dfTable3NYfor, dfTable3NYNYfor, dfTable3FLfor, dfTable3FLFLfor, dfTable3VAfor, dfTable3VAVAfor, dfTable3ILfor, dfTable3ILILfor, file="APPENDIX.rda")
+save(dfTable3CAblack, dfTable3CACAblack, dfTable3CAfor, dfTable3CACAfor, dfTable3TXfor, dfTable3TXTXfor, dfTable3NYfor, dfTable3NYNYfor, dfTable3FLfor, dfTable3FLFLfor, dfTable3VAfor, dfTable3VAVAfor, dfTable3ILfor, dfTable3ILILfor, file="APPENDIX.rda")
 
