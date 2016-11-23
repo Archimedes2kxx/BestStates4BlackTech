@@ -649,6 +649,8 @@ Finally, this report represents my honest attempt to shed additional light on so
 
 ## Appendix -- Profiles of Racial/Ethnic Groups, Sex, and Foreign Composition of Six Biggest Tech States in 2015
 
+<i>Note: The column headings and abbreviated row names of the tables in this appendix are explained in the answer to [<b>Question 3](https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html#question-3-how-did-the-racial-ethnic-foreign-and-malefemale-shares-of-the-job-categories-in-u.s.-tech-change-between-2010-and-2015)</b> in the body of the report.</i>
+
 ### California ... California ...California ... California ... California ...  
 
  <b>Table 3CA -- American Male/Female Composition of Tech in California in 2015</b> 
