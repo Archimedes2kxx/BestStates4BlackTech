@@ -647,9 +647,20 @@ Finally, this report represents my honest attempt to shed additional light on so
 <br />
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
-## Appendix -- Profiles of Racial/Ethnic Group, Sex, and Foreign Composition of Six Biggest Tech States in 2015
+## Appendix -- Profiles of Racial/Ethnic Groups, Sex, and Foreign Composition of Six Biggest Tech States in 2015
 
 ### California ... California ...California ... California ... California ...  
+
+ <b>Table 3CA -- American Male/Female Composition of Tech in California in 2015</b>  
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3CA, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<b>Table 3CACA -- Changes in American Composition of Tech in California between 2010 and 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3CACA, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
  <b>Table 3CAblack -- Black American Male/Female Composition of Tech in California in 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -662,6 +673,17 @@ Finally, this report represents my honest attempt to shed additional light on so
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
+ <b>Table 3CAhispanic -- Hispanic American Male/Female Composition of Tech in California in 2015</b>  
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3CAhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<b>Table 3CACAhispanic -- Changes in Hispanic American Composition of Tech in California between 2010 and 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3CACAhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
+
  <b>Table 3CAfor -- Foreign Male/Female Composition of Tech in California in 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3CAfor, big.mark=","), row.names=FALSE, quote=FALSE)
@@ -672,6 +694,7 @@ Finally, this report represents my honest attempt to shed additional light on so
    print(format(dfTable3CACAfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
+
 
 ### Texas ... Texas ... Texas ... Texas ... Texas ... Texas ... Texas ...  
 
