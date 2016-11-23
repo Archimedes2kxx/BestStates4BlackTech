@@ -648,7 +648,7 @@ Finally, this report represents my honest attempt to shed additional light on so
 
 ## Appendix -- Profiles of Racial/Ethnic Group, Sex, and Foreign Composition of Six Biggest Tech States in 2015
 
-### California    
+### California ... California ...California ... California ... 
 
  <b>Table 3CAblack -- Black American Male/Female Composition of Tech in California in 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -672,7 +672,7 @@ Finally, this report represents my honest attempt to shed additional light on so
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
-### Texas   
+### Texas ... Texas ... Texas ... Texas ...    
 
 <b>Table 3TXfor -- Foreign Male/Female Composition of Tech in Texas in 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -685,7 +685,7 @@ Finally, this report represents my honest attempt to shed additional light on so
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
-### New York   
+### New York ... New York ... New York ... New York ... 
 
  <b>Table 3NYfor -- Foreign Male/Female Composition of Tech in New York 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -698,7 +698,7 @@ Finally, this report represents my honest attempt to shed additional light on so
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>     
 
-### Florida   
+### Florida ... Florida ... Florida ... Florida ... 
  
 <b>Table 3FLfor -- Foreign Male/Female Composition of Tech in Florida in 2015</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -711,7 +711,7 @@ Finally, this report represents my honest attempt to shed additional light on so
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>     
 
-### Virginia   
+### Virginia ... Virginia ... Virginia ... Virginia ... 
  
 <b>Table 3VAfor -- Foreign Male/Female Composition of Tech in Virginia in 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -724,7 +724,7 @@ Finally, this report represents my honest attempt to shed additional light on so
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
-### Illinois
+### Illinois ... Illinois ... Illinois ... Illinois ...
 
 <b>Table 3ILfor -- Foreign Male/Female Composition of Tech in Illinois in 2015</b>  
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
