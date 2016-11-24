@@ -4,10 +4,10 @@ author: "Roy L Beasley"
 date: "August 22, 2016"
 output: html_document
 ---
-
+   
 American Community Service survey data for 2014  obtained from the U.S. Census as follows:
 
-<b>A. Prepare your Mac or PC </b>    
+<b>A. Prepare your Mac or PC</b>    
 
 * Install recent version of Firefox or Microsoft's IE browser 
 
@@ -17,7 +17,7 @@ American Community Service survey data for 2014  obtained from the U.S. Census a
 <b>B. Download data from ACS Website</b>
 
 1. Direct Firefox of IE browser to "TheDataWeb" site at<b> [http://thedataweb.rm.census.gov/index.html](http://thedataweb.rm.census.gov/index.html)</b>
-2. Click "Launch the App" link on lower right side of screen to launch the DataFerret Java app
+2. Click "Launch the App" link on lower right side of screen to launch the DataFerret Java app.
 3. When new window opens, enter your email address on the line provided (middle of page), then click "OK"
 4. When new window opens, click "Step 1" button (top left)
     + Click "American Community Services" key (left side of page)
