@@ -54,6 +54,7 @@ perFemIncrease <- round(100 * (dfTable3Z[1,"Fem"] - fem10)/fem10, digits=1)
 caPerForeignIncrease <- round(100* (dfTable3FF[1,"Change"] / dfTable3EE[1,"Change"]), digits=1)
 
 otherPerForeignIncrease <- round(100.0 - caPerForeignIncrease, digits=1)
+
 ```
 ## Overview   
 <i>Please note that all of the figures in this overview and in the subsequent report are estimates based on U.S. Census survey samples. So all figures should be read as "approximately" even when the word "approximately" does not appear. </i>  
@@ -186,15 +187,15 @@ The first column of each table contains a list of job categories. Some categorie
 
 * <b>Tech15</b> ... the number of tech workers in each job category in 2015   
 
-* <b>perTS</b> ... the "Percentage of Tech Share", which shows the percentage of the total number of tech workers that were employed in each job category. For example, in Table 3Z (below) the xxx workers in "Software Development" represented xxx percent of the xxx total number of tech workers in 2015. The xxx workers "Computer Programmers" were xxx percent of the total XXX tech workers.   
+* <b>perTS</b> ... the "Percentage of Tech Share", which shows the percentage of the total number of American tech workers that were employed in each job category in the 50 states plus the District of Columbia. For example, in Table 3Z (below) the `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Tech15"], big.mark=",", scientific=FALSE)` workers in "Software Development" represented `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "perTS"], big.mark=",", scientific=FALSE)` percent of the `r prettyNum(dfTable3Z["All Occupations", "Tech15"], big.mark=",", scientific=FALSE)` total American tech workers in 2015. The `r prettyNum(dfTable3Z["COMP PROGRAMMERS", "Tech15"], big.mark=",", scientific=FALSE)` workers "Computer Programmers" were `r prettyNum(dfTable3Z["COMP PROGRAMMERS", "perTS"], big.mark=",", scientific=FALSE)` percent of the total `r prettyNum(dfTable3Z["All Occupations", "Tech15"], big.mark=",", scientific=FALSE)`.   
 
-* <b>Fem</b> ... the number of "Female" tech workers". The number of males can be calculated by substracting the female workers from the total number of workers in each category. For example, in Table 3Z (below) there were xxx software developers in 2015 of which xxx were female. So the number of male software developers was xxx - xxx = xxx. 
+* <b>Fem</b> ... the number of "Female" tech workers". The number of males can be calculated by substracting the female workers from the total number of workers in each category. For example, in Table 3Z (below) there were `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Tech15"], big.mark=",", scientific=FALSE)` American software developers in the 50 states plus DC in 2015 of which `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Fem"], big.mark=",", scientific=FALSE)` were female. So the number of male software developers was `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Tech15"], big.mark=",", scientific=FALSE)` - `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Fem"], big.mark=",", scientific=FALSE)` = `r prettyNum((dfTable3Z["SOFTWARE DEVELOPERS", "Tech15"] - dfTable3Z["SOFTWARE DEVELOPERS", "Fem"]), big.mark=",", scientific=FALSE)`. 
 
-* <b>perF10</b> ... the "Percent Female in 2010" displays the percent of jobs in each category that were held by female techs in 2010
+* <b>perF15</b> ... the "Percent Female in 2015" displays the percent of jobs in each category that were held by female techs in 2015. For example, Table 3Z shows that the `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Fem"], big.mark=",", scientific=FALSE)` female software developers were `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "perF15"], big.mark=",", scientific=FALSE)` percent of the total `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Tech15"], big.mark=",", scientific=FALSE)`
 
-* <b>perF15</b> ... the "Percent Female in 2015" displays the percent of jobs in each category that were held by female techs in 2015.
+* <b>perF10</b> ... the "Percent Female in 2010" displays the percent of jobs in each category that were held by female techs in 2010. This stat is always contained in the companion table, e.g., Table 3ZZ is the companion to Table 3Z, and contains data that shows the changes in employment in each category between 2010 and 2015
 
-* <b>Change</b> ... the difference between the number of workers in each job category in 2010 and the number in 2015.   
+* <b>Change</b> ... the difference between the number of workers in each job category in 2010 and the number in 2015. This stat is always found in the companion table, e.g., Table 3ZZ. 
 
 * <b>perCh</b> ... the change from 2010 to 2015 as a percentage of the jobs in 2010.  
 

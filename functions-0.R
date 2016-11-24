@@ -420,7 +420,6 @@ makeTechPopTable <- function(Race){
     perRacePop <- paste0("per", RacePop)
     colnames(dfTechPop) <- c("State", "TotalTech", RaceTech, perRaceTech, RacePop, perRacePop)
     ### Example ==> c("State", "TotalTech", "BlackTech", "perBlackTech", "BlackPop", "perBlackPop")
-    rownames(dfTechPop) <- c(dfTechPop[,"State"]) 
     
     dfTechPop$Parity <- round((dfTechPop[,perRaceTech]/dfTechPop[,perRacePop]), digits=2)
     index <- order(dfTechPop[, RaceTech], decreasing=TRUE)
@@ -430,6 +429,11 @@ makeTechPopTable <- function(Race){
     L <- length(colnames)
     dfTechPop <- addTotColSharePerRowCol(dfTechPop, 3)
     colnames(dfTechPop) <- c(colnames[1:2], "perState", c(colnames[3:L]))
+    
+    ### These next two lines don't seem to work inside the function
+    rownames <- as.character(dfTechPop$State)
+    rownames(dfTechPop) <- rownames
+    
     return(dfTechPop)
 }
 
