@@ -1,0 +1,3109 @@
+<Session>
+<DataBasket>
+<TotalVariableCount> 8 </TotalVariableCount>
+<Version> 2 </Version>
+<Variable>
+<VarId>dd0b8248f873a02937c99994bee603b0</VarId>
+<Idnum> 551785 </Idnum>
+<Type> 1 </Type>
+<VarMnemonic> PWGTP </VarMnemonic>
+<VarDescription> PUMS person weight </VarDescription>
+<Ranges>
+<RangeCount> 1 </RangeCount>
+<Range>
+<ValDescription> Continuous values of PWGTP </ValDescription>
+<OrigMinVal> 1 </OrigMinVal>
+<OrigMaxVal> 9999 </OrigMaxVal>
+<Selected> true </Selected>
+</Range>
+</Ranges>
+</Variable>
+<Variable>
+<VarId>3183833b1b8d085a2394dae2cabb0d97</VarId>
+<Idnum> 551889 </Idnum>
+<Type> 1 </Type>
+<VarMnemonic> HISP </VarMnemonic>
+<VarDescription> Hispanic recode </VarDescription>
+<Ranges>
+<RangeCount> 24 </RangeCount>
+<Range>
+<ValDescription> Not Spanish/Hispanic/Latino </ValDescription>
+<Value> 01 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Mexican </ValDescription>
+<Value> 02 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Puerto Rican </ValDescription>
+<Value> 03 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Cuban </ValDescription>
+<Value> 04 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Domincan </ValDescription>
+<Value> 05 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Costa Rican </ValDescription>
+<Value> 06 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Guatemalan </ValDescription>
+<Value> 07 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Honduran </ValDescription>
+<Value> 08 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Nicaraguan </ValDescription>
+<Value> 09 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Panamanian </ValDescription>
+<Value> 10 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Salvadoran </ValDescription>
+<Value> 11 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Other Central American </ValDescription>
+<Value> 12 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Argentinean </ValDescription>
+<Value> 13 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Bolivian </ValDescription>
+<Value> 14 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Chilean </ValDescription>
+<Value> 15 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Colombian </ValDescription>
+<Value> 16 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Ecuadorian </ValDescription>
+<Value> 17 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Paraguayan </ValDescription>
+<Value> 18 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Peruvian </ValDescription>
+<Value> 19 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Uruguayan </ValDescription>
+<Value> 20 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Venezuelan </ValDescription>
+<Value> 21 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Other South American </ValDescription>
+<Value> 22 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Spaniard </ValDescription>
+<Value> 23 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> All other Spanish/Hispanic/Latino </ValDescription>
+<Value> 24 </Value>
+<Selected> true </Selected>
+</Range>
+</Ranges>
+</Variable>
+<Variable>
+<VarId>363410168ef728386caed27ba84cbf08</VarId>
+<Idnum> 551915 </Idnum>
+<Type> 1 </Type>
+<VarMnemonic> POWSP </VarMnemonic>
+<VarDescription> Place of work - State or foreign country recode </VarDescription>
+<Ranges>
+<RangeCount> 60 </RangeCount>
+<Range>
+<ValDescription> N/A (not a worker--not in the labor force, including persons under 16 years; unemployed; employed, with a job not at work; Armed Forces, with a job but not at work) </ValDescription>
+<Value> 0 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> Alabama/AL </ValDescription>
+<Value> 001 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Alaska/AK </ValDescription>
+<Value> 002 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Arizona/AZ </ValDescription>
+<Value> 004 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Arkansas/AR </ValDescription>
+<Value> 005 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> California/CA </ValDescription>
+<Value> 006 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Colorado/CO </ValDescription>
+<Value> 008 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Connecticut/CT </ValDescription>
+<Value> 009 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Delaware/DE </ValDescription>
+<Value> 010 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> District of Columbia/DC </ValDescription>
+<Value> 011 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Florida/FL </ValDescription>
+<Value> 012 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Georgia/GA </ValDescription>
+<Value> 013 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Hawaii/HI </ValDescription>
+<Value> 015 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Idaho/ID </ValDescription>
+<Value> 016 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Illinois/IL </ValDescription>
+<Value> 017 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Indiana/IN </ValDescription>
+<Value> 018 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Iowa/IA </ValDescription>
+<Value> 019 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Kansas/KS </ValDescription>
+<Value> 020 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Kentucky/KY </ValDescription>
+<Value> 021 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Louisiana/LA </ValDescription>
+<Value> 022 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Maine/ME </ValDescription>
+<Value> 023 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Maryland/MD </ValDescription>
+<Value> 024 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Massachusetts/MA </ValDescription>
+<Value> 025 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Michigan/MI </ValDescription>
+<Value> 026 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Minnesota/MN </ValDescription>
+<Value> 027 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Mississippi/MS </ValDescription>
+<Value> 028 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Missouri/MO </ValDescription>
+<Value> 029 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Montana/MT </ValDescription>
+<Value> 030 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Nebraska/NE </ValDescription>
+<Value> 031 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Nevada/NV </ValDescription>
+<Value> 032 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> New Hampshire/NH </ValDescription>
+<Value> 033 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> New Jersey/NJ </ValDescription>
+<Value> 034 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> New Mexico/NM </ValDescription>
+<Value> 035 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> New York/NY </ValDescription>
+<Value> 036 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> North Carolina/NC </ValDescription>
+<Value> 037 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> North Dakota/ND </ValDescription>
+<Value> 038 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Ohio/OH </ValDescription>
+<Value> 039 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Oklahoma/OK </ValDescription>
+<Value> 040 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Oregon/OR </ValDescription>
+<Value> 041 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Pennsylvania/PA </ValDescription>
+<Value> 042 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Rhode Island/RI </ValDescription>
+<Value> 044 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> South Carolina/SC </ValDescription>
+<Value> 045 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> South Dakota/SD </ValDescription>
+<Value> 046 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Tennessee/TN </ValDescription>
+<Value> 047 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Texas/TX </ValDescription>
+<Value> 048 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Utah/UT </ValDescription>
+<Value> 049 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Vermont/VT </ValDescription>
+<Value> 050 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Virginia/VA </ValDescription>
+<Value> 051 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Washington/WA </ValDescription>
+<Value> 053 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> West Virginia/WV </ValDescription>
+<Value> 054 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Wisconsin/WI </ValDescription>
+<Value> 055 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Wyoming/WY </ValDescription>
+<Value> 056 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Puerto Rico </ValDescription>
+<Value> 072 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> Europe </ValDescription>
+<Value> 166 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> Iraq </ValDescription>
+<Value> 213 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> Eastern Asia </ValDescription>
+<Value> 251 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> Other Asia, Not Specified </ValDescription>
+<Value> 254 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> Mexico </ValDescription>
+<Value> 303 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> Americas, not specified </ValDescription>
+<Value> 399 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> Other US Island Areas Not Specified, Africa, Oceania, at Sea, or Abroad, Not Specified </ValDescription>
+<Value> 555 </Value>
+<Selected> false </Selected>
+</Range>
+</Ranges>
+</Variable>
+<Variable>
+<VarId>a8cc6420b836ee90f59b20db99c0ef37</VarId>
+<Idnum> 552001 </Idnum>
+<Type> 1 </Type>
+<VarMnemonic> RAC1P </VarMnemonic>
+<VarDescription> Race1 recode </VarDescription>
+<Ranges>
+<RangeCount> 9 </RangeCount>
+<Range>
+<ValDescription> White alone </ValDescription>
+<Value> 1 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Black or African American alone </ValDescription>
+<Value> 2 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> American Indian alone </ValDescription>
+<Value> 3 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Alaska Native alone </ValDescription>
+<Value> 4 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> American Indian and Alaska Native and no other races </ValDescription>
+<Value> 5 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Asian alone </ValDescription>
+<Value> 6 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Native Hawaiian and Other Pacific Islander alone </ValDescription>
+<Value> 7 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Some other race alone </ValDescription>
+<Value> 8 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Two or more major race groups </ValDescription>
+<Value> 9 </Value>
+<Selected> true </Selected>
+</Range>
+</Ranges>
+</Variable>
+<Variable>
+<VarId>f9668877e84cc3c797104d9b7d21da23</VarId>
+<Idnum> 552027 </Idnum>
+<Type> 1 </Type>
+<VarMnemonic> WAOB </VarMnemonic>
+<VarDescription> World area of birth </VarDescription>
+<Ranges>
+<RangeCount> 8 </RangeCount>
+<Range>
+<ValDescription> US State (001-059) </ValDescription>
+<Value> 1 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> PR and US Island Areas (060-099) </ValDescription>
+<Value> 2 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Latin America (303,310-399) </ValDescription>
+<Value> 3 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Asia (158-159,161,200-299) </ValDescription>
+<Value> 4 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Europe (100-157,160,162-199) </ValDescription>
+<Value> 5 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Africa (400-499) </ValDescription>
+<Value> 6 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> North America (300-302,304-309) </ValDescription>
+<Value> 7 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Oceania (500-554) </ValDescription>
+<Value> 8 </Value>
+<Selected> true </Selected>
+</Range>
+</Ranges>
+</Variable>
+<Variable>
+<VarId>b3ee1bef02ee9d7777c89e1c574418e7</VarId>
+<Idnum> 552116 </Idnum>
+<Type> 1 </Type>
+<VarMnemonic> CIT </VarMnemonic>
+<VarDescription> Citizenship status </VarDescription>
+<Ranges>
+<RangeCount> 5 </RangeCount>
+<Range>
+<ValDescription> Born in the U.S. </ValDescription>
+<Value> 1 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Born in Puerto Rico, Guam, the U.S. Virgin Islands, or the Northern Marianas </ValDescription>
+<Value> 2 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Born abroad of American parent(s) </ValDescription>
+<Value> 3 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> U.S. citizen by naturalization </ValDescription>
+<Value> 4 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Not a citizen of the U.S. </ValDescription>
+<Value> 5 </Value>
+<Selected> true </Selected>
+</Range>
+</Ranges>
+</Variable>
+<Variable>
+<VarId>3383f03080da0145c3a2b4482c622b18</VarId>
+<Idnum> 552188 </Idnum>
+<Type> 1 </Type>
+<VarMnemonic> SEX </VarMnemonic>
+<VarDescription> Sex </VarDescription>
+<Ranges>
+<RangeCount> 2 </RangeCount>
+<Range>
+<ValDescription> Male </ValDescription>
+<Value> 1 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Female </ValDescription>
+<Value> 2 </Value>
+<Selected> true </Selected>
+</Range>
+</Ranges>
+</Variable>
+<Variable>
+<VarId>ac5c18550f3afc3d4ef8669c90b6bdfd</VarId>
+<Idnum> 673395 </Idnum>
+<Type> 1 </Type>
+<VarMnemonic> SOCP </VarMnemonic>
+<VarDescription> SOC Occupation code 2010 </VarDescription>
+<Ranges>
+<RangeCount> 493 </RangeCount>
+<Range>
+<ValDescription> N/A (less than 16 years old/NILF who last worked more than 5 years ago or never worked) </ValDescription>
+<Value>  </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-GENERAL AND OPERATIONS MANAGERS </ValDescription>
+<Value> 111021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-CHIEF EXECUTIVES AND LEGISLATORS * </ValDescription>
+<Value> 1110XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-ADVERTISING AND PROMOTIONS MANAGERS </ValDescription>
+<Value> 112011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-MARKETING AND SALES MANAGERS </ValDescription>
+<Value> 112020 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-PUBLIC RELATIONS AND FUNDRAISING MANAGERS </ValDescription>
+<Value> 112031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-ADMINISTRATIVE SERVICES MANAGERS </ValDescription>
+<Value> 113011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-COMPUTER AND INFORMATION SYSTEMS MANAGERS </ValDescription>
+<Value> 113021 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-FINANCIAL MANAGERS </ValDescription>
+<Value> 113031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-INDUSTRIAL PRODUCTION MANAGERS </ValDescription>
+<Value> 113051 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-PURCHASING MANAGERS </ValDescription>
+<Value> 113061 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-TRANSPORTATION, STORAGE, AND DISTRIBUTION MANAGERS </ValDescription>
+<Value> 113071 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-COMPENSATION AND BENEFITS MANAGERS </ValDescription>
+<Value> 113111 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-HUMAN RESOURCES MANAGERS </ValDescription>
+<Value> 113121 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-TRAINING AND DEVELOPMENT MANAGERS </ValDescription>
+<Value> 113131 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-FARMERS, RANCHERS, AND OTHER AGRICULTURAL MANAGERS </ValDescription>
+<Value> 119013 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-CONSTRUCTION MANAGERS </ValDescription>
+<Value> 119021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-EDUCATION ADMINISTRATORS </ValDescription>
+<Value> 119030 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-ARCHITECTURAL AND ENGINEERING MANAGERS </ValDescription>
+<Value> 119041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-FOOD SERVICE MANAGERS </ValDescription>
+<Value> 119051 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-GAMING MANAGERS </ValDescription>
+<Value> 119071 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-LODGING MANAGERS </ValDescription>
+<Value> 119081 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-MEDICAL AND HEALTH SERVICES MANAGERS </ValDescription>
+<Value> 119111 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-NATURAL SCIENCES MANAGERS </ValDescription>
+<Value> 119121 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-PROPERTY, REAL ESTATE, AND COMMUNITY ASSOCIATION MANAGERS </ValDescription>
+<Value> 119141 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-SOCIAL AND COMMUNITY SERVICE MANAGERS </ValDescription>
+<Value> 119151 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-EMERGENCY MANAGEMENT DIRECTORS </ValDescription>
+<Value> 119161 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MGR-MISCELLANEOUS MANAGERS, INCLUDING FUNERAL SERVICE MANAGERS AND POSTMASTERS AND MAIL SUPERINTENDENTS * </ValDescription>
+<Value> 119XXX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> BUS-AGENTS AND BUSINESS MANAGERS OF ARTISTS, PERFORMERS, AND ATHLETES </ValDescription>
+<Value> 131011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> BUS-BUYERS AND PURCHASING AGENTS, FARM PRODUCTS </ValDescription>
+<Value> 131021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> BUS-WHOLESALE AND RETAIL BUYERS, EXCEPT FARM PRODUCTS </ValDescription>
+<Value> 131022 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> BUS-PURCHASING AGENTS, EXCEPT WHOLESALE, RETAIL, AND FARM PRODUCTS </ValDescription>
+<Value> 131023 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> BUS-CLAIMS ADJUSTERS, APPRAISERS, EXAMINERS, AND INVESTIGATORS </ValDescription>
+<Value> 131030 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> BUS-COMPLIANCE OFFICERS </ValDescription>
+<Value> 131041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> BUS-COST ESTIMATORS </ValDescription>
+<Value> 131051 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> BUS-HUMAN RESOURCES WORKERS </ValDescription>
+<Value> 131070 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> BUS-LOGISTICIANS </ValDescription>
+<Value> 131081 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> BUS-MANAGEMENT ANALYSTS </ValDescription>
+<Value> 131111 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> BUS-MEETING CONVENTION, AND EVENT PLANNERS </ValDescription>
+<Value> 131121 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> BUS-FUNDRAISERS </ValDescription>
+<Value> 131131 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> BUS-COMPENSATION, BENEFITS, AND JOB ANALYSIS SPECIALISTS </ValDescription>
+<Value> 131141 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> BUS-TRAINING AND DEVELOPMENT SPECIALISTS </ValDescription>
+<Value> 131151 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> BUS-MARKET RESEARCH ANALYSTS AND MARKETING SPECIALISTS </ValDescription>
+<Value> 131161 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> BUS-BUSINESS OPERATIONS SPECIALISTS, ALL OTHER </ValDescription>
+<Value> 131199 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> FIN-ACCOUNTANTS AND AUDITORS </ValDescription>
+<Value> 132011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> FIN-APPRAISERS AND ASSESSORS OF REAL ESTATE </ValDescription>
+<Value> 132021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> FIN-BUDGET ANALYSTS </ValDescription>
+<Value> 132031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> FIN-CREDIT ANALYSTS </ValDescription>
+<Value> 132041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> FIN-FINANCIAL ANALYSTS </ValDescription>
+<Value> 132051 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> FIN-PERSONAL FINANCIAL ADVISORS </ValDescription>
+<Value> 132052 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> FIN-INSURANCE UNDERWRITERS </ValDescription>
+<Value> 132053 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> FIN-FINANCIAL EXAMINERS </ValDescription>
+<Value> 132061 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> FIN-CREDIT COUNSELORS AND LOAN OFFICERS </ValDescription>
+<Value> 132070 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> FIN-TAX EXAMINERS AND COLLECTORS, AND REVENUE AGENTS </ValDescription>
+<Value> 132081 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> FIN-TAX PREPARERS </ValDescription>
+<Value> 132082 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> FIN-FINANCIAL SPECIALISTS, ALL OTHER </ValDescription>
+<Value> 132099 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CMM-COMPUTER AND INFORMATION RESEARCH SCIENTISTS </ValDescription>
+<Value> 151111 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> CMM-COMPUTER SYSTEMS ANALYSTS </ValDescription>
+<Value> 151121 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> CMM-INFORMATION SECURITY ANALYSTS </ValDescription>
+<Value> 151122 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> CMM-COMPUTER PROGRAMMERS </ValDescription>
+<Value> 151131 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> CMM-WEB DEVELOPERS </ValDescription>
+<Value> 151134 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> CMM-SOFTWARE DEVELOPERS, APPLICATIONS AND SYSTEMS SOFTWARE * </ValDescription>
+<Value> 15113X </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> CMM-DATABASE ADMINISTRATORS </ValDescription>
+<Value> 151141 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> CMM-NETWORK AND COMPUTER SYSTEMS ADMINISTRATORS </ValDescription>
+<Value> 151142 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> CMM-COMPUTER NETWORK ARCHITECTS </ValDescription>
+<Value> 151143 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> CMM-COMPUTER SUPPORT SPECIALISTS </ValDescription>
+<Value> 151150 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> CMM-COMPUTER OCCUPATIONS, ALL OTHER </ValDescription>
+<Value> 151199 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> CMM-ACTUARIES </ValDescription>
+<Value> 152011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CMM-OPERATIONS RESEARCH ANALYSTS </ValDescription>
+<Value> 152031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CMM-MISCELLANEOUS MATHEMATICAL SCIENCE OCCUPATIONS, INCLUDING MATHEMATICIANS AND STATISTICIANS * </ValDescription>
+<Value> 1520XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENG-ARCHITECTS, EXCEPT NAVAL </ValDescription>
+<Value> 171010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENG-SURVEYORS, CARTOGRAPHERS, AND PHOTOGRAMMETRISTS </ValDescription>
+<Value> 171020 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENG-AEROSPACE ENGINEERS </ValDescription>
+<Value> 172011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENG-CHEMICAL ENGINEERS </ValDescription>
+<Value> 172041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENG-CIVIL ENGINEERS </ValDescription>
+<Value> 172051 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENG-COMPUTER HARDWARE ENGINEERS </ValDescription>
+<Value> 172061 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> ENG-ELECTRICAL AND ELECTRONICS ENGINEERS </ValDescription>
+<Value> 172070 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENG-ENVIRONMENTAL ENGINEERS </ValDescription>
+<Value> 172081 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENG-BIOMEDICAL AND AGRICULTURAL ENGINEERS * </ValDescription>
+<Value> 1720XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENG-INDUSTRIAL ENGINEERS, INCLUDING HEALTH AND SAFETY </ValDescription>
+<Value> 172110 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENG-MARINE ENGINEERS AND NAVAL ARCHITECTS </ValDescription>
+<Value> 172121 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENG-MATERIALS ENGINEERS </ValDescription>
+<Value> 172131 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENG-MECHANICAL ENGINEERS </ValDescription>
+<Value> 172141 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENG-PETROLEUM, MINING AND GEOLOGICAL ENGINEERS, INCLUDING MINING SAFETY ENGINEERS * </ValDescription>
+<Value> 1721XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENG-MISCELLANEOUS ENGINEERS, INCLUDING NUCLEAR ENGINEERS * </ValDescription>
+<Value> 1721YY </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENG-DRAFTERS </ValDescription>
+<Value> 173010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENG-ENGINEERING TECHNICIANS, EXCEPT DRAFTERS </ValDescription>
+<Value> 173020 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENG-SURVEYING AND MAPPING TECHNICIANS </ValDescription>
+<Value> 173031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SCI-AGRICULTURAL AND FOOD SCIENTISTS </ValDescription>
+<Value> 191010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SCI-BIOLOGICAL SCIENTISTS </ValDescription>
+<Value> 191020 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SCI-CONSERVATION SCIENTISTS AND FORESTERS </ValDescription>
+<Value> 191030 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SCI-MEDICAL SCIENTISTS, AND LIFE SCIENTISTS, ALL OTHER * </ValDescription>
+<Value> 1910XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SCI-ASTRONOMERS AND PHYSICISTS </ValDescription>
+<Value> 192010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SCI-ATMOSPHERIC AND SPACE SCIENTISTS </ValDescription>
+<Value> 192021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SCI-CHEMISTS AND MATERIALS SCIENTISTS </ValDescription>
+<Value> 192030 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SCI-ENVIRONMENTAL SCIENTISTS AND GEOSCIENTISTS </ValDescription>
+<Value> 192040 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SCI-PHYSICAL SCIENTISTS, ALL OTHER </ValDescription>
+<Value> 192099 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SCI-ECONOMISTS </ValDescription>
+<Value> 193011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SCI-PSYCHOLOGISTS </ValDescription>
+<Value> 193030 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SCI-URBAN AND REGIONAL PLANNERS </ValDescription>
+<Value> 193051 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SCI-MISCELLANEOUS SOCIAL SCIENTISTS, INCLUDING SURVEY RESEARCHERS AND SOCIOLOGISTS * </ValDescription>
+<Value> 1930XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SCI-AGRICULTURAL AND FOOD SCIENCE TECHNICIANS </ValDescription>
+<Value> 194011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SCI-BIOLOGICAL TECHNICIANS </ValDescription>
+<Value> 194021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SCI-CHEMICAL TECHNICIANS </ValDescription>
+<Value> 194031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SCI-GEOLOGICAL AND PETROLEUM TECHNICIANS, AND NUCLEAR TECHNICIANS * </ValDescription>
+<Value> 1940XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SCI-MISCELLANEOUS LIFE, PHYSICAL, AND SOCIAL SCIENCE TECHNICIANS, INCLUDING SOCIAL SCIENCE RESEARCH ASSISTANTS * </ValDescription>
+<Value> 1940YY </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CMS-COUNSELORS </ValDescription>
+<Value> 211010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CMS-SOCIAL WORKERS </ValDescription>
+<Value> 211020 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CMS-PROBATION OFFICERS AND CORRECTIONAL TREATMENT SPECIALISTS </ValDescription>
+<Value> 211092 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CMS-SOCIAL AND HUMAN SERVICE ASSISTANTS </ValDescription>
+<Value> 211093 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CMS-MISCELLANEOUS COMMUNITY AND SOCIAL SERVICE SPECIALISTS, INCLUDING HEALTH EDUCATORS AND COMMUNITY HEALTH WORKERS </ValDescription>
+<Value> 21109X </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CMS-CLERGY </ValDescription>
+<Value> 212011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CMS-DIRECTORS, RELIGIOUS ACTIVITIES AND EDUCATION </ValDescription>
+<Value> 212021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CMS-RELIGIOUS WORKERS, ALL OTHER </ValDescription>
+<Value> 212099 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> LGL-JUDICIAL LAW CLERKS </ValDescription>
+<Value> 231012 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> LGL-LAWYERS, AND JUDGES, MAGISTRATES, AND OTHER JUDICIAL WORKERS * </ValDescription>
+<Value> 2310XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> LGL-PARALEGALS AND LEGAL ASSISTANTS </ValDescription>
+<Value> 232011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> LGL-MISCELLANEOUS LEGAL SUPPORT WORKERS </ValDescription>
+<Value> 232090 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EDU-POSTSECONDARY TEACHERS </ValDescription>
+<Value> 251000 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EDU-PRESCHOOL AND KINDERGARTEN TEACHERS </ValDescription>
+<Value> 252010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EDU-ELEMENTARY AND MIDDLE SCHOOL TEACHERS </ValDescription>
+<Value> 252020 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EDU-SECONDARY SCHOOL TEACHERS </ValDescription>
+<Value> 252030 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EDU-SPECIAL EDUCATION TEACHERS </ValDescription>
+<Value> 252050 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EDU-OTHER TEACHERS AND INSTRUCTORS </ValDescription>
+<Value> 253000 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EDU-ARCHIVISTS, CURATORS, AND MUSEUM TECHNICIANS </ValDescription>
+<Value> 254010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EDU-LIBRARIANS </ValDescription>
+<Value> 254021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EDU-LIBRARY TECHNICIANS </ValDescription>
+<Value> 254031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EDU-TEACHER ASSISTANTS </ValDescription>
+<Value> 259041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EDU-OTHER EDUCATION, TRAINING, AND LIBRARY WORKERS * </ValDescription>
+<Value> 2590XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENT-ARTISTS AND RELATED WORKERS </ValDescription>
+<Value> 271010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENT-DESIGNERS </ValDescription>
+<Value> 271020 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENT-ACTORS </ValDescription>
+<Value> 272011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENT-PRODUCERS AND DIRECTORS </ValDescription>
+<Value> 272012 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENT-ATHLETES, COACHES, UMPIRES, AND RELATED WORKERS </ValDescription>
+<Value> 272020 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENT-DANCERS AND CHOREOGRAPHERS </ValDescription>
+<Value> 272030 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENT-MUSICIANS, SINGERS, AND RELATED WORKERS </ValDescription>
+<Value> 272040 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENT-ENTERTAINERS AND PERFORMERS, SPORTS AND RELATED WORKERS, ALL OTHER </ValDescription>
+<Value> 272099 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENT-ANNOUNCERS </ValDescription>
+<Value> 273010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENT-NEWS ANALYSTS, REPORTERS AND CORRESPONDENTS </ValDescription>
+<Value> 273020 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENT-PUBLIC RELATIONS SPECIALISTS </ValDescription>
+<Value> 273031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENT-EDITORS </ValDescription>
+<Value> 273041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENT-TECHNICAL WRITERS </ValDescription>
+<Value> 273042 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENT-WRITERS AND AUTHORS </ValDescription>
+<Value> 273043 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENT-MISCELLANEOUS MEDIA AND COMMUNICATION WORKERS </ValDescription>
+<Value> 273090 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENT-PHOTOGRAPHERS </ValDescription>
+<Value> 274021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENT-TELEVISION, VIDEO, AND MOTION PICTURE CAMERA OPERATORS AND EDITORS </ValDescription>
+<Value> 274030 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> ENT-BROADCAST AND SOUND ENGINEERING TECHNICIANS AND RADIO OPERATORS, </ValDescription>
+<Value> 2740XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-CHIROPRACTORS </ValDescription>
+<Value> 291011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-DENTISTS </ValDescription>
+<Value> 291020 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-DIETITIANS AND NUTRITIONISTS </ValDescription>
+<Value> 291031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-OPTOMETRISTS </ValDescription>
+<Value> 291041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-PHARMACISTS </ValDescription>
+<Value> 291051 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-PHYSICIANS AND SURGEONS </ValDescription>
+<Value> 291060 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-PHYSICIAN ASSISTANTS </ValDescription>
+<Value> 291071 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-PODIATRISTS </ValDescription>
+<Value> 291081 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-OCCUPATIONAL THERAPISTS </ValDescription>
+<Value> 291122 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-PHYSICAL THERAPISTS </ValDescription>
+<Value> 291123 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-RADIATION THERAPISTS </ValDescription>
+<Value> 291124 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-RECREATIONAL THERAPISTS </ValDescription>
+<Value> 291125 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-RESPIRATORY THERAPISTS </ValDescription>
+<Value> 291126 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-SPEECH-LANGUAGE PATHOLOGISTS </ValDescription>
+<Value> 291127 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-OTHER THERAPISTS, INCLUDING EXERCISE PHYSIOLOGISTS * </ValDescription>
+<Value> 29112X </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-VETERINARIANS </ValDescription>
+<Value> 291131 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-REGISTERED NURSES </ValDescription>
+<Value> 291141 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-NURSE ANESTHETISTS </ValDescription>
+<Value> 291151 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-AUDIOLOGISTS </ValDescription>
+<Value> 291181 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-HEALTH DIAGNOSING AND TREATING PRACTITIONERS, ALL OTHER </ValDescription>
+<Value> 291199 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-NURSE PRACTITIONERS AND NURSE MIDWIVES * </ValDescription>
+<Value> 2911XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-CLINICAL LABORATORY TECHNOLOGISTS AND TECHNICIANS </ValDescription>
+<Value> 292010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-DENTAL HYGIENISTS </ValDescription>
+<Value> 292021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-DIAGNOSTIC RELATED TECHNOLOGISTS AND TECHNICIANS </ValDescription>
+<Value> 292030 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-EMERGENCY MEDICAL TECHNICIANS AND PARAMEDICS </ValDescription>
+<Value> 292041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-HEALTH DIAGNOSING AND TREATING PRACTITIONER SUPPORT TECHNICIANS </ValDescription>
+<Value> 292050 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-LICENSED PRACTICAL AND LICENSED VOCATIONAL NURSES </ValDescription>
+<Value> 292061 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-MEDICAL RECORDS AND HEALTH INFORMATION TECHNICIANS </ValDescription>
+<Value> 292071 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-OPTICIANS, DISPENSING </ValDescription>
+<Value> 292081 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-MISCELLANEOUS HEALTH TECHNOLOGISTS AND TECHNICIANS </ValDescription>
+<Value> 292090 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MED-OTHER HEALTHCARE PRACTITIONERS AND TECHNICAL OCCUPATIONS </ValDescription>
+<Value> 299000 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> HLS-NURSING, PSYCHIATRIC, AND HOME HEALTH AIDES </ValDescription>
+<Value> 311010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> HLS-OCCUPATIONAL THERAPY ASSISTANTS AND AIDES </ValDescription>
+<Value> 312010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> HLS-PHYSICAL THERAPIST ASSISTANTS AND AIDES </ValDescription>
+<Value> 312020 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> HLS-MASSAGE THERAPISTS </ValDescription>
+<Value> 319011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> HLS-DENTAL ASSISTANTS </ValDescription>
+<Value> 319091 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> HLS-MEDICAL ASSISTANTS </ValDescription>
+<Value> 319092 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> HLS-MEDICAL TRANSCRIPTIONISTS </ValDescription>
+<Value> 319094 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> HLS-PHARMACY AIDES </ValDescription>
+<Value> 319095 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> HLS-VETERINARY ASSISTANTS AND LABORATORY ANIMAL CARETAKERS </ValDescription>
+<Value> 319096 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> HLS-PHLEBOTOMISTS </ValDescription>
+<Value> 319097 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> HEALTHCARE SUPPORT WORKERS, ALL OTHER, INCLUDING MEDICAL EQUIPMENT PREPARERS * </ValDescription>
+<Value> 31909X </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRT-FIRST-LINE SUPERVISORS OF CORRECTIONAL OFFICERS </ValDescription>
+<Value> 331011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRT-FIRST-LINE SUPERVISORS OF POLICE AND DETECTIVES </ValDescription>
+<Value> 331012 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRT-FIRST-LINE SUPERVISORS OF FIRE FIGHTING AND PREVENTION WORKERS </ValDescription>
+<Value> 331021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRT-FIRST-LINE SUPERVISORS OF PROTECTIVE SERVICE WORKERS, ALL OTHER </ValDescription>
+<Value> 331099 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRT-FIREFIGHTERS </ValDescription>
+<Value> 332011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRT-FIRE INSPECTORS </ValDescription>
+<Value> 332020 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRT-BAILIFFS, CORRECTIONAL OFFICERS, AND JAILERS </ValDescription>
+<Value> 333010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRT-DETECTIVES AND CRIMINAL INVESTIGATORS </ValDescription>
+<Value> 333021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRT-POLICE OFFICERS </ValDescription>
+<Value> 333050 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRT-MISCELLANEOUS LAW ENFORCEMENT WORKERS * </ValDescription>
+<Value> 3330XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRT-ANIMAL CONTROL WORKERS </ValDescription>
+<Value> 339011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRT-PRIVATE DETECTIVES AND INVESTIGATORS </ValDescription>
+<Value> 339021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRT-SECURITY GUARDS AND GAMING SURVEILLANCE OFFICERS </ValDescription>
+<Value> 339030 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRT-CROSSING GUARDS </ValDescription>
+<Value> 339091 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRT-TRANSPORTATION SECURITY SCREENERS </ValDescription>
+<Value> 339093 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRT-LIFEGUARDS AND OTHER RECREATIONAL, AND ALL OTHER PROTECTIVE SERVICE WORKERS * </ValDescription>
+<Value> 33909X </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EAT-CHEFS AND HEAD COOKS </ValDescription>
+<Value> 351011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EAT-FIRST-LINE SUPERVISORS OF FOOD PREPARATION AND SERVING WORKERS </ValDescription>
+<Value> 351012 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EAT-COOKS </ValDescription>
+<Value> 352010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EAT-FOOD PREPARATION WORKERS </ValDescription>
+<Value> 352021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EAT-BARTENDERS </ValDescription>
+<Value> 353011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EAT-COMBINED FOOD PREPARATION AND SERVING WORKERS, INCLUDING FAST FOOD </ValDescription>
+<Value> 353021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EAT-COUNTER ATTENDANTS, CAFETERIA, FOOD CONCESSION, AND COFFEE SHOP </ValDescription>
+<Value> 353022 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EAT-WAITERS AND WAITRESSES </ValDescription>
+<Value> 353031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EAT-FOOD SERVERS, NONRESTAURANT </ValDescription>
+<Value> 353041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EAT-DISHWASHERS </ValDescription>
+<Value> 359021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EAT-HOSTS AND HOSTESSES, RESTAURANT, LOUNGE, AND COFFEE SHOP </ValDescription>
+<Value> 359031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EAT-MISCELLANEOUS FOOD PREPARATION AND SERVING RELATED WORKERS, </ValDescription>
+<Value> 3590XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CLN-FIRST-LINE SUPERVISORS OF HOUSEKEEPING AND JANITORIAL WORKERS </ValDescription>
+<Value> 371011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CLN-FIRST-LINE SUPERVISORS OF LANDSCAPING, LAWN SERVICE, AND GROUNDSKEEPING WORKERS </ValDescription>
+<Value> 371012 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CLN-MAIDS AND HOUSEKEEPING CLEANERS </ValDescription>
+<Value> 372012 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CLN-JANITORS AND BUILDING CLEANERS * </ValDescription>
+<Value> 37201X </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CLN-PEST CONTROL WORKERS </ValDescription>
+<Value> 372021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CLN-GROUNDS MAINTENANCE WORKERS </ValDescription>
+<Value> 373010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRS-FIRST-LINE SUPERVISORS OF GAMING WORKERS </ValDescription>
+<Value> 391010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRS-FIRST-LINE SUPERVISORS OF PERSONAL SERVICE WORKERS </ValDescription>
+<Value> 391021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRS-ANIMAL TRAINERS </ValDescription>
+<Value> 392011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRS-NONFARM ANIMAL CARETAKERS </ValDescription>
+<Value> 392021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRS-GAMING SERVICES WORKERS </ValDescription>
+<Value> 393010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRS-MOTION PICTURE PROJECTIONISTS </ValDescription>
+<Value> 393021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRS-USHERS, LOBBY ATTENDANTS, AND TICKET TAKERS </ValDescription>
+<Value> 393031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRS-MISCELLANEOUS ENTERTAINMENT ATTENDANTS AND RELATED WORKERS </ValDescription>
+<Value> 393090 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRS-MORTICIANS, UNDERTAKERS, AND FUNERAL DIRECTORS </ValDescription>
+<Value> 394031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRS-EMBALMERS AND FUNERAL ATTENDANTS * </ValDescription>
+<Value> 3940XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRS-BARBERS </ValDescription>
+<Value> 395011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRS-HAIRDRESSERS, HAIRSTYLISTS, AND COSMETOLOGISTS </ValDescription>
+<Value> 395012 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRS-MISCELLANEOUS PERSONAL APPEARANCE WORKERS </ValDescription>
+<Value> 395090 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRS-BAGGAGE PORTERS, BELLHOPS, AND CONCIERGES </ValDescription>
+<Value> 396010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRS-TOUR AND TRAVEL GUIDES </ValDescription>
+<Value> 397010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRS-CHILDCARE WORKERS </ValDescription>
+<Value> 399011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRS-PERSONAL CARE AIDES </ValDescription>
+<Value> 399021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRS-RECREATION AND FITNESS WORKERS </ValDescription>
+<Value> 399030 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRS-RESIDENTIAL ADVISORS </ValDescription>
+<Value> 399041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRS-PERSONAL CARE AND SERVICE WORKERS, ALL OTHER </ValDescription>
+<Value> 399099 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SAL-FIRST-LINE SUPERVISORS OF RETAIL SALES WORKERS </ValDescription>
+<Value> 411011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SAL-FIRST-LINE SUPERVISORS OF NON-RETAIL SALES WORKERS </ValDescription>
+<Value> 411012 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SAL-CASHIERS </ValDescription>
+<Value> 412010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SAL-COUNTER AND RENTAL CLERKS </ValDescription>
+<Value> 412021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SAL-PARTS SALESPERSONS </ValDescription>
+<Value> 412022 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SAL-RETAIL SALESPERSONS </ValDescription>
+<Value> 412031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SAL-ADVERTISING SALES AGENTS </ValDescription>
+<Value> 413011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SAL-INSURANCE SALES AGENTS </ValDescription>
+<Value> 413021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SAL-SECURITIES, COMMODITIES, AND FINANCIAL SERVICES SALES AGENTS </ValDescription>
+<Value> 413031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SAL-TRAVEL AGENTS </ValDescription>
+<Value> 413041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SAL-SALES REPRESENTATIVES, SERVICES, ALL OTHER </ValDescription>
+<Value> 413099 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SAL-SALES REPRESENTATIVES, WHOLESALE AND MANUFACTURING </ValDescription>
+<Value> 414010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SAL-MODELS, DEMONSTRATORS, AND PRODUCT PROMOTERS </ValDescription>
+<Value> 419010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SAL-REAL ESTATE BROKERS AND SALES AGENTS </ValDescription>
+<Value> 419020 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SAL-SALES ENGINEERS </ValDescription>
+<Value> 419031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SAL-TELEMARKETERS </ValDescription>
+<Value> 419041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SAL-DOOR-TO-DOOR SALES WORKERS, NEWS AND STREET VENDORS, AND RELATED WORKERS </ValDescription>
+<Value> 419091 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> SAL-SALES AND RELATED WORKERS, ALL OTHER </ValDescription>
+<Value> 419099 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-FIRST-LINE SUPERVISORS OF OFFICE AND ADMINISTRATIVE SUPPORT WORKERS </ValDescription>
+<Value> 431011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-SWITCHBOARD OPERATORS, INCLUDING ANSWERING SERVICE </ValDescription>
+<Value> 432011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-TELEPHONE OPERATORS </ValDescription>
+<Value> 432021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-COMMUNICATIONS EQUIPMENT OPERATORS, ALL OTHER </ValDescription>
+<Value> 432099 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-BILL AND ACCOUNT COLLECTORS </ValDescription>
+<Value> 433011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-BILLING AND POSTING CLERKS </ValDescription>
+<Value> 433021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-BOOKKEEPING, ACCOUNTING, AND AUDITING CLERKS </ValDescription>
+<Value> 433031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-GAMING CAGE WORKERS </ValDescription>
+<Value> 433041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-PAYROLL AND TIMEKEEPING CLERKS </ValDescription>
+<Value> 433051 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-PROCUREMENT CLERKS </ValDescription>
+<Value> 433061 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-TELLERS </ValDescription>
+<Value> 433071 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-FINANCIAL CLERKS, ALL OTHER </ValDescription>
+<Value> 433099 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-BROKERAGE CLERKS </ValDescription>
+<Value> 434011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-COURT, MUNICIPAL, AND LICENSE CLERKS </ValDescription>
+<Value> 434031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-CREDIT AUTHORIZERS, CHECKERS, AND CLERKS </ValDescription>
+<Value> 434041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-CUSTOMER SERVICE REPRESENTATIVES </ValDescription>
+<Value> 434051 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-ELIGIBILITY INTERVIEWERS, GOVERNMENT PROGRAMS </ValDescription>
+<Value> 434061 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-FILE CLERKS </ValDescription>
+<Value> 434071 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-HOTEL, MOTEL, AND RESORT DESK CLERKS </ValDescription>
+<Value> 434081 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-INTERVIEWERS, EXCEPT ELIGIBILITY AND LOAN </ValDescription>
+<Value> 434111 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-LIBRARY ASSISTANTS, CLERICAL </ValDescription>
+<Value> 434121 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-LOAN INTERVIEWERS AND CLERKS </ValDescription>
+<Value> 434131 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-NEW ACCOUNTS CLERKS </ValDescription>
+<Value> 434141 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-HUMAN RESOURCES ASSISTANTS, EXCEPT PAYROLL AND TIMEKEEPING </ValDescription>
+<Value> 434161 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-RECEPTIONISTS AND INFORMATION CLERKS </ValDescription>
+<Value> 434171 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-RESERVATION AND TRANSPORTATION TICKET AGENTS AND TRAVEL CLERKS </ValDescription>
+<Value> 434181 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-INFORMATION AND RECORD CLERKS, ALL OTHER </ValDescription>
+<Value> 434199 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-CORRESPONDENCE CLERKS AND ORDER CLERKS * </ValDescription>
+<Value> 434XXX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-CARGO AND FREIGHT AGENTS </ValDescription>
+<Value> 435011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-COURIERS AND MESSENGERS </ValDescription>
+<Value> 435021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-DISPATCHERS </ValDescription>
+<Value> 435030 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-METER READERS, UTILITIES </ValDescription>
+<Value> 435041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-POSTAL SERVICE CLERKS </ValDescription>
+<Value> 435051 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-POSTAL SERVICE MAIL CARRIERS </ValDescription>
+<Value> 435052 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-POSTAL SERVICE MAIL SORTERS, PROCESSORS, AND PROCESSING MACHINE OPERATORS </ValDescription>
+<Value> 435053 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-PRODUCTION, PLANNING, AND EXPEDITING CLERKS </ValDescription>
+<Value> 435061 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-SHIPPING, RECEIVING, AND TRAFFIC CLERKS </ValDescription>
+<Value> 435071 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-STOCK CLERKS AND ORDER FILLERS </ValDescription>
+<Value> 435081 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-WEIGHERS, MEASURERS, CHECKERS, AND SAMPLERS, RECORDKEEPING </ValDescription>
+<Value> 435111 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-SECRETARIES AND ADMINISTRATIVE ASSISTANTS </ValDescription>
+<Value> 436010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-COMPUTER OPERATORS </ValDescription>
+<Value> 439011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-DATA ENTRY KEYERS </ValDescription>
+<Value> 439021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-WORD PROCESSORS AND TYPISTS </ValDescription>
+<Value> 439022 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-INSURANCE CLAIMS AND POLICY PROCESSING CLERKS </ValDescription>
+<Value> 439041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-MAIL CLERKS AND MAIL MACHINE OPERATORS, EXCEPT POSTAL SERVICE </ValDescription>
+<Value> 439051 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-OFFICE CLERKS, GENERAL </ValDescription>
+<Value> 439061 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-OFFICE MACHINE OPERATORS, EXCEPT COMPUTER </ValDescription>
+<Value> 439071 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-PROOFREADERS AND COPY MARKERS </ValDescription>
+<Value> 439081 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-STATISTICAL ASSISTANTS </ValDescription>
+<Value> 439111 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> OFF-MISCELLANEOUS OFFICE AND ADMINISTRATIVE SUPPORT WORKERS, INCLUDING DESKTOP PUBLISHERS * </ValDescription>
+<Value> 439XXX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> FFF-FIRST-LINE SUPERVISORS OF FARMING, FISHING, AND FORESTRY WORKERS </ValDescription>
+<Value> 451011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> FFF-AGRICULTURAL INSPECTORS </ValDescription>
+<Value> 452011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> FFF-GRADERS AND SORTERS, AGRICULTURAL PRODUCTS </ValDescription>
+<Value> 452041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> FFF-MISCELLANEOUS AGRICULTURAL WORKERS, INCLUDING ANIMAL BREEDERS * </ValDescription>
+<Value> 4520XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> FFF-FISHING AND HUNTING WORKERS </ValDescription>
+<Value> 453000 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> FFF-FOREST AND CONSERVATION WORKERS </ValDescription>
+<Value> 454011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> FFF-LOGGING WORKERS </ValDescription>
+<Value> 454020 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-FIRST-LINE SUPERVISORS OF CONSTRUCTION TRADES AND EXTRACTION WORKERS </ValDescription>
+<Value> 471011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-BOILERMAKERS </ValDescription>
+<Value> 472011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-BRICKMASONS, BLOCKMASONS, AND STONEMASONS </ValDescription>
+<Value> 472020 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-CARPENTERS </ValDescription>
+<Value> 472031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-CARPET, FLOOR, AND TILE INSTALLERS AND FINISHERS </ValDescription>
+<Value> 472040 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-CEMENT MASONS, CONCRETE FINISHERS, AND TERRAZZO WORKERS </ValDescription>
+<Value> 472050 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-CONSTRUCTION LABORERS </ValDescription>
+<Value> 472061 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-PAVING, SURFACING, AND TAMPING EQUIPMENT OPERATORS </ValDescription>
+<Value> 472071 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-CONSTRUCTION EQUIPMENT OPERATORS, EXCEPT PAVING, SURFACING, AND TAMPING EQUIPMENT OPERATORS * </ValDescription>
+<Value> 47207X </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-DRYWALL INSTALLERS, CEILING TILE INSTALLERS, AND TAPERS </ValDescription>
+<Value> 472080 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-ELECTRICIANS </ValDescription>
+<Value> 472111 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-GLAZIERS </ValDescription>
+<Value> 472121 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-INSULATION WORKERS </ValDescription>
+<Value> 472130 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-PAINTERS, CONSTRUCTION AND MAINTENANCE </ValDescription>
+<Value> 472141 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-PAPERHANGERS </ValDescription>
+<Value> 472142 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-PIPELAYERS, PLUMBERS, PIPEFITTERS, AND STEAMFITTERS </ValDescription>
+<Value> 472150 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-PLASTERERS AND STUCCO MASONS </ValDescription>
+<Value> 472161 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-REINFORCING IRON AND REBAR WORKERS </ValDescription>
+<Value> 472171 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-ROOFERS </ValDescription>
+<Value> 472181 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-SHEET METAL WORKERS </ValDescription>
+<Value> 472211 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-STRUCTURAL IRON AND STEEL WORKERS </ValDescription>
+<Value> 472221 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-HELPERS, CONSTRUCTION TRADES </ValDescription>
+<Value> 473010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-CONSTRUCTION AND BUILDING INSPECTORS </ValDescription>
+<Value> 474011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-ELEVATOR INSTALLERS AND REPAIRERS </ValDescription>
+<Value> 474021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-FENCE ERECTORS </ValDescription>
+<Value> 474031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-HAZARDOUS MATERIALS REMOVAL WORKERS </ValDescription>
+<Value> 474041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-HIGHWAY MAINTENANCE WORKERS </ValDescription>
+<Value> 474051 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-RAIL-TRACK LAYING AND MAINTENANCE EQUIPMENT OPERATORS </ValDescription>
+<Value> 474061 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EXT-EARTH DRILLERS, EXCEPT OIL AND GAS </ValDescription>
+<Value> 475021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EXT-EXPLOSIVES WORKERS, ORDNANCE HANDLING EXPERTS, AND BLASTERS </ValDescription>
+<Value> 475031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EXT-MINING MACHINE OPERATORS </ValDescription>
+<Value> 475040 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EXT-MISCELLANEOUS EXTRACTION WORKERS, INCLUDING ROOF BOLTERS AND HELPERS * </ValDescription>
+<Value> 4750XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> EXT-DERRICK, ROTARY DRILL, AND SERVICE UNIT OPERATORS, AND ROUSTABOUTS, OIL, GAS, AND MINING * </ValDescription>
+<Value> 4750YY </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> CON-MISCELLANEOUS CONSTRUCTION WORKERS, INCLUDING SOLAR PHOTOVOLTAIC INSTALLERS, </ValDescription>
+<Value> 47XXXX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-FIRST-LINE SUPERVISORS OF MECHANICS, INSTALLERS, AND REPAIRERS </ValDescription>
+<Value> 491011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-COMPUTER, AUTOMATED TELLER, AND OFFICE MACHINE REPAIRERS </ValDescription>
+<Value> 492011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-RADIO AND TELECOMMUNICATIONS EQUIPMENT INSTALLERS AND REPAIRERS </ValDescription>
+<Value> 492020 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-AVIONICS TECHNICIANS </ValDescription>
+<Value> 492091 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-ELECTRIC MOTOR, POWER TOOL, AND RELATED REPAIRERS </ValDescription>
+<Value> 492092 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-ELECTRONIC EQUIPMENT INSTALLERS AND REPAIRERS, MOTOR VEHICLES </ValDescription>
+<Value> 492096 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-ELECTRONIC HOME ENTERTAINMENT EQUIPMENT INSTALLERS AND REPAIRERS </ValDescription>
+<Value> 492097 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-SECURITY AND FIRE ALARM SYSTEMS INSTALLERS </ValDescription>
+<Value> 492098 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-ELECTRICAL AND ELECTRONICS REPAIRERS, TRANSPORTATION EQUIPMENT, AND INDUSTRIAL AND UTILITY * </ValDescription>
+<Value> 49209X </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-AIRCRAFT MECHANICS AND SERVICE TECHNICIANS </ValDescription>
+<Value> 493011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-AUTOMOTIVE BODY AND RELATED REPAIRERS </ValDescription>
+<Value> 493021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-AUTOMOTIVE GLASS INSTALLERS AND REPAIRERS </ValDescription>
+<Value> 493022 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-AUTOMOTIVE SERVICE TECHNICIANS AND MECHANICS </ValDescription>
+<Value> 493023 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-BUS AND TRUCK MECHANICS AND DIESEL ENGINE SPECIALISTS </ValDescription>
+<Value> 493031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-HEAVY VEHICLE AND MOBILE EQUIPMENT SERVICE TECHNICIANS AND MECHANICS </ValDescription>
+<Value> 493040 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-SMALL ENGINE MECHANICS </ValDescription>
+<Value> 493050 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-MISCELLANEOUS VEHICLE AND MOBILE EQUIPMENT MECHANICS, INSTALLERS, AND REPAIRERS </ValDescription>
+<Value> 493090 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-CONTROL AND VALVE INSTALLERS AND REPAIRERS </ValDescription>
+<Value> 499010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-HEATING, AIR CONDITIONING, AND REFRIGERATION MECHANICS AND INSTALLERS </ValDescription>
+<Value> 499021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-HOME APPLIANCE REPAIRERS </ValDescription>
+<Value> 499031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-MAINTENANCE WORKERS, MACHINERY </ValDescription>
+<Value> 499043 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-MILLWRIGHTS </ValDescription>
+<Value> 499044 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-INDUSTRIAL AND REFRACTORY MACHINERY MECHANICS * </ValDescription>
+<Value> 49904X </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-ELECTRICAL POWER-LINE INSTALLERS AND REPAIRERS </ValDescription>
+<Value> 499051 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-TELECOMMUNICATIONS LINE INSTALLERS AND REPAIRERS </ValDescription>
+<Value> 499052 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-PRECISION INSTRUMENT AND EQUIPMENT REPAIRERS </ValDescription>
+<Value> 499060 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-MAINTENANCE AND REPAIR WORKERS, GENERAL </ValDescription>
+<Value> 499071 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-COIN, VENDING, AND AMUSEMENT MACHINE SERVICERS AND REPAIRERS </ValDescription>
+<Value> 499091 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-LOCKSMITHS AND SAFE REPAIRERS </ValDescription>
+<Value> 499094 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-MANUFACTURED BUILDING AND MOBILE HOME INSTALLERS </ValDescription>
+<Value> 499095 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-RIGGERS </ValDescription>
+<Value> 499096 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-HELPERS--INSTALLATION, MAINTENANCE, AND REPAIR WORKERS </ValDescription>
+<Value> 499098 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> RPR-OTHER INSTALLATION, MAINTENANCE, AND REPAIR WORKERS, INCLUDING WIND TURBINE SERVICE TECHNICIANS, </ValDescription>
+<Value> 49909X </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-FIRST-LINE SUPERVISORS OF PRODUCTION AND OPERATING WORKERS </ValDescription>
+<Value> 511011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-AIRCRAFT STRUCTURE, SURFACES, RIGGING, AND SYSTEMS ASSEMBLERS </ValDescription>
+<Value> 512011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-ELECTRICAL, ELECTRONICS, AND ELECTROMECHANICAL ASSEMBLERS </ValDescription>
+<Value> 512020 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-ENGINE AND OTHER MACHINE ASSEMBLERS </ValDescription>
+<Value> 512031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-STRUCTURAL METAL FABRICATORS AND FITTERS </ValDescription>
+<Value> 512041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-MISCELLANEOUS ASSEMBLERS AND FABRICATORS </ValDescription>
+<Value> 512090 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-BAKERS </ValDescription>
+<Value> 513011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-BUTCHERS AND OTHER MEAT, POULTRY, AND FISH PROCESSING WORKERS </ValDescription>
+<Value> 513020 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-FOOD AND TOBACCO ROASTING, BAKING, AND DRYING MACHINE OPERATORS AND TENDERS </ValDescription>
+<Value> 513091 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-FOOD BATCHMAKERS </ValDescription>
+<Value> 513092 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-FOOD COOKING MACHINE OPERATORS AND TENDERS </ValDescription>
+<Value> 513093 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-FOOD PROCESSING WORKERS, ALL OTHER </ValDescription>
+<Value> 513099 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-COMPUTER CONTROL PROGRAMMERS AND OPERATORS </ValDescription>
+<Value> 514010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-EXTRUDING AND DRAWING MACHINE SETTERS, OPERATORS, AND TENDERS, METAL AND PLASTIC </ValDescription>
+<Value> 514021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-FORGING MACHINE SETTERS, OPERATORS, AND TENDERS, METAL AND PLASTIC </ValDescription>
+<Value> 514022 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-ROLLING MACHINE SETTERS, OPERATORS, AND TENDERS, METAL AND PLASTIC </ValDescription>
+<Value> 514023 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-CUTTING, PUNCHING, AND PRESS MACHINE SETTERS, OPERATORS, AND TENDERS, METAL AND PLASTIC </ValDescription>
+<Value> 514031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-DRILLING AND BORING MACHINE TOOL SETTERS, OPERATORS, AND TENDERS, METAL AND PLASTIC </ValDescription>
+<Value> 514032 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-GRINDING, LAPPING, POLISHING, AND BUFFING MACHINE TOOL SETTERS, OPERATORS, AND TENDERS, METAL AND PLASTIC </ValDescription>
+<Value> 514033 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-LATHE AND TURNING MACHINE TOOL SETTERS, OPERATORS, AND TENDERS, METAL AND PLASTIC </ValDescription>
+<Value> 514034 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-MACHINISTS </ValDescription>
+<Value> 514041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-METAL FURNACE OPERATORS, TENDERS, POURERS, AND CASTERS </ValDescription>
+<Value> 514050 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-MODEL MAKERS AND PATTERNMAKERS, METAL AND PLASTIC </ValDescription>
+<Value> 514060 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-MOLDERS AND MOLDING MACHINE SETTERS, OPERATORS, AND TENDERS, METAL AND PLASTIC </ValDescription>
+<Value> 514070 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-TOOL AND DIE MAKERS </ValDescription>
+<Value> 514111 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-WELDING, SOLDERING, AND BRAZING WORKERS </ValDescription>
+<Value> 514120 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-HEAT TREATING EQUIPMENT SETTERS, OPERATORS, AND TENDERS, METAL AND PLASTIC </ValDescription>
+<Value> 514191 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-PLATING AND COATING MACHINE SETTERS, OPERATORS, AND TENDERS, METAL AND PLASTIC </ValDescription>
+<Value> 514193 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-TOOL GRINDERS, FILERS, AND SHARPENERS </ValDescription>
+<Value> 514194 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-MISCELLANEOUS METAL WORKERS AND PLASTIC WORKERS, INCLUDING MILLING AND PLANING MACHINE SETTERS, </ValDescription>
+<Value> 514XXX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-PREPRESS TECHNICIANS AND WORKERS </ValDescription>
+<Value> 515111 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-PRINTING PRESS OPERATORS </ValDescription>
+<Value> 515112 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-PRINT BINDING AND FINISHING WORKERS </ValDescription>
+<Value> 515113 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-LAUNDRY AND DRY-CLEANING WORKERS </ValDescription>
+<Value> 516011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-PRESSERS, TEXTILE, GARMENT, AND RELATED MATERIALS </ValDescription>
+<Value> 516021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-SEWING MACHINE OPERATORS </ValDescription>
+<Value> 516031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-SHOE AND LEATHER WORKERS AND REPAIRERS </ValDescription>
+<Value> 516041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-SHOE MACHINE OPERATORS AND TENDERS </ValDescription>
+<Value> 516042 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-TAILORS, DRESSMAKERS, AND SEWERS </ValDescription>
+<Value> 516050 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-TEXTILE KNITTING AND WEAVING MACHINE SETTERS, OPERATORS, AND TENDERS </ValDescription>
+<Value> 516063 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-TEXTILE WINDING, TWISTING, AND DRAWING OUT MACHINE SETTERS, OPERATORS, AND TENDERS </ValDescription>
+<Value> 516064 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-TEXTILE BLEACHING AND DYEING, AND CUTTING MACHINE SETTERS, OPERATORS, AND TENDERS * </ValDescription>
+<Value> 51606X </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-UPHOLSTERERS </ValDescription>
+<Value> 516093 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-MISCELLANEOUS TEXTILE, APPAREL, AND FURNISHINGS WORKERS, EXCEPT UPHOLSTERERS * </ValDescription>
+<Value> 51609X </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-CABINETMAKERS AND BENCH CARPENTERS </ValDescription>
+<Value> 517011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-FURNITURE FINISHERS </ValDescription>
+<Value> 517021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-SAWING MACHINE SETTERS, OPERATORS, AND TENDERS, WOOD </ValDescription>
+<Value> 517041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-WOODWORKING MACHINE SETTERS, OPERATORS, AND TENDERS, EXCEPT SAWING </ValDescription>
+<Value> 517042 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-MISCELLANEOUS WOODWORKERS, INCLUDING MODEL MAKERS AND PATTERNMAKERS * </ValDescription>
+<Value> 5170XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-POWER PLANT OPERATORS, DISTRIBUTORS, AND DISPATCHERS </ValDescription>
+<Value> 518010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-STATIONARY ENGINEERS AND BOILER OPERATORS </ValDescription>
+<Value> 518021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-WATER AND WASTEWATER TREATMENT PLANT AND SYSTEM OPERATORS </ValDescription>
+<Value> 518031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-MISCELLANEOUS PLANT AND SYSTEM OPERATORS </ValDescription>
+<Value> 518090 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-CHEMICAL PROCESSING MACHINE SETTERS, OPERATORS, AND TENDERS </ValDescription>
+<Value> 519010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-CRUSHING, GRINDING, POLISHING, MIXING, AND BLENDING WORKERS </ValDescription>
+<Value> 519020 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-CUTTING WORKERS </ValDescription>
+<Value> 519030 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-EXTRUDING, FORMING, PRESSING, AND COMPACTING MACHINE SETTERS, OPERATORS, AND TENDERS </ValDescription>
+<Value> 519041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-FURNACE, KILN, OVEN, DRIER, AND KETTLE OPERATORS AND TENDERS </ValDescription>
+<Value> 519051 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-INSPECTORS, TESTERS, SORTERS, SAMPLERS, AND WEIGHERS </ValDescription>
+<Value> 519061 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-JEWELERS AND PRECIOUS STONE AND METAL WORKERS </ValDescription>
+<Value> 519071 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-MEDICAL, DENTAL, AND OPHTHALMIC LABORATORY TECHNICIANS </ValDescription>
+<Value> 519080 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-PACKAGING AND FILLING MACHINE OPERATORS AND TENDERS </ValDescription>
+<Value> 519111 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-PAINTING WORKERS </ValDescription>
+<Value> 519120 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-PHOTOGRAPHIC PROCESS WORKERS AND PROCESSING MACHINE OPERATORS </ValDescription>
+<Value> 519151 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-ADHESIVE BONDING MACHINE OPERATORS AND TENDERS </ValDescription>
+<Value> 519191 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-CLEANING, WASHING, AND METAL PICKLING EQUIPMENT OPERATORS AND TENDERS </ValDescription>
+<Value> 519192 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-ETCHERS AND ENGRAVERS </ValDescription>
+<Value> 519194 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-MOLDERS, SHAPERS, AND CASTERS, EXCEPT METAL AND PLASTIC </ValDescription>
+<Value> 519195 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-PAPER GOODS MACHINE SETTERS, OPERATORS, AND TENDERS </ValDescription>
+<Value> 519196 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-TIRE BUILDERS </ValDescription>
+<Value> 519197 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-HELPERS-PRODUCTION WORKERS </ValDescription>
+<Value> 519198 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRD-OTHER PRODUCTION WORKERS, INCLUDING SEMICONDUCTOR PROCESSORS AND COOLING AND FREEZING EQUIPMENT OPERATORS * </ValDescription>
+<Value> 5191XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-SUPERVISORS OF TRANSPORTATION AND MATERIAL MOVING WORKERS </ValDescription>
+<Value> 531000 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-AIRCRAFT PILOTS AND FLIGHT ENGINEERS </ValDescription>
+<Value> 532010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-AIR TRAFFIC CONTROLLERS AND AIRFIELD OPERATIONS SPECIALISTS </ValDescription>
+<Value> 532020 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-FLIGHT ATTENDANTS </ValDescription>
+<Value> 532031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-AMBULANCE DRIVERS AND ATTENDANTS, EXCEPT EMERGENCY MEDICAL TECHNICIANS </ValDescription>
+<Value> 533011 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-BUS DRIVERS </ValDescription>
+<Value> 533020 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-DRIVER/SALES WORKERS AND TRUCK DRIVERS </ValDescription>
+<Value> 533030 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-TAXI DRIVERS AND CHAUFFEURS </ValDescription>
+<Value> 533041 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-MOTOR VEHICLE OPERATORS, ALL OTHER </ValDescription>
+<Value> 533099 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-LOCOMOTIVE ENGINEERS AND OPERATORS </ValDescription>
+<Value> 534010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-RAILROAD BRAKE, SIGNAL, AND SWITCH OPERATORS </ValDescription>
+<Value> 534021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-RAILROAD CONDUCTORS AND YARDMASTERS </ValDescription>
+<Value> 534031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-SUBWAY, STREETCAR, AND OTHER RAIL TRANSPORTATION WORKERS * </ValDescription>
+<Value> 5340XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-SHIP AND BOAT CAPTAINS AND OPERATORS </ValDescription>
+<Value> 535020 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-SAILORS AND MARINE OILERS, AND SHIP ENGINEERS * </ValDescription>
+<Value> 5350XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-PARKING LOT ATTENDANTS </ValDescription>
+<Value> 536021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-AUTOMOTIVE AND WATERCRAFT SERVICE ATTENDANTS </ValDescription>
+<Value> 536031 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-TRANSPORTATION INSPECTORS </ValDescription>
+<Value> 536051 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> PRS-TRANSPORTATION ATTENDANTS, EXCEPT FLIGHT ATTENDANTS </ValDescription>
+<Value> 536061 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-MISCELLANEOUS TRANSPORTATION WORKERS, INCLUDING BRIDGE AND LOCK TENDERS AND TRAFFIC TECHNICIANS * </ValDescription>
+<Value> 5360XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-CRANE AND TOWER OPERATORS </ValDescription>
+<Value> 537021 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-DREDGE, EXCAVATING, AND LOADING MACHINE OPERATORS </ValDescription>
+<Value> 537030 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-INDUSTRIAL TRUCK AND TRACTOR OPERATORS </ValDescription>
+<Value> 537051 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-CLEANERS OF VEHICLES AND EQUIPMENT </ValDescription>
+<Value> 537061 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-LABORERS AND FREIGHT, STOCK, AND MATERIAL MOVERS, HAND </ValDescription>
+<Value> 537062 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-MACHINE FEEDERS AND OFFBEARERS </ValDescription>
+<Value> 537063 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-PACKERS AND PACKAGERS, HAND </ValDescription>
+<Value> 537064 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-PUMPING STATION OPERATORS </ValDescription>
+<Value> 537070 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-REFUSE AND RECYCLABLE MATERIAL COLLECTORS </ValDescription>
+<Value> 537081 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-CONVEYOR OPERATORS AND TENDERS, AND HOIST AND WINCH OPERATORS * </ValDescription>
+<Value> 5370XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> TRN-MISCELLANEOUS MATERIAL MOVING WORKERS, INCLUDING MINE SHUTTLE CAR OPERATORS, AND TANK CAR, TRUCK, AND SHIP LOADERS </ValDescription>
+<Value> 5371XX </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MIL-MILITARY OFFICER SPECIAL AND TACTICAL OPERATIONS LEADERS </ValDescription>
+<Value> 551010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MIL-FIRST-LINE ENLISTED MILITARY SUPERVISORS </ValDescription>
+<Value> 552010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MIL-MILITARY ENLISTED TACTICAL OPERATIONS AND AIR/WEAPONS SPECIALISTS AND CREW MEMBERS </ValDescription>
+<Value> 553010 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> MIL-MILITARY, RANK NOT SPECIFIED </ValDescription>
+<Value> 559830 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> UNEMPLOYED AND LAST WORKED 5 YEARS AGO OR EARLIER OR NEVER WORKED </ValDescription>
+<Value> 999920 </Value>
+<Selected> false </Selected>
+</Range>
+</Ranges>
+</Variable>
+</DataBasket>
+<TreeInfo>
+<NumNodes> 1 </NumNodes>
+<TreeNode>
+<Survey> 16 </Survey>
+<Subsrv> 0 </Subsrv>
+<Component> 1159 </Component>
+<Instance> 2010 </Instance>
+<Longitudinal> false </Longitudinal>
+<VirtualIndicator> 0 </VirtualIndicator>
+<NodeDescription> ACS//Public Use Microdata Sample/2010 </NodeDescription>
+</TreeNode>
+</TreeInfo>
+</Session>

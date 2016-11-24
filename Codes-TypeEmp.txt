@@ -1,0 +1,13 @@
+Code, TypeEmp
+0,  NotAvailable
+1,  PrivateForProfit
+2,  PrivateNonProfit
+3,  Local
+4,  State
+5,  Federal
+6,  SelfNotInc
+7,  SelfInc
+8,  Unpaid
+9,  Unemployed
+
+

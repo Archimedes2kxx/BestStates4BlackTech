@@ -1,0 +1,644 @@
+<Session>
+<DataBasket>
+<TotalVariableCount> 7 </TotalVariableCount>
+<Version> 2 </Version>
+<Variable>
+<VarId>dd0b8248f873a02937c99994bee603b0</VarId>
+<Idnum> 551785 </Idnum>
+<Type> 1 </Type>
+<VarMnemonic> PWGTP </VarMnemonic>
+<VarDescription> PUMS person weight </VarDescription>
+<Ranges>
+<RangeCount> 1 </RangeCount>
+<Range>
+<ValDescription> Continuous values of PWGTP </ValDescription>
+<OrigMinVal> 1 </OrigMinVal>
+<OrigMaxVal> 9999 </OrigMaxVal>
+<Selected> true </Selected>
+</Range>
+</Ranges>
+</Variable>
+<Variable>
+<VarId>3183833b1b8d085a2394dae2cabb0d97</VarId>
+<Idnum> 551889 </Idnum>
+<Type> 1 </Type>
+<VarMnemonic> HISP </VarMnemonic>
+<VarDescription> Hispanic recode </VarDescription>
+<Ranges>
+<RangeCount> 24 </RangeCount>
+<Range>
+<ValDescription> Not Spanish/Hispanic/Latino </ValDescription>
+<Value> 01 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Mexican </ValDescription>
+<Value> 02 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Puerto Rican </ValDescription>
+<Value> 03 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Cuban </ValDescription>
+<Value> 04 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Domincan </ValDescription>
+<Value> 05 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Costa Rican </ValDescription>
+<Value> 06 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Guatemalan </ValDescription>
+<Value> 07 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Honduran </ValDescription>
+<Value> 08 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Nicaraguan </ValDescription>
+<Value> 09 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Panamanian </ValDescription>
+<Value> 10 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Salvadoran </ValDescription>
+<Value> 11 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Other Central American </ValDescription>
+<Value> 12 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Argentinean </ValDescription>
+<Value> 13 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Bolivian </ValDescription>
+<Value> 14 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Chilean </ValDescription>
+<Value> 15 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Colombian </ValDescription>
+<Value> 16 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Ecuadorian </ValDescription>
+<Value> 17 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Paraguayan </ValDescription>
+<Value> 18 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Peruvian </ValDescription>
+<Value> 19 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Uruguayan </ValDescription>
+<Value> 20 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Venezuelan </ValDescription>
+<Value> 21 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Other South American </ValDescription>
+<Value> 22 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Spaniard </ValDescription>
+<Value> 23 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> All other Spanish/Hispanic/Latino </ValDescription>
+<Value> 24 </Value>
+<Selected> true </Selected>
+</Range>
+</Ranges>
+</Variable>
+<Variable>
+<VarId>b3ee1bef02ee9d7777c89e1c574418e7</VarId>
+<Idnum> 552116 </Idnum>
+<Type> 1 </Type>
+<VarMnemonic> CIT </VarMnemonic>
+<VarDescription> Citizenship status </VarDescription>
+<Ranges>
+<RangeCount> 5 </RangeCount>
+<Range>
+<ValDescription> Born in the U.S. </ValDescription>
+<Value> 1 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Born in Puerto Rico, Guam, the U.S. Virgin Islands, or the Northern Marianas </ValDescription>
+<Value> 2 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Born abroad of American parent(s) </ValDescription>
+<Value> 3 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> U.S. citizen by naturalization </ValDescription>
+<Value> 4 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Not a citizen of the U.S. </ValDescription>
+<Value> 5 </Value>
+<Selected> true </Selected>
+</Range>
+</Ranges>
+</Variable>
+<Variable>
+<VarId>3383f03080da0145c3a2b4482c622b18</VarId>
+<Idnum> 552188 </Idnum>
+<Type> 1 </Type>
+<VarMnemonic> SEX </VarMnemonic>
+<VarDescription> Sex </VarDescription>
+<Ranges>
+<RangeCount> 2 </RangeCount>
+<Range>
+<ValDescription> Male </ValDescription>
+<Value> 1 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Female </ValDescription>
+<Value> 2 </Value>
+<Selected> true </Selected>
+</Range>
+</Ranges>
+</Variable>
+<Variable>
+<VarId>8171d0ca4cc72bc8809cb050d1ea6f31</VarId>
+<Idnum> 735424 </Idnum>
+<Type> 1 </Type>
+<VarMnemonic> POWSP </VarMnemonic>
+<VarDescription> Place of work - State or foreign country recode </VarDescription>
+<Ranges>
+<RangeCount> 60 </RangeCount>
+<Range>
+<ValDescription> N/A (not a worker--not in the labor force, including persons under 16 years; unemployed; employed, with a job not at work; Armed Forces, with a job but not at work) </ValDescription>
+<Value> 0 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> Alabama/AL </ValDescription>
+<Value> 001 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Alaska/AK </ValDescription>
+<Value> 002 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Arizona/AZ </ValDescription>
+<Value> 004 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Arkansas/AR </ValDescription>
+<Value> 005 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> California/CA </ValDescription>
+<Value> 006 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Colorado/CO </ValDescription>
+<Value> 008 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Connecticut/CT </ValDescription>
+<Value> 009 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Delaware/DE </ValDescription>
+<Value> 010 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> District of Columbia/DC </ValDescription>
+<Value> 011 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Florida/FL </ValDescription>
+<Value> 012 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Georgia/GA </ValDescription>
+<Value> 013 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Hawaii/HI </ValDescription>
+<Value> 015 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Idaho/ID </ValDescription>
+<Value> 016 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Illinois/IL </ValDescription>
+<Value> 017 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Indiana/IN </ValDescription>
+<Value> 018 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Iowa/IA </ValDescription>
+<Value> 019 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Kansas/KS </ValDescription>
+<Value> 020 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Kentucky/KY </ValDescription>
+<Value> 021 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Louisiana/LA </ValDescription>
+<Value> 022 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Maine/ME </ValDescription>
+<Value> 023 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Maryland/MD </ValDescription>
+<Value> 024 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Massachusetts/MA </ValDescription>
+<Value> 025 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Michigan/MI </ValDescription>
+<Value> 026 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Minnesota/MN </ValDescription>
+<Value> 027 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Mississippi/MS </ValDescription>
+<Value> 028 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Missouri/MO </ValDescription>
+<Value> 029 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Montana/MT </ValDescription>
+<Value> 030 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Nebraska/NE </ValDescription>
+<Value> 031 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Nevada/NV </ValDescription>
+<Value> 032 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> New Hampshire/NH </ValDescription>
+<Value> 033 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> New Jersey/NJ </ValDescription>
+<Value> 034 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> New Mexico/NM </ValDescription>
+<Value> 035 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> New York/NY </ValDescription>
+<Value> 036 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> North Carolina/NC </ValDescription>
+<Value> 037 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> North Dakota/ND </ValDescription>
+<Value> 038 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Ohio/OH </ValDescription>
+<Value> 039 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Oklahoma/OK </ValDescription>
+<Value> 040 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Oregon/OR </ValDescription>
+<Value> 041 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Pennsylvania/PA </ValDescription>
+<Value> 042 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Rhode Island/RI </ValDescription>
+<Value> 044 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> South Carolina/SC </ValDescription>
+<Value> 045 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> South Dakota/SD </ValDescription>
+<Value> 046 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Tennessee/TN </ValDescription>
+<Value> 047 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Texas/TX </ValDescription>
+<Value> 048 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Utah/UT </ValDescription>
+<Value> 049 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Vermont/VT </ValDescription>
+<Value> 050 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Virginia/VA </ValDescription>
+<Value> 051 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Washington/WA </ValDescription>
+<Value> 053 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> West Virginia/WV </ValDescription>
+<Value> 054 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Wisconsin/WI </ValDescription>
+<Value> 055 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Wyoming/WY </ValDescription>
+<Value> 056 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Puerto Rico </ValDescription>
+<Value> 072 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> Europe </ValDescription>
+<Value> 166 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> Eastern Asia </ValDescription>
+<Value> 251 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> Other Asia, Not Specified </ValDescription>
+<Value> 254 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> Canada </ValDescription>
+<Value> 301 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> Mexico </ValDescription>
+<Value> 303 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> Americas, not specified </ValDescription>
+<Value> 399 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> Other US Island Areas Not Specified, Africa, Oceania, at Sea, or Abroad, Not Specified </ValDescription>
+<Value> 555 </Value>
+<Selected> false </Selected>
+</Range>
+</Ranges>
+</Variable>
+<Variable>
+<VarId>c5f1fdc9efe76af9f4dd9a4c40b14334</VarId>
+<Idnum> 735426 </Idnum>
+<Type> 1 </Type>
+<VarMnemonic> RAC1P </VarMnemonic>
+<VarDescription> Recoded detailed race code </VarDescription>
+<Ranges>
+<RangeCount> 9 </RangeCount>
+<Range>
+<ValDescription> White alone </ValDescription>
+<Value> 1 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Black or African American alone </ValDescription>
+<Value> 2 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> American Indian alone </ValDescription>
+<Value> 3 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Alaska Native alone </ValDescription>
+<Value> 4 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> American Indian and Alaska Native tribes specified; or American Indian or Alaska Native, not specified and no other races </ValDescription>
+<Value> 5 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Asian alone </ValDescription>
+<Value> 6 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Native Hawaiian and Other Pacific Islander alone </ValDescription>
+<Value> 7 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Some other race alone </ValDescription>
+<Value> 8 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Two or More Races </ValDescription>
+<Value> 9 </Value>
+<Selected> true </Selected>
+</Range>
+</Ranges>
+</Variable>
+<Variable>
+<VarId>755de46acdc5546eee6aa2b7433471e5</VarId>
+<Idnum> 552117 </Idnum>
+<Type> 1 </Type>
+<VarMnemonic> COW </VarMnemonic>
+<VarDescription> Class of worker </VarDescription>
+<Ranges>
+<RangeCount> 10 </RangeCount>
+<Range>
+<ValDescription> N/A (less than 16 years old/NILF who last worked more than 5 years ago or never worked) </ValDescription>
+<Value> 0 </Value>
+<Selected> false </Selected>
+</Range>
+<Range>
+<ValDescription> Employee of a private for-profit co. or bus., or of an individual, for wages, salary, commissions </ValDescription>
+<Value> 1 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Employee of a private not-for-profit, tax-exempt, or charitable organization </ValDescription>
+<Value> 2 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Local government employee (city, county, etc.) </ValDescription>
+<Value> 3 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> State government employee </ValDescription>
+<Value> 4 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Federal government employee </ValDescription>
+<Value> 5 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Self-employed in own not incorporated business, professional practice, or farm </ValDescription>
+<Value> 6 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Self-employed in own incorporated business, professional practice or farm </ValDescription>
+<Value> 7 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Working without pay in family business or farm </ValDescription>
+<Value> 8 </Value>
+<Selected> true </Selected>
+</Range>
+<Range>
+<ValDescription> Unemployed and last worked 5 years ago or earlier or never worked </ValDescription>
+<Value> 9 </Value>
+<Selected> false </Selected>
+</Range>
+</Ranges>
+</Variable>
+</DataBasket>
+<TreeInfo>
+<NumNodes> 1 </NumNodes>
+<TreeNode>
+<Survey> 16 </Survey>
+<Subsrv> 0 </Subsrv>
+<Component> 1159 </Component>
+<Instance> 2015 </Instance>
+<Longitudinal> false </Longitudinal>
+<VirtualIndicator> 0 </VirtualIndicator>
+<NodeDescription> ACS//Public Use Microdata Sample/2015 </NodeDescription>
+</TreeNode>
+</TreeInfo>
+</Session>
