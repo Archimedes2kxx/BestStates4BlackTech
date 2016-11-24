@@ -40,12 +40,24 @@
     dfTechPopFemAsian <-makeTechPopTable("FemAsian")
     dfTechPopFemNonAsian <-makeTechPopTable("FemNonAsian")
     
+    ### For some reason assigning row names doesn't work inside makeTechPopTable function
     dfTable4A <- dfTechPopWhite 
+    rownames(dfTable4A) <- as.character(dfTable4A)
+    
     dfTable4B <- dfTechPopBlack
+    rownames(dfTable4B) <- as.character(dfTable4B)
+    
     dfTable4C <- dfTechPopAsian
+    rownames(dfTable4C) <- as.character(dfTable4C)
+    
     dfTable4D <- dfTechPopHispanic 
+    rownames(dfTable4D) <- as.character(dfTable4D)
+    
     dfTable4E <- dfTechPopFemAsian
+    rownames(dfTable4E) <- as.character(dfTable4E)
+    
     dfTable4F <- dfTechPopFemNonAsian
+    rownames(dfTable4F) <- as.character(dfTable4F)
     
     head(dfTable4A)
 
