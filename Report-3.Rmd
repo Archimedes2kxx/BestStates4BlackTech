@@ -1,5 +1,5 @@
 ---
-title: "Best States for American Black, Hispanic, Asian, and Female Tech -- Version 0.99N"
+title: "Best States for American Black, Hispanic, Asian, and Female Tech -- Version 1.0"
 author: "Roy L Beasley, PhD -- DLL Editor"
 
 output: 
@@ -101,7 +101,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
 <i>Note that many of the tables in this section have the same format. The top row, labelled "Num" as an abbreviation for "Number", shows how many workers fall into the category of the heading of the column: American "Citizen", "Foreign" worker, and their combined "Total". The second row, labelled "Per" as short for "Percentage", shows the percentge of the "Total" for each of the numbers in the first row.</i>
 
 <b>Table 1A -- American and Foreign Components of the U.S. Workforce in the 50 states plus the District of Columbia in 2015</b>
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(dfTable1A, quote=FALSE, row.names=TRUE)
 ```
      
@@ -114,7 +114,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
 <i>Note that the last column "OTHERS" includes workers who described themselves as members of another racial broup not included in the previous categories, or as biracial or multiracial. Also note that "White", "Black", and "Asian" include workers who described themselves as "White, but not Hispanic", "Black, but not Hispnic", and "Asian, but not Hispanic".</i>
 
 <b>Table 1B -- American Racial/Ethnic Groups in the U.S. Workforce in the 50 states plus the District of Columbia in 2015 </b>
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(dfTable1B, row.names=TRUE, quote=FALSE)
 ```
       
@@ -125,7 +125,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
 <i>Answer 1C</i> ... Most of the tables in this report will deal with American techs or foreign techs, but not both. Therefore the counts in the second and third columns of this small table will recur in many subsequent tables.  
 
 <b>Table 1C -- American and Foreign Components of the U.S. Tech Sector in 2015</b>    
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(dfTable1C, row.names=TRUE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>      
@@ -135,7 +135,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
 <i>Answer 1D</i> ... As shown in Table 1B (below), there were approximately `r prettyNum(dfTable1D["Num","Total"], big.mark=",", scientific=FALSE)` American tech professionals in the U.S. in 2015.  White Americans were a substantial majority (`r prettyNum(dfTable1D["Num","White"], big.mark=",", scientific=FALSE)`) of the tech sector (`r prettyNum(dfTable1D["Per","White"], big.mark=",", scientific=FALSE)`%); Asians placed second (`r prettyNum(dfTable1D["Num","Asian"], big.mark=",", scientific=FALSE)`); Blacks showed third (`r prettyNum(dfTable1D["Num","Black"], big.mark=",", scientific=FALSE)`); and Hispanic Americans came in fourth  (`r prettyNum(dfTable1D["Num","Hispanic"], big.mark=",", scientific=FALSE)`)
 
 <b>Table 1D -- American Racial/Ethnic Groups in the U.S. Tech Sector in 2015</b>   
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     print(dfTable1D, row.names=TRUE, quote=FALSE)
 ```
   
@@ -146,7 +146,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
 <i>Answer 1E</i> ...  The total number of tech workers imported from Asia and from countries outside of Asia shown in Table 1E (below) will recur in subsequent tables.
   
 <b>Table 1E -- Foreign Asian and Non-Asian Components of the U.S. Tech Sector in 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(dfTable1E, row.names=TRUE, quote = FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
@@ -159,7 +159,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
 <i>Answer 2A</i> ... As shown in Table 2A (below), the U.S. workforce was close to an even split between males and females. But given the focus of this report, the table also breaks the female half into a small Asian  component (`r dfTable2A["Per", "FemAsian"]` percent) and a much larger non-Asian female component (`r dfTable2A["Per", "FemNonAsian"]` percent)
 
 <b>Table 2A -- American Male/Female Composition of the U.S. Workforce in 2015</b>   
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
   print(format(dfTable2A, big.mark=","), row.names=TRUE, quote=FALSE)
 ```
 
@@ -168,7 +168,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
 Answer 2B ... As shown in Table 2B (below), the ratio of American male to American female techs was about  `r round(as.numeric(dfTable2B["Per", "Male"])/as.numeric(dfTable2B["Per", "Female"]), digits=0)` to 1, more specifically `r dfTable2B["Per", "Male"]` percent to `r dfTable2B["Per", "Female"]` percent. The ratio of Non-Asian American females to Asian American females was about `r round(as.numeric(dfTable2B["Per", "FemNonAsian"])/as.numeric(dfTable2B["Per", "FemAsian"]), digits=0)` to 1, i.e., `r dfTable2B["Per", "FemNonAsian"]` percent to `r dfTable2B["Per", "FemAsian"]` percent.
 
 <b>Table 2B -- American Male, American Female Composition of the U.S. Tech Sector in 2015</b>   
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
   print(format(dfTable2B, big.mark=","), row.names=TRUE, quote=FALSE)
 ```
 
@@ -204,13 +204,13 @@ The first column of each table contains a list of job categories. Some categorie
  <i>Answer 3.0</i> ... As per its title, Tables 3Z and 3ZZ (below) only contain data about tech workers who were American citizens; data about foreign workers will appear in Tables 3E and 3F (subsequent.)
  
  <b>Table 3Z -- American Male/Female Composition of U.S. Tech in 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3Z, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <P style="page-break-before: always">    
  <b>Table 3ZZ -- Changes in the American Composition of U.S. Tech Between 2010 and 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3ZZ, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
@@ -221,12 +221,12 @@ The first column of each table contains a list of job categories. Some categorie
 
 <P style="page-break-before: always">     
  <b>Table 3A -- White American Male/Female Composition of U.S. Tech in 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3A, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3AA -- Changes in the White American Composition of U.S. Tech Between 2010 and 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3AA, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
@@ -237,13 +237,13 @@ The first column of each table contains a list of job categories. Some categorie
  <i>Answer 3B</i> ... Data for Black American techs in 2015 is in Table 3B; data that compares 2010 to 2015 is in Table 3BB.
 
  <b>Table 3B -- Black American Male/Female Composition of U.S. Tech in 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3B, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <P style="page-break-before: always">    
  <b>Table 3BB -- Changes in the Black American Composition of U.S. Tech Between 2010 and 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3BB, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
@@ -254,12 +254,12 @@ The first column of each table contains a list of job categories. Some categorie
 
 <P style="page-break-before: always">    
  <b>Table 3C -- Asian American Male/Female Composition of U.S. Tech in 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3C, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
  <b>Table 3CC -- Changes in the Hispanic American Composition of U.S. Tech Between 2010 and 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3CC, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
@@ -270,13 +270,13 @@ The first column of each table contains a list of job categories. Some categorie
  <i>Answer 3D</i> ... Data for Hispanic American techs in 2015 is in Table 3D; data that compares 2010 to 2015 is in Table 3DD.
 
  <b>Table 3D -- Asian American Male/Female Composition of U.S. Tech in 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3D, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <P style="page-break-before: always">    
  <b>Table 3DD -- Changes in the Asian American Composition of U.S. Tech Between 2010 and 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3DD, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
@@ -287,12 +287,12 @@ The first column of each table contains a list of job categories. Some categorie
 
 <P style="page-break-before: always">    
  <b>Table 3E -- Foreign Male/Female Composition of U.S. Tech in 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3E, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3EE -- Changes in the Foreign Male/Female Composition of U.S. Tech in 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3EE, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
@@ -307,13 +307,13 @@ The first column of each table contains a list of job categories. Some categorie
 *  California accounted for `r caPerForeignIncrease` percent of the  `r prettyNum(dfTable3EE[1,"Change"], big.mark=",", scientific=FALSE)` increase in the number of foreign professionals working in U.S. tech during that time frame noted in Table 3E. The remaining `r otherPerForeignIncrease` percent was spread across the other 49 states and the District of Columbia.
  
  <b>Table 3F -- California Foreign Male/Female Composition of U.S. Tech in 2015</b>
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3F, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <P style="page-break-before: always">    
 <b>Table 3FF -- Changes in the California Foreign Male/Female Composition of U.S. Tech between 2010 and 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3FF, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
@@ -399,7 +399,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <P style="page-break-before: always">    
 <b>Table 4B --  Black American Professionals in U.S. Information Technology -- Top 10 states</b>    
 <i>[Click here for full version](Table4B-Full-Black-Employment.html)</i> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4B) <- c("State", "AllTech", "perSS", "BlkTech", "perT", "BlkPop", "perP", "Par")  
     print(format(dfTable4B[1:11,], big.mark = ","), row.names=FALSE)  
 ```
@@ -415,7 +415,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <b>Table 4C --  Asian American Professionals in U.S. Information Technology -- Top 10 states</b>    
 <i>[Click here for full version](Table4C-Full-Asian-Employment.html)</i>
 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4C) <- c("State", "AllTech", "perSS",  "AsiTech", "perT", "AsiPop", "perP", "Par")
     print(format(dfTable4C[1:11,], big.mark = ","), row.names=FALSE)  
 ```
@@ -431,7 +431,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <b>Table 4D --  Hispanic American Professionals in U.S. Information Technology -- Top 10 states</b>      
  <i>[Click here for full version](Table4D-Full-Hispanic-Employment.html)</i> 
 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4D) <- c("State", "AllTech", "perSS", "HspTech", "perT", "HspPop", "perP", "Par")
     print(format(dfTable4D[1:11,], big.mark=","), row.names=FALSE)  
 ```
@@ -450,7 +450,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <b>Table 4E --  Asian American Females in U.S. Information Technology -- Top 10 states</b>     
  <i>[Click here for full version](Table4E-Full-Female-Asian-Employment.html)</i> 
 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4E) <- c("State", "AllTech", "perSS", "AsFemTech", "perT", "AsFemPop", "perP", "Par")
     print(format(dfTable4E[1:11,], big.mark=","), row.names=FALSE)  
 ```
@@ -459,7 +459,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 <b>Table 4F --  Non-Asian American Females in U.S. Information Technology -- Top 10 states</b>    
  <i>[Click here for full version](Table4F-Full-Female-Non-Asian-Employment.html)</i> 
 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4F) <- c("State", "AllTech", "perSS", "NonAsFTech", "perT", "NonAsFPop", "perP", "Par")
     print(format(dfTable4F[1:11,], big.mark=","), row.names=FALSE)  
 ```
@@ -475,7 +475,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 <b>Table 4G --  Foreign Tech Professionals from Asia -- Top 10 States </b>   
 <i>[Click here for full version](Table4G-Full-Foreign-Asia-Employment.html)</i>
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4G) <- c("State", "Foreign", "perSS", "AsiaTech", "perT")
 print(format(dfTable4G[1:11,], big.mark = ","), row.names=FALSE)  
 
@@ -484,7 +484,7 @@ print(format(dfTable4G[1:11,], big.mark = ","), row.names=FALSE)
 <P style="page-break-before: always">  
 <b>Table 4H --  Foreign Tech Professionals NOT from Asia -- Top 10 States </b>   
 <i>[Click here for full version](Table4H-Full-Foreign-Not-Asia-Employment.html)</i>
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable4H) <- c("State", "Foreign", "perSS", "NAsiaTech", "perT")
 print(format(dfTable4H[1:11,], big.mark = ","), row.names=FALSE)  
 
@@ -503,7 +503,7 @@ print(format(dfTable4H[1:11,], big.mark = ","), row.names=FALSE)
 Answer 5: As shown in six plots that follow, there was a positive relationship, but the relationship was strongest for Asians, weaker for Asian American females, still weaker for Whites, weaker for Black American, weaker for non-Asian American females, and weakest for Hispanic Americans.
 
 <b>Plots 5 -- Plots of American Tech Employment vs Race/Ethnic/Female Group Workforce</b>   
-```{r, echo=FALSE, cache=TRUE, warning=FALSE}
+```{r, echo=FALSE, cache=FALSE, warning=FALSE}
     grid.arrange(ggPlotWhite, ggPlotBlack, ggPlotAsian, ggPlotHispanic, ggPlotFemAsian, ggPlotFemNonAsian, ncol=2)
 ```
     
@@ -522,7 +522,7 @@ Answer 5: As shown in six plots that follow, there was a positive relationship, 
     
 <P style="page-break-before: always">  
 <b>Table 5 -- Summary of Parity Values for American Groups</b>
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     print(format(dfTable5, big.mark = ","), row.names=TRUE) 
 ```
 
@@ -552,7 +552,7 @@ This criterion was implemented by identifying the states in Tables 4A through 4F
 
 <P style="page-break-before: always">  
 <b>Table 6 -- Summary of Parity Values</b>
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
     colnames(dfTable6) <- c("Min", "Q1", "Median", "Q3", "Max")
     print(dfTable6)  
 ```
@@ -705,12 +705,12 @@ In a future version of this report, this Appendix will be replaced by an interac
 ### California ... California ...California ... California ... California ...  
 
  <b>Table 3.CA -- American Male/Female Tech in California in 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3CA, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.CACA -- Changes in American Tech in California 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3CACA, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
@@ -718,12 +718,12 @@ In a future version of this report, this Appendix will be replaced by an interac
 
 <P style="page-break-before: always">    
 <b>Table 3.CAblack -- Black American Male/Female Tech in California in 2015</b>  
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3CAblack, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.CACAblack -- Changes in Black American Tech in California 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3CACAblack, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
@@ -731,12 +731,12 @@ In a future version of this report, this Appendix will be replaced by an interac
 
 <P style="page-break-before: always">    
 <b>Table 3.CAhispanic -- Hispanic American Male/Female Tech in California in 2015</b>  
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3CAhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.CACAhispanic -- Changes in Hispanic American Tech in California 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3CACAhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
@@ -744,12 +744,12 @@ In a future version of this report, this Appendix will be replaced by an interac
 
 <P style="page-break-before: always">    
 <b>Table 3.CAfor -- Foreign Male/Female Tech in California in 2015</b>  
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3CAfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.CACAfor -- Changes in Foreign Male/Female Tech in California 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3CACAfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
@@ -759,12 +759,12 @@ In a future version of this report, this Appendix will be replaced by an interac
 ### Texas ... Texas ... Texas ... Texas ... Texas ... Texas ... Texas ...  
 
  <b>Table 3.TX -- American Male/Female Tech in Texas in 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3TX, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.TXTX -- Changes in American Tech in Texas 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3TXTX, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
@@ -772,12 +772,12 @@ In a future version of this report, this Appendix will be replaced by an interac
 
 <P style="page-break-before: always">    
 <b>Table 3.TXblack -- Black American Male/Female Tech in Texas in 2015</b>  
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3TXblack, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.TXTXblack -- Changes in Black American Tech in Texas 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3TXTXblack, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
@@ -785,24 +785,24 @@ In a future version of this report, this Appendix will be replaced by an interac
 
 <P style="page-break-before: always">    
 <b>Table 3.TXhispanic -- Hispanic American Male/Female Tech in Texas in 2015</b>  
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3TXhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.TXTXhispanic -- Changes in Hispanic American Tech in TExas 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3TXTXhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
 <P style="page-break-before: always">    
 <b>Table 3.TXfor -- Foreign Male/Female Tech in Texas in 2015</b>  
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3TXfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.TXTXfor -- Changes in Foreign Male/Female Tech in Texas 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3TXTXfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>     
@@ -811,24 +811,24 @@ In a future version of this report, this Appendix will be replaced by an interac
 ### New York ... New York ... New York ... New York ... 
 
  <b>Table 3.NY -- American Male/Female Tech in New York in 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3NY, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.NYNY -- Changes in American Tech in New York 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3NYNY, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
  <b>Table 3.NYblack -- Black American Male/Female Tech in New York in 2015</b>  
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3NYblack, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.NYNYblack -- Changes in Black American Tech in New York 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3NYNYblack, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
@@ -836,24 +836,24 @@ In a future version of this report, this Appendix will be replaced by an interac
 
 <P style="page-break-before: always">     
 <b>Table 3.NYhispanic -- Hispanic American Male/Female Tech in New York in 2015</b>  
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3NYhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.NYNYhispanic -- Changes in Hispanic American Tech in New York 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3NYNYhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
 ```     
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
 <P style="page-break-before: always">    
 <b>Table 3.NYfor -- Foreign Male/Female Tech in New York 2015</b>  
-```{r, echo=FALSE, cache=TRUE, comment=NA}  
+```{r, echo=FALSE, cache=FALSE, comment=NA}  
    print(format(dfTable3NYfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.NYNYfor -- Changes in Male/Female Tech in New York 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3NYNYfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
@@ -863,12 +863,12 @@ In a future version of this report, this Appendix will be replaced by an interac
 ### Florida ... Florida ... Florida ... Florida ...  
  
  <b>Table 3.FL -- American Male/Female Tech in Florida in 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3FL, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.FLFL -- Changes in American Tech in Florida 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3FLFL, big.mark=","), row.names=FALSE, quote=FALSE)
 ```    
 
@@ -876,12 +876,12 @@ In a future version of this report, this Appendix will be replaced by an interac
 
 <P style="page-break-before: always">    
 <b>Table 3.FLblack -- Black American Male/Female Tech in Florida in 2015</b>  
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3FLblack, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.FLFLblack -- Changes in Black American Tech in Florida 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3FLFLblack, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
@@ -889,24 +889,24 @@ In a future version of this report, this Appendix will be replaced by an interac
 
 <P style="page-break-before: always">    
 <b>Table 3.FLhispanic -- Hispanic American Male/Female Tech in Florida in 2015</b>  
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3FLhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.FLFLhispanic -- Changes in Hispanic American Tech in Florida 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3FLFLhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
 <P style="page-break-before: always">    
 <b>Table 3.FLfor -- Foreign Male/Female Tech in Florida in 2015</b>
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3FLfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.FLFLfor -- Changes in Foreign Male/Female Tech in Florida 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3FLFLfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>     
@@ -915,12 +915,12 @@ In a future version of this report, this Appendix will be replaced by an interac
 ### Virginia ... Virginia ... Virginia ... 
  
  <b>Table 3.VA -- American Male/Female Tech in Virginia in 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3VA, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.VAVA -- Changes in American Tech in Virginia 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3VAVA, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
@@ -928,12 +928,12 @@ In a future version of this report, this Appendix will be replaced by an interac
 
 <P style="page-break-before: always">      
 <b>Table 3.VAblack -- Black American Male/Female Tech in Virginia in 2015</b>  
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3VAblack, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.VAVAblack -- Changes in Black American Tech in Virginia 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3VAVAblack, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
@@ -941,24 +941,24 @@ In a future version of this report, this Appendix will be replaced by an interac
 
 <P style="page-break-before: always">    
 <b>Table 3.VAhispanic -- Hispanic American Male/Female Tech in Virginia in 2015</b>  
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3VAhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.VAVAhispanic -- Changes in Hispanic American Tech in Virginia 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3VAVAhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
 ```    
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
 <P style="page-break-before: always">    
 <b>Table 3.VAfor -- Foreign Male/Female Tech in Virginia in 2015</b>  
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3VAfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.VAVAfor -- Changes in Foreign Male/Female Tech in Virginia 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3VAVAfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>      
@@ -967,12 +967,12 @@ In a future version of this report, this Appendix will be replaced by an interac
 ### Illinois ... Illinois ... 
  
  <b>Table 3.IL -- American Male/Female Tech in Illinois in 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3IL, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.ILIL -- Changes in American Tech in Illinois 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3ILIL, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
@@ -980,12 +980,12 @@ In a future version of this report, this Appendix will be replaced by an interac
 
 <P style="page-break-before: always">       
 <b>Table 3.ILblack -- Black American Male/Female Tech in Illinois in 2015</b>  
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3ILblack, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.ILILblack -- Changes in Black American Tech in Illinois 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3ILILblack, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
@@ -993,24 +993,24 @@ In a future version of this report, this Appendix will be replaced by an interac
 
 <P style="page-break-before: always">      
 <b>Table 3.ILhispanic -- Hispanic American Male/Female Tech in Illinois in 2015</b>  
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3ILhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.ILILhispanic -- Changes in Hispanic American Tech in Illinois 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3ILILhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
 ```     
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
 <P style="page-break-before: always">       
 <b>Table 3.ILfor -- Foreign Male/Female Tech in Illinois in 2015</b>  
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3ILfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.ILILfor -- Changes in Foreign Male/Female Tech in Illinois</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3ILILfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
@@ -1019,12 +1019,12 @@ In a future version of this report, this Appendix will be replaced by an interac
 ### Dist. of Columbia
  
  <b>Table 3.DC -- American Male/Female Tech in DC in 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3DC, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.DCDC -- Changes in American Tech in DC 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3DCDC, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
@@ -1032,12 +1032,12 @@ In a future version of this report, this Appendix will be replaced by an interac
 
 <P style="page-break-before: always">       
 <b>Table 3.DCblack -- Black American Male/Female in DC in 2015</b>  
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3DCblack, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.DCDCblack -- Changes in Black American Tech in DC 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3DCDCblack, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
@@ -1045,24 +1045,24 @@ In a future version of this report, this Appendix will be replaced by an interac
 
 <P style="page-break-before: always">      
 <b>Table 3.DChispanic -- Hispanic American Male/Female Tech in DC in 2015</b>  
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3DChispanic, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.DCDChispanic -- Changes in Hispanic American Tech in DC 2010 to 2015</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3DCDChispanic, big.mark=","), row.names=FALSE, quote=FALSE)
 ```     
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
 <P style="page-break-before: always">       
 <b>Table 3.DCfor -- Foreign Male/Female Tech in DC in 2015</b>  
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3DCfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <b>Table 3.DCDCfor -- Changes in Foreign Male/Female Tech in DC</b> 
-```{r, echo=FALSE, cache=TRUE, comment=NA}
+```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3DCDCfor, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
