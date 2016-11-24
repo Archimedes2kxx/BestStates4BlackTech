@@ -303,9 +303,31 @@
     (dfTable3ILfor <- Profiles[[1]])
     (dfTable3ILILfor <- Profiles[[2]]) 
 
+    
+    ########################################
+    ########################################
+    ### Table 3DC -- Profile of Foreign Techs in District of Columbia in 2015
+    
+    Profiles <- createListProfiles(dfCitS1, dfCitS2, state="Dist of Col") 
+    (dfTable3DC <- Profiles[[1]])
+    (dfTable3DCDC <- Profiles[[2]])    
+    
+    Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state="Dist of Col", group="Black") 
+    (dfTable3DCblack <- Profiles[[1]])
+    (dfTable3DCDCblack <- Profiles[[2]])  
+    
+    Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state="Dist of Col", group="Hispanic") 
+    (dfTable3DChispanic <- Profiles[[1]])
+    (dfTable3DCDChispanic <- Profiles[[2]])  
+    
+    Profiles <- createListProfiles(dfForS1, dfForS2, state="Dist of Col") 
+    (dfTable3DCfor <- Profiles[[1]])
+    (dfTable3DCDCfor <- Profiles[[2]]) 
+    
+    
 ########################################
 ########################################
 save(dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable3Z, dfTable3ZZ, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3F, dfTable3FF, file="dfTab1A1B2A2B3ABCDEF.rda")
 
-save(dfTable3CA, dfTable3CACA, dfTable3CAblack, dfTable3CACAblack, dfTable3CAhispanic, dfTable3CACAhispanic, dfTable3CAfor, dfTable3CACAfor, dfTable3TX, dfTable3TXTX, dfTable3TXblack, dfTable3TXTXblack, dfTable3TXhispanic, dfTable3TXTXhispanic,dfTable3TXfor, dfTable3TXTXfor, dfTable3NY, dfTable3NYNY, dfTable3NYblack, dfTable3NYNYblack, dfTable3NYhispanic, dfTable3NYNYhispanic,dfTable3NYfor, dfTable3NYNYfor, dfTable3FL, dfTable3FLFL, dfTable3FLblack, dfTable3FLFLblack, dfTable3FLhispanic, dfTable3FLFLhispanic, dfTable3FLfor, dfTable3FLFLfor, dfTable3VA, dfTable3VAVA, dfTable3VAblack, dfTable3VAVAblack, dfTable3VAhispanic, dfTable3VAVAhispanic,dfTable3VAfor, dfTable3VAVAfor, dfTable3IL, dfTable3ILIL, dfTable3ILblack, dfTable3ILILblack, dfTable3ILhispanic, dfTable3ILILhispanic,dfTable3ILfor, dfTable3ILILfor, file="APPENDIX.rda")
+save(dfTable3CA, dfTable3CACA, dfTable3CAblack, dfTable3CACAblack, dfTable3CAhispanic, dfTable3CACAhispanic, dfTable3CAfor, dfTable3CACAfor, dfTable3TX, dfTable3TXTX, dfTable3TXblack, dfTable3TXTXblack, dfTable3TXhispanic, dfTable3TXTXhispanic,dfTable3TXfor, dfTable3TXTXfor, dfTable3NY, dfTable3NYNY, dfTable3NYblack, dfTable3NYNYblack, dfTable3NYhispanic, dfTable3NYNYhispanic,dfTable3NYfor, dfTable3NYNYfor, dfTable3FL, dfTable3FLFL, dfTable3FLblack, dfTable3FLFLblack, dfTable3FLhispanic, dfTable3FLFLhispanic, dfTable3FLfor, dfTable3FLFLfor, dfTable3VA, dfTable3VAVA, dfTable3VAblack, dfTable3VAVAblack, dfTable3VAhispanic, dfTable3VAVAhispanic,dfTable3VAfor, dfTable3VAVAfor, dfTable3IL, dfTable3ILIL, dfTable3ILblack, dfTable3ILILblack, dfTable3ILhispanic, dfTable3ILILhispanic,dfTable3ILfor, dfTable3ILILfor, dfTable3DC, dfTable3DCDC, dfTable3DCblack, dfTable3DCDCblack, dfTable3DChispanic, dfTable3DCDChispanic,dfTable3DCfor, dfTable3DCDCfor, file="APPENDIX.rda")
 
