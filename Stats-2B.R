@@ -30,40 +30,45 @@
 ### Tables 4A, 4B, 4C, 4D, 4E, 4F Racial, ethnic, female groups in each state  
 ### ... sorted by decreasing racialTechEmp so users can see "Top 10"
 ### ... Only show top 10 in report, show link to full tables in page on git-io
-
-    dfTechPopWhite <- makeTechPopTable("White")
-    dfTechPopBlack <- makeTechPopTable("Black")
-    dfTechPopHispanic <- makeTechPopTable("Hispanic")
-    dfTechPopAsian <- makeTechPopTable("Asian")
-    dfTechPopOTHERS <-makeTechPopTable("OTHERS")
-    dfTechPopFemale <-makeTechPopTable("Female")
-    dfTechPopFemAsian <-makeTechPopTable("FemAsian")
-    dfTechPopFemNonAsian <-makeTechPopTable("FemNonAsian")
+    
+    dfEmp <- dfRaceSexCountAndShares
+    dfPop <- dfStatesPop3
+    
+    dfTechPopWhite <- makeTechPopTable(dfEmp, dfPop, "White")
+    dfTechPopBlack <- makeTechPopTable(dfEmp, dfPop, "Black")
+    dfTechPopHispanic <- makeTechPopTable(dfEmp, dfPop, "Hispanic")
+    dfTechPopAsian <- makeTechPopTable(dfEmp, dfPop, "Asian")
+    dfTechPopOTHERS <-makeTechPopTable(dfEmp, dfPop, "OTHERS")
+    dfTechPopFemale <-makeTechPopTable(dfEmp, dfPop, "Female")
+    dfTechPopFemAsian <-makeTechPopTable(dfEmp, dfPop, "FemAsian")
+    dfTechPopFemNonAsian <-makeTechPopTable(dfEmp, dfPop, "FemNonAsian")
     
     ### For some reason assigning row names inside makeTechPopTable function doesn't persist outside
     dfTable4A <- dfTechPopWhite 
-    rownames(dfTable4A) <- as.character(dfTable4A)
+    rownames(dfTable4A) <- as.character(dfTable4A$State)
     
     dfTable4B <- dfTechPopBlack
-    rownames(dfTable4B) <- as.character(dfTable4B)
+    rownames(dfTable4B) <- as.character(dfTable4B$State)
     
     dfTable4C <- dfTechPopAsian
-    rownames(dfTable4C) <- as.character(dfTable4C)
+    rownames(dfTable4C) <- as.character(dfTable4C$State)
     
     dfTable4D <- dfTechPopHispanic 
-    rownames(dfTable4D) <- as.character(dfTable4D)
+    rownames(dfTable4D) <- as.character(dfTable4D$State)
     
     dfTable4E <- dfTechPopFemAsian
-    rownames(dfTable4E) <- as.character(dfTable4E)
+    rownames(dfTable4E) <- as.character(dfTable4E$State)
     
     dfTable4F <- dfTechPopFemNonAsian
-    rownames(dfTable4F) <- as.character(dfTable4F)
+    rownames(dfTable4F) <- as.character(dfTable4F$State)
     
     head(dfTable4A)
 
 ######################################
 ##### Make foreign tech tables ... Asian and non-Asian
-    dfTable4G <- makeForeignTechTable("Asian")
+    dfTech <- dfForeignRaceSexCountAndShares
+    
+    dfTable4G <- makeForeignTechTable(dfTech, "Asian")
     colnames(dfTable4G) <- c("State", "Foreign", "perState", "AsianTech", "perAsianTech")
     head(dfTable4G)
     
