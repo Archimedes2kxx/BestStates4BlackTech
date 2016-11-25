@@ -1,0 +1,23 @@
+---
+title: "Table 4F — Full Female Non-Asian Employment"
+  
+output: 
+    prettydoc::html_pretty:
+    theme: cayman
+    hightlight: github
+    toc: false
+    toc_depth: 4
+    fig_width: 7
+    fig_height: 5
+ 
+---
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">Return-to-Report</a></center></i></small>
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+    library(prettydoc)
+    load("dfTab4.rda")   
+    colnames(dfTable4F) <- c("State", "AllTech", "S_%", "femNonAsiTech", "T_%", "femNonAsiPop", "P_%", "Par")
+print(format(dfTable4F, big.mark = ","), row.names=FALSE)  
+
+```
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">Return-to-Report</a></center></i></small>

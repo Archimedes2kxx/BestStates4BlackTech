@@ -1,0 +1,24 @@
+---
+title: "Table 4A -- Full White Tech Employment"
+  
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+    toc: false
+    toc_depth: 4
+    fig_width: 7
+    fig_height: 5
+  
+---
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">Return-to-Report</a></center></i></small>
+
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+    load("dfTab4.rda") 
+    library(prettydoc)
+    colnames(dfTable4A) <- c("State", "AllTech", "S_%", "WhiTech", "T_%", "WhiPop", "P_%", "Par")
+print(format(dfTable4A, big.mark = ","), row.names=FALSE)   
+
+```
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">Return-to-Report</a></center></i></small>
