@@ -683,7 +683,7 @@ Finally, this report represents my honest attempt to shed additional light on so
 <P style="page-break-before: always">    
 ## Appendix -- Profiles of Racial/Ethnic Groups, Sex, and Foreign Composition of Six Biggest Tech States Plus the District of Columbia in 2015
 
-As per Table 4 in the report, the first six states in this appendix employed the largest number of Americans in their tech sectors -- California, Texas, New York, Florida, Virginia, and Illinois. The District of Columbia was also included because it was identified in Table 8B as the <b>[Best State](https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html#question-3-how-did-the-racial-ethnic-foreign-and-malefemale-shares-of-the-job-categories-in-u.s.-tech-change-between-2010-and-2015)</b> for Black Americans in tech.
+As per Table 4 in the report, the first six states in this appendix employed the largest number of Americans in their tech sectors -- California, Texas, New York, Florida, Virginia, and Illinois. The District of Columbia was also included because it was identified in Table 8B as the <b>[Best State](https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html#and-the-best-states-are)</b> for Black Americans in tech.
 
 Four pairs of tables are included for each state:     
 
