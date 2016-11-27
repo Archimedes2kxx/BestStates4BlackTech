@@ -323,7 +323,7 @@ The first column of each table contains a list of job categories. Some categorie
 #### Question 4 -- Where did American and foreign tech professionals work in 2015?      
 Answer 4 ... The following sections provide an extensive response to a more specific formulation of this question ==> In which states did American and foreign tech professionals work in 2015?  
 
-Table 4 (below) lists the six states that employed the most American techs in 2015. These states will also appear in just about every table that follows because  they employed such a large share (`r prettyNum(dfTable4[1, "Top6_%"])` percent) of the `r prettyNum(dfTable4[1, "ALL STATES"], big.mark=",", scientific=FALSE)` American techs in the U.S.
+Table 4 (below) lists the six states that employed the most American techs in 2015. These states will also appear in just about every table that follows because  they employed such a large share (`r prettyNum(dfTable4[1, "perTop6"])` percent) of the `r prettyNum(dfTable4[1, "ALL STATES"], big.mark=",", scientific=FALSE)` American techs in the U.S.
 
 <b>Table 4 ... Biggest Half-Dozen Tech States in 2015</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -407,7 +407,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 * Although most tech professionals worked in the same states in which they lived, New York City and Washington, DC had large daytime commuter populations. Many techs lived in Maryland and Virginia, but worked in DC;  and many who lived in New Jersey and Connecticut worked in New York. There were also substantial commuter flows in the opposite directions, i.e., techs who lived in the core cities but worked in the adjacent states.
 
-* Column 4 (BlkTech) of Table 4B (above) shows that in 2015 the largest number of Black techs worked in Georgia, second largest in Texas, third in Virginia, fourth in Maryland, and fifth in California. Why? Because in 2015 the vast majority Black Americans still lived in Eastern and Southern states; so that's where most of the Black techs were found. This put most Black techs at a considerable disadvantage with regards to learning about and/or being recruited for tech jobs in Silicon Valley.
+* Column 4 (BlkTech) of Table 4B (above) shows that in 2015 the largest number of Black techs worked in Texas, second largest in Georgia, third in Virginia, fourth in Maryland, and fifth in California. Why? Because in 2015 the vast majority Black Americans still lived in Eastern and Southern states; so that's where most of the Black techs were found. This put most Black techs at a considerable disadvantage with regards to learning about and/or being recruited for tech jobs in Silicon Valley.
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
@@ -423,7 +423,7 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
 
 * As per the second row in the fourth column in Table 4C, California was home to `r prettyNum(dfTable4C["California", "AsiTech"], big.mark=",", scientific=FALSE)` Asian techs, which represented `r dfTable4C["California", "perSS"]` percent of all of the Asian techs in the U.S. This was, by far, the highest concentration of any racial/ethnic group in any state. Asian techs also obtained `r dfTable4C["California", "perT"]` percent of the `r prettyNum(dfTable4C["California", "AllTech"], big.mark=",", scientific=FALSE)` tech jobs in California, the largest share of the tech sector in any state. (See the <i>[full version](Table4C-Full-Asian-Race-dencResie.html)</i> of Tablc 4C)
 
-* Although the intensity of Asian invovement in the tech sector of California was impressive, Asian participation in the tech sector of every other state was also remarkable. The parity values in the last column of the table provide concise summaries. The <i>[full version](Table4C-Full-Asian-Race-Workplace.html)</i> of Table 4C shows that Asian parity values  ranged from `r dfTable6["Asian", "Min"]` to `r dfTable6["Asian", "Max"]`. In other words, the Asian share of the tech sectors in the 50 states plus DC ranged from `r dfTable6["Asian", "Min"]` times their share of the state's total workforce to `r dfTable6["Asian", "Max"]` times their share of the state's total workforce.   
+* Although the intensity of Asian invovement in the tech sector of California was impressive, Asian participation in the tech sector of every other state was also remarkable. The parity values in the last column of the table provide concise summaries. The <i>[full version](Table4C-Full-Asian-Race-dencResie.html)</i> of Table 4C shows that Asian parity values  ranged from `r dfTable6["Asian", "Min"]` to `r dfTable6["Asian", "Max"]`. In other words, the Asian share of the tech sectors in the 50 states plus DC ranged from `r dfTable6["Asian", "Min"]` times their share of the state's total workforce to `r dfTable6["Asian", "Max"]` times their share of the state's total workforce.   
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
