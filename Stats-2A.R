@@ -1,5 +1,7 @@
 ### Stat-2A Demographic tables and profiles ... Tables 1, 2, and 3
 
+### Add charts to be included in the Overview of the report
+
 ################################################
 ################################################ 
 ### Use map_dat() in ggplot2 as described on this URL
@@ -42,17 +44,23 @@
     dfTable1B<- makeNumPerTable(rowDf, Total)
     print(dfTable1B, quote=FALSE)
 
-######################      
+#####################################      
 ### Table 1C U.S. Tech Sector
     totCitTech <- as.numeric(dfRaceSexCountAndShares["ALL STATES", "Totals"])
     totForTech <- as.numeric(dfForeignRaceSexCountAndShares["ALL STATES", "Totals"])
     rowDf <- data.frame(Citizens=totCitTech, Foreign=totForTech)
     
     dfTable1C<- makeNumPerTable(rowDf)
-    print(dfTable1C, quote=FALSE)    
+    print(dfTable1C, quote=FALSE)  
+    
+### Bar Chart 1 showing Total, Citizens, and Foreign Techs
+    chartTitle <- "Chart 1. Techs in U.S. Workforce in 2015"
+    ggChart1 <- makeNumPerChart(dfTable1C[,-1], chartTitle, font=3)
+    ggChart1
+    ggsave("ggChart1.png", width=4, height=2)
 
 ######################      
-### Table 1D. White, Black, Asian, Hispanic Components of U.S. Tech Sector in 2014
+### Table 1D. White, Black, Asian, Hispanic Components of U.S. Tech in 2015
     rowDf <- dfRaceSexCountAndShares[1,2:7]
     colnames(rowDf) <- c("Total", "White", "Black", "Asian", "Hispanic", "OTHERS")
     Total <- rowDf[1,1]
@@ -60,6 +68,12 @@
     dfTable1D<- makeNumPerTable(rowDf, Total)
     print(dfTable1D, quote=FALSE)    
 
+### Chart 2 showing groups in tech
+    chartTitle <- "Chart 2. American Groups in Tech"
+    ggChart2 <- makeNumPerChart(dfTable1D[,-1], chartTitle, font=2)
+    ggChart2
+    ggsave("ggChart2.png", width=4, height=2)   
+    
 ######################      
 ### Table 1E. Foreign professionals in U.S. Tech
     totForeignTech <-dfForeignRaceSexCountAndShares["ALL STATES", "Totals"]
@@ -91,6 +105,7 @@
     dfTable2A <- cbind(dfTable2Aleft, dfTable2Aright)
     print(dfTable2A, quote=FALSE)
 
+    
 ######################    
 ### Table 2B. Male/Female Components of of U.S. Tech Sector in 2014
     totPop <- dfRaceSexCountAndShares[1, "Totals"]
@@ -110,7 +125,13 @@
     
     dfTable2B <- cbind(dfTable2Bleft, dfTable2Bright)
     print(dfTable2B, quote=FALSE)
-
+    
+### Chart 3 showing male/female compnents
+    chartTitle <- "Chart 3. American Male/Female Tech"
+    ggChart3 <- makeNumPerChart(dfTable2B[,-1], chartTitle, font=2)
+    ggChart3
+    ggsave("ggChart3.png", width=4, height=2)      
+    
 ###########################
 ############################
 ### Initialize raw profile data frames
@@ -140,7 +161,7 @@
 ####################################
 ### Table 3A -- Profile of U.S. White Techs 2015
 
-    Profiles <- createListProfiles(dfCitR1, dfCitR2, group="White") 
+    Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state=NULL, group="White") 
     (dfTable3A <- Profiles[[1]])
     (dfTable3AA <- Profiles[[2]])
 
@@ -148,7 +169,7 @@
 ####################################
 ### Table 3B -- Profile of U.S. Black Techs 2015
     
-    Profiles <- createListProfiles(dfCitR1, dfCitR2, group="Black") 
+    Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state=NULL, group="Black") 
     (dfTable3B <- Profiles[[1]])
     (dfTable3BB <- Profiles[[2]])
     
@@ -156,7 +177,7 @@
 ####################################
 ### Table 3C -- Profile of U.S. Hispanic Techs 2015
 
-    Profiles <- createListProfiles(dfCitR1, dfCitR2, group="Hispanic") 
+    Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state=NULL, group="Hispanic") 
     (dfTable3C <- Profiles[[1]])
     (dfTable3CC <- Profiles[[2]])
 
@@ -164,7 +185,7 @@
 ####################################
 ### Table 3D -- Profile of U.S. Asian Techs 2015
     
-    Profiles <- createListProfiles(dfCitR1, dfCitR2, group="Asian") 
+    Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state=NULL, group="Asian") 
     (dfTable3D <- Profiles[[1]])
     (dfTable3DD <- Profiles[[2]])
 
@@ -188,8 +209,8 @@
 ############################################### 
 ### APPENDIX 
     
-    dfTable3CAfor <- dfTable3F
-    dfTable3CACAfor <- dfTable3FF
+    (dfTable3CAfor <- dfTable3F)
+    (dfTable3CACAfor <- dfTable3FF)
     
     Profiles <- createListProfiles(dfCitS1, dfCitS2, state="California") 
     (dfTable3CA <- Profiles[[1]])
@@ -324,9 +345,17 @@
     (dfTable3DCfor <- Profiles[[1]])
     (dfTable3DCDCfor <- Profiles[[2]]) 
     
+########################################
+########################################  
+### Chart 4. Changes in American White, Black, Hispanic, and Asian techs between 2010 and 2015 
+   ### listDfs <- list(White=dfTable3AA, Black=dfTable3BB, Hispanic=dfTable3CC, Asian=dfTable3DD)
+   ### ggDfChart4 <- createXYZList("Tech", "10", "15", listdDfs)
+    ##ggDfChart4
     
+ 
+    ###names(listDFs)[[1]]
 ########################################
-########################################
+########################################     
 save(dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable3Z, dfTable3ZZ, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3F, dfTable3FF, file="dfTab1A1B2A2B3ABCDEF.rda")
 
 save(dfTable3CA, dfTable3CACA, dfTable3CAblack, dfTable3CACAblack, dfTable3CAhispanic, dfTable3CACAhispanic, dfTable3CAfor, dfTable3CACAfor, dfTable3TX, dfTable3TXTX, dfTable3TXblack, dfTable3TXTXblack, dfTable3TXhispanic, dfTable3TXTXhispanic,dfTable3TXfor, dfTable3TXTXfor, dfTable3NY, dfTable3NYNY, dfTable3NYblack, dfTable3NYNYblack, dfTable3NYhispanic, dfTable3NYNYhispanic,dfTable3NYfor, dfTable3NYNYfor, dfTable3FL, dfTable3FLFL, dfTable3FLblack, dfTable3FLFLblack, dfTable3FLhispanic, dfTable3FLFLhispanic, dfTable3FLfor, dfTable3FLFLfor, dfTable3VA, dfTable3VAVA, dfTable3VAblack, dfTable3VAVAblack, dfTable3VAhispanic, dfTable3VAVAhispanic,dfTable3VAfor, dfTable3VAVAfor, dfTable3IL, dfTable3ILIL, dfTable3ILblack, dfTable3ILILblack, dfTable3ILhispanic, dfTable3ILILhispanic,dfTable3ILfor, dfTable3ILILfor, dfTable3DC, dfTable3DCDC, dfTable3DCblack, dfTable3DCDCblack, dfTable3DChispanic, dfTable3DCDChispanic,dfTable3DCfor, dfTable3DCDCfor, file="APPENDIX.rda")

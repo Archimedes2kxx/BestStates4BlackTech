@@ -315,6 +315,20 @@ makeNumPerTable <- function(df, Total=NULL){
     return(df)
 }
 
+makeNumPerChart <- function(df, chartTitle, font=2) {
+    ### Bar Chart 1C showing Total, Citizens, and Foreign Techs
+    share <- c(as.numeric(df[2,]))
+    group <- as.factor(colnames(df))
+    techs <- c(as.numeric(gsub(",", "", df[1,])))
+    techs <- prettyNum(techs, big.mark=",", scientific=FALSE)
+    df <- data.frame(share, group, techs)
+    
+    ggCh <- ggplot(df, aes(x=group, y=share)) + geom_bar(stat="identity", fill="lightblue")
+    ggCh <- ggCh  + ylab("Percent") + theme(axis.title.x=element_blank())
+    ggCh <- ggCh + geom_text(aes(label=df[,"techs"], vjust=1.0), size=font)
+    ggCh <- ggCh + ggtitle(chartTitle) + theme(plot.title = element_text(size=12))
+    return(ggCh)
+}
 createProfile <- function(df, group=NULL, state=NULL) {
 ### Input data frame = Occupation State Race Male Female for the specified group   
 ### Output data frame =  Occupation, Tech15, perTS, Fem, Per15 for the specified group
@@ -382,7 +396,7 @@ createListProfiles <- function(df1, df2, group=NULL, state=NULL) {
 ### df1 is data frame that contains the early year, df2 contains the second year
 ### Returns list of data frames, 1 = display Table for year 1, 2 = compare table for years 1 and 2, full data frame for year 1, and full data frame for year 2
     
-    print(paste("group in createListProfiles=", group))
+    print(paste("The group in createListProfiles=", group))
     print(is.null(group))
     
     dfFullTab1 <- createProfile(df1, group=group, state=state)
@@ -398,6 +412,50 @@ createListProfiles <- function(df1, df2, group=NULL, state=NULL) {
     
     return(listProfiles)
 }
+
+createXYZList <- function(prefix, year1, year2, listdDfs){
+### function expects
+###     prefix = prefix of pop variable, e.g., "Tech" as in "Tech2010", "Tech2015"
+###     year1 = first year
+###     year2 = second year
+###     listDfs = list of named pairs of data frames, named after a racial/ethnic group
+###     e.g. list( (White = list(dfWhite2010, dfWhite2015)), (Black = list(dfBlack10, dfBlack15)) )
+    
+### function ceates a "tall" data frame containg three variables: people, group, and year
+###     people = number of people, year = year of people count, and Group = race/ethnicity 
+### function extracts people count from first row of each dataframe, e.g., df[1, "Tech2010"]
+    
+    N <- length(listDfs) ### How many lists of data frame pairs
+    df <- data.frame(Pop=integer(), Group=character(), Year=character(), stringsAsFactors = FALSE)
+    for (i in N) {
+ 
+        group <- names(listDfs[i])
+print(paste("group = ", group))
+        df1 <- listDfs[[i]]
+        df2 <- listDfs[[i]]
+        
+        popVar1 <- paste0(prefix, year1)
+        popVar2 <- paste0(prefix, year2)
+        pop1 <- as.integer(unlist(df1[1, popVar1]))
+print(paste("pop1 = ", pop1))
+        pop2 <- as.integer(unlist(df2[1, popVar2]))
+print(paste("pop2 = ", pop2))
+        
+        row1 <- t(data.frame(pop1, group, year1))
+print(head(row1))
+        row2 <- t(data.frame(pop2, group, year2))
+print(head(row2))
+        df <- cbind(df, row1)
+        df <- cbind(df, row2)
+    }
+    return(df) 
+}
+
+makeStackedBarChart <- function() {
+    
+    
+}
+
 
 ############################
 ############################
@@ -652,5 +710,6 @@ makeTable8 <- function(dfIn, Group, letter){
 }
 
 ###################################
-save(readCodeBooks, addTotCol, addPerCols, addTotColSharePerRowCol, addTotalsRow, addMissingStatesToTable, createOccupationRaceSexProfiles, createOccupationStateRaceSexProfiles, createOccupationStateRaceSexProfiles_RawData, createPopRaceAndShares, makeNumPerTable, createProfile, createCompareProfile, createListProfiles, makeSummary, plotEmpVsPop, makeLM, makeTechPopMap, theme_clean, makeForeignTechTable, makeForeignNonAsianTechTable, makeTechPopTable, makeParity, makeTable7, makeTable8, file="functions-0.rda")
+save(readCodeBooks, addTotCol, addPerCols, addTotColSharePerRowCol, addTotalsRow, addMissingStatesToTable, createOccupationRaceSexProfiles, createOccupationStateRaceSexProfiles, createOccupationStateRaceSexProfiles_RawData, createPopRaceAndShares, makeNumPerTable, makeNumPerChart, createProfile, createCompareProfile, createListProfiles, createXYZList, makeStackedBarChart, makeSummary, plotEmpVsPop, makeLM, makeTechPopMap, theme_clean, makeForeignTechTable, makeForeignNonAsianTechTable, makeTechPopTable, makeParity, makeTable7, makeTable8, file="functions-0.rda")
+
 
