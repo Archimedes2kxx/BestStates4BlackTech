@@ -15,16 +15,10 @@
     load("dfProfiles.2010.rda")
     load(file="dfStatesPop3.rda")
     
-    ### install.packages("gridExtra")
     library(tidyr)
-    library(maps)
-    library(mapproj) ### needed by ggplot2, but not installed automatically
     library(ggplot2)
-    library(maps)
+    library(scales)
     library(dplyr)
-    library(grid)
-    library(gridExtra)
-    library(gtable)
 
 ######################
 ### Table 1A. Total U.S. workforce, citizens, foreign workers in 2010
@@ -54,8 +48,8 @@
     print(dfTable1C, quote=FALSE)  
     
 ### Bar Chart 1 showing Total, Citizens, and Foreign Techs
-    chartTitle <- "Chart 1. Techs in U.S. Workforce in 2015"
-    ggChart1 <- makeNumPerChart(dfTable1C[,-1], chartTitle, font=3)
+    chartTitle1 <- "Chart 1. Techs in U.S. Workforce in 2015"
+    ggChart1 <- makeNumPerChart(dfTable1C[,-1], chartTitle1, font=3)
     ggChart1
     ggsave("ggChart1.png", width=4, height=2)
 
@@ -69,8 +63,8 @@
     print(dfTable1D, quote=FALSE)    
 
 ### Chart 2 showing groups in tech
-    chartTitle <- "Chart 2. American Groups in Tech"
-    ggChart2 <- makeNumPerChart(dfTable1D[,-1], chartTitle, font=2)
+    chartTitle2 <- "Chart 2. American Groups in Tech"
+    ggChart2 <- makeNumPerChart(dfTable1D[,-1], chartTitle2, font=2)
     ggChart2
     ggsave("ggChart2.png", width=4, height=2)   
     
@@ -127,8 +121,8 @@
     print(dfTable2B, quote=FALSE)
     
 ### Chart 3 showing male/female compnents
-    chartTitle <- "Chart 3. American Male/Female Tech"
-    ggChart3 <- makeNumPerChart(dfTable2B[,-1], chartTitle, font=2)
+    chartTitle3 <- "Chart 3. American Male/Female Tech"
+    ggChart3 <- makeNumPerChart(dfTable2B[,-1], chartTitle3, font=2)
     ggChart3
     ggsave("ggChart3.png", width=4, height=2)      
     
@@ -336,7 +330,7 @@
     Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state="Dist of Col", group="Black") 
     (dfTable3DCblack <- Profiles[[1]])
     (dfTable3DCDCblack <- Profiles[[2]])  
-    
+      
     Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state="Dist of Col", group="Hispanic") 
     (dfTable3DChispanic <- Profiles[[1]])
     (dfTable3DCDChispanic <- Profiles[[2]])  
@@ -348,12 +342,14 @@
 ########################################
 ########################################  
 ### Chart 4. Changes in American White, Black, Hispanic, and Asian techs between 2010 and 2015 
-   ### listDfs <- list(White=dfTable3AA, Black=dfTable3BB, Hispanic=dfTable3CC, Asian=dfTable3DD)
-   ### ggDfChart4 <- createXYZList("Tech", "10", "15", listdDfs)
-    ##ggDfChart4
-    
+    listDfs <- list(White=dfTable3AA, Black=dfTable3BB, Hispanic=dfTable3CC, Asian=dfTable3DD, Foreign=dfTable3EE)
+    ggDfChart4 <- createXYZdf("Tech", "10", "15", listdDfs)
+    ###ggDfChart4
+    chartTitle4 <- "Chart 4. Growth in Tech, 2010 to 2015"
+    ggChart4 <- makeGroupedBarChart(ggDfChart4, chartTitle4)
+    ggChart4
+    ggsave("ggChart4.png", width=4, height=2)
  
-    ###names(listDFs)[[1]]
 ########################################
 ########################################     
 save(dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable3Z, dfTable3ZZ, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3F, dfTable3FF, file="dfTab1A1B2A2B3ABCDEF.rda")

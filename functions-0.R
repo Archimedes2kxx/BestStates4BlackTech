@@ -1,6 +1,6 @@
 
 ### Functions used by scripts inData and Stat files   
-
+  
 ##################################
 ### Data-1
 
@@ -323,16 +323,18 @@ makeNumPerChart <- function(df, chartTitle, font=2) {
     techs <- prettyNum(techs, big.mark=",", scientific=FALSE)
     df <- data.frame(share, group, techs)
     
-    ggCh <- ggplot(df, aes(x=group, y=share)) + geom_bar(stat="identity", fill="lightblue")
+    ggCh <- ggplot(df, aes(x=group, y=share)) 
+    ggCh <- ggCh + geom_bar(stat="identity", width=0.5, fill="lightblue")
     ggCh <- ggCh  + ylab("Percent") + theme(axis.title.x=element_blank())
     ggCh <- ggCh + geom_text(aes(label=df[,"techs"], vjust=1.0), size=font)
     ggCh <- ggCh + ggtitle(chartTitle) + theme(plot.title = element_text(size=12))
     return(ggCh)
 }
+
 createProfile <- function(df, group=NULL, state=NULL) {
 ### Input data frame = Occupation State Race Male Female for the specified group   
 ### Output data frame =  Occupation, Tech15, perTS, Fem, Per15 for the specified group
-print(paste("group in createProfile = ", group))
+### print(paste("group in createProfile = ", group))
       
 #1. Select the group's records
     if (!is.null(group)) {
@@ -341,7 +343,7 @@ print(paste("group in createProfile = ", group))
     
 #2. Select data columns
     if (!is.null(state)) {
-print(paste("state in createProfile = ", state))
+### print(paste("state in createProfile = ", state))
         df <- subset(df, State==state, select=c("Occupation", "Male", "Female"))
         df$State <- NULL 
         
@@ -396,8 +398,8 @@ createListProfiles <- function(df1, df2, group=NULL, state=NULL) {
 ### df1 is data frame that contains the early year, df2 contains the second year
 ### Returns list of data frames, 1 = display Table for year 1, 2 = compare table for years 1 and 2, full data frame for year 1, and full data frame for year 2
     
-    print(paste("The group in createListProfiles=", group))
-    print(is.null(group))
+    ### print(paste("The group in createListProfiles=", group))
+    ### print(is.null(group))
     
     dfFullTab1 <- createProfile(df1, group=group, state=state)
     dfFullTab2 <- createProfile(df2, group=group, state=state)
@@ -413,7 +415,7 @@ createListProfiles <- function(df1, df2, group=NULL, state=NULL) {
     return(listProfiles)
 }
 
-createXYZList <- function(prefix, year1, year2, listdDfs){
+createXYZdf <- function(prefix, year1, year2, listdDfs){
 ### function expects
 ###     prefix = prefix of pop variable, e.g., "Tech" as in "Tech2010", "Tech2015"
 ###     year1 = first year
@@ -426,34 +428,36 @@ createXYZList <- function(prefix, year1, year2, listdDfs){
 ### function extracts people count from first row of each dataframe, e.g., df[1, "Tech2010"]
     
     N <- length(listDfs) ### How many lists of data frame pairs
-    df <- data.frame(Pop=integer(), Group=character(), Year=character(), stringsAsFactors = FALSE)
-    for (i in N) {
+    df <- data.frame(Techs=integer(), Groups=character(), Year=character(), stringsAsFactors = FALSE)
+    for (i in seq(1:N)) {
  
         group <- names(listDfs[i])
-print(paste("group = ", group))
         df1 <- listDfs[[i]]
         df2 <- listDfs[[i]]
         
         popVar1 <- paste0(prefix, year1)
         popVar2 <- paste0(prefix, year2)
         pop1 <- as.integer(unlist(df1[1, popVar1]))
-print(paste("pop1 = ", pop1))
         pop2 <- as.integer(unlist(df2[1, popVar2]))
-print(paste("pop2 = ", pop2))
         
-        row1 <- t(data.frame(pop1, group, year1))
-print(head(row1))
-        row2 <- t(data.frame(pop2, group, year2))
-print(head(row2))
-        df <- cbind(df, row1)
-        df <- cbind(df, row2)
+        row1 <- data.frame(pop1, group, year1)
+        colnames(row1) <- colnames(df)
+        row2 <- data.frame(pop2, group, year2)
+        colnames(row2) <- colnames(df)
+        df <- rbind(df, row1)
+        df <- rbind(df, row2)
     }
     return(df) 
 }
 
-makeStackedBarChart <- function() {
-    
-    
+makeGroupedBarChart <- function(dfXYZ, chartTitle) {
+### function expects a "tall" data frame containg three variables: people, group, and year
+###     people = number of people, year = year of people count, and Group = race/ethnicity 
+    ggBar <- ggplot(dfXYZ, aes(x=Groups, y=Techs, fill=Year)) 
+    ggBar <- ggBar + geom_bar(stat="identity", width=0.5, position="dodge")
+    ggBar <- ggBar + scale_y_continuous(labels = comma) 
+    ggBar <- ggBar + ggtitle(chartTitle) + theme(plot.title = element_text(size=12))    
+    return(ggBar)
 }
 
 
@@ -710,6 +714,6 @@ makeTable8 <- function(dfIn, Group, letter){
 }
 
 ###################################
-save(readCodeBooks, addTotCol, addPerCols, addTotColSharePerRowCol, addTotalsRow, addMissingStatesToTable, createOccupationRaceSexProfiles, createOccupationStateRaceSexProfiles, createOccupationStateRaceSexProfiles_RawData, createPopRaceAndShares, makeNumPerTable, makeNumPerChart, createProfile, createCompareProfile, createListProfiles, createXYZList, makeStackedBarChart, makeSummary, plotEmpVsPop, makeLM, makeTechPopMap, theme_clean, makeForeignTechTable, makeForeignNonAsianTechTable, makeTechPopTable, makeParity, makeTable7, makeTable8, file="functions-0.rda")
+save(readCodeBooks, addTotCol, addPerCols, addTotColSharePerRowCol, addTotalsRow, addMissingStatesToTable, createOccupationRaceSexProfiles, createOccupationStateRaceSexProfiles, createOccupationStateRaceSexProfiles_RawData, createPopRaceAndShares, makeNumPerTable, makeNumPerChart, createProfile, createCompareProfile, createListProfiles, createXYZdf, makeGroupedBarChart, makeSummary, plotEmpVsPop, makeLM, makeTechPopMap, theme_clean, makeForeignTechTable, makeForeignNonAsianTechTable, makeTechPopTable, makeParity, makeTable7, makeTable8, file="functions-0.rda")
 
 
