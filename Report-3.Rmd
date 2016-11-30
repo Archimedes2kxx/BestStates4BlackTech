@@ -1,5 +1,5 @@
 ---
-title: "Best States for American Black, Hispanic, Asian, and Female Tech -- Version 1.0"
+title: "Best States for American Black, Hispanic, Asian, and Female Tech -- Version 1.0A"
 author: "Roy L Beasley, PhD -- DLL Editor"
 
 output: 
@@ -159,7 +159,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
 <P style="page-break-before: always">   
-#### Question 2 -- What was the  male/female composition of the U.S. tech sector in 2015?
+#### Question 2 -- What was the  male/female composition of U.S. tech in 2015?
 
 <i>Question 2A</i> -- What was the American male/female composition of the tech sector in the 50 states plus the District of Columbia in 2015?
 
@@ -182,7 +182,7 @@ Answer 2B ... As shown in Table 2B (below), the ratio of American male to Americ
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>       
 
 <P style="page-break-before: always">    
-#### Question 3 -- How did the racial, ethnic, foreign, and male/female shares of the job categories in U.S. tech change between 2010 and 2015?  
+#### Question 3 -- How did the racial, ethnic, foreign, and male/female shares of jobs in U.S. tech change between 2010 and 2015?  
 
 The seven pairs of tables in this section display profiles of the various groups considered in this report. 
 
