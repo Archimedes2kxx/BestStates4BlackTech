@@ -608,7 +608,7 @@ Table 1B showed that `r dfTable1B["Per","Black"]` percent of the total U.S. work
 
 * Foreign tech professionals had the strongest possible "weak ties" to their future employers because they had been proactively recruited by agents of U.S. companies who persuded them migrate to the U.S. in order to work for their U.S. clients in the U.S., primarily under the <b>[H-1B visa program](https://www.uscis.gov/eir/visa-guide/h-1b-specialty-occupation/understanding-h-1b-requirements)</b>
 
-* The DLL will soon post a companion op-ed -- <i>"Why Are There So Many Foreign Techs in U.S. tech?</i>" -- that will offer a plausible answer to the question in its title based on the data compiled for this report and data gathered from other sources.
+* I am currently developing a supplement to this report that will provide data that focuses on the increasing employment of foreign tech professionals in U.S. tech, especially in Silicon Valley. Thereafter I will post a companion op-ed on this blog -- <i>"Why Are There So Many Foreign Techs in U.S. tech?</i>" -- that will offer a plausible answer to the question in its title based on the data compiled for this report and data gathered from other sources.
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
       
