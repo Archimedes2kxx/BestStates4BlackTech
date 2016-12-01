@@ -1,5 +1,5 @@
 ---
-title: "Best States for American Black, Hispanic, Asian, and Female Tech -- Version 1.0B"
+title: "Best States for American Black, Hispanic, Asian, and Female Tech -- Version 1.0C"
 author: "Roy L Beasley, PhD -- DLL Editor"
 
 output: 
@@ -51,11 +51,9 @@ tt3 <- ttheme_minimal(
 fem10 <- round(dfTable3ZZ[1, "Tech10"] * dfTable3ZZ[1, "perF10"]/100, digits=0) ### calculate females in 2010 from female share
 perFemIncrease <- round(100 * (dfTable3Z[1,"Fem"] - fem10)/fem10, digits=1)
 
-caPerForeignIncrease <- round(100* (dfTable3FF[1,"Change"] / dfTable3EE[1,"Change"]), digits=1)
-
-otherPerForeignIncrease <- round(100.0 - caPerForeignIncrease, digits=1)
-
 ```
+\pagenumbering{arabic}   
+
 ## Overview   
 <i>Please note that all of the figures in this overview and in the subsequent report are estimates based on U.S. Census survey samples. So all figures should be read as "approximately" even when the word "approximately" does not appear. </i>  
 
@@ -84,8 +82,6 @@ otherPerForeignIncrease <- round(100.0 - caPerForeignIncrease, digits=1)
 * The number of tech jobs held by American females grew by  `r perFemIncrease` percent between 2010 and 2015, i.e., from  `r prettyNum(fem10, big.mark=",", , scientific=FALSE)`, to `r prettyNum(dfTable3Z[1,"Fem"], big.mark=",", scientific=FALSE)`. However American females occupied a smaller percentage of the tech jobs held by American tech professionals in 2015 than they did in 2010, i.e., `r prettyNum(dfTable3ZZ[1,"perF10"], big.mark=",", scientific=FALSE)` percent in 2010 compared to only  `r prettyNum(dfTable3Z[1,"perF15"], big.mark=",", scientific=FALSE)` percent in 2015. (See Table 3Z and 3ZZ)
 
 * The number of tech jobs held by foreign professionals in U.S. tech grew by  `r prettyNum(dfTable3EE[1,"Change"], big.mark=",", scientific=FALSE)` or `r prettyNum(dfTable3EE[1,"perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015, i.e., from  `r prettyNum(dfTable3EE[1,"Tech10"], big.mark=",", scientific=FALSE)` to `r prettyNum(dfTable3EE[1,"Tech15"], big.mark=",", scientific=FALSE)`. <i>(See Chart 4, above.)</i>
-
-* The increase in foreign tech professionals was highest in California. The number of foreign tech professionals working in California increased by `r prettyNum(dfTable3FF[1,"perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015, i.e. from  `r prettyNum(dfTable3FF[1,"Tech10"], big.mark=",", scientific=FALSE)` to  `r prettyNum(dfTable3FF[1,"Tech15"], big.mark=",", scientific=FALSE)`. In other words, California accounted for `r caPerForeignIncrease` percent of the  `r prettyNum(dfTable3EE[1,"Change"], big.mark=",", scientific=FALSE)` increase in the number of foreign professionals working in U.S. tech during that time frame. The remaining `r otherPerForeignIncrease` percent was spread across the other 49 states and the District of Columbia. (See Tables 3EE and 3FF)
 
 * The `r prettyNum(dfTable1E["Num","Asian"], big.mark=",", scientific=FALSE)` professionals imported from Asia in 2015 was substantially larger than the `r prettyNum(dfTable1D["Num","Black"], big.mark=",", scientific=FALSE)` Black American or the  `r prettyNum(dfTable1D["Num","Hispanic"], big.mark=",", scientific=FALSE)` Hispanic American professionals employed by U.S. tech in 2015. Indeed,  the `r prettyNum(dfTable1E[1,"Total"], big.mark=",", scientific=FALSE)` combined total of foreign professionals imported from Asia and from elsewhere in 2015 was almost as large as the  `r prettyNum((as.numeric(gsub(",", "",dfTable1D["Num","Black"])) + as.numeric(gsub(",", "", dfTable1D["Num","Hispanic"]))), big.mark=",", scientific=FALSE)` combined total of Black and Hispanic American professionals employed by U.S. tech.  (See Tables 1D and 1E.)
 
@@ -292,7 +288,7 @@ The first column of each table contains a list of job categories. Some categorie
 
 <i>Question 3E</i> -- How many foreign male vs. female tech were in each category in 2010 and 2015 in the 50 states and the District of Columbia? 
 
- <i>Answer 3A</i> ... Data for foreign tech workers in 2015 is in Table 3A; data that compares 2010 to 2015 is in Table 3EE.
+ <i>Answer 3E</i> ... Data for foreign tech workers in 2015 is in Table 3E; data that compares 2010 to 2015 is in Table 3EE.
 
 <P style="page-break-before: always">    
  <b>Table 3E -- Foreign Male/Female Composition of U.S. Tech in 2015</b> 
@@ -305,29 +301,7 @@ The first column of each table contains a list of job categories. Some categorie
    print(format(dfTable3EE, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
-
-<P style="page-break-before: always">    
-<i>Question 3F</i> -- How many foreign male vs. female tech were in each category in 2010 and 2015 in California? 
-
-  <i>Answer 3F</i> ... Data for foreign techs working in California in 2015 is in Table 3F; data that compares 2010 employment to 2015 is in Table 3FF. Note that the huge increases in the estimated number of foreign techs in all job categories in 2015 from low initial values in 2015 were reflected in the four digit percentage increases shown in the "perCh" column. The "Inf" entries (abbreviations for "Infinite") merely indicates that there were zero foreign techs in those categories in 2010.   
-
-* The number of foreign tech professionals working in California increased by `r prettyNum(dfTable3FF[1,"perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015, i.e. from  `r prettyNum(dfTable3FF[1,"Tech10"], big.mark=",", scientific=FALSE)` to  `r prettyNum(dfTable3FF[1,"Tech15"], big.mark=",", scientific=FALSE)`.       
-
-*  California accounted for `r caPerForeignIncrease` percent of the  `r prettyNum(dfTable3EE[1,"Change"], big.mark=",", scientific=FALSE)` increase in the number of foreign professionals working in U.S. tech during that time frame noted in Table 3E. The remaining `r otherPerForeignIncrease` percent was spread across the other 49 states and the District of Columbia.
- 
- <b>Table 3F -- California Foreign Male/Female Composition of U.S. Tech in 2015</b>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3F, big.mark=","), row.names=FALSE, quote=FALSE)
-```
-
-<P style="page-break-before: always">    
-<b>Table 3FF -- Changes in the California Foreign Male/Female Composition of U.S. Tech between 2010 and 2015</b> 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3FF, big.mark=","), row.names=FALSE, quote=FALSE)
-```
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
-   
-
+  
 <P style="page-break-before: always">    
 #### Question 4 -- Where did American and foreign tech professionals work in 2015?      
 Answer 4 ... The following sections provide an extensive response to a more specific formulation of this question ==> In which states did American and foreign tech professionals work in 2015?  
@@ -593,15 +567,15 @@ Parity was a crude measure of the opportunities in tech that states provided to 
 <b>American Female vs. American Female</b>   
 The low betas and national parity values in Table 5 that were assigned to American female techs (`r dfTable5["Female", "beta1000"]` and `r dfTable5["Female", "Par"]`) compared to the high betas and national parity values assigned to Asian American techs as a whole (`r dfTable5["Asian", "beta1000"]` and `r dfTable5["Asian", "Par"]`) suggested that that the American female category be broken into its Asian vs. non-Asian components, as per Tables 4E and 4F.   
 
-* As shown in Tables 5, the betas and national parity values for Asian American females (`r dfTable5["FemAsian", "beta1000"]` and `r dfTable5["FemAsian", "Par"]`) were much higher than the values for non-Asian females (`r dfTable5["FemNonAsian", "beta1000"]` and `r dfTable5["FemNonAsi", "Par"]`).  In other words, Asian American females received substantially greater employment opportunities than non-Asian American females all over the country. So what were they doing or perceived to be doing that made them more employable in the 50 states and DC? What were their "best practices" that accounted for their higher scores?
+* As shown in Tables 5, the betas and national parity values for Asian American females (`r dfTable5["FemAsian", "beta1000"]` and `r dfTable5["FemAsian", "Par"]`) were much higher than the values for non-Asian females (`r dfTable5["FemNonAsian", "beta1000"]` and `r dfTable5["FemNonAsi", "Par"]`).  In other words, Asian American females received substantially greater employment opportunities than non-Asian American females all over the country. 
 
-* This is not to say that tech treated Asian American males and Asian American females the same. Not at all. The betas and national parity values assigned to Asian Americans as a whole (`r dfTable5["Asian", "beta1000"]` and `r dfTable5["Asian", "Par"]`) were much higher than the values assigned to Asian females (`r dfTable5["FemAsian", "beta1000"]` and `r dfTable5["FemAsian", "Par"]`). Therefore the values assigned to Asian American males had to be much higher than the values assigned to Asian American females. In other words Asian American males received substantially greater employment opportunities per capita than Asian American females.
+* This is not to say that tech treated Asian American males and Asian American females the same. Not at all. The betas and national parity values assigned to Asian Americans as a whole (`r dfTable5["Asian", "beta1000"]` and `r dfTable5["Asian", "Par"]`) were much higher than the values assigned to Asian females (`r dfTable5["FemAsian", "beta1000"]` and `r dfTable5["FemAsian", "Par"]`). The values assigned to Asian American males had to be much higher than the values assigned to Asian American females, an indication that Asian American males received substantially greater employment opportunities per capita than Asian American females.
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
 <b> Hispanic American vs. Hispanic American</b>   
 As shown in Table 4D, California employed the largest number of Hispanic Americans (`r prettyNum(dfTable4D["California", "HspTech"], big.mark=",", scientific=FALSE)`), Texas employed the second largest (`r prettyNum(dfTable4D["Texas", "HspTech"], big.mark=",", scientific=FALSE)`), and Florida employed the third largest number (`r prettyNum(dfTable4D["Florida", "HspTech"], big.mark=",", scientific=FALSE)`). Nevertheless Florida was the "Best State" for Hispanic Americans, whereas California and Texas didn't make it into the top 3. Indeed Florida had the highest parity value, (`r prettyNum(dfTable4D["Florida", "Par"], big.mark=",", scientific=FALSE)`), of the ten biggest states in Table 4D, and its parity value was in the top quartile for all 50 states plus the District of Columbia, as shown in Table 6.
 
-* In most states, being in tech means working in the information technology sections of government agencies or private corporations in various industries; whereas in California and to a lesser extent in Texas, a substantial number of techs work for computer companies.  A large part of the Hispanic American workforce in Florida has Cuban ancestry; whereas large parts of the Hispanic American workforce in California and Texas have Mexican ancestry. Cuban entrepreneurs have established many prominent businesses in Florida. Indeed, Miami has been often been called the "financial capital" of Latin America,     
+* In most states, being in tech means working in the information technology sections of government agencies or private corporations in various industries; whereas in California and to a lesser extent in Texas, a substantial number of techs work for computer companies.  A large part of the Hispanic American workforce in Florida has Cuban ancestry; whereas large parts of the Hispanic American workforce in California and Texas have Mexican ancestry. Cuban entrepreneurs have established so many prominent businesses in Florida that Miami is often called the "financial capital" of Latin America,     
 
 * So it seems reasonable to conjecture that Cuban American tech professionals would have encountered fewer hiring obstacles in Florida because they "looked like/sounded like" many corporate owner/managers; but the same could not be said for Mexican American tech professionals in Texas or in California, and especially in Silicon Valley. 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
@@ -610,7 +584,7 @@ As shown in Table 4D, California employed the largest number of Hispanic America
 <b> Black American vs. Black American </b>   
 Table 1B showed that `r dfTable1B["Per","Black"]` percent of the total U.S. workforce in 2015 was Black American; and Table 1B also showed that the nation's `r dfTable1D["Num","Black"]` Black American tech professionals represented `r dfTable1D["Per","Black"]` percent of the nation's `r dfTable1D["Num","Total"]` American tech professionals. 
 
-* Table 5 showed that the national parity rating for Black Americans in tech was `r dfTable5["Black", "Par"]`, i.e., `r dfTable1D["Per","Black"]` divided by `r dfTable1B["Per","Black"]`, which was more than half, i.e., greater than 0.50. The vast majority of tech jobs required bachelors degrees. This meant that, contrary to popular misconceptions, the nation's Black academic pipelines were more than half-full; they were not perilously close to empty.  
+* Table 5 showed that the national parity rating for Black Americans in tech was `r dfTable5["Black", "Par"]`, i.e., `r dfTable1D["Per","Black"]` divided by `r dfTable1B["Per","Black"]`, which was more than half, i.e., greater than 0.50. The vast majority of tech jobs required bachelors degrees. This meant that, contrary to popular misconceptions, the nation's Black academic pipelines were more than half-full.  
 
 * According to Table 8B, the best states for Black American tech professionals were  `r dfTable8B[1, 1]`, `r dfTable8B[2, 1]`, `r dfTable8B[3, 1]`, `r dfTable8B[4, 1]`, and `r dfTable8B[5, 1]`. These states weren't just Southern states; they were HBCU states, homes to the <b>[Historically Black Colleges and Universities (HBCUs)](http://hbcu-levers.blogspot.com/p/hbcu-lists-profiles-2015.html)</b> that educated the overwhelming majority of Black college graduates before the Supreme Court's desegregation decision in 1954 and the Civil Rights legislation in 1964/65. To this day, when over 90 percent of Black American students attend non-HBCUs, HBCUs still educate a large, disproportionate share of the nation's Black American graduates in the STEM majors that provide entry into careers in information technology. (See my previous note on this blog <b>[HBCUs -- the Best Producers of Black Graduates in STEM](http://hbcu-levers.blogspot.com/p/using-data-from-ipeds-data-center-this.html)</b>)    
 
@@ -620,9 +594,9 @@ Table 1B showed that `r dfTable1B["Per","Black"]` percent of the total U.S. work
 <b> Asian American vs. Black American</b>   
 <i>Question:</i> How did Asian American tech professionals attain such high parity values in every state?
 
-* Contrary to Silicon Valley's executive myth makers, Table 4B shows that Black Americans have made good use of the expanded education and employment opportunities provided by the Supreme Court's 1954 decision and the Civil Rights legislation that followed. But Black American academic pipelines are only half full because we are still overcoming the persistent evil legacy of hundreds of years of slavery and the decades of Jim Crow segregation that followed.    
+* Table 4B shows that Black Americans have made good use of the expanded education and employment opportunities provided by the Supreme Court's 1954 decision and the Civil Rights legislation that followed. But Black American academic pipelines are only half full because we are still overcoming the persistent evil legacy of hundreds of years of slavery and the decades of Jim Crow segregation that followed.    
 
-* Fortunately for Asian Americans, the oppression they faced before the Supreme Court and Congress outlawed racial exclusions from education and the workplace was orders of magnitude less debilitating, nor was its aftermath as persistent. So facing lesser obstacles, Asian Americans have attained greater gains.
+* Fortunately for Asian Americans, the oppression they faced before the Supreme Court and Congress outlawed racial exclusions from education and the workplace was orders of magnitude less debilitating. So facing lesser obstacles, Asian Americans have attained greater gains.
 
 * Indeed, the remarkable success of Asian Americans in tech's academic pipelines and  subsequent employment reinvigorates the old ideal of America as a "Land of Opportunity". For example, as per Table 1B, Asians were only `r prettyNum(dfTable1B["Per", "Asian"])` percent of the nation's workforce in 2015. But according to U.S. Department of Education, Asian undergraduate enrollments at <b>[Cal Tech](http://nces.ed.gov/collegenavigator/?q=California+Institute+of+Technology&s=all&id=110404#enrolmt)</b> and <b>[M.I.T.](http://nces.ed.gov/collegenavigator/?q=Massachusetts+Institute+of+Technology&s=all&id=166683)</b> -- arguably the best technical institutions in the nation, if not the world --  are 45 percent and 25 percent, respectively. No one gets admitted to these highly competitive institutions without being very smart and being very well prepared.   
 
@@ -630,13 +604,11 @@ Table 1B showed that `r dfTable1B["Per","Black"]` percent of the total U.S. work
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
 <b> American vs. Foreign</b>   
-<i>Question:</i> How did foreign Asian tech professionals obtain so many tech jobs in every state?
+<i>Question:</i> How did foreign tech professionals obtain so many tech jobs in every state?
 
 * Foreign tech professionals had the strongest possible "weak ties" to their future employers because they had been proactively recruited by agents of U.S. companies who persuded them migrate to the U.S. in order to work for their U.S. clients in the U.S., primarily under the <b>[H-1B visa program](https://www.uscis.gov/eir/visa-guide/h-1b-specialty-occupation/understanding-h-1b-requirements)</b>
 
-* As can be seen from the tables in the <B>[APPENDIX](https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html#appendix-profiles-of-racialethnic-groups-sex-and-foreign-composition-of-six-biggest-tech-states-plus-the-district-of-columbia-in-2015)</b> section of this report, California's increased use of foreign tech professionals in the last few years was orders of magnitude larger than other states. California's foreign tech tables display four digit percentage increases in the importation of foreign techs. Whereas the increased use of foreign techs by the other five big tech states and the District of Columbia might have been tactical respononses to local shortfalls in the availability of American techs, California's substantially larger use of foreign professionals seemed more like a long-term strategy that was widely shared by upper level tech managers in that state, especially in Silicon Valley.
-
-* The DLL will soon post a companion op-ed -- <i>"Why Are There So Many Foreign Techs in California?</i>" -- that will offer a plausible answer to the question in its title based on the data compiled for this report and data gathered from other sources.
+* The DLL will soon post a companion op-ed -- <i>"Why Are There So Many Foreign Techs in U.S. tech?</i>" -- that will offer a plausible answer to the question in its title based on the data compiled for this report and data gathered from other sources.
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
       
@@ -645,13 +617,11 @@ Table 1B showed that `r dfTable1B["Per","Black"]` percent of the total U.S. work
 As the DLL Editor, my motivation for conducting this study influenced my methods. The recent barrage of <b>[annual reports](https://techcrunch.com/tag/diversity-report/)</b> from some of the nation's leading information technology companies in Silicon Valley said the primary reason why those companies employed so few Black, Hispanic, and female information technology professionals was because there were so few available. And the reason they weren't available was because there were so few Black, Hispanic, and female tech students in the nation's academic pipelines.    
 
 <b>A. Best Practices</b>   
-While reading the Silicon Valley reports I found myself shaking my head while wondering, "What numbers did they have to back up these assertions? And where did they get them from?" Whereas I would have said that the pipelines were half-full, these reports implied that the pipelines were perilously close to empty. But if the pipelines were close to empty, there shouldn't be many Black, Hispanic, or female employees in the U.S. tech sector, right? This led me to wonder how many Black, Hispanic, and female techs were out there and where they were located. 
+While reading the Silicon Valley reports I found myself wondering, "What numbers did they have to back up these assertions? And where did they get them from?" Whereas I would have said that the pipelines were half-full, these reports implied that the pipelines were perilously close to empty. But if the pipelines were close to empty, there shouldn't be many Black, Hispanic, or female employees in the U.S. tech sector. This led me to wonder how many Black, Hispanic, and female techs were out there and where they were located. 
 
-<b>What concerned me the most was the lack of context for assessing Silicon Valley's diversity numbers. Were they as good as could be expected? Were they worse? ... And compared to what?</b> Compared to the rest of California? Compared to other states in other parts of the country? The personal data that I had accumulated from more than 50 years in tech informed me that tech was much more diverse in the Eastern and Southern states. But personal data, while a useful source of productive hypotheses, does not provide credible, systematic proof. As a clever tech pundit recently proclaimed, <i>"The plural of personal anecdote is not data" ... :-)</i>
+<b>What concerned me the most was the lack of context for assessing Silicon Valley's diversity numbers. Were they as good as could be expected? Were they worse? ... And compared to what?</b> Compared to other states in other parts of the country? The personal data that I had accumulated from more than 50 years in tech informed me that tech was much more diverse in the Eastern and Southern states. But personal data, while a useful source of productive hypotheses, does not provide credible, systematic proof. As a clever tech pundit recently proclaimed, <i>"The plural of personal anecdote is not data" ... :-)</i>
 
-One of the most useful lessons that I learned as a consultant to the National Center for Productivity way back in the late 1970s was that the application of performance metrics, even flawed metrics, to just about any significant human activity invariably identified a broad middle tier that was above a small tier of low performers and below another small tier of high performers. Further inquiry usually disclosed that the high performers were doing things quite differently than the middle and low performers. Happily, performers in the lower tiers could improve by adopting the high performers' best practices provided that they made appropriate adaptations of the best practices to their local working conditions. 
-
-Given this insight, I set out to apply a simple measure of the performance of all 50 states and the District of Columbia with regards to the opportunities their tech sectors provided for Black, Hispanic, and female professionals. 
+One of the most useful lessons that I learned as a consultant to the National Center for Productivity way back in the late 1970s was that the application of performance metrics, even flawed metrics, to just about any significant human activity invariably identified a broad middle tier that was above a small tier of low performers and below another small tier of high performers. Further inquiry usually disclosed that the high performers were doing things quite differently than the middle and low performers. Happily, performers in the lower tiers could improve by adopting the high performers' best practices provided that they made appropriate adaptations of the best practices to their local conditions. Given this insight, I set out to apply a simple measure of the performance of all 50 states and the District of Columbia with regards to the opportunities their tech sectors provided for Black, Hispanic, and female professionals. 
 
 <b>B. Reproducible Reports</b>   
 One of my most important take-aways from completing the <b>[Johns Hopkins "Data Science"](https://www.coursera.org/specializations/jhu-data-science)</b> online certificate program a few months ago was the notion that reports should be "reproducible". Authors should not only describe their methods for collecting and analyzing data; they should provide step-by-step descriptions of their methods (including copies of their code) so that interested readers could readily reproduce the results on their own computers. Of course, the best researchers have always tried to achieve this objective and have often succeeded. What was new for me was the specific tools that the statisticians who taught the Hopkins courses recommended ==> the <b>[R programming language](https://en.wikipedia.org/wiki/R_)</b> and <b>[GitHub](https://en.wikipedia.org/wiki/GitHub)</b>.    
@@ -753,18 +723,6 @@ In a future version of this report, this Appendix will be replaced by an interac
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>        
 
-<P style="page-break-before: always">    
-<b>Table 3.CAfor -- Foreign Male/Female Tech in California in 2015</b>  
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3CAfor, big.mark=","), row.names=FALSE, quote=FALSE)
-```
-
-<b>Table 3.CACAfor -- Changes in Foreign Male/Female Tech in California 2010 to 2015</b> 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3CACAfor, big.mark=","), row.names=FALSE, quote=FALSE)
-```
-
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>       
 
 <P style="page-break-before: always">    
 ### Texas ... Texas ... Texas ... Texas ... Texas ... Texas ... Texas ...  
@@ -805,18 +763,7 @@ In a future version of this report, this Appendix will be replaced by an interac
    print(format(dfTable3TXTXhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
-
-<P style="page-break-before: always">    
-<b>Table 3.TXfor -- Foreign Male/Female Tech in Texas in 2015</b>  
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3TXfor, big.mark=","), row.names=FALSE, quote=FALSE)
-```
-
-<b>Table 3.TXTXfor -- Changes in Foreign Male/Female Tech in Texas 2010 to 2015</b> 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3TXTXfor, big.mark=","), row.names=FALSE, quote=FALSE)
-```
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>     
+ 
 
 <P style="page-break-before: always">    
 ### New York ... New York ... New York ... New York ... 
@@ -856,18 +803,6 @@ In a future version of this report, this Appendix will be replaced by an interac
    print(format(dfTable3NYNYhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
 ```     
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
-
-<P style="page-break-before: always">    
-<b>Table 3.NYfor -- Foreign Male/Female Tech in New York 2015</b>  
-```{r, echo=FALSE, cache=FALSE, comment=NA}  
-   print(format(dfTable3NYfor, big.mark=","), row.names=FALSE, quote=FALSE)
-```
-
-<b>Table 3.NYNYfor -- Changes in Male/Female Tech in New York 2010 to 2015</b> 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3NYNYfor, big.mark=","), row.names=FALSE, quote=FALSE)
-```
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
 
  
 <P style="page-break-before: always">    
@@ -909,18 +844,7 @@ In a future version of this report, this Appendix will be replaced by an interac
    print(format(dfTable3FLFLhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
-
-<P style="page-break-before: always">    
-<b>Table 3.FLfor -- Foreign Male/Female Tech in Florida in 2015</b>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3FLfor, big.mark=","), row.names=FALSE, quote=FALSE)
-```
-
-<b>Table 3.FLFLfor -- Changes in Foreign Male/Female Tech in Florida 2010 to 2015</b> 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3FLFLfor, big.mark=","), row.names=FALSE, quote=FALSE)
-```
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>     
+ 
 
 <P style="page-break-before: always">        
 ### Virginia ... Virginia ... Virginia ... 
@@ -961,18 +885,7 @@ In a future version of this report, this Appendix will be replaced by an interac
    print(format(dfTable3VAVAhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
 ```    
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
-
-<P style="page-break-before: always">    
-<b>Table 3.VAfor -- Foreign Male/Female Tech in Virginia in 2015</b>  
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3VAfor, big.mark=","), row.names=FALSE, quote=FALSE)
-```
-
-<b>Table 3.VAVAfor -- Changes in Foreign Male/Female Tech in Virginia 2010 to 2015</b> 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3VAVAfor, big.mark=","), row.names=FALSE, quote=FALSE)
-```
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>      
+   
 
 <P style="page-break-before: always">    
 ### Illinois ... Illinois ... 
@@ -1013,18 +926,7 @@ In a future version of this report, this Appendix will be replaced by an interac
    print(format(dfTable3ILILhispanic, big.mark=","), row.names=FALSE, quote=FALSE)
 ```     
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
-
-<P style="page-break-before: always">       
-<b>Table 3.ILfor -- Foreign Male/Female Tech in Illinois in 2015</b>  
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3ILfor, big.mark=","), row.names=FALSE, quote=FALSE)
-```
-
-<b>Table 3.ILILfor -- Changes in Foreign Male/Female Tech in Illinois</b> 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3ILILfor, big.mark=","), row.names=FALSE, quote=FALSE)
-```
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
+ 
 
 <P style="page-break-before: always">    
 ### Dist. of Columbia
@@ -1066,14 +968,3 @@ In a future version of this report, this Appendix will be replaced by an interac
 ```     
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
-<P style="page-break-before: always">       
-<b>Table 3.DCfor -- Foreign Male/Female Tech in DC in 2015</b>  
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3DCfor, big.mark=","), row.names=FALSE, quote=FALSE)
-```
-
-<b>Table 3.DCDCfor -- Changes in Foreign Male/Female Tech in DC</b> 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3DCDCfor, big.mark=","), row.names=FALSE, quote=FALSE)
-```
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    

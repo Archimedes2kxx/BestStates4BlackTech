@@ -82,7 +82,7 @@
     rownames(dfTable4) <- ""
     dfTable4
 
-save(dfTable4, dfTable4A, dfTable4B, dfTable4C, dfTable4D, dfTable4E, dfTable4F, dfTable4G, dfTable4H,file="dfTab4.rda")
+save(dfTable4, dfTable4A, dfTable4B, dfTable4C, dfTable4D, dfTable4E, dfTable4F, dfTable4G, dfTable4H, dfTechPopWhite, dfTechPopBlack, dfTechPopAsian, dfTechPopHispanic, dfTechPopFemale, dfTechPopFemAsian, dfTechPopFemNonAsian, file="dfTab4.rda")
 
 #######################################
 ### Maps 4A, B, C, D, E, F, G ... state maps of white, black, asian, hispanic, female Asians, and female non-Asians in  tech 

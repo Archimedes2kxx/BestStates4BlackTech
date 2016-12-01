@@ -275,13 +275,16 @@ createOccupationStateRaceSexProfiles_RawData <- function(df, bNoState=TRUE, bNoR
             df3 <- summarise(OccRace_State, Male=sum(Male), Female=sum(Female))
      
         }
-    } else { ### Don't drop state
+    } else { ### Don't drop state 
+    
         if(bNoRace) { ### drop race
             OccState_Race <- group_by(df2, Occupation, State)
             ### don't drop state, drop race ... leaves Occupation, State, Male, Female
-            df3 <- summarise(OccState_Race, Male=sum(Male), Female=sum(Female))
+            df3 <- summarise(OccState_Race, Male=sum(Male), Female=sum(Female), fill=0, drop=FALSE)
             
-        } else { ### don't drop staor or race ... leaves Occupation, State, Race, Male, Female
+        } else { ### don't drop state or or race ... leaves Occupation, State, Race, Male, Female
+############################################
+##### The miscalculation of foreign techs by state must start here    
             df3 <- df2
         }
     }
@@ -714,6 +717,6 @@ makeTable8 <- function(dfIn, Group, letter){
 }
 
 ###################################
-save(readCodeBooks, addTotCol, addPerCols, addTotColSharePerRowCol, addTotalsRow, addMissingStatesToTable, createOccupationRaceSexProfiles, createOccupationStateRaceSexProfiles, createOccupationStateRaceSexProfiles_RawData, createPopRaceAndShares, makeNumPerTable, makeNumPerChart, createProfile, createCompareProfile, createListProfiles, createXYZdf, makeGroupedBarChart, makeSummary, plotEmpVsPop, makeLM, makeTechPopMap, theme_clean, makeForeignTechTable, makeForeignNonAsianTechTable, makeTechPopTable, makeParity, makeTable7, makeTable8, file="functions-0.rda")
+save(readCodeBooks, addTotCol, addPerCols, addTotColSharePerRowCol, addTotalsRow, addMissingStatesToTable, createOccupationRaceSexProfiles, createOccupationStateRaceSexProfiles_RawData, createPopRaceAndShares, makeNumPerTable, makeNumPerChart, createProfile, createCompareProfile, createListProfiles, createXYZdf, makeGroupedBarChart, makeSummary, plotEmpVsPop, makeLM, makeTechPopMap, theme_clean, makeForeignTechTable, makeForeignNonAsianTechTable, makeTechPopTable, makeParity, makeTable7, makeTable8, file="functions-0.rda")
 
 
