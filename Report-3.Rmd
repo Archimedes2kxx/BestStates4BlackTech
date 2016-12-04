@@ -341,10 +341,6 @@ There are six maps (below), one for each racial/ethnic group plus two female gro
 
 * Map 4F shows that non-Asian American female techs had their largest shares of tech in California, Texas, and Florida, but the distribution was more dispersed than the distribution for Asian female techs.   
 
-* Map 4G shows that foreign tech workers from Asia had their highest concentration in California
-
-* Map 4H shows that foreign tech workers from outside Asia had their highest concentration in California. 
-
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>
     
 
