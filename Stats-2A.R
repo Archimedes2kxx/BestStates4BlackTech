@@ -141,11 +141,14 @@
     dfFor1 <- dfProfileForeigners.2010
     dfFor2 <- dfProfileForeigners  
     
-    dfForS1 <- dfProfileForeigners_RawState.2010
+    ### dfForS1 <- dfProfileForeigners_RawState.2010
     dfForS2 <- dfProfileForeigners_RawState 
+    colSums(dfForS2[,3:4]) ### male, female = 455883 113831, which is correct
     
-    ### dfForRS1 <- dfProfileForeigners_RawRaceState.2010
-    ### dfForRS2 <- dfProfileForeigners_RawRaceState 
+    dfForRS1 <- dfProfileForeigners_RawRaceState.2010
+    dfForRS2 <- dfProfileForeigners_RawRaceState 
+    colSums(dfForRS2[,4:5]) ### male, female = 455883 113831 which is correct
+    colSums(dfForRS1[,4:5]) ### male, female = 336760  92537 which is correct
 
 ####################################
 ####################################        
@@ -198,9 +201,10 @@
 ###############################################    
 ### Table 3F -- Profile of Foreign Techs in California in 2015
     
-    #### Profiles <- createListProfiles(dfForS1, dfForS2, state="California") 
-    #### (dfTable3F <- Profiles[[1]])
-   ### (dfTable3FF <- Profiles[[2]]) 
+    Profiles <- createListProfiles(dfForS1, dfForS2, state="New Jersey") 
+    
+    (dfTable3F <- Profiles[[1]]) 
+    (dfTable3FF <- Profiles[[2]]) 
     
 ########################################
 ########################################  
@@ -231,7 +235,11 @@
     (dfTable3CACAhispanic <- Profiles[[2]])   
     
     ### (dfTable3CAfor <- dfTable3F)
-   ###  (dfTable3CACAfor <- dfTable3FF)
+    ### (dfTable3CACAfor <- dfTable3FF)
+    
+    Profiles <- createListProfiles(dfForRS1, dfForRS2, state="California", group="Asian") 
+    (dfTable3CAForhispanic <- Profiles[[1]])
+    (dfTable3CACAForhispanic <- Profiles[[2]])   
 
 ####################################
 ####################################
@@ -249,7 +257,7 @@
     (dfTable3FLhispanic <- Profiles[[1]])
     (dfTable3FLFLhispanic <- Profiles[[2]])      
       
-    Profiles <- createListProfiles(dfForS1, dfForS2, state="Florida") 
+    ### Profiles <- createListProfiles(dfForS1, dfForS2, state="Florida") 
     ### (dfTable3FLfor <- Profiles[[1]])
     ### (dfTable3FLFLfor <- Profiles[[2]])    
 
@@ -269,7 +277,7 @@
     (dfTable3NYhispanic <- Profiles[[1]])
     (dfTable3NYNYhispanic <- Profiles[[2]])         
     
-    Profiles <- createListProfiles(dfForS1, dfForS2, state="New York") 
+    ### Profiles <- createListProfiles(dfForS1, dfForS2, state="New York") 
     ### (dfTable3NYfor <- Profiles[[1]])
     ### (dfTable3NYNYfor <- Profiles[[2]]) 
 
@@ -350,7 +358,7 @@
     (dfTable3DChispanic <- Profiles[[1]])
     (dfTable3DCDChispanic <- Profiles[[2]])  
     
-    Profiles <- createListProfiles(dfForS1, dfForS2, state="Dist of Col") 
+    Profiles <- createListProfiles(dfForS1, dfForS2, state="Washington") 
     ### (dfTable3DCfor <- Profiles[[1]])
     ### (dfTable3DCDCfor <- Profiles[[2]]) 
     

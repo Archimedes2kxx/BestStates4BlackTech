@@ -456,30 +456,6 @@ print(format(dfTable4A[1:11,], big.mark = ","), row.names=FALSE)
    
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
 
-<b>Table 4G --  Foreign Tech Professionals from Asia -- Top 10 States </b>   
-<i>[Click here for full version](Table4G-Full-Foreign-Asia-Employment.html)</i>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-    colnames(dfTable4G) <- c("State", "Foreign", "perSS", "AsiaTech", "perT")
-print(format(dfTable4G[1:11,], big.mark = ","), row.names=FALSE)  
-
-```
- 
-<P style="page-break-before: always">  
-<b>Table 4H --  Foreign Tech Professionals NOT from Asia -- Top 10 States </b>   
-<i>[Click here for full version](Table4H-Full-Foreign-Not-Asia-Employment.html)</i>
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-    colnames(dfTable4H) <- c("State", "Foreign", "perSS", "NAsiaTech", "perT")
-print(format(dfTable4H[1:11,], big.mark = ","), row.names=FALSE)  
-
-```
-<b>Comments about Tables 4G and 4H -- Foreign Tech Professionals from Asia </b>  
-
-* As per the second row in Table 4G (above), `r prettyNum(dfTable4G["California","AsiaTech"], big.mark=",", scientific=FALSE)` techs from Asia worked in California in 2015; and as per the second row in Table 4H (above), `r prettyNum(dfTable4H["California","NAsiaTech"], big.mark=",", scientific=FALSE)` techs from outside Asia worked there. The perSS columns in these tables show that these employment levels represented `r prettyNum(dfTable4G[dfTable4G$State=="California","perSS"], big.mark=",", scientific=FALSE)` percent of all foreign techs from Asia (Table 4G) and `r prettyNum(dfTable4H["California","perSS"], big.mark=",", scientific=FALSE)` of all foreign techs from outside Asia (Table 4H).  Texas ranked second for both groups, but its `r prettyNum(dfTable4G["Texas","perSS"], big.mark=",", scientific=FALSE)`  and `r prettyNum(dfTable4H["Texas","perSS"], big.mark=",", scientific=FALSE)` percentage shares were substantially lower than the foreign percentages in California, but were only marginally higher than the `r prettyNum(dfTable4G["New York","perSS"], big.mark=",", scientific=FALSE)` and `r prettyNum(dfTable4H["New York","perSS"], big.mark=",", scientific=FALSE)` percentage shares for New York, the third ranking state for both groups.   
-    
-    
-* The presence of so many foreign professionals in California's tech sector invites comparisons to its employment of Black and Hispanic Americans. The `r prettyNum(dfTable4G["California","Foreign"], big.mark=",", scientific=FALSE)` professionals in California's foreign cohort in 2015 (Tables 4G & 4H, second row) was `r prettyNum(round(dfTable4G["California","Foreign"]/dfTable4B["California","BlkTech"], digits=1), big.mark=",", scientific=FALSE)` times as large as the `r prettyNum(dfTable4B["California","BlkTech"], big.mark=",", scientific=FALSE)` Black American techs (Table 4B) who worked there and `r prettyNum(round(dfTable4G["California","Foreign"]/dfTable4D["California","HspTech"], digits=1), big.mark=",", scientific=FALSE)` times as large as the `r prettyNum(dfTable4D["California","HspTech"], big.mark=",", scientific=FALSE)` Hispanic American techs (Table 4D).  
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small> 
-   
 <P style="page-break-before: always">  
 ### Question 5 -- Was the size of an American racial/ethnic group's share of a state's workforce related to its share of the tech jobs in that state? 
 
@@ -604,7 +580,7 @@ Table 1B showed that `r dfTable1B["Per","Black"]` percent of the total U.S. work
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
 <b> American vs. Foreign</b>   
-<i>Question:</i> How did foreign tech professionals obtain so many tech jobs in every state?
+<i>Question:</i> How did foreign professionals obtain so many jobs in the U.S. tech sector?
 
 * Foreign tech professionals had the strongest possible "weak ties" to their future employers because they had been proactively recruited by agents of U.S. companies who persuded them migrate to the U.S. in order to work for their U.S. clients in the U.S., primarily under the <b>[H-1B visa program](https://www.uscis.gov/eir/visa-guide/h-1b-specialty-occupation/understanding-h-1b-requirements)</b>
 

@@ -114,7 +114,7 @@ createPopRaceAndShares <- function(df, bCitizen=TRUE){
 
 ### 1. Add new category to race = "hisp"
     ### ... ACS coded HISP = "1" for "not Hispanic" --change race values to 99 ("hispanic") when hisp != 1
-    rows <- df$Hisp != "1"
+    rows <- df$Hisp != "1" ### 1 == "1" is same as "1" == "1"
     df$Race[rows] <- 99
     head(df) 
     
@@ -209,9 +209,8 @@ createPopRaceAndShares <- function(df, bCitizen=TRUE){
 createOccupationRaceSexProfiles <- function(df){
     ### Add new category to race = "hisp"
     ### ... ACS coded HISP = "1" for "not Hispanic" --change race values to 99 ("hispanic") when hisp != 1
-    rows <- df$Hisp != "1"
+    rows <- df$Hisp != "1" ### 1 == "1" is same as "1" == "1"
     df$Race[rows] <- 99
-    head(df) 
     
     listCodes <- readCodeBooks()
     
@@ -238,7 +237,8 @@ createOccupationRaceSexProfiles <- function(df){
 createOccupationStateRaceSexProfiles_RawData <- function(df, bNoState=TRUE, bNoRace=TRUE){
     ### Add new category to race = "hisp"
     ### ... ACS coded HISP = "1" for "not Hispanic" --change race values to 99 ("hispanic") when hisp != 1
-    rows <- df$Hisp != "1"
+print(paste("Class of Hisp = ", class(df$Hisp)))
+    rows <- df$Hisp != "1" ### 1 == "1" is same as "1" == "1"
     df$Race[rows] <- 99
     head(df) 
     
@@ -280,11 +280,11 @@ createOccupationStateRaceSexProfiles_RawData <- function(df, bNoState=TRUE, bNoR
         if(bNoRace) { ### drop race
             OccState_Race <- group_by(df2, Occupation, State)
             ### don't drop state, drop race ... leaves Occupation, State, Male, Female
-            df3 <- summarise(OccState_Race, Male=sum(Male), Female=sum(Female), fill=0, drop=FALSE)
-            
+            df3 <- summarise(OccState_Race, Male=sum(Male), Female=sum(Female))
+print(head(df3))
+            df3[is.na(df3)] <- 0 ### Replace NAs with zeros
+        
         } else { ### don't drop state or or race ... leaves Occupation, State, Race, Male, Female
-############################################
-##### The miscalculation of foreign techs by state must start here    
             df3 <- df2
         }
     }
@@ -338,22 +338,20 @@ createProfile <- function(df, group=NULL, state=NULL) {
 ### Input data frame = Occupation State Race Male Female for the specified group   
 ### Output data frame =  Occupation, Tech15, perTS, Fem, Per15 for the specified group
 ### print(paste("group in createProfile = ", group))
-      
+
 #1. Select the group's records
     if (!is.null(group)) {
-        df <- subset(df, Race == group)
-    }
-    
-#2. Select data columns
-    if (!is.null(state)) {
-### print(paste("state in createProfile = ", state))
-        df <- subset(df, State==state, select=c("Occupation", "Male", "Female"))
-        df$State <- NULL 
-        
-    } else {
-        df <- subset(df, select=c("Occupation", "Male", "Female"))
-    }
+        df <- df[df$Race == group,]
+    } 
 
+#2. Select state records
+    if (!is.null(state)) {
+        ### df <- subset(df, State==state)
+        df <- df[df$State==state,]
+    } 
+        
+    df <- subset(df, select=c("Occupation", "Male", "Female"))
+    
     eachOcc <- group_by(df, Occupation)
     df <- summarise(eachOcc, Male=sum(Male), Female=sum(Female), fill=0, drop=FALSE)
     df <- subset(df, select=-c(fill, drop))
