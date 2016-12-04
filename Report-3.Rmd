@@ -318,15 +318,15 @@ print(format(dfTable4[,c(1:7,9)], big.mark = "," , rownames=FALSE ))
  
 I've presented U.S. Census data that shows the geographic distribution of tech professionals in two formats: (1) as a set of choropleth maps and (2) as a corresponding set of tables. I show the maps first because it's easier to see the workplace patterns of the racial/ethnic/female groups by looking at multicolored maps than by scanning columns of data in long tables. Indeed, a quick scan of the maps makes it easier to spot the same patterns in the data tables.
 
-There are eight maps (below), one for each racial/ethnic group plus two female groups, Asian American females and non-Asian American females, and two foreign groups, Asian foreign and non-Asian foreign. Map 4A shows the workplace distribution of White techs; Map 4B shows the distribution of Black techs; Map 4C shows Asian techs; Map 4D shows Hispanic; Map E shows Asian female; Map F shows non-Asian female; Map G shows foreign Asian; and Map H shows foreign non-Asian tech professionals. Each map colors the states with the largest number of tech workers in the darkest colors, and colors the states with the least tech workers in the lightest colors. The same colors represent the same percentages on all eight maps
+There are six maps (below), one for each racial/ethnic group plus two female groups, Asian American females and non-Asian American females. Map 4A shows the workplace distribution of White techs; Map 4B shows the distribution of Black techs; Map 4C shows Asian techs; Map 4D shows Hispanic; Map E shows Asian female; Map F shows non-Asian females. Each map colors the states with the largest number of tech workers in the darkest colors, and colors the states with the least tech workers in the lightest colors. The same colors represent the same percentages on all eight maps
    
 
 <P style="page-break-before: always">    
-<b> Maps 4A (Whites), 4B (Blacks), 4C (Asians), 4D (Hispanics), 4E (Asian Females), and 4F (Non-Asian Females), 4G (Foreign Asian), 4H (Foreign, Non-Asian)</b> ... <em>Lower 48 and DC</em>
+<b> Maps 4A (Whites), 4B (Blacks), 4C (Asians), 4D (Hispanics), 4E (Asian Females), and 4F (Non-Asian Females)</b> ... <em>Lower 48 and DC</em>
 
 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-    grid.arrange(dfMap4A, dfMap4B, dfMap4C, dfMap4D, dfMap4E, dfMap4F, dfMap4G, dfMap4H, ncol=2) 
+    grid.arrange(dfMap4A, dfMap4B, dfMap4C, dfMap4D, dfMap4E, ncol=2) 
 ```
 
 * Map 4A displays light hues for all states, indicating that White American techs were spread across a large number of states, with California and Texas having concentrations below 10 percent but only  marginally higher percentages than the other states. Note that the legend for Map 4A only contains three color blocks; the fourth gray "zero" block is missing because the Census sample indicated that none of the 50 states nor Washington, DC contained zero White American techs. Four legend blocks appear for each of the other five maps because the Census sample contained too few American techs to provide a reliable estimate of the actual number of techs in one or more states. The tables in this section assigned zero values to those states. The few zero states will be the lightest of the gray states, but will be difficult to identify on the maps. The reader is referred to the tables.
@@ -349,8 +349,8 @@ There are eight maps (below), one for each racial/ethnic group plus two female g
     
 
 <p style="page-break-before: always">        
-<b>Tables 4A, 4B, 4C, 4D, 4E, 4F, 4G, and 4H</b> ... <i>50 states plus DC</i>  
-Eight data tables impose numeric precision on the qualitative insights provided by the corresponding maps. The tables are ordered by the number of techs from each group that worked in each state. The short versions that only contain the top ten rows are displayed below. To view the full tables that contain data for all 50 states plus the District of Columbia, please click the link below the table name. Each table (full and short versions) has the following eight columns:<br /><br />
+<b>Tables 4A, 4B, 4C, 4D, 4E, 4F</b> ... <i>50 states plus DC</i>  
+Six data tables impose numeric precision on the qualitative insights provided by the corresponding maps. The tables are ordered by the number of techs from each group that worked in each state. The short versions that only contain the top ten rows are displayed below. To view the full tables that contain data for all 50 states plus the District of Columbia, please click the link below the table name. Each table (full and short versions) has the following eight columns:<br /><br />
 1. <b>State</b> -- State of workplace for the American techs whose data is shown in the other columns of each row<br /> <br />
 2. <b>AllTech</b> -- Data for all of American techs in the U.S. The data in this column is repeated in each of the six tables, but the order of the rows differs from one table to the next. For example Table 4A shows that the total number of techs in California in 2015 was `r prettyNum(dfTable4A["California", "TotalTech"], big.mark=",", scientific=FALSE)`, and the total number in Texas was   `r prettyNum(dfTable4A["Texas", "TotalTech"], big.mark=",", scientific=FALSE)` <br /> <br />
 3. <b>perSS</b> -- The state's share of each group's national total. More specifically, the percent of all American techs in a group that worked in each state. For example, Table 4A shows that  `r dfTable4A["California", "perState"]`  percent of all White techs worked in California in 2015, and `r dfTable4A["Texas", "perState"]`  percent worked in Texas.<br /> <br />
