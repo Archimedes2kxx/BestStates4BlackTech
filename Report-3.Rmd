@@ -258,7 +258,7 @@ The first column of each table contains a list of job categories. Some categorie
  <i>Answer 3C</i> ... Data for Hispanic American techs in 2015 is in Table 3C; data that compares 2010 to 2015 is in Table 3CC.
 
 <P style="page-break-before: always">    
- <b>Table 3C -- Asian American Male/Female Composition of U.S. Tech in 2015</b> 
+ <b>Table 3C -- Hispanic American Male/Female Composition of U.S. Tech in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3C, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
