@@ -182,7 +182,7 @@ Answer 2B ... As shown in Table 2B (below), the ratio of American male to Americ
 <P style="page-break-before: always">    
 #### Question 3 -- How did the racial, ethnic, foreign, and male/female shares of jobs in U.S. tech change between 2010 and 2015?  
 
-The seven pairs of tables in this section display profiles of the various groups considered in this report. 
+The five pairs of tables in this section display profiles of the various groups considered in this report. 
 
 For the purposes of this report, "information technology" was defined as the thirteen standard occupation categories (SOC) that appear in the first column of the following tables. Twelve related to software, e.g., Software Developers and Computer Programmers; one related to hardware, i.e., Computer Hardware Engineers.     
 
@@ -283,22 +283,6 @@ The first column of each table contains a list of job categories. Some categorie
  <b>Table 3DD -- Changes in the Asian American Composition of U.S. Tech Between 2010 and 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3DD, big.mark=","), row.names=FALSE, quote=FALSE)
-```
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
-
-<i>Question 3E</i> -- How many foreign male vs. female tech were in each category in 2010 and 2015 in the 50 states and the District of Columbia? 
-
- <i>Answer 3E</i> ... Data for foreign tech workers in 2015 is in Table 3E; data that compares 2010 to 2015 is in Table 3EE.
-
-<P style="page-break-before: always">    
- <b>Table 3E -- Foreign Male/Female Composition of U.S. Tech in 2015</b> 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3E, big.mark=","), row.names=FALSE, quote=FALSE)
-```
-
-<b>Table 3EE -- Changes in the Foreign Male/Female Composition of U.S. Tech in 2015</b> 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3EE, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
   
