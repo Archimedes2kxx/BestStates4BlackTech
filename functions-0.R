@@ -99,29 +99,20 @@ addTotalsRow <- function(df, totCol, numCols, perCols, nameTotRow){
     return(df2)
 }
 
-createPopRaceAndShares <- function(df, bCitizen=TRUE){
-### Create race, sex, count, and shares dataframe with values derived from the Census file
-###
-### Function expects a data frame whose columns are named with the following names, no variations
-###   "personalWeight", "Race", "Sex", "Citizen", "State", "Hisp", "Citizen", Birth", "Occupation"
-### But the data frame for some data frames will not contain Citizen or Birth or Occupation
-### 
-### If the subset of Citizens is required, bCitizen bool = TRUE
-### If foreigners are required, bCitizen = FALSE
-### Current versions of Best States will not required both citizens and foreigners
-###
-### User renames the dataframe upon return   
-
-### 1. Add new category to race = "hisp"
+decodeVariables <- function(df){
+### input = raw census data frame, variables coded as numbers, assign names to numbers
+### Add new category to race = "hisp"
+### ... ACS coded HISP = "1" for "not Hispanic" --change race values to 99 ("hispanic") when hisp != 1    
+    ### 1. Add new category to race = "hisp"
     ### ... ACS coded HISP = "1" for "not Hispanic" --change race values to 99 ("hispanic") when hisp != 1
     rows <- df$Hisp != "1" ### 1 == "1" is same as "1" == "1"
     df$Race[rows] <- 99
     head(df) 
     
-### 2. Codebooks
+    ### 2. Codebooks
     listCodes <- readCodeBooks()
     
-### 3. Convert coded categorical variables to factors ... sex, race, state, occupation ... drop padding/blanks before/after each category 
+    ### 3. Convert coded categorical variables to factors ... sex, race, state, occupation ... drop padding/blanks before/after each category 
     df$Race <- as.factor(df$Race)
     ### listCodes [[ ]] required to dig out the second column in the code table, and for other codes
     levels(df$Race) <- trimws(listCodes[["Race"]][,2]) 
@@ -133,7 +124,7 @@ createPopRaceAndShares <- function(df, bCitizen=TRUE){
     levels(df$State) <- trimws(listCodes[["State"]][,2])
     ### Note: District of Columbia abbreviated "Dist of Col" ... let table fit on blog page without wrapping
     
-    if("Occupation" %in% names(df)) {
+    if("Occupation" %in% names(df)) { ### not needed for employment totals data frame
         df$Occupation <- as.factor(df$Occupation)
         levels(df$Occupation) <- trimws(listCodes[["Occupation"]][,2])
     }
@@ -147,148 +138,174 @@ createPopRaceAndShares <- function(df, bCitizen=TRUE){
         df$Citizen <- as.factor(df$Citizen)
         levels(df$Citizen) <- trimws(listCodes[["Citizen"]][,2])   
     }
-    
-    
-### 4. Get citizen subset or foreign subset ... but never both citizens and foreign
+    return(df)
+}
+
+createPopRaceAndShares <- function(df, bCitizen=TRUE){
+### Create race, sex, count, and shares dataframe with values derived from the Census file
+###
+### Function expects a data frame whose columns are named with the following names, no variations
+###   "personalWeight", "Race", "Sex", "Citizen", "State", "Hisp", "Citizen", Birth", "Occupation"
+### But the data frame for some data frames will not contain Citizen or Birth or Occupation
+### 
+### If the subset of Citizens is required, bCitizen bool = TRUE
+### If foreigners are required, bCitizen = FALSE
+### User renames the dataframe upon return   
+
+### 1. Assign names to numeric values of coded input variables
+    df2 <- decodeVariables(df)
+
+### 2. Get citizen subset or foreign subset
     if(bCitizen == TRUE) {
-        df3 <- subset(df, Citizen!="No") 
+        df3 <- subset(df2, Citizen!="No") 
     } else {
-        df3 <- subset(df, Citizen=="No")
+        df3 <- subset(df2, Citizen=="No")
     }
 
-### 5. Calculate racial group's Count per each state
-    census3StateRace <- group_by(df3, State, Race) 
-    dfPtsPwtStateRace <- summarise(census3StateRace, ptsPwtStateRace = sum(personalWeight))
+### 3. Calculate racial group's Count per state
+    dfStateRace <- group_by(df3, State, Race) 
+    dfPtsPwtStateRace <- summarise(dfStateRace, ptsPwtStateRace = sum(personalWeight))
     dfRaceCountPerState <- spread(dfPtsPwtStateRace, key=Race, value=ptsPwtStateRace, fill=0, drop=FALSE)
 
-### 6. Combine all groups other than black, white, asian, and hispanic into OTHERS
+### 4. Combine all groups other than black, white, asian, and hispanic into OTHERS
     columnNames <- c("State", "White", "Black", "amIn", "alNat", "amInAlNat", "Asian", "pacific", "other", "many" , "Hispanic")
     colnames(dfRaceCountPerState) <- columnNames
     dfRaceCountPerState$OTHERS <- dfRaceCountPerState$amIn + dfRaceCountPerState$alNat + dfRaceCountPerState$amInAlNat + dfRaceCountPerState$pacific + dfRaceCountPerState$other + dfRaceCountPerState$many
     dfRaceCountPerState <- subset(dfRaceCountPerState, select=-c(amIn, alNat, amInAlNat, pacific, other, many))
 
-### 7. Add "totals" column after "state" ... 
+### 5. Add "totals" column after "state" ... 
     dfRaceCountPerState <- addTotCol(dfRaceCountPerState, 2:6, "Totals")
           
-### 8 Calculate the Count each sex per state ... Thank you, Hadley ... :-)
-    census3StateSex <- group_by(df3, State, Sex) 
-    dfPtsPwtStateSex <- summarise(census3StateSex, ptsPwtStateSex = sum(personalWeight))
+### 6. Calculate the Count each sex per state 
+    dfStateSex <- group_by(df3, State, Sex) 
+    dfPtsPwtStateSex <- summarise(dfStateSex, ptsPwtStateSex = sum(personalWeight))
     dfSexCountPerState <- spread(dfPtsPwtStateSex, key=Sex, value=ptsPwtStateSex, fill=0, drop=FALSE)
     dfSexCountPerState[is.na(dfSexCountPerState)] <- 0 ### Replace NAs with zeros
     dfFemale <- subset(dfSexCountPerState, select=c(State, Female))
     colnames(dfFemale) =  c("State", "Female")
  
-### 9. Asian females
-    census3StateRaceSex <- group_by(df3, State, Sex, Race) 
-    dfSumPwtStateRaceSex <- summarise(census3StateRaceSex, SumPwtStateRaceSex = sum(personalWeight))
+### 7. Asian females
+    dfStateRaceSex <- group_by(df3, State, Sex, Race) 
+    dfSumPwtStateRaceSex <- summarise(dfStateRaceSex, SumPwtStateRaceSex = sum(personalWeight))
     dfRaceSexPerState <- spread(dfSumPwtStateRaceSex, key=Race, value=SumPwtStateRaceSex, fill=0, drop=FALSE)
     dfRaceSexPerState[is.na(dfRaceSexPerState)] <- 0 ### Replace NAs with zeros
     dfFemAsian <- subset(dfRaceSexPerState, Sex=="Female", select=c(State,Asian))
     colnames(dfFemAsian) =  c("State", "FemAsian")
     
-### 10. Combine the two female dfs, create FemNonAsian
-    dfFemale <- merge(dfFemale, dfFemAsian)
-    ### head(dfFemale)
+### 8. Combine the two female dfs, create FemNonAsian
+    dfFemale <- merge(dfFemale, dfFemAsian, by.x="State", by.y="State")
     dfFemale$FemNonAsian <- dfFemale$Female - dfFemale$FemAsian
 
-    ##### column merge dfFemales at this point to end 
-    dfRaceSexCountPerState <- merge(dfRaceCountPerState, dfFemale)
-    ### head(dfRaceSexCountPerState)
-    ### print(head(dfRaceSexCountPerState))
-    
-### 11/12. Calculate each racial group's share of total tech Count in each state
+### 9. column merge dfFemales at this point to end 
+    dfRaceSexCountPerState <- merge(dfRaceCountPerState, dfFemale, by.x="State", by.y="State")
+
+### 10. Calculate each racial group's share of total tech Count in each state
     dfRaceSexCountAndShares <- addPerCols(dfRaceSexCountPerState, 2, 3:10)
     
-### 13. Add a totals row 
+### 11. Add a totals row 
     dfRaceSexCountAndShares  <- addTotalsRow(dfRaceSexCountAndShares, 2, 3:10, 11:18, "ALL STATES")
     
-    ### print(head(dfRaceSexCountAndShares))
+### print(head(dfRaceSexCountAndShares))
     return(dfRaceSexCountAndShares)
 }
 
-createOccupationRaceSexProfiles <- function(df){
-    ### Add new category to race = "hisp"
-    ### ... ACS coded HISP = "1" for "not Hispanic" --change race values to 99 ("hispanic") when hisp != 1
-    rows <- df$Hisp != "1" ### 1 == "1" is same as "1" == "1"
-    df$Race[rows] <- 99
+createProfiles_OccRaceState <- function(df, bCitizen=TRUE){
+    ### Creates data frame containing Occupation, Race, State, Male, Female
+    ### User will then specify Race and State to get required 13 occupation profile
     
-    listCodes <- readCodeBooks()
+    df <- decodeVariables(df)
+    ### Get citizen subset or foreign subset
+    ifelse(bCitizen, df<-subset(df, Citizen!="No"), df<-subset(df, Citizen=="No"))
     
-    ### Convert coded categorical variables to factors
-    df$Race <- as.factor(df$Race)
-    ### listCodes [[ ]] required to dig out the second column in the code table, and for other codes
-    levels(df$Race) <- trimws(listCodes[["Race"]][,2]) 
-    
-    df$Sex <- as.factor(df$Sex)
-    levels(df$Sex) <- trimws(listCodes[["Sex"]][,2])
+    OccRaceStateSex <- group_by(df, Occupation, Race, State, Sex)
+    df2 <- summarise(OccRaceStateSex, ptsPwtOccRaceStateSex = sum(personalWeight))
+    df3 <- spread(df2, key=Sex, value=ptsPwtOccRaceStateSex, fill=0, drop=FALSE)
+    ### df3 <- subset(df2, select=-c(fill, drop))
 
-    df$Occupation <- as.factor(df$Occupation)
-    levels(df$Occupation) <- trimws(listCodes[["Occupation"]][,2])
-    
-    OccRaceSex <- group_by(df, Occupation, Race, Sex)
-    dfPtsPwtOccRaceSex <- summarise(OccRaceSex, ptsPwtOccRaceSex = sum(personalWeight))
-    dfOccupationRaceSexProfiles <- spread(dfPtsPwtOccRaceSex, key=Sex, value=ptsPwtOccRaceSex, fill=0, drop=FALSE)
-    dfOccupationRaceSexProfiles <- as.data.frame((dfOccupationRaceSexProfiles))
-    
-    ### Occupation Race Male Female
-    return(dfOccupationRaceSexProfiles)
+    return(df3)
 }
 
-createOccupationStateRaceSexProfiles_RawData <- function(df, bNoState=TRUE, bNoRace=TRUE){
-    ### Add new category to race = "hisp"
-    ### ... ACS coded HISP = "1" for "not Hispanic" --change race values to 99 ("hispanic") when hisp != 1
-print(paste("Class of Hisp = ", class(df$Hisp)))
-    rows <- df$Hisp != "1" ### 1 == "1" is same as "1" == "1"
-    df$Race[rows] <- 99
-    head(df) 
+createProfiles_OccRace <- function(df, bCitizen=TRUE){
+    ### Creates data frame containing Occupation, Race, Male, Female
+    ### User will then specify Race to get required 13 occupation profile
     
-    listCodes <- readCodeBooks()
+    df <- decodeVariables(df)
+    ### Get citizen subset or foreign subset
+    ifelse(bCitizen, df<-subset(df, Citizen!="No"), df<-subset(df, Citizen=="No"))
     
-    ### Convert coded categorical variables to factors
-    df$State <- as.factor(df$State)
-    levels(df$State) <- trimws(listCodes[["State"]][,2])
-    ### Note: District of Columbia abbreviated "Dist of Col" ... let table fit on blog page without wrapping
+    OccRaceSex <- group_by(df, Occupation, Race, Sex)
+    df2 <- summarise(OccRaceSex, ptsPwtOccRaceSex = sum(personalWeight))
+    df3 <- spread(df2, key=Sex, value=ptsPwtOccRaceSex, fill=0, drop=FALSE)
+    ### df3 <- subset(df2, select=-c(fill, drop))
     
-    df$Race <- as.factor(df$Race)
-    ### listCodes [[ ]] required to dig out the second column in the code table, and for other codes
-    levels(df$Race) <- trimws(listCodes[["Race"]][,2]) 
+    ### Sort by race
+    index <- order(df3$Race)
+    df3 <- df3[index,]
     
-    df$Sex <- as.factor(df$Sex)
-    levels(df$Sex) <- trimws(listCodes[["Sex"]][,2])
+    return(df3)
+}
+
+createProfiles_OccState <- function(df, bCitizen=TRUE){
+    ### Creates data frame containing Occupation, State, Male, Female
+    ### User will then specify State to get required 13 occupation profile
     
-    df$Occupation <- as.factor(df$Occupation)
-    levels(df$Occupation) <- trimws(listCodes[["Occupation"]][,2])
+    df <- decodeVariables(df)
+    ### Get citizen subset or foreign subset
+    ifelse(bCitizen, df<-subset(df, Citizen!="No"), df<-subset(df, Citizen=="No"))
     
-    OccStateRaceSex <- group_by(df, Occupation, State, Race, Sex)
-    df2 <- summarise(OccStateRaceSex, ptsPwtOccStateRaceSex = sum(personalWeight))
-    df2 <- spread(df2, key=Sex, value=ptsPwtOccStateRaceSex, fill=0, drop=FALSE)
+    OccStateSex <- group_by(df, Occupation, State, Sex)
+    df2 <- summarise(OccStateSex, ptsPwtOccStateSex = sum(personalWeight))
+    df3 <- spread(df2, key=Sex, value=ptsPwtOccStateSex, fill=0, drop=FALSE)
+    ### df3 <- subset(df2, select=-c(fill, drop))    
     
-    ### Roll up state if state is not required
-    if (bNoState) {
-        if(bNoRace) { 
-            Occ_RaceState <- group_by(df2, Occupation)
-            ### summarise drops state and race ... leaves Occupation, Male, Female
-            df3 <- summarise(Occ_RaceState, Male=sum(Male), Female=sum(Female))
+    ### Sort by state
+    index <- order(df3$State)
+    df3 <- df3[index,]
+    
+    return(df3)
+}
+
+createProfiles_Occ <- function(df, bCitizen=TRUE){
+    ### Creates data frame containing Occupation, Male, Female
+    ### User then requests this single 13 occupation profile
+    
+    df <- decodeVariables(df)
+    ### Get citizen subset or foreign subset
+    ifelse(bCitizen, df<-subset(df, Citizen!="No"), df<-subset(df, Citizen=="No"))
+    
+    Occ <- group_by(df, Occupation, Sex)
+    df2 <- summarise(Occ, ptsPwtOcc = sum(personalWeight))
+    df3 <- spread(df2, key=Sex, value=ptsPwtOcc, fill=0, drop=FALSE)
+    ### df3 <- subset(df2, select=-c(fill, drop))
+    
+    return(df3)
+}
+
+selectProfileData <- function(df_Raw, bState=FALSE, bRace=FALSE) {
+### Creates profile data by selecting state, or race, or both, or none
+    
+    if (bState) { ### Keep State
+        if(bRace) {  ### Keep Race and State
+            OccStateRace <- group_by(df_Raw, Occupation, State, Race)
+            df2 <- summarise(OccStateRace, Male=sum(Male), Female=sum(Female)) 
             
-        } else { ### summarise drops state, keeps race ... leaves Occupation, Race, Male, Female 
-            OccRace_State <- group_by(df2, Occupation, Race)
-            df3 <- summarise(OccRace_State, Male=sum(Male), Female=sum(Female))
-     
+        } else { ### Keep State, drop Race
+            OccState <- group_by(df_Raw, Occupation, State)
+            df2 <- summarise(OccState, Male=sum(Male), Female=sum(Female)) 
         }
-    } else { ### Don't drop state 
-    
-        if(bNoRace) { ### drop race
-            OccState_Race <- group_by(df2, Occupation, State)
-            ### don't drop state, drop race ... leaves Occupation, State, Male, Female
-            df3 <- summarise(OccState_Race, Male=sum(Male), Female=sum(Female))
-print(head(df3))
-            df3[is.na(df3)] <- 0 ### Replace NAs with zeros
-        
-        } else { ### don't drop state or or race ... leaves Occupation, State, Race, Male, Female
-            df3 <- df2
+            
+    } else { ### Drop state
+        if(bRace) { 
+            ### Drop state, keeps race ... leave Occupation, Race, Male, Female 
+            OccRace <- group_by(df_Raw, Occupation, Race)
+            df2 <- summarise(OccRace, Male=sum(Male), Female=sum(Female)) 
+            
+        } else { ### Drop State, Drop Race ... leave Occupation, Male, Female
+            Occ <- group_by(df_Raw, Occupation)
+            df2 <- summarise(Occ, Male=sum(Male), Female=sum(Female)) 
         }
     }
-    return(df3)
+    return(df2)
 }
 
 ##################################
@@ -341,28 +358,24 @@ createProfile <- function(df, group=NULL, state=NULL) {
 
 #1. Select the group's records
     if (!is.null(group)) {
-        df <- df[df$Race == group,]
+        df <- subset(df, Race == group)
     } 
 
 #2. Select state records
     if (!is.null(state)) {
-        ### df <- subset(df, State==state)
-        df <- df[df$State==state,]
+        df <- subset(df, State == state)
     } 
         
-    df <- subset(df, select=c("Occupation", "Male", "Female"))
+    df2 <- subset(df, select=c("Occupation", "Male", "Female"))
+    df3 <- addTotCol(df2, 2:3, "Total")
+    df3 <- addPerCols(df3, 2, 3:4)
+    df3 <- addTotalsRow(df3, 2, 3:4, 5:6, "All Occupations")
+    df3 <- addTotColSharePerRowCol(df3, 2)
     
-    eachOcc <- group_by(df, Occupation)
-    df <- summarise(eachOcc, Male=sum(Male), Female=sum(Female), fill=0, drop=FALSE)
-    df <- subset(df, select=-c(fill, drop))
-
-    df <- addTotCol(df, 2:3, "Total")
-    df <- addPerCols(df, 2, 3:4)
-    df <- addTotalsRow(df, 2, 3:4, 5:6, "All Occupations")
-    df <- addTotColSharePerRowCol(df, 2)
-    index <- order(df[,2], decreasing = TRUE)
-    dfProfile <- df[index,]
-    return(dfProfile)
+    index <- order(df3$Total, decreasing = TRUE)
+    df3 <- df3[index,]
+    
+    return(df3)
 }
 
 createCompareProfile <- function(df1, df2) {
@@ -396,11 +409,8 @@ createCompareProfile <- function(df1, df2) {
 }
 
 createListProfiles <- function(df1, df2, group=NULL, state=NULL) {
-### df1 is data frame that contains the early year, df2 contains the second year
+### df1 is data frame that contains the first year, df2 contains the second year
 ### Returns list of data frames, 1 = display Table for year 1, 2 = compare table for years 1 and 2, full data frame for year 1, and full data frame for year 2
-    
-    ### print(paste("The group in createListProfiles=", group))
-    ### print(is.null(group))
     
     dfFullTab1 <- createProfile(df1, group=group, state=state)
     dfFullTab2 <- createProfile(df2, group=group, state=state)
@@ -466,11 +476,11 @@ makeGroupedBarChart <- function(dfXYZ, chartTitle) {
 ############################
 ### Stats2B
 
-makeTechPopTable <- function(Race){
+makeTechPopTable <- function(dfEmp, dfPop, Race){
     perRace <- paste0("per", Race)
     popRace <- paste0("pop", Race)
-    dfEmp <- dfRaceSexCountAndShares[, c("State", "Totals", Race, perRace)]
-    dfPop <- dfStatesPop3[, c("State", Race, perRace)]
+    dfEmp <- dfEmp[, c("State", "Totals", Race, perRace)]
+    dfPop <- dfPop[, c("State", Race, perRace)]
     ### Example ==> c("State", "Black", "perBlack")
     
     ### Must change DC name to short form in dfPop before this merge
@@ -500,9 +510,9 @@ makeTechPopTable <- function(Race){
     return(dfTechPop)
 }
 
-makeForeignTechTable <- function(Area){
+makeForeignTechTable <- function(dfTech, Area){
     perArea <- paste0("per", Area)
-    dfTech <- dfForeignRaceSexCountAndShares[, c("State", "Totals", Area, perArea)]
+    dfTech <- dfTech[, c("State", "Totals", Area, perArea)]
     ### Example ==> c("State", "Foreign", "Asia", "perAsia")
     
     AreaTech <- paste0(Area, "Tech")
@@ -715,6 +725,6 @@ makeTable8 <- function(dfIn, Group, letter){
 }
 
 ###################################
-save(readCodeBooks, addTotCol, addPerCols, addTotColSharePerRowCol, addTotalsRow, addMissingStatesToTable, createOccupationRaceSexProfiles, createOccupationStateRaceSexProfiles_RawData, createPopRaceAndShares, makeNumPerTable, makeNumPerChart, createProfile, createCompareProfile, createListProfiles, createXYZdf, makeGroupedBarChart, makeSummary, plotEmpVsPop, makeLM, makeTechPopMap, theme_clean, makeForeignTechTable, makeForeignNonAsianTechTable, makeTechPopTable, makeParity, makeTable7, makeTable8, file="functions-0.rda")
+save(readCodeBooks, addTotCol, addPerCols, addTotColSharePerRowCol, addTotalsRow, addMissingStatesToTable, decodeVariables, createProfiles_OccRaceState, createProfiles_OccState, createProfiles_OccRace, createProfiles_Occ, createPopRaceAndShares, makeNumPerTable, makeNumPerChart, createProfile, createCompareProfile, createListProfiles, createXYZdf, makeGroupedBarChart, makeSummary, plotEmpVsPop, makeLM, makeTechPopMap, theme_clean, makeForeignTechTable, makeForeignNonAsianTechTable, makeTechPopTable, makeParity, makeTable7, makeTable8, file="functions-0.rda")
 
 

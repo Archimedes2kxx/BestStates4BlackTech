@@ -134,6 +134,9 @@
     
     dfCitS1 <- dfProfileCitizens_RawState.2010
     dfCitS2 <- dfProfileCitizens_RawState
+    
+    dfCitR1 <- dfProfileCitizens_RawRace.2010
+    dfCitR2 <- dfProfileCitizens_RawRace
 
     dfCitRS1 <- dfProfileCitizens_RawRaceState.2010
     dfCitRS2 <- dfProfileCitizens_RawRaceState
@@ -141,14 +144,14 @@
     dfFor1 <- dfProfileForeigners.2010
     dfFor2 <- dfProfileForeigners  
     
-    ### dfForS1 <- dfProfileForeigners_RawState.2010
+    dfForS1 <- dfProfileForeigners_RawState.2010
     dfForS2 <- dfProfileForeigners_RawState 
     colSums(dfForS2[,3:4]) ### male, female = 455883 113831, which is correct
     
     dfForRS1 <- dfProfileForeigners_RawRaceState.2010
     dfForRS2 <- dfProfileForeigners_RawRaceState 
-    colSums(dfForRS2[,4:5]) ### male, female = 455883 113831 which is correct
-    colSums(dfForRS1[,4:5]) ### male, female = 336760  92537 which is correct
+    ### colSums(dfForRS2[,4:5]) ### male, female = 455883 113831 which is correct
+    ### colSums(dfForRS1[,4:5]) ### male, female = 336760  92537 which is correct
 
 ####################################
 ####################################        
@@ -161,7 +164,7 @@
 ####################################
 ### Table 3A -- Profile of U.S. White Techs 2015
 
-    Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state=NULL, group="White") 
+    Profiles <- createListProfiles(dfCitR1, dfCitR2, group="White") 
     (dfTable3A <- Profiles[[1]])
     (dfTable3AA <- Profiles[[2]])
 
@@ -169,26 +172,26 @@
 ####################################
 ### Table 3B -- Profile of U.S. Black Techs 2015
     
-    Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state=NULL, group="Black") 
+    Profiles <- createListProfiles(dfCitR1, dfCitR2, group="Black") 
     (dfTable3B <- Profiles[[1]])
     (dfTable3BB <- Profiles[[2]])
     
 ####################################
 ####################################
-### Table 3C -- Profile of U.S. Hispanic Techs 2015
-
-    Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state=NULL, group="Hispanic") 
+### Table 3C -- Profile of U.S. Asian Techs 2015
+    
+    Profiles <- createListProfiles(dfCitR1, dfCitR2, group="Asian") 
     (dfTable3C <- Profiles[[1]])
     (dfTable3CC <- Profiles[[2]])
 
 ####################################
-####################################
-### Table 3D -- Profile of U.S. Asian Techs 2015
+####################################    
+    ### Table 3D -- Profile of U.S. Hispanic Techs 2015
     
-    Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state=NULL, group="Asian") 
+    Profiles <- createListProfiles(dfCitR1, dfCitR2, group="Hispanic") 
     (dfTable3D <- Profiles[[1]])
-    (dfTable3DD <- Profiles[[2]])
-
+    (dfTable3DD <- Profiles[[2]])    
+    
 ####################################
 ####################################
     
@@ -201,8 +204,7 @@
 ###############################################    
 ### Table 3F -- Profile of Foreign Techs in California in 2015
     
-    Profiles <- createListProfiles(dfForS1, dfForS2, state="New Jersey") 
-    
+    Profiles <- createListProfiles(dfForS1, dfForS2, state="California") 
     (dfTable3F <- Profiles[[1]]) 
     (dfTable3FF <- Profiles[[2]]) 
     
@@ -234,13 +236,22 @@
     (dfTable3CAhispanic <- Profiles[[1]])
     (dfTable3CACAhispanic <- Profiles[[2]])   
     
-    ### (dfTable3CAfor <- dfTable3F)
-    ### (dfTable3CACAfor <- dfTable3FF)
+### Texas 2015 = 2190 foreign techs???  ... too small
+### Tennessee 2015 = 52885 foreign techs??? ... too large
+### New Jersey 2015 = 950 foreign techs ??? ... too small   
+### North Dakota 2015 = 11788  foreign techs ???  ... too large 
+### Washington 2015 = 569  foreign techs ??? ... too small
+### New Hampshire 2015 = 31859  foreign techs ??? ... too large
+### North Carolina 2015 = 77  foreign techs ??? ... too small
+### Vermont 2015 = 16526  foreign techs ??? ... too large
+### Utah  282 ... too small
+### Nebraska 2279 is wrong ... from Nebraska to Wyoming (last) is wrong
+### Missouri 6655 is OK ... from (Alabama first) to Missouri is right
     
     Profiles <- createListProfiles(dfForRS1, dfForRS2, state="California", group="Asian") 
-    (dfTable3CAForhispanic <- Profiles[[1]])
-    (dfTable3CACAForhispanic <- Profiles[[2]])   
-
+    (dfTable3CAForAsian <- Profiles[[1]])
+    (dfTable3CACAForAsian <- Profiles[[2]])   
+    
 ####################################
 ####################################
 ### Table 3FL -- Profile of Techs in Florida in 2015
@@ -358,7 +369,7 @@
     (dfTable3DChispanic <- Profiles[[1]])
     (dfTable3DCDChispanic <- Profiles[[2]])  
     
-    Profiles <- createListProfiles(dfForS1, dfForS2, state="Washington") 
+    ### Profiles <- createListProfiles(dfForS1, dfForS2, state="Dist of Col") 
     ### (dfTable3DCfor <- Profiles[[1]])
     ### (dfTable3DCDCfor <- Profiles[[2]]) 
     

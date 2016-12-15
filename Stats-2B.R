@@ -30,17 +30,18 @@
 ### Tables 4A, 4B, 4C, 4D, 4E, 4F Racial, ethnic, female groups in each state  
 ### ... sorted by decreasing racialTechEmp so users can see "Top 10"
 ### ... Only show top 10 in report, show link to full tables in page on git-io
-
-    dfTechPopWhite <- makeTechPopTable("White")
-    dfTechPopBlack <- makeTechPopTable("Black")
-    dfTechPopHispanic <- makeTechPopTable("Hispanic")
-    dfTechPopAsian <- makeTechPopTable("Asian")
-    dfTechPopOTHERS <-makeTechPopTable("OTHERS")
-    dfTechPopFemale <-makeTechPopTable("Female")
-    dfTechPopFemAsian <-makeTechPopTable("FemAsian")
-    dfTechPopFemNonAsian <-makeTechPopTable("FemNonAsian")
+    dfEmp <- dfRaceSexCountAndShares
+    dfPop <- dfStatesPop3
     
-    ### For some reason assigning row names inside makeTechPopTable function doesn't persist outside
+    dfTechPopWhite <- makeTechPopTable(dfEmp, dfPop, "White")
+    dfTechPopBlack <- makeTechPopTable(dfEmp, dfPop, "Black")
+    dfTechPopHispanic <- makeTechPopTable(dfEmp, dfPop, "Hispanic")
+    dfTechPopAsian <- makeTechPopTable(dfEmp, dfPop, "Asian")
+    dfTechPopOTHERS <-makeTechPopTable(dfEmp, dfPop, "OTHERS")
+    dfTechPopFemale <-makeTechPopTable(dfEmp, dfPop, "Female")
+    dfTechPopFemAsian <-makeTechPopTable(dfEmp, dfPop, "FemAsian")
+    dfTechPopFemNonAsian <-makeTechPopTable(dfEmp, dfPop, "FemNonAsian")
+    
     dfTable4A <- dfTechPopWhite 
     dfTable4B <- dfTechPopBlack
     dfTable4C <- dfTechPopAsian
@@ -51,11 +52,11 @@
 
 ######################################
 ##### Make foreign tech tables ... Asian and non-Asian
-    dfTable4G <- makeForeignTechTable("Asian")
+    dfTable4G <- makeForeignTechTable(dfForeignRaceSexCountAndShares, "Asian")
     colnames(dfTable4G) <- c("State", "Foreign", "perState", "AsianTech", "perAsianTech")
     head(dfTable4G)
     
-    ### A few states employ no foreign techs, to the denominator of perState is zero
+    ### A few states employ no foreign techs, so the denominator of perState is zero
     dfTable4G <- addMissingStatesToTable(dfTable4G, dfStatesPop3)
     head(dfTable4G)
     tail(dfTable4G)
@@ -93,8 +94,8 @@ save(dfTable4, dfTable4A, dfTable4B, dfTable4C, dfTable4D, dfTable4E, dfTable4F,
     
     states_map <- map_data("state") ### for ggplot calls in the makeTechPopMap function
     
-    (dfMap4A <-makeTechPopMap(dfTechPopWhite,"White", maxAsianPerState, "A. White Techs"))
-    (dfMap4B <-makeTechPopMap(dfTechPopBlack,"Black", maxAsianPerState, "B. Black Techs"))
+    (dfMap4A <- makeTechPopMap(dfTechPopWhite,"White", maxAsianPerState, "A. White Techs"))
+    (dfMap4B <- makeTechPopMap(dfTechPopBlack,"Black", maxAsianPerState, "B. Black Techs"))
     (dfMap4C <- makeTechPopMap(dfTechPopAsian,"Asian", maxAsianPerState, "C. Asian Techs"))
     (dfMap4D <- makeTechPopMap(dfTechPopHispanic,"Hispanic", maxAsianPerState, "D. Hispanic Techs"))
     (dfMap4E <- makeTechPopMap(dfTechPopFemAsian,"FemAsian", maxAsianPerState, "E. FemAsian Techs"))
