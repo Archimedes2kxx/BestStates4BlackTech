@@ -1,5 +1,5 @@
 ---
-title: "Best States for American Black, Hispanic, Asian, and Female Tech -- Version 1.0d"
+title: "Best States for American Black, Hispanic, Asian, and Female Tech -- Version 1.0e"
 author: "Roy L Beasley, PhD -- DLL Editor"
 
 output: 
@@ -285,6 +285,23 @@ The first column of each table contains a list of job categories. Some categorie
    print(format(dfTable3DD, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
+  
+<P style="page-break-before: always">    
+<i>Question 3E</i> -- How many foreign male vs. female techs were in each category in 2010 and 2015 in the 50 states and the District of Columbia?   
+
+ <i>Answer 3E</i> ... Data for foreign techs in 2015 is in Table 3E; data that compares 2010 to 2015 is in Table 3EE.
+
+ <b>Table 3E -- Foreign Male/Female Composition of U.S. Tech in 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3E, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<P style="page-break-before: always">    
+ <b>Table 3EE -- Changes in the Foreign Composition of U.S. Tech Between 2010 and 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3EE, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>    
   
 <P style="page-break-before: always">    
 #### Question 4 -- Where did American tech professionals work in 2015?      
