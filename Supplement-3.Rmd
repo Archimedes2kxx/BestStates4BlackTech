@@ -1,0 +1,131 @@
+---
+title: "Best States for Foreign Professionals in U.S. Tech, Version 0.1"
+author: "Roy L Beasley"
+date: "12/16/2016"
+
+output: 
+ prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+    toc: true
+    toc_depth: 4
+    fig_width: 7
+    fig_height: 6
+                  
+---
+
+```{r LOAD, echo=FALSE, cache=FALSE}
+
+    #### load("dfRaceWorkplaceAndShares.rda") ### Only use data in tables, plots, and maps
+    load("dfCensus2.rda") 
+    load("dfTab1A1B2A2B3ABCDEF.rda")
+    load("dfTab4.rda")   
+    load("dfMap4.rda")
+    load("dfPlot5Tab5beta1000.rda")
+    load("dfTab67A7B7C7D7E7F8A8B8C8D8E8F.rda")
+    load("APPENDIX.rda")  
+    
+    ###install.packages("gridExtra")
+    library(prettydoc)
+    library(maps)    
+    library(mapproj) ### needed by ggplot2, but not installed automaticallly
+    library(ggplot2)
+    library(gridExtra)
+    ### library(printr)
+    library(grid)
+    library(gtable)
+    library(grid)
+
+    ### Intending to use Yihui Xie's printr package for better tables later
+    ### install.packages("devtools")
+    ### library(devtools)
+    ### install_github("yihui/printr")
+    ### library(printr)
+    ### detach('package:printr', unload = TRUE)
+    
+tt3 <- ttheme_minimal(
+  core=list(bg_params = list(fill = blues9[1:7], col=NA),
+            fg_params=list(fontface=3)),
+  colhead=list(fg_params=list(col="navyblue", fontface=4L)),
+  rowhead=list(fg_params=list(col="orange", fontface=3L)))
+
+fem10 <- round(dfTable3ZZ[1, "Tech10"] * dfTable3ZZ[1, "perF10"]/100, digits=0) ### calculate females in 2010 from female share
+perFemIncrease <- round(100 * (dfTable3Z[1,"Fem"] - fem10)/fem10, digits=1)
+
+```
+\pagenumbering{arabic}   
+
+## Overview     
+<i>Please note that all of the figures in this overview and in the subsequent report are estimates based on U.S. Census survey samples. So all figures should be read as "approximately" even when the word "approximately" does not appear. </i>  
+
+* blah, blah, blah   
+
+* blah, blah, blah   
+
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>   
+  
+<P style="page-break-before: always">  
+## Findings
+Brief answers to the first three sets of questions provide a broad statistical framwork for the extended responses to the fourth and fifth questions that form the core of this report. 
+
+
+#### Question 1 -- How many foreign professionals worked in the U.S. tech sector in 2015?
+
+<i>Answer 1</i> ... Most of the tables in this report will deal with American techs or foreign techs, but not both. Therefore the counts in the second and third columns of this small table will recur in many subsequent tables.  
+
+<b>Table 1 -- American and Foreign Components of the U.S. Tech Sector in 2015</b>    
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(dfTable1C, row.names=TRUE, quote=FALSE)
+```
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>     
+
+
+<P style="page-break-before: always">   
+#### Question 2 -- What was the foreign male/female composition of U.S. tech in 2015?
+
+<i>Question 2A</i> -- What was the American male/female composition of the tech sector in the 50 states plus the District of Columbia in 2015?
+
+<i>Answer 2A</i> ... As shown in Table 2A (below), the U.S. workforce was close to an even split between males and females. But given the focus of this report, the table also breaks the female half into a small Asian  component (`r dfTable2A["Per", "FemAsian"]` percent) and a much larger non-Asian female component (`r dfTable2A["Per", "FemNonAsian"]` percent)
+
+<b>Table 2A -- American Male/Female Composition of the U.S. Workforce in 2015</b>   
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+  print(format(dfTable2A, big.mark=","), row.names=TRUE, quote=FALSE)
+```   
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>       
+
+<P style="page-break-before: always">    
+#### Question 3 -- How did the foreign shares of jobs in U.S. tech change between 2010 and 2015?     
+
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>   
+
+<P style="page-break-before: always">    
+#### Question 4 -- Where did foreign tech professionals work in 2015?      
+Answer 4 ... The following sections provide an extensive response to a more specific formulation of this question ==> In which states did foreign tech professionals work in 2015?  
+
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>
+    
+<P style="page-break-before: always">  
+## <i>"And the best states are ... "</i>
+
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small> 
+    
+<P style="page-break-before: always">  
+## Final Comments</b>   
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small> 
+    
+<P style="page-break-before: always">  
+## Personal Motivation   
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small> 
+      
+<P style="page-break-before: always">  
+## Methods   
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small> 
+ 
