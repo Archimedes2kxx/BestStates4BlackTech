@@ -159,7 +159,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
 <P style="page-break-before: always">   
 #### Question 2 -- What was the  male/female composition of U.S. tech in 2015?
 
-<i>Question 2A</i> -- What was the American male/female composition of the tech sector in the 50 states plus the District of Columbia in 2015?
+<i>Question 2A</i> -- What was the American male/female composition of the U.S. workforce in the 50 states plus the District of Columbia in 2015?
 
 <i>Answer 2A</i> ... As shown in Table 2A (below), the U.S. workforce was close to an even split between males and females. But given the focus of this report, the table also breaks the female half into a small Asian  component (`r dfTable2A["Per", "FemAsian"]` percent) and a much larger non-Asian female component (`r dfTable2A["Per", "FemNonAsian"]` percent)
 
@@ -610,7 +610,7 @@ Here's the <b>[Census Bureau's description](https://usa.ipums.org/usa/voliii/ACS
    
 I used the <b>[R Studio IDE](https://www.rstudio.com/)</b> to write the R scripts and functions that produced the report's tables, maps, graphs, and stats. My R code can be found in the functions-0.R, Data-1.R, Stats-2A.R, Stats-2B.R, Stats-2C.R., and Report-3.Rmd files in the <b>[Best States ](https://github.com/Archimedes2kxx/BestStatesForBlackTech)</b> repo, as well as copies of the codebooks and .csv files I downloaded from the Census. I composed the text of the report in R-Markdown, embedded the data objects, converted the R-markdown to HTML via knitr, pushed the report to git-io pages, then made the pages accessible to readers of the DLL's <b>[Tech-Levers](http://hbcu-levers.blogspot.com/p/draft-of-best-states-for-blacks-in-tech.html)</b> blog via an iframe on a page on the blog. 
 
-The scripts and embedded functions should be loaded in numerical order ==> functions-0 then Data-1.R The Data-1 module creates the data frames required by Stats-2A.R, Stats-2B.R, and Stats-2C.R. The Stats modules create the tables, maps, graphs, and regressions required by the R-markdown script in the Report-3.Rmd file that generates the report.
+The scripts and embedded functions should be loaded in numerical order ==> functions-0.R then Data-1.R The Data-1.R module uses the functions to read the Census data files, then create the data frames required by Stats-2A.R, Stats-2B.R, and Stats-2C.R. The Stats modules use the functions to create the tables, maps, graphs, and regressions required by the R-markdown script in the Report-3.Rmd file that generates the report.
 
 Finally, this report represents my honest attempt to shed additional light on some important, troublesome issues. Therefore I would greatly appreciate readers' comments and suggested improvements ... but I would cherish their help in identifying any errors that I made in my data collection or analysis because bad reports don't support good policies. Thank you ... :-)
 <br />
