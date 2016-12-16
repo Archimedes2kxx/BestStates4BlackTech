@@ -287,8 +287,8 @@ The first column of each table contains a list of job categories. Some categorie
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
   
 <P style="page-break-before: always">    
-#### Question 4 -- Where did American and foreign tech professionals work in 2015?      
-Answer 4 ... The following sections provide an extensive response to a more specific formulation of this question ==> In which states did American and foreign tech professionals work in 2015?  
+#### Question 4 -- Where did American tech professionals work in 2015?      
+Answer 4 ... The following sections provide an extensive response to a more specific formulation of this question ==> In which states did American tech professionals work in 2015?  
 
 Table 4 (below) lists the six states that employed the most American techs in 2015. These states will also appear in just about every table that follows because  they employed such a large share (`r prettyNum(dfTable4[1, "perTop6"])` percent) of the `r prettyNum(dfTable4[1, "ALL STATES"], big.mark=",", scientific=FALSE)` American techs in the U.S.
 
