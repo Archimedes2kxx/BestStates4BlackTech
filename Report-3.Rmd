@@ -157,7 +157,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>   
 
 <P style="page-break-before: always">   
-#### Question 2 -- What was the  male/female composition of U.S. tech in 2015?
+#### Question 2 -- What was the American male/female composition of U.S. workforce and tech sector in 2015?
 
 <i>Question 2A</i> -- What was the American male/female composition of the U.S. workforce in the 50 states plus the District of Columbia in 2015?
 
@@ -172,7 +172,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
 
 Answer 2B ... As shown in Table 2B (below), the ratio of American male to American female techs was about  `r round(as.numeric(dfTable2B["Per", "Male"])/as.numeric(dfTable2B["Per", "Female"]), digits=0)` to 1, more specifically `r dfTable2B["Per", "Male"]` percent to `r dfTable2B["Per", "Female"]` percent. The ratio of Non-Asian American females to Asian American females was about `r round(as.numeric(dfTable2B["Per", "FemNonAsian"])/as.numeric(dfTable2B["Per", "FemAsian"]), digits=0)` to 1, i.e., `r dfTable2B["Per", "FemNonAsian"]` percent to `r dfTable2B["Per", "FemAsian"]` percent.
 
-<b>Table 2B -- American Male, American Female Composition of the U.S. Tech Sector in 2015</b>   
+<b>Table 2B -- American Male/fFemale Composition of the U.S. Tech Sector in 2015</b>   
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
   print(format(dfTable2B, big.mark=","), row.names=TRUE, quote=FALSE)
 ```
