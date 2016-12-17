@@ -1,6 +1,6 @@
 ---
-title: "Best States for Foreign Professionals in U.S. Tech, Version 0.1"
-author: "Roy L Beasley"
+title: "Foreign Professionals in U.S. Tech ... 'Other' Pipelines -- Version 0.2"
+author: "Roy L Beasley, PhD -- DLL Editor"
 date: "12/16/2016"
 
 output: 
@@ -56,7 +56,7 @@ perFemIncrease <- round(100 * (dfTable3Z[1,"Fem"] - fem10)/fem10, digits=1)
 \pagenumbering{arabic}   
 
 ## Overview     
-<i>Please note that all of the figures in this overview and in the subsequent sections are estimates based on U.S. Census survey samples. So all figures should be read as "approximately" even when the word "approximately" does not appear. </i>  
+<i>Please note that all of the numbers in this overview and in the subsequent sections are estimates based on U.S. Census survey samples. So all numbers should be read as "approximately" even when the word "approximately" does not appear. </i>  
 
 * blah, blah, blah   
 
@@ -66,32 +66,38 @@ perFemIncrease <- round(100 * (dfTable3Z[1,"Fem"] - fem10)/fem10, digits=1)
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>   
   
 <P style="page-break-before: always">  
-## Findings
-Brief answers to the first three sets of questions provide a broad statistical framwork for the extended responses to the fourth and fifth questions that form the core of this report. 
+## Findings   
+
+Brief answers to the first three sets of questions provide a broad statistical framwork for the extended responses to the fourth question that forms the core of this supplement.   
+
+<i>Please note that the tables, maps, and charts in this supplement about foreign techs have been assigned numbers that follow the numbers of similar tables, maps, and charts in the original report about American techs. For example, Tables 3E and 3F appear in ths supplement because Tables 3A, 3B, 3C, and 3D appeared in the original. On the other hand a few tables from the original are repeated in this supplement as convenient references for the reader and are assigned the same numbers as in the original; for example, Tables 1C and 1E.</i>
 
 
 #### Question 1 -- How many foreign professionals worked in the U.S. tech sector in 2015?
 
-<i>Answer 1</i> ... Most of the tables in this report will deal with American techs or foreign techs, but not both. Therefore the counts in the second and third columns of this small table will recur in many subsequent tables.  
+<i>Answer 1C</i> ...As can be seen from Table 1C (below), `r dfTable1C["Per", "Foreign"]` percent of the U.S. tech sector in 2015 were foreign professionals.  
 
-<b>Table 1 -- American and Foreign Components of the U.S. Tech Sector in 2015</b>    
+<b>Table 1C -- American and Foreign Components of the U.S. Tech Sector in 2015</b>    
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(dfTable1C, row.names=TRUE, quote=FALSE)
 ```
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>     
 
+<i>Question 1E</i> -- How many Asian and non-Asian foreign employees were in U.S. tech in the 50 states plus the District of Columbia in 2015? 
+
+<i>Answer 1E</i> ...  As per Table 1E (below), there were almost three times as many foreign professionals from Asian countries as from other countries in U.S. tech in 2015.
+  
+<b>Table 1E -- Foreign Asian and Non-Asian Components of the U.S. Tech Sector in 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(dfTable1E, row.names=TRUE, quote = FALSE)
+```
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>   
 
 <P style="page-break-before: always">   
 #### Question 2 -- What was the foreign male/female composition of U.S. tech in 2015?
 
-<i>Question 2A</i> -- What was the American male/female composition of the tech sector in the 50 states plus the District of Columbia in 2015?
+<i>Question 2A</i> -- What was the foreign male/female composition of the tech sector in the 50 states plus the District of Columbia in 2015?
 
-<i>Answer 2A</i> ... As shown in Table 2A (below), the U.S. workforce was close to an even split between males and females. But given the focus of this report, the table also breaks the female half into a small Asian  component (`r dfTable2A["Per", "FemAsian"]` percent) and a much larger non-Asian female component (`r dfTable2A["Per", "FemNonAsian"]` percent)
-
-<b>Table 2A -- American Male/Female Composition of the U.S. Workforce in 2015</b>   
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-  print(format(dfTable2A, big.mark=","), row.names=TRUE, quote=FALSE)
-```   
+blah-blah-blah
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>       
 
