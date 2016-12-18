@@ -55,7 +55,7 @@ perFemIncrease <- round(100 * (dfTable3Z[1,"Fem"] - fem10)/fem10, digits=1)
 \pagenumbering{arabic}   
 
 ## Overview   
-<i>Please note that all of the figures in this overview and in the subsequent report are estimates based on U.S. Census survey samples. So all figures should be read as "approximately" even when the word "approximately" does not appear. </i>  
+<i>Please note that all of the numbers in this overview and in the subsequent report are estimates based on U.S. Census survey samples. So all numbers should be read as "approximately" even when the word "approximately" does not appear. </i>  
 
 * In 2015 there were approximately `r prettyNum(dfTable1A["Num","Total"], big.mark=",", scientific=FALSE)` workers in the entire U.S. workforce. Approximately  `r prettyNum(dfTable1A["Num","Citizens"], big.mark=",", scientific=FALSE)` were American citizens; `r prettyNum(dfTable1A["Num","Foreign"], big.mark=",", scientific=FALSE)` were foreign workers who moved here to work for their employers.  (See Table 1A)
 
@@ -75,7 +75,7 @@ perFemIncrease <- round(100 * (dfTable3Z[1,"Fem"] - fem10)/fem10, digits=1)
 
 * The subgroup of Asian American females occupied disproportionately larger shares of the tech sectors in most states. Indeed, their tech shares ranged as high as `r dfTable6["FemAsian", "Max"]` times their shares of state workforce populations. (See Table 6.) By contrast, the subgroup of non-Asian American females occupied much smaller shares of state tech sectors than their shares of state workforce populations. (See Table 6.)   
 
-* The number of tech jobs held by Americans grew by `r prettyNum(dfTable3ZZ[1,"perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015, i.e., from  `r prettyNum(dfTable3ZZ[1,"Tech10"], big.mark=",", scientific=FALSE)` to  `r prettyNum(dfTable3ZZ[1,"Tech15"], big.mark=",", scientific=FALSE)`; the number tech jobs held by White Americans grew by `r prettyNum(dfTable3AA[1,"perCh"], big.mark=",", scientific=FALSE)` percent, i.e., from `r prettyNum(dfTable3AA[1,"Tech10"], big.mark=",", scientific=FALSE)` to `r prettyNum(dfTable3AA[1,"Tech15"], big.mark=",", scientific=FALSE)`; tech jobs held by Black Americans grew by `r prettyNum(dfTable3BB[1,"perCh"], big.mark=",", scientific=FALSE)` percent, i.e., from `r prettyNum(dfTable3BB[1,"Tech10"], big.mark=",", scientific=FALSE)` to `r prettyNum(dfTable3BB[1,"Tech15"], big.mark=",", scientific=FALSE)`;tech jobs held by Asian Americans grew by `r prettyNum(dfTable3CC[1,"perCh"], big.mark=",", scientific=FALSE)` percent, i.e., from `r prettyNum(dfTable3CC[1,"Tech10"], big.mark=",", scientific=FALSE)` to `r prettyNum(dfTable3CC[1,"Tech15"], big.mark=",", scientific=FALSE)`; and tech jobs held by Hispanic Americans grew by `r prettyNum(dfTable3DD[1,"perCh"], big.mark=",", scientific=FALSE)` percent, i.e., from `r prettyNum(dfTable3DD[1,"Tech10"], big.mark=",", scientific=FALSE)` to `r prettyNum(dfTable3DD[1,"Tech15"], big.mark=",", scientific=FALSE)`. <i>(See Chart 4, below.)</i>
+* The number of tech jobs held by Americans grew by `r prettyNum(dfTable3ZZ[1,"perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015, i.e., from  `r prettyNum(dfTable3ZZ[1,"Tech10"], big.mark=",", scientific=FALSE)` to  `r prettyNum(dfTable3ZZ[1,"Tech15"], big.mark=",", scientific=FALSE)`; the number tech jobs held by White Americans grew by `r prettyNum(dfTable3AA[1,"perCh"], big.mark=",", scientific=FALSE)` percent, i.e., from `r prettyNum(dfTable3AA[1,"Tech10"], big.mark=",", scientific=FALSE)` to `r prettyNum(dfTable3AA[1,"Tech15"], big.mark=",", scientific=FALSE)`; tech jobs held by Black Americans grew by `r prettyNum(dfTable3BB[1,"perCh"], big.mark=",", scientific=FALSE)` percent, i.e., from `r prettyNum(dfTable3BB[1,"Tech10"], big.mark=",", scientific=FALSE)` to `r prettyNum(dfTable3BB[1,"Tech15"], big.mark=",", scientific=FALSE)`; tech jobs held by Asian Americans grew by `r prettyNum(dfTable3CC[1,"perCh"], big.mark=",", scientific=FALSE)` percent, i.e., from `r prettyNum(dfTable3CC[1,"Tech10"], big.mark=",", scientific=FALSE)` to `r prettyNum(dfTable3CC[1,"Tech15"], big.mark=",", scientific=FALSE)`; and tech jobs held by Hispanic Americans grew by `r prettyNum(dfTable3DD[1,"perCh"], big.mark=",", scientific=FALSE)` percent, i.e., from `r prettyNum(dfTable3DD[1,"Tech10"], big.mark=",", scientific=FALSE)` to `r prettyNum(dfTable3DD[1,"Tech15"], big.mark=",", scientific=FALSE)`. <i>(See Chart 4, and Table3EE.)</i>
 
   <img src="ggChart4.png" style="width:600px;height:300px;" />
 
@@ -114,7 +114,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
  
 <i>Question 1B</i> -- How large were the White, Black, Asian, and Hispanic American components of the  U.S. workforce in the 50 states plus the District of Columbia in 2015?       
 
-<i>Answer 1B</i> ... In 2015, as shown in Table 1B (below), there were approximately `r prettyNum(dfTable1B["Num","Total"], big.mark=",", scientific=FALSE)` citizens in the workforce, a/k/a "labor force", in the 50 states plus DC. in 2015? The largest of the four racial/ethnic groups discussed in this report was White American (`r prettyNum(dfTable1B["Num","White"], big.mark=",", scientific=FALSE)`); the smallest was Asian American (`r prettyNum(dfTable1B["Num","Asian"], big.mark=",", scientific=FALSE)`). Hispanic American, the largest minority (`r prettyNum(dfTable1B["Num","Hispanic"], big.mark=",", scientific=FALSE)`), was substantially larger than Black American (`r prettyNum(dfTable1B["Num","Black"], big.mark=",", scientific=FALSE)`).
+<i>Answer 1B</i> ... In 2015, as shown in Table 1B (below), there were approximately `r prettyNum(dfTable1B["Num","Total"], big.mark=",", scientific=FALSE)` citizens in the workforce, a/k/a "labor force", in the 50 states plus DC. in 2015? The largest of the four racial/ethnic groups discussed in this report was White American (`r prettyNum(dfTable1B["Num","White"], big.mark=",", scientific=FALSE)`); the smallest was Asian American (`r prettyNum(dfTable1B["Num","Asian"], big.mark=",", scientific=FALSE)`). Hispanic American, the largest minority (`r prettyNum(dfTable1B["Num","Hispanic"], big.mark=",", scientific=FALSE)`), was larger than Black American (`r prettyNum(dfTable1B["Num","Black"], big.mark=",", scientific=FALSE)`).
 
 <i>Note that the last column "OTHERS" includes workers who described themselves as members of another racial broup not included in the previous categories, or as biracial or multiracial. Also note that "White", "Black", and "Asian" include workers who described themselves as "White, but not Hispanic", "Black, but not Hispnic", and "Asian, but not Hispanic".</i>
 
@@ -182,7 +182,7 @@ Answer 2B ... As shown in Table 2B (below), the ratio of American male to Americ
 <P style="page-break-before: always">    
 #### Question 3 -- How did the racial, ethnic, foreign, and male/female shares of jobs in U.S. tech change between 2010 and 2015?  
 
-The five pairs of tables in this section display profiles of the various groups considered in this report. 
+The seven pairs of tables in this section display profiles of the various groups considered in this report. 
 
 For the purposes of this report, "information technology" was defined as the thirteen standard occupation categories (SOC) that appear in the first column of the following tables. Twelve related to software, e.g., Software Developers and Computer Programmers; one related to hardware, i.e., Computer Hardware Engineers.     
 
@@ -198,7 +198,7 @@ The first column of each table contains a list of job categories. Some categorie
 
 * <b>perF15</b> ... the "Percent Female in 2015" displays the percent of jobs in each category that were held by female techs in 2015. For example, Table 3Z shows that the `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Fem"], big.mark=",", scientific=FALSE)` female software developers were `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "perF15"], big.mark=",", scientific=FALSE)` percent of the total `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Tech15"], big.mark=",", scientific=FALSE)`
 
-* <b>perF10</b> ... the "Percent Female in 2010" displays the percent of jobs in each category that were held by female techs in 2010. This stat is always contained in the companion table, e.g., Table 3ZZ is the companion to Table 3Z, and contains data that shows the changes in employment in each category between 2010 and 2015
+* <b>perF10</b> ... the "Percent Female in 2010" displays the percent of jobs in each category that were held by female techs in 2010. This stat is always contained in the companion table, e.g., Table 3ZZ.
 
 * <b>Change</b> ... the difference between the number of workers in each job category in 2010 and the number in 2015. This stat is always found in the companion table, e.g., Table 3ZZ. 
 
@@ -206,7 +206,7 @@ The first column of each table contains a list of job categories. Some categorie
 
 <i>Question 3.0</i> -- How many American male vs. female techs were in each category in 2010 and 2015 in the 50 states and the District of Columbia?
 
- <i>Answer 3.0</i> ... As per its title, Tables 3Z and 3ZZ (below) only contain data about tech workers who were American citizens; data about foreign workers will appear in Tables 3E and 3F (subsequent.)
+ <i>Answer 3.0</i> ... As per its title, Tables 3Z and 3ZZ (below) only contain data about tech workers who were American citizens; data about foreign workers will appear in Tables 3E and 3F. An important statistic that can be derived from the data in Table 3ZZ is that `r prettyNum(  round(dfTable3ZZ[1, "Tech10"] * dfTable3ZZ[1, "perF10"]/100,digits=0)  , big.mark=",", scientific=FALSE)` techs in 2010 were female, i.e., `r prettyNum(dfTable3ZZ[1, "perF10"], big.mark=",", scientific=FALSE) ` percent of `r prettyNum(dfTable3ZZ[1, "Tech10"], big.mark=",", scientific=FALSE)`.
  
  <b>Table 3Z -- American Male/Female Composition of U.S. Tech in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -317,7 +317,7 @@ colnames(dfTable4) <- c("ALL STATES", "CA", "TX", "NY", "FL", "VA", "IL", "Total
 print(format(dfTable4[,c(1:7,9)], big.mark = "," , rownames=FALSE ))
 ```
  
-I've presented U.S. Census data that shows the geographic distribution of tech professionals in two formats: (1) as a set of choropleth maps and (2) as a corresponding set of tables. I show the maps first because it's easier to see the workplace patterns of the racial/ethnic/female groups by looking at multicolored maps than by scanning columns of data in long tables. Indeed, a quick scan of the maps makes it easier to spot the same patterns in the data tables.
+I've presented U.S. Census data that shows the geographic distribution of tech professionals in two formats: (1) as a set of choropleth maps and (2) as a corresponding set of tables. I have shown the maps first because it's easier to see the workplace patterns of the racial/ethnic/female groups by looking at multicolored maps than by scanning columns of data in long tables. Indeed, a quick scan of the maps makes it easier to spot the same patterns in the data tables.
 
 There are six maps (below), one for each racial/ethnic group plus two female groups, Asian American females and non-Asian American females. Map 4A shows the workplace distribution of White techs; Map 4B shows the distribution of Black techs; Map 4C shows Asian techs; Map 4D shows Hispanic; Map E shows Asian female; Map F shows non-Asian females. Each map colors the states with the largest number of tech workers in the darkest colors, and colors the states with the least tech workers in the lightest colors. The same colors represent the same percentages on all eight maps
    
