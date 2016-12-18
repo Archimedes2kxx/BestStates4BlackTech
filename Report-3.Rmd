@@ -1,5 +1,5 @@
 ---
-title: "Best States for American Black, Hispanic, Asian, and Female Tech -- Version 1.0e"
+title: "Best States for American Black, Hispanic, Asian, and Female Tech -- Version 1.0d"
 author: "Roy L Beasley, PhD -- DLL Editor"
 
 output: 
@@ -67,7 +67,7 @@ perFemIncrease <- round(100 * (dfTable3Z[1,"Fem"] - fem10)/fem10, digits=1)
 
 <img src="ggChart2.png" style="width:600px;height:300px;" />
 
-* Approximately `r prettyNum(dfTable2B["Num","Female"], big.mark=",", scientific=FALSE)` American techs were male; `r prettyNum(dfTable2B["Num","Male"], big.mark=",", scientific=FALSE)` were female.  Approximately `r prettyNum(dfTable2B["Num","FemAsian"], big.mark=",", scientific=FALSE)` American female techs were Asian-American; and  `r prettyNum(dfTable2B["Num","FemNonAsian"], big.mark=",", scientific=FALSE)` were non-Asian American. <i>(See Chart 3, below.)</i>
+* Approximately `r prettyNum(dfTable2B["Num","Female"], big.mark=",", scientific=FALSE)` American techs were female; `r prettyNum(dfTable2B["Num","Male"], big.mark=",", scientific=FALSE)` were male.  Approximately `r prettyNum(dfTable2B["Num","FemAsian"], big.mark=",", scientific=FALSE)` American female techs were Asian-American; and  `r prettyNum(dfTable2B["Num","FemNonAsian"], big.mark=",", scientific=FALSE)` were non-Asian American. <i>(See Chart 3, below.)</i>
 
 <img src="ggChart3.png" style="width:600px;height:300px;" />
 
