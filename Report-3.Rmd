@@ -182,7 +182,7 @@ Answer 2B ... As shown in Table 2B (below), the ratio of American male to Americ
 <P style="page-break-before: always">    
 #### Question 3 -- How did the racial, ethnic, foreign, and male/female shares of jobs in U.S. tech change between 2010 and 2015?  
 
-The seven pairs of tables in this section display profiles of the various groups considered in this report. 
+The six pairs of tables in this section display profiles of the various groups considered in this report. 
 
 For the purposes of this report, "information technology" was defined as the thirteen standard occupation categories (SOC) that appear in the first column of the following tables. Twelve related to software, e.g., Software Developers and Computer Programmers; one related to hardware, i.e., Computer Hardware Engineers.     
 
@@ -206,7 +206,7 @@ The first column of each table contains a list of job categories. Some categorie
 
 <i>Question 3.0</i> -- How many American male vs. female techs were in each category in 2010 and 2015 in the 50 states and the District of Columbia?
 
- <i>Answer 3.0</i> ... As per its title, Tables 3Z and 3ZZ (below) only contain data about tech workers who were American citizens; data about foreign workers will appear in Tables 3E and 3F. An important statistic that can be derived from the data in Table 3ZZ is that `r prettyNum(  round(dfTable3ZZ[1, "Tech10"] * dfTable3ZZ[1, "perF10"]/100,digits=0)  , big.mark=",", scientific=FALSE)` techs in 2010 were female, i.e., `r prettyNum(dfTable3ZZ[1, "perF10"], big.mark=",", scientific=FALSE) ` percent of `r prettyNum(dfTable3ZZ[1, "Tech10"], big.mark=",", scientific=FALSE)`.
+ <i>Answer 3.0</i> ... As per its title, Tables 3Z and 3ZZ (below) only contain data about tech workers who were American citizens; data about foreign workers will appear in Tables 3E and 3EE. An important statistic that can be derived from the data in Table 3ZZ is that `r prettyNum(  round(dfTable3ZZ[1, "Tech10"] * dfTable3ZZ[1, "perF10"]/100,digits=0)  , big.mark=",", scientific=FALSE)` techs in 2010 were female, i.e., `r prettyNum(dfTable3ZZ[1, "perF10"], big.mark=",", scientific=FALSE) ` percent of `r prettyNum(dfTable3ZZ[1, "Tech10"], big.mark=",", scientific=FALSE)`.
  
  <b>Table 3Z -- American Male/Female Composition of U.S. Tech in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
