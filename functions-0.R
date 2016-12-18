@@ -667,7 +667,7 @@ makeSummary <- function(rList, beta){
     }
     rownames(mat) <- names(rList)
     mat <- cbind(mat, beta)
-    colnames(mat) <- c("Tech", "T_%", "Population", "P_%", "Par", "beta1000")
+    colnames(mat) <- c("Tech", "perT", "Population", "perP", "Par", "beta1000")
     
     dfTable <- as.data.frame(mat)
     return(dfTable)
