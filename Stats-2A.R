@@ -146,7 +146,9 @@
     
     dfForS1 <- dfProfileForeigners_RawState.2010
     dfForS2 <- dfProfileForeigners_RawState 
-    colSums(dfForS2[,3:4]) ### male, female = 455883 113831, which is correct
+    
+    dfForR1 <- dfProfileForeigners_RawRace.2010
+    dfForR2 <- dfProfileForeigners_RawRace 
     
     dfForRS1 <- dfProfileForeigners_RawRaceState.2010
     dfForRS2 <- dfProfileForeigners_RawRaceState 
@@ -200,17 +202,8 @@
     (dfTable3E <- Profiles[[1]])
     (dfTable3EE <- Profiles[[2]]) 
     
-###############################################
-###############################################    
-### Table 3F -- Profile of Foreign Techs in California in 2015
     
-    Profiles <- createListProfiles(dfForS1, dfForS2, state="California") 
-    (dfTable3F <- Profiles[[1]]) 
-    (dfTable3FF <- Profiles[[2]]) 
-    
-########################################
-########################################  
-### Chart 4. Growth in Tech, 2010 to 2015
+    ### Chart 4. Growth in Tech, 2010 to 2015
     listDfs <- list(White=dfTable3AA, Black=dfTable3BB, Hispanic=dfTable3CC, Asian=dfTable3DD, Foreign=dfTable3EE)
     ggDfChart4 <- createXYZdf("Tech", "10", "15", listdDfs)
     ###ggDfChart4
@@ -218,6 +211,34 @@
     ggChart4 <- makeGroupedBarChart(ggDfChart4, chartTitle4)
     ggChart4
     ggsave("ggChart4.png", width=4, height=2)    
+    
+###############################################
+###############################################    
+### Table 3F -- Profile of Foreign from Asia in 2015
+    
+    Profiles <- createListProfiles(dfForR1, dfForR2, group="Asian") 
+    (dfTable3F <- Profiles[[1]]) 
+    (dfTable3FF <- Profiles[[2]]) 
+    
+########################################
+########################################  
+     
+### Table 3G -- Profile of Foreign in California  in 2015
+    
+    Profiles <- createListProfiles(dfForS1, dfForS2, state="California") 
+    (dfTable3G <- Profiles[[1]]) 
+    (dfTable3GG <- Profiles[[2]]) 
+    
+    
+########################################
+########################################  
+    
+### Table 3H -- Profile of  Foreign Asian in California  in 2015
+    
+    Profiles <- createListProfiles(dfForRS1, dfForRS2, state="California", group="Asian") 
+    (dfTable3H <- Profiles[[1]]) 
+    (dfTable3HH <- Profiles[[2]]) 
+
     
 ###############################################
 ############################################### 
@@ -389,7 +410,7 @@
      
 ########################################
 ########################################     
-save(dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable3Z, dfTable3ZZ, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, file="dfTab1A1B2A2B3ABCDEF.rda")
+save(dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable3Z, dfTable3ZZ, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3F, dfTable3FF, dfTable3G, dfTable3GG, dfTable3H, dfTable3HH, file="dfTab1A1B2A2B3ABCDEF.rda")
 
 save(dfTable3CA, dfTable3CACA, dfTable3CAblack, dfTable3CACAblack, dfTable3CAhispanic, dfTable3CACAhispanic,  dfTable3TX, dfTable3TXTX, dfTable3TXblack, dfTable3TXTXblack, dfTable3TXhispanic, dfTable3TXTXhispanic, dfTable3NY, dfTable3NYNY, dfTable3NYblack, dfTable3NYNYblack, dfTable3NYhispanic, dfTable3NYNYhispanic, dfTable3FL, dfTable3FLFL, dfTable3FLblack, dfTable3FLFLblack, dfTable3FLhispanic, dfTable3FLFLhispanic, dfTable3VA, dfTable3VAVA, dfTable3VAblack, dfTable3VAVAblack, dfTable3VAhispanic, dfTable3VAVAhispanic, dfTable3IL, dfTable3ILIL, dfTable3ILblack, dfTable3ILILblack, dfTable3ILhispanic, dfTable3ILILhispanic, dfTable3DC, dfTable3DCDC, dfTable3DCblack, dfTable3DCDCblack, dfTable3DChispanic, dfTable3DCDChispanic, file="APPENDIX.rda")
 
