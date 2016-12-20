@@ -220,26 +220,6 @@
     (dfTable3F <- Profiles[[1]]) 
     (dfTable3FF <- Profiles[[2]]) 
     
-########################################
-########################################  
-     
-### Table 3G -- Profile of Foreign in California  in 2015
-    
-    Profiles <- createListProfiles(dfForS1, dfForS2, state="California") 
-    (dfTable3G <- Profiles[[1]]) 
-    (dfTable3GG <- Profiles[[2]]) 
-    
-    
-########################################
-########################################  
-    
-### Table 3H -- Profile of  Foreign Asian in California  in 2015
-    
-    Profiles <- createListProfiles(dfForRS1, dfForRS2, state="California", group="Asian") 
-    (dfTable3H <- Profiles[[1]]) 
-    (dfTable3HH <- Profiles[[2]]) 
-
-    
 ###############################################
 ############################################### 
 ### APPENDIX 
@@ -269,50 +249,17 @@
 ### Nebraska 2279 is wrong ... from Nebraska to Wyoming (last) is wrong
 ### Missouri 6655 is OK ... from (Alabama first) to Missouri is right
     
+   
+### Table 3forCA -- Profile of Foreign in California  in 2015
+    Profiles <- createListProfiles(dfForS1, dfForS2, state="California") 
+    (dfTable3forCA <- Profiles[[1]]) 
+    (dfTable3forCACA <- Profiles[[2]]) 
+    
+### Table 3.forAsian -- Profile of Foreign Asian in California  in 2015
     Profiles <- createListProfiles(dfForRS1, dfForRS2, state="California", group="Asian") 
-    (dfTable3CAForAsian <- Profiles[[1]])
-    (dfTable3CACAForAsian <- Profiles[[2]])   
+    (dfTable3forAsianCA <- Profiles[[1]]) 
+    (dfTable3forAsianCACA <- Profiles[[2]]) 
     
-####################################
-####################################
-### Table 3FL -- Profile of Techs in Florida in 2015
-
-    Profiles <- createListProfiles(dfCitS1, dfCitS2, state="Florida") 
-    (dfTable3FL <- Profiles[[1]])
-    (dfTable3FLFL <- Profiles[[2]])    
-  
-    Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state="Florida", group="Black") 
-    (dfTable3FLblack <- Profiles[[1]])
-    (dfTable3FLFLblack <- Profiles[[2]])  
-    
-    Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state="Florida", group="Hispanic") 
-    (dfTable3FLhispanic <- Profiles[[1]])
-    (dfTable3FLFLhispanic <- Profiles[[2]])      
-      
-    ### Profiles <- createListProfiles(dfForS1, dfForS2, state="Florida") 
-    ### (dfTable3FLfor <- Profiles[[1]])
-    ### (dfTable3FLFLfor <- Profiles[[2]])    
-
-####################################
-####################################
-### Table 3NY -- Profile of Techs in New York in 2015
-
-    Profiles <- createListProfiles(dfCitS1, dfCitS2, state="New York") 
-    (dfTable3NY <- Profiles[[1]])
-    (dfTable3NYNY <- Profiles[[2]])    
-    
-    Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state="New York", group="Black") 
-    (dfTable3NYblack <- Profiles[[1]])
-    (dfTable3NYNYblack <- Profiles[[2]])  
-    
-    Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state="New York", group="Hispanic") 
-    (dfTable3NYhispanic <- Profiles[[1]])
-    (dfTable3NYNYhispanic <- Profiles[[2]])         
-    
-    ### Profiles <- createListProfiles(dfForS1, dfForS2, state="New York") 
-    ### (dfTable3NYfor <- Profiles[[1]])
-    ### (dfTable3NYNYfor <- Profiles[[2]]) 
-
 ####################################
 ####################################
 ### Table 3TX -- Profile of Techs in Texas in 2015
@@ -329,12 +276,71 @@
     (dfTable3TXhispanic <- Profiles[[1]])
     (dfTable3TXTXhispanic <- Profiles[[2]])        
     
+### Table 3.forTX -- Profile of Foreign in California  in 2015
     Profiles <- createListProfiles(dfForS1, dfForS2, state="Texas") 
-    ### (dfTable3TXfor <- Profiles[[1]])
-    ### (dfTable3TXTXfor <- Profiles[[2]]) 
+    (dfTable3forTX <- Profiles[[1]]) 
+    (dfTable3forTXTX <- Profiles[[2]]) 
+    
+### Table 3.forAsianTX -- Profile of Foreign Asian in California  in 2015
+    Profiles <- createListProfiles(dfForRS1, dfForRS2, state="Texas", group="Asian") 
+    (dfTable3forAsianTX <- Profiles[[1]]) 
+    (dfTable3forAsianTXTX <- Profiles[[2]]) 
+    
+    
+####################################
+####################################
+### Table 3NY -- Profile of Techs in New York in 2015
 
-########################################
-########################################
+    Profiles <- createListProfiles(dfCitS1, dfCitS2, state="New York") 
+    (dfTable3NY <- Profiles[[1]])
+    (dfTable3NYNY <- Profiles[[2]])    
+    
+    Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state="New York", group="Black") 
+    (dfTable3NYblack <- Profiles[[1]])
+    (dfTable3NYNYblack <- Profiles[[2]])  
+    
+    Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state="New York", group="Hispanic") 
+    (dfTable3NYhispanic <- Profiles[[1]])
+    (dfTable3NYNYhispanic <- Profiles[[2]])         
+    
+### Table 3forNY -- Profile of Foreign in New York  in 2015
+    Profiles <- createListProfiles(dfForS1, dfForS2, state="New York") 
+    (dfTable3forNY <- Profiles[[1]]) 
+    (dfTable3forNYNY <- Profiles[[2]]) 
+    
+### Table 3.forAsian -- Profile of Foreign Asian in California  in 2015
+    Profiles <- createListProfiles(dfForRS1, dfForRS2, state="New York", group="Asian") 
+    (dfTable3forAsianNY <- Profiles[[1]]) 
+    (dfTable3forAsianNYNY <- Profiles[[2]]) 
+    
+####################################
+####################################
+### Table 3FL -- Profile of Techs in Florida in 2015
+    
+    Profiles <- createListProfiles(dfCitS1, dfCitS2, state="Florida") 
+    (dfTable3FL <- Profiles[[1]])
+    (dfTable3FLFL <- Profiles[[2]])    
+    
+    Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state="Florida", group="Black") 
+    (dfTable3FLblack <- Profiles[[1]])
+    (dfTable3FLFLblack <- Profiles[[2]])  
+    
+    Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state="Florida", group="Hispanic") 
+    (dfTable3FLhispanic <- Profiles[[1]])
+    (dfTable3FLFLhispanic <- Profiles[[2]])      
+    
+### Table 3forFL -- Profile of Foreign in California  in 2015
+    Profiles <- createListProfiles(dfForS1, dfForS2, state="Florida") 
+    (dfTable3forFL <- Profiles[[1]]) 
+    (dfTable3forFLFL <- Profiles[[2]]) 
+    
+### Table 3.forAsian -- Profile of Foreign Asian in California  in 2015
+    Profiles <- createListProfiles(dfForRS1, dfForRS2, state="Florida", group="Asian") 
+    (dfTable3forAsianFL <- Profiles[[1]]) 
+    (dfTable3forAsianFLFL <- Profiles[[2]]) 
+    
+####################################
+####################################   
 ### Table 3VA -- Profile of Techs in Virginia in 2015
     
     Profiles <- createListProfiles(dfCitS1, dfCitS2, state="Virginia") 
@@ -349,9 +355,15 @@
     (dfTable3VAhispanic <- Profiles[[1]])
     (dfTable3VAVAhispanic <- Profiles[[2]])  
     
+### Table 3forVA -- Profile of Foreign in Virginia  in 2015
     Profiles <- createListProfiles(dfForS1, dfForS2, state="Virginia") 
-    ### (dfTable3VAfor <- Profiles[[1]])
-    ### (dfTable3VAVAfor <- Profiles[[2]]) 
+    (dfTable3forVA <- Profiles[[1]]) 
+    (dfTable3forVAVA <- Profiles[[2]]) 
+    
+### Table 3.forAsian -- Profile of Foreign Asian in Virginia  in 2015
+    Profiles <- createListProfiles(dfForRS1, dfForRS2, state="Virginia", group="Asian") 
+    (dfTable3forAsianVA <- Profiles[[1]]) 
+    (dfTable3forAsianVAVA <- Profiles[[2]])
 
 ########################################
 ########################################
@@ -368,15 +380,20 @@
     Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state="Illinois", group="Hispanic") 
     (dfTable3ILhispanic <- Profiles[[1]])
     (dfTable3ILILhispanic <- Profiles[[2]])  
-    
+ 
+### Table 3forIL -- Profile of Foreign in Illinois  in 2015
     Profiles <- createListProfiles(dfForS1, dfForS2, state="Illinois") 
-   ###  (dfTable3ILfor <- Profiles[[1]])
-   ###  (dfTable3ILILfor <- Profiles[[2]]) 
-
+    (dfTable3forIL <- Profiles[[1]]) 
+    (dfTable3forILIL <- Profiles[[2]]) 
     
-    ########################################
-    ########################################
-    ### Table 3DC -- Profile of Techs in District of Columbia in 2015
+### Table 3.forAsian -- Profile of Foreign Asian in Illinois  in 2015
+    Profiles <- createListProfiles(dfForRS1, dfForRS2, state="Illinois", group="Asian") 
+    (dfTable3forAsianIL <- Profiles[[1]]) 
+    (dfTable3forAsianILIL <- Profiles[[2]])  
+    
+########################################
+########################################
+### Table 3DC -- Profile of Techs in District of Columbia in 2015
     
     Profiles <- createListProfiles(dfCitS1, dfCitS2, state="Dist of Col") 
     (dfTable3DC <- Profiles[[1]])
@@ -389,28 +406,20 @@
     Profiles <- createListProfiles(dfCitRS1, dfCitRS2, state="Dist of Col", group="Hispanic") 
     (dfTable3DChispanic <- Profiles[[1]])
     (dfTable3DCDChispanic <- Profiles[[2]])  
-    
-    ### Profiles <- createListProfiles(dfForS1, dfForS2, state="Dist of Col") 
-    ### (dfTable3DCfor <- Profiles[[1]])
-    ### (dfTable3DCDCfor <- Profiles[[2]]) 
-    
-
 
 ########################################
 ########################################  
     ### Chart 5. Growth in Foreign Tech, 2010 to 2015"
-    ###listDfs <- list(Total=dfTable3EE, CA=dfTable3CACAfor, TX=dfTable3TXTXfor, NY=dfTable3NYNYfor, FL
-    ####=dfTable3FLFLfor, VA=dfTable3VAVAfor, IL=dfTable3ILILfor, DC=dfTable3DCDCfor)
-    ### ggDfChart5 <- createXYZdf("Tech", "10", "15", listdDfs)
-    ###ggDfChart4
-    ### chartTitle5 <- "Chart 5. Growth in Foreign Tech, 2010 to 2015"
-    ### ggChart5 <- makeGroupedBarChart(ggDfChart5, chartTitle5)
-    ### ggChart5
-    ### ggsave("ggChart5.png", width=4, height=2)    
+    listDfs <- list(CA=dfTable3forCACA, TX=dfTable3forTXTX, NY=dfTable3forNYNY, FL=dfTable3forFLFL, VA=dfTable3forVAVA, IL=dfTable3forILIL)
+    ggDfChart5 <- createXYZdf("Tech", "10", "15", listdDfs)
+    chartTitle5 <- "Chart 5. Foreign Tech by States, 2010 to 2015"
+    ggChart5 <- makeGroupedBarChart(ggDfChart5, chartTitle5)
+    (ggChart5 <- ggChart5 + theme(axis.title.x = element_blank()))
+    ggsave("ggChart5.png", width=4, height=2)    
      
 ########################################
 ########################################     
-save(dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable3Z, dfTable3ZZ, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3F, dfTable3FF, dfTable3G, dfTable3GG, dfTable3H, dfTable3HH, file="dfTab1A1B2A2B3ABCDEF.rda")
+save(dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable3Z, dfTable3ZZ, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3F, dfTable3FF, file="dfTab1A1B2A2B3ABCDEF.rda")
 
-save(dfTable3CA, dfTable3CACA, dfTable3CAblack, dfTable3CACAblack, dfTable3CAhispanic, dfTable3CACAhispanic,  dfTable3TX, dfTable3TXTX, dfTable3TXblack, dfTable3TXTXblack, dfTable3TXhispanic, dfTable3TXTXhispanic, dfTable3NY, dfTable3NYNY, dfTable3NYblack, dfTable3NYNYblack, dfTable3NYhispanic, dfTable3NYNYhispanic, dfTable3FL, dfTable3FLFL, dfTable3FLblack, dfTable3FLFLblack, dfTable3FLhispanic, dfTable3FLFLhispanic, dfTable3VA, dfTable3VAVA, dfTable3VAblack, dfTable3VAVAblack, dfTable3VAhispanic, dfTable3VAVAhispanic, dfTable3IL, dfTable3ILIL, dfTable3ILblack, dfTable3ILILblack, dfTable3ILhispanic, dfTable3ILILhispanic, dfTable3DC, dfTable3DCDC, dfTable3DCblack, dfTable3DCDCblack, dfTable3DChispanic, dfTable3DCDChispanic, file="APPENDIX.rda")
+save(dfTable3CA, dfTable3CACA, dfTable3CAblack, dfTable3CACAblack, dfTable3CAhispanic, dfTable3CACAhispanic, dfTable3forCA, dfTable3forCACA, dfTable3forAsianCA, dfTable3forAsianCACA, dfTable3TX, dfTable3TXTX, dfTable3TXblack, dfTable3TXTXblack, dfTable3TXhispanic, dfTable3TXTXhispanic, dfTable3forTX, dfTable3forTXTX, dfTable3forAsianTX, dfTable3forAsianTXTX, dfTable3NY, dfTable3NYNY, dfTable3NYblack, dfTable3NYNYblack, dfTable3NYhispanic, dfTable3NYNYhispanic, dfTable3forNY, dfTable3forNYNY, dfTable3forAsianNY, dfTable3forAsianNYNY, dfTable3FL, dfTable3FLFL, dfTable3FLblack, dfTable3FLFLblack, dfTable3FLhispanic, dfTable3FLFLhispanic, dfTable3forFL, dfTable3forFLFL, dfTable3forAsianFL, dfTable3forAsianFLFL, dfTable3VA, dfTable3VAVA, dfTable3VAblack, dfTable3VAVAblack, dfTable3VAhispanic, dfTable3VAVAhispanic, dfTable3forVA, dfTable3forVAVA, dfTable3forAsianVA, dfTable3forAsianVAVA, dfTable3IL, dfTable3ILIL, dfTable3ILblack, dfTable3ILILblack, dfTable3ILhispanic, dfTable3ILILhispanic, dfTable3forIL, dfTable3forILIL, dfTable3forAsianIL, dfTable3forAsianILIL, dfTable3DC, dfTable3DCDC, dfTable3DCblack, dfTable3DCDCblack, dfTable3DChispanic, dfTable3DCDChispanic, file="APPENDIX.rda")
 
