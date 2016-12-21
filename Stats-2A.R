@@ -101,7 +101,7 @@
 
     
 ######################    
-### Table 2B. Male/Female Components of of U.S. Tech Sector in 2014
+### Table 2B. Male/Female Components of of U.S. Tech Sector in 2015
     totPop <- dfRaceSexCountAndShares[1, "Totals"]
     totFemale <- dfRaceSexCountAndShares[1, "Female"]
     totMale <- totPop - totFemale
@@ -124,7 +124,35 @@
     chartTitle3 <- "Chart 3. American Male/Female Tech"
     ggChart3 <- makeNumPerChart(dfTable2B[,-1], chartTitle3, font=2)
     ggChart3
-    ggsave("ggChart3.png", width=4, height=2)      
+    ggsave("ggChart3.png", width=4, height=2)  
+    
+###########################
+###########################
+### Table 2C. Foreign Male/Female Components of of U.S. Tech Sector in 2015   
+    totPop <- dfForeignRaceSexCountAndShares[1, "Totals"]
+    totFemale <- dfForeignRaceSexCountAndShares[1, "Female"]
+    totMale <- totPop - totFemale
+    
+    rowDf <- data.frame(Total=totPop, Male=totMale, Female=totFemale)
+    dfTable2Cleft <- makeNumPerTable(rowDf, Total)
+    ### print(dfTable2Cleft, quote=FALSE)
+    
+    totFemAsian <-dfForeignRaceSexCountAndShares[1, "FemAsian"]
+    totFemNonAsian <- dfForeignRaceSexCountAndShares[1, "FemNonAsian"]
+    rowDf <- data.frame(Total=totPop, FemAsian=totFemAsian, FemNonAsian=totFemNonAsian)
+    dfTable2Cright <- makeNumPerTable(rowDf, Total)
+    dfTable2Cright <- subset(dfTable2Cright, select=-Total)
+    ### print(dfTable2Cright, quote=FALSE)
+    
+    dfTable2C <- cbind(dfTable2Cleft, dfTable2Cright)
+    print(dfTable2C, quote=FALSE)
+    
+    ### Chart 4 showing male/female compnents
+    chartTitle4 <- "Chart 4. Foreign Male/Female Tech"
+    ggChart4 <- makeNumPerChart(dfTable2C[,-1], chartTitle4, font=2)
+    ggChart4
+    ggsave("ggChart4.png", width=4, height=2)     
+    
     
 ###########################
 ############################
@@ -203,14 +231,14 @@
     (dfTable3EE <- Profiles[[2]]) 
     
     
-    ### Chart 4. Growth in Tech, 2010 to 2015
+### Chart 5. Growth in Tech, 2010 to 2015
     listDfs <- list(White=dfTable3AA, Black=dfTable3BB, Hispanic=dfTable3CC, Asian=dfTable3DD, Foreign=dfTable3EE)
-    ggDfChart4 <- createXYZdf("Tech", "10", "15", listdDfs)
-    ###ggDfChart4
-    chartTitle4 <- "Chart 4. Growth in Tech, 2010 to 2015"
-    ggChart4 <- makeGroupedBarChart(ggDfChart4, chartTitle4)
-    ggChart4
-    ggsave("ggChart4.png", width=4, height=2)    
+    ggDfChart5 <- createXYZdf("Tech", "10", "15", listdDfs)
+    ###ggDfChart5
+    chartTitle5 <- "Chart 5. Growth in Tech, 2010 to 2015"
+    ggChart5 <- makeGroupedBarChart(ggDfChart5, chartTitle4)
+    ggChart5
+    ggsave("ggChart5.png", width=4, height=2)    
     
 ###############################################
 ###############################################    
@@ -407,19 +435,29 @@
     (dfTable3DChispanic <- Profiles[[1]])
     (dfTable3DCDChispanic <- Profiles[[2]])  
 
+
 ########################################
 ########################################  
     ### Chart 5. Growth in Foreign Tech, 2010 to 2015"
     listDfs <- list(CA=dfTable3forCACA, TX=dfTable3forTXTX, NY=dfTable3forNYNY, FL=dfTable3forFLFL, VA=dfTable3forVAVA, IL=dfTable3forILIL)
     ggDfChart5 <- createXYZdf("Tech", "10", "15", listdDfs)
-    chartTitle5 <- "Chart 5. Foreign Tech by States, 2010 to 2015"
+    chartTitle5 <- "Chart 5. Foreign Techs by States, 2010 to 2015"
     ggChart5 <- makeGroupedBarChart(ggDfChart5, chartTitle5)
     (ggChart5 <- ggChart5 + theme(axis.title.x = element_blank()))
     ggsave("ggChart5.png", width=4, height=2)    
      
 ########################################
+########################################  
+### Table3G -- Comparing Key Attributes of Big Six Profiles for Foreign techs
+    
+    listDf3forBigSix <- list("All Foreign" = dfTable3EE, "California" = dfTable3forCACA, "Texas" = dfTable3forTXTX, "New York" = dfTable3forNYNY, "Florida" = dfTable3forFLFL, "Virginia" = dfTable3forVAVA, "Illinois" = dfTable3forILIL)
+    
+    dfTable3G <- makeProfile3forBigSix(listDf3forBigSix)
+    dfTable3G
+    
+########################################
 ########################################     
-save(dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable3Z, dfTable3ZZ, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3F, dfTable3FF, file="dfTab1A1B2A2B3ABCDEF.rda")
+save(dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable2C, dfTable3Z, dfTable3ZZ, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3F, dfTable3FF, dfTable3G,  file="dfTab1A1B2A2B3ABCDEF.rda")
 
 save(dfTable3CA, dfTable3CACA, dfTable3CAblack, dfTable3CACAblack, dfTable3CAhispanic, dfTable3CACAhispanic, dfTable3forCA, dfTable3forCACA, dfTable3forAsianCA, dfTable3forAsianCACA, dfTable3TX, dfTable3TXTX, dfTable3TXblack, dfTable3TXTXblack, dfTable3TXhispanic, dfTable3TXTXhispanic, dfTable3forTX, dfTable3forTXTX, dfTable3forAsianTX, dfTable3forAsianTXTX, dfTable3NY, dfTable3NYNY, dfTable3NYblack, dfTable3NYNYblack, dfTable3NYhispanic, dfTable3NYNYhispanic, dfTable3forNY, dfTable3forNYNY, dfTable3forAsianNY, dfTable3forAsianNYNY, dfTable3FL, dfTable3FLFL, dfTable3FLblack, dfTable3FLFLblack, dfTable3FLhispanic, dfTable3FLFLhispanic, dfTable3forFL, dfTable3forFLFL, dfTable3forAsianFL, dfTable3forAsianFLFL, dfTable3VA, dfTable3VAVA, dfTable3VAblack, dfTable3VAVAblack, dfTable3VAhispanic, dfTable3VAVAhispanic, dfTable3forVA, dfTable3forVAVA, dfTable3forAsianVA, dfTable3forAsianVAVA, dfTable3IL, dfTable3ILIL, dfTable3ILblack, dfTable3ILILblack, dfTable3ILhispanic, dfTable3ILILhispanic, dfTable3forIL, dfTable3forILIL, dfTable3forAsianIL, dfTable3forAsianILIL, dfTable3DC, dfTable3DCDC, dfTable3DCblack, dfTable3DCDCblack, dfTable3DChispanic, dfTable3DCDChispanic, file="APPENDIX.rda")
 

@@ -471,6 +471,32 @@ makeGroupedBarChart <- function(dfXYZ, chartTitle) {
     return(ggBar)
 }
 
+makeProfile3forBigSix <- function(listDfs) {
+    
+### 1. Reads a list of seven profiles -- all foreign, and foreign for the Big Six states
+### 2. Extracts 4 rows from each profile -- All Occupations, Software Developers, Database Administrators, and Comp/Info research scientists ... 28 rows
+### 3. Only keeps six variables: State, Occupationm, Tech10, Tech15, Change, and perCh
+### 4. Prefixes each subset with a "State" column that includes the name of the state of the profile
+### 5. Orders the 28 rows of the resulting data frame by "Occupation", then by "Tech15"
+
+    States <- names(listDfs)
+    N <- length(listDfs) ### How many lists of data frame pairs
+    df2 <- data.frame(Occupation=character(), Tech10=integer(), Tech15=integer(), Change=integer(), perCh=numeric(), State=character(), stringsAsFactors = FALSE)
+
+    for (i in seq(1:N)) {
+        df <- listDfs[[i]]
+        cols5 <- subset(df, select=Occupation:perCh)
+        rows4 <- cols5[df$Occupation %in% c("All Occupations", "SOFTWARE DEVELOPERS", "DATABASE ADMINISTRATORS", "COMP/INFO RSRCH SCIENTISTS"),]
+        
+        ### Add a column for state
+        rows4$State <- States[i]
+        df2 <- rbind(df2, rows4)
+        
+        ### Order by Occupation, then Tech15, then perCh
+        df3 <- arrange(df2, Occupation, desc(Tech15), desc(Change))
+    }
+    return(df3) 
+}
 
 ############################
 ############################
@@ -725,6 +751,6 @@ makeTable8 <- function(dfIn, Group, letter){
 }
 
 ###################################
-save(readCodeBooks, addTotCol, addPerCols, addTotColSharePerRowCol, addTotalsRow, addMissingStatesToTable, decodeVariables, createProfiles_OccRaceState, createProfiles_OccState, createProfiles_OccRace, createProfiles_Occ, createPopRaceAndShares, makeNumPerTable, makeNumPerChart, createProfile, createCompareProfile, createListProfiles, createXYZdf, makeGroupedBarChart, makeSummary, plotEmpVsPop, makeLM, makeTechPopMap, theme_clean, makeForeignTechTable, makeForeignNonAsianTechTable, makeTechPopTable, makeParity, makeTable7, makeTable8, file="functions-0.rda")
+save(readCodeBooks, addTotCol, addPerCols, addTotColSharePerRowCol, addTotalsRow, addMissingStatesToTable, decodeVariables, createProfiles_OccRaceState, createProfiles_OccState, createProfiles_OccRace, createProfiles_Occ, createPopRaceAndShares, makeNumPerTable, makeNumPerChart, createProfile, createCompareProfile, createListProfiles, createXYZdf, makeGroupedBarChart, makeProfile3forBigSix, makeSummary, plotEmpVsPop, makeLM, makeTechPopMap, theme_clean, makeForeignTechTable, makeForeignNonAsianTechTable, makeTechPopTable, makeParity, makeTable7, makeTable8, file="functions-0.rda")
 
 

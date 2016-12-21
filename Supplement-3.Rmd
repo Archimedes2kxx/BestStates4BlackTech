@@ -1,5 +1,5 @@
 ---
-title: "Foreign Professionals: U.S. Tech's Other Pipelines -- Version 0.5"
+title: "Foreign Professionals: U.S. Tech's Other Pipelines -- Version 0.6"
 author: "Roy L Beasley, PhD -- DLL Editor"
 date: "12/19/2016"
 
@@ -62,9 +62,9 @@ perFemIncrease <- round(100 * (dfTable3Z[1,"Fem"] - fem10)/fem10, digits=1)
 
 * See Overview of full report <a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html#overview" target="_self"><b>HERE</b></a>
 
+  <img src="ggChart4.png" style="width:600px;height:300px;" />
 
   <img src="ggChart5.png" style="width:600px;height:300px;" />
-
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>   
   
@@ -74,7 +74,6 @@ perFemIncrease <- round(100 * (dfTable3Z[1,"Fem"] - fem10)/fem10, digits=1)
 Brief answers to the first three sets of questions provide a broad statistical framwork for the extended responses to the fourth question that forms the core of this supplement.   
 
 <i>Please note that the tables, maps, and charts in this supplement about foreign techs have been assigned numbers that follow the numbers of similar tables, maps, and charts in the original report about American techs. For example, Tables 3E and 3F appear in ths supplement because Tables 3A, 3B, 3C, and 3D appeared in the original. On the other hand a few tables from the original are repeated in this supplement as convenient references for the reader and are assigned the same numbers as in the original; for example, Tables 1C and 1E.</i>
-
 
 #### Question 1 -- How many foreign professionals worked in the U.S. tech sector in 2015?
 
@@ -97,14 +96,19 @@ Brief answers to the first three sets of questions provide a broad statistical f
 
 <P style="page-break-before: always">   
 #### Question 2 -- What was the foreign male/female composition of U.S. tech in 2015?
-<i>Answer 2</i> ...Asper Table 2C ...
-Table 2C ... tot male female femAsian femNonAsian
+<i>Answer 2</i> ...As per Table 2C ...
 
-blah-blah-blah
 
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>       
+<b>Table 2C -- Foreign Male/Female Components of the U.S. Tech Sector in 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(dfTable2C, row.names=TRUE, quote = FALSE)
+```
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>   
 
-<P style="page-break-before: always">    
+
+<P style="page-break-before: always">   
+
+
 #### Question 3 -- How did the foreign shares of jobs in U.S. tech change between 2010 and 2015?    
 
 
@@ -132,24 +136,8 @@ The first column of each table contains a list of job categories. Some categorie
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>  
 
-<P style="page-break-before: always">   
- 
- <b>Table 3Z -- American Male/Female Composition of U.S. Tech in 2015</b> 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3Z, big.mark=","), row.names=FALSE, quote=FALSE)
-```
-
-<P style="page-break-before: always">    
- <b>Table 3ZZ -- Changes in the American Composition of U.S. Tech Between 2010 and 2015</b> 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3ZZ, big.mark=","), row.names=FALSE, quote=FALSE)
-```
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
-
-
 
 <P style="page-break-before: always">   
- 
  <b>Table 3E -- Foreign Male/Female Composition of U.S. Tech in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3E, big.mark=","), row.names=FALSE, quote=FALSE)
@@ -178,6 +166,13 @@ The first column of each table contains a list of job categories. Some categorie
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
 
+<P style="page-break-before: always">   
+ <b>Table 3G -- Key Attributes of Big Six State Profiles for Foreign Techs</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3G, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">back-to-top</a></center></i></small>  
 
 Big 6 states ... 
 
@@ -188,11 +183,33 @@ Chart 5. Foreign Growth in Big Six States
 <P style="page-break-before: always">    
 #### Question 4 -- Where did foreign techs work in 2015?      
 Answer 4 ... The following sections provide an extensive response to a more specific formulation of this question ==> In which states did foreign tech professionals work in 2015?  
-Map 4G Foreign   
-Map 4H Asian   
 
-Table 4G Foreign   
-Table 4H Asian
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+    grid.arrange(dfMap4G, dfMap4H, ncol=2) 
+``` 
+
+
+<P style="page-break-before: always">  
+<b>Table 4G -- Foreign Professionals in U.S. Information Technology -- Top 10 States </b>   
+<i>[Click here for full version](Table4G-Full-White-Employment.html)</i>
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+    ### Change of column names is permanent from here on ... matches displayed colum names
+    colnames(dfTable4G) <- c("State", "AllTech", "perSS", "ForTech", "perT")
+print(format(dfTable4G[1:11,], big.mark = ","), row.names=FALSE)  
+```
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>
+
+
+
+<P style="page-break-before: always">  
+<b>Table 4H -- Foreign Asian Professionals in U.S. Information Technology -- Top 10 States </b>   
+<i>[Click here for full version](Table4H-Full-White-Employment.html)</i>
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+    ### Change of column names is permanent from here on ... matches displayed colum names
+    colnames(dfTable4H) <- c("State", "AllTech", "perSS", "AsianTech", "perT")
+print(format(dfTable4H[1:11,], big.mark = ","), row.names=FALSE)  
+```
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>
 
