@@ -153,7 +153,7 @@ The first column of each table contains a list of job categories. Some categorie
 
 
 <P style="page-break-before: always">   
- <b>Table 3F -- Profiles of Key Jobs for Foreign Professionals in Tech Sectors Big Six States</b> 
+ <b>Table 3F -- Key Jobs for Foreign Professionals in the Tech Sectors of the Big Six States</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3F, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
@@ -176,8 +176,8 @@ Answer 4 ... The following sections provide an extensive response to a more spec
 
 
 <P style="page-break-before: always">  
-<b>Table 4G -- Foreign Professionals in U.S. Information Technology -- Top 10 States </b>   
-<i>[Click here for full version](Table4G-Full-White-Employment.html)</i>
+<b>Table 4G -- Foreign Asian Professionals in U.S. Information Technology -- Top 10 States </b>   
+<i>[Click here for full version](Table4G-Full-Foreign-Asia-Employment.html)</i>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
     ### Change of column names is permanent from here on ... matches displayed colum names
     colnames(dfTable4G) <- c("State", "AllTech", "perSS", "ForTech", "perT")
@@ -189,8 +189,8 @@ print(format(dfTable4G[1:11,], big.mark = ","), row.names=FALSE)
 
 
 <P style="page-break-before: always">  
-<b>Table 4H -- Foreign Asian Professionals in U.S. Information Technology -- Top 10 States </b>   
-<i>[Click here for full version](Table4H-Full-White-Employment.html)</i>
+<b>Table 4H -- Foreign Non-Asian Professionals in U.S. Information Technology -- Top 10 States </b>   
+<i>[Click here for full version](Table4H-Full-Foreign-Not-Asia-Employment.html)</i>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
     ### Change of column names is permanent from here on ... matches displayed colum names
     colnames(dfTable4H) <- c("State", "AllTech", "perSS", "AsianTech", "perT")
