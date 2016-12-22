@@ -15,7 +15,7 @@ output:
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
     load("dfTab4.rda") 
     library(prettydoc)
-    colnames(dfTable4H) <- c("State", "Foreign", "SS_%", "NotAsiaTech", "T_%") 
+    colnames(dfTable4H) <- c("State", "Foreign", "perSS", "NonAsianTech", "perT") 
     print(format(dfTable4H, big.mark = ","), row.names=FALSE)  
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html" target="_self">Return-to-Report</a></center></i></small>

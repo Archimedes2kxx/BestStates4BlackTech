@@ -557,10 +557,10 @@ makeForeignTechTable <- function(dfTech, Area){
 
 makeForeignNonAsianTechTable <- function(dfAsian){
 ### Handle this as special case ... derive from Asian tech table
-    dfNonAsian <- subset(dfAsian, select=c(State, Foreign, AsianTech))
+    dfNonAsian <- subset(dfAsian, select=c(State, AllForeign, Asian))
     dfNonAsian <- as.data.frame(dfNonAsian)
-    dfNonAsian$NonAsianTech <- dfNonAsian$Foreign - dfNonAsian$AsianTech
-    dfNonAsian$AsianTech <- NULL
+    dfNonAsian$NonAsian <- dfNonAsian$AllForeign - dfNonAsian$Asian
+    dfNonAsian$Asian <- NULL
     
     dfNonAsian <- addPerCols(dfNonAsian, 2, 3)
     dfNonAsian <- addTotColSharePerRowCol(dfNonAsian, 3) 

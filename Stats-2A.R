@@ -242,16 +242,15 @@
     
 ###############################################
 ###############################################
-### APPENDIX 
-    
-### Table 3FA -- Profile of Foreign from Asia in 2015
+### Table 3F -- Profile of Foreign from Asia in 2015
     
     Profiles <- createListProfiles(dfForR1, dfForR2, group="Asian") 
-    (dfTable3FA <- Profiles[[1]]) 
-    (dfTable3FAFA <- Profiles[[2]]) 
+    (dfTable3F <- Profiles[[1]]) 
+    (dfTable3FF <- Profiles[[2]]) 
     
 ###############################################
 ############################################### 
+### APPENDIX     
     
 ### Table3CA -- Profile of Techs in California in 2015
     Profiles <- createListProfiles(dfCitS1, dfCitS2, state="California") 
@@ -450,16 +449,16 @@
      
 ########################################
 ########################################  
-### Table3F -- Comparing Key Attributes of Big Six Profiles for Foreign techs
+### Table3G -- Comparing Key Attributes of Big Six Profiles for Foreign techs
     
     listDf3forBigSix <- list("All Foreign" = dfTable3EE, "California" = dfTable3forCACA, "Texas" = dfTable3forTXTX, "New York" = dfTable3forNYNY, "Florida" = dfTable3forFLFL, "Virginia" = dfTable3forVAVA, "Illinois" = dfTable3forILIL)
     
-    dfTable3F <- makeProfile3forBigSix(listDf3forBigSix)
-    dfTable3F
+    dfTable3G <- makeProfile3forBigSix(listDf3forBigSix)
+    dfTable3G
     
 ########################################
 ########################################     
-save(dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable2C, dfTable3Z, dfTable3ZZ, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3F,  file="dfTab1A1B2A2B3ABCDEF.rda")
+save(dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable2C, dfTable3Z, dfTable3ZZ, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3F, dfTable3FF, dfTable3G,  file="dfTab1A1B2A2B3ABCDEF.rda")
 
 save(dfTable3FA, dfTable3FAFA, dfTable3CA, dfTable3CACA, dfTable3CAblack, dfTable3CACAblack, dfTable3CAhispanic, dfTable3CACAhispanic, dfTable3forCA, dfTable3forCACA, dfTable3forAsianCA, dfTable3forAsianCACA, dfTable3TX, dfTable3TXTX, dfTable3TXblack, dfTable3TXTXblack, dfTable3TXhispanic, dfTable3TXTXhispanic, dfTable3forTX, dfTable3forTXTX, dfTable3forAsianTX, dfTable3forAsianTXTX, dfTable3NY, dfTable3NYNY, dfTable3NYblack, dfTable3NYNYblack, dfTable3NYhispanic, dfTable3NYNYhispanic, dfTable3forNY, dfTable3forNYNY, dfTable3forAsianNY, dfTable3forAsianNYNY, dfTable3FL, dfTable3FLFL, dfTable3FLblack, dfTable3FLFLblack, dfTable3FLhispanic, dfTable3FLFLhispanic, dfTable3forFL, dfTable3forFLFL, dfTable3forAsianFL, dfTable3forAsianFLFL, dfTable3VA, dfTable3VAVA, dfTable3VAblack, dfTable3VAVAblack, dfTable3VAhispanic, dfTable3VAVAhispanic, dfTable3forVA, dfTable3forVAVA, dfTable3forAsianVA, dfTable3forAsianVAVA, dfTable3IL, dfTable3ILIL, dfTable3ILblack, dfTable3ILILblack, dfTable3ILhispanic, dfTable3ILILhispanic, dfTable3forIL, dfTable3forILIL, dfTable3forAsianIL, dfTable3forAsianILIL, dfTable3DC, dfTable3DCDC, dfTable3DCblack, dfTable3DCDCblack, dfTable3DChispanic, dfTable3DCDChispanic, file="APPENDIX.rda")
 

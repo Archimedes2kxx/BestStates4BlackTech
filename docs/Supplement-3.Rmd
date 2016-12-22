@@ -234,8 +234,7 @@ print(format(dfTable4H[1:11,], big.mark = ","), row.names=FALSE)
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small> 
  
-<P style="page-break-before: always"> 
-
+<P style="page-break-before: always">    
 ## Appendix -- Job Profiles of Foreign Professionals in Big Six Tech States in 2015
 
 As per Table 4 in the supplement, the six states in this appendix employed the largest number of Americans in their tech sectors -- California, Texas, New York, Florida, Virginia, and Illinois. This appendix displays job profiles of the foreign techs employed by each of these states. Two pairs of tables are included for each state.

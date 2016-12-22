@@ -53,7 +53,7 @@ head(dfTable4A)
 ######################################
 ##### Make foreign tech tables ... Asian and non-Asian
 dfTable4G <- makeForeignTechTable(dfForeignRaceSexCountAndShares, "Asian")
-colnames(dfTable4G) <- c("State", "Foreign", "perState", "AsianTech", "perAsianTech")
+colnames(dfTable4G) <- c("State", "AllForeign", "perState", "Asian", "perAsian")
 head(dfTable4G)
 
 ### A few states employ no foreign techs, so the denominator of perState is zero
@@ -63,7 +63,7 @@ tail(dfTable4G)
 
 ######### Handle as special case ... subtract Asian from Foreign
 dfTable4H <- makeForeignNonAsianTechTable(dfTable4G) ### special case
-colnames(dfTable4H) <- c("State", "Foreign", "perState", "NonAsianTech", "perNonAsianTech")
+colnames(dfTable4H) <- c("State", "AllForeign", "perState", "NonAsian", "perNonAsian")
 head(dfTable4H)
 
 ################################
@@ -100,10 +100,14 @@ states_map <- map_data("state") ### for ggplot calls in the makeTechPopMap funct
 (dfMap4D <- makeTechPopMap(dfTechPopHispanic,"Hispanic", maxAsianPerState, "D. Hispanic Techs"))
 (dfMap4E <- makeTechPopMap(dfTechPopFemAsian,"FemAsian", maxAsianPerState, "E. FemAsian Techs"))
 (dfMap4F <- makeTechPopMap(dfTechPopFemNonAsian,"FemNonAsian", maxAsianPerState, "F. FemNonAsian Techs"))
-(dfMap4G <- makeTechPopMap(dfTable4G,"Asia", maxAsianPerState, "G. Foreign (Asian) Techs"))
-(dfMap4H <- makeTechPopMap(dfTable4H,"Asia", maxAsianPerState, "H. Foreign (NonAsian) Techs"))
+(dfMap4G <- makeTechPopMap(dfTable4G,"Asian", maxAsianPerState, "G. Foreign (Asian) Techs"))
+(dfMap4H <- makeTechPopMap(dfTable4H,"Asian", maxAsianPerState, "H. Foreign (NonAsian) Techs"))
 
 save(dfMap4A, dfMap4B, dfMap4C, dfMap4D, dfMap4E, dfMap4F, dfMap4G, dfMap4H, file="dfMap4.rda")
+
+### This will save a 400x400 file at 100 ppi
+(dfMap4G)
+ggsave("dfMap4G.png", width=5, height=5, dpi=200)
 
 ###########################
 ### Plots 5 ...
