@@ -1,7 +1,7 @@
 ---
 title: "Foreign Professionals: U.S. Tech's Other Pipelines -- Version 0.7"
 author: "Roy L Beasley, PhD -- DLL Editor"
-date: "12/22/2016"
+date: "12/23/2016"
 
 output: 
  prettydoc::html_pretty:
@@ -58,13 +58,27 @@ perFemIncrease <- round(100 * (dfTable3Z[1,"Fem"] - fem10)/fem10, digits=1)
 ## Overview     
 <i>Please note that all of the numbers in this overview and in the subsequent sections are estimates based on U.S. Census survey samples. So all numbers should be read as "approximately" even when the word "approximately" does not appear. </i>  
 
-* blah, blah, blah   
+* In 2015 there were approximately xxx foreign tech professionals in the  U.S. workforce. Approximately xxx were from Asian countries; xxx were from non-Asian countries. (See Table 1E)    
 
-* See Overview of full report <a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html#overview" target="_self"><b>HERE</b></a>
+* In 2015 approximately xxx foreign techs were male; xxx were female; xxx female techs came from Asian countries; xxx female tachs came from non-Asian countries. (See Table 2C)
 
   <img src="ggChart4.png" style="width:600px;height:300px;" />
+  
+* As per Chart 5 (below) xxx percent of foreign techs were concentrated in six states (Table 4.1) -- California (xxx%), Texas (xxx%), New York (xxx%), New Jersey (xxx%), Washington (xxx%), and Illinois (xxx%). These states also experienced the largest increase in the employment of foreign techs between 2010 and 2015 (Table 4G).
 
   <img src="ggChart5.png" style="width:600px;height:300px;" />
+
+* American firms employed foreign techs because they claimed that they could not find enough qualified American techs in the domestic job pipelines. The DLL's previous report, "Best States", found that employment of American techs in the 50 states plus the District of Columbia increased by xxx percent between 2010 and 2015. By contrast, the employment of foreign techs increased by xxx percent (Table 3EE)  
+
+* Given that cloud computing and machine learning became principal drivers in the expansion of the U.S. tech sector during the last five years, the increase in American vs. foreign tech employment in three job categories is especially noteworthy -- software developers, database administrators, and computer/research scientists.    
+
+* American firms increased their employment of foreign software developers from xxx in 2010 to xxx in 2015, i.e., a xxx percent increase (Table 3G). 
+
+* American firms increased their employment of foreign database administrators from xxx in 2010 to xxx in 2015, i.e, a xxx percent increase (Table 3G)
+
+* American firms increased their employment of foreign computer/research scientists from xxx in 2010 to xxx in 2015, i.a., a xxx percent increase (Table 3G).   
+
+* In 2015 California employed the largest number of foreign techs in all three categories -- software developers = xxx; database administrators = xxx; and computer/research scientists = xxx.
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>   
   
@@ -136,6 +150,19 @@ The first column of each table contains a list of job categories. Some categorie
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>  
 
+
+<P style="page-break-before: always">   
+ <b>Table 3Z -- American Male/Female Composition of U.S. Tech in 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3Z, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<P style="page-break-before: always">    
+ <b>Table 3ZZ -- Changes in the American Composition of U.S. Tech Between 2010 and 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3ZZ, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>  
 
 <P style="page-break-before: always">   
  <b>Table 3E -- Foreign Male/Female Composition of U.S. Tech in 2015</b> 
@@ -247,7 +274,7 @@ In a future version of the supplement, this Appendix will be replaced by an inte
 <i>Note: The column headings and abbreviated row names of the tables in this appendix are explained in the answer to [<b>Question 3](https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html#question-3-how-did-the-foreign-shares-of-jobs-in-u.s.-tech-change-between-2010-and-2015)</b> in the body of the supplement</i>
 
 <P style="page-break-before: always">        
-### California ... California ...California ... California ... California ...   
+### California ... California ...California ... California ... California ... California ...   
   
  <b>Table 3.forCA -- Foreign Male/Female Composition of Tech in California in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -277,7 +304,7 @@ In a future version of the supplement, this Appendix will be replaced by an inte
 
 
 <P style="page-break-before: always">    
-### Texas ... Texas ... Texas ... Texas ... Texas ... Texas ... 
+### Texas ... Texas ... Texas ... Texas ... Texas ... Texas ... Texas ...
  
  <b>Table 3.forTX -- Foreign Male/Female Composition of Tech in Texas in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -367,7 +394,7 @@ In a future version of the supplement, this Appendix will be replaced by an inte
 
 
 <P style="page-break-before: always">    
-### Washington ... Washington ... Washington ...   
+### Washington ... Washington ...   
 
  <b>Table 3.forWA -- Foreign Male/Female Composition of Tech in Washington in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
