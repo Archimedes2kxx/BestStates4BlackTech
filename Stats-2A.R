@@ -462,7 +462,7 @@
 ########################################  
 ### Chart 5. Growth in Foreign Tech, 2010 to 2015"
     
-    listDfs <- list(CA=dfTable3forCACA, TX=dfTable3forTXTX, NY=dfTable3forNYNY, FL=dfTable3forFLFL, VA=dfTable3forVAVA, IL=dfTable3forILIL)
+    listDfs <- list(CA=dfTable3forCACA, TX=dfTable3forTXTX, NY=dfTable3forNYNY, NJ=dfTable3forNJNJ, WA=dfTable3forWAWA, IL=dfTable3forILIL)
     ggDfChart5 <- createXYZdf("Tech", "10", "15", listdDfs)
     chartTitle5 <- "Chart 5. Foreign Techs by States, 2010 to 2015"
     ggChart5 <- makeGroupedBarChart(ggDfChart5, chartTitle5)
