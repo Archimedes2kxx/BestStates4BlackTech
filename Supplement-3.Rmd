@@ -247,7 +247,7 @@ In a future version of the supplement, this Appendix will be replaced by an inte
 <i>Note: The column headings and abbreviated row names of the tables in this appendix are explained in the answer to [<b>Question 3](https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html#question-3-how-did-the-foreign-shares-of-jobs-in-u.s.-tech-change-between-2010-and-2015)</b> in the body of the supplement</i>
 
 <P style="page-break-before: always">        
-### California ... California ...California ... California ...   
+### California ... California ...California ... California ... California ...   
   
  <b>Table 3.forCA -- Foreign Male/Female Composition of Tech in California in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -277,7 +277,7 @@ In a future version of the supplement, this Appendix will be replaced by an inte
 
 
 <P style="page-break-before: always">    
-### Texas ... Texas ... Texas ... Texas ... Texas ...   
+### Texas ... Texas ... Texas ... Texas ... Texas ... Texas ... 
  
  <b>Table 3.forTX -- Foreign Male/Female Composition of Tech in Texas in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -307,7 +307,7 @@ In a future version of the supplement, this Appendix will be replaced by an inte
 
    
 <P style="page-break-before: always">    
-### New York ... New York ... New York ...  
+### New York ... New York ... New York ... New York ...  
    
  <b>Table 3.forNY -- Foreign Male/Female Composition of Tech in New York in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -337,71 +337,68 @@ In a future version of the supplement, this Appendix will be replaced by an inte
 
  
 <P style="page-break-before: always">    
-### Florida ... Florida ... Florida ...  
- 
- <b>Table 3.forFL -- Foreign Male/Female Composition of Tech in Florida in 2015</b> 
+### New Jersey ... New Jersey ... New Jersey ...  
+
+ <b>Table 3.forNJ -- Foreign Male/Female Composition of Tech in New Jersey in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3forFL, big.mark=","), row.names=FALSE, quote=FALSE)
+   print(format(dfTable3forNJ, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
- <b>Table 3.forFLFL -- Changes in the Foreign Composition of Tech In Florida between 2010 and 2015</b> 
+<P style="page-break-before: always">    
+ <b>Table 3.forNJNJ -- Changes in the Foreign Composition of Tech In New Jersey between 2010 and 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3forFLFL, big.mark=","), row.names=FALSE, quote=FALSE)
+   print(format(dfTable3forNJNJ, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>  
 
 
 <P style="page-break-before: always">   
- <b>Table 3.forAsianFL -- Foreign Asian Male/Female Composition of Tech in Florida in 2015</b> 
+ <b>Table 3.forAsianNJ -- Foreign Asian Male/Female Composition of Tech in New Jersey in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3forAsianFL, big.mark=","), row.names=FALSE, quote=FALSE)
-```
-
- <b>Table 3.forAsianFLFL -- Changes in the Foreign Asian Composition of Tech In Florida between 2010 and 2015</b> 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3forAsianFLFL, big.mark=","), row.names=FALSE, quote=FALSE)
-```
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>     
- 
-
-<P style="page-break-before: always">        
-### Virginia ... Virginia ...  
-    
-  
- <b>Table 3.forVA -- Foreign Male/Female Composition of Tech in Virginia in 2015</b> 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3forVA, big.mark=","), row.names=FALSE, quote=FALSE)
+   print(format(dfTable3forAsianNJ, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <P style="page-break-before: always">    
- <b>Table 3.forVAVA -- Changes in the Foreign Composition of Tech In Virginia between 2010 and 2015</b> 
+ <b>Table 3.forAsianNJNJ -- Changes in the Foreign Asian Composition of Tech In New Jersey between 2010 and 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3forVAVA, big.mark=","), row.names=FALSE, quote=FALSE)
+   print(format(dfTable3forAsianNJNJ, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>    
+
+
+<P style="page-break-before: always">    
+### Washington ... Washington ... Washington ...   
+
+ <b>Table 3.forWA -- Foreign Male/Female Composition of Tech in Washington in 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3forWA, big.mark=","), row.names=FALSE, quote=FALSE)
+```
+
+<P style="page-break-before: always">    
+ <b>Table 3.forWAWA -- Changes in the Foreign Composition of Tech In Washington between 2010 and 2015</b> 
+```{r, echo=FALSE, cache=FALSE, comment=NA}
+   print(format(dfTable3forWAWA, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>  
 
 
 <P style="page-break-before: always">   
- <b>Table 3.forAsianVA -- Foreign Asian Male/Female Composition of Tech in Virginia in 2015</b> 
+ <b>Table 3.forAsianWA -- Foreign Asian Male/Female Composition of Tech in Washington in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3forAsianVA, big.mark=","), row.names=FALSE, quote=FALSE)
+   print(format(dfTable3forAsianWA, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <P style="page-break-before: always">    
- <b>Table 3.forAsianVAVA -- Changes in the Foreign Asian Composition of Tech In Virginia between 2010 and 2015</b> 
+ <b>Table 3.forAsianWAWA -- Changes in the Foreign Asian Composition of Tech In Washington between 2010 and 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3forAsianVAVA, big.mark=","), row.names=FALSE, quote=FALSE)
+   print(format(dfTable3forAsianWAWA, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
-<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>     
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>    
 
   
-  
-  
-
 <P style="page-break-before: always">    
-### Illinois ...  
+### Illinois ... Illinois ... 
  
-  
  <b>Table 3.forIL -- Foreign Male/Female Composition of Tech in Illinois in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3forIL, big.mark=","), row.names=FALSE, quote=FALSE)
