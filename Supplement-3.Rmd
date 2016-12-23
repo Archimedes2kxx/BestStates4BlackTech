@@ -178,13 +178,11 @@ The first column of each table contains a list of job categories. Some categorie
 #### Question 4 -- Where did foreign techs work in 2015?      
 Answer 4 ... The following sections provide an extensive response to a more specific formulation of this question ==> In which states did foreign tech professionals work in 2015?  
 
-Table 4 (below) lists the six states that employed the most American techs in 2015, i.e.,  (`r prettyNum(dfTable4[1, "perTop6"])` percent) of the `r prettyNum(dfTable4[1, "ALL STATES"], big.mark=",", scientific=FALSE)`. This section demonstrates that the Big Six also employed the most foreign techs in 2015. 
-
-<b>Table 4 ... Biggest Half-Dozen Tech States in 2015</b>
+<b>Table 4.1 ... Biggest Half-Dozen States for Foreign  States in 2015</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-colnames(dfTable4) <- c("ALL STATES", "CA", "TX", "NY", "FL", "VA", "IL", "Total", "perT6")
+colnames(dfTable4.1) <- c("ALL STATES", "CA", "TX", "NY", "NJ", "WA", "IL", "Total", "perT6")
 
-print(format(dfTable4[,c(1:7,9)], big.mark = "," , rownames=FALSE ))
+print(format(dfTable4.1[,c(1:7,9)], big.mark = "," , rownames=FALSE ))
 ```
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>   

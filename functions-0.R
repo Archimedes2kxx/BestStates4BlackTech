@@ -502,6 +502,23 @@ makeProfile3forBigSix <- function(listDfs) {
 ############################
 ### Stats2B
 
+makeTable4 <- function(df) {
+    dfTab <- subset(df, select=c("State","Totals"))
+    dfTab <- dfTab[order(dfTab$"Totals", decreasing=TRUE),]
+    dfTab<- (head(dfTab,7))
+    top6Names <-rownames(dfTab)
+    rownames(dfTab) <- NULL
+    
+    sum6 <- sum(dfTab[2:7,2])
+    perTop6 <- round(100*sum6/dfTab[1,2], digits=1)
+    vec <- as.vector(c(dfTab[,2], sum6))
+    (df2 <- data.frame(t(vec), perTop6)) ### Note the t transpose
+    
+    colnames(df2) <- c(top6Names,  "SumTop6", "perTop6")
+    rownames(df2) <- ""
+    return(df2)
+}
+
 makeTechPopTable <- function(dfEmp, dfPop, Race){
     perRace <- paste0("per", Race)
     popRace <- paste0("pop", Race)

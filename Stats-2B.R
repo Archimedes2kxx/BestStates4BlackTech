@@ -67,23 +67,15 @@ colnames(dfTable4H) <- c("State", "AllForeign", "perState", "NonAsian", "perNonA
 head(dfTable4H)
 
 ################################
-### Table 4 ... Big Six
-dfTab <- subset(dfRaceSexCountAndShares, select=c("State","Totals"))
-dfTab <- dfTab[order(dfTab$"Totals", decreasing=TRUE),]
-dfTab<- (head(dfTab,7))
-top6Names <-rownames(dfTab)
-rownames(dfTab) <- NULL
+### Table 4 ... Big Sixes
+dfTable4 <- makeTable4(dfRaceSexCountAndShares)
+dfTable4 ### Citizens
 
-sum6 <- sum(dfTab[2:7,2])
-perTop6 <- round(100*sum6/dfTab[1,2], digits=1)
-vec <- as.vector(c(dfTab[,2], sum6))
-(dfTable4 <- data.frame(t(vec), perTop6)) ### Note the t transpose
+dfTable4.1 <- makeTable4(dfForeignRaceSexCountAndShares)
+dfTable4.1 ### Foreigners
 
-colnames(dfTable4) <- c(top6Names,  "SumTop6", "perTop6")
-rownames(dfTable4) <- ""
-dfTable4
 
-save(dfTable4, dfTable4A, dfTable4B, dfTable4C, dfTable4D, dfTable4E, dfTable4F, dfTable4G, dfTable4H, dfTechPopWhite, dfTechPopBlack, dfTechPopAsian, dfTechPopHispanic, dfTechPopFemale, dfTechPopFemAsian, dfTechPopFemNonAsian, file="dfTab4.rda")
+save(dfTable4, dfTable4.1, dfTable4A, dfTable4B, dfTable4C, dfTable4D, dfTable4E, dfTable4F, dfTable4G, dfTable4H, dfTechPopWhite, dfTechPopBlack, dfTechPopAsian, dfTechPopHispanic, dfTechPopFemale, dfTechPopFemAsian, dfTechPopFemNonAsian, file="dfTab4.rda")
 
 #######################################
 ### Maps 4A, B, C, D, E, F, G ... state maps of white, black, asian, hispanic, female Asians, and female non-Asians in  tech 
