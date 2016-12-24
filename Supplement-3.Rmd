@@ -1,7 +1,7 @@
 ---
-title: "Foreign Professionals: U.S. Tech's Other Pipelines -- Version 0.7"
+title: "Foreign Professionals: U.S. Tech's Other Pipelines -- Version 0.75"
 author: "Roy L Beasley, PhD -- DLL Editor"
-date: "12/23/2016"
+date: "12/24/2016"
 
 output: 
  prettydoc::html_pretty:
@@ -58,27 +58,28 @@ perFemIncrease <- round(100 * (dfTable3Z[1,"Fem"] - fem10)/fem10, digits=1)
 ## Overview     
 <i>Please note that all of the numbers in this overview and in the subsequent sections are estimates based on U.S. Census survey samples. So all numbers should be read as "approximately" even when the word "approximately" does not appear. </i>  
 
-* In 2015 there were approximately xxx foreign tech professionals in the  U.S. workforce. Approximately xxx were from Asian countries; xxx were from non-Asian countries. (See Table 1E)    
+* In 2015, there were approximately xxx4,636,487 professionals in the U.S. tech sector; xxx4,066,773 were Amereicans (xxx87.7 percent); xxx569,714 were foreign (12.3 percent)
+* In 2015 there were approximately xxx569,714 foreign tech professionals in the  U.S. workforce (Table 1E). Approximately xxx407,481 were from Asian countries; xxx162,233 were from non-Asian countries. (See Table 1E)    
 
-* In 2015 approximately xxx foreign techs were male; xxx were female; xxx female techs came from Asian countries; xxx female tachs came from non-Asian countries. (See Table 2C)
+* In 2015 approximately xxx80 % of foreign techs were male; xxx20 % were female; xxx15.7 % of foreign techs were female who came from Asian countries; xxx4.3 % female tachs came from non-Asian countries. (See Chart 4 and Table 2C)
 
   <img src="ggChart4.png" style="width:600px;height:300px;" />
   
-* As per Chart 5 (below) xxx percent of foreign techs were concentrated in six states (Table 4.1) -- California (xxx%), Texas (xxx%), New York (xxx%), New Jersey (xxx%), Washington (xxx%), and Illinois (xxx%). These states also experienced the largest increase in the employment of foreign techs between 2010 and 2015 (Table 4G).
+* xxx54.6 percent of foreign techs were concentrated in six states (Chart 5 and Table 4.1) -- California (xxx127,671), Texas (52,885), New York (xxx42,075), New Jersey (xxx31,859), Washington (xxx31,201), and Illinois (xxx25,359). These states also experienced the largest increases in the employment of foreign techs between 2010 and 2015 (Chart 5 and Table 3G).
 
   <img src="ggChart5.png" style="width:600px;height:300px;" />
 
-* American firms employed foreign techs because they claimed that they could not find enough qualified American techs in the domestic job pipelines. The DLL's previous report, "Best States", found that employment of American techs in the 50 states plus the District of Columbia increased by xxx percent between 2010 and 2015. By contrast, the employment of foreign techs increased by xxx percent (Table 3EE)  
+* American firms employed foreign techs because they claimed that they could not find enough qualified American techs in the domestic job pipelines. Employment of foreign techs in the 50 states plus the District of Columbia increased by xxx32.7 percent between 2010 and 2015 (Table 3EE). By contrast, employment of American techs increased by only xxx22.4 percent (Table 3ZZ) during that time frame.
 
-* Given that cloud computing and machine learning became principal drivers in the expansion of the U.S. tech sector during the last five years, the increase in American vs. foreign tech employment in three job categories is especially noteworthy -- software developers, database administrators, and computer/research scientists.    
+* Given that cloud computing and machine learning became principal drivers in the expansion of the U.S. tech sector during the last five years, contrasts between increase in American vs. foreign tech employment in three job categories is especially noteworthy -- software developers, database administrators, and computer/research scientists.  
 
-* American firms increased their employment of foreign software developers from xxx in 2010 to xxx in 2015, i.e., a xxx percent increase (Table 3G). 
+* American firms increased their employment of foreign software developers from xxx187,359 in 2010 to xxx266,807 in 2015, i.e., a xxx42.4 percent increase (Table 3EE). American firms increased their employment of American software developers by only xxx37.0 percent between 2010 and 2015 (Table 3ZZ)
 
-* American firms increased their employment of foreign database administrators from xxx in 2010 to xxx in 2015, i.e, a xxx percent increase (Table 3G)
+* American firms increased their employment of foreign database administrators from xxx9,250 in 2010 to xxx14,069 in 2015, i.e, a xxx52.1 percent increase (Table 3EE).  American firms increased their employment of American database admiistrators by only xxx4.6 percent between 2010 and 2015 (Table 3ZZ)
 
-* American firms increased their employment of foreign computer/research scientists from xxx in 2010 to xxx in 2015, i.a., a xxx percent increase (Table 3G).   
+* American firms increased their employment of foreign computer/research scientists from xx2,183x in 2010 to xxx3,752 in 2015, i.a., a xxx71.9 percent increase (Table 3EE).  American firms increased their employment of American computer/research scientists by only xxx13.3 percent between 2010 and 2015 (Table 3ZZ)  
 
-* In 2015 California employed the largest number of foreign techs in all three categories -- software developers = xxx; database administrators = xxx; and computer/research scientists = xxx.
+* In 2015 California employed the largest number of foreign techs in all three categories -- software developers = xxx74,399; database administrators = xxx2,650 ; and computer/research scientists = xxx993 (Table 3G)
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>   
   
