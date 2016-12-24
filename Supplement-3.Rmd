@@ -217,7 +217,7 @@ print(format(dfTable4.1[,c(1:7,9)], big.mark = "," , rownames=FALSE ))
 
 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-    grid.arrange(dfMap4G, dfMap4H, ncol=2) 
+    grid.arrange(dfMap4G, dfMap4H, ncol=1) 
 ``` 
 
 
