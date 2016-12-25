@@ -582,6 +582,9 @@ makeForeignNonAsianTechTable <- function(dfAsian){
     dfNonAsian <- addPerCols(dfNonAsian, 2, 3)
     dfNonAsian <- addTotColSharePerRowCol(dfNonAsian, 3) 
     
+    index <- order(dfNonAsian[, "NonAsian"], decreasing=TRUE)
+    dfNonAsian <- dfNonAsian[index,]
+    
     return(dfNonAsian)
 }
 
