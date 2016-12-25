@@ -55,23 +55,25 @@ perFemIncrease <- round(100 * (dfTable3Z[1,"Fem"] - fem10)/fem10, digits=1)
 ```
 \pagenumbering{arabic}   
 
-## Overview     
-<i>Please note that all of the numbers in this overview and in the subsequent sections are estimates based on U.S. Census survey samples. So all numbers should be read as "approximately" even when the word "approximately" does not appear. </i>  
+## Overview   
 
-* In 2015, there were approximately xxx4,636,487 professionals in the U.S. tech sector; xxx4,066,773 were Amereicans (xxx87.7 percent); xxx569,714 were foreign (12.3 percent)
-* In 2015 there were approximately xxx569,714 foreign tech professionals in the  U.S. workforce (Table 1E). Approximately xxx407,481 were from Asian countries; xxx162,233 were from non-Asian countries. (See Table 1E)    
+American firms in the U.S. technology sector employ foreign professionals because top managers claim that they cannot find enough qualified American techs in the domestic job pipelines. This supplement uses Census data to estimate the employment of foreign techs in the 50 states plus the District of Columbia in 2015 and to estimate the increase in the employment of foreign techs between 2010 and 2015.  
 
-* In 2015 approximately xxx80 % of foreign techs were male; xxx20 % were female; xxx15.7 % of foreign techs were female who came from Asian countries; xxx4.3 % female tachs came from non-Asian countries. (See Chart 4 and Table 2C)
+<i>Please note that all of the numbers in this overview and in the subsequent sections of this supplement are estimates based on U.S. Census survey samples. Accordingly all numbers should be read as "approximately" even when the word "approximately" does not appear. </i>  
+
+* In 2015, there were approximately xxx4,636,487 professionals in the U.S. tech sector; xxx4,066,773 were Amereicans (xxx87.7 percent); xxx569,714 were foreign (12.3 percent ((Table 1C). Approximately xxx407,481 were from Asian countries; xxx162,233 were from non-Asian countries. (Table 1E)    
+
+* In 2015 approximately xxx80 % of foreign techs were male; xxx20 % were female; xxx15.7 % of foreign techs were female who came from Asian countries; xxx4.3 % female tachs came from non-Asian countries. (Chart 4 and Table 2C)
 
   <img src="ggChart4.png" style="width:600px;height:300px;" />
   
-* xxx54.6 percent of foreign techs were concentrated in six states (Chart 5 and Table 4.1) -- California (xxx127,671), Texas (52,885), New York (xxx42,075), New Jersey (xxx31,859), Washington (xxx31,201), and Illinois (xxx25,359). These states also experienced the largest increases in the employment of foreign techs between 2010 and 2015 (Chart 5 and Table 3G).
+* More than half, i.e., xxx54.6 percent, of foreign techs were concentrated in six states (Chart 5 and Table 4.1) -- California (xxx127,671), Texas (52,885), New York (xxx42,075), New Jersey (xxx31,859), Washington (xxx31,201), and Illinois (xxx25,359). These states also experienced the largest increases in the employment of foreign techs between 2010 and 2015 (Chart 5 and Table 3G).
 
   <img src="ggChart5.png" style="width:600px;height:300px;" />
 
-* American firms employed foreign techs because they claimed that they could not find enough qualified American techs in the domestic job pipelines. Employment of foreign techs in the 50 states plus the District of Columbia increased by xxx32.7 percent between 2010 and 2015 (Table 3EE). By contrast, employment of American techs increased by only xxx22.4 percent (Table 3ZZ) during that time frame.
+* Employment of foreign techs in the 50 states plus the District of Columbia increased by xxx32.7 percent between 2010 and 2015 (Table 3EE). By contrast, employment of American techs only increased by xxx22.4 percent (Table 3ZZ) during that time frame.
 
-* Given that cloud computing and machine learning became principal drivers in the expansion of the U.S. tech sector during the last five years, contrasts between increase in American vs. foreign tech employment in three job categories is especially noteworthy -- software developers, database administrators, and computer/research scientists.  
+* In recent years cloud computing and machine learning became principal drivers in the expansion of the U.S. tech sector during the last five years. Therefore contrasts between the increase in American vs. foreign tech employment in three job categories are especially noteworthy -- software developers, database administrators, and computer/research scientists.  
 
 * American firms increased their employment of foreign software developers from xxx187,359 in 2010 to xxx266,807 in 2015, i.e., a xxx42.4 percent increase (Table 3EE). American firms increased their employment of American software developers by only xxx37.0 percent between 2010 and 2015 (Table 3ZZ)
 
@@ -79,7 +81,12 @@ perFemIncrease <- round(100 * (dfTable3Z[1,"Fem"] - fem10)/fem10, digits=1)
 
 * American firms increased their employment of foreign computer/research scientists from xx2,183x in 2010 to xxx3,752 in 2015, i.a., a xxx71.9 percent increase (Table 3EE).  American firms increased their employment of American computer/research scientists by only xxx13.3 percent between 2010 and 2015 (Table 3ZZ)  
 
-* In 2015 California employed the largest number of foreign techs in all three categories -- software developers = xxx74,399; database administrators = xxx2,650 ; and computer/research scientists = xxx993 (Table 3G)
+* In 2015 California employed the largest number of foreign techs in all three categories ==> software developers = xxx74,399; database administrators = xxx2,650; and computer/research scientists = xxx993. California also had the largest increases in foreign techs between 2010 and 2015 -- software developers = +xxx79,448,  database administrators = + xxx2,133, and computer/research scientists = + xxx1,569 (Table 3G)
+
+These estimates of the substantial employment of foreign techs in 2015 and the substantial increases in the employment of foreign techs between 2010 and 2015 are consistent with managers' claims that they were using foreign pipelines to cover shortfalls in the availability of qualified American techs in the domestic job pipelines. 
+
+But it must be noted that substantial increases in the employment of foreign techs were also consistent with an alternative interpretation, i.e., that American managers were importing foreign labor because it was cheaper than American labor. In other words domestic job pipelines did not contain enough American techs who were willing to work for salaries that were acceptable to foreign techs. This is not to say that foreign techs were paid salaries that were below the salary ranges paid to American techs, merely that larger numbers of foreign techs were willing to work for salaries that were at the lower end of the salary ranges offered to American techs.
+
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>   
   
