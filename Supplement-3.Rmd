@@ -1,5 +1,5 @@
 ---
-title: "Foreign Professionals: U.S. Tech's Other Pipelines -- Version 0.76"
+title: "Foreign Professionals: U.S. Tech's Other Pipelines -- Version 0.77"
 author: "Roy L Beasley, PhD -- DLL Editor"
 date: "12/25/2016"
 
@@ -81,7 +81,7 @@ Top managers claim that American firms in the U.S. technology sector employ fore
 
 * American firms increased their employment of foreign computer/research scientists from `r prettyNum(dfTable3EE[dfTable3EE$Occupation=="COMP/INFO RSRCH SCIENTISTS", "Tech10"], big.mark=",", scientific=FALSE)` in 2010 to `r prettyNum(dfTable3EE[dfTable3EE$Occupation=="COMP/INFO RSRCH SCIENTISTS", "Tech15"], big.mark=",", scientific=FALSE)` in 2015, i.a., a `r prettyNum(dfTable3EE[dfTable3EE$Occupation=="COMP/INFO RSRCH SCIENTISTS", "perCh"], big.mark=",", scientific=FALSE)` percent increase (Table 3EE).  American firms increased their employment of American computer/research scientists by only `r prettyNum(dfTable3ZZ[dfTable3ZZ$Occupation=="COMP/INFO RSRCH SCIENTISTS", "perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015 (Table 3ZZ)  
 
-* In 2015 California employed the largest number of foreign techs in all three categories ==> software developers = `r prettyNum(dfTable3G[dfTable3G$Occupation=="SOFTWARE DEVELOPERS" & dfTable3G$State=="California", "Tech15"], big.mark=",", scientific=FALSE)`; database administrators = `r prettyNum(dfTable3G[dfTable3G$Occupation=="DATABASE ADMINISTRATORS" & dfTable3G$State=="California", "Tech15"], big.mark=",", scientific=FALSE)`; and computer/research scientists = `r prettyNum(dfTable3G[dfTable3G$Occupation=="COMP/INFO RSRCH SCIENTISTS" & dfTable3G$State=="California", "Tech15"], big.mark=",", scientific=FALSE)`. California also recruited the largest increases in foreign techs between 2010 and 2015 ==> software developers =  `r prettyNum(dfTable3G[dfTable3G$Occupation=="SOFTWARE DEVELOPERS" & dfTable3G$State=="California", "Change"], big.mark=",", scientific=FALSE)`,  database administrators =  `r prettyNum(dfTable3G[dfTable3G$Occupation=="DATABASE ADMINISTRATORS" & dfTable3G$State=="California", "Change"], big.mark=",", scientific=FALSE)`, and computer/research scientists =  `r prettyNum(dfTable3G[dfTable3G$Occupation=="COMP/INFO RSRCH SCIENTISTS" & dfTable3G$State=="California", "Change"], big.mark=",", scientific=FALSE)` (Table 3G)
+* In 2015 California employed the largest number of foreign techs in all three categories ==> software developers = `r prettyNum(dfTable3F[dfTable3F$Occupation=="SOFTWARE DEVELOPERS" & dfTable3F$State=="California", "Tech15"], big.mark=",", scientific=FALSE)`; database administrators = `r prettyNum(dfTable3F[dfTable3F$Occupation=="DATABASE ADMINISTRATORS" & dfTable3F$State=="California", "Tech15"], big.mark=",", scientific=FALSE)`; and computer/research scientists = `r prettyNum(dfTable3F[dfTable3F$Occupation=="COMP/INFO RSRCH SCIENTISTS" & dfTable3F$State=="California", "Tech15"], big.mark=",", scientific=FALSE)`. California also recruited the largest increases in foreign techs between 2010 and 2015 ==> software developers =  `r prettyNum(dfTable3F[dfTable3F$Occupation=="SOFTWARE DEVELOPERS" & dfTable3F$State=="California", "Change"], big.mark=",", scientific=FALSE)` ...  database administrators =  `r prettyNum(dfTable3F[dfTable3F$Occupation=="DATABASE ADMINISTRATORS" & dfTable3F$State=="California", "Change"], big.mark=",", scientific=FALSE)` ... and computer/research scientists =  `r prettyNum(dfTable3F[dfTable3F$Occupation=="COMP/INFO RSRCH SCIENTISTS" & dfTable3F$State=="California", "Change"], big.mark=",", scientific=FALSE)` (Table 3F)
 
 These estimates of substantial employment of foreign techs in 2015 and substantial increases in the employment of foreign techs between 2010 and 2015 were consistent with managers' claims that they were using foreign job pipelines to cover shortfalls in the availability of qualified American techs in the domestic job pipelines. 
 
@@ -93,13 +93,13 @@ But it must be noted that substantial increases in the employment of foreign tec
 <P style="page-break-before: always">  
 ## Findings   
 
-Brief answers to the first three sets of questions provide a broad statistical framwork for the extended responses to the fourth question that forms the core of this supplement.   
+Brief answers to the first two questions provide a framwork for the extended responses to the third and fourth questions that forms the core of this supplement.   
 
 <i>Please note that the tables, maps, and charts in this supplement about foreign techs have been assigned numbers that follow the numbers of similar tables, maps, and charts in the original report about American techs. For example, Tables 3E and 3F appear in ths supplement because Tables 3A, 3B, 3C, and 3D appeared in the original. On the other hand a few tables from the original are repeated in this supplement as convenient references for the reader and are assigned the same numbers as in the original; for example, Tables 1C and 1E.</i>
 
 #### Question 1 -- How many foreign professionals worked in the U.S. tech sector in 2015?
 
-<i>Answer 1C</i> ...As can be seen from Table 1C (below), `r dfTable1C["Per", "Foreign"]` percent of the U.S. tech sector in 2015 were foreign professionals.  
+<i>Answer 1C</i> ... As can be seen from Table 1C (below), `r dfTable1C["Per", "Foreign"]` percent of the U.S. tech sector in 2015 were foreign professionals.  
 
 <b>Table 1C -- American and Foreign Components of the U.S. Tech Sector in 2015</b>    
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -118,7 +118,7 @@ Brief answers to the first three sets of questions provide a broad statistical f
 
 <P style="page-break-before: always">   
 #### Question 2 -- What was the foreign male/female composition of U.S. tech in 2015?
-<i>Answer 2</i> ...As per Table 2C ...
+<i>Answer 2</i> ... In 2015 approximately `r prettyNum(dfTable2C["Per", "Male"], big.mark=",", scientific=FALSE)`% of foreign techs were male; `r prettyNum(dfTable2C["Per", "Female"], big.mark=",", scientific=FALSE)`% were female; `r prettyNum(dfTable2C["Per", "FemAsian"], big.mark=",", scientific=FALSE)`% of foreign techs were female techs who came from Asian countries; and `r prettyNum(dfTable2C["Per", "FemNonAsian"], big.mark=",", scientific=FALSE)`% were female techs from non-Asian countries. (Chart 4 and Table 2C)
 
 
 <b>Table 2C -- Foreign Male/Female Components of the U.S. Tech Sector in 2015</b> 
@@ -127,18 +127,14 @@ Brief answers to the first three sets of questions provide a broad statistical f
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>   
 
-
 <P style="page-break-before: always">   
-
-
 #### Question 3 -- How did the foreign shares of jobs in U.S. tech change between 2010 and 2015?    
 
+<i>Answer 3</i> ... The first two tables in this section, Table 3Z and Tables 3ZZ, were copied from the original report. They provide profiles of the jobs held by American professionals in the U.S. tech sector. Subsequent tables in this section provide increasingly detailed profiles of the jobs held by foreign professionals. These foreign profiles can be interpreted as specific measures of the substantial shortfalls in the supply of American techs. Alternatively, they can be also interpreted as specific measures of the extent to thich American managers imported cheaper labor from foreign sources than was available from the nation's domestic pipelines. 
 
-The tables in this section display profiles of the foreign professionals employed by U.S. tech. 
+This supplement defined "information technology" by using the same thirteen standard occupation categories (SOC) as in the original report. Twelve categories were related to software, e.g., Software Developers and Computer Programmers; one related to hardware, i.e., Computer Hardware Engineers.     
 
-This supplement defined "information technology" by using the same thirteen standard occupation categories (SOC) as in the original report. Twelve related to software, e.g., Software Developers and Computer Programmers; one related to hardware, i.e., Computer Hardware Engineers.     
-
-The first column of each table contains a list of job categories. Some categories were abbreviated to enable the rows of the table to be short enough to appear on the same line. Abbreviations include "Comp" for "Computer"; "Info" for "Information"; and "Net" for "Network". Column headings were also abbreviated as follows:   
+The first column of each profile contains a list of job categories. Some categories were abbreviated to enable the rows of the table to be short enough to appear on the same line when published on the DLL's blog. Abbreviations include "Comp" for "Computer"; "Info" for "Information"; and "Net" for "Network". Column headings were also abbreviated as follows:   
 
 * <b>Tech10</b> ... the number of tech workers in each job category in 2010   
 
@@ -158,6 +154,28 @@ The first column of each table contains a list of job categories. Some categorie
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>  
 
+<P style="page-break-before: always">
+<b> American vs. Foreign techs in 2010 and 2015 ... Tables 3Z/3ZZ vs Tables 3E/3EE</b>   
+
+* Employment of foreign techs in the 50 states plus the District of Columbia increased by `r prettyNum(dfTable3EE[1, "perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015 (Table 3EE). By contrast, employment of American techs only increased by `r prettyNum(dfTable3ZZ[1, "perCh"], big.mark=",", scientific=FALSE)` percent (Table 3ZZ) during that time frame.
+
+
+* In recent years cloud computing and machine learning became principal drivers in the expansion of the U.S. tech sector. Therefore contrasts between the increase in American vs. foreign tech employment in three job categories are especially noteworthy ==> software developers, database administrators, and computer/research scientists.  
+
+* American firms increased their employment of foreign software developers from `r prettyNum(dfTable3EE[dfTable3EE$Occupation=="SOFTWARE DEVELOPERS", "Tech10"], big.mark=",", scientific=FALSE)` in 2010 to `r prettyNum(dfTable3EE[dfTable3EE$Occupation=="SOFTWARE DEVELOPERS", "Tech15"], big.mark=",", scientific=FALSE)` in 2015, i.e., a `r prettyNum(dfTable3EE[dfTable3EE$Occupation=="SOFTWARE DEVELOPERS", "perCh"], big.mark=",", scientific=FALSE)` percent increase (Table 3EE). American firms increased their employment of American software developers by only `r prettyNum(dfTable3ZZ[dfTable3ZZ$Occupation=="SOFTWARE DEVELOPERS", "perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015 (Table 3ZZ)
+
+* American firms increased their employment of foreign database administrators from `r prettyNum(dfTable3EE[dfTable3EE$Occupation=="DATABASE ADMINISTRATORS", "Tech10"], big.mark=",", scientific=FALSE)` in 2010 to `r prettyNum(dfTable3EE[dfTable3EE$Occupation=="DATABASE ADMINISTRATORS", "Tech15"], big.mark=",", scientific=FALSE)` in 2015, i.e, a `r prettyNum(dfTable3EE[dfTable3EE$Occupation=="DATABASE ADMINISTRATORS", "perCh"], big.mark=",", scientific=FALSE)` percent increase (Table 3EE).  American firms increased their employment of American database admiistrators by only `r prettyNum(dfTable3ZZ[dfTable3ZZ$Occupation=="DATABASE ADMINISTRATORS", "perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015 (Table 3ZZ)
+
+* American firms increased their employment of foreign computer/research scientists from `r prettyNum(dfTable3EE[dfTable3EE$Occupation=="COMP/INFO RSRCH SCIENTISTS", "Tech10"], big.mark=",", scientific=FALSE)` in 2010 to `r prettyNum(dfTable3EE[dfTable3EE$Occupation=="COMP/INFO RSRCH SCIENTISTS", "Tech15"], big.mark=",", scientific=FALSE)` in 2015, i.a., a `r prettyNum(dfTable3EE[dfTable3EE$Occupation=="COMP/INFO RSRCH SCIENTISTS", "perCh"], big.mark=",", scientific=FALSE)` percent increase (Table 3EE).  American firms increased their employment of American computer/research scientists by only `r prettyNum(dfTable3ZZ[dfTable3ZZ$Occupation=="COMP/INFO RSRCH SCIENTISTS", "perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015 (Table 3ZZ)  
+
+
+* blah blah   
+
+* blah blah    
+
+* blah blah   
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>
 
 <P style="page-break-before: always">   
  <b>Table 3Z -- American Male/Female Composition of U.S. Tech in 2015</b> 
@@ -185,25 +203,27 @@ The first column of each table contains a list of job categories. Some categorie
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>  
 
+<P style="page-break-before: always"> 
+<b> Key Jobs for foreign techs in states employing the most foreign techs ... Table 3F</b>
 
-<P style="page-break-before: always">   
- <b>Table 3F -- Foreign Asian Male/Female Composition of U.S. Tech in 2015</b> 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3F, big.mark=","), row.names=FALSE, quote=FALSE)
-```
 
-<P style="page-break-before: always">    
- <b>Table 3FF -- Changes in the Foreign Asian Composition of U.S. Tech Between 2010 and 2015</b> 
-```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3FF, big.mark=","), row.names=FALSE, quote=FALSE)
-```
+* As will be shown in Table 4.1 (next section), the following states employed the most foreign techs in 2015 ==> California, Texas, New York, New Jersey, Washington, and Illinois.     
+
+* In 2015 California employed the largest number of foreign techs in three critical job categories ==> software developers = `r prettyNum(dfTable3F[dfTable3F$Occupation=="SOFTWARE DEVELOPERS" & dfTable3F$State=="California", "Tech15"], big.mark=",", scientific=FALSE)`; database administrators = `r prettyNum(dfTable3F[dfTable3F$Occupation=="DATABASE ADMINISTRATORS" & dfTable3F$State=="California", "Tech15"], big.mark=",", scientific=FALSE)`; and computer/research scientists = `r prettyNum(dfTable3F[dfTable3F$Occupation=="COMP/INFO RSRCH SCIENTISTS" & dfTable3F$State=="California", "Tech15"], big.mark=",", scientific=FALSE)`. California also recruited the largest increases in foreign techs between 2010 and 2015 ==> software developers =  `r prettyNum(dfTable3F[dfTable3F$Occupation=="SOFTWARE DEVELOPERS" & dfTable3F$State=="California", "Change"], big.mark=",", scientific=FALSE)` ...  database administrators =  `r prettyNum(dfTable3F[dfTable3F$Occupation=="DATABASE ADMINISTRATORS" & dfTable3F$State=="California", "Change"], big.mark=",", scientific=FALSE)` ... and computer/research scientists =  `r prettyNum(dfTable3F[dfTable3F$Occupation=="COMP/INFO RSRCH SCIENTISTS" & dfTable3F$State=="California", "Change"], big.mark=",", scientific=FALSE)`  
+
+* blah blah   
+
+* blah blah    
+
+* blah blah   
+
+
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>  
 
-
 <P style="page-break-before: always">   
- <b>Table 3G -- Key Jobs for Foreign Professionals in the Tech Sectors of the Big Six States</b> 
+ <b>Table 3F -- Key Jobs for Foreign Yechs in States Employing the Most Foreign Techs</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3G, big.mark=","), row.names=FALSE, quote=FALSE)
+   print(format(dfTable3F, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>  
@@ -213,7 +233,7 @@ The first column of each table contains a list of job categories. Some categorie
 #### Question 4 -- Where did foreign techs work in 2015?      
 Answer 4 ... The following sections provide an extensive response to a more specific formulation of this question ==> In which states did foreign tech professionals work in 2015?  
 
-<b>Table 4.1 ... Biggest Half-Dozen States for Foreign  States in 2015</b>
+<b>Table 4.1 ... States Employing the Most Foreign Techs in 2015</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
 colnames(dfTable4.1) <- c("ALL STATES", "CA", "TX", "NY", "NJ", "WA", "IL", "Total", "perT6")
 

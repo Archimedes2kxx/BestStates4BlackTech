@@ -92,8 +92,8 @@ states_map <- map_data("state") ### for ggplot calls in the makeTechPopMap funct
 (dfMap4D <- makeTechPopMap(dfTechPopHispanic,"Hispanic", maxAsianPerState, "D. Hispanic Techs"))
 (dfMap4E <- makeTechPopMap(dfTechPopFemAsian,"FemAsian", maxAsianPerState, "E. FemAsian Techs"))
 (dfMap4F <- makeTechPopMap(dfTechPopFemNonAsian,"FemNonAsian", maxAsianPerState, "F. FemNonAsian Techs"))
-(dfMap4G <- makeTechPopMap(dfTable4G,"Asian", maxAsianPerState, "G. Foreign (Asian) Techs"))
-(dfMap4H <- makeTechPopMap(dfTable4H,"Asian", maxAsianPerState, "H. Foreign (NonAsian) Techs"))
+(dfMap4G <- makeTechPopMap(dfTable4G,"Asian", maxAsianPerState, "Map 4G. Foreign (Asian) Techs"))
+(dfMap4H <- makeTechPopMap(dfTable4H,"Asian", maxAsianPerState, "Map 4H. Foreign (NonAsian) Techs"))
 
 save(dfMap4A, dfMap4B, dfMap4C, dfMap4D, dfMap4E, dfMap4F, dfMap4G, dfMap4H, file="dfMap4.rda")
 
