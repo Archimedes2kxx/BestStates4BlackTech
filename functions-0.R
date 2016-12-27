@@ -582,7 +582,7 @@ makeForeignNonAsianTechTable <- function(dfAsian){
     dfNonAsian <- addPerCols(dfNonAsian, 2, 3)
     dfNonAsian <- addTotColSharePerRowCol(dfNonAsian, 3) 
     
-    index <- order(dfNonAsian[, "NonAsian"], decreasing=TRUE)
+    index <- order(dfNonAsian[, "NonAsianTech"], decreasing=TRUE)
     dfNonAsian <- dfNonAsian[index,]
     
     return(dfNonAsian)
@@ -614,7 +614,8 @@ addMissingStatesToTable <- function(dfFor, dfAll){
             j <- j + 1
         }
     }
-    index3 <- order(dfAll$perState, decreasing = TRUE)
+    ### index3 <- order(dfAll$perState, decreasing = TRUE)
+    index3 <- order(dfAll$AsianTech, decreasing = TRUE)
     dfAll <- dfAll[index3,]
     return(dfAll)
 }
@@ -771,6 +772,6 @@ makeTable8 <- function(dfIn, Group, letter){
 }
 
 ###################################
-save(readCodeBooks, addTotCol, addPerCols, addTotColSharePerRowCol, addTotalsRow, addMissingStatesToTable, decodeVariables, createProfiles_OccRaceState, createProfiles_OccState, createProfiles_OccRace, createProfiles_Occ, createPopRaceAndShares, makeNumPerTable, makeNumPerChart, createProfile, createCompareProfile, createListProfiles, createXYZdf, makeGroupedBarChart, makeProfile3forBigSix, makeSummary, plotEmpVsPop, makeLM, makeTechPopMap, theme_clean, makeForeignTechTable, makeForeignNonAsianTechTable, makeTechPopTable, makeParity, makeTable7, makeTable8, file="functions-0.rda")
+save(readCodeBooks, addTotCol, addPerCols, addTotColSharePerRowCol, addTotalsRow, addMissingStatesToTable, decodeVariables, createProfiles_OccRaceState, createProfiles_OccState, createProfiles_OccRace, createProfiles_Occ, createPopRaceAndShares, makeNumPerTable, makeNumPerChart, createProfile, createCompareProfile, createListProfiles, createXYZdf, makeGroupedBarChart, makeProfile3forBigSix, makeSummary, plotEmpVsPop, makeLM, makeTechPopMap, theme_clean, makeForeignTechTable, makeForeignNonAsianTechTable, makeTechPopTable, makeTable4, makeParity, makeTable7, makeTable8, file="functions-0.rda")
 
 
