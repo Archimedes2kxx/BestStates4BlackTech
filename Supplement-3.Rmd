@@ -1,7 +1,7 @@
 ---
-title: "Foreign Professionals: U.S. Tech's Other Pipelines -- Version 0.77"
+title: "Foreign Professionals: U.S. Tech's Other Pipelines -- Version 0.78"
 author: "Roy L Beasley, PhD -- DLL Editor"
-date: "12/25/2016"
+date: "12/26/2016"
 
 output: 
  prettydoc::html_pretty:
@@ -71,7 +71,7 @@ Top managers claim that American firms in the U.S. technology sector employ fore
 
   <img src="ggChart5.png" style="width:600px;height:300px;" />
 
-* Employment of foreign techs in the 50 states plus the District of Columbia increased by `r prettyNum(dfTable3EE[1, "perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015 (Table 3EE). By contrast, employment of American techs only increased by `r prettyNum(dfTable3ZZ[1, "perCh"], big.mark=",", scientific=FALSE)` percent (Table 3ZZ) during that time frame.
+* Employment of foreign techs in the 50 states plus the District of Columbia increased by `r prettyNum(dfTable3EE[1, "perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015 (Table 3EE). By contrast, employment of American techs only increased by `r prettyNum(dfTable3ZZ[1, "perCh"], big.mark=",", scientific=FALSE)` percent (Table 3ZZ) during that time frame.   
 
 * In recent years cloud computing and machine learning became principal drivers in the expansion of the U.S. tech sector. Therefore contrasts between the increase in American vs. foreign tech employment in three job categories are especially noteworthy ==> software developers, database administrators, and computer/research scientists.  
 
@@ -159,6 +159,7 @@ The first column of each profile contains a list of job categories. Some categor
 
 * Employment of foreign techs in the 50 states plus the District of Columbia increased by `r prettyNum(dfTable3EE[1, "perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015 (Table 3EE). By contrast, employment of American techs only increased by `r prettyNum(dfTable3ZZ[1, "perCh"], big.mark=",", scientific=FALSE)` percent (Table 3ZZ) during that time frame.
 
+* U.S. tech employed more foreign female professionals in 2015 than in 2010. Nevertheless, the percentqge of the foreign tech workforce that was female declined from 21.6xxx % in 2010 down to 20.0xxx % in 2015 (Tables 3E and 3EE). A similar decline in the female share of the American tech workforce also occurred, from 27.1xxx % in 2010 down to 25.6xxx % in 2015 (Tables 3Z and 3ZZ). 
 
 * In recent years cloud computing and machine learning became principal drivers in the expansion of the U.S. tech sector. Therefore contrasts between the increase in American vs. foreign tech employment in three job categories are especially noteworthy ==> software developers, database administrators, and computer/research scientists.  
 
@@ -169,11 +170,11 @@ The first column of each profile contains a list of job categories. Some categor
 * American firms increased their employment of foreign computer/research scientists from `r prettyNum(dfTable3EE[dfTable3EE$Occupation=="COMP/INFO RSRCH SCIENTISTS", "Tech10"], big.mark=",", scientific=FALSE)` in 2010 to `r prettyNum(dfTable3EE[dfTable3EE$Occupation=="COMP/INFO RSRCH SCIENTISTS", "Tech15"], big.mark=",", scientific=FALSE)` in 2015, i.a., a `r prettyNum(dfTable3EE[dfTable3EE$Occupation=="COMP/INFO RSRCH SCIENTISTS", "perCh"], big.mark=",", scientific=FALSE)` percent increase (Table 3EE).  American firms increased their employment of American computer/research scientists by only `r prettyNum(dfTable3ZZ[dfTable3ZZ$Occupation=="COMP/INFO RSRCH SCIENTISTS", "perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015 (Table 3ZZ)  
 
 
-* blah blah   
+* Decline of female percent, foreign and domestic software dev   
 
-* blah blah    
+* Decline of female percent, foreign and domestic database admin    
 
-* blah blah   
+* Decline of female percent, foreign and domestic comp/res sci    
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>
 
@@ -211,17 +212,14 @@ The first column of each profile contains a list of job categories. Some categor
 
 * In 2015 California employed the largest number of foreign techs in three critical job categories ==> software developers = `r prettyNum(dfTable3F[dfTable3F$Occupation=="SOFTWARE DEVELOPERS" & dfTable3F$State=="California", "Tech15"], big.mark=",", scientific=FALSE)`; database administrators = `r prettyNum(dfTable3F[dfTable3F$Occupation=="DATABASE ADMINISTRATORS" & dfTable3F$State=="California", "Tech15"], big.mark=",", scientific=FALSE)`; and computer/research scientists = `r prettyNum(dfTable3F[dfTable3F$Occupation=="COMP/INFO RSRCH SCIENTISTS" & dfTable3F$State=="California", "Tech15"], big.mark=",", scientific=FALSE)`. California also recruited the largest increases in foreign techs between 2010 and 2015 ==> software developers =  `r prettyNum(dfTable3F[dfTable3F$Occupation=="SOFTWARE DEVELOPERS" & dfTable3F$State=="California", "Change"], big.mark=",", scientific=FALSE)` ...  database administrators =  `r prettyNum(dfTable3F[dfTable3F$Occupation=="DATABASE ADMINISTRATORS" & dfTable3F$State=="California", "Change"], big.mark=",", scientific=FALSE)` ... and computer/research scientists =  `r prettyNum(dfTable3F[dfTable3F$Occupation=="COMP/INFO RSRCH SCIENTISTS" & dfTable3F$State=="California", "Change"], big.mark=",", scientific=FALSE)`  
 
-* blah blah   
-
-* blah blah    
-
-* blah blah   
+* One might assume that foreign sources could provide an "unlimited" supply of qualified software developers and database managers, where "unlimited" meant enough to  allow all U.S. firms to hire as many additional foreign techs in these categories as they needed. But one could not assume that the global supply of computer/research scientists was "unlimited" for two reasons: (1) These positions usually required PhDs in computer science or closely related fields; and (2) Enrollments in PhD programs in AI/machine learning were relatively small compared to the sudden rise in demand for this expertise after the start of the ongoing "AI Wars" among Google, Microsoft, Facebook, and Amazon.   
+* In other words, hiring experts in AI/machine learning between 2010 and 2015 was akin to a zero sum game. If some states substantially increased their shares, the shares alloted to other states would have to decline. Table 3F shows that three states increased their rosters of computer/research scientists ==> California (+425xxx), New York (+246xxx), and Illinois(+191 ); whereas the rosters of the other three states declined ==> Washington (--81xxx), Texas (--528xxx), and New Jersey (--64xxx). <i>Note that the appearance of zeros in any profile table should not be interpreted as literally zero, but rather as standins for missing values wherever the Census sample was too small to enable reliable estimates.</i>
 
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>  
 
 <P style="page-break-before: always">   
- <b>Table 3F -- Key Jobs for Foreign Yechs in States Employing the Most Foreign Techs</b> 
+ <b>Table 3F -- Key Jobs for Foreign Techs in States Employing the Most Foreign Techs</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3F, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
@@ -291,7 +289,7 @@ print(format(dfTable4H[1:11,], big.mark = ","), row.names=FALSE)
 
 ## Appendix -- Job Profiles of Foreign Professionals in Big Six Tech States in 2015
 
-As per Table 4 in the supplement, the six states in this appendix employed the largest number of Americans in their tech sectors -- California, Texas, New York, Florida, Virginia, and Illinois. This appendix displays job profiles of the foreign techs employed by each of these states. Two pairs of tables are included for each state.
+As per Table 4 in the supplement, the six states in this appendix employed the largest number of foreign professionals in their tech sectors -- California, Texas, New York, New Jersey, Washington,  and Illinois. This appendix displays job profiles of the foreign techs employed by each of these states. Two pairs of tables are included for each state.
 
 * The first pair of tables displays job profiles of all foreign techs; the second pair of tables display job profiles for foreign techs from Asia
 
