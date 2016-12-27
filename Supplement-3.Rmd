@@ -300,7 +300,7 @@ In a future version of the supplement, this Appendix will be replaced by an inte
 <i>Note: The column headings and abbreviated row names of the tables in this appendix are explained in the answer to [<b>Question 3](https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html#question-3-how-did-the-foreign-shares-of-jobs-in-u.s.-tech-change-between-2010-and-2015)</b> in the body of the supplement</i>
 
 <P style="page-break-before: always">        
-### California ... California ...California ... California ... California ... California ...   
+### California ... California ...California ... California ... California ...   
   
  <b>Table 3.forCA -- Foreign Male/Female Composition of Tech in California in 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
