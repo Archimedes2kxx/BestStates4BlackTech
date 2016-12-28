@@ -42,9 +42,19 @@
 ### Table 1C U.S. Tech Sector
     totCitTech <- as.numeric(dfRaceSexCountAndShares["ALL STATES", "Totals"])
     totForTech <- as.numeric(dfForeignRaceSexCountAndShares["ALL STATES", "Totals"])
-    rowDf <- data.frame(Citizens=totCitTech, Foreign=totForTech)
+    rowDf2015 <- data.frame(Citizens=totCitTech, Foreign=totForTech)
+    dfTable1C2015<- makeNumPerTable(rowDf2015)
+    colnames(dfTable1C2015) <- c("Total2015", "Citizens2015", "Foreign2015")
+    ### dfTable1C2015
     
-    dfTable1C<- makeNumPerTable(rowDf)
+    totCitTech2010 <- as.numeric(dfRaceSexCountAndShares.2010["ALL STATES", "Totals"])
+    totForTech2010 <- as.numeric(dfForeignRaceSexCountAndShares.2010["ALL STATES", "Totals"])
+    rowDf2010 <- data.frame(Citizens=totCitTech2010, Foreign=totForTech2010)
+    dfTable1C2010<- makeNumPerTable(rowDf2010)
+    colnames(dfTable1C2010) <- c("Total2010", "Citizens2010", "Foreign2010")
+    ### dfTable1C2010
+    
+    dfTable1C <- cbind(dfTable1C2010, dfTable1C2015)
     print(dfTable1C, quote=FALSE)  
     
 ### Bar Chart 1 showing Total, Citizens, and Foreign Techs
