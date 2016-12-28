@@ -1,7 +1,7 @@
 ---
-title: "Foreign Professionals: U.S. Tech's Other Pipelines -- Version 0.78"
+title: "Foreign Professionals: U.S. Tech's Other Pipelines -- Version 0.79"
 author: "Roy L Beasley, PhD -- DLL Editor"
-date: "12/26/2016"
+date: "12/27/2016"
 
 output: 
  prettydoc::html_pretty:
@@ -261,13 +261,13 @@ Two data tables impose numeric precision on the qualitative insights provided by
 
 1. <b>State</b> – State of workplace for Asian or non-Asian techs 
 
-2. <b>AllForeign</b> – The total number of all foreign techs in the U.S. (Asian + non-Asian) who worked in each state. The data in this column is repeated in both tables, but the order of the rows differs from one table to the next. For example, Table 4G shows that the total number of foreign techs who worked California in 2015 was xxx513,031. Table 4G shows that total number of foreign techs in Florida was xxx328,635 
+2. <b>AllForeign</b> – The total number of all foreign techs in the U.S. (Asian + non-Asian) who worked in each state. The data in this column is repeated in both tables, but the order of the rows differs from one table to the next. For example, Table 4G shows that the total number of foreign techs who worked California in 2015 was `r prettyNum(dfTable4G[dfTable4G$State=="California", "AllForeign"], big.mark=",", scientific=FALSE)`xxx127,671. Table 4H shows that total number of foreign techs in Florida was `r prettyNum(dfTable4H[dfTable4H$State=="Florida", "AllForeign"], big.mark=",", scientific=FALSE)`xxx23,049 
 
-3. <b>perSS</b> – The state’s share of all Asian or non-Asian techs in the U.S. For example, Table 4G shows that 9.3 percent of the techs from Asian countries worked in California; and xxx7 percent of all techs from Asian countries worked in Texas.
+3. <b>perSS</b> – The state’s share of all Asian or non-Asian techs in the U.S. For example, Table 4G shows that xxxx9.3 percent of the techs from Asian countries worked in California; and xxx7 percent of all techs from Asian countries worked in Texas.
 
-4. <b>Asian/Non-Asian</b>  The data in this column shows the number of Asian or non-Asian techs in each state. For example, Table 4H shows that xxx techs from Asian countries worked in California, and xxx205,636 techs from Asian countries worked in Texas. The rows of each table are ordered by the data in this column, i.e., by the number of techs in each state. States with higher numbers are at the top of the table; states with lower numbers are at the bottom.
+4. <b>Asian/Non-Asian</b>  The data in this column shows the number of Asian or non-Asian techs in each state. For example, Table 4H shows that `r prettyNum(dfTable4H[dfTable4H$State=="California", "NonAsian"], big.mark=",", scientific=FALSE)` xxx34,498 techs from non-Asian countries worked in California, and `r prettyNum(dfTable4H[dfTable4H$State=="Illinois", "NonAsian"], big.mark=",", scientific=FALSE)` xxx5,342 techs from non-Asian countries worked in Illinois. The rows of each table are ordered by the data in this column, i.e., by the number of techs in each state. States with higher numbers are at the top of the table; states with lower numbers are at the bottom.
 
-5. <b>perT</b> – Percent of all foreign techs in each state who were from Asian countries (Table 4G) or were from non-Asian countries (Table 4H). For example, Table 4G shows that xxx52.6 percent of all techs in the U.S. who were from from Asian countries worked in California. Table 4H shows that  xxx62.6 percent of all the techs from non-Asian countries worked in California.
+5. <b>perT</b> – Percent of all foreign techs in each state who were from Asian countries (Table 4G) or were from non-Asian countries (Table 4H). For example, Table 4G shows that `r prettyNum(dfTable4G[dfTable4G$State=="California", "perAsian"], big.mark=",", scientific=FALSE)`xxx73.0 percent of all techs in the U.S. who were from from Asian countries worked in California. Table 4H shows that `r prettyNum(dfTable4H[dfTable4H$State=="California", "perNonAsian"], big.mark=",", scientific=FALSE)` xxx27.0 percent of all the techs from non-Asian countries worked in California.
 
 <P style="page-break-before: always">  
 <b>Table 4G -- Foreign Asian Professionals in U.S. Information Technology -- Top 10 States </b>   
