@@ -234,7 +234,7 @@ The first column of each profile contains a list of job categories. Some categor
 #### Question 4 -- Where did foreign techs work in 2015?      
 Answer 4 ... The following sections provide an extensive response to a more specific formulation of this question ==> In which states did foreign tech professionals work in 2015? 
 
-As can be seen from Table 4.1 (below), `r prettyNum(dfTable4.1[1, "perTop6"], big.mark=",", scientific=FALSE)` percent, of the foreign techs who worked in the U.S. were concentrated in six states ==> California (`r prettyNum(dfTable4.1[1, "California"], big.mark=",", scientific=FALSE)`), Texas (`r prettyNum(dfTable4.1[1, "Texas"], big.mark=",", scientific=FALSE)`), New York (`r prettyNum(dfTable4.1[1, "New York"], big.mark=",", scientific=FALSE)`), New Jersey (`r prettyNum(dfTable4.1[1, "New Jersey"], big.mark=",", scientific=FALSE)`), Washington ( `r prettyNum(dfTable4.1[1, "Washington"], big.mark=",", scientific=FALSE)`), and Illinois (`r prettyNum(dfTable4.1[1, "Illinois"], big.mark=",", scientific=FALSE)`).
+As can be seen from Table 4.1 (below), `r prettyNum(dfTable4.1[1, "perTop6"], big.mark=",", scientific=FALSE)` percent of the foreign techs who worked in the U.S. were concentrated in six states ==> California (`r prettyNum(dfTable4.1[1, "California"], big.mark=",", scientific=FALSE)`), Texas (`r prettyNum(dfTable4.1[1, "Texas"], big.mark=",", scientific=FALSE)`), New York (`r prettyNum(dfTable4.1[1, "New York"], big.mark=",", scientific=FALSE)`), New Jersey (`r prettyNum(dfTable4.1[1, "New Jersey"], big.mark=",", scientific=FALSE)`), Washington ( `r prettyNum(dfTable4.1[1, "Washington"], big.mark=",", scientific=FALSE)`), and Illinois (`r prettyNum(dfTable4.1[1, "Illinois"], big.mark=",", scientific=FALSE)`).
 
 <b>Table 4.1 ... States Employing the Most Foreign Techs in 2015</b>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -251,7 +251,7 @@ U.S. Census data that shows the geographic distribution of foreign techs is pres
 
 * California is brightly colored on both maps, signifying the highest concentrations of Asian and non-Asian techs were found in that state. Texas is the second brightest state because it had the next highest concentration of foreign techs.  New York is third.
 
-* Both maps assign the same colors to all of the other states, with one notable exception. Florida is dull gray on Map 4G (Asian techs), but is almost as bright as New York on Map 4H (non-Asian techs). This signifies that Florida had about the same percentage of foreign techs from non-Asian countries as New York; but Florida way down in the pack as a work state for Asian techs. Given the large numbers of foreign professionals from Latin American countries in Florida, its prominence as a work state for non-Asian foreign techs is not surprising.
+* Both maps assign the same colors to all of the other states, with one notable exception. Florida is dull gray on Map 4G (Asian techs), but is almost as bright as New York on Map 4H (non-Asian techs). This signifies that Florida had about the same percentage of foreign techs from non-Asian countries as New York; but Florida was much further down on the list of work states for Asian techs. Given the large numbers of foreign professionals from Latin American countries who work in Florida, its prominence as a work state for non-Asian foreign techs is not surprising.
  
 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -306,6 +306,7 @@ print(format(dfTable4H[1:11,], big.mark = ","), row.names=FALSE)
       
 <P style="page-break-before: always">  
 ## Methods   
+The same methods were used to collect and analyze the data for this supplement as were used in the production of the original report. The reader is therefore referred to the original report's [<b>descriptions of these methods</b>](https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html#methods)
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small> 
  
