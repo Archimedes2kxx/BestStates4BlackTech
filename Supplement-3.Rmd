@@ -1,5 +1,5 @@
 ---
-title: "Foreign Professionals: U.S. Tech's Other Pipelines -- Version 0.795"
+title: "Foreign Professionals: U.S. Tech's Other Pipelines -- Version 0.80"
 author: "Roy L Beasley, PhD -- DLL Editor"
 date: "12/27/2016"
 
@@ -118,7 +118,6 @@ Brief answers to the first two questions provide a framwork for the extended res
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>   
 
-<P style="page-break-before: always">   
 #### Question 2 -- What was the foreign male/female composition of U.S. tech in 2015?
 <i>Answer 2</i> ... In 2015 approximately `r prettyNum(dfTable2C["Per", "Male"], big.mark=",", scientific=FALSE)`% of foreign techs were male; `r prettyNum(dfTable2C["Per", "Female"], big.mark=",", scientific=FALSE)`% were female; `r prettyNum(dfTable2C["Per", "FemAsian"], big.mark=",", scientific=FALSE)`% of foreign techs were female techs who came from Asian countries; and `r prettyNum(dfTable2C["Per", "FemNonAsian"], big.mark=",", scientific=FALSE)`% were female techs from non-Asian countries. (Chart 4 and Table 2C)
 
@@ -129,7 +128,6 @@ Brief answers to the first two questions provide a framwork for the extended res
 ```
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>   
 
-<P style="page-break-before: always">   
 #### Question 3 -- How did the foreign shares of jobs in U.S. tech change between 2010 and 2015?    
 
 <i>Answer 3</i> ... The first two tables in this section, Table 3Z and Tables 3ZZ, were copied from the original report. They provide profiles of the jobs held by American professionals in the U.S. tech sector. Subsequent tables in this section provide increasingly detailed profiles of the jobs held by foreign professionals. These foreign profiles can be interpreted as specific measures of the substantial shortfalls in the supply of American techs. Alternatively, they can be also interpreted as specific measures of the extent to thich American managers imported cheaper labor from foreign sources than was available from the nation's domestic pipelines. 
@@ -138,25 +136,25 @@ This supplement defined "information technology" by using the same thirteen stan
 
 The first column of each profile contains a list of job categories. Some categories were abbreviated to enable the rows of the table to be short enough to appear on the same line when published on the DLL's blog. Abbreviations include "Comp" for "Computer", "Info" for "Information", and "Net" for "Network". Column headings were also abbreviated as follows:   
 
-* <b>Tech10</b> ... the number of tech workers in each job category in 2010   
+* <b>Tech10</b> ... number of tech workers in each job category in 2010   
 
-* <b>Tech15</b> ... the number of tech workers in each job category in 2015   
+* <b>Tech15</b> ... number of tech workers in each job category in 2015   
 
-* <b>perTS</b> ... the "Percentage of Tech Share", which shows the percentage of the total number of American tech workers that were employed in each job category in the 50 states plus the District of Columbia. For example, in Table 3Z (below) the `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Tech15"], big.mark=",", scientific=FALSE)` workers in "Software Development" represented `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "perTS"], big.mark=",", scientific=FALSE)` percent of the `r prettyNum(dfTable3Z["All Occupations", "Tech15"], big.mark=",", scientific=FALSE)` total American tech workers in 2015. The `r prettyNum(dfTable3Z["COMP PROGRAMMERS", "Tech15"], big.mark=",", scientific=FALSE)` workers "Computer Programmers" were `r prettyNum(dfTable3Z["COMP PROGRAMMERS", "perTS"], big.mark=",", scientific=FALSE)` percent of the total `r prettyNum(dfTable3Z["All Occupations", "Tech15"], big.mark=",", scientific=FALSE)`.   
+* <b>perTS</b> ... "Percentage of Tech Share", which shows the percentage of the total number of American tech workers that were employed in each job category in the 50 states plus the District of Columbia. For example, in Table 3Z (below) the `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Tech15"], big.mark=",", scientific=FALSE)` workers in "Software Development" represented `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "perTS"], big.mark=",", scientific=FALSE)` percent of the `r prettyNum(dfTable3Z["All Occupations", "Tech15"], big.mark=",", scientific=FALSE)` total American tech workers in 2015. The `r prettyNum(dfTable3Z["COMP PROGRAMMERS", "Tech15"], big.mark=",", scientific=FALSE)` workers "Computer Programmers" were `r prettyNum(dfTable3Z["COMP PROGRAMMERS", "perTS"], big.mark=",", scientific=FALSE)` percent of the total `r prettyNum(dfTable3Z["All Occupations", "Tech15"], big.mark=",", scientific=FALSE)`.   
 
-* <b>Fem</b> ... the number of "Female" tech workers". The number of males can be calculated by substracting the female workers from the total number of workers in each category. For example, in Table 3Z (below) there were `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Tech15"], big.mark=",", scientific=FALSE)` American software developers in the 50 states plus DC in 2015 of which `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Fem"], big.mark=",", scientific=FALSE)` were female. So the number of male software developers was `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Tech15"], big.mark=",", scientific=FALSE)` - `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Fem"], big.mark=",", scientific=FALSE)` = `r prettyNum((dfTable3Z["SOFTWARE DEVELOPERS", "Tech15"] - dfTable3Z["SOFTWARE DEVELOPERS", "Fem"]), big.mark=",", scientific=FALSE)`. 
+* <b>Fem</b> ... number of "Female" tech workers". The number of males can be calculated by substracting the female workers from the total number of workers in each category. For example, in Table 3Z (below) there were `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Tech15"], big.mark=",", scientific=FALSE)` American software developers in the 50 states plus DC in 2015 of which `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Fem"], big.mark=",", scientific=FALSE)` were female. So the number of male software developers was `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Tech15"], big.mark=",", scientific=FALSE)` - `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Fem"], big.mark=",", scientific=FALSE)` = `r prettyNum((dfTable3Z["SOFTWARE DEVELOPERS", "Tech15"] - dfTable3Z["SOFTWARE DEVELOPERS", "Fem"]), big.mark=",", scientific=FALSE)`. 
 
-* <b>perF15</b> ... the "Percent Female in 2015" displays the percent of jobs in each category that were held by female techs in 2015. For example, Table 3Z shows that the `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Fem"], big.mark=",", scientific=FALSE)` female software developers were `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "perF15"], big.mark=",", scientific=FALSE)` percent of the total `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Tech15"], big.mark=",", scientific=FALSE)`
+* <b>perF15</b> ... "Percent Female in 2015" displays the percent of jobs in each category that were held by female techs in 2015. For example, Table 3Z shows that the `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Fem"], big.mark=",", scientific=FALSE)` female software developers were `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "perF15"], big.mark=",", scientific=FALSE)` percent of the total `r prettyNum(dfTable3Z["SOFTWARE DEVELOPERS", "Tech15"], big.mark=",", scientific=FALSE)`
 
-* <b>perF10</b> ... the "Percent Female in 2010" displays the percent of jobs in each category that were held by female techs in 2010. This stat is always contained in the companion table, e.g., Table 3ZZ.
+* <b>perF10</b> ... "Percent Female in 2010" displays the percent of jobs in each category that were held by female techs in 2010. This stat is always contained in the companion table, e.g., Table 3ZZ.
 
-* <b>Change</b> ... the difference between the number of workers in each job category in 2010 and the number in 2015. This stat is always found in the companion table, e.g., Table 3ZZ. 
+* <b>Change</b> ... difference between the number of workers in each job category in 2010 and the number in 2015. This stat is always found in the companion table, e.g., Table 3ZZ. 
 
-* <b>perCh</b> ... the change from 2010 to 2015 as a percentage of the jobs in 2010.  
+* <b>perCh</b> ... change from 2010 to 2015 as a percentage of the jobs in 2010.  
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>  
 
-<P style="page-break-before: always">
+
 <b> American vs. Foreign techs in 2010 and 2015 ... Tables 3Z/3ZZ vs Tables 3E/3EE</b>   
 
 * Employment of foreign techs in the 50 states plus the District of Columbia increased by `r prettyNum(dfTable3EE[1, "perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015 (Table 3EE). By contrast, employment of American techs only increased by `r prettyNum(dfTable3ZZ[1, "perCh"], big.mark=",", scientific=FALSE)` percent (Table 3ZZ) during that time frame.
@@ -171,11 +169,11 @@ The first column of each profile contains a list of job categories. Some categor
 
 * American firms increased their employment of foreign computer/research scientists from `r prettyNum(dfTable3EE[dfTable3EE$Occupation=="COMP/INFO RSRCH SCIENTISTS", "Tech10"], big.mark=",", scientific=FALSE)` in 2010 to `r prettyNum(dfTable3EE[dfTable3EE$Occupation=="COMP/INFO RSRCH SCIENTISTS", "Tech15"], big.mark=",", scientific=FALSE)` in 2015, i.a., a `r prettyNum(dfTable3EE[dfTable3EE$Occupation=="COMP/INFO RSRCH SCIENTISTS", "perCh"], big.mark=",", scientific=FALSE)` percent increase (Table 3EE).  American firms increased their employment of American computer/research scientists by only `r prettyNum(dfTable3ZZ[dfTable3ZZ$Occupation=="COMP/INFO RSRCH SCIENTISTS", "perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015 (Table 3ZZ)  
 
-* The percentage of the foreign female software developers declined from 21.1xxx % in 2010 down to 19.5xxx % in 2015 (Tables 3E and 3EE). The female component of American software developers also declined, from 22.0xxx % in 2010 down to 20.3xxx % in 2015 (Tables 3Z and 3ZZ).
+* The percentage of the foreign female software developers declined from 21.1% in 2010 down to 19.5% in 2015 (Tables 3E and 3EE). The female component of American software developers also declined, from 22.0% in 2010 down to 20.3% in 2015 (Tables 3Z and 3ZZ).
 
-* The percentage of the foreign female database administrators declined from 39.8xxx % in 2010 down to 23.8xxx % in 2015 (Tables 3E and 3EE). The female component of American database administrators also declined, from 39.8xxx % in 2010 down to 37.1xxx % in 2015 (Tables 3Z and 3ZZ).   
+* The percentage of the foreign female database administrators declined from 39.8xxx % in 2010 down to 23.8xxx % in 2015 (Tables 3E and 3EE). The female component of American database administrators also declined, from 39.8% in 2010 down to 37.1% in 2015 (Tables 3Z and 3ZZ).   
 
-* The percentage of the foreign female computer/research scientists declined from 26.5xxx % in 2010 down to 10.3xxx % in 2015 (Tables 3E and 3EE). The female component of the American computer/research scientists also declined, from 39.8xxx % in 2010 down to 29.9xxx % in 2015 (Tables 3Z and 3ZZ).  
+* The percentage of the foreign female computer/research scientists declined from 26.5% in 2010 down to 10.3% in 2015 (Tables 3E and 3EE). The female component of the American computer/research scientists also declined, from 39.8% in 2010 down to 29.9% in 2015 (Tables 3Z and 3ZZ).  
 
 * These declines in female shares of both the foreign and American components of the U.S. tech workforce in all three critical areas might be explained by domestic and global shortages of qualified female techs ... Or these declines might reflect gender bias among U.S. managers against hiring female techs, a bias that transcended the female techs' status as foreigners or as citizens.
 
@@ -187,7 +185,6 @@ The first column of each profile contains a list of job categories. Some categor
    print(format(dfTable3Z, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
-<P style="page-break-before: always">    
  <b>Table 3ZZ -- Changes in the American Composition of U.S. Tech Between 2010 and 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3ZZ, big.mark=","), row.names=FALSE, quote=FALSE)
@@ -200,7 +197,6 @@ The first column of each profile contains a list of job categories. Some categor
    print(format(dfTable3E, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
-<P style="page-break-before: always">    
  <b>Table 3EE -- Changes in the Foreign Composition of U.S. Tech Between 2010 and 2015</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3EE, big.mark=","), row.names=FALSE, quote=FALSE)
@@ -254,9 +250,16 @@ U.S. Census data that shows the geographic distribution of foreign techs is pres
 * Both maps assign the same colors to all of the other states, with one notable exception. Florida is dull gray on Map 4G (Asian techs), but is almost as bright as New York on Map 4H (non-Asian techs). This signifies that Florida had about the same percentage of foreign techs from non-Asian countries as New York; but Florida was much further down on the list of work states for Asian techs. Given the large numbers of foreign professionals from Latin American countries who work in Florida, its prominence as a work state for non-Asian foreign techs is not surprising.
  
 
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>   
+
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
     grid.arrange(dfMap4G, dfMap4H, ncol=1) 
 ``` 
+
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>   
+
+<P style="page-break-before: always">  
 
 <b>Tables 4G and 4H … 50 states plus DC</b>   
 Two data tables impose numeric precision on the qualitative insights provided by the corresponding maps. The tables are ordered by the number of techs from Asian countries or from non-Asian countries  that worked in each state. The short versions of the tables that only contain the top ten rows are displayed below. To view the full tables that contain data for all 50 states plus the District of Columbia, please click the link below the table name. Each table (full and short versions) has the following five columns:
@@ -271,7 +274,16 @@ Two data tables impose numeric precision on the qualitative insights provided by
 
 5. <b>perT</b> – Percent of all foreign techs in each state who were from Asian countries (Table 4G) or were from non-Asian countries (Table 4H). For example, Table 4G shows that `r prettyNum(dfTable4G[dfTable4G$State=="California", "perAsian"], big.mark=",", scientific=FALSE)`xxx73.0 percent of the foreign techs in California were from from Asian countries. Table 4H shows that `r prettyNum(dfTable4H[dfTable4H$State=="California", "perNonAsian"], big.mark=",", scientific=FALSE)` xxx27.0 percent of the foreign techs in California were from non-Asian countries.
 
-<P style="page-break-before: always">  
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>   
+
+The tables confirm the patterns displayed by the maps:   
+
+* The top ten states for foreign techs from Asian countries, Table 4G, were the same states as the top ten for foreign techs from non-Asian countries, Table 4H.   
+
+* Florida and Virginia are exceptions to this pattern. Virginia was among the top ten states for foreign techs from Asian countries; whereas Florida was among the top ten states for foreign techs from non-Asian countries in each state, Tables 4G and 4H.   
+
+* Otherwise the tables are remarkably similar. Indeed, the concentrations of techs from Asian countries was close to the concentrations of techs from non-Asian countries, i.e., high concentrations in California followed by much lower percentages in the other states as shown in the "perSS" columns of both tables
+  
 <b>Table 4G -- Foreign Asian Professionals in U.S. Information Technology -- Top 10 States </b>   
 <i>[Click here for full version](Table4G-Full-Foreign-Asia-Employment.html)</i>
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
@@ -299,12 +311,10 @@ print(format(dfTable4H[1:11,], big.mark = ","), row.names=FALSE)
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small> 
     
-<P style="page-break-before: always">  
 ## Personal Motivation   
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small> 
       
-<P style="page-break-before: always">  
 ## Methods   
 The same methods were used to collect and analyze the data for this supplement as were used in the production of the original report. The reader is therefore referred to the original report's [<b>descriptions of these methods</b>](https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html#methods)
 
