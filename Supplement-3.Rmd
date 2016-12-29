@@ -1,5 +1,5 @@
 ---
-title: "Foreign Professionals: U.S. Tech's Other Pipelines -- Version 0.83"
+title: "Foreign Professionals: U.S. Tech's Other Pipelines -- Preliminary Version 0.89"
 author: "Roy L Beasley, PhD -- DLL Editor"
 date: "12/29/2016"
 
@@ -198,7 +198,7 @@ The first column of each profile contains a list of job categories. Some categor
 <P style="page-break-before: always"> 
 <b> Key Jobs for American and foreign techs  ... Table 3F</b>   
 
-For more convenient reference, extracts of data from Tables 3ZZ  and 3EE about the three key job categories appear in the labelled sections of Table 3F (below). The first section displays data about American techs in 2010 and 2015; the second shows data foreign techs; the third about their combined totals; and the fourth shows the percentage of these critical jobs held by foreign techs:
+For more convenient reference, extracts of data from Tables 3ZZ  and 3EE about the three key job categories appear in the labelled sections of Table 3F (below). The first section displays data about American techs in 2010 and 2015; the second shows data about foreign techs; the third about their combined American and foreign totals; and the fourth shows the percentage of these critical jobs that were held by foreign techs:
 
 * Employment of foreign techs in all occupations increased by `r prettyNum(dfTable3EE[1, "perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015 (Table 3F.For). By contrast, employment of American techs only increased by `r prettyNum(dfTable3ZZ[1, "perCh"], big.mark=",", scientific=FALSE)` percent (Table 3F.Cit) during that time frame.
 
@@ -208,10 +208,7 @@ For more convenient reference, extracts of data from Tables 3ZZ  and 3EE about t
 
 * American firms increased their employment of foreign computer/research scientists from `r prettyNum(dfTable3EE[dfTable3EE$Occupation=="COMP/INFO RSRCH SCIENTISTS", "Tech10"], big.mark=",", scientific=FALSE)` in 2010 to `r prettyNum(dfTable3EE[dfTable3EE$Occupation=="COMP/INFO RSRCH SCIENTISTS", "Tech15"], big.mark=",", scientific=FALSE)` in 2015, i.a., a `r prettyNum(dfTable3EE[dfTable3EE$Occupation=="COMP/INFO RSRCH SCIENTISTS", "perCh"], big.mark=",", scientific=FALSE)` percent increase (Table 3F.For).  American firms increased their employment of American computer/research scientists by only `r prettyNum(dfTable3ZZ[dfTable3ZZ$Occupation=="COMP/INFO RSRCH SCIENTISTS", "perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015 (Table 3F.Cit)  
 
-* blah
-
-* blah
-
+* That foreign employment in U.S. tech grew faster than American employment had the inevitable consequence that the foreign share of U.S. tech grew larger between 2010 and 2015. The 2010 and 2015 percentages are displayed in Table 3F.perFor (below).
 
 <P style="page-break-before: always">   
  <b>Table 3F.Cit -- Key Jobs for American Techs </b> 
@@ -339,16 +336,29 @@ print(format(dfTable4H[1:11,], big.mark = ","), row.names=FALSE)
 <P style="page-break-before: always">  
 ## Final Comments   
 
-As per Table 1C, the share of jobs in the U.S. tech sector held by foreign professionals increased from xxx percent in 2010 to xxx percent in 2015. This small increase was the net result of increases and decreases in the thirteen job categories that were used to define the tech sector. Closer examination disclosed that foreign professionals gained substantial increases in their shares of the three job categories most closely associated with cloud computing and AI/machine learning, the most important innovations driving the expansion of the U.S. tech sector in recent years (Table 3F):
+As per Table 3F.perFor (repeated below), the share of key jobs in the U.S. tech sector increased by small percentages between 2010 and 2015. Indeed these increases might be offset by minor changes in hiring policies during the next five years, changes that led to U.S. tech managers hiring fewer foreign professionals. But this is unlikely. 
 
  <b>Table 3F.perFor -- Percentage of Key Jobs Held by Foreign Techs</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
-   print(format(dfTable3.perFor, big.mark=","), row.names=FALSE, quote=FALSE)
-```
+   print(format(dfTable3.perFor, big.mark=","), row.names=FALSE, quote=FALSE)   
+```   
 
+<br />
+<b>California as U.S. Tech's Exemplar State</b>    
+Below find four labelled sections of a table like the four sections of Table 3 that appeared in answer to Question 3 in the text of this supplement. The difference is that these four sections focus on changes in American and foreign employment in the tech sector of the state of California.   
 
-California as Exemplar   
+* The fourth component of the table show that the percentage increases in foreign employment in California were 5 to 7 points higher than the corresponding percentage increases in the entire country between 2010 and 2015. But that's not the important observation.   
 
+* What's crucial to note is the levels of California's foreign employment in 2015 ==> They were 8 to 20 percentage points higher than the corresponding percentages of U.S. tech as a whole. 
+ 
+* Only a small percentage of top managers in any economic sector are "disruptors" or "innovators". Most managers tend to implement "best practices" as identified by the whatever the most successful companies in their sectors are doing. In the case of U.S. tech, the most successful companies are in California, and California's tech sector employs a much higher percentage of foreign techs than the tech sectors in other states. So that's what we should expect the managers of companies in the tech sectors of other states to do in the next five years ==> hire much higher percentages of foreign techs.
+
+<b>Rhetorical Question</b>   
+How can the tech sector in California and elsewhere hire ever larger percentages of foreign techs AND become more diverse by hiring larger percentages of Black and Hispanic techs?
+
+<i>Hint: Only readers who voted for Hillary and are still dumbfounded by the election of Donald Trump will be unable to provide the correct answer to this question ... :-(</i>
+
+<br />
 <b>Table 3F.Cit.CA -- Key Jobs for American Techs in California</b> 
 ```{r, echo=FALSE, cache=FALSE, comment=NA}
    print(format(dfTable3.Cit.CA, big.mark=","), row.names=FALSE, quote=FALSE)
@@ -366,11 +376,13 @@ California as Exemplar
    print(format(dfTable3.perFor.CA, big.mark=","), row.names=FALSE, quote=FALSE)
 ```
 
-
-
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small> 
     
 ## Personal Motivation   
+
+In the ["<b>Personal Motivation</b>"](https://archimedes2kxx.github.io/BestStatesForBlackTech/Report-3.html#personal-motivation) section of my original report, I noted that as DLL Editor I was driven to produce my report because of my dissatisfaction with the diversity reports that had been issued by major U.S. tech firms in the last three years. I stated that "What concerned me the most was the lack of context for assessing Silicon Valley’s diversity numbers. Were they as good as could be expected? Were they worse? … And compared to what?"
+
+By completing this supplement, I have answered my own questions. Left to their own devices, I believe that for the foreseeable future the managers of U.S. tech in California and elsewhere will probably continue to produce annual reports that document their failure to substantially increase the percentage of Black and Hispanic professionals on their payrolls. Of course, the operative phrase is the lead-in, "Left to their own devices ..." Sometime in the next few months, I will publish an op-ed on this blog that will propose a few strategies for correcting this continuing market failure ... :-)
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small> 
       
