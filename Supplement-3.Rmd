@@ -64,13 +64,13 @@ Top managers claim that American firms in the U.S. technology sector employ fore
 
 * In 2015, there were approximately `r prettyNum(dfTable1C["Num", "Total2015"], big.mark=",", scientific=FALSE)` professionals in the U.S. tech sector; `r prettyNum(dfTable1C["Num", "Citizens2015"], big.mark=",", scientific=FALSE)` were Americans (`r prettyNum(dfTable1C["Per", "Citizens2015"], big.mark=",", scientific=FALSE)` percent); `r prettyNum(dfTable1C["Num", "Foreign2015"], big.mark=",", scientific=FALSE)` were foreign (`r prettyNum(dfTable1C["Per", "Foreign2015"], big.mark=",", scientific=FALSE)` percent, Table 1C).   
 
-* In 2015 approximately `r prettyNum(dfTable2C["Per", "Male"], big.mark=",", scientific=FALSE)`% of foreign techs were male; `r prettyNum(dfTable2C["Per", "Female"], big.mark=",", scientific=FALSE)`% were female; `r prettyNum(dfTable2C["Per", "FemAsian"], big.mark=",", scientific=FALSE)`% of foreign techs were female techs who came from Asian countries; and `r prettyNum(dfTable2C["Per", "FemNonAsian"], big.mark=",", scientific=FALSE)`% were female techs from non-Asian countries. (Chart 4 and Table 2C)
-
-  <img src="ggChart4.png" style="width:600px;height:300px;" />
-  
-* More than half, i.e., `r prettyNum(dfTable4.1[1, "perTop6"], big.mark=",", scientific=FALSE)` percent, of foreign techs were concentrated in six states (Chart 5 and Table 4.1) ==> California (`r prettyNum(dfTable4.1[1, "California"], big.mark=",", scientific=FALSE)`), Texas (`r prettyNum(dfTable4.1[1, "Texas"], big.mark=",", scientific=FALSE)`), New York (`r prettyNum(dfTable4.1[1, "New York"], big.mark=",", scientific=FALSE)`), New Jersey (`r prettyNum(dfTable4.1[1, "New Jersey"], big.mark=",", scientific=FALSE)`), Washington ( `r prettyNum(dfTable4.1[1, "Washington"], big.mark=",", scientific=FALSE)`), and Illinois (`r prettyNum(dfTable4.1[1, "Illinois"], big.mark=",", scientific=FALSE)`). These states also experienced the largest increases in the employment of foreign techs between 2010 and 2015 (Chart 5 and Table 4.1).
+* In 2015 approximately `r prettyNum(dfTable2C["Per", "Male"], big.mark=",", scientific=FALSE)`% of foreign techs were male; `r prettyNum(dfTable2C["Per", "Female"], big.mark=",", scientific=FALSE)`% were female; `r prettyNum(dfTable2C["Per", "FemAsian"], big.mark=",", scientific=FALSE)`% of foreign techs were female techs who came from Asian countries; and `r prettyNum(dfTable2C["Per", "FemNonAsian"], big.mark=",", scientific=FALSE)`% were female techs from non-Asian countries. (Chart 5 and Table 2C)
 
   <img src="ggChart5.png" style="width:600px;height:300px;" />
+  
+* More than half, i.e., `r prettyNum(dfTable4.1[1, "perTop6"], big.mark=",", scientific=FALSE)` percent, of foreign techs were concentrated in six states (Chart 5 and Table 4.1) ==> California (`r prettyNum(dfTable4.1[1, "California"], big.mark=",", scientific=FALSE)`), Texas (`r prettyNum(dfTable4.1[1, "Texas"], big.mark=",", scientific=FALSE)`), New York (`r prettyNum(dfTable4.1[1, "New York"], big.mark=",", scientific=FALSE)`), New Jersey (`r prettyNum(dfTable4.1[1, "New Jersey"], big.mark=",", scientific=FALSE)`), Washington (`r prettyNum(dfTable4.1[1, "Washington"], big.mark=",", scientific=FALSE)`), and Illinois (`r prettyNum(dfTable4.1[1, "Illinois"], big.mark=",", scientific=FALSE)`). These states also experienced the largest increases in the employment of foreign techs between 2010 and 2015 (Chart 6 and Table 4.1).
+
+  <img src="ggChart6.png" style="width:600px;height:300px;" />
 
 * Employment of foreign techs in the 50 states plus the District of Columbia increased by `r prettyNum(dfTable3EE[1, "perCh"], big.mark=",", scientific=FALSE)` percent between 2010 and 2015 (Table 3EE). By contrast, employment of American techs only increased by `r prettyNum(dfTable3ZZ[1, "perCh"], big.mark=",", scientific=FALSE)` percent (Table 3ZZ) during that time frame.   
 
@@ -88,7 +88,7 @@ These estimates of substantial employment of foreign techs in 2015 and substanti
 
 But it must be noted that substantial increases in the employment of foreign techs were also consistent with an alternative interpretation, i.e., that American managers were importing foreign labor because it was cheaper than American labor. In other words domestic job pipelines did not contain enough American techs who were willing to work for the lower salaries that were acceptable to foreign techs. This is not to say that foreign techs were paid salaries that were below the salary ranges paid to American techs, merely that larger numbers of foreign techs were willing to work for salaries that were at the lower end of the salary ranges offered to American techs.
 
-
+Only a small percentage of the top managers in any economic sector are "disruptors" or "innovators". Most  tend to implement "best practices" as identified by the whatever the most successful top managers in their sectors are doing. In the case of U.S. tech, the most successful top managers are in California, and California's tech sector employs a much higher percentage of foreign techs than the tech sectors in other states. So that's what we should expect the top managers in the tech sectors of other states to do in the next five years ==> employ higher percentages of foreign techs.
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Supplement-3.html" target="_self">back-to-top</a></center></i></small>   
   
 <P style="page-break-before: always">  

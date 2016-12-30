@@ -156,12 +156,7 @@
     
     dfTable2C <- cbind(dfTable2Cleft, dfTable2Cright)
     print(dfTable2C, quote=FALSE)
-    
-    ### Chart 4 showing male/female compnents
-    chartTitle4 <- "Chart 4. Foreign Male/Female Tech"
-    ggChart4 <- makeNumPerChart(dfTable2C[,-1], chartTitle4, font=2)
-    ggChart4
-    ggsave("ggChart4.png", width=4, height=2)     
+
     
     
 ###########################
@@ -281,20 +276,7 @@
     colnames(dfTable3F.perFor.CA) <- c("Occupation", "per2010", "per2015")
     dfTable3F.perFor.CA
     
-    
-####################################
-#################################### 
-       
-### Chart 5. Growth in Tech, 2010 to 2015
-    listDfs <- list(White=dfTable3AA, Black=dfTable3BB, Hispanic=dfTable3CC, Asian=dfTable3DD, Foreign=dfTable3EE)
-    ggDfChart5 <- createXYZdf("Tech", "10", "15", listdDfs)
-    ###ggDfChart5
-    chartTitle5 <- "Chart 5. Growth in Tech, 2010 to 2015"
-    ggChart5 <- makeGroupedBarChart(ggDfChart5, chartTitle5)
-    ggChart5
-    ggsave("ggChart5.png", width=4, height=2)    
 
-    
 ###############################################
 ############################################### 
 ### APPENDIX     
@@ -493,15 +475,31 @@
     
     
 ########################################
-########################################  
-### Chart 5. Growth in Foreign Tech, 2010 to 2015"
+######################################## 
     
-    listDfs <- list(CA=dfTable3forCACA, TX=dfTable3forTXTX, NY=dfTable3forNYNY, NJ=dfTable3forNJNJ, WA=dfTable3forWAWA, IL=dfTable3forILIL)
-    ggDfChart5 <- createXYZdf("Tech", "10", "15", listdDfs)
-    chartTitle5 <- "Chart 5. Foreign Techs by States, 2010 to 2015"
-    ggChart5 <- makeGroupedBarChart(ggDfChart5, chartTitle5)
-    (ggChart5 <- ggChart5 + theme(axis.title.x = element_blank()))
+### Chart 4. Growth in Tech, 2010 to 2015
+    listDfs <- list(White=dfTable3AA, Black=dfTable3BB, Hispanic=dfTable3CC, Asian=dfTable3DD, Foreign=dfTable3EE)
+    ggDfChart4 <- createXYZdf("Tech", "10", "15", listdDfs)
+    ###ggDfChart4
+    chartTitle4 <- "Chart 4. Growth in Tech, 2010 to 2015"
+    ggChart4 <- makeGroupedBarChart(ggDfChart4, chartTitle4)
+    ggChart4
+    ggsave("ggChart4.png", width=4, height=2)    
+    
+    
+### Chart 5 showing male/female compnents of foreign
+    chartTitle5 <- "Chart 5. Foreign Male/Female Tech"
+    ggChart5 <- makeNumPerChart(dfTable2C[,-1], chartTitle5, font=2)
+    ggChart5
     ggsave("ggChart5.png", width=4, height=2)    
+    
+### Chart 6. Growth in Foreign Tech, 2010 to 2015"
+    listDfs <- list(CA=dfTable3forCACA, TX=dfTable3forTXTX, NY=dfTable3forNYNY, NJ=dfTable3forNJNJ, WA=dfTable3forWAWA, IL=dfTable3forILIL)
+    ggDfChart6 <- createXYZdf("Tech", "10", "15", listdDfs)
+    chartTitle6 <- "Chart 6. Foreign Techs by States, 2010 to 2015"
+    ggChart6 <- makeGroupedBarChart(ggDfChart6, chartTitle6)
+    (ggChart6 <- ggChart6 + theme(axis.title.x = element_blank()))
+    ggsave("ggChart6.png", width=4, height=2)    
      
 ########################################
 ########################################  
