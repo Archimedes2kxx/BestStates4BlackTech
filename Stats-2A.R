@@ -244,42 +244,42 @@
 ####################################
 ### Table 3F ,,, Summary of foreign gains in three critical job sectors
     criticalJobs <- c("All Occupations", "SOFTWARE DEVELOPERS", "DATABASE ADMINISTRATORS", "COMP/INFO RSRCH SCIENTISTS")
-    dfTable3.Cit <- subset(dfTable3ZZ, select=c("Occupation", "Tech10", "Tech15", "Change", "perCh"))
-    dfTable3.Cit <- filter(dfTable3.Cit, Occupation %in% criticalJobs)
-    dfTable3.Cit
+    dfTable3F.Cit <- subset(dfTable3ZZ, select=c("Occupation", "Tech10", "Tech15", "Change", "perCh"))
+    dfTable3F.Cit <- filter(dfTable3F.Cit, Occupation %in% criticalJobs)
+    dfTable3F.Cit
     
-    dfTable3.For <- subset(dfTable3EE, select=c("Occupation", "Tech10", "Tech15", "Change", "perCh"))
-    dfTable3.For <- filter(dfTable3.For, Occupation %in% criticalJobs)
-    dfTable3.For
+    dfTable3F.For <- subset(dfTable3EE, select=c("Occupation", "Tech10", "Tech15", "Change", "perCh"))
+    dfTable3F.For <- filter(dfTable3F.For, Occupation %in% criticalJobs)
+    dfTable3F.For
     
-    dfTable3.Tot <- dfTable3.Cit[,2:3] + dfTable3.For[,2:3]
-    dfTable3.Tot <- cbind(dfTable3.For[,1], dfTable3.Tot)
-    colnames(dfTable3.Tot) <- c("Occupation", "Tech10", "Tech15")
-    dfTable3.Tot
+    dfTable3F.Tot <- dfTable3F.Cit[,2:3] + dfTable3F.For[,2:3]
+    dfTable3F.Tot <- cbind(dfTable3F.For[,1], dfTable3F.Tot)
+    colnames(dfTable3F.Tot) <- c("Occupation", "Tech10", "Tech15")
+    dfTable3F.Tot
     
-    dfTable3.perFor <- round(100 * dfTable3.For[,2:3]/dfTable3.Tot[, 2:3], digits=1)
-    dfTable3.perFor <- cbind(dfTable3.For[,1], dfTable3.perFor)
-    colnames(dfTable3.perFor) <- c("Occupation", "per2010", "per2015")
-    dfTable3.perFor
+    dfTable3F.perFor <- round(100 * dfTable3F.For[,2:3]/dfTable3F.Tot[, 2:3], digits=1)
+    dfTable3F.perFor <- cbind(dfTable3F.For[,1], dfTable3F.perFor)
+    colnames(dfTable3F.perFor) <- c("Occupation", "per2010", "per2015")
+    dfTable3F.perFor
     
 ### Focus on California
-    dfTable3.Cit.CA <- subset(dfTable3CACA, select=c("Occupation", "Tech10", "Tech15"))
-    dfTable3.Cit.CA <- filter(dfTable3.Cit.CA, Occupation %in% criticalJobs)
-    dfTable3.Cit.CA
+    dfTable3F.Cit.CA <- subset(dfTable3CACA, select=c("Occupation", "Tech10", "Tech15", "Change", "perCh"))
+    dfTable3F.Cit.CA <- filter(dfTable3F.Cit.CA, Occupation %in% criticalJobs)
+    dfTable3F.Cit.CA
     
-    dfTable3.For.CA <- subset(dfTable3forCACA, select=c("Occupation", "Tech10", "Tech15"))
-    dfTable3.For.CA <- filter(dfTable3.For.CA, Occupation %in% criticalJobs)
-    dfTable3.For.CA
+    dfTable3F.For.CA <- subset(dfTable3forCACA, select=c("Occupation", "Tech10", "Tech15", "Change", "perCh"))
+    dfTable3F.For.CA <- filter(dfTable3F.For.CA, Occupation %in% criticalJobs)
+    dfTable3F.For.CA
     
-    dfTable3.Tot.CA <- dfTable3.Cit.CA[,2:3] + dfTable3.For.CA[,2:3]
-    dfTable3.Tot.CA <- cbind(dfTable3.For.CA[,1], dfTable3.Tot.CA)
-    colnames(dfTable3.Tot.CA) <- c("Occupation", "Tech10", "Tech15")
-    dfTable3.Tot.CA
+    dfTable3F.Tot.CA <- dfTable3F.Cit.CA[,2:3] + dfTable3F.For.CA[,2:3]
+    dfTable3F.Tot.CA <- cbind(dfTable3F.For.CA[,1], dfTable3F.Tot.CA)
+    colnames(dfTable3F.Tot.CA) <- c("Occupation", "Tech10", "Tech15")
+    dfTable3F.Tot.CA
     
-    dfTable3.perFor.CA <- round(100 * dfTable3.For.CA[,2:3]/dfTable3.Tot.CA[, 2:3], digits=1)
-    dfTable3.perFor.CA <- cbind(dfTable3.For.CA[,1], dfTable3.perFor.CA)
-    colnames(dfTable3.perFor.CA) <- c("Occupation", "per2010", "per2015")
-    dfTable3.perFor.CA
+    dfTable3F.perFor.CA <- round(100 * dfTable3F.For.CA[,2:3]/dfTable3F.Tot.CA[, 2:3], digits=1)
+    dfTable3F.perFor.CA <- cbind(dfTable3F.For.CA[,1], dfTable3F.perFor.CA)
+    colnames(dfTable3F.perFor.CA) <- c("Occupation", "per2010", "per2015")
+    dfTable3F.perFor.CA
     
     
 ####################################
@@ -521,7 +521,7 @@
     (dfTable3HH <- Profiles[[2]])    
 ########################################
 ########################################     
-save(dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable2C, dfTable3Z, dfTable3ZZ, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3.Cit, dfTable3.For, dfTable3.Tot, dfTable3.perFor, dfTable3.Cit.CA, dfTable3.For.CA, dfTable3.Tot.CA, dfTable3.perFor.CA, dfTable3G, dfTable3H, dfTable3HH, file="dfTab1A1B2A2B3ABCDEF.rda")
+save(dfTable1A, dfTable1B, dfTable1C, dfTable1D, dfTable1E, dfTable2A, dfTable2B, dfTable2C, dfTable3Z, dfTable3ZZ, dfTable3A, dfTable3AA, dfTable3B, dfTable3BB, dfTable3C, dfTable3CC, dfTable3D, dfTable3DD, dfTable3E, dfTable3EE, dfTable3F.Cit, dfTable3F.For, dfTable3F.Tot, dfTable3F.perFor, dfTable3F.Cit.CA, dfTable3F.For.CA, dfTable3F.Tot.CA, dfTable3F.perFor.CA, dfTable3G, dfTable3H, dfTable3HH, file="dfTab1A1B2A2B3ABCDEF.rda")
 
 save(dfTable3CA, dfTable3CACA, dfTable3CAblack, dfTable3CACAblack, dfTable3CAhispanic, dfTable3CACAhispanic, dfTable3forCA, dfTable3forCACA, dfTable3forAsianCA, dfTable3forAsianCACA, dfTable3TX, dfTable3TXTX, dfTable3TXblack, dfTable3TXTXblack, dfTable3TXhispanic, dfTable3TXTXhispanic, dfTable3forTX, dfTable3forTXTX, dfTable3forAsianTX, dfTable3forAsianTXTX, dfTable3NY, dfTable3NYNY, dfTable3NYblack, dfTable3NYNYblack, dfTable3NYhispanic, dfTable3NYNYhispanic, dfTable3forNY, dfTable3forNYNY, dfTable3forAsianNY, dfTable3forAsianNYNY, dfTable3FL, dfTable3FLFL, dfTable3FLblack, dfTable3FLFLblack, dfTable3FLhispanic, dfTable3FLFLhispanic, dfTable3forFL, dfTable3forFLFL, dfTable3forAsianFL, dfTable3forAsianFLFL, dfTable3VA, dfTable3VAVA, dfTable3VAblack, dfTable3VAVAblack, dfTable3VAhispanic, dfTable3VAVAhispanic, dfTable3forVA, dfTable3forVAVA, dfTable3forAsianVA, dfTable3forAsianVAVA, dfTable3IL, dfTable3ILIL, dfTable3ILblack, dfTable3ILILblack, dfTable3ILhispanic, dfTable3ILILhispanic, dfTable3forIL, dfTable3forILIL, dfTable3forAsianIL, dfTable3forAsianILIL, dfTable3DC, dfTable3DCDC, dfTable3DCblack, dfTable3DCDCblack, dfTable3DChispanic, dfTable3DCDChispanic, dfTable3forWA, dfTable3forWAWA, dfTable3forAsianWA, dfTable3forAsianWAWA, dfTable3forNJ, dfTable3forNJNJ, dfTable3forAsianNJ, dfTable3forAsianNJNJ,file="APPENDIX.rda")
 
