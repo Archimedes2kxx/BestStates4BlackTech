@@ -54,14 +54,15 @@ perFemIncrease <- round(100 * (dfTable3Z[1,"Fem"] - fem10)/fem10, digits=1)
 
 ```
 \pagenumbering{arabic}   
-
+  
+<P style="page-break-before: always">  
 ## Overview   
 
 Top managers claim that American firms in the U.S. technology sector employ foreign professionals because they cannot find enough qualified American techs in the domestic job pipelines. This supplement uses Census data to estimate the employment of foreign techs in the 50 states plus the District of Columbia in 2015 and to estimate the increase in the employment of foreign techs between 2010 and 2015.  
 
 <i>Please note that all of the numbers in this overview and in the subsequent sections of this supplement are estimates based on U.S. Census survey samples. Accordingly all numbers should be read as "approximately" even when the word "approximately" does not appear. </i>  
 
-* In 2015, there were approximately `r prettyNum(dfTable1C["Num", "Total2015"], big.mark=",", scientific=FALSE)` professionals in the U.S. tech sector; `r prettyNum(dfTable1C["Num", "Citizens2015"], big.mark=",", scientific=FALSE)` were Americans (`r prettyNum(dfTable1C["Per", "Citizens2015"], big.mark=",", scientific=FALSE)` percent); `r prettyNum(dfTable1C["Num", "Foreign2015"], big.mark=",", scientific=FALSE)` were foreign (`r prettyNum(dfTable1C["Per", "Foreign2015"], big.mark=",", scientific=FALSE)` percent, Table 1C). Approximately `r prettyNum(dfTable1E["Num", "Asian"], big.mark=",", scientific=FALSE)` of foreign techs were females from Asian countries; `r prettyNum(dfTable1E["Num", "NonAsian"], big.mark=",", scientific=FALSE)` were females from non-Asian countries (Table 1E).   
+* In 2015, there were approximately `r prettyNum(dfTable1C["Num", "Total2015"], big.mark=",", scientific=FALSE)` professionals in the U.S. tech sector; `r prettyNum(dfTable1C["Num", "Citizens2015"], big.mark=",", scientific=FALSE)` were Americans (`r prettyNum(dfTable1C["Per", "Citizens2015"], big.mark=",", scientific=FALSE)` percent); `r prettyNum(dfTable1C["Num", "Foreign2015"], big.mark=",", scientific=FALSE)` were foreign (`r prettyNum(dfTable1C["Per", "Foreign2015"], big.mark=",", scientific=FALSE)` percent, Table 1C).   
 
 * In 2015 approximately `r prettyNum(dfTable2C["Per", "Male"], big.mark=",", scientific=FALSE)`% of foreign techs were male; `r prettyNum(dfTable2C["Per", "Female"], big.mark=",", scientific=FALSE)`% were female; `r prettyNum(dfTable2C["Per", "FemAsian"], big.mark=",", scientific=FALSE)`% of foreign techs were female techs who came from Asian countries; and `r prettyNum(dfTable2C["Per", "FemNonAsian"], big.mark=",", scientific=FALSE)`% were female techs from non-Asian countries. (Chart 4 and Table 2C)
 
