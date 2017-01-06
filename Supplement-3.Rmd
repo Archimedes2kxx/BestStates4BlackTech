@@ -1,7 +1,7 @@
 ---
-title: "Foreign Professionals: U.S. Tech's Other Pipelines -- Preliminary Version 0.91"
+title: "Foreign Professionals: U.S. Tech's Other Pipelines -- Version 1.0"
 author: "Roy L Beasley, PhD -- DLL Editor"
-date: "1/1/17"
+date: "1/6/17"
 
 output: 
  prettydoc::html_pretty:
