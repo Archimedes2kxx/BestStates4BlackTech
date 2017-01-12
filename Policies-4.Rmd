@@ -54,14 +54,14 @@ tt3 <- ttheme_minimal(
 <P style="page-break-before: always">  
 ## Overview   
 
-Kurosawa's [<b>Rashomon</b>](http://www.imdb.com/title/tt0042876/) is one of those great films that challenge its viewers to really think about what they have seen. As in real life, each version has omissions and inconsistencies that alert the viewer that each version is not the truth, the whole truth, and nothing but the truth. Even the supposedly neutral observer's version seemed to be shaped in a way to cast the observer in a favorable light. Some viewers conclude that the point of the film is that truth is unknowable. I'm not so pessimistic. To me the film is a reminder that truth is attainable but is rarely as simple as it first appears to be, that multiple perspectives provide useful insights, even when they seem to be in conflict with each other.   
+Kurosawa's [<b>Rashomon</b>](http://www.imdb.com/title/tt0042876/) challenges its viewers to really think about what they have seen. Four versions of a tragic event are presented, but each version has enough omissions and inconsistencies ro alert the viewer that no version is the truth, the whole truth, and nothing but the truth. Even the supposedly neutral observer's version seemed is framed to cast the observer in a favorable light. Some viewers conclude that the film's main point is that truth is unknowable. I'm not so pessimistic. To me the film is a reminder that truth is attainable but is rarely as simple as it first appears to be, and that multiple perspectives provide useful insights, even when they seem to be in conflict with each other.   
 
 The four viewpoints presented in the following sections of this policy analysis are the perspectives that I encountered in my quest to assemble data that would provide a broad context for productive discussions of diversity in the U.S. information technology sector.   
 
 * [<b>Best States for American Black, Hispanic, Asian, and Female Tech – Vers 1.0f</b>](https://hbcu-levers.blogspot.com/2016/11/best-states-for-american-black-hispanic.html) 
 * [<b>Foreign Professionals: U.S. Tech’s Other Pipelines – Version 1.0</b>](https://hbcu-levers.blogspot.com/2016/12/foreign-professionals-us-techs-other.html)   
 
-Each view of the issue leads to solution strategies, but different views lead to different strategies. 
+Each view leads to solution strategies, but different views lead to different strategies. 
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Policies-4.html" target="_self">back-to-top</a></center></i></small>   
 <P style="page-break-before: always">   
