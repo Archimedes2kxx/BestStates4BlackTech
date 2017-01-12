@@ -1,0 +1,92 @@
+---
+title: "Rashomon -- Four Conflicting Views of Diversity in Tech -- Version 0.1"
+author: "Roy L Beasley, PhD — DLL Editor"
+date: "1/12/2017"
+output: 
+ prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+    toc: true
+    toc_depth: 4
+    fig_width: 7
+    fig_height: 6
+---
+
+
+```{r LOAD, echo=FALSE, cache=FALSE}
+
+    #### load("dfRaceWorkplaceAndShares.rda") ### Only use data in tables, plots, and maps
+    load("dfCensus2.rda") 
+    load("dfTab1A1B2A2B3ABCDEF.rda")
+    load("dfTab4.rda")   
+    load("dfMap4.rda")
+    load("dfPlot5Tab5beta1000.rda")
+    load("dfTab67A7B7C7D7E7F8A8B8C8D8E8F.rda")
+    load("APPENDIX.rda")  
+    
+    ###install.packages("gridExtra")
+    library(prettydoc)
+    library(maps)    
+    library(mapproj) ### needed by ggplot2, but not installed automaticallly
+    library(ggplot2)
+    library(gridExtra)
+    ### library(printr)
+    library(grid)
+    library(gtable)
+    library(grid)
+
+    ### Intending to use Yihui Xie's printr package for better tables later
+    ### install.packages("devtools")
+    ### library(devtools)
+    ### install_github("yihui/printr")
+    ### library(printr)
+    ### detach('package:printr', unload = TRUE)
+    
+tt3 <- ttheme_minimal(
+  core=list(bg_params = list(fill = blues9[1:7], col=NA),
+            fg_params=list(fontface=3)),
+  colhead=list(fg_params=list(col="navyblue", fontface=4L)),
+  rowhead=list(fg_params=list(col="orange", fontface=3L)))
+
+
+```
+
+<P style="page-break-before: always">  
+## Overview   
+
+
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Policies-4.html" target="_self">back-to-top</a></center></i></small>   
+<P style="page-break-before: always">   
+## Version 1 -- Racism and Sexism   
+
+blah-blah-blah  
+blah-blah-blah  
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Policies-4.html" target="_self">back-to-top</a></center></i></small>  
+<P style="page-break-before: always">   
+## Version 2  -- Academic Pipelines   
+
+
+blah-blah-blah  
+blah-blah-blah  
+
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Policies-4.html" target="_self">back-to-top</a></center></i></small>  
+<P style="page-break-before: always">   
+## Version 3 -- Competitive Advantage  
+
+
+blah-blah-blah  
+blah-blah-blah  
+
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Policies-4.html" target="_self">back-to-top</a></center></i></small>  
+<P style="page-break-before: always">   
+## Version 4 -- Maximum Profits   
+
+
+blah-blah-blah  
+blah-blah-blah  
+
+<small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Policies-4.html" target="_self">back-to-top</a></center></i></small>  
