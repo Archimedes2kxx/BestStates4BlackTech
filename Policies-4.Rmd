@@ -1,5 +1,5 @@
 ---
-title: "Rashomon -- Four Conflicting Views of Diversity in Tech -- Version 0.1"
+title: "Rashomon -- Four Conflicting Views of Diversity in Tech -- Version 0.2"
 author: "Roy L Beasley, PhD — DLL Editor"
 date: "1/12/2017"
 output: 
@@ -54,22 +54,36 @@ tt3 <- ttheme_minimal(
 <P style="page-break-before: always">  
 ## Overview   
 
+Kurosawa's [<b>Rashomon</b>](http://www.imdb.com/title/tt0042876/) is one of those great films that challenge its viewers to really think about what they have seen. As in real life, each version has omissions and inconsistencies that alert the viewer that each version is not the truth, the whole truth, and nothing but the truth. Even the supposedly neutral observer's version seemed to be shaped in a way to cast the observer in a favorable light. Some viewers conclude that the point of the film is that truth is unknowable. I'm not so pessimistic. To me the film is a reminder that truth is attainable but is rarely as simple as it first appears to be, that multiple perspectives provide useful insights, even when they seem to be in conflict with each other.   
 
+The four viewpoints presented in the following sections of this policy analysis are the perspectives that I encountered in my quest to assemble data that would provide a broad context for productive discussions of diversity in the U.S. information technology sector.   
+
+* [<b>Best States for American Black, Hispanic, Asian, and Female Tech – Vers 1.0f</b>](https://hbcu-levers.blogspot.com/2016/11/best-states-for-american-black-hispanic.html) 
+* [<b>Foreign Professionals: U.S. Tech’s Other Pipelines – Version 1.0</b>](https://hbcu-levers.blogspot.com/2016/12/foreign-professionals-us-techs-other.html)   
+
+Each view of the issue leads to solution strategies, but different views lead to different strategies. 
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Policies-4.html" target="_self">back-to-top</a></center></i></small>   
 <P style="page-break-before: always">   
 ## Version 1 -- Racism and Sexism   
 
-blah-blah-blah  
-blah-blah-blah  
+
+Problem: low percentage women, Blacks, and Hispanics   
+Cause: implicit bias   
+Solutions: appoint diversity officers and diverse board members   
+Flaw --- low levels in SV usual pipelines   
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Policies-4.html" target="_self">back-to-top</a></center></i></small>  
 <P style="page-break-before: always">   
 ## Version 2  -- Academic Pipelines   
 
 
-blah-blah-blah  
-blah-blah-blah  
+Problem: low percentage women, Blacks, and Hispanics in tech
+Cause: low percentage of women, Blacks, and Hispanics in academic pipelines that prepare students for careers in tech   
+Solutions: Reform college and outreach to HBCUs at college level   
+support Black Girls Code and other grass roots groups to encourage younger students ... substantial dollars to Code,org   
+Flaw -- lots of Black and Hispanic techs, SV has small demand, why no recruitment efforts??? Why no concern about competitive disadvantages of low diversity??   
+
 
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Policies-4.html" target="_self">back-to-top</a></center></i></small>  
@@ -77,8 +91,10 @@ blah-blah-blah
 ## Version 3 -- Competitive Advantage  
 
 
-blah-blah-blah  
-blah-blah-blah  
+Problem: Not enough U.S. techs with satisfactory tech skills   
+Cause: Curriculum of U.S. colleges and universities not evolving fast enough to keep pace with evolving technologies required by U.S. tech   
+Solution: import increasing numbers of foreign professionals to fill this skills gap, especially from Asia where training seems to be keeping pace with technology and cost of living is lower than in Europe, expand H-1B visa, ... broad scale immigration reform to give U.S. tech access to unlimited foreign labor   
+Flaw -- Why is there no limit to foreign recruitment?   
 
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Policies-4.html" target="_self">back-to-top</a></center></i></small>  
@@ -86,7 +102,9 @@ blah-blah-blah
 ## Version 4 -- Maximum Profits   
 
 
-blah-blah-blah  
-blah-blah-blah  
+Problem: U.S. Tech, especially software development, is still labor intensive   
+In order to sustain record profits in order to attract future investments, labor costs must be reduced   
+Classic solution -- use cheaper labor, i.e., techs from other countries with much lower standards of living, e.g, therefore mostly from Asian countriess   
+Flaw -- Japan that can say no ... defense industrial base ... cost benefit for entire economy ... permanent low share for Black techs can't compete with cheap labor   
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Policies-4.html" target="_self">back-to-top</a></center></i></small>  
