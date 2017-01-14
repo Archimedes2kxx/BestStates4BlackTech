@@ -61,7 +61,7 @@ The four viewpoints presented in the following sections of this policy analysis 
 * [<b>Best States for American Black, Hispanic, Asian, and Female Tech – Vers 1.0f</b>](https://hbcu-levers.blogspot.com/2016/11/best-states-for-american-black-hispanic.html) 
 * [<b>Foreign Professionals: U.S. Tech’s Other Pipelines – Version 1.0</b>](https://hbcu-levers.blogspot.com/2016/12/foreign-professionals-us-techs-other.html)   
 
-Each view identifies solution strategies, but different views lead to different strategies. 
+Each view implies solution strategies, but different views imply different strategies. 
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Policies-4.html" target="_self">back-to-top</a></center></i></small>   
 <P style="page-break-before: always">   
