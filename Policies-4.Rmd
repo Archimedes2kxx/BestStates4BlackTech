@@ -1,7 +1,7 @@
 ---
-title: "Rashomon -- Four Conflicting Views of Diversity in Tech -- Version 0.4"
+title: "Rashomon -- Four Conflicting Views of Diversity in Tech -- Version 0.41"
 author: "Roy L Beasley, PhD — DLL Editor"
-date: "1/16/2017"
+date: "1/19/2017"
 output: 
  prettydoc::html_pretty:
     theme: cayman
@@ -70,7 +70,7 @@ Each view implies solution strategies, but different views imply different strat
 <b>Problem: low percentage women, Blacks, and Hispanics</b>   
 The nation's attention was focused on this problem in 2014 by the responses of Google, Facebook, and other major Silicon Valley tech firms to requests from the Reverend Jesse Jackson, Jr., for the employment data in their annual EEOC reports. As was anticipated, the data showed that the percentage of women, Blacks, and Hispanics employed by these firms was well below the percentage of these groups in the nation's overall population.   
 
-DATA DATA DATA
+DATA DATA DATA My report on top four in Silicon Valley ... plus my data on Best States
 
 <b>Cause: Racial and gender bias</b>   
 The low percentages of women, Blacks, and Hispanics employed by Silicon Valley's leading employers was interpreted as indications of racial and gender bias in hiring processes
@@ -91,7 +91,7 @@ The Valley's leadership claimed that the low employment levels reflected  low en
 <b>Solutions: Specialized college recruitment and support for K-12 programs </b>
 Goggle and others tried to fill the academic pipelines by intensifying their recruitment of Black students from Historically Black Colleges and Universities (HBCUs). And many companies offered support for Black Girls Code, Code.org, and other organizations that ran programs that stimulate interest in computer sceience among K-12 students. 
 
-DATA DATA DATA DATA
+DATA DATA DATA DATA ... my data about Black, Hispanic enrollments in top schools, espe in California
 
 Flaw -- lots of Black and Hispanic techs, SV has small demand, why no recruitment efforts??? Why no concern about competitive disadvantages of low diversity?? 
 
@@ -123,11 +123,13 @@ Cause: Curriculum of U.S. colleges and universities not evolving fast enough to 
 Solution: import increasing numbers of foreign professionals to fill this skills gap, especially from Asia where training seems to be keeping pace with technology and cost of living is lower than in Europe, expand H-1B visa, ... broad scale immigration reform to give U.S. tech access to unlimited foreign labor   
 Flaw -- Why is there no limit to foreign recruitment?   
 
+DATA... DATA ... DATA ... my data about foreign
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Policies-4.html" target="_self">back-to-top</a></center></i></small>  
 <P style="page-break-before: always">   
 ## Version 4 -- Maximum Profits   
 
+DATA ... refer to same data about foreign
 
 Problem: U.S. Tech, especially software development, is still labor intensive   
 In order to sustain record profits in order to attract future investments, labor costs must be reduced   
