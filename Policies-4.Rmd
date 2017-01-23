@@ -1,7 +1,7 @@
 ---
-title: "Rashomon -- Four Conflicting Views of Diversity in Tech -- Version 0.46"
+title: "Rashomon -- Four Conflicting Views of Diversity in Tech -- Version 0.47"
 author: "Roy L Beasley, PhD — DLL Editor"
-date: "1/21/2017"
+date: "1/23/2017"
 output: 
  prettydoc::html_pretty:
     theme: cayman
@@ -58,22 +58,27 @@ Kurosawa's [<b>Rashomon</b>](http://www.imdb.com/title/tt0042876/) challenged it
 
 The four viewpoints presented in the following sections of this analysis are the perspectives that I encountered in my efforts to assemble extensive statistical data for two reports that could provide a broad context for productive discussions of diversity in the U.S. information technology sector: 
 
-* [<b>Best States for American Black, Hispanic, Asian, and Female Tech – Vers 1.0f</b>](https://hbcu-levers.blogspot.com/2016/11/best-states-for-american-black-hispanic.html) 
-* [<b>Foreign Professionals: U.S. Tech’s Other Pipelines – Version 1.0</b>](https://hbcu-levers.blogspot.com/2016/12/foreign-professionals-us-techs-other.html)   
-
 The tragic event that happened in the movie was a brutal rape ... or was it a shocking act of consensual infidelity??? ... This analysis will show that the tragic event that happened in the U.S. information technology sector was gender and racial bias in the hiring of women and minorities ... or was it the inadequate supply of qualified women and minorities??? ... or was it the shocking emergence of larger factors that substantially impeded the impact of all policies designed to increase the diversity of employment in the U.S. tech sector???
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Policies-4.html" target="_self">back-to-top</a></center></i></small>   
 <P style="page-break-before: always">   
 ## Version 1 -- Racism and Sexism   
 
-<b>Problem: Low percentage women, Blacks, and Hispanics in U.S. tech</b>   
-The nation's attention was focused on this problem in 2014 by the responses of Google, Facebook, and other major Silicon Valley tech firms to requests from the Reverend Jesse Jackson, Jr., for the employment data in their annual EEOC reports. As was anticipated, the data showed that the percentage of women, Blacks, and Hispanics employed by these firms was well below the percentage of these groups in the nation's overall population. 
+<b>Problem: Low percentage of women, Blacks, and Hispanics in U.S. tech</b>   
+The nation's attention was focused on this problem in 2014 by the responses of Google, Facebook, and other major Silicon Valley tech firms to long-standing requests from the Reverend Jesse Jackson, Jr., for the employment data in their annual EEOC reports. As was widely anticipated, the data showed that the percentage of women, Blacks, and Hispanics employed by these firms was well below the percentage of these groups in the nation's overall population. Every year since then, prominent companies in the Valley have issued diversity reports, most of which shown little or no progress, i.e., no substantial increases in the percentage of women, Blacks, and Hispanics on their technical staffs.
 
-The reader is reminded that proving tbe existence of discrimination against women and monirities in the workplace usually requires data that shows that (1) few women and minorities are employed and/or (2) that women and minority employees do not receive compensation that is equal to the compensation received by men and non-minorities who have comparable education and experience.
+DATA DATA DATA... provide links to diversity reports and EEOC report ...
 
-My own reports and most of the other reports produced by EEOC and the Silicon Valley employers focused on the first factor, the number of women and minorities employed. The third and fourth viewpoints discussed in this analysis will refer to compensation.
+Although Silican Valley is arguably the most important center of information technology in the U.S., it is not the only center. Therefore diversity reports about the Valley are important, but they do not provide definitive pictures of the participation of women, Blacks, and Hispanics in the entire U.S. tech sector. That's why I used the U.S. Census data to develop estimates of the participation of these groups in the tech sectors of all fifty states plus the District of Columbia: 
 
-DATA DATA DATA My report on top four in Silicon Valley ... plus my data on Best States including maps and charts
+* [<b>Best States for American Black, Hispanic, Asian, and Female Tech – Vers 1.0f</b>](https://hbcu-levers.blogspot.com/2016/11/best-states-for-american-black-hispanic.html)    
+
+<i>Note: The reader is reminded that the existence of discrimination against women and minorities in the workplace is usually provided by (1) data that shows that few women and minorities are employed and/or (2) data that shows that women and minority employees do not receive compensation that is equal to the compensation received by men and non-minorities who have comparable education and experience. My own reports and most of the reports produced by the EEOC and by the Silicon Valley employers focused on the first factor, the number of women and minorities employed. The third and fourth viewpoints discussed in this analysis will refer to compensation.</i>
+
+The following tables show that Blacks and Hispanic techs enjoy more substantial employment opportunities outside of California in 2015, but confirm that female techs only 20 to 30 percent of the employees in the tech sectors of most states in 2015 .
+
+DATA DATA DATA Table 4B (Black American) ... Table 4D (Hispanic American) ... Table 4E (Asian American -- no bias) ... Table 4F (Non-Asian American)
+
+
 
 <b>Cause: Racial and gender bias</b>   
 The low percentages of women, Blacks, and Hispanics employed by Silicon Valley's leading employers was interpreted as indications of racial and gender bias in hiring processes
@@ -127,6 +132,8 @@ Solution: import increasing numbers of foreign professionals to fill this skills
 Flaw -- Why is there no limit to foreign recruitment?   
 
 DATA... DATA ... DATA ... my data about foreign, including maps and charts
+
+* [<b>Foreign Professionals: U.S. Tech’s Other Pipelines – Version 1.0</b>](https://hbcu-levers.blogspot.com/2016/12/foreign-professionals-us-techs-other.html)   
 
 <small><i><center><a href="https://archimedes2kxx.github.io/BestStatesForBlackTech/Policies-4.html" target="_self">back-to-top</a></center></i></small>  
 <P style="page-break-before: always">   
